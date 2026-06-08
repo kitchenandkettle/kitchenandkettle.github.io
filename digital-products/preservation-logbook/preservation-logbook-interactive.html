@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food Preservation Logbook — Interactive Edition — Kitchen & Kettle</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap');
+  :root {
+    --paper: #F5F0E8; --ink: #2C2416; --clay: #C4A882;
+    --sage: #7D8B6F; --muted: #8B8376; --line: #D9D0C1; --light: #FAF7F0;
+    --saved: #5a8a6a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Crimson Pro', Georgia, serif; font-size: 11pt;
+    line-height: 1.6; color: var(--ink); background: #e8e4dc;
+    padding: 1rem;
+  }
+  .toolbar {
+    max-width: 8.5in; width: 100%; margin: 0 auto 0.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: #fff; padding: 0.5rem 0.7rem; border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(44,36,22,0.08);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .toolbar .brand {
+    font-family: 'Crimson Pro', serif; font-size: 14pt; font-weight: 600; color: var(--ink);
+  }
+  .toolbar .brand em { font-style: italic; color: var(--clay); }
+  .toolbar .actions { display: flex; gap: 0.5rem; align-items: center; }
+  .toolbar .save-status {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; color: var(--saved);
+    margin-right: 0.5rem; opacity: 0; transition: opacity 0.3s;
+  }
+  .toolbar .save-status.visible { opacity: 1; }
+  .btn {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; font-weight: 600;
+    padding: 0.4em 0.8em; border-radius: 3px; cursor: pointer; border: none;
+  }
+  .btn-ghost { background: none; color: var(--muted); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+  .btn-print { background: var(--ink); color: var(--paper); }
+  .btn-print:hover { background: #3D362D; }
+  .page {
+    max-width: 8.5in; width: 100%; margin: 0 auto 0.5rem; background: #fff;
+    padding: 0.75in 0.7in; box-shadow: 0 2px 12px rgba(44,36,22,0.1);
+  }
+  h1 { font-size: 28pt; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+  h2 { font-size: 16pt; font-weight: 600; margin-bottom: 0.4rem; }
+  h3 {
+    font-family: 'Work Sans', sans-serif; font-size: 9pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.3rem;
+  }
+  p { margin-bottom: 0.5rem; color: #3D362D; }
+  .lede { font-size: 13pt; line-height: 1.5; margin-bottom: 1rem; }
+  .tip {
+    font-size: 9pt; font-style: italic; color: var(--sage);
+    margin: 0.4rem 0; padding-left: 0.5rem; border-left: 2px solid var(--clay);
+  }
+  .section-header {
+    border-bottom: 1px solid var(--line); padding-bottom: 0.3rem;
+    margin-bottom: 0.6rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .clear-btn {
+    font-family: 'Work Sans', sans-serif; font-size: 7pt; color: var(--muted);
+    background: none; border: none; cursor: pointer; text-decoration: underline;
+  }
+  .clear-btn:hover { color: var(--ink); }
+  input, textarea {
+    font-family: 'Crimson Pro', Georgia, serif; font-size: 9pt; color: var(--ink);
+    background: transparent; border: none; border-bottom: 1px solid transparent;
+    padding: 0.1rem 0; outline: none; width: 100%;
+    transition: border-color 0.15s;
+  }
+  input:focus, textarea:focus { border-bottom-color: var(--clay); }
+  /* Cover */
+  .cover {
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; text-align: center; padding: 2in 0.7in; min-height: 11in;
+    background: var(--light);
+  }
+  .cover .brand { font-size: 14pt; color: var(--muted); margin-bottom: 1.5rem; }
+  .cover .brand em { font-style: italic; color: var(--clay); }
+  .cover h1 { font-size: 30pt; max-width: 12ch; }
+  /* Prose */
+  .prose-page h2 { margin-top: 0; }
+  .prose-page ol, .prose-page ul { margin: 0.4rem 0 0.6rem 1.2rem; font-size: 10.5pt; }
+  .prose-page li { margin-bottom: 0.35rem; line-height: 1.5; }
+  .prose-page hr { border: none; border-top: 1px solid var(--line); margin: 0.7rem 0; }
+  /* Canning Table */
+  .log-table {
+    width: 100%; border-collapse: collapse; border: 1px solid var(--line);
+    margin: 0.5rem 0;
+  }
+  .log-table th {
+    font-family: 'Work Sans', sans-serif; font-size: 7pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    padding: 0.2rem 0.25rem; border: 1px solid var(--line); background: var(--light);
+    text-align: left;
+  }
+  .log-table td {
+    padding: 0.1rem 0.2rem; border: 1px solid var(--line);
+  }
+  .log-table td input { font-size: 8.5pt; width: 100%; }
+  .log-table td input.center { text-align: center; }
+  /* Fermentation */
+  .ferm-card {
+    border: 1px solid var(--line); padding: 0.4rem; margin-bottom: 0.4rem;
+  }
+  .ferm-card .ferm-header {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.3rem; margin-bottom: 0.3rem;
+  }
+  .ferm-card .ferm-field {
+    font-family: 'Work Sans', sans-serif; font-size: 7.5pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+  }
+  .ferm-card .ferm-field input {
+    display: block; width: 100%; margin-top: 0.1rem; font-size: 9pt;
+  }
+  .ferm-notes {
+    font-size: 9pt; color: var(--muted); min-height: 1rem;
+    display: flex; gap: 0.3rem; align-items: baseline; padding: 0.1rem 0;
+  }
+  .ferm-notes label {
+    font-family: 'Work Sans', sans-serif; font-size: 7pt; color: var(--muted);
+    white-space: nowrap;
+  }
+  .ferm-notes input { flex: 1; font-size: 9pt; }
+  /* Seasonal */
+  .season-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .season-card {
+    border: 1px solid var(--line); padding: 0.4rem;
+  }
+  .season-card h4 {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted);
+    margin-bottom: 0.3rem; padding-bottom: 0.15rem; border-bottom: 1px dotted var(--line);
+  }
+  .season-card .produce-item {
+    font-size: 9pt; line-height: 1.55; display: flex; justify-content: space-between;
+  }
+  .season-card .produce-item .method {
+    font-size: 7.5pt; color: var(--sage); font-style: italic;
+  }
+  /* Notes */
+  .notes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.5rem; }
+  .note-block {
+    border: 1px solid var(--line); padding: 0.4rem; min-height: 3rem;
+  }
+  .note-block h4 {
+    font-family: 'Work Sans', sans-serif; font-size: 7.5pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    margin-bottom: 0.3rem; padding-bottom: 0.1rem; border-bottom: 1px dotted var(--line);
+  }
+  .note-block textarea {
+    width: 100%; min-height: 2rem; resize: vertical; font-size: 9pt;
+    border: none; outline: none; background: transparent;
+  }
+  @media print {
+    body { background: none; padding: 0; }
+    .toolbar { display: none; }
+    .page { box-shadow: none; margin: 0; padding: 0.5in 0.6in; max-width: 100%; }
+    .clear-btn { display: none; }
+    input, textarea { border-bottom-color: transparent !important; }
+    .log-table th { background: none; }
+    .cover { background: #fff !important; }
+  }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+<!-- COVER -->
+<div class="page cover">
+  <p class="brand">Kitchen <em>&amp; Kettle</em></p>
+  <h1>Food<br>Preservation<br>Logbook</h1>
+  <p style="font-family:'Work Sans',sans-serif;font-size:9pt;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:2rem;">Interactive Edition</p>
+  <p style="font-size:12pt;max-width:26ch;line-height:1.5;">
+    Track what you preserve. Remember what worked. Type into every field — data saves automatically.
+  </p>
+</div>
+<!-- HOW TO USE -->
+<div class="page prose-page">
+  <h2>How this works</h2>
+  <p class="lede">Type into any field. Everything saves to your browser automatically. Nothing leaves your computer. No account needed.</p>
+  <p>Use <strong>Print / Save PDF</strong> from the top to save a filled copy for your records.</p>
+  <hr>
+  <h3>Contents</h3>
+  <ol>
+    <li><strong>Canning log</strong> — Record every batch with date, recipe, yield, and results.</li>
+    <li><strong>Fermentation tracker</strong> — Start date, ingredients, salt ratio, tasting notes.</li>
+    <li><strong>Dehydrating notes</strong> — What you dried, how, and whether it was worth it.</li>
+    <li><strong>Seasonal produce guide</strong> — Reference: what's in season and what to do with it.</li>
+  </ol>
+  <p class="tip">The notes column is the most important field. "Tasted flat — more vinegar next time" is worth more than any recipe.</p>
+</div>
+<!-- CANNING LOG page 1 -->
+<div class="page">
+  <div class="section-header">
+    <h2>Canning Log</h2>
+    <button class="clear-btn" onclick="clearSection('can')">Clear this page</button>
+  </div>
+  <div style="display:flex;gap:0.5rem;align-items:center;margin-bottom:0.4rem;">
+    <label style="font-family:'Work Sans',sans-serif;font-size:8pt;color:var(--muted);">Year:</label>
+    <input type="text" data-key="can-year" style="width:4rem;font-size:10pt;" placeholder="2026">
+  </div>
+  <table class="log-table" id="canning-table-1"></table>
+  <p style="font-size:8pt;color:var(--muted);margin-top:0.3rem;">WB = water bath &nbsp; PC = pressure canner &nbsp; Record processing time per tested recipe.</p>
+</div>
+<!-- CANNING LOG page 2 -->
+<div class="page">
+  <div class="section-header">
+    <h2>Canning Log (continued)</h2>
+    <button class="clear-btn" onclick="clearSection('can2')">Clear this page</button>
+  </div>
+  <table class="log-table" id="canning-table-2"></table>
+  <div style="margin-top:0.6rem;padding:0.4rem;border:1px solid var(--line);background:var(--light);">
+    <h3 style="color:var(--sage);">Year-End Review</h3>
+    <p style="font-size:10pt;margin-bottom:0.3rem;">Total jars processed: <input data-key="can-total" style="width:3rem;font-size:10pt;" placeholder="___"></p>
+    <p style="font-size:10pt;margin-bottom:0.3rem;">Best batch: <input data-key="can-best" style="width:60%;font-size:10pt;" placeholder="make again"></p>
+    <p style="font-size:10pt;margin-bottom:0.3rem;">Worst batch: <input data-key="can-worst" style="width:60%;font-size:10pt;" placeholder="skip next year"></p>
+    <p style="font-size:10pt;margin-bottom:0;">Next year: <input data-key="can-next" style="width:60%;font-size:10pt;" placeholder="do differently"></p>
+  </div>
+</div>
+<!-- FERMENTATION -->
+<div class="page">
+  <div class="section-header">
+    <h2>Fermentation Tracker</h2>
+    <button class="clear-btn" onclick="clearSection('ferm')">Clear this page</button>
+  </div>
+  <div id="ferm-cards"></div>
+</div>
+<!-- DEHYDRATING + SEASONAL -->
+<div class="page">
+  <div class="section-header">
+    <h2>Dehydrating Notes</h2>
+    <button class="clear-btn" onclick="clearSection('dehyd')">Clear this page</button>
+  </div>
+  <table class="log-table" id="dehyd-table"></table>
+  <div style="margin-top:0.7rem;">
+    <h2 style="border-bottom:1px solid var(--line);padding-bottom:0.3rem;">Seasonal Produce at a Glance</h2>
+    <p style="font-size:9pt;color:var(--muted);margin-bottom:0.4rem;">
+      <strong>Key:</strong> <span style="color:var(--sage);">F</span>=freeze <span style="color:var(--sage);">C</span>=can <span style="color:var(--sage);">D</span>=dehydrate <span style="color:var(--sage);">L</span>=lacto-ferment <span style="color:var(--sage);">R</span>=root cellar
+    </p>
+    <div class="season-grid" id="season-grid"></div>
+  </div>
+</div>
+<!-- CLOSING -->
+<div class="page prose-page">
+  <h2>A note on preserving</h2>
+  <p class="lede">Preserving food is about capturing abundance — the week tomatoes are perfect, the month apples are falling — and spreading it across the year.</p>
+  <p>Some years you'll put up fifty jars. Others you'll preserve nothing. Both years are fine.</p>
+  <hr>
+  <div class="notes-grid">
+    <div class="note-block"><h4>Favorite recipes to repeat</h4><textarea data-key="notes-fav"></textarea></div>
+    <div class="note-block"><h4>New things to try next year</h4><textarea data-key="notes-try"></textarea></div>
+    <div class="note-block"><h4>Equipment to acquire / replace</h4><textarea data-key="notes-equip"></textarea></div>
+    <div class="note-block"><h4>Good sources for produce</h4><textarea data-key="notes-sources"></textarea></div>
+  </div>
+  <p style="font-size:9pt;color:var(--muted);margin-top:1rem;text-align:center;">
+    Kitchen & Kettle &bull; Works because it works.<br>
+    All data saved to your browser.
+  </p>
+</div>
+<script>
+// ── Save / Load ──────────────────────────
+const STORAGE_KEY = 'keeping-kitchen-preservation';
+function save() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => { data[el.dataset.key] = el.value; });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  const s = document.getElementById('saveStatus');
+  s.classList.add('visible');
+  clearTimeout(s._t); s._t = setTimeout(() => s.classList.remove('visible'), 1500);
+}
+function load() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.dataset.key in data) el.value = data[el.dataset.key];
+  });
+}
+function clearAll() {
+  if (!confirm('Clear all data?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('[data-key]').forEach(el => el.value = '');
+}
+function clearSection(prefix) {
+  if (!confirm('Clear this section?')) return;
+  const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  document.querySelectorAll(`[data-key^="${prefix}"]`).forEach(el => { el.value = ''; data[el.dataset.key] = ''; });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+document.addEventListener('input', save);
+// ── Build Canning Tables ─────────────────
+function buildCanningTable(containerId, prefix, rows) {
+  const table = document.getElementById(containerId);
+  const headers = ['Date','Recipe / Contents','Jars/Size','Method','Time','Yield','Result / Notes'];
+  const thead = document.createElement('thead');
+  const tr = document.createElement('tr');
+  headers.forEach(h => { const th = document.createElement('th'); th.textContent = h; tr.appendChild(th); });
+  thead.appendChild(tr); table.appendChild(thead);
+  const tbody = document.createElement('tbody');
+  for (let i = 0; i < rows; i++) {
+    const r = document.createElement('tr');
+    ['date','recipe','jars','method','time','yield','notes'].forEach((col,j) => {
+      const td = document.createElement('td');
+      const inp = document.createElement('input');
+      inp.dataset.key = `${prefix}-${i}-${col}`;
+      if (['date','jars','method','time','yield'].includes(col)) {
+        inp.className = 'center';
+        const ph = {date:'___',jars:'4×500ml',method:'WB/PC',time:'10m',yield:'4 jars'};
+        inp.placeholder = ph[col] || '';
+      } else {
+        inp.placeholder = col === 'recipe' ? 'e.g. Strawberry jam' : 'how did it turn out?';
+      }
+      td.appendChild(inp); r.appendChild(td);
+    });
+    tbody.appendChild(r);
+  }
+  table.appendChild(tbody);
+}
+buildCanningTable('canning-table-1', 'can', 10);
+buildCanningTable('canning-table-2', 'can2', 10);
+// ── Build Fermentation Cards ─────────────
+const fermContainer = document.getElementById('ferm-cards');
+for (let i = 0; i < 4; i++) {
+  const card = document.createElement('div');
+  card.className = 'ferm-card';
+  card.innerHTML = `
+    <div class="ferm-header">
+      <div class="ferm-field">Started <input data-key="ferm-${i}-started" placeholder="date"></div>
+      <div class="ferm-field">Recipe <input data-key="ferm-${i}-recipe" placeholder="e.g. sauerkraut"></div>
+      <div class="ferm-field">Salt / brine % <input data-key="ferm-${i}-salt" placeholder="2%"></div>
+    </div>
+    <div style="font-family:'Work Sans',sans-serif;font-size:7.5pt;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:0.15rem;">Tasting notes</div>
+    <div class="ferm-notes"><label>Day</label> <input data-key="ferm-${i}-day1-day" placeholder="__" style="width:2rem;"> <label>Date</label> <input data-key="ferm-${i}-day1-date" placeholder="___" style="width:4rem;"> <input data-key="ferm-${i}-day1-notes" placeholder="tasting notes..." style="flex:1;"></div>
+    <div class="ferm-notes"><label>Day</label> <input data-key="ferm-${i}-day2-day" placeholder="__" style="width:2rem;"> <label>Date</label> <input data-key="ferm-${i}-day2-date" placeholder="___" style="width:4rem;"> <input data-key="ferm-${i}-day2-notes" placeholder="tasting notes..." style="flex:1;"></div>
+    <div class="ferm-notes"><label>Day</label> <input data-key="ferm-${i}-day3-day" placeholder="__" style="width:2rem;"> <label>Date</label> <input data-key="ferm-${i}-day3-date" placeholder="___" style="width:4rem;"> <input data-key="ferm-${i}-day3-notes" placeholder="tasting notes..." style="flex:1;"></div>
+    <div class="ferm-notes"><label>Day</label> <input data-key="ferm-${i}-day4-day" placeholder="__" style="width:2rem;"> <label>Date</label> <input data-key="ferm-${i}-day4-date" placeholder="___" style="width:4rem;"> <input data-key="ferm-${i}-day4-notes" placeholder="tasting notes..." style="flex:1;"></div>
+    <div style="font-size:8.5pt;color:var(--muted);margin-top:0.2rem;">
+      Ready on: <input data-key="ferm-${i}-ready" placeholder="date" style="width:5rem;"> &nbsp; Stored: <input data-key="ferm-${i}-stored" placeholder="fridge / cellar" style="width:5rem;">
+    </div>
+  `;
+  fermContainer.appendChild(card);
+}
+// ── Build Dehydrating Table ──────────────
+const dehydTable = document.getElementById('dehyd-table');
+const dehydHeaders = ['Date','Food','Prep method','Temp','Time','Result / worth it?'];
+const dThead = document.createElement('thead');
+const dTr = document.createElement('tr');
+dehydHeaders.forEach(h => { const th = document.createElement('th'); th.textContent = h; dTr.appendChild(th); });
+dThead.appendChild(dTr); dehydTable.appendChild(dThead);
+const dTbody = document.createElement('tbody');
+for (let i = 0; i < 7; i++) {
+  const r = document.createElement('tr');
+  ['date','food','prep','temp','time','result'].forEach(col => {
+    const td = document.createElement('td');
+    const inp = document.createElement('input');
+    inp.dataset.key = `dehyd-${i}-${col}`;
+    const ph = {date:'___',food:'e.g. tomatoes',prep:'sliced ¼"',temp:'135°F',time:'8h',result:'great / meh / skip'};
+    inp.placeholder = ph[col] || '';
+    inp.className = ['date','temp','time'].includes(col) ? 'center' : '';
+    td.appendChild(inp); r.appendChild(td);
+  });
+  dTbody.appendChild(r);
+}
+dehydTable.appendChild(dTbody);
+// ── Build Seasonal ───────────────────────
+const seasons = [
+  ['Spring', [
+    ['Asparagus','F C'],['Peas','F'],['Rhubarb','F C'],['Greens (spinach, chard)','F D'],
+    ['Radishes','L'],['Herbs (tender)','D F'],['Strawberries','F C D']
+  ]],
+  ['Summer', [
+    ['Tomatoes','C F D'],['Cucumbers','L C'],['Zucchini / squash','F D'],['Peppers','F D C'],
+    ['Green beans','C F L'],['Corn','F C'],['Berries','F C D'],['Stone fruit','C F D']
+  ]],
+  ['Autumn', [
+    ['Apples / pears','C D R'],['Winter squash','R'],['Pumpkin','F C R'],['Root vegetables','R L'],
+    ['Cabbage','L R'],['Brussels sprouts','F R'],['Cranberries','F C D'],['Mushrooms','D F']
+  ]],
+  ['Winter', [
+    ['Citrus','D C (marmalade)'],['Root veg (stored)','use from cellar'],
+    ['Apples / pears (stored)','use from cellar'],['Winter squash (stored)','use from cellar'],
+    ['Preserved goods','eat what you put up']
+  ]]
+];
+const seasonGrid = document.getElementById('season-grid');
+seasons.forEach(([name, items]) => {
+  const card = document.createElement('div');
+  card.className = 'season-card';
+  const h4 = document.createElement('h4');
+  h4.textContent = name;
+  card.appendChild(h4);
+  items.forEach(([item, method]) => {
+    const row = document.createElement('div');
+    row.className = 'produce-item';
+    row.innerHTML = `<span>${item}</span><span class="method">${method}</span>`;
+    card.appendChild(row);
+  });
+  seasonGrid.appendChild(card);
+});
+load();
+</script>
+</body>
+</html>

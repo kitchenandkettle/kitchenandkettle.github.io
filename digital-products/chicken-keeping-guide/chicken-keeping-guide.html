@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Easy Chicken Keeping Guide — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F5F0E8; --ink: #2C2416; --clay: #C4A882;
+    --sage: #7D8B6F; --muted: #8B8376; --line: #D9D0C1; --light: #FAF7F0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Crimson Pro', Georgia, serif; font-size:12pt;
+    line-height: 1.6; color: var(--ink); background: #e8e4dc;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 1rem;
+  }
+  .page {
+    width: 8.5in; min-height: 11in; background: #fff;
+    margin-bottom: 0.25in; padding: 0.75in 0.7in;
+    box-shadow: 0 2px 12px rgba(44,36,22,0.12);
+    page-break-after: always; position: relative;
+  }
+  .page:last-of-type { page-break-after: auto; }
+  h1 { font-size: 28pt; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; }
+  h2 { font-size: 16pt; font-weight: 600; margin-bottom: 0.4rem; }
+  h3 {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.3rem;
+  }
+  p { margin-bottom: 0.5rem; color: #3D362D; }
+  .lede { font-size: 13pt; line-height: 1.5; margin-bottom: 1rem; }
+  .small { font-family: 'Work Sans', sans-serif; font-size:12pt; color: var(--muted); }
+  .tip {
+    font-size:12pt; font-style: italic; color: var(--sage);
+    margin: 0.4rem 0; padding-left: 0.5rem; border-left: 2px solid var(--clay);
+  }
+  .section-header {
+    border-bottom: 1px solid var(--line); padding-bottom: 0.3rem;
+    margin-bottom: 0.6rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  /* Cover */
+  .cover {
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; text-align: center; padding: 2in 0.7in; background: var(--light);
+  }
+  .cover .brand { font-size: 14pt; color: var(--muted); margin-bottom: 1.5rem; }
+  .cover .brand em { font-style: italic; color: var(--clay); }
+  .cover h1 { font-size: 30pt; margin-bottom: 0.5rem; max-width: 14ch; }
+  .cover .tagline {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 2rem;
+  }
+  .cover .description { font-size: 12pt; max-width: 26ch; line-height: 1.5; }
+  .cover .footer-note {
+    font-size:12pt; color: var(--muted);
+    font-family: 'Work Sans', sans-serif;
+    margin-top: 1.5rem;
+  }
+  /* Prose */
+  .prose-page h2 { margin-top: 0; }
+  .prose-page ol, .prose-page ul { margin: 0.4rem 0 0.6rem 1.2rem; font-size:12pt; }
+  .prose-page li { margin-bottom: 0.35rem; line-height: 1.5; color: #3D362D; }
+  .prose-page hr { border: none; border-top: 1px solid var(--line); margin: 0.7rem 0; }
+  /* Step cards */
+  .step-card {
+    border: 1px solid var(--line); padding: 0.5rem; margin-bottom: 0.5rem;
+  }
+  .step-card h3 {
+    font-family: 'Crimson Pro', Georgia, serif; font-size: 13pt; font-weight: 600;
+    text-transform: none; letter-spacing: 0; color: var(--ink); margin-bottom: 0.2rem;
+  }
+  .step-card .note {
+    font-size:12pt; color: var(--sage); margin-bottom: 0.3rem; font-style: italic;
+  }
+  .step-card .materials {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+  .step-card .steps {
+    font-size:12pt; color: #3D362D; padding-left: 1rem;
+  }
+  .step-card .steps li { margin-bottom: 0.15rem; }
+  /* Honest box */
+  .honest-box {
+    border: 1px solid var(--clay); padding: 0.5rem; margin: 0.5rem 0;
+    background: var(--light);
+  }
+  .honest-box h4 {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--clay);
+    margin-bottom: 0.2rem;
+  }
+  .honest-box p { font-size:12pt; margin-bottom: 0; font-style: italic; }
+  /* Breed cards */
+  .breed-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;
+    margin: 0.5rem 0;
+  }
+  .breed-card {
+    border: 1px solid var(--line); padding: 0.4rem;
+  }
+  .breed-card h4 {
+    font-family: 'Crimson Pro', Georgia, serif; font-size: 12pt; font-weight: 600;
+    margin-bottom: 0.15rem; padding-bottom: 0.1rem; border-bottom: 1px dotted var(--line);
+  }
+  .breed-card .traits {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; color: var(--sage);
+    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;
+  }
+  .breed-card p { font-size:12pt; line-height: 1.4; }
+  /* Setup checklist */
+  .checklist { list-style: none; }
+  .checklist li {
+    display: grid; grid-template-columns: 1.2rem 1fr;
+    gap: 0.3rem; padding: 0.15rem 0; font-size:12pt;
+  }
+  .checklist .checkbox {
+    width: 0.8rem; height: 0.8rem; border: 1.5px solid var(--line); margin-top: 0.15rem;
+  }
+  .do-dont {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 0.6rem 0;
+  }
+  .do, .dont {
+    padding: 0.5rem; border-radius: 2px;
+  }
+  .do { background: #f0f6ed; border: 1px solid #c5d5bc; }
+  .dont { background: #faf3f0; border: 1px solid #e8d0c8; }
+  .do h4 { color: var(--sage); }
+  .dont h4 { color: #B94A3E; }
+  .do h4, .dont h4 {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 0.3rem;
+  }
+  .do ul, .dont ul { margin: 0; padding-left: 1rem; font-size:12pt; }
+  .do li, .dont li { margin-bottom: 0.12rem; line-height: 1.4; }
+  /* Routine table */
+  .routine-table {
+    width: 100%; border-collapse: collapse;
+    border: 1px solid var(--line); margin: 0.5rem 0;
+  }
+  .routine-table th {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    padding: 0.25rem 0.35rem; border: 1px solid var(--line); background: var(--light); text-align: left;
+  }
+  .routine-table td {
+    padding: 0.25rem 0.35rem; border: 1px solid var(--line);
+    font-size:12pt; vertical-align: top;
+  }
+  .routine-table td:first-child {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    color: var(--muted); text-align: center; width: 1in;
+  }
+  /* Ref card */
+  .ref-card {
+    border: 1px solid var(--line); padding: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+  .ref-card h3 {
+    font-family: 'Crimson Pro', Georgia, serif; font-size: 12pt; font-weight: 600;
+    text-transform: none; letter-spacing: 0; color: var(--ink);
+    margin-bottom: 0.3rem; padding-bottom: 0.15rem; border-bottom: 1px dotted var(--line);
+  }
+  .ref-card ul { margin: 0; padding-left: 1.2rem; font-size:12pt; }
+  .ref-card li { margin-bottom: 0.15rem; line-height: 1.4; }
+  .notes-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.5rem;
+  }
+  .note-block {
+    border: 1px solid var(--line); padding: 0.4rem; min-height: 3rem;
+  }
+  .note-block h4 {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    margin-bottom: 0.3rem; padding-bottom: 0.1rem; border-bottom: 1px dotted var(--line);
+  }
+  .note-block textarea {
+    width: 100%; min-height: 2rem; resize: vertical; font-size:12pt;
+    font-family: 'Crimson Pro', Georgia, serif; line-height: 1.5;
+    border: none; outline: none; background: transparent;
+  }
+  .note-block textarea:focus { background: rgba(196,168,130,0.05); }
+  /* Toolbar */
+  .toolbar {
+    max-width: 8.5in; width: 100%; margin: 0 auto 0.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: #fff; padding: 0.5rem 0.7rem; border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(44,36,22,0.08);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .toolbar .brand { font-family: 'Crimson Pro', serif; font-size: 14pt; font-weight: 600; color: var(--ink); }
+  .toolbar .brand em { font-style: italic; color: var(--clay); }
+  .toolbar .actions { display: flex; gap: 0.5rem; align-items: center; }
+  .toolbar .save-status {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; color: #5a8a6a;
+    margin-right: 0.5rem; opacity: 0; transition: opacity 0.3s;
+  }
+  .toolbar .save-status.visible { opacity: 1; }
+  .btn {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; font-weight: 600;
+    padding: 0.4em 0.8em; border-radius: 3px; cursor: pointer; border: none;
+    transition: background 0.15s; text-decoration: none;
+  }
+  .btn-ghost { background: none; color: var(--muted); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+  .btn-print { background: var(--ink); color: var(--paper); }
+  .btn-print:hover { background: #3D362D; }
+  @media print {
+    body { background: none; padding: 0; margin: 0; }
+    .page { margin: 0; box-shadow: none; background: #fff; }
+    .routine-table th { background: none; }
+    .cover { background: #fff !important; }
+    .toolbar { display: none; }
+  }
+</style>
+</head>
+<body class="chicken-guide">
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+<!-- COVER -->
+<div class="page cover">
+  <p class="brand">Kitchen <em>&amp; Kettle</em></p>
+  <h1>Easy Chicken<br>Keeping Guide</h1>
+  <p style="font-family:'Work Sans',sans-serif;font-size:9pt;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:2rem;">Interactive Edition — Type into every field</p>
+  <p class="tagline">Simple setup. Happy birds. Real eggs.</p>
+  <p class="description">
+    How to keep a small flock without overcomplicating it — choosing the right birds, setting up a low-maintenance coop, and building a daily rhythm that takes minutes.
+  </p>
+  <p class="footer-note">Simple is best. The chickens already know what to do.</p>
+</div>
+<!-- PHILOSOPHY -->
+<div class="page prose-page">
+  <h2>You don't need a lot to keep chickens well.</h2>
+  <p class="lede">The chicken-keeping world can make it sound like you need an engineering degree, a heated coop, and a dozen gadgets. You don't. Chickens have been living alongside people for thousands of years without any of that. The simpler your setup, the fewer things there are to break, leak, jam, or stress about.</p>
+  <p>This guide is based on what actually worked — not what looked good in a catalog. It's built around a small backyard flock of cold-hardy, gentle birds, a simple coop, and a daily rhythm that takes about five minutes.</p>
+  <hr style="margin: 2rem 0 !important;">
+  <h2>What you actually need</h2>
+  <ul>
+    <li><strong>A coop.</strong> Secure, ventilated, dry. Prefab or built — either works. It doesn't need to be cute. It needs to keep predators out and weather off.</li>
+    <li><strong>Birds suited to your climate.</strong> Choose breeds that can handle your winters without supplemental heat. More on this in the breed guide.</li>
+    <li><strong>A feeder and a waterer.</strong> A steel hanging feeder in the coop for daily feeding. For water, a simple rubber bowl works — fill it fresh each day. More complicated than that and you're solving problems you don't have yet. A galvanized steel trash can outside the coop to store your bulk feed — dry, secure, rat-proof.</li>
+    <li><strong>A secure run or free-range time.</strong> At least a few minutes outside the coop each day. They'll come back.</li>
+    <li><strong>Bedding.</strong> Pine shavings or straw. Add fresh on top as needed — this is the deep litter method and it's simpler than scraping and replacing.</li>
+  </ul>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>You will be told you need an automatic coop door, a heated waterer, a nipple-drinker system, a dust bath station, and an app-connected coop camera. You don't need any of it. Some of it will cause more problems than it solves. Start simple. Add things only if a real problem needs solving.</p>
+  </div>
+</div>
+<!-- BREED GUIDE -->
+<div class="page">
+  <div class="section-header">
+    <h2>Choosing Your Birds</h2>
+  </div>
+  <p class="tip">The most important decision you'll make. The right breed for your climate means the difference between easy chicken keeping and a winter of stress.</p>
+  <div class="breed-grid">
+    <div class="breed-card">
+      <h4>Orpingtons</h4>
+      <p class="traits">Cold-hardy · Gentle · Great layers · My flock</p>
+      <p>These are the birds I keep and the ones I recommend to anyone starting out — especially in a cold climate. Buff Orpingtons are the classic golden color, but all varieties share the same temperament.</p>
+      <p><strong>Why they work:</strong> Hardy through freezing winters with no supplemental heat. Gentle temperament — I've never had them hurt each other. No serious health issues in years of keeping them. Good brown-egg layers. Friendly enough that kids can handle them.</p>
+      <p><strong>Best for:</strong> Cold climates, beginners, families, anyone who wants a calm, reliable flock.</p>
+    </div>
+    <div class="breed-card">
+      <h4>Other cold-hardy breeds</h4>
+      <p class="traits">Alternatives to consider</p>
+      <p><strong>Wyandottes:</strong> Cold-hardy, good layers, rose comb resists frostbite. Slightly more reserved than Orpingtons but still gentle.</p>
+      <p><strong>Australorps:</strong> Australian Orpington relatives. Excellent layers, calm, cold-tolerant. A good choice if you want more eggs.</p>
+      <p><strong>Plymouth Rocks (Barred Rocks):</strong> Classic American breed. Cold-hardy, friendly, reliable layers. Good foragers.</p>
+      <p><strong>Rhode Island Reds:</strong> Extremely hardy and productive. Can be more assertive than Orpingtons but nearly indestructible in cold weather.</p>
+    </div>
+  </div>
+  <div class="honest-box">
+    <h4>Honest note — do the research before you buy</h4>
+    <p>Don't choose a breed because it's cute or lays colorful eggs. Match your birds to your climate. Little Easter Eggers are charming and lay beautiful blue-green eggs — but if you live somewhere with real winters, you will spend months keeping them alive when a cold-hardy breed would be fine on its own. I spent time researching this before I bought a single bird, and that's why I went with Orpingtons. Consider your winters before you fall in love with a breed.</p>
+  </div>
+  <h3 style="margin-top: 0.6rem;">Climate matching at a glance</h3>
+  <table class="routine-table">
+    <thead>
+      <tr><th>Your climate</th><th>Best breeds</th><th>Avoid</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Cold winters, snow</td><td>Orpingtons, Wyandottes, Australorps, Plymouth Rocks, Rhode Island Reds</td><td>Easter Eggers, Leghorns (large comb = frostbite), most bantams, Mediterranean breeds</td></tr>
+      <tr><td>Hot summers</td><td>Leghorns, Andalusians, Easter Eggers, Rhode Island Reds</td><td>Heavy-feathered Orpingtons and Wyandottes can overheat without shade and ventilation</td></tr>
+      <tr><td>Moderate / mild</td><td>Almost anything works. Choose for temperament and egg production.</td><td>Still avoid breeds with extreme traits (huge combs in any frost risk)</td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- COOP SETUP -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Setting Up the Coop</h2>
+  </div>
+  <h3 style="margin-top: 1rem !important;">No floor is best</h3>
+  <p>A dirt floor coop is simpler, healthier, and easier to manage than a wooden floor — especially with the deep litter method. Wood floors trap moisture, harbor mites, and need to be scraped. A dirt floor drains naturally and lets you build up bedding without worrying about rot.</p>
+  <p>If your coop already has a floor, it's fine — just keep the bedding deep and dry, and check the corners for dampness. But if you're building from scratch, skip the floor.</p>
+  <hr style="margin: 2rem 0 !important;">
+  <h3 style="margin-top: 1rem !important;">The deep litter method</h3>
+  <p>Instead of scraping out old bedding and replacing it weekly, you add fresh bedding on top. The lower layers slowly compost in place, generating a small amount of heat and keeping the coop floor dry. It smells less than you'd expect — a well-managed deep litter coop smells earthy, not like ammonia.</p>
+  <div class="step-card">
+    <h3>How to do it</h3>
+    <p class="materials">Pine shavings or straw &bull; A pitchfork or rake</p>
+    <ol class="steps">
+      <li><strong>Start with 4–6 inches of bedding.</strong> Pine shavings work best. Straw is fine too.</li>
+      <li><strong>Turn it lightly once a week.</strong> Use a pitchfork to stir the top layer. This keeps it aerated and prevents matting.</li>
+      <li><strong>Add fresh bedding as needed.</strong> When the surface looks soiled, scatter a fresh layer of shavings on top. How often depends on your flock size — with 4–6 birds, every 2–4 weeks is typical.</li>
+      <li><strong>Full clean-out once or twice a year.</strong> In spring and maybe fall, shovel everything out. What you get is partially composted material — excellent for gardens and flower beds after a few more months of aging.</li>
+    </ol>
+  </div>
+  <div class="tip">If you have a wood stove or fire pit, spread a thin layer of wood ash over the litter when you add fresh bedding — it helps keep mites down and gives the birds trace minerals. Don't use lime in a deep litter system. Deep litter develops its own ecosystem of beneficial microbes that break down waste and control odor. Lime kills those microbes and works against what you're building.</div>
+  <hr style="margin: 2rem 0 !important;">
+  <h3 style="margin-top: 1rem !important;">Nests off the ground</h3>
+  <p>Mount nest boxes 18–24 inches above the coop floor. Hens prefer to lay slightly elevated, and it keeps eggs cleaner — less dirt, less bedding kicked in, less chance of being stepped on. One nest box per 3–4 hens is plenty. They'll all use the same favorite one anyway.</p>
+  <hr style="margin: 2rem 0 !important;">
+  <h3 style="margin-top: 1rem !important;">Flat roosting bars — not round perches</h3>
+  <p>A chicken's foot isn't built to grip a round perch like a parrot. Their feet are flat and wide, meant to rest on the ground or a broad surface. When you give them a round dowel to roost on, their toes curl around it all night — which can lead to bumblefoot, pressure sores, and cold toes in winter because they can't tuck their feet up under their feathers.</p>
+  <p>The fix is simple: use a 2×4 with the wide side up as the roosting bar. Birds can sit flat-footed, their toes spread naturally, and in cold weather they can settle down and cover their feet completely with their belly feathers. No frostbitten toes. No foot problems.</p>
+  <p>Space roosts about 12–14 inches apart horizontally and at least 18 inches from the wall. Mount them 18–24 inches off the ground — same height as the nest boxes, but on the opposite side of the coop so they don't sleep in the nests. Allow 8–10 inches of roost length per bird for standard breeds; more for heavy breeds like Orpingtons.</p>
+  <div class="tip">If you inherited round roosts with a prefab coop, you can screw a 2×4 on top of them — quick fix, no rebuild needed.</div>
+</div>
+<!-- PREDATOR PROOFING -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Predator Proofing</h2>
+  </div>
+  <p>Everything wants to eat your chickens. Raccoons, foxes, hawks, weasels, neighborhood dogs. A coop is only as secure as its weakest point.</p>
+  <ul>
+    <li><strong>Hardware cloth, not chicken wire.</strong> Chicken wire keeps chickens in — it does not keep predators out. A raccoon can tear through it. Use ½-inch hardware cloth on all openings, including windows and vents.</li>
+    <li><strong>Bury the perimeter.</strong> Digging predators (foxes, dogs) will try to go under. Bury hardware cloth 12 inches deep around the run, or create an apron that extends outward 18 inches on the ground surface.</li>
+    <li><strong>Secure latches.</strong> Raccoons can open simple hooks and eye-latches. Use carabiners or two-step latches.</li>
+    <li><strong>Cover the run.</strong> Hawks and owls will take chickens from an open run. Use bird netting, hardware cloth, or a solid roof over the run area.</li>
+    <li><strong>Close the coop at night.</strong> Whatever door or latch you use, make sure it's closed every evening. This is the single most important predator defense.</li>
+  </ul>
+</div>
+<!-- DAILY CARE -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Daily Care — Five Minutes</h2>
+  </div>
+  <h3>The morning routine</h3>
+  <ol>
+    <li><strong>Let them out.</strong> Open the coop door. They'll come pouring out into the run or yard.</li>
+    <li><strong>Fill the water bowl.</strong> A rubber bowl, filled fresh each day.</li>
+    <li><strong>Check feed.</strong> Top off the feeder or the galvanized can. Done.</li>
+    <li><strong>Collect eggs.</strong> Check nest boxes. Eggs stay cleanest when collected daily.</li>
+  </ol>
+  <hr style="margin: 2rem 0 !important;">
+  <h3>Why I use a simple water bowl</h3>
+  <p>I tried a nipple waterer. It leaked — just a little, constantly. We thought we got the seals perfectly secure. Then on the hottest day of July, I happened to lift their freshly filled bucket — the one that should have lasted them a week — and it was completely empty. The whole thing had leaked out overnight. If I hadn't happened to tilt that bucket, I would have never known. The hens would have gone without water in the middle of a heat wave. Since then, I've always used a simple rubber bowl. I fill it each morning. There's nothing to break or silently fail so the birds go thirsty without me knowing. For freezing weather, see the winter section below.</p>
+  <hr style="margin: 2rem 0 !important;">
+  <h3>Why I ditched the automatic door</h3>
+  <p>Electric coop doors sound great — open at dawn, close at dusk, no thinking required. Mine jammed. It would get stuck half-open, or the track would ice up in winter, or the timer would drift and leave the birds locked out at dusk. Now I walk out in the morning and open the door, and walk out in the evening and close it. It takes one minute. It never jams. I never worry about a dead battery or a frozen motor trapping my birds inside — or outside — the coop.</p>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>If an automatic door works for you, great. But if you're setting up your first coop, don't feel like you need one. A simple latch and a minute of your time is more reliable than any gadget. Start without one. Add it later if walking to the coop twice a day actually becomes a burden — which, for a backyard flock, it probably won't.</p>
+  </div>
+</div>
+<!-- FOOD & FREE RANGE -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Feed, Water &amp; Free-Range Time</h2>
+  </div>
+  <h3>Feed storage: galvanized steel outside the coop</h3>
+  <p>Keep a steel hanging feeder in the coop for daily feeding — the birds eat from it throughout the day. Store your bulk feed outside the coop in a galvanized steel trash can with a tight-fitting lid. Mice and rats will find chicken feed. They'll chew through plastic bins, bags, and thin metal. A galvanized can is rat-proof, weather-proof, and keeps feed dry. One 30-gallon can holds a 50-pound bag of feed with room to spare.</p>
+  <hr style="margin: 2rem 0 !important;">
+  <h3>Let them out — they'll come back</h3>
+  <p>Chickens need to be chickens. They need to scratch, peck, dust bathe, and forage. Even 10–15 minutes of free-range time a day makes for happier, healthier birds. They'll wander around the yard, find bugs, eat grass, and then — when they're done or when dusk approaches — they'll walk right back into the coop on their own.</p>
+  <p>If you can't free-range (hawks, dogs, no fence), make sure the run is spacious enough. A cramped run leads to boredom, pecking, and stress. Give them at least 10 square feet per bird in the run if they don't get yard time.</p>
+  <hr style="margin: 2rem 0 !important;">
+  <h3>Dust bathing — they handle it</h3>
+  <p>Chickens keep themselves clean through dust bathing. They'll find a dry patch of dirt, dig a shallow hole, and flap around in it. If you let them out, they'll make their own dust bath — you don't need to do anything. If they're confined to the coop or a covered run and don't get out, you'll need to provide one: a shallow box or bin with dry dirt, sand, or wood ash.</p>
+  <hr style="margin: 2rem 0 !important;">
+  <div class="do-dont">
+    <div class="do">
+      <h4>Do</h4>
+      <ul>
+        <li>Fill water fresh each morning</li>
+        <li>Store feed in galvanized steel</li>
+        <li>Let them out at least a few minutes daily</li>
+        <li>Collect eggs every day</li>
+        <li>Close the coop at dusk</li>
+        <li>Use deep litter method</li>
+      </ul>
+    </div>
+    <div class="dont">
+      <h4>Don't</h4>
+      <ul>
+        <li>Store feed in bags or plastic bins</li>
+        <li>Rely on gadgets to open/close the coop</li>
+        <li>Overcomplicate watering</li>
+        <li>Leave eggs in the nest for days</li>
+        <li>Keep them confined 24/7 without enrichment</li>
+        <li>Panic about dust bathing — they know</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- WINTER -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Winter — No Electricity Needed</h2>
+  </div>
+  <p class="lede">If you chose cold-hardy birds, winter is easier than you think. Chickens are wearing down jackets. They handle cold far better than heat. What they can't handle is drafts and dampness — so manage those, and leave the heating to their feathers.</p>
+  <h3>No heat lamp. No heated coop.</h3>
+  <p>Heat lamps are a fire risk — coop fires from heat lamps kill more chickens than cold ever does. Cold-hardy breeds like Orpingtons don't need supplemental heat, even when it's well below freezing. Their feathers trap an insulating layer of warm air close to the body. As long as the coop is dry and draft-free, they're fine.</p>
+  <p>What they do need:</p>
+  <ul>
+    <li><strong>Ventilation at the top.</strong> Moisture from their breath and droppings will build up without airflow. A vent near the roof lets moisture escape without creating a draft at roost level.</li>
+    <li><strong>Dry bedding.</strong> Deep litter works in winter too. The composting action generates a small amount of warmth, and dry bedding insulates from cold ground.</li>
+    <li><strong>A wind-blocked run.</strong> If they go outside in winter, give them a spot out of the wind. A tarp or plywood panel on one side of the run is enough.</li>
+  </ul>
+  <hr style="margin: 2rem 0 !important;">
+  <h3>Water in freezing temperatures</h3>
+  <p>Fill a large bowl indoors from the sink and carry it outside. Pour it into their rubber bowls — rubber doesn't transfer cold the way galvanized steel does, so the water stays liquid longer. If the bowl has frozen overnight, pop the ice out like an ice cube and refill. I live where we get regular snow every winter, and I've never used an electric waterer. I refill their bowls when I get home from work and that's always been enough. If you have months of hard freezes where water refreezes within hours, a heated waterer base is worth considering. But start without one — see what your winters actually demand before buying.</p>
+  <hr style="margin: 2rem 0 !important;">
+  <h3>Let them stop laying</h3>
+  <p>Hens naturally slow down or stop laying in winter when daylight hours shorten. This is normal. It's not a problem to fix — it's their body's way of conserving energy for staying warm. You can force year-round laying with supplemental light in the coop, but it stresses the birds and shortens their productive life. Let them rest. Egg production will pick up again in spring when the days lengthen — and their laying will be so abundant you won't know what to do with it all. If you preserve eggs during spring and summer, you'll have plenty to carry you through the winter lull. See my Egg Preservation Guide for the simple methods I use — no special equipment needed.</p>
+  <div class="honest-box" style="page-break-inside: avoid;">
+    <h4>Honest note</h4>
+    <p>In the depths of January, you might go a few weeks without eggs. That's a fair trade for healthy birds that live long, productive lives. Preserve eggs during the spring abundance and you'll have plenty to carry you through winter — no store-bought eggs needed. Your hens earned the break.</p>
+  </div>

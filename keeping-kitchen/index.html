@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitchen & Kettle — Works because it works.</title>
+<meta name="description" content="Practical recipes, household systems, and traditional skills for people who want a home that works — without the fear, perfection, or influencer culture.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Kitchen &amp; Kettle</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" id="navToggle">Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="preservation.html">Preservation</a></li>
+      <li><a href="household.html">Household</a></li>
+      <li><a href="body-care.html">Body &amp; Care</a></li>
+      <li><a href="systems.html">Systems</a></li>
+      <li><a href="library.html">Library</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<!-- Hero -->
+<section class="hero page">
+  <p class="tagline">Works because it works.</p>
+  <h1>A <em>quieter</em> way to run a kitchen.</h1>
+  <p class="lede">
+    Practical recipes, household systems, and traditional skills for people who
+    want a home that works &mdash; without the fear, perfection, or influencer culture.
+  </p>
+  <div class="hero-actions">
+    <a href="start-here.html" class="btn btn-primary">Start here</a>
+    <a href="library.html" class="btn btn-outline">Browse the library</a>
+  </div>
+</section>
+<!-- What this is -->
+<section class="section page">
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <h3>What this is</h3>
+      <p>A collection of practical recipes, systems, and skills &mdash; tested in real kitchens, designed to hold up over time. Kitchen knowledge that keeps.</p>
+    </div>
+    <div class="card">
+      <h3>What this isn't</h3>
+      <p>A wellness brand. A lifestyle aspiration. Another thing to feel inadequate about. No fear-mongering, no perfectionism, no "must-have" products.</p>
+    </div>
+  </div>
+  <div class="callout mt-2xl text-center" style="max-width: 36rem; margin-left: auto; margin-right: auto;">
+    <h4>Who this is for</h4>
+    <p>People who want their kitchen to work better, with less stuff and more understanding. People tired of being sold complicated systems. People who value &ldquo;good enough&rdquo; that lasts over optimization that doesn't.</p>
+  </div>
+</section>
+<!-- Entry points -->
+<section class="section page">
+  <h2 class="text-center mb-lg">The kitchen and everything it holds</h2>
+  <div class="card-grid card-grid-4">
+    <a href="recipes.html" class="card card-link">
+      <span class="card-icon">&#127858;</span>
+      <h3>Recipes that earn their place</h3>
+      <p>Dishes built from pantry staples, teaching transferable skills along the way.</p>
+    </a>
+    <a href="preservation.html" class="card card-link">
+      <span class="card-icon">&#127808;</span>
+      <h3>Food that lasts</h3>
+      <p>Fermenting, canning, drying, cellaring. Preservation as a kitchen skill, not a lifestyle.</p>
+    </a>
+    <a href="household.html" class="card card-link">
+      <span class="card-icon">&#129530;</span>
+      <h3>A home that runs itself (mostly)</h3>
+      <p>Cleaning, laundry, mending, and rhythms that survive a busy week.</p>
+    </a>
+    <a href="body-care.html" class="card card-link">
+      <span class="card-icon">&#129514;</span>
+      <h3>What goes on your body matters too</h3>
+      <p>Simple salves, balms, and care products made from kitchen ingredients.</p>
+    </a>
+  </div>
+</section>
+<!-- Seasonal anchor -->
+<section class="section page">
+  <div class="seasonal-banner">
+    <p class="seasonal-label">Late spring</p>
+    <h2>What's in season right now</h2>
+    <p>
+      Asparagus, peas, rhubarb, early strawberries, leafy greens. A good
+      time to start a vinegar infusion and get the pantry organized before
+      the summer preserving season hits.
+    </p>
+    <a href="systems.html" class="btn btn-outline">Seasonal rhythm &rarr;</a>
+  </div>
+</section>
+<!-- Philosophy strip -->
+<section class="philosophy-strip">
+  <p>Fewer products. Better systems.</p>
+  <p>Older knowledge, applied to modern lives.</p>
+  <p>A kitchen that works &mdash; <em>because it works.</em></p>
+  <p style="margin-top: var(--space-lg);">
+    <a href="about.html" style="font-family: var(--font-sans); font-size: var(--text-sm);">Read the full philosophy &rarr;</a>
+  </p>
+</section>
+</main>
+<footer class="site-footer page">
+  <nav class="footer-nav">
+    <a href="about.html">About</a>
+    <a href="start-here.html">Start here</a>
+    <a href="library.html">Library</a>
+    <a href="systems.html">Seasonal rhythm</a>
+  </nav>
+  <p>Kitchen & Kettle &mdash; works because it works.</p>
+</footer>
+<script>
+document.getElementById('navToggle').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+</body>
+</html>

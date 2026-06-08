@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Honey Handbook — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#8B8376;--line:#D9D0C1;--light:#FAF7F0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Crimson Pro',Georgia,serif;font-size:12pt;line-height:1.6;color:var(--ink);background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:1rem}
+  .toolbar{max-width:8.5in;width:100%;margin:0 auto 0.5rem;display:flex;justify-content:space-between;align-items:center;background:#fff;padding:0.5rem 0.7rem;border-radius:6px;box-shadow:0 1px 4px rgba(44,36,22,0.08);position:sticky;top:0;z-index:100}
+  .toolbar .brand{font-family:'Crimson Pro',serif;font-size:14pt;font-weight:600;color:var(--ink)}
+  .toolbar .brand em{font-style:italic;color:var(--clay)}
+  .toolbar .actions{display:flex;gap:0.5rem;align-items:center}
+  .toolbar .save-status{font-family:'Work Sans',sans-serif;font-size:8pt;color:#5a8a6a;margin-right:0.5rem;opacity:0;transition:opacity 0.3s}
+  .toolbar .save-status.visible{opacity:1}
+  .btn{font-family:'Work Sans',sans-serif;font-size:8pt;font-weight:600;padding:0.4em 0.8em;border-radius:3px;cursor:pointer;border:none;transition:background 0.15s;text-decoration:none}
+  .btn-ghost{background:none;color:var(--muted);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+  .btn-print{background:var(--ink);color:var(--paper)}
+  .btn-print:hover{background:#3D362D}
+  .page{width:8.5in;min-height:11in;background:#fff;margin-bottom:0.25in;padding:0.75in 0.7in;box-shadow:0 2px 12px rgba(44,36,22,0.12);page-break-after:always;position:relative}
+  .page:last-of-type{page-break-after:auto}
+  h1{font-size:28pt;font-weight:600;line-height:1.15;letter-spacing:-0.01em}
+  h2{font-size:16pt;font-weight:600;margin-bottom:0.4rem}
+  h3{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.3rem}
+  p{margin-bottom:0.5rem;color:#3D362D}
+  .lede{font-size:13pt;line-height:1.5;margin-bottom:1rem}
+  .tip{font-size:12pt;font-style:italic;color:var(--sage);margin:0.4rem 0;padding-left:0.5rem;border-left:2px solid var(--clay)}
+  .section-header{border-bottom:1px solid var(--line);padding-bottom:0.3rem;margin-bottom:0.6rem;display:flex;justify-content:space-between;align-items:baseline}
+  .cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2in 0.7in;background:var(--light)}
+  .cover .brand{font-size:14pt;color:var(--muted);margin-bottom:1.5rem}
+  .cover .brand em{font-style:italic;color:var(--clay)}
+  .cover h1{font-size:30pt;margin-bottom:0.5rem;max-width:14ch}
+  .cover .tagline{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:2rem}
+  .cover .description{font-size:12pt;max-width:26ch;line-height:1.5}
+  .cover .footer-note{font-size:12pt;color:var(--muted);font-family:'Work Sans',sans-serif;margin-top:1.5rem}
+  .prose-page h2{margin-top:0}
+  .prose-page ol,.prose-page ul{margin:0.4rem 0 0.6rem 1.2rem;font-size:12pt}
+  .prose-page li{margin-bottom:0.35rem;line-height:1.5;color:#3D362D}
+  .prose-page hr{border:none;border-top:1px solid var(--line);margin:0.7rem 0}
+  .recipe-card{border:1px solid var(--line);padding:0.5rem;margin-bottom:0.5rem}
+  .recipe-card h3{font-family:'Crimson Pro',Georgia,serif;font-size:13pt;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin-bottom:0.2rem}
+  .recipe-card .uses{font-size:12pt;color:var(--sage);margin-bottom:0.2rem;font-style:italic}
+  .recipe-card .ingredients{font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);margin-bottom:0.3rem}
+  .recipe-card .steps{font-size:12pt;color:#3D362D;padding-left:1rem}
+  .recipe-card .steps li{margin-bottom:0.15rem}
+  .honest-box{border:1px solid var(--clay);padding:0.5rem;margin:0.5rem 0;background:var(--light)}
+  .honest-box h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--clay);margin-bottom:0.2rem}
+  .honest-box p{font-size:12pt;line-height:1.55;margin-bottom:0;font-style:italic}
+  .ref-card{border:1px solid var(--line);padding:0.6rem;margin-bottom:0.4rem}
+  .ref-card h3{font-family:'Crimson Pro',Georgia,serif;font-size:12pt;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin-bottom:0.3rem;padding-bottom:0.15rem;border-bottom:1px dotted var(--line)}
+  .ref-card ul{margin:0;padding-left:1.2rem;font-size:12pt}
+  .ref-card li{margin-bottom:0.15rem;line-height:1.4}
+  .notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-top:0.5rem}
+  .note-block{border:1px solid var(--line);padding:0.4rem;min-height:3rem}
+  .note-block h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:0.3rem;padding-bottom:0.1rem;border-bottom:1px dotted var(--line)}
+  @media print{body{background:none;padding:0;margin:0}.page{margin:0;box-shadow:none;background:#fff}.toolbar{display:none}.cover{background:#fff!important}.honest-box{background:none}}
+</style>
+</head>
+<body class="honey-handbook">
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+<div class="page cover">
+  <p class="brand">Kitchen <em>&amp; Kettle</em></p>
+  <h1>The Honey<br>Handbook</h1>
+  <p class="tagline">What it is. How to use it. Why it lasts forever.</p>
+  <p class="description">
+    How bees make it, how to cook with it, traditional uses through history, and why a jar of honey found in an Egyptian tomb was still good.
+  </p>
+  <p class="footer-note">The only food that never spoils.</p>
+</div>
+<div class="page prose-page">
+  <h2>What honey actually is</h2>
+  <p class="lede">Honey is flower nectar that bees collect, concentrate, and store. A single bee produces about one-twelfth of a teaspoon of honey in its entire life. A jar of honey represents millions of flower visits and thousands of miles of combined flight.</p>
+  <h3>How bees make it</h3>
+  <ol>
+    <li><strong>Forager bees collect nectar</strong> from flowers using their long tongues, storing it in a special stomach called the crop.</li>
+    <li><strong>Back at the hive,</strong> they pass the nectar to house bees, who chew it and mix it with enzymes that begin breaking down complex sugars into simple ones.</li>
+    <li><strong>The bees spread the nectar</strong> across the honeycomb and fan it with their wings to evaporate water. When the moisture drops below about 18%, it's honey.</li>
+    <li><strong>They cap the cell with wax.</strong> This seals it — honey stored this way keeps indefinitely.</li>
+  </ol>
+  <hr>
+  <h2>Why honey doesn't spoil</h2>
+  <p>Honey is naturally acidic (pH 3.2–4.5), very low in water, and contains small amounts of hydrogen peroxide — all of which prevent anything from growing in it. Archaeologists found 3,000-year-old honey in Egyptian tombs. It was still good. Crystallized, but good.</p>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>The "never spoils" thing is real — but it only applies to pure, sealed honey. Once you open the jar and introduce moisture (a wet spoon, humidity), it can ferment. Keep the lid on tight and use a dry spoon.</p>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="section-header"><h2>Types of Honey</h2></div>
+  <p class="tip">Honey tastes like the flowers the bees visited. A jar of clover honey and a jar of buckwheat honey are as different as white wine and red wine.</p>
+  <h3>Common varietals</h3>
+  <ul>
+    <li><strong>Clover.</strong> The classic. Light, mild, floral. What most people mean when they say "honey." Good for everything — tea, baking, toast, dressings.</li>
+    <li><strong>Wildflower.</strong> A blend of whatever was blooming. Flavor varies by region and season. Usually medium-bodied with more character than clover.</li>
+    <li><strong>Orange blossom.</strong> Light, citrusy, fragrant. Beautiful in tea, yogurt, light cakes, and salad dressings.</li>
+    <li><strong>Buckwheat.</strong> Dark, strong, almost molasses-like. An acquired taste — not for tea, but excellent in barbecue sauce, gingerbread, and marinades. Very high in antioxidants.</li>
+    <li><strong>Tupelo.</strong> From tupelo tree blossoms in the southeastern US. Light, buttery, famously resists crystallization. Expensive. Worth trying once.</li>
+    <li><strong>Manuka.</strong> From the manuka bush in New Zealand. Strong, medicinal-tasting, very expensive. Valued for traditional therapeutic uses — more on that later.</li>
+    <li><strong>Acacia.</strong> Very light, almost clear, stays liquid for a long time. Mild and sweet — good for people who find other honeys too strong.</li>
+    <li><strong>Local / raw.</strong> Whatever your local bees are making. Often unfiltered, may contain pollen. Some people find local honey helps with seasonal allergies, though the evidence is mixed.</li>
+  </ul>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>"Raw" honey means it hasn't been heated or finely filtered. It may crystallize faster and may contain tiny bits of pollen and wax. That's fine — some people prefer it. "Regular" honey has been gently heated and filtered to stay liquid longer. Both are real honey. Neither is better — it's preference.</p>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="section-header"><h2>Traditional Uses Through History</h2></div>
+  <p class="lede">Honey has been used for more than food for thousands of years. Here's what cultures around the world have done with it — traditional practices, not medical claims.</p>
+  <h3>Wound and skin care (traditional)</h3>
+  <p>Ancient Egyptians, Greeks, and Chinese used honey on wounds and burns. Modern research confirms honey has properties that can help wound healing in specific medical contexts — but this is the domain of medical-grade honey in clinical settings, not your kitchen jar. If you have a serious wound, see a doctor.</p>
+  <h3>Sore throat and cough (traditional)</h3>
+  <p>A spoonful of honey in warm water or tea is the oldest sore-throat remedy in the book. Honey coats the throat and the warmth is soothing. Some studies suggest honey may be as effective as over-the-counter cough medicines for nighttime coughs in children over age 1. <strong>Never give honey to infants under 1 year</strong> — risk of botulism.</p>
+  <h3>Preservation</h3>
+  <p>Before sugar was widely available, honey was the primary sweetener and preservative. Fruits stored in honey (like quince or figs) would keep for months. Honey's low water content and natural acidity made it one of the earliest food preservation methods.</p>
+  <h3>Fermentation</h3>
+  <p>Honey + water + time = mead, one of the oldest alcoholic beverages in human history. Diluted honey left to ferment with wild yeasts was probably how mead was discovered — someone left watered-down honey sitting out and liked the result.</p>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>Traditional uses aren't medical advice. Honey has real properties that researchers study, but your jar of wildflower honey is a food, not a medicine. Enjoy it for what it is. See a doctor for what it isn't.</p>
+  </div>
+</div>
+<div class="page">
+  <div class="section-header"><h2>In the Kitchen</h2></div>
+  <div class="recipe-card">
+    <h3>Hot Honey</h3>
+    <p class="uses">For: pizza, fried chicken, biscuits, roasted vegetables, cheese plates.</p>
+    <p class="ingredients">½ cup honey &bull; 1–2 tsp red pepper flakes (or more) &bull; pinch of salt</p>
+    <ol class="steps">
+      <li>Warm honey gently in a small saucepan over low heat — don't boil.</li>
+      <li>Stir in red pepper flakes and salt. Let steep 5–10 minutes.</li>
+      <li>Taste. Add more heat if you want it. Pour into a jar.</li>
+      <li>Keeps at room temperature indefinitely. The flavor deepens over time.</li>
+    </ol>
+  </div>
+  <div class="recipe-card">
+    <h3>Honey Mustard Dressing</h3>
+    <p class="uses">For: salads, grain bowls, roasted vegetables, chicken.</p>
+    <p class="ingredients">3 tbsp honey &bull; 2 tbsp Dijon mustard &bull; 3 tbsp olive oil &bull; 1 tbsp apple cider vinegar &bull; pinch of salt and black pepper</p>
+    <ol class="steps">
+      <li>Whisk honey, mustard, and vinegar together until smooth.</li>
+      <li>Slowly drizzle in olive oil while whisking until emulsified.</li>
+      <li>Season with salt and pepper. Keeps in the fridge for 2 weeks — bring to room temperature before using (olive oil firms up when cold).</li>
+    </ol>
+  </div>
+  <div class="recipe-card">
+    <h3>Honey Butter</h3>
+    <p class="uses">For: cornbread, biscuits, toast, pancakes, roasted sweet potatoes.</p>
+    <p class="ingredients">½ cup (1 stick) salted butter, softened &bull; 3 tbsp honey &bull; pinch of flaky salt (optional)</p>
+    <ol class="steps">
+      <li>Beat softened butter with honey until smooth and combined.</li>
+      <li>Add a pinch of flaky salt if your butter is unsalted. Scoop into a small bowl or ramekin.</li>
+      <li>Keeps in the fridge for weeks. Let it soften before using.</li>
+    </ol>
+  </div>
+  <h3 style="margin-top:0.6rem;">Substituting honey for sugar</h3>
+  <ul>
+    <li><strong>General rule:</strong> Use ¾ cup honey for every 1 cup of sugar. Reduce other liquid in the recipe by 2–3 tablespoons per cup of honey.</li>
+    <li><strong>Lower your oven temperature by 25°F.</strong> Honey browns faster than sugar.</li>
+    <li><strong>Add ¼ tsp baking soda</strong> per cup of honey to balance the acidity (unless the recipe already has baking soda).</li>
+    <li><strong>Honey is sweeter than sugar.</strong> You may not need as much as you think. Start with less and taste.</li>
+  </ul>
+</div>
+<div class="page prose-page">
+  <div class="section-header"><h2>Storage &amp; Crystallization</h2></div>
+  <h3>How to store honey</h3>
+  <ul>
+    <li><strong>Room temperature.</strong> A cupboard, not the fridge. Cold speeds up crystallization.</li>
+    <li><strong>Sealed tight.</strong> Honey absorbs moisture from the air. A loose lid = fermentation risk.</li>
+    <li><strong>Glass or food-grade plastic.</strong> Both are fine. Honey is acidic and can react with metal over long periods, but short-term metal contact (a spoon) is harmless.</li>
+    <li><strong>No expiration date needed.</strong> Properly stored, honey doesn't go bad. If it smells fermented or alcoholic, it absorbed too much moisture — use it in baking or mead-making, not raw.</li>
+  </ul>
+  <hr>
+  <h3>Crystallization is normal</h3>
+  <p>Crystallized honey isn't spoiled. It's a sign of real, unprocessed honey. Some honeys crystallize faster than others — tupelo and acacia resist it, while clover and wildflower crystallize within weeks or months. It's just glucose separating from the water and forming crystals. The honey is fine.</p>
+  <p><strong>To re-liquefy:</strong> Place the jar in a bowl of warm water (not boiling — heat destroys enzymes and flavor). Stir occasionally. It'll return to liquid in 10–20 minutes. Don't microwave it — uneven heating can scorch the honey and break down what makes it special.</p>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>Some people prefer crystallized honey. It spreads on toast without dripping and has a creamy texture. If you like it that way, keep it that way. Crystallized honey is not a problem to solve — it's just honey in a different form.</p>
+  </div>
+</div>
+<div class="page">
+  <div class="section-header"><h2>Quick Reference</h2></div>
+  <p class="tip" style="margin-bottom:0.6rem;">Everything worth remembering about honey on one page.</p>
+  <div class="ref-card">
+    <h3>Cooking swaps</h3>
+    <ul>
+      <li>1 cup sugar → ¾ cup honey (reduce liquid by 2-3 tbsp)</li>
+      <li>Lower oven temp by 25°F — honey browns faster</li>
+      <li>Add ¼ tsp baking soda per cup of honey for lift</li>
+      <li>Honey is sweeter than sugar — start with less</li>
+    </ul>
+  </div>
+  <div class="ref-card">
+    <h3>Varietal guide</h3>
+    <ul>
+      <li><strong>Mild/versatile:</strong> clover, acacia, orange blossom</li>
+      <li><strong>Bold/savory:</strong> buckwheat, manuka</li>
+      <li><strong>Special occasion:</strong> tupelo (buttery, never crystallizes)</li>
+      <li><strong>Everyday budget:</strong> wildflower, clover</li>
+    </ul>
+  </div>
+  <div class="ref-card">
+    <h3>Storage</h3>
+    <ul>
+      <li>Room temperature, sealed tight, dry spoon</li>
+      <li>Crystallization = normal, not spoiled</li>
+      <li>Re-liquefy: warm water bath, never microwave</li>
+      <li>Avoid moisture — it's the only thing that ruins honey</li>
+    </ul>
+  </div>
+  <div class="ref-card">
+    <h3>Safety</h3>
+    <ul>
+      <li>Never give honey to infants under 1 year (botulism risk)</li>
+      <li>Fermented/alcoholic smell = absorbed moisture, use in baking</li>
+      <li>Honey is food, not medicine — see a doctor for health concerns</li>
+    </ul>
+  </div>
+  <div class="notes-grid" style="margin-top:0.6rem;">
+    <div class="note-block"><h4>Honeys I've tried and liked</h4><textarea data-key="notes-honeys-i've-tried-an" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea></div>
+    <div class="note-block"><h4>Recipes to try</h4><textarea data-key="notes-recipes-to-try" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea></div>
+    <div class="note-block"><h4>Where I buy honey</h4><textarea data-key="notes-where-i-buy-honey" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea></div>
+    <div class="note-block"><h4>Seasonal honey notes</h4><textarea data-key="notes-seasonal-honey-notes" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea></div>
+  </div>
+</div>
+<div class="page prose-page">
+  <h2>A note on honey</h2>
+  <p class="lede">Honey is one of the only foods that arrives in your kitchen exactly as nature made it. Nothing added, nothing removed — just millions of flower visits concentrated into something golden and good.</p>
+  <p>The best honey is usually the one made closest to where you live. It reflects your local flowers, your local seasons, your local soil. Try a few different varietals. Find the one that tastes like where you are.</p>
+  <hr>
+  <p style="font-size:12pt;color:var(--muted);margin-top:1rem;text-align:center;">Kitchen & Kettle &bull; Works because it works.<br>What it is. How to use it. Why it lasts forever.</p>
+</div>
+<script>
+const STORAGE_KEY = 'keeping-kitchen-honey-handbook';
+function save() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => { data[el.dataset.key] = el.value; });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  const s = document.getElementById('saveStatus');
+  s.classList.add('visible');
+  clearTimeout(s._t); s._t = setTimeout(() => s.classList.remove('visible'), 1500);
+}
+function load() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.dataset.key in data) el.value = data[el.dataset.key];
+  });
+}
+function clearAll() {
+  if (!confirm('Clear all notes?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('[data-key]').forEach(el => el.value = '');
+}
+document.addEventListener('input', save);
+load();
+</script>
+</body>
+</html>

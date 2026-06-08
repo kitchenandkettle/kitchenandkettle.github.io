@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cast Iron Care Guide — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F5F0E8; --ink: #2C2416; --clay: #C4A882;
+    --sage: #7D8B6F; --muted: #8B8376; --line: #D9D0C1; --light: #FAF7F0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Crimson Pro', Georgia, serif; font-size:12pt;
+    line-height: 1.6; color: var(--ink); background: #e8e4dc;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 1rem;
+  }
+  /* Toolbar */
+  .toolbar {
+    max-width: 8.5in; width: 100%; margin: 0 auto 0.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: #fff; padding: 0.5rem 0.7rem; border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(44,36,22,0.08);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .toolbar .brand { font-family: 'Crimson Pro', serif; font-size: 14pt; font-weight: 600; color: var(--ink); }
+  .toolbar .brand em { font-style: italic; color: var(--clay); }
+  .toolbar .actions { display: flex; gap: 0.5rem; align-items: center; }
+  .toolbar .save-status {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; color: #5a8a6a;
+    margin-right: 0.5rem; opacity: 0; transition: opacity 0.3s;
+  }
+  .toolbar .save-status.visible { opacity: 1; }
+  .btn {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; font-weight: 600;
+    padding: 0.4em 0.8em; border-radius: 3px; cursor: pointer; border: none;
+    transition: background 0.15s; text-decoration: none;
+  }
+  .btn-ghost { background: none; color: var(--muted); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+  .btn-print { background: var(--ink); color: var(--paper); }
+  .btn-print:hover { background: #3D362D; }
+  .page {
+    width: 8.5in; min-height: 11in; background: #fff;
+    margin-bottom: 0.25in; padding: 0.75in 0.7in;
+    box-shadow: 0 2px 12px rgba(44,36,22,0.12);
+    page-break-after: always; position: relative;
+  }
+  .page:last-of-type { page-break-after: auto; }
+  h1 { font-size: 28pt; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; }
+  h2 { font-size: 16pt; font-weight: 600; margin-bottom: 0.4rem; }
+  h3 {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.3rem;
+  }
+  p { margin-bottom: 0.5rem; color: #3D362D; }
+  .lede { font-size: 13pt; line-height: 1.5; margin-bottom: 1rem; }
+  .small { font-family: 'Work Sans', sans-serif; font-size:12pt; color: var(--muted); }
+  .tip {
+    font-size:12pt; font-style: italic; color: var(--sage);
+    margin: 0.4rem 0; padding-left: 0.5rem; border-left: 2px solid var(--clay);
+  }
+  .section-header {
+    border-bottom: 1px solid var(--line); padding-bottom: 0.3rem;
+    margin-bottom: 0.6rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .section-header .page-num {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; color: var(--muted);
+  }
+  /* Cover */
+  .cover {
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; text-align: center; padding: 2in 0.7in; background: var(--light);
+  }
+  .cover .brand { font-size: 14pt; color: var(--muted); margin-bottom: 1.5rem; }
+  .cover .brand em { font-style: italic; color: var(--clay); }
+  .cover h1 { font-size: 30pt; margin-bottom: 0.5rem; max-width: 12ch; }
+  .cover .tagline {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 2rem;
+  }
+  .cover .description { font-size: 12pt; max-width: 26ch; line-height: 1.5; }
+  .cover .footer-note {
+    font-size:12pt; color: var(--muted);
+    font-family: 'Work Sans', sans-serif;
+    margin-top: 1.5rem;
+  }
+  /* Prose */
+  .prose-page h2 { margin-top: 0; }
+  .prose-page ol, .prose-page ul { margin: 0.4rem 0 0.6rem 1.2rem; font-size:12pt; }
+  .prose-page li { margin-bottom: 0.35rem; line-height: 1.5; color: #3D362D; }
+  .prose-page hr { border: none; border-top: 1px solid var(--line); margin: 0.7rem 0; }
+  /* Step cards */
+  .step-card {
+    border: 1px solid var(--line); padding: 0.5rem; margin-bottom: 0.5rem;
+  }
+  .step-card h3 {
+    font-family: 'Crimson Pro', Georgia, serif; font-size: 13pt; font-weight: 600;
+    text-transform: none; letter-spacing: 0; color: var(--ink); margin-bottom: 0.2rem;
+  }
+  .step-card .note {
+    font-size:12pt; color: var(--sage); margin-bottom: 0.3rem; font-style: italic;
+  }
+  .step-card .materials {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+  .step-card .steps {
+    font-size:12pt; color: #3D362D; padding-left: 1rem;
+  }
+  .step-card .steps li { margin-bottom: 0.15rem; }
+  /* Honest box */
+  .honest-box {
+    border: 1px solid var(--clay); padding: 0.5rem; margin: 0.5rem 0;
+    background: var(--light);
+  }
+  .honest-box h4 {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--clay);
+    margin-bottom: 0.2rem;
+  }
+  .honest-box p { font-size:12pt; margin-bottom: 0; font-style: italic; }
+  /* Troubleshooting table */
+  .trouble-table {
+    width: 100%; border-collapse: collapse;
+    border: 1px solid var(--line); margin: 0.5rem 0;
+  }
+  .trouble-table th {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    padding: 0.25rem 0.35rem; border: 1px solid var(--line); background: var(--light); text-align: left;
+  }
+  .trouble-table td {
+    padding: 0.25rem 0.35rem; border: 1px solid var(--line);
+    font-size:12pt; vertical-align: top;
+  }
+  .trouble-table td:first-child {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    color: var(--muted); width: 1.3in;
+  }
+  /* Reference card */
+  .ref-card {
+    border: 1px solid var(--line); padding: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+  .ref-card h3 {
+    font-family: 'Crimson Pro', Georgia, serif; font-size: 12pt; font-weight: 600;
+    text-transform: none; letter-spacing: 0; color: var(--ink);
+    margin-bottom: 0.3rem; padding-bottom: 0.15rem; border-bottom: 1px dotted var(--line);
+  }
+  .ref-card ul { margin: 0; padding-left: 1.2rem; font-size:12pt; }
+  .ref-card li { margin-bottom: 0.15rem; line-height: 1.4; }
+  /* Notes grid */
+  .notes-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.5rem;
+  }
+  .note-block {
+    border: 1px solid var(--line); padding: 0.4rem; min-height: 3rem;
+  }
+  .note-block h4 {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    margin-bottom: 0.3rem; padding-bottom: 0.1rem; border-bottom: 1px dotted var(--line);
+  }
+  .note-block textarea {
+    width: 100%; min-height: 2rem; resize: vertical; font-size:12pt;
+    font-family: 'Crimson Pro', Georgia, serif; line-height: 1.5;
+    border: none; outline: none; background: transparent;
+  }
+  .note-block textarea:focus { background: rgba(196,168,130,0.05); }
+  .do-dont {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 0.6rem 0;
+  }
+  .do, .dont {
+    padding: 0.5rem; border-radius: 2px;
+  }
+  .do { background: #f0f6ed; border: 1px solid #c5d5bc; }
+  .dont { background: #faf3f0; border: 1px solid #e8d0c8; }
+  .do h4 { color: var(--sage); }
+  .dont h4 { color: #B94A3E; }
+  .do h4, .dont h4 {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 0.3rem;
+  }
+  .do ul, .dont ul { margin: 0; padding-left: 1rem; font-size:12pt; }
+  .do li, .dont li { margin-bottom: 0.12rem; line-height: 1.4; }
+  @media print {
+    body { background: none; padding: 0; margin: 0; }
+    .page { margin: 0; box-shadow: none; background: #fff; }
+    .trouble-table th { background: none; }
+    .cover { background: #fff !important; }
+    .toolbar { display: none; }
+    .note-field { background: repeating-linear-gradient(transparent, transparent 1.35rem, #ccc 1.35rem, #ccc 1.4rem); cursor: default; }
+  }
+</style>
+</head>
+<body class="cast-iron-guide">
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+<!-- COVER -->
+<div class="page cover">
+  <p class="brand">Kitchen <em>&amp; Kettle</em></p>
+  <h1>Cast Iron<br>Care Guide</h1>
+  <p class="tagline">Season it right. Clean it simply. Keep it forever.</p>
+  <p class="description">
+    Everything you need to know about caring for cast iron — seasoning from scratch, daily cleaning, restoring old pans, and cooking with confidence. No myths. No overthinking.
+  </p>
+  <p class="footer-note">A good cast iron pan will outlive you. Here's how to treat it right.</p>
+</div>
+<!-- PHILOSOPHY -->
+<div class="page prose-page">
+  <h2>It's not delicate. Don't overthink it.</h2>
+  <p class="lede">Cast iron has a reputation for being fussy. It isn't. Your grandmother's pan survived decades of daily use without YouTube tutorials or specialty oils. Cast iron is tough — it just needs three simple things: season it, clean it, cook with it.</p>
+  <p>Seasoning is not a mysterious ritual. It's just oil baked onto the surface until it forms a hard, nonstick layer. Every time you cook with fat, you're adding to it. The more you use the pan, the better it gets.</p>
+  <hr>
+  <h2>What you actually need</h2>
+  <p>You don't need special tools or expensive oils. Here's the whole kit:</p>
+  <ul>
+    <li><strong>A cast iron pan.</strong> New, vintage, thrifted — all of them work.</li>
+    <li><strong>A neutral cooking oil.</strong> Canola, grapeseed, vegetable, or avocado. Whatever you already have.</li>
+    <li><strong>Coarse salt.</strong> For scrubbing. That's it.</li>
+    <li><strong>A stiff brush or chainmail scrubber.</strong> Optional but nice. A regular dish brush or sponge works fine.</li>
+    <li><strong>A thin metal spatula.</strong> The best seasoning tool you'll ever own. Scraping the pan smooth while you cook builds the surface faster than any oven cycle.</li>
+  </ul>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>If you buy one thing for your cast iron, make it a metal spatula with a straight front edge — not a plastic one. Scraping while you cook is the secret to a glass-smooth surface. Your grandparents knew this. Somewhere along the way we forgot.</p>
+  </div>
+  <hr>
+  <h2>The three rules</h2>
+  <ol>
+    <li><strong>Don't soak it.</strong> Water sitting in the pan causes rust. Clean it, dry it, put it away.</li>
+    <li><strong>Don't let it stay wet.</strong> After washing, dry it on the stove for a minute. Moisture is the enemy.</li>
+    <li><strong>Cook with fat.</strong> Oil, butter, bacon grease — every time you cook with fat, you're maintaining the seasoning. A pan that gets used stays seasoned.</li>
+  </ol>
+  <p style="margin-top: 1rem;">That's it. The rest of this guide is details. If you remember nothing else, remember those three things.</p>
+</div>
+<!-- SEASONING -->
+<div class="page">
+  <div class="section-header">
+    <h2>Seasoning From Scratch</h2>
+  </div>
+  <p class="tip">Seasoning is polymerized oil — oil that's been heated past its smoke point until it bonds to the iron and forms a hard, dark surface. It's chemistry.</p>
+  <div class="step-card">
+    <h3>How to season a new pan (or re-season an old one)</h3>
+    <p class="note">Works for brand-new Lodge pans, vintage finds, and pans you've stripped for restoration.</p>
+    <p class="materials">Neutral oil (canola, grapeseed, or vegetable) &bull; Clean rag or paper towel &bull; Aluminum foil (for the oven rack)</p>
+    <ol class="steps">
+      <li><strong>Preheat oven to 450°F.</strong> Place foil on the bottom rack to catch drips.</li>
+      <li><strong>Wash and dry the pan.</strong> Hot water and a little soap — yes, soap is fine on bare iron. Dry completely with a towel, then on the stove for 1–2 minutes.</li>
+      <li><strong>Apply a thin layer of oil.</strong> Rub a dime-sized drop of oil everywhere — inside, outside, handle. Now take a clean rag and <em>wipe it off like you made a mistake</em>. The pan should look dry. The oil that stays is the right amount.</li>
+      <li><strong>Bake upside down for 1 hour.</strong> Place the pan upside down on the top rack to prevent pooling. Turn off the oven and let the pan cool inside with the door closed.</li>
+      <li><strong>Repeat if needed.</strong> One round gives you a working seasoning. Two or three rounds give you a dark, even surface. The pan is ready to cook after one round — the rest builds with use.</li>
+    </ol>
+  </div>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>Too much oil is the #1 mistake. A pan that comes out sticky or splotchy had too much oil. Wipe it off more thoroughly next time. And yes, your kitchen will smell like hot oil for a few hours. Open a window. It's worth it.</p>
+  </div>
+  <h3 style="margin-top: 0.6rem;">Which oil to use</h3>
+  <table class="trouble-table">
+    <thead>
+      <tr><th>Oil</th><th>Smoke point</th><th>Good for seasoning?</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Canola</td><td>400°F</td><td>Excellent — cheap, neutral, readily available. The standard choice.</td></tr>
+      <tr><td>Grapeseed</td><td>420°F</td><td>Excellent — produces a very hard, dark surface. Costs a little more.</td></tr>
+      <tr><td>Vegetable (soybean)</td><td>400°F–450°F</td><td>Very good — what most commercial preseasoning uses. You probably have it.</td></tr>
+      <tr><td>Avocado</td><td>520°F</td><td>Works but overkill. Fine if it's what you have. Needs higher oven temp.</td></tr>
+      <tr><td>Flaxseed</td><td>225°F</td><td>Beautiful at first, prone to flaking later. Skip it. The internet lied to you.</td></tr>
+      <tr><td>Olive oil / butter</td><td>350°F–375°F</td><td>Not for seasoning — too low smoke point. Fine for cooking, won't build the surface.</td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- DAILY CLEANING -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Daily Cleaning &amp; Care</h2>
+  </div>
+  <h3>The soap thing (let's clear this up)</h3>
+  <p>You've heard "never use soap on cast iron." That rule is from your great-grandmother's era, when soap contained lye and would strip seasoning. Modern dish soap is mild detergent — it won't touch polymerized oil. Use it. A clean pan is a good pan.</p>
+  <p>That said, most days you don't need soap at all. Hot water and a scrub is plenty. Soap is for when there's stuck-on food or you cooked something particularly greasy.</p>
+  <hr>
+  <h3>After every use</h3>
+  <ol>
+    <li><strong>Clean while warm.</strong> Let the pan cool a few minutes after cooking — not cold, just not scorching. Warm pans clean easier.</li>
+    <li><strong>Hot water + scrub.</strong> Use the hottest water your hands can stand and a stiff brush, chainmail scrubber, or the coarse side of a sponge. For stuck food, add a small amount of dish soap.</li>
+    <li><strong>Salt scrub for stubborn bits.</strong> Pour a tablespoon of coarse salt into the pan. Scrub with a damp cloth or paper towel. The salt is abrasive enough to remove food but won't scratch seasoning. Rinse and wipe dry. (This is also how you clean the pan after cooking something that left residue without using soap at all.)</li>
+    <li><strong>Dry on the stove.</strong> Put the pan on medium-low heat for 1–2 minutes until every drop of water has evaporated. Do not air dry. Do not towel dry and put away. Heat-dry every time.</li>
+    <li><strong>Quick oil if the pan looks dry.</strong> If the surface looks matte or dull after drying, rub a few drops of oil onto the cooking surface with a paper towel while the pan is still warm. You're not seasoning — just protecting. Wipe it nearly dry.</li>
+  </ol>
+  <hr>
+  <div class="do-dont">
+    <div class="do">
+      <h4>Do</h4>
+      <ul>
+        <li>Clean right after cooking</li>
+        <li>Use hot water and a brush</li>
+        <li>Use a little dish soap when needed</li>
+        <li>Dry on the stove — every time</li>
+        <li>Scrape with a metal spatula while cooking</li>
+        <li>Cook often — use builds seasoning</li>
+      </ul>
+    </div>
+    <div class="dont">
+      <h4>Don't</h4>
+      <ul>
+        <li>Soak the pan in water</li>
+        <li>Put it in the dishwasher</li>
+        <li>Use steel wool on a seasoned surface</li>
+        <li>Air dry or towel dry only</li>
+        <li>Store with the lid on (traps moisture)</li>
+        <li>Scrub with anything harsher than coarse salt</li>
+      </ul>
+    </div>
+  </div>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>If you cooked something acidic — tomato sauce, wine reduction, lemon chicken — your pan might look a little dull afterward. That's normal. Acid can thin seasoning slightly. Just do a quick stove-dry and rub a thin layer of oil on it. It'll be fine. A well-used pan handles acid better than a new one, so just keep cooking.</p>
+  </div>
+</div>
+<!-- RESTORATION -->
+<div class="page">
+  <div class="section-header">
+    <h2>Restoring an Old Pan</h2>
+  </div>
+  <p class="tip">Rusty thrift store find? Grandmother's pan from the back of the cupboard? A pan you left soaking? All of it is fixable. Cast iron is almost impossible to ruin.</p>
+  <div class="step-card">
+    <h3>Method 1: Light rust or light buildup (start here)</h3>
+    <p class="materials">White vinegar &bull; Steel wool (#000 or #0000) &bull; Dish soap &bull; Oil for re-seasoning</p>
+    <ol class="steps">
+      <li><strong>Scrub with steel wool and soap.</strong> Scrub the entire pan — inside, outside, handle — with hot water, dish soap, and fine steel wool. Get down to bare metal wherever you can.</li>
+      <li><strong>Vinegar soak for rust spots.</strong> Mix equal parts white vinegar and water in a container large enough to submerge the pan. Soak for 30 minutes. Check — if rust remains, go another 30 minutes. Do not exceed 2 hours total. Vinegar can pit the iron if left too long.</li>
+      <li><strong>Scrub again.</strong> After soaking, scrub with steel wool under running water. The rust should come off. If some remains, repeat the soak.</li>
+      <li><strong>Dry immediately.</strong> Towel dry, then stove-dry thoroughly. Bare iron flash-rusts within minutes — you'll see a faint orange haze. That's fine. Seasoning covers it.</li>
+      <li><strong>Season immediately.</strong> Follow the seasoning steps on page 3. Do at least 2 rounds before cooking — bare iron needs the protection.</li>
+    </ol>
+  </div>
+  <div class="step-card">
+    <h3>Method 2: Heavy rust or thick crud (the nuclear option)</h3>
+    <p class="materials">Easy-Off oven cleaner (yellow cap — must contain lye) &bull; Heavy-duty trash bag &bull; Rubber gloves &bull; Steel wool</p>
+    <ol class="steps">
+      <li><strong>Spray the pan.</strong> Wearing gloves, spray the entire pan with oven cleaner until it's coated and foaming. Do this outside or in a well-ventilated area — this stuff is strong.</li>
+      <li><strong>Bag it.</strong> Place the pan in a heavy-duty trash bag. Seal it tight. Leave for 24–48 hours in a warm place (garage, porch — not inside your living space).</li>
+      <li><strong>Scrub off.</strong> Open the bag outside. Scrub the pan with steel wool under running water. Decades of crud and old seasoning should come off. If anything remains, repeat the bag treatment.</li>
+      <li><strong>Wash thoroughly.</strong> Scrub with soap and hot water to remove all traces of oven cleaner. Dry immediately on the stove.</li>
+      <li><strong>Season immediately.</strong> Bare iron will start to flash-rust. Get oil on it fast and do at least 3 rounds of oven seasoning before cooking.</li>
+    </ol>
+  </div>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>Some people use a self-cleaning oven cycle to strip cast iron. It works — but it can also warp or crack the pan, and it fills your kitchen with smoke. Use the oven cleaner method. It's safer for the pan, it's safer for you, and the result is the same.</p>
+  </div>
+</div>
+<!-- TROUBLESHOOTING -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Troubleshooting</h2>
+  </div>
+  <p class="lede">Cast iron problems are almost never permanent. Here's what's happening and how to fix it.</p>
+  <table class="trouble-table">
+    <thead>
+      <tr><th>Problem</th><th>Why it happened</th><th>Fix</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sticky surface</td>
+        <td>Too much oil during seasoning. Oil pooled instead of polymerizing into a thin layer.</td>
+        <td>Scrub the sticky spots with coarse salt and hot water. Re-season with a thinner coat. Wipe the oil off like you didn't mean to put it there.</td>
+      </tr>
+      <tr>
+        <td>Flaking seasoning</td>
+        <td>Seasoning built up too thick over time, or you used flaxseed oil. The layers didn't bond properly.</td>
+        <td>Scrub off the loose flakes with steel wool. You don't need to strip the whole pan — just remove what's loose. Season over it. Prevent by using thin oil coats and cooking often.</td>
+      </tr>
+      <tr>
+        <td>Rust spots</td>
+        <td>Pan wasn't dried completely before storage. Or it was stored somewhere damp.</td>
+        <td>Scrub the rust spot with steel wool until you see bare metal. Wash, dry on stove, rub with oil, season in the oven once. Prevent by always heat-drying after washing.</td>
+      </tr>
+      <tr>
+        <td>Food sticking</td>
+        <td>Heat control, not seasoning. The pan wasn't hot enough when food went in, or it was moved too soon.</td>
+        <td>Preheat the pan for 3–5 minutes on medium heat before adding oil. Let food release naturally — it will unstick when the crust forms. Don't move it early.</td>
+      </tr>
+      <tr>
+        <td>Metallic taste</td>
+        <td>Cooking acidic food (tomatoes, wine, citrus) in a pan with thin or new seasoning.</td>
+        <td>The acid is reacting with bare iron. Let your seasoning build up with a few weeks of regular cooking before doing long-simmered acidic dishes. For now, stick to quick acidic cooking (a deglaze, not a braise).</td>
+      </tr>
+      <tr>
+        <td>Uneven color</td>
+        <td>Normal. Pans darken unevenly. The center darkens first because that's where the heat and fat are.</td>
+        <td>Do nothing. Keep cooking. It evens out with use. A splotchy pan cooks exactly as well as a perfectly black one.</td>
+      </tr>
+      <tr>
+        <td>Smoking during cooking</td>
+        <td>Pan is too hot. Or you're using an oil with a low smoke point.</td>
+        <td>Turn the heat down. Cast iron holds heat — you rarely need to go above medium. For searing, medium-high is plenty. Save high heat for boiling water.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="honest-box">
+    <h4>When it's actually ruined</h4>
+    <p>Cast iron is almost never ruined. But if the pan is cracked, warped so it spins on a flat surface, or has deep pits from decades of rust — it's done. Everything else is fixable. Don't throw away a pan because the seasoning looks rough. Seasoning is renewable. Iron is forever.</p>
+  </div>
+</div>
+<!-- WHAT TO COOK -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>What to Cook (and What to Watch)</h2>
+  </div>
+  <h3>Cast iron shines with</h3>
+  <ul>
+    <li><strong>Searing.</strong> Steaks, chops, chicken thighs, burgers. Cast iron holds heat better than any other pan — you get a crust nothing else can match.</li>
+    <li><strong>Cornbread.</strong> Preheat the pan with a little butter or bacon fat in the oven, pour in the batter, and the crust comes out deep golden and crisp.</li>
+    <li><strong>Roasted vegetables.</strong> Brussels sprouts, potatoes, carrots. The pan holds heat in the oven and gives vegetables a char that sheet pans can't.</li>
+    <li><strong>Pan pizza.</strong> The heavy pan acts like a pizza stone. Crisp bottom, puffy edges. Better than delivery.</li>
+    <li><strong>Eggs.</strong> Once your seasoning is built up and you've learned your pan's heat — fried eggs slide. It takes practice. Don't expect it on day one.</li>
+    <li><strong>Bacon.</strong> Start bacon in a cold pan over medium-low heat. It renders slowly, the fat seasons the pan, and nothing sticks.</li>
+    <li><strong>Dutch babies and skillet cakes.</strong> The thermal mass makes for dramatic rise and even browning.</li>
+    <li><strong>Hash and home fries.</strong> The crust you get on diced potatoes in cast iron is the whole reason to own one.</li>
+    <li><strong>One-pan meals.</strong> Sear meat on the stovetop, add vegetables, transfer to the oven. One pan, less dishes.</li>
+  </ul>
+  <hr>
+  <h3>Use caution with</h3>
+  <ul>
+    <li><strong>Long-simmered tomato sauces.</strong> A quick tomato sauce is fine. An all-day Sunday gravy can strip seasoning and taste metallic. Use stainless or enameled for long acidic cooks.</li>
+    <li><strong>Wine-based braises.</strong> Same issue — acid + time + bare iron = metallic flavor. Deglazing with wine is fine. Braising in wine for hours is not.</li>
+    <li><strong>Delicate fish.</strong> Cast iron holds too much heat for thin, flaky fillets. It'll overcook before you can react. Thick fish steaks (tuna, swordfish) work great.</li>
+    <li><strong>Sticky glazes and sugary marinades.</strong> Sugar burns onto the surface and is a pain to clean. If you're making teriyaki or a honey glaze, use a different pan or be ready for a serious scrub.</li>
+  </ul>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>A well-seasoned pan that's been used for years can handle acidic foods better than a new one. If your grandmother made tomato sauce in her cast iron, it's because that pan had decades of seasoning built up. Build yours up first. You'll get there.</p>
+  </div>
+</div>

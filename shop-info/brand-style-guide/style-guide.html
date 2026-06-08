@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitchen & Kettle — Brand Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --clay: #C4A882;
+    --ink: #2C2416;
+    --paper: #F5F0E8;
+    --sage: #7D8B6F;
+    --red: #B94A3E;
+    --blue: #6B7B8D;
+    --cream: #FAF7F0;
+    --charcoal: #3D362D;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Crimson Pro', Georgia, serif;
+    color: var(--ink);
+    background: #e8e4dc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    background: #fff;
+    padding: 0.75in 0.7in;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    page-break-after: always;
+    position: relative;
+  }
+  .page:last-of-type { page-break-after: auto; }
+  h1 { font: 600 28pt 'Crimson Pro', serif; color: var(--ink); letter-spacing: -0.01em; }
+  h2 { font: 500 16pt 'Crimson Pro', serif; color: var(--ink); margin-bottom: 0.5rem; }
+  h3 { font: 600 10pt 'Work Sans', sans-serif; color: var(--charcoal); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+  h4 { font: 600 9pt 'Work Sans', sans-serif; color: var(--charcoal); margin-bottom: 0.2rem; }
+  p, li { font: 400 10.5pt/1.6 'Crimson Pro', serif; color: var(--charcoal); }
+  .small { font: 400 8.5pt/1.5 'Work Sans', sans-serif; color: var(--charcoal); }
+  .section-label {
+    font: 600 8pt 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--sage);
+    margin-bottom: 0.25rem;
+  }
+  hr {
+    border: none;
+    border-top: 1px solid #D9D0C1;
+    margin: 1rem 0;
+  }
+  /* ---- Cover ---- */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: var(--paper);
+    padding: 1.5in 1in;
+  }
+  .cover .brand-tag {
+    font: 600 12pt 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--clay);
+    margin-bottom: 1rem;
+  }
+  .cover h1 { font-size: 32pt; margin-bottom: 0.5rem; }
+  .cover .subtitle {
+    font: italic 400 13pt 'Crimson Pro', serif;
+    color: var(--charcoal);
+    margin-bottom: 2.5rem;
+  }
+  .cover .rule { width: 60px; height: 2px; background: var(--clay); margin: 2rem auto; }
+  .cover .tagline { font: 400 13pt 'Crimson Pro', serif; color: var(--ink); }
+  /* ---- Color swatches ---- */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0.8rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .swatch {
+    border: 1px solid #e0dbd2;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 3.5rem;
+  }
+  .swatch-label {
+    padding: 0.4rem 0.5rem;
+    background: #fff;
+  }
+  .swatch-label .name {
+    font: 600 9pt 'Work Sans', sans-serif;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .swatch-label .hex {
+    font: 400 8pt 'Work Sans', sans-serif;
+    color: #8B8376;
+    margin-top: 0.1rem;
+  }
+  .swatch-label .role {
+    font: italic 400 8pt 'Crimson Pro', serif;
+    color: var(--sage);
+    margin-top: 0.15rem;
+  }
+  /* ---- Typography specimens ---- */
+  .type-specimen {
+    margin: 0.8rem 0;
+    padding: 0.8rem;
+    border: 1px solid #e8e4dc;
+    border-radius: 2px;
+  }
+  .type-specimen .font-name {
+    font: 600 9pt 'Work Sans', sans-serif;
+    color: var(--sage);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+  .type-table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+  .type-table th {
+    font: 600 8pt 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--clay);
+    text-align: left;
+    padding: 0.3rem 0.5rem;
+    border-bottom: 1px solid #D9D0C1;
+  }
+  .type-table td {
+    font: 400 10pt/1.5 'Crimson Pro', serif;
+    padding: 0.35rem 0.5rem;
+    border-bottom: 1px solid #f0ece5;
+    color: var(--charcoal);
+  }
+  .type-table td.specimen { font-size: 14pt; }
+  /* ---- Usage rules ---- */
+  .rule-card {
+    border-left: 3px solid var(--clay);
+    padding: 0.4rem 0.8rem;
+    margin: 0.5rem 0;
+    background: var(--cream);
+  }
+  .rule-card.do { border-left-color: var(--sage); }
+  .rule-card.dont { border-left-color: var(--red); }
+  .rule-card .rule-label {
+    font: 600 7.5pt 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.15rem;
+  }
+  .rule-card.do .rule-label { color: var(--sage); }
+  .rule-card.dont .rule-label { color: var(--red); }
+  /* ---- Logo space ---- */
+  .logo-placeholder {
+    border: 2px dashed var(--clay);
+    padding: 1.5rem;
+    text-align: center;
+    margin: 1rem 0;
+    background: var(--cream);
+    min-height: 3in;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo-placeholder .label {
+    font: 600 10pt 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--clay);
+    margin-bottom: 0.3rem;
+  }
+  /* ---- Voice ---- */
+  .voice-example {
+    margin: 0.5rem 0;
+    padding: 0.4rem 0;
+  }
+  .voice-example .bad {
+    color: var(--red);
+    font-style: italic;
+    font-size: 10pt;
+    margin-bottom: 0.15rem;
+  }
+  .voice-example .good {
+    color: var(--sage);
+    font-size: 10pt;
+  }
+  .page-footer {
+    position: absolute;
+    bottom: 0.4in;
+    left: 0.7in;
+    right: 0.7in;
+    display: flex;
+    justify-content: space-between;
+    font: 400 7.5pt 'Work Sans', sans-serif;
+    color: #b0a99e;
+  }
+  @media print {
+    body { background: none; padding: 0; margin: 0; }
+    .page { margin: 0; box-shadow: none; background: #fff; }
+  }
+</style>
+</head>
+<body>
+<!-- ===== PAGE 1: COVER ===== -->
+<div class="page cover">
+  <div class="brand-tag">Kitchen & Kettle</div>
+  <h1>Brand Style Guide</h1>
+  <div class="rule"></div>
+  <p class="subtitle">Colors, typography, and visual standards for a kitchen that works.</p>
+  <p class="tagline">Works because it works.</p>
+  <div class="page-footer">
+    <span>Kitchen & Kettle — Brand Style Guide</span>
+    <span>1</span>
+  </div>
+</div>
+<!-- ===== PAGE 2: COLOR PALETTE ===== -->
+<div class="page">
+  <span class="section-label">Color</span>
+  <h2>Primary Palette — "Still Hearth"</h2>
+  <p>The palette is warm, grounded, and natural — never corporate, never precious. No pure white or pure black.</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#C4A882;"></div>
+      <div class="swatch-label">
+        <div class="name">Clay</div>
+        <div class="hex">#C4A882</div>
+        <div class="role">Headers, accents, buttons</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#2C2416;"></div>
+      <div class="swatch-label">
+        <div class="name">Ink</div>
+        <div class="hex">#2C2416</div>
+        <div class="role">Body text, logos</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#F5F0E8;"></div>
+      <div class="swatch-label">
+        <div class="name">Paper</div>
+        <div class="hex">#F5F0E8</div>
+        <div class="role">Backgrounds</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#7D8B6F;"></div>
+      <div class="swatch-label">
+        <div class="name">Sage</div>
+        <div class="hex">#7D8B6F</div>
+        <div class="role">Links, highlights, categories</div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <h3>Extended Palette</h3>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#B94A3E;"></div>
+      <div class="swatch-label">
+        <div class="name">Preservation Red</div>
+        <div class="hex">#B94A3E</div>
+        <div class="role">CTAs, important notes — use sparingly</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#6B7B8D;"></div>
+      <div class="swatch-label">
+        <div class="name">Kitchen Blue</div>
+        <div class="hex">#6B7B8D</div>
+        <div class="role">Tertiary accent, calm</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#FAF7F0;"></div>
+      <div class="swatch-label">
+        <div class="name">Pantry Cream</div>
+        <div class="hex">#FAF7F0</div>
+        <div class="role">Card backgrounds, callout boxes</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#3D362D;"></div>
+      <div class="swatch-label">
+        <div class="name">Charcoal</div>
+        <div class="hex">#3D362D</div>
+        <div class="role">Secondary text</div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <h3>Palette Rules</h3>
+  <div class="rule-card do">
+    <div class="rule-label">Do</div>
+    <p class="small">Use Paper or Pantry Cream for all backgrounds. Limit to 3 colors per page. Use color to organize, not decorate.</p>
+  </div>
+  <div class="rule-card dont">
+    <div class="rule-label">Don't</div>
+    <p class="small">Never use #FFFFFF or #000000. Never use more than one accent color for a single element. No gradients, no neon.</p>
+  </div>
+  <div class="page-footer">
+    <span>Kitchen & Kettle — Brand Style Guide</span>
+    <span>2</span>
+  </div>
+</div>
+<!-- ===== PAGE 3: TYPOGRAPHY ===== -->
+<div class="page">
+  <span class="section-label">Typography</span>
+  <h2>Type System</h2>
+  <p>Two typefaces only: a warm serif for body and headings, a clean sans-serif for labels and UI.</p>
+  <div class="type-specimen">
+    <div class="font-name">Primary Serif — Crimson Pro</div>
+    <p style="font-size:24pt; font-weight:600; margin-bottom:0.2rem;">Kitchen & Kettle</p>
+    <p style="font-size:14pt; margin-bottom:0.2rem;">Practical recipes, household systems, and traditional skills.</p>
+    <p style="font-size:10pt; font-style:italic;">Works because it works. A quieter way to run a kitchen.</p>
+  </div>
+  <div class="type-specimen">
+    <div class="font-name">Secondary Sans — Work Sans</div>
+    <p style="font-family:'Work Sans',sans-serif; font-size:12pt; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.2rem;">Section Headers & Labels</p>
+    <p style="font-family:'Work Sans',sans-serif; font-size:9pt; margin-bottom:0.2rem;">UI elements, navigation, captions, metadata. Clean and warm — never cold or geometric.</p>
+  </div>
+  <hr>
+  <h3>Type Scale</h3>
+  <table class="type-table">
+    <tr><th>Element</th><th>Font</th><th>Weight</th><th>Size</th><th>Notes</th></tr>
+    <tr><td style="font-size:24pt; font-weight:600;">Logo</td><td>Crimson Pro</td><td>600</td><td>Custom</td><td>Wordmark, not icon</td></tr>
+    <tr><td style="font-size:20pt; font-weight:600;">H1</td><td>Crimson Pro</td><td>600</td><td>28pt</td><td>Letter-spacing: -0.01em</td></tr>
+    <tr><td style="font-size:16pt; font-weight:500;">H2</td><td>Crimson Pro</td><td>500</td><td>16pt</td><td>Section headings</td></tr>
+    <tr><td style="font-family:'Work Sans',sans-serif; font-size:10pt; font-weight:600; text-transform:uppercase;">H3</td><td>Work Sans</td><td>600</td><td>10pt</td><td>Uppercase, letter-spacing: 0.06em</td></tr>
+    <tr><td style="font-weight:400;">Body</td><td>Crimson Pro</td><td>400</td><td>10.5pt</td><td>Line-height: 1.6</td></tr>
+    <tr><td style="font-family:'Work Sans',sans-serif; font-size:9pt; font-weight:500;">UI / Labels</td><td>Work Sans</td><td>500</td><td>9pt</td><td>Navigation, buttons, tags</td></tr>
+    <tr><td style="font-family:'Work Sans',sans-serif; font-size:8pt;">Captions</td><td>Work Sans</td><td>400</td><td>8pt</td><td>Asides, metadata</td></tr>
+  </table>
+  <hr>
+  <h3>Typography Rules</h3>
+  <div class="rule-card do">
+    <div class="rule-label">Do</div>
+    <p class="small">Crimson Pro for anything meant to be read. Work Sans for anything meant to be scanned. Generous line-height, generous whitespace.</p>
+  </div>
+  <div class="rule-card dont">
+    <div class="rule-label">Don't</div>
+    <p class="small">No third typeface. No decorative/display fonts. No all-caps body text. No condensed or extended variants.</p>
+  </div>
+  <div class="page-footer">
+    <span>Kitchen & Kettle — Brand Style Guide</span>
+    <span>3</span>
+  </div>
+</div>
+<!-- ===== PAGE 4: BRAND MARKS ===== -->
+<div class="page">
+  <span class="section-label">Brand Marks</span>
+  <h2>Wordmark &amp; Kettle</h2>
+  <p>The wordmark is the primary logo. The kettle is a supporting brand mark — never a replacement, always a companion.</p>
+  <!-- Kettle marks -->
+  <h3 style="margin-top:1.2rem;">Kettle Mark</h3>
+  <div style="display:flex; gap:1.5rem; margin:0.8rem 0;">
+    <div style="flex:1; background:var(--paper); border:1px solid #e0dbd2; border-radius:3px; padding:1.2rem; text-align:center;">
+      <img src="assets/KettleCharcoalOnPaper.svg" alt="Kettle mark — Charcoal on Paper" style="width:120px; height:auto; margin-bottom:0.6rem;">
+      <p class="small" style="font-weight:600;">Primary</p>
+      <p class="small">Charcoal on Paper<br>Default brand mark for light backgrounds</p>
+    </div>
+    <div style="flex:1; background:var(--ink); border:1px solid #1a130b; border-radius:3px; padding:1.2rem; text-align:center;">
+      <img src="assets/KettleCharcoalOnPaper.svg" alt="Kettle mark — reversed" style="width:120px; height:auto; margin-bottom:0.6rem; filter:invert(1);">
+      <p class="small" style="font-weight:600; color:var(--paper);">Reversed</p>
+      <p class="small" style="color:var(--clay);">Charcoal kettle inverted for dark backgrounds</p>
+    </div>
+  </div>
+  <div style="text-align:center; margin:0.8rem 0 1.5rem;">
+    <img src="assets/KettleCharcoal.svg" alt="Kettle mark — standalone transparent" style="width:90px; height:auto;">
+    <p class="small" style="margin-top:0.3rem;">Standalone (transparent) — for placement over photography or non-standard backgrounds</p>
+  </div>
+  <hr>
+  <!-- Wordmark -->
+  <h3>Wordmark</h3>
+  <div class="type-specimen" style="text-align:center; background:var(--paper);">
+    <p style="font:600 28pt 'Crimson Pro',serif; color:var(--ink); letter-spacing:-0.01em; margin-bottom:0.3rem;">Kitchen & Kettle</p>
+    <p class="small">Crimson Pro 600. Always paired with the tagline or kettle mark — never solo on a blank page.</p>
+  </div>
+  <h3 style="margin-top:1rem;">Clear Space &amp; Minimum Size</h3>
+  <p class="small">Minimum clear space around the wordmark equals the height of the capital "K" in "Keeping." The kettle mark follows the same rule. Neither mark should appear smaller than 1 inch wide in print or 120px wide on screen.</p>
+  <h3 style="margin-top:0.8rem;">Usage Rules</h3>
+  <div class="rule-card do">
+    <div class="rule-label">Do</div>
+    <p class="small">Use the Charcoal kettle as your default. Pair it with the wordmark on covers and headers. Let it sit small and calm — it's an heirloom, not a badge.</p>
+  </div>
+  <div class="rule-card dont">
+    <div class="rule-label">Don't</div>
+    <p class="small">No stretching, rotating, or recoloring outside the palette. No drop shadows or outlines. The kettle is never a replacement for the wordmark — it supports, it doesn't stand alone.</p>
+  </div>
+  <div class="page-footer">
+    <span>Kitchen & Kettle — Brand Style Guide</span>
+    <span>4</span>
+  </div>
+</div>
+<!-- ===== PAGE 5: BRAND VOICE ===== -->
+<div class="page">
+  <span class="section-label">Voice</span>
+  <h2>Brand Voice</h2>
+  <p style="margin-bottom:0.8rem;">Talk like the most competent person you know, who is also the kindest.</p>
+  <table class="type-table">
+    <tr><th>Dimension</th><th>Guideline</th></tr>
+    <tr><td>Tone</td><td>Warm, steady, calm. Not chipper. Not dry.</td></tr>
+    <tr><td>Authority</td><td>Earned, not claimed. "This works because I've done it."</td></tr>
+    <tr><td>Complexity</td><td>Clear enough for beginners, never condescending to experts.</td></tr>
+    <tr><td>Humor</td><td>Dry, occasional, never at anyone's expense.</td></tr>
+    <tr><td>Emotion</td><td>Honest but contained. Acknowledge hard things, then offer something useful.</td></tr>
+    <tr><td>Gender</td><td>Neutral by default. Skills belong to everyone.</td></tr>
+  </table>
+  <hr>
+  <h3>Examples</h3>
+  <div class="voice-example">
+    <p class="bad">✗ "Revolutionize your morning routine with these 5 game-changing hacks!"</p>
+    <p class="good">✓ "Here's a breakfast system that works. It's not exciting, but it holds up on mornings when you can't think."</p>
+  </div>
+  <div class="voice-example">
+    <p class="bad">✗ "DITCH the toxic chemicals! Your family deserves better!"</p>
+    <p class="good">✓ "Vinegar and soap handle most household cleaning. Here's when to use each, and when you actually need something stronger."</p>
+  </div>
+  <div class="voice-example">
+    <p class="bad">✗ "Slow living in our farmhouse kitchen 🕯️🌿"</p>
+    <p class="good">✓ "This bread recipe takes most of an afternoon, but most of that is waiting. The actual work is about twenty minutes."</p>
+  </div>
+  <hr>
+  <h3>Tagline</h3>
+  <div class="type-specimen" style="text-align:center;">
+    <p style="font-size:18pt; font-weight:600; color:var(--ink);">Works because it works.</p>
+    <p class="small" style="margin-top:0.3rem;">Core philosophy distilled into five words. Use as primary tagline on all materials.</p>
+  </div>
+  <div class="page-footer">
+    <span>Kitchen & Kettle — Brand Style Guide</span>
+    <span>5</span>
+  </div>
+</div>
+<!-- ===== PAGE 6: QUICK REFERENCE ===== -->
+<div class="page">
+  <span class="section-label">Quick Reference</span>

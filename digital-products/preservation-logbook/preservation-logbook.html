@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food Preservation Logbook — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:  #F5F0E8; --ink: #2C2416; --clay: #C4A882;
+    --sage:   #7D8B6F; --muted: #8B8376; --line: #D9D0C1; --light: #FAF7F0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 11pt; line-height: 1.6; color: var(--ink);
+    background: #e8e4dc;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 2rem 1rem;
+  }
+  .page {
+    width: 8.5in; min-height: 11in; background: #fff;
+    margin-bottom: 0.25in; padding: 0.75in 0.7in;
+    box-shadow: 0 2px 12px rgba(44,36,22,0.12);
+    page-break-after: always; position: relative;
+  }
+  .page:last-of-type { page-break-after: auto; }
+  h1 { font-size: 28pt; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; }
+  h2 { font-size: 16pt; font-weight: 600; margin-bottom: 0.4rem; }
+  h3 {
+    font-family: 'Work Sans', sans-serif; font-size: 9pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.3rem;
+  }
+  p { margin-bottom: 0.5rem; color: #3D362D; }
+  .lede { font-size: 13pt; line-height: 1.5; margin-bottom: 1rem; }
+  .small { font-family: 'Work Sans', sans-serif; font-size: 8pt; color: var(--muted); }
+  .tip {
+    font-size: 9pt; font-style: italic; color: var(--sage);
+    margin: 0.4rem 0; padding-left: 0.5rem; border-left: 2px solid var(--clay);
+  }
+  .accent { color: var(--clay); }
+  .muted { color: var(--muted); }
+  .section-header {
+    border-bottom: 1px solid var(--line); padding-bottom: 0.3rem;
+    margin-bottom: 0.6rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .section-header .page-num {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; color: var(--muted);
+  }
+  /* Cover */
+  .cover {
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; text-align: center; padding: 2in 0.7in; background: var(--light);
+  }
+  .cover .brand { font-size: 14pt; color: var(--muted); margin-bottom: 1.5rem; }
+  .cover .brand em { font-style: italic; color: var(--clay); }
+  .cover h1 { font-size: 32pt; margin-bottom: 0.5rem; max-width: 14ch; }
+  .cover .tagline {
+    font-family: 'Work Sans', sans-serif; font-size: 9pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 2rem;
+  }
+  .cover .description { font-size: 12pt; max-width: 26ch; line-height: 1.5; }
+  .cover .footer-note {
+    font-size: 8pt; color: var(--muted);
+    font-family: 'Work Sans', sans-serif;
+    margin-top: 1.5rem;
+  }
+  /* Prose */
+  .prose-page h2 { margin-top: 0; }
+  .prose-page ol, .prose-page ul { margin: 0.4rem 0 0.6rem 1.2rem; font-size: 10.5pt; }
+  .prose-page li { margin-bottom: 0.35rem; line-height: 1.5; color: #3D362D; }
+  .prose-page hr { border: none; border-top: 1px solid var(--line); margin: 0.7rem 0; }
+  /* Canning Log Table */
+  .log-table {
+    width: 100%; border-collapse: collapse;
+    border: 1px solid var(--line); margin: 0.5rem 0;
+  }
+  .log-table th {
+    font-family: 'Work Sans', sans-serif; font-size: 7pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    padding: 0.2rem 0.25rem; border: 1px solid var(--line); background: var(--light); text-align: left;
+  }
+  .log-table td {
+    padding: 0.15rem 0.25rem; border: 1px solid var(--line);
+    font-size: 8.5pt; min-height: 1.3rem;
+  }
+  .log-table td.fill { min-width: 1.2in; }
+  .log-table td.small-col { min-width: 0.7in; text-align: center; }
+  .log-table td.notes-col { min-width: 1.8in; }
+  /* Fermentation Tracker */
+  .ferm-card {
+    border: 1px solid var(--line); padding: 0.4rem; margin-bottom: 0.4rem;
+  }
+  .ferm-card .ferm-header {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.3rem; margin-bottom: 0.3rem;
+  }
+  .ferm-card .ferm-field {
+    font-family: 'Work Sans', sans-serif; font-size: 7.5pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+  }
+  .ferm-card .ferm-field span {
+    display: block; font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 9pt; font-weight: 400; color: var(--ink);
+    text-transform: none; letter-spacing: 0;
+    border-bottom: 1px solid var(--line); padding: 0.1rem 0; margin-top: 0.1rem;
+  }
+  .ferm-notes {
+    font-size: 9pt; color: var(--muted); min-height: 1rem;
+    border-bottom: 1px dotted var(--line); padding: 0.1rem 0;
+  }
+  .ferm-notes + .ferm-notes { margin-top: 0.2rem; }
+  /* Seasonal Calendar */
+  .season-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;
+  }
+  .season-card {
+    border: 1px solid var(--line); padding: 0.4rem;
+  }
+  .season-card h4 {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted);
+    margin-bottom: 0.3rem; padding-bottom: 0.15rem; border-bottom: 1px dotted var(--line);
+  }
+  .season-card .produce-item {
+    font-size: 9pt; line-height: 1.55; display: flex; justify-content: space-between;
+  }
+  .season-card .produce-item .method {
+    font-size: 7.5pt; color: var(--sage); font-style: italic;
+  }
+  /* Notes grid */
+  .notes-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.5rem;
+  }
+  .note-block {
+    border: 1px solid var(--line); padding: 0.4rem; min-height: 3rem;
+  }
+  .note-block h4 {
+    font-family: 'Work Sans', sans-serif; font-size: 7.5pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    margin-bottom: 0.3rem; padding-bottom: 0.1rem; border-bottom: 1px dotted var(--line);
+  }
+  @media print {
+    body { background: none; padding: 0; margin: 0; }
+    .page { margin: 0; box-shadow: none; background: #fff; }
+    .log-table th { background: none; }
+    .cover { background: #fff !important; }
+  }
+</style>
+</head>
+<body>
+<!-- COVER -->
+<div class="page cover">
+  <p class="brand">Kitchen <em>&amp; Kettle</em></p>
+  <h1>Food<br>Preservation<br>Logbook</h1>
+  <p class="tagline">Track what you preserve. Remember what worked.</p>
+  <p class="description">
+    Canning logs, fermentation trackers, dehydrating notes, and a seasonal produce guide — everything you need to keep track of a year of preserving, in one place.
+  </p>
+  <p class="footer-note">No food is truly preserved if you forget where you put it.</p>
+</div>
+<!-- HOW TO USE -->
+<div class="page prose-page">
+  <h2>How to use this logbook</h2>
+  <p class="lede">The point of preserving food is to eat it later. This logbook makes sure "later" actually happens — and that you remember what worked so you can do it again.</p>
+  <h3>What's inside</h3>
+  <ol>
+    <li><strong>Canning log</strong> — Record every batch. Recipe, date, yield, processing method, and how it turned out when you opened it.</li>
+    <li><strong>Fermentation tracker</strong> — Start date, ingredients, salt ratio, tasting notes. Ferments change over time — track the journey.</li>
+    <li><strong>Dehydrating notes</strong> — What you dried, how you prepped it, temperature, time, and whether the result was worth repeating.</li>
+    <li><strong>Seasonal produce guide</strong> — What's in season when, and what to do with it. Reference pages, not blank templates.</li>
+  </ol>
+  <hr>
+  <h3>When to use each section</h3>
+  <ul>
+    <li><strong>During preserving season</strong> (summer/fall): Fill out logs as you go. Don't wait — you'll forget details.</li>
+    <li><strong>When you open a jar</strong> (all year): Go back and add notes. Was the texture good? Too salty? Perfect? This is the most valuable data.</li>
+    <li><strong>Before next year's season</strong>: Review last year's logs. Double the pickles, skip the pear butter, try that new hot sauce recipe.</li>
+  </ul>
+  <p class="tip">The notes column is the most important field on every page. "Tasted flat — add more vinegar next time" is worth more than any recipe. Write down what actually happened.</p>
+  <hr>
+  <h3>A note on safety</h3>
+  <p>This logbook assumes you already know safe canning and fermentation practices. If you're new to preserving, consult tested recipes and safety guidelines (USDA, NCHFP, or a reputable modern preserving book) before filling these pages.</p>
+  <p class="tip">The processing time and method fields exist because they matter for safety. Don't skip them. Botulism is rare but real — follow tested recipes.</p>
+</div>
+<!-- CANNING LOG page 1 -->
+<div class="page">
+  <div class="section-header">
+    <h2>Canning Log</h2>
+    <span class="page-num">Year: ______</span>
+  </div>
+  <p class="tip">Fill this out the same day you process. Memory is unreliable — especially during a marathon canning session.</p>
+  <table class="log-table">
+    <thead>
+      <tr><th>Date</th><th>Recipe / Contents</th><th>Jars / Size</th><th>Method</th><th>Time</th><th>Yield</th><th>Result / Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size: 8pt; color: var(--muted); margin-top: 0.3rem;">WB = water bath &nbsp; PC = pressure canner &nbsp; Record processing time per tested recipe.</p>
+</div>
+<!-- CANNING LOG page 2 -->
+<div class="page">
+  <div class="section-header">
+    <h2>Canning Log (continued)</h2>
+    <span class="page-num">Year: ______</span>
+  </div>
+  <table class="log-table">
+    <thead>
+      <tr><th>Date</th><th>Recipe / Contents</th><th>Jars / Size</th><th>Method</th><th>Time</th><th>Yield</th><th>Result / Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">________________________</td><td class="small-col">______</td><td class="small-col">WB / PC</td><td class="small-col">______</td><td class="small-col">______</td><td class="notes-col">__________________________</td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top: 0.6rem; padding: 0.4rem; border: 1px solid var(--line); background: var(--light);">
+    <h3 style="color: var(--sage);">Year-End Review</h3>
+    <p style="font-size: 10pt; margin-bottom: 0.3rem;">Total jars processed this year: ______</p>
+    <p style="font-size: 10pt; margin-bottom: 0.3rem;">Best batch (make again for sure): ________________________________</p>
+    <p style="font-size: 10pt; margin-bottom: 0.3rem;">Worst batch (skip next year): ____________________________________</p>
+    <p style="font-size: 10pt; margin-bottom: 0;">What to do differently next year: _________________________________</p>
+  </div>
+</div>
+<!-- FERMENTATION TRACKER -->
+<div class="page">
+  <div class="section-header">
+    <h2>Fermentation Tracker</h2>
+    <span class="page-num">Year: ______</span>
+  </div>
+  <p class="tip">Ferments are alive — they change. Taste every few days and write notes. The day something tastes perfect is the day it goes in the fridge.</p>
+  <div class="ferm-card">
+    <div class="ferm-header">
+      <div class="ferm-field">Started <span>&nbsp;</span></div>
+      <div class="ferm-field">Recipe / What's in it <span>&nbsp;</span></div>
+      <div class="ferm-field">Salt ratio / brine % <span>&nbsp;</span></div>
+    </div>
+    <div style="font-family: 'Work Sans', sans-serif; font-size: 7.5pt; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.15rem;">Tasting notes</div>
+    <div class="ferm-notes">Day ___ (______): _____________________________________________</div>
+    <div class="ferm-notes">Day ___ (______): _____________________________________________</div>
+    <div class="ferm-notes">Day ___ (______): _____________________________________________</div>
+    <div class="ferm-notes">Day ___ (______): _____________________________________________</div>
+    <div style="font-size: 8.5pt; color: var(--muted); margin-top: 0.2rem;">Ready on: ___________ &nbsp; Stored: fridge / cellar / other</div>
+  </div>
+  <div class="ferm-card">
+    <div class="ferm-header">
+      <div class="ferm-field">Started <span>&nbsp;</span></div>
+      <div class="ferm-field">Recipe / What's in it <span>&nbsp;</span></div>
+      <div class="ferm-field">Salt ratio / brine % <span>&nbsp;</span></div>
+    </div>
+    <div style="font-family: 'Work Sans', sans-serif; font-size: 7.5pt; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.15rem;">Tasting notes</div>
+    <div class="ferm-notes">Day ___ (______): _____________________________________________</div>
+    <div class="ferm-notes">Day ___ (______): _____________________________________________</div>
+    <div class="ferm-notes">Day ___ (______): _____________________________________________</div>
+    <div class="ferm-notes">Day ___ (______): _____________________________________________</div>
+    <div style="font-size: 8.5pt; color: var(--muted); margin-top: 0.2rem;">Ready on: ___________ &nbsp; Stored: fridge / cellar / other</div>
+  </div>
+  <div class="ferm-card">
+    <div class="ferm-header">
+      <div class="ferm-field">Started <span>&nbsp;</span></div>
+      <div class="ferm-field">Recipe / What's in it <span>&nbsp;</span></div>
+      <div class="ferm-field">Salt ratio / brine % <span>&nbsp;</span></div>
+    </div>
+    <div style="font-family: 'Work Sans', sans-serif; font-size: 7.5pt; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.15rem;">Tasting notes</div>
+    <div class="ferm-notes">Day ___ (______): _____________________________________________</div>
+    <div class="ferm-notes">Day ___ (______): _____________________________________________</div>
+    <div class="ferm-notes">Day ___ (______): _____________________________________________</div>
+    <div class="ferm-notes">Day ___ (______): _____________________________________________</div>
+    <div style="font-size: 8.5pt; color: var(--muted); margin-top: 0.2rem;">Ready on: ___________ &nbsp; Stored: fridge / cellar / other</div>
+  </div>
+  <div class="ferm-card" style="margin-bottom: 0;">
+    <div class="ferm-header">
+      <div class="ferm-field">Started <span>&nbsp;</span></div>
+      <div class="ferm-field">Recipe / What's in it <span>&nbsp;</span></div>
+      <div class="ferm-field">Salt ratio / brine % <span>&nbsp;</span></div>
+    </div>
+    <div style="font-family: 'Work Sans', sans-serif; font-size: 7.5pt; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.15rem;">Tasting notes</div>
+    <div class="ferm-notes">Day ___ (______): _____________________________________________</div>
+    <div class="ferm-notes">Day ___ (______): _____________________________________________</div>
+    <div class="ferm-notes">Day ___ (______): _____________________________________________</div>
+    <div class="ferm-notes">Day ___ (______): _____________________________________________</div>
+    <div style="font-size: 8.5pt; color: var(--muted); margin-top: 0.2rem;">Ready on: ___________ &nbsp; Stored: fridge / cellar / other</div>
+  </div>
+</div>
+<!-- DEHYDRATING + SEASONAL -->
+<div class="page">
+  <div class="section-header">
+    <h2>Dehydrating Notes</h2>
+  </div>
+  <p class="tip">Write down what you dried, how you prepped it, and whether it was worth the effort. Some things dehydrate beautifully (tomatoes, herbs, mushrooms). Some don't (cucumbers — don't bother).</p>
+  <table class="log-table">
+    <thead>
+      <tr><th>Date</th><th>Food</th><th>Prep method</th><th>Temp</th><th>Time</th><th>Result / worth it?</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="small-col">______</td><td class="fill">______________</td><td class="fill">______________</td><td class="small-col">____°</td><td class="small-col">____h</td><td class="notes-col">____________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">______________</td><td class="fill">______________</td><td class="small-col">____°</td><td class="small-col">____h</td><td class="notes-col">____________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">______________</td><td class="fill">______________</td><td class="small-col">____°</td><td class="small-col">____h</td><td class="notes-col">____________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">______________</td><td class="fill">______________</td><td class="small-col">____°</td><td class="small-col">____h</td><td class="notes-col">____________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">______________</td><td class="fill">______________</td><td class="small-col">____°</td><td class="small-col">____h</td><td class="notes-col">____________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">______________</td><td class="fill">______________</td><td class="small-col">____°</td><td class="small-col">____h</td><td class="notes-col">____________________</td></tr>
+      <tr><td class="small-col">______</td><td class="fill">______________</td><td class="fill">______________</td><td class="small-col">____°</td><td class="small-col">____h</td><td class="notes-col">____________________</td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top: 0.7rem;">
+    <div class="section-header">
+      <h2>Seasonal Produce at a Glance</h2>
+    </div>
+    <p style="font-size: 9pt; color: var(--muted); margin-bottom: 0.4rem;">Northern hemisphere, temperate climate. Adjust for your region. <strong>Key:&nbsp;</strong> <span style="color: var(--sage);">F</span> = freeze &nbsp; <span style="color: var(--sage);">C</span> = can &nbsp; <span style="color: var(--sage);">D</span> = dehydrate &nbsp; <span style="color: var(--sage);">L</span> = lacto-ferment &nbsp; <span style="color: var(--sage);">R</span> = root cellar</p>
+    <div class="season-grid">
+      <div class="season-card">
+        <h4>Spring</h4>
+        <div class="produce-item"><span>Asparagus</span><span class="method">F C</span></div>
+        <div class="produce-item"><span>Peas</span><span class="method">F</span></div>
+        <div class="produce-item"><span>Rhubarb</span><span class="method">F C</span></div>
+        <div class="produce-item"><span>Greens (spinach, chard)</span><span class="method">F D</span></div>
+        <div class="produce-item"><span>Radishes</span><span class="method">L</span></div>
+        <div class="produce-item"><span>Herbs (tender)</span><span class="method">D F</span></div>
+        <div class="produce-item"><span>Strawberries</span><span class="method">F C D</span></div>
+      </div>
+      <div class="season-card">
+        <h4>Summer</h4>
+        <div class="produce-item"><span>Tomatoes</span><span class="method">C F D</span></div>
+        <div class="produce-item"><span>Cucumbers</span><span class="method">L C</span></div>
+        <div class="produce-item"><span>Zucchini / squash</span><span class="method">F D</span></div>
+        <div class="produce-item"><span>Peppers</span><span class="method">F D C</span></div>
+        <div class="produce-item"><span>Green beans</span><span class="method">C F L</span></div>
+        <div class="produce-item"><span>Corn</span><span class="method">F C</span></div>
+        <div class="produce-item"><span>Berries (all kinds)</span><span class="method">F C D</span></div>
+        <div class="produce-item"><span>Stone fruit</span><span class="method">C F D</span></div>
+      </div>
+      <div class="season-card">
+        <h4>Autumn</h4>
+        <div class="produce-item"><span>Apples / pears</span><span class="method">C D R</span></div>
+        <div class="produce-item"><span>Winter squash</span><span class="method">R</span></div>
+        <div class="produce-item"><span>Pumpkin</span><span class="method">F C R</span></div>
+        <div class="produce-item"><span>Root vegetables</span><span class="method">R L</span></div>
+        <div class="produce-item"><span>Cabbage</span><span class="method">L R</span></div>
+        <div class="produce-item"><span>Brussels sprouts</span><span class="method">F R</span></div>
+        <div class="produce-item"><span>Cranberries</span><span class="method">F C D</span></div>
+        <div class="produce-item"><span>Mushrooms (wild)</span><span class="method">D F</span></div>
+      </div>
+      <div class="season-card">
+        <h4>Winter</h4>
+        <div class="produce-item"><span>Citrus</span><span class="method">D (peel) C (marmalade)</span></div>
+        <div class="produce-item"><span>Root veg (stored)</span><span class="method">use from cellar</span></div>
+        <div class="produce-item"><span>Apples / pears (stored)</span><span class="method">use from cellar</span></div>
+        <div class="produce-item"><span>Winter squash (stored)</span><span class="method">use from cellar</span></div>
+        <div class="produce-item"><span>Preserved goods</span><span class="method">eat what you put up</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- CLOSING -->
+<div class="page prose-page">
+  <h2>A note on preserving</h2>
+  <p class="lede">Preserving food isn't about stockpiling for the apocalypse. It's about capturing a moment of abundance — the week tomatoes are perfect, the month apples are falling off the tree — and spreading that abundance across the rest of the year.</p>
+  <p>Your grandmother's generation did this because they had to. You're doing it because you want to. That's a privilege. Enjoy it.</p>
+  <p>Some years you'll put up fifty jars of peaches and feel like a genius. Other years you'll preserve exactly nothing and eat takeout all August. Both years are fine. The logbook is here when you want it — not as an obligation.</p>
+  <hr>
+  <div class="notes-grid">
+    <div class="note-block">
+      <h4>Favorite recipes to repeat</h4>
+    </div>
+    <div class="note-block">
+      <h4>New things to try next year</h4>
+    </div>
+    <div class="note-block">
+      <h4>Equipment to acquire / replace</h4>
+    </div>
+    <div class="note-block">
+      <h4>Good sources for produce</h4>
+    </div>
+  </div>
+  <p style="font-size: 9pt; color: var(--muted); margin-top: 1rem; text-align: center;">
+    Kitchen & Kettle &bull; Works because it works.<br>
+    Print as many copies as you need.
+  </p>
+</div>
+</body>
+</html>

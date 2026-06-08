@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Survival Garden Basics — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#8B8376;--line:#D9D0C1;--light:#FAF7F0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Crimson Pro',Georgia,serif;font-size:12pt;line-height:1.6;color:var(--ink);background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:1rem}
+  .toolbar{max-width:8.5in;width:100%;margin:0 auto 0.5rem;display:flex;justify-content:space-between;align-items:center;background:#fff;padding:0.5rem 0.7rem;border-radius:6px;box-shadow:0 1px 4px rgba(44,36,22,0.08);position:sticky;top:0;z-index:100}
+  .toolbar .brand{font-family:'Crimson Pro',serif;font-size:14pt;font-weight:600;color:var(--ink)}
+  .toolbar .brand em{font-style:italic;color:var(--clay)}
+  .toolbar .actions{display:flex;gap:0.5rem;align-items:center}
+  .toolbar .save-status{font-family:'Work Sans',sans-serif;font-size:8pt;color:#5a8a6a;margin-right:0.5rem;opacity:0;transition:opacity 0.3s}
+  .toolbar .save-status.visible{opacity:1}
+  .btn{font-family:'Work Sans',sans-serif;font-size:8pt;font-weight:600;padding:0.4em 0.8em;border-radius:3px;cursor:pointer;border:none;transition:background 0.15s;text-decoration:none}
+  .btn-ghost{background:none;color:var(--muted);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+  .btn-print{background:var(--ink);color:var(--paper)}
+  .btn-print:hover{background:#3D362D}
+  .page{width:8.5in;min-height:11in;background:#fff;margin-bottom:0.25in;padding:0.75in 0.7in;box-shadow:0 2px 12px rgba(44,36,22,0.12);page-break-after:always;position:relative}
+  .page:last-of-type{page-break-after:auto}
+  h1{font-size:28pt;font-weight:600;line-height:1.15;letter-spacing:-0.01em}
+  h2{font-size:16pt;font-weight:600;margin-bottom:0.4rem}
+  h3{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:0.3rem}
+  p{font-size:12pt;margin-bottom:0.5rem;color:#3D362D;line-height:1.55}
+  .lede{font-size:14pt;line-height:1.5;margin-bottom:1rem}
+  .tip{font-size:12pt;font-style:italic;color:var(--sage);margin:0.4rem 0;padding-left:0.5rem;border-left:2px solid var(--clay)}
+  .section-header{border-bottom:1px solid var(--line);padding-bottom:0.3rem;margin-bottom:0.6rem;display:flex;justify-content:space-between;align-items:baseline}
+  .cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2in 0.7in;background:var(--light)}
+  .cover .brand{font-size:14pt;color:var(--muted);margin-bottom:1.5rem}
+  .cover .brand em{font-style:italic;color:var(--clay)}
+  .cover h1{font-size:30pt;margin-bottom:0.5rem;max-width:14ch}
+  .cover .tagline{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:2rem}
+  .cover .description{font-size:14pt;max-width:28ch;line-height:1.5}
+  .cover .footer-note{font-size:12pt;color:var(--muted);font-family:'Work Sans',sans-serif;margin-top:1.5rem}
+  .prose-page h2{margin-top:0}
+  .prose-page ol,.prose-page ul{margin:0.4rem 0 0.6rem 1.2rem;font-size:12pt}
+  .prose-page li{margin-bottom:0.35rem;line-height:1.5;color:#3D362D}
+  .prose-page hr{border:none;border-top:1px solid var(--line);margin:0.7rem 0}
+  .crop-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin:0.5rem 0}
+  .crop-card{border:1px solid var(--line);padding:0.4rem}
+  .crop-card h4{font-family:'Crimson Pro',Georgia,serif;font-size:12pt;font-weight:600;margin-bottom:0.1rem;padding-bottom:0.1rem;border-bottom:1px dotted var(--line)}
+  .crop-card .tag{font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--sage);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.2rem}
+  .crop-card p{font-size:12pt;line-height:1.4}
+  .honest-box{border:1px solid var(--clay);padding:0.5rem;margin:0.5rem 0;background:var(--light)}
+  .honest-box h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--clay);margin-bottom:0.2rem}
+  .honest-box p{font-size:12pt;margin-bottom:0;font-style:italic;line-height:1.5}
+  .step-card{border:1px solid var(--line);padding:0.5rem;margin-bottom:0.5rem}
+  .step-card h3{font-family:'Crimson Pro',Georgia,serif;font-size:13pt;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin-bottom:0.2rem}
+  .step-card .steps{font-size:12pt;color:#3D362D;padding-left:1rem}
+  .step-card .steps li{margin-bottom:0.15rem}
+  .ref-card{border:1px solid var(--line);padding:0.6rem;margin-bottom:0.4rem}
+  .ref-card h3{font-family:'Crimson Pro',Georgia,serif;font-size:12pt;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin-bottom:0.3rem;padding-bottom:0.15rem;border-bottom:1px dotted var(--line)}
+  .ref-card ul{margin:0;padding-left:1.2rem;font-size:12pt}
+  .ref-card li{margin-bottom:0.15rem;line-height:1.4}
+  .notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-top:0.5rem}
+  .note-block{border:1px solid var(--line);padding:0.4rem;min-height:3rem}
+  .note-block h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);margin-bottom:0.3rem;padding-bottom:0.1rem;border-bottom:1px dotted var(--line)}
+  @media print{body{background:none;padding:0;margin:0}.page{margin:0;box-shadow:none;background:#fff}.toolbar{display:none}.cover{background:#fff!important}.honest-box{background:none}}
+</style>
+</head>
+<body class="survival-garden">
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+<div class="page cover">
+  <p class="brand">Kitchen <em>&amp; Kettle</em></p>
+  <h1>Survival Garden<br>Basics</h1>
+  <p class="tagline">Throw it in the ground. It grows.</p>
+  <p class="description">
+    The easiest, most nourishing crops you can grow — no seed starting, no greenhouse, no fuss. Just good food from good dirt.
+  </p>
+  <p class="footer-note">You don't need a greenhouse to feed yourself.</p>
+</div>
+<div class="page prose-page">
+  <h2>You don't need a greenhouse. You don't need seed trays. You don't need grow lights.</h2>
+  <p class="lede">A survival garden isn't about growing everything. It's about growing the right things — crops that feed you reliably, store well, and don't demand much. The plants in this guide are the ones that have kept people fed for centuries without any special equipment.</p>
+  <p>This is not a guide to growing prize-winning tomatoes or exotic herbs. It's a guide to putting food on the table from your own dirt — beans, potatoes, squash, and a handful of other crops that want to grow. The philosophy is simple: if it needs a greenhouse, a heating mat, and daily attention, it's not in this guide.</p>
+  <hr>
+  <h2>What you actually need</h2>
+  <ul>
+    <li><strong>A patch of ground.</strong> Doesn't need to be big. A 10×10 foot plot can produce a surprising amount of food. Even a few large containers on a patio will work for most of these crops.</li>
+    <li><strong>Sunlight.</strong> At least 6 hours of direct sun for most crops. If you have less, stick with leafy greens — they're more forgiving.</li>
+    <li><strong>Water.</strong> A hose or watering can. Consistent water is more important than perfect soil. These crops are forgiving, but nothing grows in dust.</li>
+    <li><strong>Seeds or seed potatoes.</strong> All of the crops in this guide are direct-sown — you put the seed in the ground where it will grow. No transplanting.</li>
+  </ul>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>A "survival garden" is not a guarantee against disaster. It's a hedge. It means that if food gets expensive, you have beans and potatoes. If the store runs short, you have squash in the cellar. It's not a replacement for grocery stores — it's a backup that also happens to give you the best-tasting vegetables you'll ever eat.</p>
+  </div>
+</div>
+<div class="page">
+  <div class="section-header"><h2>The Easiest, Most Nourishing Crops</h2></div>
+  <p class="tip">All of these go directly in the ground. No seed starting. No greenhouse. No special treatment.</p>
+  <div class="crop-grid">
+    <div class="crop-card">
+      <h4>Beans (bush and pole)</h4>
+      <p class="tag">Direct sow · Warm soil · 50–65 days</p>
+      <p><strong>Why they're essential:</strong> High protein, easy to dry and store for years, and they improve your soil by fixing nitrogen. Bush beans need no support. Pole beans need a trellis but produce more per square foot.</p>
+      <p><strong>How:</strong> Push seeds 1 inch into warm soil (after last frost). Space 4 inches apart. Water. They come up fast. For dry beans, leave pods on the plant until they rattle.</p>
+    </div>
+    <div class="crop-card">
+      <h4>Potatoes</h4>
+      <p class="tag">Seed potatoes · Cool soil · 70–120 days</p>
+      <p><strong>Why they're essential:</strong> More calories per square foot than almost any other crop. Store for months in a cool dark place. A 10×10 foot plot can produce 50–100 pounds.</p>
+      <p><strong>How:</strong> Cut seed potatoes into chunks with 2–3 eyes each. Bury 4 inches deep, 12 inches apart. Hill soil around the stems as they grow. Harvest when the tops die back.</p>
+    </div>
+    <div class="crop-card">
+      <h4>Winter squash</h4>
+      <p class="tag">Direct sow · Warm soil · 80–110 days</p>
+      <p><strong>Why it's essential:</strong> Stores for months at room temperature. One butternut squash plant can produce 5–10 squash. Dense, sweet, versatile — soups, roasting, pies, bread.</p>
+      <p><strong>How:</strong> Plant seeds in small hills (3–4 seeds per hill) after frost danger passes. Thin to the strongest 2 plants per hill. Give them room — they sprawl. Harvest when the skin is hard and the stem is dry.</p>
+    </div>
+    <div class="crop-card">
+      <h4>Zucchini / Summer Squash</h4>
+      <p class="tag">Direct sow · Warm soil · 45–55 days</p>
+      <p><strong>Why it's essential:</strong> The most reliable producer in the garden. Two plants will keep a family in squash all summer. Fast, easy, and nearly impossible to kill. You will give some away. This is not a warning — it's a promise.</p>
+      <p><strong>How:</strong> Plant seeds directly in warm soil after frost. Give them space — 24 inches apart. Pick small (6–8 inches) for best texture. If you miss one, it becomes a baseball bat overnight.</p>
+    </div>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="section-header"><h2>More Crops Worth the Space</h2></div>
+  <div class="crop-grid">
+    <div class="crop-card">
+      <h4>Kale</h4>
+      <p class="tag">Direct sow · Cool season · 50–65 days</p>
+      <p>Cold-hardy, survives frost, actually tastes better after a freeze. Pick outer leaves and the plant keeps producing for months. One of the most nutritious leafy greens you can grow.</p>
+      <p><strong>How:</strong> Scatter seeds, cover lightly with soil, keep moist. Thin seedlings to 12 inches apart.</p>
+    </div>
+    <div class="crop-card">
+      <h4>Swiss Chard</h4>
+      <p class="tag">Direct sow · Cool or warm · 50–60 days</p>
+      <p>More heat-tolerant than kale, less likely to bolt. Produces continuously when you harvest outer leaves. Beautiful in the garden — bright stems in yellow, red, pink. Tastes like a mild spinach.</p>
+      <p><strong>How:</strong> Same as kale. Soak seeds overnight to speed germination.</p>
+    </div>
+    <div class="crop-card">
+      <h4>Garlic</h4>
+      <p class="tag">Plant cloves · Fall · 8–9 months</p>
+      <p>Plant in fall, mulch heavily, harvest in summer. The lowest-effort crop in existence — you literally put a clove in the ground and come back next year. Stores for months. Every kitchen needs it.</p>
+      <p><strong>How:</strong> Break apart a head of garlic. Plant individual cloves pointy-side-up, 2 inches deep, 6 inches apart. Mulch with straw. Harvest when the lower leaves turn brown.</p>
+    </div>
+    <div class="crop-card">
+      <h4>Carrots</h4>
+      <p class="tag">Direct sow · Cool season · 55–75 days</p>
+      <p>The trick is loose soil — carrots need to push down. If your soil is heavy clay, grow shorter varieties (like Chantenay) or grow them in a deep container. Once they sprout, they need almost nothing. Store in sand or in the ground over winter.</p>
+      <p><strong>How:</strong> Sow seeds very shallow (¼ inch) and keep moist until germination — this is the hardest part. Thin to 2 inches apart once they're a few inches tall.</p>
+    </div>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="section-header"><h2>How to Plant — The Only Rules That Matter</h2></div>
+  <div class="step-card">
+    <h3>1. Prepare the ground (once)</h3>
+    <div class="steps">
+      <li>Remove grass and weeds from your planting area. A shovel or hoe is all you need.</li>
+      <li>Loosen the soil 6–8 inches deep. Don't overthink it — a garden fork or shovel works fine.</li>
+      <li>If your soil is poor, mix in compost. If you don't have compost, just plant anyway. These crops are forgiving.</li>
+    </div>
+  </div>
+  <div class="step-card">
+    <h3>2. Plant at the right time</h3>
+    <div class="steps">
+      <li><strong>Cool-season crops</strong> (kale, chard, carrots, garlic, potatoes): plant in early spring or fall. They handle light frost.</li>
+      <li><strong>Warm-season crops</strong> (beans, squash, zucchini): plant after your last frost date when soil is warm. If you're not sure, wait an extra week.</li>
+      <li><strong>Garlic:</strong> plant in fall, about 4–6 weeks before the ground freezes. Mulch heavily.</li>
+    </div>
+  </div>
+  <div class="step-card">
+    <h3>3. Water consistently</h3>
+    <div class="steps">
+      <li>Seeds need consistent moisture to germinate. Water gently every day or two until sprouts appear.</li>
+      <li>Once established, most crops do fine with a deep watering 2–3 times a week rather than daily sprinkles.</li>
+      <li>Water the soil, not the leaves — wet leaves invite disease. Water in the morning if you can.</li>
+    </div>
+  </div>
+  <div class="step-card">
+    <h3>4. Mulch everything</h3>
+    <div class="steps">
+      <li>Cover bare soil with straw, grass clippings, shredded leaves, or even cardboard.</li>
+      <li>Mulch holds moisture, suppresses weeds, and feeds the soil as it breaks down.</li>
+      <li>This is the closest thing to a gardening cheat code. Do it. You'll water less and weed almost never.</li>
+    </div>
+  </div>
+  <hr>
+  <h3>Harvesting and storage</h3>
+  <ul>
+    <li><strong>Beans:</strong> For fresh eating, pick young. For dry storage, let pods fully dry on the plant, then shell and store in jars.</li>
+    <li><strong>Potatoes:</strong> Harvest after the tops die. Cure in a dark, cool spot for 1–2 weeks, then store in burlap or paper bags (not plastic) in a cool, dark place.</li>
+    <li><strong>Winter squash:</strong> Harvest when the skin is hard — your fingernail shouldn't dent it. Cure in a warm, dry spot for 1–2 weeks, then store at room temperature in a cupboard or on a shelf.</li>
+    <li><strong>Garlic:</strong> Harvest when lower leaves brown. Cure by hanging in a dry, airy spot for 2–3 weeks. Store in a cool, dark place — not the fridge.</li>
+  </ul>
+</div>
+<div class="page">
+  <div class="section-header"><h2>Quick Reference</h2></div>
+  <div class="ref-card">
+    <h3>The easiest five</h3>
+    <ul>
+      <li><strong>Beans</strong> — protein, stores dry for years</li>
+      <li><strong>Potatoes</strong> — most calories per square foot</li>
+      <li><strong>Winter squash</strong> — stores months at room temp</li>
+      <li><strong>Zucchini</strong> — fastest, most reliable producer</li>
+      <li><strong>Garlic</strong> — plant in fall, forget, harvest in summer</li>
+    </ul>
+  </div>
+  <div class="ref-card">
+    <h3>Cool vs. warm season</h3>
+    <ul>
+      <li><strong>Cool (early spring / fall):</strong> kale, chard, carrots, garlic, potatoes</li>
+      <li><strong>Warm (after last frost):</strong> beans, squash, zucchini</li>
+    </ul>
+  </div>
+  <div class="ref-card">
+    <h3>What you don't need</h3>
+    <ul>
+      <li>Seed-starting trays or grow lights</li>
+      <li>A greenhouse or cold frame</li>
+      <li>Perfect soil — these crops grow in average dirt</li>
+      <li>Daily attention — mulch does half the work</li>
+    </ul>
+  </div>
+  <div class="ref-card">
+    <h3>One thing that makes everything easier</h3>
+    <ul>
+      <li>Mulch. Straw, grass clippings, leaves, cardboard. Cover bare soil. You'll water less, weed less, and your soil improves every year.</li>
+    </ul>
+  </div>
+  <div class="notes-grid" style="margin-top:0.6rem;">
+    <div class="note-block"><h4>What I planted this year</h4><textarea data-key="notes-planted" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea></div>
+    <div class="note-block"><h4>First and last frost dates</h4><textarea data-key="notes-frost" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea></div>
+    <div class="note-block"><h4>What grew well / what didn't</h4><textarea data-key="notes-grew" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea></div>
+    <div class="note-block"><h4>Harvest log and storage notes</h4><textarea data-key="notes-harvest" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea></div>
+  </div>
+</div>
+<div class="page prose-page">
+  <h2>A note on growing food</h2>
+  <p class="lede">Gardening is not a test. If half your seeds don't come up, you're not a failure — you're a gardener. Plant extra. Some will make it. Some won't. The ones that do will feed you.</p>
+  <p>Start small. A 4×8 foot bed with beans, potatoes, and a squash plant will produce more than you expect. Add a few more crops next year. The best garden is the one you actually manage to plant and harvest — not the ambitious plan you sketch in January and abandon by June.</p>
+  <p>The crops in this guide want to grow. Give them dirt, sun, water, and mulch. They'll do the rest.</p>
+  <hr>
+  <p style="font-size:12pt;color:var(--muted);margin-top:1rem;text-align:center;">Kitchen & Kettle &bull; Works because it works.<br>Throw it in the ground. It grows.</p>
+</div>
+<script>
+const STORAGE_KEY = 'keeping-kitchen-survival-garden';
+function save() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => { data[el.dataset.key] = el.value; });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  const s = document.getElementById('saveStatus');
+  s.classList.add('visible');
+  clearTimeout(s._t); s._t = setTimeout(() => s.classList.remove('visible'), 1500);
+}
+function load() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.dataset.key in data) el.value = data[el.dataset.key];
+  });
+}
+function clearAll() {
+  if (!confirm('Clear all notes?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('[data-key]').forEach(el => el.value = '');
+}
+document.addEventListener('input', save);
+load();
+</script>
+</body>
+</html>

@@ -1,0 +1,501 @@
+     1|<!DOCTYPE html>
+     2|<html lang="en">
+     3|<head>
+     4|<meta charset="UTF-8">
+     5|<meta name="viewport" content="width=device-width, initial-scale=1.0">
+     6|<title>Kitchen Systems Bundle — Kitchen & Kettle</title>
+     7|<link rel="preconnect" href="https://fonts.googleapis.com">
+     8|<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     9|<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    10|<style>
+    11|  /* ── Print & Font ──────────────────────────── */
+    12|
+    13|  :root {
+    14|    --paper:  #F5F0E8;
+    15|    --ink:    #2C2416;
+    16|    --clay:   #C4A882;
+    17|    --sage:   #7D8B6F;
+    18|    --muted:  #8B8376;
+    19|    --line:   #D9D0C1;
+    20|    --light:  #FAF7F0;
+    21|  }
+    22|
+    23|  * { box-sizing: border-box; margin: 0; padding: 0; }
+    24|
+    25|  body {
+    26|    font-family: 'Crimson Pro', Georgia, serif;
+    27|    font-size: 11pt;
+    28|    line-height: 1.6;
+    29|    color: var(--ink);
+    30|    background: #e8e4dc;
+    31|    display: flex;
+    32|    flex-direction: column;
+    33|    align-items: center;
+    34|    padding: 2rem 1rem;
+    35|  }
+    36|
+    37|  /* ── Page Container ───────────────────────── */
+    38|  .page {
+    39|    width: 8.5in;
+    40|    min-height: 11in;
+    41|    background: #fff;
+    42|    margin-bottom: 0.25in;
+    43|    padding: 0.75in 0.7in;
+    44|    box-shadow: 0 2px 12px rgba(44,36,22,0.12);
+    45|    page-break-after: always;
+    46|    position: relative;
+    47|  }
+    48|
+    49|  .page:last-of-type { page-break-after: auto; }
+    50|
+    51|  /* ── Typography ───────────────────────────── */
+    52|  h1 {
+    53|    font-family: 'Crimson Pro', Georgia, serif;
+    54|    font-size: 28pt;
+    55|    font-weight: 600;
+    56|    line-height: 1.15;
+    57|    color: var(--ink);
+    58|    letter-spacing: -0.01em;
+    59|  }
+    60|
+    61|  h2 {
+    62|    font-family: 'Crimson Pro', Georgia, serif;
+    63|    font-size: 16pt;
+    64|    font-weight: 600;
+    65|    margin-bottom: 0.4rem;
+    66|    color: var(--ink);
+    67|  }
+    68|
+    69|  h3 {
+    70|    font-family: 'Work Sans', sans-serif;
+    71|    font-size: 9pt;
+    72|    font-weight: 600;
+    73|    text-transform: uppercase;
+    74|    letter-spacing: 0.08em;
+    75|    color: var(--muted);
+    76|    margin-bottom: 0.3rem;
+    77|  }
+    78|
+    79|  p {
+    80|    margin-bottom: 0.5rem;
+    81|    color: var(--ink);
+    82|  }
+    83|
+    84|  .subtitle {
+    85|    font-family: 'Work Sans', sans-serif;
+    86|    font-size: 9pt;
+    87|    font-weight: 500;
+    88|    text-transform: uppercase;
+    89|    letter-spacing: 0.1em;
+    90|    color: var(--clay);
+    91|  }
+    92|
+    93|  .lede {
+    94|    font-size: 13pt;
+    95|    line-height: 1.5;
+    96|    color: #3D362D;
+    97|    margin-bottom: 1rem;
+    98|  }
+    99|
+   100|  .small {
+   101|    font-family: 'Work Sans', sans-serif;
+   102|    font-size: 8pt;
+   103|    color: var(--muted);
+   104|    margin-top: 0.3rem;
+   105|  }
+   106|
+   107|  .tip {
+   108|    font-family: 'Crimson Pro', Georgia, serif;
+   109|    font-size: 9pt;
+   110|    font-style: italic;
+   111|    color: var(--sage);
+   112|    margin: 0.4rem 0;
+   113|    padding-left: 0.5rem;
+   114|    border-left: 2px solid var(--clay);
+   115|  }
+   116|
+   117|  .accent { color: var(--clay); }
+   118|  .sage { color: var(--sage); }
+   119|  .muted { color: var(--muted); }
+   120|
+   121|  /* ── Cover Page ───────────────────────────── */
+   122|  .cover {
+   123|    display: flex;
+   124|    flex-direction: column;
+   125|    justify-content: center;
+   126|    align-items: center;
+   127|    text-align: center;
+   128|    padding: 2in 0.7in;
+   129|  }
+   130|
+   131|  .cover .brand {
+   132|    font-family: 'Crimson Pro', Georgia, serif;
+   133|    font-size: 14pt;
+   134|    font-weight: 400;
+   135|    color: var(--muted);
+   136|    margin-bottom: 1.5rem;
+   137|  }
+   138|
+   139|  .cover .brand em {
+   140|    font-style: italic;
+   141|    color: var(--clay);
+   142|  }
+   143|
+   144|  .cover h1 {
+   145|    font-size: 32pt;
+   146|    margin-bottom: 0.5rem;
+   147|    max-width: 14ch;
+   148|  }
+   149|
+   150|  .cover .tagline {
+   151|    font-family: 'Work Sans', sans-serif;
+   152|    font-size: 9pt;
+   153|    font-weight: 600;
+   154|    text-transform: uppercase;
+   155|    letter-spacing: 0.1em;
+   156|    color: var(--muted);
+   157|    margin-bottom: 2rem;
+   158|  }
+   159|
+   160|  .cover .description {
+   161|    font-size: 12pt;
+   162|    color: #3D362D;
+   163|    max-width: 26ch;
+   164|    line-height: 1.5;
+   165|  }
+   166|
+   167|  .cover .footer-note {
+   168|    font-size: 8pt;
+   169|    color: var(--muted);
+   170|    font-family: 'Work Sans', sans-serif;
+   171|    margin-top: 1.5rem;
+   172|  }
+   173|
+   174|  /* ── Section Headers ──────────────────────── */
+   175|  .section-header {
+   176|    border-bottom: 1px solid var(--line);
+   177|    padding-bottom: 0.3rem;
+   178|    margin-bottom: 0.6rem;
+   179|    display: flex;
+   180|    justify-content: space-between;
+   181|    align-items: baseline;
+   182|  }
+   183|
+   184|  .section-header .page-num {
+   185|    font-family: 'Work Sans', sans-serif;
+   186|    font-size: 8pt;
+   187|    color: var(--muted);
+   188|  }
+   189|
+   190|  /* ── Grid Templates ───────────────────────── */
+   191|  .template-grid {
+   192|    display: grid;
+   193|    gap: 0;
+   194|    margin-top: 0.5rem;
+   195|  }
+   196|
+   197|  /* ── Meal Planner ─────────────────────────── */
+   198|  .meal-planner { grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+   199|
+   200|  .day-card {
+   201|    border: 1px solid var(--line);
+   202|    padding: 0.3rem 0.35rem;
+   203|    min-height: 2.8rem;
+   204|  }
+   205|
+   206|  .day-card .day-label {
+   207|    font-family: 'Work Sans', sans-serif;
+   208|    font-size: 7.5pt;
+   209|    font-weight: 600;
+   210|    text-transform: uppercase;
+   211|    letter-spacing: 0.06em;
+   212|    color: var(--muted);
+   213|    margin-bottom: 0.15rem;
+   214|    padding-bottom: 0.12rem;
+   215|    border-bottom: 1px dotted var(--line);
+   216|  }
+   217|
+   218|  .day-card .meal-line {
+   219|    font-size: 9pt;
+   220|    line-height: 1.8;
+   221|    color: #3D362D;
+   222|    min-height: 1.6rem;
+   223|  }
+   224|
+   225|  .day-card .meal-line + .meal-line {
+   226|    border-top: 1px dotted var(--line, #e0d8c8);
+   227|  }
+   228|
+   229|  .week-label {
+   230|    grid-column: span 2;
+   231|    font-family: 'Work Sans', sans-serif;
+   232|    font-size: 8pt;
+   233|    font-weight: 600;
+   234|    color: var(--muted);
+   235|    margin-bottom: 0.15rem;
+   236|  }
+   237|
+   238|  .meal-planner-header {
+   239|    grid-column: span 2;
+   240|    display: flex;
+   241|    justify-content: space-between;
+   242|    align-items: center;
+   243|    margin-bottom: 0.3rem;
+   244|  }
+   245|
+   246|  .meal-planner-header .week-of {
+   247|    font-family: 'Work Sans', sans-serif;
+   248|    font-size: 8pt;
+   249|    color: var(--muted);
+   250|    border-bottom: 1px solid var(--ink);
+   251|    padding-bottom: 0.1rem;
+   252|    min-width: 3in;
+   253|  }
+   254|
+   255|  /* ── Grocery List ─────────────────────────── */
+   256|  .grocery-grid { grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+   257|
+   258|  .grocery-section {
+   259|    border: 1px solid var(--line);
+   260|    padding: 0.3rem 0.35rem;
+   261|    min-height: 2.5rem;
+   262|  }
+   263|
+   264|  .grocery-section h4 {
+   265|    font-family: 'Work Sans', sans-serif;
+   266|    font-size: 7.5pt;
+   267|    font-weight: 600;
+   268|    text-transform: uppercase;
+   269|    letter-spacing: 0.05em;
+   270|    color: var(--muted);
+   271|    margin-bottom: 0.2rem;
+   272|    padding-bottom: 0.1rem;
+   273|    border-bottom: 1px dotted var(--line);
+   274|  }
+   275|
+   276|  .grocery-section .item-line {
+   277|    font-size: 9pt;
+   278|    line-height: 1.7;
+   279|    min-height: 1.4rem;
+   280|  }
+   281|
+   282|  .grocery-section .item-line + .item-line {
+   283|    border-top: 1px dotted #e8e2d6;
+   284|  }
+   285|
+   286|  .grocery-header {
+   287|    grid-column: span 2;
+   288|    font-family: 'Work Sans', sans-serif;
+   289|    font-size: 8pt;
+   290|    color: var(--muted);
+   291|    padding-bottom: 0.1rem;
+   292|    border-bottom: 1px solid var(--ink);
+   293|    margin-bottom: 0.3rem;
+   294|  }
+   295|
+   296|  .grocery-header span {
+   297|    margin-right: 1.5rem;
+   298|  }
+   299|
+   300|  /* ── Pantry Inventory ─────────────────────── */
+   301|  .pantry-cols {
+   302|    display: grid;
+   303|    grid-template-columns: 1fr 1fr 1fr;
+   304|    gap: 0.4rem;
+   305|  }
+   306|
+   307|  .pantry-col {
+   308|    border: 1px solid var(--line);
+   309|    padding: 0.3rem;
+   310|  }
+   311|
+   312|  .pantry-col h4 {
+   313|    font-family: 'Work Sans', sans-serif;
+   314|    font-size: 7.5pt;
+   315|    font-weight: 600;
+   316|    text-transform: uppercase;
+   317|    letter-spacing: 0.05em;
+   318|    color: var(--muted);
+   319|    margin-bottom: 0.2rem;
+   320|    padding-bottom: 0.1rem;
+   321|    border-bottom: 1px dotted var(--line);
+   322|  }
+   323|
+   324|  .pantry-row {
+   325|    display: grid;
+   326|    grid-template-columns: 1fr auto auto;
+   327|    gap: 0.2rem;
+   328|    font-size: 8.5pt;
+   329|    line-height: 1.55;
+   330|    padding: 0.08rem 0;
+   331|  }
+   332|
+   333|  .pantry-row + .pantry-row {
+   334|    border-top: 1px dotted #e8e2d6;
+   335|  }
+   336|
+   337|  .pantry-row .qty {
+   338|    font-family: 'Work Sans', sans-serif;
+   339|    font-size: 7.5pt;
+   340|    color: var(--muted);
+   341|    text-align: right;
+   342|  }
+   343|
+   344|  .pantry-row .status {
+   345|    font-size: 7.5pt;
+   346|    text-align: right;
+   347|    min-width: 2.5rem;
+   348|  }
+   349|
+   350|  /* ── Freezer Inventory ────────────────────── */
+   351|  .freezer-grid {
+   352|    display: grid;
+   353|    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+   354|    gap: 0;
+   355|    border: 1px solid var(--line);
+   356|  }
+   357|
+   358|  .freezer-head {
+   359|    font-family: 'Work Sans', sans-serif;
+   360|    font-size: 7pt;
+   361|    font-weight: 600;
+   362|    text-transform: uppercase;
+   363|    letter-spacing: 0.05em;
+   364|    color: var(--muted);
+   365|    padding: 0.2rem 0.3rem;
+   366|    border-bottom: 1px solid var(--line);
+   367|    background: var(--light);
+   368|  }
+   369|
+   370|  .freezer-row {
+   371|    display: contents;
+   372|  }
+   373|
+   374|  .freezer-cell {
+   375|    padding: 0.15rem 0.3rem;
+   376|    font-size: 8.5pt;
+   377|    line-height: 1.45;
+   378|    border-bottom: 1px dotted #e8e2d6;
+   379|  }
+   380|
+   381|  .freezer-cell:last-child {
+   382|    border-right: none;
+   383|  }
+   384|
+   385|  /* ── Weekly Prep Checklist ────────────────── */
+   386|  .prep-checklist {
+   387|    list-style: none;
+   388|    margin-top: 0.4rem;
+   389|  }
+   390|
+   391|  .prep-item {
+   392|    display: grid;
+   393|    grid-template-columns: 1.8rem 1fr auto;
+   394|    align-items: start;
+   395|    gap: 0.25rem;
+   396|    padding: 0.2rem 0;
+   397|    border-bottom: 1px dotted #e8e2d6;
+   398|    min-height: 1.8rem;
+   399|  }
+   400|
+   401|  .prep-item .checkbox {
+   402|    width: 1rem;
+   403|    height: 1rem;
+   404|    border: 1.5px solid var(--line);
+   405|    margin-top: 0.15rem;
+   406|  }
+   407|
+   408|  .prep-item .task-label {
+   409|    font-size: 10pt;
+   410|    line-height: 1.5;
+   411|  }
+   412|
+   413|  .prep-item .day-tag {
+   414|    font-family: 'Work Sans', sans-serif;
+   415|    font-size: 7.5pt;
+   416|    color: var(--muted);
+   417|    text-align: right;
+   418|    padding-top: 0.1rem;
+   419|  }
+   420|
+   421|  /* ── Prose Pages ──────────────────────────── */
+   422|  .prose-page h2 {
+   423|    margin-top: 0;
+   424|    margin-bottom: 0.5rem;
+   425|  }
+   426|
+   427|  .prose-page ol, .prose-page ul {
+   428|    margin: 0.4rem 0 0.6rem 1.2rem;
+   429|    font-size: 10.5pt;
+   430|  }
+   431|
+   432|  .prose-page li {
+   433|    margin-bottom: 0.35rem;
+   434|    line-height: 1.5;
+   435|    color: #3D362D;
+   436|  }
+   437|
+   438|  .prose-page hr {
+   439|    border: none;
+   440|    border-top: 1px solid var(--line);
+   441|    margin: 0.7rem 0;
+   442|  }
+   443|
+   444|  .inline-highlight {
+   445|    font-family: 'Work Sans', sans-serif;
+   446|    font-size: 8pt;
+   447|    font-weight: 600;
+   448|    text-transform: uppercase;
+   449|    letter-spacing: 0.05em;
+   450|    color: var(--sage);
+   451|    background: none;
+   452|  }
+   453|
+   454|  /* ── Notes Page ───────────────────────────── */
+   455|  .notes-grid {
+   456|    display: grid;
+   457|    grid-template-columns: 1fr 1fr;
+   458|    gap: 0.5rem;
+   459|    margin-top: 0.5rem;
+   460|  }
+   461|
+   462|  .note-block {
+   463|    border: 1px solid var(--line);
+   464|    padding: 0.4rem;
+   465|    min-height: 3rem;
+   466|  }
+   467|
+   468|  .note-block h4 {
+   469|    font-family: 'Work Sans', sans-serif;
+   470|    font-size: 7.5pt;
+   471|    font-weight: 600;
+   472|    text-transform: uppercase;
+   473|    letter-spacing: 0.05em;
+   474|    color: var(--muted);
+   475|    margin-bottom: 0.3rem;
+   476|    padding-bottom: 0.1rem;
+   477|    border-bottom: 1px dotted var(--line);
+   478|  }
+   479|
+   480|  /* ── Print Overrides ──────────────────────── */
+   481|  @media print {
+   482|    body {
+   483|      background: none;
+   484|      padding: 0;
+   485|      margin: 0;
+   486|    }
+   487|    .page {
+   488|      width: 8.5in;
+   489|      min-height: 11in;
+   490|      margin: 0;
+   491|      padding: 0.75in 0.7in;
+   492|      box-shadow: none;
+   493|      background: #fff;
+   494|      page-break-after: always;
+   495|    }
+   496|    .page:last-of-type { page-break-after: auto; }
+   497|
+   498|    /* Remove background fills for ink savings */
+   499|    .freezer-head { background: none; }
+   500|    .cover { background: #fff !important; }
+   501|

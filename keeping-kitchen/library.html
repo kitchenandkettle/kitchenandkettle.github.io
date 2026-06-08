@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library — Kitchen & Kettle</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Kitchen &amp; Kettle</a>
+    <button class="nav-toggle" id="navToggle">Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="preservation.html">Preservation</a></li>
+      <li><a href="household.html">Household</a></li>
+      <li><a href="body-care.html">Body &amp; Care</a></li>
+      <li><a href="systems.html">Systems</a></li>
+      <li><a href="library.html" class="active">Library</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<header class="page-header page">
+  <h1>The Library</h1>
+  <p>Reference material built to be bookmarked and returned to. No scrolling, no feeds, no urgency. Just things worth knowing.</p>
+</header>
+<section class="section page">
+  <div class="card-grid card-grid-2 mb-2xl">
+    <a href="#" class="card card-link">
+      <h3>Ingredient encyclopedia</h3>
+      <p>What it is, how to use it, how to store it. From allspice to zucchini.</p>
+    </a>
+    <a href="#" class="card card-link">
+      <h3>Technique guides</h3>
+      <p>Knife skills, fermentation basics, canning safety, dough handling. The transferable skills behind the recipes.</p>
+    </a>
+    <a href="#" class="card card-link">
+      <h3>Equipment guide</h3>
+      <p>What's worth owning, what to buy used, what to skip entirely. An honest assessment, not a shopping list.</p>
+    </a>
+    <a href="#" class="card card-link">
+      <h3>Substitution charts</h3>
+      <p>What to use when you're out of an ingredient. Organized by category, tested where it matters.</p>
+    </a>
+  </div>
+  <div class="card-grid card-grid-2 mb-2xl">
+    <a href="#" class="card card-link">
+      <h3>Seasonal produce calendars</h3>
+      <p>What's in season when, by region. Northern hemisphere default, with notes for other climates.</p>
+    </a>
+    <a href="#" class="card card-link">
+      <h3>Conversion tables</h3>
+      <p>Volume, weight, temperature. Metric and imperial. Designed for printing and keeping on the fridge.</p>
+    </a>
+  </div>
+  <div class="callout">
+    <h4>How to use the library</h4>
+    <p>This isn't a blog. It's reference material. Bookmark what you need. Print the charts. Come back when you have a question. There's no algorithm deciding what you should see next — just a table of contents.</p>
+  </div>
+  <h2 class="mb-lg mt-2xl">Technique guides</h2>
+  <ul class="post-list">
+    <li class="post-item">
+      <span class="post-badge">Technique</span>
+      <div class="post-item-content">
+        <h3><a href="#">Knife Skills: The Only Cuts That Matter</a></h3>
+        <p>Dice, slice, mince, chiffonade. Four cuts, clearly illustrated. Speed comes with practice. Accuracy matters more.</p>
+      </div>
+    </li>
+    <li class="post-item">
+      <span class="post-badge">Technique</span>
+      <div class="post-item-content">
+        <h3><a href="#">Fermentation Safety: What Actually Matters</a></h3>
+        <p>Salt ratio, submersion, temperature, signs of spoilage. Fermentation is safe and ancient. Here's how to do it without anxiety.</p>
+      </div>
+    </li>
+    <li class="post-item">
+      <span class="post-badge">Technique</span>
+      <div class="post-item-content">
+        <h3><a href="#">Canning Safety: The Rules and Why They Exist</a></h3>
+        <p>Altitude adjustments, headspace, processing times. These rules aren't arbitrary — they prevent botulism. Follow them. Here's why each one matters.</p>
+      </div>
+    </li>
+    <li class="post-item">
+      <span class="post-badge">Equipment</span>
+      <div class="post-item-content">
+        <h3><a href="#">The Minimal Kitchen: What You Actually Need</a></h3>
+        <p>One good knife, one heavy pan, one pot, one cutting board, and a few tools. Everything else is optional. Here's the tiered list: essential, useful, and skip.</p>
+      </div>
+    </li>
+    <li class="post-item">
+      <span class="post-badge">Reference</span>
+      <div class="post-item-content">
+        <h3><a href="#">Common Substitutions</a></h3>
+        <p>Buttermilk, eggs, herbs, spices, dairy, flours. When substitution works and when it will ruin the dish. Tested, not guessed.</p>
+      </div>
+    </li>
+    <li class="post-item">
+      <span class="post-badge">Reference</span>
+      <div class="post-item-content">
+        <h3><a href="#">Kitchen Conversions (Printable)</a></h3>
+        <p>Tablespoons to milliliters. Ounces to grams. Fahrenheit to Celsius. Designed to print on one page and live on your fridge.</p>
+      </div>
+    </li>
+  </ul>
+</section>
+</main>
+<footer class="site-footer page">
+  <nav class="footer-nav">
+    <a href="about.html">About</a>
+    <a href="start-here.html">Start here</a>
+    <a href="library.html">Library</a>
+  </nav>
+  <p>Kitchen & Kettle &mdash; works because it works.</p>
+</footer>
+<script>
+document.getElementById('navToggle').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+</body>
+</html>

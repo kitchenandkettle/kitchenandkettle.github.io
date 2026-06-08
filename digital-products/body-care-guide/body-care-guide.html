@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Body Care Guide — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F5F0E8; --ink: #2C2416; --clay: #C4A882;
+    --sage: #7D8B6F; --muted: #8B8376; --line: #D9D0C1; --light: #FAF7F0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Crimson Pro', Georgia, serif; font-size:12pt;
+    line-height: 1.6; color: var(--ink); background: #e8e4dc;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 1rem;
+  }
+  /* Toolbar */
+  .toolbar {
+    max-width: 8.5in; width: 100%; margin: 0 auto 0.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: #fff; padding: 0.5rem 0.7rem; border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(44,36,22,0.08);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .toolbar .brand { font-family: 'Crimson Pro', serif; font-size: 14pt; font-weight: 600; color: var(--ink); }
+  .toolbar .brand em { font-style: italic; color: var(--clay); }
+  .toolbar .actions { display: flex; gap: 0.5rem; align-items: center; }
+  .toolbar .save-status {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; color: #5a8a6a;
+    margin-right: 0.5rem; opacity: 0; transition: opacity 0.3s;
+  }
+  .toolbar .save-status.visible { opacity: 1; }
+  .btn {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; font-weight: 600;
+    padding: 0.4em 0.8em; border-radius: 3px; cursor: pointer; border: none;
+    transition: background 0.15s; text-decoration: none;
+  }
+  .btn-ghost { background: none; color: var(--muted); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+  .btn-print { background: var(--ink); color: var(--paper); }
+  .btn-print:hover { background: #3D362D; }
+  .page {
+    width: 8.5in; min-height: 11in; background: #fff;
+    margin-bottom: 0.25in; padding: 0.75in 0.7in;
+    box-shadow: 0 2px 12px rgba(44,36,22,0.12);
+    page-break-after: always; position: relative;
+  }
+  .page:last-of-type { page-break-after: auto; }
+  h1 { font-size: 28pt; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; }
+  h2 { font-size: 16pt; font-weight: 600; margin-bottom: 0.4rem; }
+  h3 {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.3rem;
+  }
+  p { margin-bottom: 0.5rem; color: #3D362D; }
+  .lede { font-size: 13pt; line-height: 1.5; margin-bottom: 1rem; }
+  .tip {
+    font-size:12pt; font-style: italic; color: var(--sage);
+    margin: 0.4rem 0; padding-left: 0.5rem; border-left: 2px solid var(--clay);
+  }
+  .section-header {
+    border-bottom: 1px solid var(--line); padding-bottom: 0.3rem;
+    margin-bottom: 0.6rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  /* Cover */
+  .cover {
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; text-align: center; padding: 2in 0.7in; background: var(--light);
+  }
+  .cover .brand { font-size: 14pt; color: var(--muted); margin-bottom: 1.5rem; }
+  .cover .brand em { font-style: italic; color: var(--clay); }
+  .cover h1 { font-size: 30pt; margin-bottom: 0.5rem; max-width: 14ch; }
+  .cover .tagline {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 2rem;
+  }
+  .cover .description { font-size: 12pt; max-width: 26ch; line-height: 1.5; }
+  .cover .footer-note {
+    font-size:12pt; color: var(--muted);
+    font-family: 'Work Sans', sans-serif;
+    margin-top: 1.5rem;
+  }
+  /* Prose */
+  .prose-page h2 { margin-top: 0; }
+  .prose-page ol, .prose-page ul { margin: 0.4rem 0 0.6rem 1.2rem; font-size:12pt; }
+  .prose-page li { margin-bottom: 0.35rem; line-height: 1.5; color: #3D362D; }
+  .prose-page hr { border: none; border-top: 1px solid var(--line); margin: 0.7rem 0; }
+  /* Ingredient cards */
+  .ingredient-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;
+    margin: 0.5rem 0;
+  }
+  .ingredient-card {
+    border: 1px solid var(--line); padding: 0.4rem;
+  }
+  .ingredient-card h4 {
+    font-family: 'Crimson Pro', Georgia, serif; font-size: 12pt; font-weight: 600;
+    margin-bottom: 0.15rem; padding-bottom: 0.1rem; border-bottom: 1px dotted var(--line);
+  }
+  .ingredient-card .role {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; color: var(--sage);
+    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;
+  }
+  .ingredient-card p { font-size:12pt; line-height: 1.4; }
+  /* Honest box */
+  .honest-box {
+    border: 1px solid var(--clay); padding: 0.5rem; margin: 0.5rem 0;
+    background: var(--light);
+  }
+  .honest-box h4 {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--clay);
+    margin-bottom: 0.2rem;
+  }
+  .honest-box p { font-size:12pt; margin-bottom: 0; font-style: italic; }
+  /* Label guide */
+  .label-table {
+    width: 100%; border-collapse: collapse;
+    border: 1px solid var(--line); margin: 0.5rem 0;
+  }
+  .label-table th {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    padding: 0.25rem 0.35rem; border: 1px solid var(--line); background: var(--light); text-align: left;
+  }
+  .label-table td {
+    padding: 0.25rem 0.35rem; border: 1px solid var(--line);
+    font-size:12pt; vertical-align: top;
+  }
+  .label-table td:first-child {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    color: var(--muted); width: 1.2in;
+  }
+  .do-dont {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 0.6rem 0;
+  }
+  .do, .dont {
+    padding: 0.5rem; border-radius: 2px;
+  }
+  .do { background: #f0f6ed; border: 1px solid #c5d5bc; }
+  .dont { background: #faf3f0; border: 1px solid #e8d0c8; }
+  .do h4 { color: var(--sage); }
+  .dont h4 { color: #B94A3E; }
+  .do h4, .dont h4 {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 0.3rem;
+  }
+  .do ul, .dont ul { margin: 0; padding-left: 1rem; font-size:12pt; }
+  .do li, .dont li { margin-bottom: 0.12rem; line-height: 1.4; }
+  /* Ref card */
+  .ref-card {
+    border: 1px solid var(--line); padding: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+  .ref-card h3 {
+    font-family: 'Crimson Pro', Georgia, serif; font-size: 12pt; font-weight: 600;
+    text-transform: none; letter-spacing: 0; color: var(--ink);
+    margin-bottom: 0.3rem; padding-bottom: 0.15rem; border-bottom: 1px dotted var(--line);
+  }
+  .ref-card ul { margin: 0; padding-left: 1.2rem; font-size:12pt; }
+  .ref-card li { margin-bottom: 0.15rem; line-height: 1.4; }
+  .notes-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.5rem;
+  }
+  .note-block {
+    border: 1px solid var(--line); padding: 0.4rem; min-height: 3rem;
+  }
+  .note-block h4 {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    margin-bottom: 0.3rem; padding-bottom: 0.1rem; border-bottom: 1px dotted var(--line);
+  }
+  @media print {
+    body { background: none; padding: 0; margin: 0; }
+    .page { margin: 0; box-shadow: none; background: #fff; }
+    .toolbar { display: none; }
+    .label-table th { background: none; }
+    .cover { background: #fff !important; }
+    .honest-box, .do, .dont { background: none; }
+  }
+</style>
+</head>
+<body class="body-care">
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+<!-- COVER -->
+<div class="page cover">
+  <p class="brand">Kitchen <em>&amp; Kettle</em></p>
+  <h1>Simple Body<br>Care Guide</h1>
+  <p class="tagline">Clean ingredients. Clear choices.</p>
+  <p class="description">
+    How to read a soap label, choose products for your skin, and build a simple routine — without the fear-mongering or the 10-step regimen.
+  </p>
+  <p class="footer-note">Fewer ingredients. Happier skin.</p>
+</div>
+<!-- PHILOSOPHY -->
+<div class="page prose-page">
+  <h2>You don't need a lot to take care of your skin.</h2>
+  <p class="lede">The body care industry wants you to believe you need a different product for every part of your body — a separate cleanser for your face, a different soap for your hands, a special wash for everything else. You don't. Most people do fine with one good soap, a moisturizer they actually use, and clean water.</p>
+  <p>This guide is about simplifying. Understanding what's actually in your soap. Knowing what to look for — and what to ignore — on a label. And choosing products that work for your skin instead of products that work for a brand's marketing department.</p>
+  <p>What "clean" means here: fewer ingredients you don't need. Clear labeling you can understand. Products that do the job without irritating your skin. It doesn't mean "chemical-free" — everything is chemicals. Water is a chemical. It means you can read the label and know what you're putting on your body.</p>
+  <hr>
+  <h2>Bar soap vs. liquid soap</h2>
+  <p>Bar soaps are simpler. They typically have fewer ingredients, less packaging, and don't need the preservatives that liquid soaps require to stay shelf-stable in a bottle of water. A good bar of soap lasts longer than a bottle of body wash and costs less per use. It's also easier to find simple formulations — three to five ingredients instead of twenty.</p>
+  <p>And here's the practical win: you can ditch the plastic pumps. Keep one bar at the sink for hands and face, one in the shower — same bar does it all. No separate hand soap, face wash, and body wash. Less plastic, less counter clutter, less to buy.</p>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>You don't need to switch everything to bar soap overnight. If you love your liquid soap and your skin is happy, keep it. This guide is for people who want to simplify — not for people who already have something that works.</p>
+  </div>
+</div>
+<!-- HOW TO READ A LABEL -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>How to Read a Soap Label</h2>
+  </div>
+  <p class="tip">Soap labels are designed to confuse you. Here's what actually matters.</p>
+  <h3>True soap vs. detergent bars</h3>
+  <p>Real soap is made from fats and oils combined with an alkali (lye). The ingredients list will show saponified oils — "sodium cocoate" (coconut oil soap), "sodium olivate" (olive oil soap), "sodium tallowate" (beef fat soap). These are the backbone of a good bar.</p>
+  <p>Detergent bars — often labeled "beauty bar," "cleansing bar," or "body bar" — use synthetic detergents instead of saponified oils. They're not necessarily bad. Many are formulated to be very gentle. Dove, for example, is a detergent bar and it's one of the mildest cleansers available. The distinction matters more for understanding what you're buying than for judging quality.</p>
+  <hr>
+  <h3>Common soap ingredients, decoded</h3>
+  <table class="label-table">
+    <thead>
+      <tr><th>You'll see</th><th>What it is</th><th>Good or skip?</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Sodium tallowate</td><td>Saponified beef fat. Classic soap base. Gentle, creamy lather.</td><td>Good. The traditional soap fat for centuries.</td></tr>
+      <tr><td>Sodium cocoate</td><td>Saponified coconut oil. Good lather, very cleansing — can be drying alone.</td><td>Good in a blend. Too much alone = stripping.</td></tr>
+      <tr><td>Sodium olivate</td><td>Saponified olive oil. Mild, moisturizing, low lather.</td><td>Good. Castile soap is 100% olive oil soap.</td></tr>
+      <tr><td>Sodium palmate</td><td>Saponified palm oil. Hardens the bar, adds mild cleansing.</td><td>Fine. Look for sustainable palm if that matters to you.</td></tr>
+      <tr><td>Glycerin</td><td>A humectant that draws moisture to skin. Naturally occurs in soapmaking; some is removed in commercial soap and sold separately.</td><td>Good. Soaps that retain glycerin are more moisturizing.</td></tr>
+      <tr><td>Fragrance / parfum</td><td>Can be natural or synthetic — the label won't tell you which. Most common skin irritant in soap.</td><td>Skip if you have sensitive skin. "Unscented" or "fragrance-free" are safest.</td></tr>
+      <tr><td>Sodium lauryl sulfate (SLS)</td><td>A detergent that creates foam. Strips oils aggressively.</td><td>Skip in face/body products. Fine in hand soap if you don't react.</td></tr>
+      <tr><td>Titanium dioxide</td><td>A white pigment that makes soap opaque and bright white. No cleansing function.</td><td>Skip. It's there to make the bar look pretty — doesn't help your skin.</td></tr>
+    </tbody>
+  </table>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>The simplest soaps have the shortest ingredient lists. If a soap has twenty ingredients and half of them are pigments, stabilizers, and preservatives, it's a cosmetic product — not a simple soap. Look for bars with 5 ingredients or fewer. Ivory: sodium tallowate, sodium cocoate, water, sodium chloride, fragrance (and the fragrance is minimal). That's it.</p>
+  </div>
+</div>
+<!-- SOAP GUIDE -->
+<div class="page">
+  <div class="section-header">
+    <h2>A Short Guide to Bar Soaps</h2>
+  </div>
+  <p class="tip">These are the soaps you'll actually find. All are available at regular grocery stores and drugstores.</p>
+  <div class="ingredient-grid">
+    <div class="ingredient-card">
+      <h4>Ivory</h4>
+      <p class="role">Classic · Minimal ingredients · Floats</p>
+      <p>One of the simplest soaps on the shelf. A tallow-and-coconut base with almost nothing else. Clean, light scent, very inexpensive. Good for normal to oily skin. Can be slightly drying for very dry skin — but it's where many people start when they want to simplify.</p>
+    </div>
+    <div class="ingredient-card">
+      <h4>Dove Sensitive / Unscented</h4>
+      <p class="role">Ultra-mild · Dermatologist recommended · Detergent bar</p>
+      <p>Technically a detergent bar, not a true soap — and that's why it's so gentle. Contains moisturizing cream. The unscented version is one of the safest choices for sensitive, reactive, or eczema-prone skin. If everything else bothers you, try this.</p>
+    </div>
+    <div class="ingredient-card">
+      <h4>Castile soap (liquid or bar)</h4>
+      <p class="role">Plant-based · Olive oil · Concentrated</p>
+      <p>Made from olive oil. Very mild in theory — in practice, it can be irritating for some people. Works well for many, but if you try it and your skin feels tight or itchy, switch to something gentler. Also: dilute liquid castile heavily. Using it full-strength is too much.</p>
+      <div class="honest-box" style="margin-top:0.3rem;">
+        <h4>Honest note</h4>
+        <p>I personally don't use castile soap — it irritates my skin. I stick with plain bar soaps like Ivory or Dove Sensitive. They clean just as well and my skin is happier. If castile works for you, great. If it doesn't, you're not doing anything wrong — it's just a strong soap.</p>
+      </div>
+    </div>
+    <div class="ingredient-card">
+      <h4>Local / handmade cold-process soap</h4>
+      <p class="role">Small batch · Retains glycerin · Variable</p>
+      <p>Farmers market soaps, small-batch bars, cold-process soaps. Often made with olive oil, coconut oil, shea butter. Quality varies widely — some are excellent, some are harsh. Look for ones that list all ingredients and use oils you recognize. Ask the maker what's in it. If they can't tell you, skip it.</p>
+    </div>
+  </div>
+  <hr>
+  <h3>Soap by skin type</h3>
+  <table class="label-table">
+    <thead>
+      <tr><th>Skin type</th><th>Look for</th><th>Try</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Normal</td><td>Any simple tallow or tallow-coconut blend. Fragrance optional.</td><td>Ivory, plain tallow bars, any simple 3-5 ingredient soap</td></tr>
+      <tr><td>Dry</td><td>Higher olive oil content, added glycerin, or superfatted bars. Avoid coconut-heavy soaps.</td><td>Dove Sensitive, olive oil castile (diluted), handmade bars with shea butter</td></tr>
+      <tr><td>Sensitive / reactive</td><td>Unscented, unfragranced, shortest ingredient list possible. Skip all botanicals and essential oils.</td><td>Dove Unscented, Ivory (fragrance is minimal), fragrance-free tallow bars</td></tr>
+      <tr><td>Oily</td><td>Coconut oil soaps clean thoroughly. May not need moisturizer after.</td><td>Ivory, any coconut-oil-forward bar. Avoid superfatted or cream bars.</td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- BEYOND SOAP -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Beyond Soap — The Simple Routine</h2>
+  </div>
+  <h3>The only three things most people need</h3>
+  <ol>
+    <li><strong>A good soap.</strong> One bar. Use it on your body. Your face might want something gentler — or it might be fine with the same bar. Try it and see.</li>
+    <li><strong>A moisturizer you'll actually use.</strong> The best moisturizer is the one you reach for consistently. A basic unscented lotion (Cetaphil, CeraVe, Vanicream) covers most needs. If you have a jar of something expensive that you use twice a month, it's doing less for your skin than a drugstore lotion you use every day.</li>
+    <li><strong>Sun protection.</strong> This is the one skincare product with decades of research behind it. A daily moisturizer with SPF 30 prevents more skin damage than any expensive serum or treatment. If you do nothing else for your skin, do this.</li>
+  </ol>
+  <hr>
+  <h3>When simple isn't enough</h3>
+  <p>Some skin conditions need more than a good soap and moisturizer. If you have persistent acne, eczema, psoriasis, or unexplained rashes — see a dermatologist. A prescription cream that actually treats the problem is better than six "natural" products that don't. This isn't a failure of simple body care. It's just medicine.</p>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>No soap — no matter how "clean" or "natural" — can treat a skin condition. If a product claims to cure eczema, heal psoriasis, or clear hormonal acne, walk away. Those claims are not supported by evidence, and the product is probably overpriced. See a doctor. Use the prescription. Keep your simple soap for maintenance after.</p>
+  </div>
+  <hr>
+  <div class="do-dont">
+    <div class="do">
+      <h4>Do</h4>
+      <ul>
+        <li>Read the ingredient list — shorter is usually better</li>
+        <li>Use one soap for most of your body</li>
+        <li>Moisturize after showering while skin is still damp</li>
+        <li>Patch test new products on your inner arm</li>
+        <li>Wear SPF daily — it actually works</li>
+      </ul>
+    </div>
+    <div class="dont">
+      <h4>Don't</h4>
+      <ul>
+        <li>Trust "natural" as a guarantee of gentleness — poison ivy is natural</li>
+        <li>Use castile soap full-strength — it's concentrated, dilute it</li>
+        <li>Assume more products = better skin</li>
+        <li>Fall for "detoxifying" claims — your liver detoxifies, not your soap</li>
+        <li>Ignore persistent skin problems — see a doctor, not a product label</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- QUICK REFERENCE -->
+<div class="page">
+  <div class="section-header">
+    <h2>Quick Reference</h2>
+  </div>
+  <p class="tip" style="margin-bottom: 0.6rem;">The short version: what to look for, what to skip, what to try.</p>
+  <div class="ref-card">
+    <h3>Label red flags</h3>
+    <ul>
+      <li>"Fragrance" or "parfum" — most common skin irritant. Choose unscented if you react.</li>
+      <li>More than 10 ingredients in a simple bar soap — it's a cosmetic, not a soap.</li>
+      <li>"Antibacterial" — the FDA found no evidence antibacterial soaps work better than plain soap and water. Skip triclosan.</li>
+      <li>Titanium dioxide, mica, pigments — decoration, not function.</li>
+    </ul>
+  </div>
+  <div class="ref-card">
+    <h3>Good starting points</h3>
+    <ul>
+      <li><strong>If you want the simplest option:</strong> Ivory bar soap. 5 ingredients. Classic for a reason.</li>
+      <li><strong>If you have sensitive skin:</strong> Dove Unscented. It's a detergent bar and that's why it's gentle.</li>
+      <li><strong>If you want plant-based:</strong> Look for olive-oil castile, dilute it, and patch test first.</li>
+      <li><strong>If you want to support small makers:</strong> Farmers market cold-process bars — ask what's in them.</li>
+    </ul>
+  </div>
+  <div class="ref-card">
+    <h3>The simple routine</h3>
+    <ul>
+      <li><strong>Morning:</strong> Rinse face with water. Moisturizer + SPF 30.</li>
+      <li><strong>Shower:</strong> One bar of soap. Done.</li>
+      <li><strong>After shower:</strong> Moisturize while skin is damp.</li>
+      <li><strong>Night:</strong> Wash face with water or mild cleanser. Moisturize.</li>
+      <li><strong>Hands:</strong> Wash with whatever bar is at the sink. Moisturize in winter.</li>
+    </ul>
+  </div>
+  <div class="notes-grid" style="margin-top: 0.6rem;">
+    <div class="note-block">
+      <h4>Soaps I've tried and liked</h4>
+      <textarea data-key="notes-liked" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea>
+    </div>
+    <div class="note-block">
+      <h4>Soaps that didn't work for me</h4>
+      <textarea data-key="notes-disliked" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea>
+    </div>
+    <div class="note-block">
+      <h4>My daily moisturizer</h4>
+      <textarea data-key="notes-moisturizer" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea>
+    </div>
+    <div class="note-block">
+      <h4>Skin notes by season</h4>
+      <textarea data-key="notes-seasonal" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea>
+    </div>
+  </div>
+</div>
+<!-- CLOSING -->
+<div class="page prose-page">
+  <h2>A note on body care</h2>
+  <p class="lede">Your skin is an organ. It doesn't need a ten-step routine or a shelf full of products. It needs protection from the sun, moisture when it's dry, and gentle cleansing that doesn't strip its natural barrier.</p>
+  <p>The body care industry profits from making you feel like your skin is a problem to be solved. It isn't. Most skin is healthy skin doing its job. A good soap, a moisturizer you actually use, and sunscreen — that's more than most people need.</p>
+  <p>If a product promises to fix what isn't broken, you don't need it. If a routine makes you feel anxious instead of cared for, simplify it. Good body care should feel like maintenance, not like penance.</p>
+  <hr>
+  <p style="font-size:12pt; color: var(--muted); margin-top: 1rem; text-align: center;">
+    Kitchen & Kettle &bull; Works because it works.<br>
+    Clean ingredients. Clear choices. Fewer products.
+  </p>
+</div>
+<script>
+const STORAGE_KEY = 'keeping-kitchen-body-care';
+function save() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => { data[el.dataset.key] = el.value; });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  const s = document.getElementById('saveStatus');
+  s.classList.add('visible');
+  clearTimeout(s._t); s._t = setTimeout(() => s.classList.remove('visible'), 1500);
+}
+function load() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.dataset.key in data) el.value = data[el.dataset.key];
+  });
+}
+function clearAll() {
+  if (!confirm('Clear all notes?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('[data-key]').forEach(el => el.value = '');
+}
+document.addEventListener('input', save);
+load();
+</script>
+</body>
+</html>

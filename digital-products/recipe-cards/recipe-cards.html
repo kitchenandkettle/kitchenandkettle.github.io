@@ -1,0 +1,182 @@
+     1|<!DOCTYPE html>
+     2|<html lang="en">
+     3|<head>
+     4|<meta charset="UTF-8">
+     5|<meta name="viewport" content="width=device-width, initial-scale=1.0">
+     6|<title>Kitchen & Kettle — Recipe Cards</title>
+     7|<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
+     8|<style>
+     9|  *{margin:0;padding:0;box-sizing:border-box}
+    10|  body{font-family:'Crimson Pro',Georgia,serif;color:#2C2416;background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem}
+    11|  .page{width:8.5in;min-height:11in;margin-bottom:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,.1);page-break-after:always;position:relative;display:flex;flex-direction:column;gap:.35in;padding:.4in;background:#fff}
+    12|  .page:last-of-type{page-break-after:auto}
+    13|  @media print{body{background:none;padding:0;margin:0}.page{margin:0;box-shadow:none;page-break-after:always}}
+    14|
+    15|  /* ── Card: warm vintage paper, dark frame ── */
+    16|  .card{flex:1;position:relative;overflow:hidden;display:flex;flex-direction:column;
+    17|    background:linear-gradient(175deg,#fef8ec 0%,#fdf3e0 30%,#fef6e8 60%,#fdf4e2 100%);
+    18|    border:3px solid #3a2010;border-radius:2px;}
+    19|  /* Inner frame */
+    20|  .card::before{content:'';position:absolute;top:6px;left:6px;right:6px;bottom:6px;
+    21|    border:1px solid rgba(58,32,16,.08);border-radius:1px;pointer-events:none}
+    22|
+    23|  /* ── Paper texture overlay ── */
+    24|  .card::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+    25|    background:radial-gradient(ellipse at 30% 20%,rgba(210,170,120,.06),transparent 60%),
+    26|               radial-gradient(ellipse at 70% 50%,rgba(190,150,100,.04),transparent 50%);
+    27|    opacity:.6}
+    28|
+    29|  /* ── Kettle stamp (top-right) ── */
+    30|  .kettle{position:absolute;top:10px;right:14px;z-index:2;pointer-events:none;
+    31|    .kettle{position:absolute;top:8px;right:12px;z-index:2;pointer-events:none;width:62px;height:62px;opacity:.78;transform:rotate(-4deg)}
+    32|
+    33|  /* ── Amber decorative bands ── */
+    34|  .top-band{height:3px;margin:3px 20px 8px;position:relative;z-index:1;
+    35|    background:linear-gradient(90deg,transparent,rgba(200,150,90,.4) 25%,rgba(200,150,90,.4) 75%,transparent)}
+    36|  .bottom-band{height:4px;margin:8px 15px 3px;position:relative;z-index:1;
+    37|    background:linear-gradient(90deg,transparent,rgba(190,140,80,.45) 20%,rgba(190,140,80,.45) 80%,transparent);border-radius:1px}
+    38|
+    39|  /* ── Title ── */
+    40|  .card h3{font:600 14pt 'Crimson Pro',serif;padding:2px 20px;position:relative;z-index:1;color:#3a2010}
+    41|
+    42|  /* ── Body / columns ── */
+    43|  .card-body{display:flex;flex:1;gap:.2in;padding:0 20px 6px;position:relative;z-index:1}
+    44|  .col{display:flex;flex-direction:column}
+    45|  .col.ing{flex:1}.col.inst{flex:2}
+    46|  .label{font:600 7pt 'Work Sans',sans-serif;text-transform:uppercase;letter-spacing:.08em;
+    47|    margin-bottom:3px;position:relative;z-index:1;color:#5c3a20}
+    48|  /* Notebook lines */
+    49|  .lines{flex:1;min-height:1.6in;position:relative;z-index:1}
+    50|  .lines::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+    51|    background:repeating-linear-gradient(to bottom,transparent,transparent 18px,rgba(140,110,70,.13) 18px,rgba(140,110,70,.13) 19px)}
+    52|  .lines::after{content:'';position:absolute;top:0;bottom:0;left:22px;width:1px;background:rgba(180,140,100,.12)}
+    53|
+    54|  .page-footer{position:absolute;bottom:.15in;left:.4in;right:.4in;display:flex;justify-content:space-between;font:400 6pt 'Work Sans',sans-serif;color:#d0cbc0}
+    55|  .cut-guide{position:absolute;left:.4in;right:.4in;top:50%;border-top:1px dashed #ddd;pointer-events:none}
+    56|</style>
+    57|</head>
+    58|<body>
+    59|
+    60|<div class="page"><div class="cut-guide"></div>
+    61|  <div class="card">
+    62|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
+    63|    <div class="top-band"></div>
+    64|    <h3> </h3>
+    65|    <div class="card-body">
+    66|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
+    67|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
+    68|    </div>
+    69|    <div class="bottom-band"></div>
+    70|  </div>
+    71|  <div class="card">
+    72|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
+    73|    <div class="top-band"></div>
+    74|    <h3> </h3>
+    75|    <div class="card-body">
+    76|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
+    77|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
+    78|    </div>
+    79|    <div class="bottom-band"></div>
+    80|  </div>
+    81|  <div class="page-footer"><span>Kitchen & Kettle — Recipe Cards</span><span>1</span></div>
+    82|</div>
+    83|
+    84|<div class="page"><div class="cut-guide"></div>
+    85|  <div class="card">
+    86|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
+    87|    <div class="top-band"></div>
+    88|    <h3> </h3>
+    89|    <div class="card-body">
+    90|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
+    91|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
+    92|    </div>
+    93|    <div class="bottom-band"></div>
+    94|  </div>
+    95|  <div class="card">
+    96|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
+    97|    <div class="top-band"></div>
+    98|    <h3> </h3>
+    99|    <div class="card-body">
+   100|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
+   101|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
+   102|    </div>
+   103|    <div class="bottom-band"></div>
+   104|  </div>
+   105|  <div class="page-footer"><span>Kitchen & Kettle — Recipe Cards</span><span>2</span></div>
+   106|</div>
+   107|
+   108|<div class="page"><div class="cut-guide"></div>
+   109|  <div class="card">
+   110|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
+   111|    <div class="top-band"></div>
+   112|    <h3> </h3>
+   113|    <div class="card-body">
+   114|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
+   115|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
+   116|    </div>
+   117|    <div class="bottom-band"></div>
+   118|  </div>
+   119|  <div class="card">
+   120|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
+   121|    <div class="top-band"></div>
+   122|    <h3> </h3>
+   123|    <div class="card-body">
+   124|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
+   125|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
+   126|    </div>
+   127|    <div class="bottom-band"></div>
+   128|  </div>
+   129|  <div class="page-footer"><span>Kitchen & Kettle — Recipe Cards</span><span>3</span></div>
+   130|</div>
+   131|
+   132|<div class="page"><div class="cut-guide"></div>
+   133|  <div class="card">
+   134|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
+   135|    <div class="top-band"></div>
+   136|    <h3> </h3>
+   137|    <div class="card-body">
+   138|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
+   139|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
+   140|    </div>
+   141|    <div class="bottom-band"></div>
+   142|  </div>
+   143|  <div class="card">
+   144|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
+   145|    <div class="top-band"></div>
+   146|    <h3> </h3>
+   147|    <div class="card-body">
+   148|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
+   149|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
+   150|    </div>
+   151|    <div class="bottom-band"></div>
+   152|  </div>
+   153|  <div class="page-footer"><span>Kitchen & Kettle — Recipe Cards</span><span>4</span></div>
+   154|</div>
+   155|
+   156|<div class="page"><div class="cut-guide"></div>
+   157|  <div class="card">
+   158|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
+   159|    <div class="top-band"></div>
+   160|    <h3> </h3>
+   161|    <div class="card-body">
+   162|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
+   163|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
+   164|    </div>
+   165|    <div class="bottom-band"></div>
+   166|  </div>
+   167|  <div class="card">
+   168|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
+   169|    <div class="top-band"></div>
+   170|    <h3> </h3>
+   171|    <div class="card-body">
+   172|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
+   173|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
+   174|    </div>
+   175|    <div class="bottom-band"></div>
+   176|  </div>
+   177|  <div class="page-footer"><span>Kitchen & Kettle — Recipe Cards</span><span>5</span></div>
+   178|</div>
+   179|
+   180|</body>
+   181|</html>
+   182|

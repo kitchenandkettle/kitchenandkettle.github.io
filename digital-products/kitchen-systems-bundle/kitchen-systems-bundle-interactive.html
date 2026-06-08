@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitchen Systems Bundle — Interactive Edition — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  .pantry-add-btn {
+    font-family: 'Work Sans', sans-serif; font-size: 7.5pt; font-weight: 600;
+    color: var(--sage); background: none; border: 1px dashed var(--line);
+    padding: 0.2rem 0.4rem; margin-top: 0.3rem; cursor: pointer;
+    border-radius: 2px; width: 100%; text-align: left;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .pantry-add-btn:hover { border-color: var(--sage); color: var(--ink); }
+  .pantry-row input.item-name { text-align: left; font-size: 8.5pt; font-style: italic; color: var(--sage); }
+  .pantry-row input.item-name:focus { font-style: normal; color: var(--ink); }
+  :root {
+    --paper: #F5F0E8; --ink: #2C2416; --clay: #C4A882;
+    --sage: #7D8B6F; --muted: #8B8376; --line: #D9D0C1; --light: #FAF7F0;
+    --saved: #5a8a6a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Crimson Pro', Georgia, serif; font-size: 11pt;
+    line-height: 1.6; color: var(--ink); background: #e8e4dc;
+    padding: 1rem;
+  }
+  /* Toolbar */
+  .toolbar {
+    max-width: 8.5in; width: 100%; margin: 0 auto 0.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: #fff; padding: 0.5rem 0.7rem; border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(44,36,22,0.08);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .toolbar .brand {
+    font-family: 'Crimson Pro', serif; font-size: 14pt; font-weight: 600;
+    color: var(--ink);
+  }
+  .toolbar .brand em { font-style: italic; color: var(--clay); }
+  .toolbar .actions { display: flex; gap: 0.5rem; align-items: center; }
+  .toolbar .save-status {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; color: var(--saved);
+    margin-right: 0.5rem; opacity: 0; transition: opacity 0.3s;
+  }
+  .toolbar .save-status.visible { opacity: 1; }
+  .btn {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; font-weight: 600;
+    padding: 0.4em 0.8em; border-radius: 3px; cursor: pointer; border: none;
+    transition: background 0.15s; text-decoration: none;
+  }
+  .btn-ghost {
+    background: none; color: var(--muted); border: 1px solid var(--line);
+  }
+  .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+  .btn-print {
+    background: var(--ink); color: var(--paper);
+  }
+  .btn-print:hover { background: #3D362D; }
+  /* Page */
+  .page {
+    max-width: 8.5in; width: 100%; margin: 0 auto 0.5rem; background: #fff;
+    padding: 0.75in 0.7in; box-shadow: 0 2px 12px rgba(44,36,22,0.1);
+    position: relative;
+  }
+  h1 { font-size: 28pt; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+  h2 { font-size: 16pt; font-weight: 600; margin-bottom: 0.4rem; }
+  h3 {
+    font-family: 'Work Sans', sans-serif; font-size: 9pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.3rem;
+  }
+  p { margin-bottom: 0.5rem; color: #3D362D; }
+  .lede { font-size: 13pt; line-height: 1.5; margin-bottom: 1rem; }
+  .small { font-family: 'Work Sans', sans-serif; font-size: 8pt; color: var(--muted); }
+  .tip {
+    font-size: 9pt; font-style: italic; color: var(--sage);
+    margin: 0.4rem 0; padding-left: 0.5rem; border-left: 2px solid var(--clay);
+  }
+  .section-header {
+    border-bottom: 1px solid var(--line); padding-bottom: 0.3rem;
+    margin-bottom: 0.6rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  /* Native inputs */
+  input, textarea {
+    font-family: 'Crimson Pro', Georgia, serif; font-size: 10pt;
+    color: var(--ink); background: transparent;
+    border: none; border-bottom: 1px solid transparent;
+    padding: 0.1rem 0; width: 100%; outline: none;
+    transition: border-color 0.15s;
+  }
+  input:focus, textarea:focus { border-bottom-color: var(--clay); }
+  input.date-input { font-family: 'Work Sans', sans-serif; font-size: 8pt; color: var(--muted); width: auto; }
+  /* Cover */
+  .cover {
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; text-align: center; padding: 2in 0.7in; min-height: 11in;
+    background: var(--light);
+  }
+  .cover .brand { font-size: 14pt; color: var(--muted); margin-bottom: 1.5rem; }
+  .cover .brand em { font-style: italic; color: var(--clay); }
+  .cover h1 { font-size: 32pt; max-width: 14ch; }
+  /* Prose */
+  .prose-page h2 { margin-top: 0; }
+  .prose-page ol, .prose-page ul { margin: 0.4rem 0 0.6rem 1.2rem; font-size: 10.5pt; }
+  .prose-page li { margin-bottom: 0.35rem; line-height: 1.5; color: #3D362D; }
+  .prose-page hr { border: none; border-top: 1px solid var(--line); margin: 0.7rem 0; }
+  /* Meal Planner */
+  .meal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; margin-top: 0.5rem; }
+  .day-card {
+    border: 1px solid var(--line); padding: 0.35rem;
+    min-height: 2.8rem;
+  }
+  .day-card .day-label {
+    font-family: 'Work Sans', sans-serif; font-size: 7.5pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted);
+    margin-bottom: 0.2rem; padding-bottom: 0.12rem; border-bottom: 1px dotted var(--line);
+  }
+  .meal-field { margin-bottom: 0.25rem; display: flex; align-items: baseline; gap: 0.25rem; }
+  .meal-field .meal-type {
+    font-family: 'Work Sans', sans-serif; font-size: 7pt; color: var(--muted);
+    min-width: 3.5rem; text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .meal-field input { flex: 1; font-size: 10pt; }
+  .week-of {
+    display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;
+  }
+  .week-of label {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; color: var(--muted);
+  }
+  .week-of input { font-size: 10pt; width: 8rem; }
+  .wide-input { width: 100%; }
+  /* Grocery List */
+  .grocery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+  .grocery-section {
+    border: 1px solid var(--line); padding: 0.35rem; min-height: 2.5rem;
+  }
+  .grocery-section h4 {
+    font-family: 'Work Sans', sans-serif; font-size: 7.5pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    margin-bottom: 0.2rem; padding-bottom: 0.1rem; border-bottom: 1px dotted var(--line);
+  }
+  .grocery-section .item-row { margin-bottom: 0.15rem; }
+  .grocery-section .item-row input { font-size: 9.5pt; }
+  .grocery-header {
+    grid-column: span 2; font-size: 8pt; color: var(--muted);
+    padding-bottom: 0.1rem; border-bottom: 1px solid var(--ink); margin-bottom: 0.3rem;
+    display: flex; gap: 1.5rem; align-items: center;
+  }
+  .grocery-header label { font-family: 'Work Sans', sans-serif; }
+  .grocery-header input { font-size: 10pt; width: 8rem; }
+  /* Pantry */
+  .pantry-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.4rem; }
+  .pantry-col { border: 1px solid var(--line); padding: 0.3rem; }
+  .pantry-col h4 {
+    font-family: 'Work Sans', sans-serif; font-size: 7.5pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    margin-bottom: 0.2rem; padding-bottom: 0.1rem; border-bottom: 1px dotted var(--line);
+  }
+  .pantry-row {
+    display: grid; grid-template-columns: 1fr 3rem 3rem;
+    gap: 0.2rem; padding: 0.05rem 0; align-items: baseline;
+  }
+  .pantry-row .label { font-size: 8.5pt; color: #3D362D; line-height: 1.5; }
+  .pantry-row input { font-size: 8.5pt; text-align: center; }
+  .pantry-row input.qty { text-align: center; }
+  .pantry-row input.notes { text-align: left; font-size: 8pt; }
+  /* Freezer */
+  .freezer-grid {
+    display: grid; grid-template-columns: 2fr 0.7fr 1fr 1.5fr; gap: 0;
+    border: 1px solid var(--line);
+  }
+  .freezer-head {
+    font-family: 'Work Sans', sans-serif; font-size: 7pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    padding: 0.2rem 0.3rem; border-bottom: 1px solid var(--line); background: var(--light);
+  }
+  .freezer-cell {
+    padding: 0.15rem 0.3rem; border-bottom: 1px dotted #e8e2d6;
+  }
+  .freezer-cell input { font-size: 8.5pt; }
+  /* Prep Checklist */
+  .prep-list { list-style: none; margin-top: 0.4rem; }
+  .prep-item {
+    display: grid; grid-template-columns: 1.4rem 1fr auto;
+    align-items: start; gap: 0.25rem; padding: 0.2rem 0;
+    border-bottom: 1px dotted #e8e2d6; min-height: 1.8rem;
+  }
+  .prep-item input[type="checkbox"] {
+    width: 0.85rem; height: 0.85rem; margin-top: 0.2rem;
+    accent-color: var(--sage); cursor: pointer;
+  }
+  .prep-item .task-text { font-size: 10pt; line-height: 1.5; color: #3D362D; }
+  .prep-item .day-tag {
+    font-family: 'Work Sans', sans-serif; font-size: 7.5pt; color: var(--muted);
+    text-align: right; padding-top: 0.1rem;
+  }
+  /* Notes */
+  .notes-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.5rem;
+  }
+  .note-block {
+    border: 1px solid var(--line); padding: 0.4rem; min-height: 3rem;
+  }
+  .note-block h4 {
+    font-family: 'Work Sans', sans-serif; font-size: 7.5pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    margin-bottom: 0.3rem; padding-bottom: 0.1rem; border-bottom: 1px dotted var(--line);
+  }
+  .note-block textarea {
+    width: 100%; min-height: 2rem; resize: vertical; font-size: 9pt;
+    border: none; outline: none; background: transparent;
+  }
+  .note-block textarea:focus { background: rgba(196,168,130,0.05); }
+  /* Clear button */
+  .clear-btn {
+    font-family: 'Work Sans', sans-serif; font-size: 7pt; color: var(--muted);
+    background: none; border: none; cursor: pointer; padding: 0.1rem 0;
+    text-decoration: underline; text-underline-offset: 2px;
+  }
+  .clear-btn:hover { color: var(--ink); }
+  /* Print */
+  @media print {
+    body { background: none; padding: 0; }
+    .toolbar { display: none; }
+    .page { box-shadow: none; margin: 0; padding: 0.5in 0.6in; max-width: 100%; }
+    .clear-btn { display: none; }
+    input, textarea { border-bottom-color: transparent !important; }
+    input[type="checkbox"] { -webkit-appearance: checkbox !important; }
+    .freezer-head { background: none; }
+    .cover { background: #fff !important; }
+  }
+</style>
+</head>
+<body>
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+<!-- ===== COVER ===== -->
+<div class="page cover" style="background: var(--light);">
+  <p class="brand">Kitchen <em>&amp; Kettle</em></p>
+  <h1>Kitchen<br>Systems<br>Bundle</h1>
+  <p style="font-family:'Work Sans',sans-serif;font-size:9pt;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:2rem;">Interactive Edition — Type into every field</p>
+  <p style="font-size:12pt;max-width:26ch;line-height:1.5;">
+    Five practical templates for running a kitchen that holds up under real life. Type directly into this page. Your data saves automatically.
+  </p>
+</div>
+<!-- ===== HOW TO USE ===== -->
+<div class="page prose-page">
+  <h2>How this works</h2>
+  <p class="lede">Type into any field. Everything saves automatically to your browser — close the page and come back, your data is still here. Nothing leaves your computer. No account. No signup.</p>
+  <h3>Tips</h3>
+  <ul>
+    <li>Your data stays on this computer, in this browser. It won't sync to your phone.</li>
+    <li>Use <strong>Print / Save PDF</strong> from the top bar to save a filled copy.</li>
+    <li>The "Clear all data" button wipes everything. Use it when starting a fresh week.</li>
+    <li>Works offline — no internet needed after the first load.</li>
+  </ul>
+  <hr>
+  <h3>The five tools</h3>
+  <ol>
+    <li><strong>Weekly Meal Planner</strong> — Decide what to eat.</li>
+    <li><strong>Grocery List</strong> — Shop from the plan.</li>
+    <li><strong>Pantry Inventory</strong> — Know what you have.</li>
+    <li><strong>Freezer Inventory</strong> — Know what's in there.</li>
+    <li><strong>Weekly Prep Checklist</strong> — The few things that make the week smoother.</li>
+  </ol>
+  <p class="tip">This takes about 20 minutes once a week. The payoff is not standing in front of the fridge at 5:30pm with no plan.</p>
+</div>
+<!-- ===== MEAL PLANNER ===== -->
+<div class="page" id="meal-planner-page">
+  <div class="section-header">
+    <h2>Weekly Meal Planner</h2>
+    <button class="clear-btn" onclick="clearSection('meal')">Clear this page</button>
+  </div>
+  <div class="week-of">
+    <label>Week of:</label>
+    <input type="text" data-key="meal-week" placeholder="e.g. June 2">
+  </div>
+  <div class="meal-grid" id="meal-grid"></div>
+  <div style="margin-top:0.5rem;padding:0.35rem;border:1px solid var(--line);">
+    <span style="font-family:'Work Sans',sans-serif;font-size:7.5pt;font-weight:600;color:var(--muted);">NOTES / LEFTOVER PLANS:</span>
+    <textarea data-key="meal-notes" style="width:100%;min-height:1.5rem;resize:vertical;border:none;outline:none;font-size:10pt;" placeholder="What needs using up? What can become leftovers?"></textarea>
+  </div>
+</div>
+<!-- ===== GROCERY LIST ===== -->
+<div class="page" id="grocery-page">
+  <div class="section-header">
+    <h2>Grocery List</h2>
+    <button class="clear-btn" onclick="clearSection('grocery')">Clear this page</button>
+  </div>
+  <div class="grocery-header">
+    <label>Date:</label>
+    <input type="text" data-key="grocery-date" style="width:8rem;" placeholder="e.g. June 2">
+  </div>
+  <div class="grocery-grid" id="grocery-grid"></div>
+  <div style="margin-top:0.5rem;padding:0.35rem;border:1px solid var(--line);font-size:9pt;color:var(--sage);font-style:italic;">
+    Before you go: check the pantry and freezer for these items first. Don't buy what you already have.
+  </div>
+</div>
+<!-- ===== PANTRY INVENTORY ===== -->
+<div class="page" id="pantry-page">
+  <div class="section-header">
+    <h2>Pantry Inventory</h2>
+    <div style="display:flex;gap:0.5rem;align-items:center;">
+      <label style="font-family:'Work Sans',sans-serif;font-size:8pt;color:var(--muted);">Updated:</label>
+      <input type="text" data-key="pantry-date" style="width:6rem;font-size:9pt;" placeholder="date">
+      <button class="clear-btn" onclick="clearSection('pantry')">Clear</button>
+    </div>
+  </div>
+  <p class="tip">Reference sheet. Update when something big changes — not every time you use half an onion.</p>
+  <div class="pantry-cols" id="pantry-cols"></div>
+  <div style="margin-top:0.5rem;padding:0.35rem;border:1px solid var(--line);font-size:9pt;color:var(--sage);font-style:italic;">
+    Mark items "L" in the notes column when running low. Cross off (clear the row) when you use the last of something.
+  </div>
+</div>
+<!-- ===== FREEZER INVENTORY ===== -->
+<div class="page" id="freezer-page">
+  <div class="section-header">
+    <h2>Freezer Inventory</h2>
+    <div style="display:flex;gap:0.5rem;align-items:center;">
+      <label style="font-family:'Work Sans',sans-serif;font-size:8pt;color:var(--muted);">Updated:</label>
+      <input type="text" data-key="freezer-date" style="width:6rem;font-size:9pt;" placeholder="date">
+      <button class="clear-btn" onclick="clearSection('freezer')">Clear</button>
+    </div>
+  </div>
+  <p class="tip">The freezer is where food goes to be forgotten. Track what you add and remove.</p>
+  <div class="freezer-grid" id="freezer-grid-1"></div>
+  <div style="font-size:9pt;color:var(--muted);margin:0.4rem 0;">
+    Common items: stock/broth, cooked beans, frozen veg, meat, bread, dough, cheese, herbs in oil, tomato paste, fruit, leftovers.
+  </div>
+  <div class="freezer-grid" id="freezer-grid-2" style="margin-top:0.4rem;"></div>
+  <div style="margin-top:0.5rem;padding:0.35rem;border:1px solid var(--line);font-size:9pt;color:var(--sage);font-style:italic;">
+    Keep this open while you cook. Add items when you freeze them. Cross off when you use them.
+  </div>
+</div>
+<!-- ===== WEEKLY PREP ===== -->
+<div class="page" id="prep-page">
+  <div class="section-header">
+    <h2>Weekly Prep Checklist</h2>
+    <button class="clear-btn" onclick="clearSection('prep')">Clear checks</button>
+  </div>
+  <p class="tip">The things that make the week easier if you do them ahead. Aim for 3–5.</p>
+  <ul class="prep-list" id="prep-list"></ul>
+  <div style="margin-top:0.5rem;padding:0.35rem;border:1px solid var(--line);font-size:9pt;color:var(--muted);">
+    The person who prepped three things and actually used them had a better week than the person who prepped ten and burned out.
+  </div>
+</div>
+<!-- ===== CLOSING ===== -->
+<div class="page prose-page">
+  <h2>A note on systems</h2>
+  <p class="lede">This bundle is a tool, not a standard. Use what helps. Ignore what doesn't.</p>
+  <p>The goal is to reduce the number of decisions you make when you're tired, hungry, and standing in front of an open fridge at the end of a long day.</p>
+  <hr>
+  <div class="notes-grid">
+    <div class="note-block">
+      <h4>Recipes to try this week</h4>
+      <textarea data-key="notes-recipes" placeholder="Jot down ideas..."></textarea>
+    </div>
+    <div class="note-block">
+      <h4>Things that worked well</h4>
+      <textarea data-key="notes-worked" placeholder="What went right..."></textarea>
+    </div>
+    <div class="note-block">
+      <h4>Things to change next week</h4>
+      <textarea data-key="notes-change" placeholder="What to improve..."></textarea>
+    </div>
+    <div class="note-block">
+      <h4>Shopping notes / reminders</h4>
+      <textarea data-key="notes-shopping" placeholder="Don't forget..."></textarea>
+    </div>
+  </div>
+  <p style="font-size:9pt;color:var(--muted);margin-top:1rem;text-align:center;">
+    Kitchen & Kettle &bull; Works because it works.<br>
+    All data saved to your browser. Nothing leaves your computer.
+  </p>
+</div>
+<script>
+// ── Save / Load ──────────────────────────
+function save() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.type === 'checkbox') data[el.dataset.key] = el.checked;
+    else data[el.dataset.key] = el.value;
+  });
+  localStorage.setItem('keeping-kitchen-bundle', JSON.stringify(data));
+  const status = document.getElementById('saveStatus');
+  status.classList.add('visible');
+  clearTimeout(status._timeout);
+  status._timeout = setTimeout(() => status.classList.remove('visible'), 1500);
+}
+function load() {
+  const raw = localStorage.getItem('keeping-kitchen-bundle');
+  if (!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.dataset.key in data) {
+      if (el.type === 'checkbox') el.checked = data[el.dataset.key];
+      else el.value = data[el.dataset.key];
+    }
+  });
+}
+function clearAll() {
+  if (!confirm('Clear all data? This cannot be undone.')) return;
+  localStorage.removeItem('keeping-kitchen-bundle');
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.type === 'checkbox') el.checked = false;
+    else el.value = '';
+  });
+}
+function clearSection(prefix) {
+  if (!confirm('Clear this section only?')) return;
+  const data = JSON.parse(localStorage.getItem('keeping-kitchen-bundle') || '{}');
+  document.querySelectorAll(`[data-key^="${prefix}"]`).forEach(el => {
+    if (el.type === 'checkbox') { el.checked = false; data[el.dataset.key] = false; }
+    else { el.value = ''; data[el.dataset.key] = ''; }
+  });
+  localStorage.setItem('keeping-kitchen-bundle', JSON.stringify(data));
+}
+// Auto-save on input
+document.addEventListener('input', save);
+document.addEventListener('change', save);
+// ── Build Meal Planner ───────────────────
+const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+const meals = ['Breakfast','Lunch','Dinner'];
+const grid = document.getElementById('meal-grid');
+days.forEach((day, di) => {
+  const card = document.createElement('div');
+  card.className = 'day-card';
+  const label = document.createElement('div');
+  label.className = 'day-label';
+  label.textContent = day;
+  if (di === 0) {
+    // Card 1 (Monday) - breakfast only at top
+    card.appendChild(label);
+    meals.forEach(m => {
+      const row = document.createElement('div');
+      row.className = 'meal-field';
+      const type = document.createElement('span');
+      type.className = 'meal-type';
+      type.textContent = m;
+      const inp = document.createElement('input');
+      inp.dataset.key = `meal-${day.toLowerCase()}-${m.toLowerCase()}`;
+      inp.placeholder = m === 'Breakfast' ? 'e.g. oatmeal' : 'e.g. soup';
+      row.appendChild(type);
+      row.appendChild(inp);
+      card.appendChild(row);
+    });
+  } else {
+    // Even-indexed cards get breakfast, odd get lunch+dinner
+    // Actually let me rethink — the original had a specific layout.

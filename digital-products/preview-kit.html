@@ -1,0 +1,427 @@
+     1|<!DOCTYPE html>
+     2|<html lang="en">
+     3|<head>
+     4|<meta charset="UTF-8">
+     5|<meta name="viewport" content="width=device-width, initial-scale=1.0">
+     6|<title>Product Preview Images — Kitchen & Kettle</title>
+     7|<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+     8|<style>
+     9|  * { margin: 0; padding: 0; box-sizing: border-box; }
+    10|
+    11|  body {
+    12|    background: #ddd8d0;
+    13|    font-family: 'Crimson Pro', Georgia, serif;
+    14|    display: flex;
+    15|    flex-direction: column;
+    16|    align-items: center;
+    17|    padding: 1rem;
+    18|    gap: 2rem;
+    19|  }
+    20|
+    21|  .preview {
+    22|    width: 1200px;
+    23|    background: #fdfcf9;
+    24|    overflow: hidden;
+    25|    box-shadow: 0 3px 18px rgba(0,0,0,0.18);
+    26|    flex-shrink: 0;
+    27|  }
+    28|
+    29|  .header-label {
+    30|    font: 500 8pt 'Work Sans', sans-serif;
+    31|    text-transform: uppercase;
+    32|    letter-spacing: 0.1em;
+    33|    color: #999;
+    34|    text-align: center;
+    35|    padding: 0.3rem;
+    36|    background: #eee;
+    37|  }
+    38|
+    39|  /* ---- Product Card (Etsy thumbnail, square-ish) ---- */
+    40|  .card-1 {
+    41|    width: 1000px;
+    42|    height: 1000px;
+    43|    display: flex;
+    44|    flex-direction: column;
+    45|    justify-content: center;
+    46|    align-items: center;
+    47|    text-align: center;
+    48|    background: #F5F0E8;
+    49|    padding: 4rem;
+    50|    position: relative;
+    51|  }
+    52|  .card-1 .brand {
+    53|    font: 600 18pt 'Work Sans', sans-serif;
+    54|    text-transform: uppercase;
+    55|    letter-spacing: 0.12em;
+    56|    color: #C4A882;
+    57|    margin-bottom: 2rem;
+    58|  }
+    59|  .card-1 h1 {
+    60|    font: 600 44pt 'Crimson Pro', serif;
+    61|    color: #2C2416;
+    62|    letter-spacing: -0.01em;
+    63|    max-width: 75%;
+    64|    line-height: 1.15;
+    65|  }
+    66|  .card-1 .tagline {
+    67|    font: italic 400 16pt 'Crimson Pro', serif;
+    68|    color: #3D362D;
+    69|    margin-top: 1.5rem;
+    70|  }
+    71|  .card-1 .rule {
+    72|    width: 80px;
+    73|    height: 2px;
+    74|    background: #C4A882;
+    75|    margin: 2rem auto;
+    76|  }
+    77|  .card-1 .features {
+    78|    display: flex;
+    79|    gap: 3rem;
+    80|    margin-top: 1.5rem;
+    81|    justify-content: center;
+    82|  }
+    83|  .card-1 .feature {
+    84|    font: 400 13pt/1.5 'Crimson Pro', serif;
+    85|    color: #3D362D;
+    86|    flex: 1;
+    87|    max-width: 200px;
+    88|    text-align: center;
+    89|  }
+    90|  .card-1 .feature strong {
+    91|    display: block;
+    92|    font: 600 11pt 'Work Sans', sans-serif;
+    93|    text-transform: uppercase;
+    94|    letter-spacing: 0.06em;
+    95|    color: #7D8B6F;
+    96|    margin-bottom: 0.3rem;
+    97|  }
+    98|
+    99|  /* ---- Lifestyle mockup (product "in use") ---- */
+   100|  .card-2 {
+   101|    width: 1000px;
+   102|    height: 667px;
+   103|    display: flex;
+   104|    align-items: center;
+   105|    gap: 3rem;
+   106|    padding: 3rem 4rem;
+   107|    background: #FAF7F0;
+   108|  }
+   109|  .card-2 .page-swatch {
+   110|    width: 320px;
+   111|    height: 414px;
+   112|    background: #fff;
+   113|    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+   114|    border-radius: 2px;
+   115|    padding: 2.5rem 2rem;
+   116|    display: flex;
+   117|    flex-direction: column;
+   118|    justify-content: center;
+   119|    align-items: center;
+   120|    text-align: center;
+   121|    flex-shrink: 0;
+   122|  }
+   123|  .card-2 .page-swatch h3 {
+   124|    font: 600 16pt 'Crimson Pro', serif;
+   125|    color: #C4A882;
+   126|    margin-bottom: 1rem;
+   127|  }
+   128|  .card-2 .page-swatch p {
+   129|    font: 400 10pt/1.6 'Crimson Pro', serif;
+   130|    color: #3D362D;
+   131|  }
+   132|  .card-2 .copy h2 {
+   133|    font: 500 22pt 'Crimson Pro', serif;
+   134|    color: #2C2416;
+   135|    margin-bottom: 1rem;
+   136|  }
+   137|  .card-2 .copy p {
+   138|    font: 400 12pt/1.7 'Crimson Pro', serif;
+   139|    color: #3D362D;
+   140|    margin-bottom: 0.8rem;
+   141|  }
+   142|  .card-2 .copy .bullet {
+   143|    font: 400 11pt/1.8 'Crimson Pro', serif;
+   144|    color: #3D362D;
+   145|    list-style: none;
+   146|    padding: 0;
+   147|  }
+   148|  .card-2 .copy .bullet li::before {
+   149|    content: "— ";
+   150|    color: #C4A882;
+   151|  }
+   152|
+   153|  /* ---- Inside spread mockup ---- */
+   154|  .card-3 {
+   155|    width: 1000px;
+   156|    height: 667px;
+   157|    display: flex;
+   158|    gap: 2rem;
+   159|    padding: 3rem;
+   160|    background: #fff;
+   161|    justify-content: center;
+   162|    align-items: center;
+   163|  }
+   164|  .card-3 .page-mock {
+   165|    width: 400px;
+   166|    height: 520px;
+   167|    background: #fdfcf9;
+   168|    box-shadow: 0 1px 8px rgba(0,0,0,0.10);
+   169|    border-radius: 2px;
+   170|    padding: 2rem;
+   171|    display: flex;
+   172|    flex-direction: column;
+   173|  }
+   174|  .card-3 .page-mock .month {
+   175|    font: 600 14pt 'Work Sans', sans-serif;
+   176|    text-transform: uppercase;
+   177|    letter-spacing: 0.06em;
+   178|    color: #7D8B6F;
+   179|    border-bottom: 2px solid #C4A882;
+   180|    padding-bottom: 0.4rem;
+   181|    margin-bottom: 0.8rem;
+   182|  }
+   183|  .card-3 .page-mock ul {
+   184|    list-style: none;
+   185|    font: 400 10pt/1.8 'Crimson Pro', serif;
+   186|    color: #2C2416;
+   187|  }
+   188|  .card-3 .page-mock ul li::before {
+   189|    content: "— ";
+   190|    color: #C4A882;
+   191|  }
+   192|  .card-3 .page-mock .method-tag {
+   193|    display: inline-block;
+   194|    font: 500 7pt 'Work Sans', sans-serif;
+   195|    text-transform: uppercase;
+   196|    letter-spacing: 0.04em;
+   197|    padding: 0.15rem 0.5rem;
+   198|    border-radius: 3px;
+   199|    margin: 0.1rem;
+   200|  }
+   201|  .tag-f { background: #e8f0e4; color: #7D8B6F; }
+   202|  .tag-c { background: #f0e8e0; color: #9b6b3d; }
+   203|  .tag-d { background: #f0ece0; color: #8b7b3d; }
+   204|
+   205|  /* ---- Egg guide card ---- */
+   206|  .card-egg-1 {
+   207|    width: 1000px;
+   208|    height: 1000px;
+   209|    display: flex;
+   210|    flex-direction: column;
+   211|    justify-content: center;
+   212|    align-items: center;
+   213|    text-align: center;
+   214|    background: #F5F0E8;
+   215|    padding: 4rem;
+   216|  }
+   217|  .card-egg-1 .brand {
+   218|    font: 600 18pt 'Work Sans', sans-serif;
+   219|    text-transform: uppercase;
+   220|    letter-spacing: 0.12em;
+   221|    color: #C4A882;
+   222|    margin-bottom: 2rem;
+   223|  }
+   224|  .card-egg-1 h1 {
+   225|    font: 600 40pt 'Crimson Pro', serif;
+   226|    color: #2C2416;
+   227|    letter-spacing: -0.01em;
+   228|    max-width: 75%;
+   229|    line-height: 1.15;
+   230|  }
+   231|  .card-egg-1 .tagline {
+   232|    font: italic 400 15pt 'Crimson Pro', serif;
+   233|    color: #3D362D;
+   234|    margin-top: 1.5rem;
+   235|  }
+   236|  .card-egg-1 .rule {
+   237|    width: 80px;
+   238|    height: 2px;
+   239|    background: #C4A882;
+   240|    margin: 2rem auto;
+   241|  }
+   242|  .card-egg-1 .methods {
+   243|    display: flex;
+   244|    gap: 2.5rem;
+   245|    margin-top: 1.5rem;
+   246|  }
+   247|  .card-egg-1 .method {
+   248|    font: 400 13pt/1.5 'Crimson Pro', serif;
+   249|    color: #3D362D;
+   250|    text-align: center;
+   251|  }
+   252|  .card-egg-1 .method strong {
+   253|    display: block;
+   254|    font: 600 12pt 'Work Sans', sans-serif;
+   255|    text-transform: uppercase;
+   256|    letter-spacing: 0.06em;
+   257|    color: #7D8B6F;
+   258|    margin-bottom: 0.5rem;
+   259|  }
+   260|
+   261|  /* Info bar */
+   262|  .info {
+   263|    font: 400 11pt 'Work Sans', sans-serif;
+   264|    color: #888;
+   265|    text-align: center;
+   266|    padding: 0.5rem;
+   267|  }
+   268|</style>
+   269|</head>
+   270|<body>
+   271|
+   272|<div class="info">Scroll down to see all preview images. Right-click → Save Image As, or use your OS screenshot tool.</div>
+   273|
+   274|<!-- ===== SEASONAL CALENDAR: Cover (Etsy thumbnail) ===== -->
+   275|<div class="preview">
+   276|  <div class="header-label">Seasonal Calendar — Main Listing Image (square, for Etsy thumbnail)</div>
+   277|  <div class="card-1">
+   278|    <div class="brand">Kitchen & Kettle</div>
+   279|    <h1>Seasonal Preservation Calendar</h1>
+   280|    <div class="rule"></div>
+   281|    <p class="tagline">Works because it works.</p>
+   282|    <div class="features">
+   283|      <div class="feature"><strong>12 months</strong>What's in season, what to preserve, and how</div>
+   284|      <div class="feature"><strong>8 methods</strong>Canning, fermenting, dehydrating, freezing, and more</div>
+   285|      <div class="feature"><strong>Printable PDF</strong>11 pages, letter size, print-friendly</div>
+   286|    </div>
+   287|  </div>
+   288|</div>
+   289|
+   290|<!-- ===== SEASONAL CALENDAR: Lifestyle mockup ===== -->
+   291|<div class="preview">
+   292|  <div class="header-label">Seasonal Calendar — Listing Image 2 (lifestyle / what's inside)</div>
+   293|  <div class="card-2">
+   294|    <div class="page-swatch">
+   295|      <h3>July & August</h3>
+   296|      <p>Tomatoes, corn, peaches, peppers, green beans, cucumbers — peak season. Can whole tomatoes, freeze corn, ferment hot sauce, dehydrate peppers, make peach jam.</p>
+   297|      <p style="margin-top:0.5rem; font-style:italic; color:#B94A3E; font-size:9pt;">"The most important preservation task in August is tomatoes — home-preserved is genuinely better than store-bought."</p>
+   298|    </div>
+   299|    <div class="copy">
+   300|      <h2>A month-by-month guide to a pantry that feeds you all year</h2>
+   301|      <p>Not a to-do list designed to make you feel behind. A reference — use the parts that fit your season of life and ignore the rest.</p>
+   302|      <ul class="bullet">
+   303|        <li>What's in season each month</li>
+   304|        <li>Which preservation method works best</li>
+   305|        <li>Gateway methods for beginners (no canning required)</li>
+   306|        <li>Honest notes on what's worth the effort</li>
+   307|        <li>Quick-reference preservation method guide</li>
+   308|        <li>Notes pages to track what you made</li>
+   309|      </ul>
+   310|    </div>
+   311|  </div>
+   312|</div>
+   313|
+   314|<!-- ===== SEASONAL CALENDAR: Inside spread ===== -->
+   315|<div class="preview">
+   316|  <div class="header-label">Seasonal Calendar — Listing Image 3 (interior spread)</div>
+   317|  <div class="card-3">
+   318|    <div class="page-mock">
+   319|      <div class="month">January — The Quiet Month</div>
+   320|      <ul>
+   321|        <li>Citrus (oranges, grapefruit, lemons)</li>
+   322|        <li>Root vegetables (beets, carrots, parsnips)</li>
+   323|        <li>Winter squash</li>
+   324|        <li>Cabbage, kale, brussels sprouts</li>
+   325|      </ul>
+   326|      <p style="font:400 9pt/1.5 'Crimson Pro',serif; color:#B94A3E; margin:0.6rem 0;"><strong>Do now:</strong> Make marmalade, preserved lemons, sauerkraut from winter cabbage.</p>
+   327|      <div>
+   328|        <span class="method-tag tag-c">Marmalade</span>
+   329|        <span class="method-tag tag-f">Preserved lemons</span>
+   330|        <span class="method-tag tag-f">Sauerkraut</span>
+   331|      </div>
+   332|    </div>
+   333|    <div class="page-mock">
+   334|      <div class="month">June — Abundance Begins</div>
+   335|      <ul>
+   336|        <li>Cherries, blueberries, raspberries</li>
+   337|        <li>Zucchini and summer squash</li>
+   338|        <li>Cucumbers, green beans</li>
+   339|        <li>Garlic scapes, new potatoes</li>
+   340|      </ul>
+   341|      <p style="font:400 9pt/1.5 'Crimson Pro',serif; color:#B94A3E; margin:0.6rem 0;"><strong>Do now:</strong> Quick refrigerator pickles, freeze cherries, ferment garlic scapes, make berry shrub.</p>
+   342|      <div>
+   343|        <span class="method-tag tag-c">Dill pickles</span>
+   344|        <span class="method-tag tag-f">Garlic scapes</span>
+   345|        <span class="method-tag tag-d">Berry shrub</span>
+   346|      </div>
+   347|    </div>
+   348|  </div>
+   349|</div>
+   350|
+   351|<!-- ===== EGG GUIDE: Cover (Etsy thumbnail) ===== -->
+   352|<div class="preview">
+   353|  <div class="header-label">Egg Guide — Main Listing Image (square, for Etsy thumbnail)</div>
+   354|  <div class="card-egg-1">
+   355|    <div class="brand">Kitchen & Kettle</div>
+   356|    <h1>Egg Preservation Guide</h1>
+   357|    <div class="rule"></div>
+   358|    <p class="tagline">Three methods. Zero waste. Eggs when you need them.</p>
+   359|    <div class="methods">
+   360|      <div class="method"><strong>Freeze</strong>For baking all winter</div>
+   361|      <div class="method"><strong>Water glass</strong>No electricity needed</div>
+   362|      <div class="method"><strong>Pickle</strong>Ready-to-eat protein</div>
+   363|    </div>
+   364|  </div>
+   365|</div>
+   366|
+   367|<!-- ===== EGG GUIDE: Lifestyle mockup ===== -->
+   368|<div class="preview">
+   369|  <div class="header-label">Egg Guide — Listing Image 2 (lifestyle / what's inside)</div>
+   370|  <div class="card-2">
+   371|    <div class="page-swatch">
+   372|      <h3>Method 2:<br>Water Glassing</h3>
+   373|      <p>Your homestead insurance. No electricity, no canning, no sealing. Eggs, water, pickling lime. Room-temperature-stable for 8–12 months.</p>
+   374|      <p style="margin-top:0.5rem; font-style:italic; color:#B94A3E; font-size:9pt;">"Water glassing is the lowest-effort method in this guide, but it requires the freshest eggs. If you're buying supermarket eggs, skip this."</p>
+   375|    </div>
+   376|    <div class="copy">
+   377|      <h2>What to do when you have more eggs than you can eat</h2>
+   378|      <p>A practical, non-overwhelming guide to three preservation methods — from quick freezing to traditional water glassing.</p>
+   379|      <ul class="bullet">
+   380|        <li>Freezing for baking (6–12 month supply)</li>
+   381|        <li>Water glassing for long-term backup</li>
+   382|        <li>Pickling for grab-and-eat protein</li>
+   383|        <li>Clear ratios and step-by-step instructions</li>
+   384|        <li>Three flavor variations for pickled eggs</li>
+   385|        <li>Which method to use when (simple daily system)</li>
+   386|      </ul>
+   387|    </div>
+   388|  </div>
+   389|</div>
+   390|
+   391|<!-- ===== EGG GUIDE: Interior spread ===== -->
+   392|<div class="preview">
+   393|  <div class="header-label">Egg Guide — Listing Image 3 (interior / what you'll learn)</div>
+   394|  <div class="card-3">
+   395|    <div class="page-mock">
+   396|      <div class="month">Which method when?</div>
+   397|      <table style="width:100%;font:400 9pt/1.6 'Crimson Pro',serif;color:#2C2416;border-collapse:collapse;margin-top:0.6rem;">
+   398|        <tr style="border-bottom:1px solid #e0dbd2;"><td style="padding:0.3rem 0;font-weight:600;">Freeze</td><td style="text-align:right;color:#3D362D;">Baking supply</td></tr>
+   399|        <tr style="border-bottom:1px solid #e0dbd2;"><td style="padding:0.3rem 0;font-weight:600;">Water glass</td><td style="text-align:right;color:#3D362D;">Long-term backup</td></tr>
+   400|        <tr><td style="padding:0.3rem 0;font-weight:600;">Pickle</td><td style="text-align:right;color:#3D362D;">Grab-and-eat</td></tr>
+   401|      </table>
+   402|      <p style="font:400 8.5pt/1.5 'Crimson Pro',serif;color:#3D362D;margin-top:0.8rem;">One simple system: fresh eggs → water glass, extras → freeze, older eggs → pickle. No stress, no waste.</p>
+   403|    </div>
+   404|    <div class="page-mock" style="justify-content:center;">
+   405|      <div style="text-align:center;">
+   406|        <div class="month" style="text-align:center;border:none;margin-bottom:1rem;">Inside this guide</div>
+   407|        <ul style="list-style:none;font:400 10pt/2 'Crimson Pro',serif;color:#2C2416;text-align:left;padding:0;">
+   408|          <li>— Step-by-step for each method</li>
+   409|          <li>— Clear ratios, no guesswork</li>
+   410|          <li>— Three pickle flavor variations</li>
+   411|          <li>— Common mistakes to avoid</li>
+   412|          <li>— Honest notes on what's worth it</li>
+   413|          <li>— Notes page to track your batches</li>
+   414|        </ul>
+   415|      </div>
+   416|    </div>
+   417|  </div>
+   418|</div>
+   419|
+   420|<div class="info" style="margin-top:1rem; padding-bottom:3rem;">
+   421|  To save: Right-click each preview → "Save Image As" (or use browser extensions like "Full Page Screen Capture").<br>
+   422|  Upload the PNGs to Etsy as your listing images. 3–5 images per product is standard.
+   423|</div>
+   424|
+   425|</body>
+   426|</html>
+   427|

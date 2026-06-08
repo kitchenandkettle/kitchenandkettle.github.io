@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Natural Homekeeping Guide — Interactive Edition — Kitchen & Kettle</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap');
+  :root {
+    --paper: #F5F0E8; --ink: #2C2416; --clay: #C4A882;
+    --sage: #7D8B6F; --muted: #8B8376; --line: #D9D0C1; --light: #FAF7F0;
+    --saved: #5a8a6a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Crimson Pro', Georgia, serif; font-size: 11pt;
+    line-height: 1.6; color: var(--ink); background: #e8e4dc;
+    padding: 1rem;
+  }
+  .toolbar {
+    max-width: 8.5in; width: 100%; margin: 0 auto 0.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: #fff; padding: 0.5rem 0.7rem; border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(44,36,22,0.08);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .toolbar .brand { font-family: 'Crimson Pro', serif; font-size: 14pt; font-weight: 600; color: var(--ink); }
+  .toolbar .brand em { font-style: italic; color: var(--clay); }
+  .toolbar .actions { display: flex; gap: 0.5rem; align-items: center; }
+  .toolbar .save-status {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; color: var(--saved);
+    margin-right: 0.5rem; opacity: 0; transition: opacity 0.3s;
+  }
+  .toolbar .save-status.visible { opacity: 1; }
+  .btn {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; font-weight: 600;
+    padding: 0.4em 0.8em; border-radius: 3px; cursor: pointer; border: none;
+  }
+  .btn-ghost { background: none; color: var(--muted); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+  .btn-print { background: var(--ink); color: var(--paper); }
+  .btn-print:hover { background: #3D362D; }
+  .page {
+    max-width: 8.5in; width: 100%; margin: 0 auto 0.5rem; background: #fff;
+    padding: 0.75in 0.7in; box-shadow: 0 2px 12px rgba(44,36,22,0.1);
+  }
+  h1 { font-size: 28pt; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+  h2 { font-size: 16pt; font-weight: 600; margin-bottom: 0.4rem; }
+  h3 {
+    font-family: 'Work Sans', sans-serif; font-size: 9pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.3rem;
+  }
+  p { margin-bottom: 0.5rem; color: #3D362D; }
+  .lede { font-size: 13pt; line-height: 1.5; margin-bottom: 1rem; }
+  .tip {
+    font-size: 9pt; font-style: italic; color: var(--sage);
+    margin: 0.4rem 0; padding-left: 0.5rem; border-left: 2px solid var(--clay);
+  }
+  .section-header {
+    border-bottom: 1px solid var(--line); padding-bottom: 0.3rem;
+    margin-bottom: 0.6rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  input, textarea {
+    font-family: 'Crimson Pro', Georgia, serif; font-size: 10pt; color: var(--ink);
+    background: transparent; border: none; border-bottom: 1px solid transparent;
+    padding: 0.1rem 0; outline: none; width: 100%;
+    transition: border-color 0.15s;
+  }
+  input:focus, textarea:focus { border-bottom-color: var(--clay); }
+  /* Cover */
+  .cover {
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; text-align: center; padding: 2in 0.7in; min-height: 11in;
+    background: var(--light);
+  }
+  .cover .brand { font-size: 14pt; color: var(--muted); margin-bottom: 1.5rem; }
+  .cover .brand em { font-style: italic; color: var(--clay); }
+  .cover h1 { font-size: 28pt; max-width: 10ch; }
+  /* Prose */
+  .prose-page h2 { margin-top: 0; }
+  .prose-page ol, .prose-page ul { margin: 0.4rem 0 0.6rem 1.2rem; font-size: 10.5pt; }
+  .prose-page li { margin-bottom: 0.35rem; line-height: 1.5; }
+  .prose-page hr { border: none; border-top: 1px solid var(--line); margin: 0.7rem 0; }
+  /* Recipe cards */
+  .recipe-card {
+    border: 1px solid var(--line); padding: 0.5rem; margin-bottom: 0.5rem;
+  }
+  .recipe-card h3 {
+    font-family: 'Crimson Pro', serif; font-size: 13pt; font-weight: 600;
+    text-transform: none; letter-spacing: 0; color: var(--ink); margin-bottom: 0.2rem;
+  }
+  /* Ingredient cards */
+  .ingredient-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .ingredient-card {
+    border: 1px solid var(--line); padding: 0.4rem;
+  }
+  .ingredient-card h4 {
+    font-family: 'Crimson Pro', serif; font-size: 11pt; font-weight: 600;
+    margin-bottom: 0.2rem; padding-bottom: 0.15rem; border-bottom: 1px dotted var(--line);
+  }
+  .ingredient-card p { font-size: 9pt; margin-bottom: 0.2rem; }
+  .honest-box {
+    border: 1px solid var(--clay); padding: 0.5rem; margin: 0.5rem 0;
+    background: var(--light);
+  }
+  .honest-box h4 {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--clay); margin-bottom: 0.2rem;
+  }
+  /* Checklist */
+  .checklist { list-style: none; }
+  .checklist li {
+    display: grid; grid-template-columns: 1.2rem 1fr;
+    gap: 0.3rem; padding: 0.15rem 0; font-size: 9.5pt; align-items: start;
+  }
+  .checklist input[type="checkbox"] {
+    width: 0.8rem; height: 0.8rem; margin-top: 0.2rem;
+    accent-color: var(--sage); cursor: pointer;
+  }
+  /* Routine table */
+  .routine-table {
+    width: 100%; border-collapse: collapse; border: 1px solid var(--line); margin: 0.5rem 0;
+  }
+  .routine-table th {
+    font-family: 'Work Sans', sans-serif; font-size: 7.5pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    padding: 0.25rem 0.35rem; border: 1px solid var(--line); background: var(--light); text-align: left;
+  }
+  .routine-table td {
+    padding: 0.25rem 0.35rem; border: 1px solid var(--line); font-size: 9pt; vertical-align: top;
+  }
+  .routine-table td:first-child {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; font-weight: 600;
+    color: var(--muted); text-align: center; width: 1in;
+  }
+  /* Notes */
+  .notes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.5rem; }
+  .note-block {
+    border: 1px solid var(--line); padding: 0.4rem; min-height: 3rem;
+  }
+  .note-block h4 {
+    font-family: 'Work Sans', sans-serif; font-size: 7.5pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    margin-bottom: 0.3rem; padding-bottom: 0.1rem; border-bottom: 1px dotted var(--line);
+  }
+  .note-block textarea {
+    width: 100%; min-height: 2rem; resize: vertical; font-size: 9pt;
+    border: none; outline: none; background: transparent;
+  }
+  .clear-btn {
+    font-family: 'Work Sans', sans-serif; font-size: 7pt; color: var(--muted);
+    background: none; border: none; cursor: pointer; text-decoration: underline;
+  }
+  .clear-btn:hover { color: var(--ink); }
+  @media print {
+    body { background: none; padding: 0; }
+    .toolbar { display: none; }
+    .page { box-shadow: none; margin: 0; padding: 0.5in 0.6in; max-width: 100%; }
+    .clear-btn { display: none; }
+    input[type="checkbox"] { -webkit-appearance: checkbox !important; }
+    input, textarea { border-bottom-color: transparent !important; }
+    .routine-table th { background: none; }
+    .cover { background: #fff !important; }
+    .honest-box { background: none; }
+  }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+<!-- COVER -->
+<div class="page cover">
+  <p class="brand">Kitchen <em>&amp; Kettle</em></p>
+  <h1>Natural<br>Homekeeping<br>Guide</h1>
+  <p style="font-family:'Work Sans',sans-serif;font-size:9pt;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:2rem;">Interactive Edition</p>
+  <p style="font-size:12pt;max-width:26ch;line-height:1.5;">
+    Cleaning recipes from kitchen ingredients, simple routines, and honest guidance. Check off tasks as you go.
+  </p>
+</div>
+<!-- PHILOSOPHY + INGREDIENTS -->
+<div class="page prose-page">
+  <h2>Why fewer products?</h2>
+  <p class="lede">Most of what a house needs for cleaning can be handled with three things: soap, an acid, and a mild abrasive. The rest is knowing when to use each one — and when a commercial product does the job better.</p>
+  <p>This isn't about avoiding "chemicals." Everything is chemicals. It's about fewer bottles under your sink, understanding what's in them, and spending less money.</p>
+  <hr>
+  <h2>The seven-ingredient cleaning pantry</h2>
+  <div class="ingredient-grid">
+    <div class="ingredient-card">
+      <h4>White vinegar</h4>
+      <p>A mild acid. Dissolves mineral deposits, cuts grease, deodorizes.</p>
+      <p style="font-size:8.5pt;color:var(--sage);font-style:italic;">Glass, counters, bathroom, laundry rinse, coffee maker.</p>
+      <div class="honest-box" style="margin-top:0.3rem;">
+        <h4>Honest note</h4>
+        <p style="font-size:9pt;font-style:italic;">Does not disinfect. Use for cleaning (removing dirt), not sanitizing. If someone is sick, use something stronger.</p>
+      </div>
+    </div>
+    <div class="ingredient-card">
+      <h4>Baking soda</h4>
+      <p>A mild abrasive and deodorizer. Scrubs without scratching.</p>
+      <p style="font-size:8.5pt;color:var(--sage);font-style:italic;">Sinks, tubs, stovetops, oven, deodorizing, laundry booster.</p>
+      <div class="honest-box" style="margin-top:0.3rem;">
+        <h4>Honest note</h4>
+        <p style="font-size:9pt;font-style:italic;">The baking soda + vinegar fizz is not what cleans — it's just the two neutralizing each other. Scrub with baking soda, rinse, then wipe with vinegar. Don't mix them at the same time.</p>
+      </div>
+    </div>
+    <div class="ingredient-card">
+      <h4>Castile soap (liquid) or plain bar soap</h4>
+      <p>A true soap from plant oils or gentle fats. Cuts through dirt and grease. Liquid castile is convenient; a plain bar like Ivory or Dove Sensitive works just as well — grate and dissolve in warm water, or rub a damp cloth on the bar.</p>
+      <p style="font-size:8.5pt;color:var(--sage);font-style:italic;">All-purpose spray, dish soap, hand soap, floors, laundry (soft water).</p>
+      <div class="honest-box" style="margin-top:0.3rem;">
+        <h4>Honest note</h4>
+        <p style="font-size:9pt;font-style:italic;">Castile can irritate some people's skin. If it bothers you, switch to a plain unscented bar (Ivory, Dove Sensitive). Cleans just as well and many find it gentler. Don't mix any soap with vinegar — they cancel out.</p>
+      </div>
+    </div>
+    <div class="ingredient-card">
+      <h4>Citric acid</h4>
+      <p>A stronger, odorless acid. Excellent descaler.</p>
+      <p style="font-size:8.5pt;color:var(--sage);font-style:italic;">Dishwasher, washing machine, kettle, bathroom fixtures.</p>
+    </div>
+    <div class="ingredient-card">
+      <h4>Salt (coarse)</h4>
+      <p>Abrasive and absorbent. Good for stubborn residue.</p>
+      <p style="font-size:8.5pt;color:var(--sage);font-style:italic;">Cast iron, cutting boards, oven spills, wine stains.</p>
+    </div>
+    <div class="ingredient-card">
+      <h4>Hydrogen peroxide (3%)</h4>
+      <p>Oxidizing cleaner and mild disinfectant.</p>
+      <p style="font-size:8.5pt;color:var(--sage);font-style:italic;">Stain removal, cutting board sanitizing, grout, laundry.</p>
+      <div class="honest-box" style="margin-top:0.3rem;">
+        <h4>Honest note</h4>
+        <p style="font-size:9pt;font-style:italic;">Keep in dark bottle. Don't mix with vinegar (creates irritant).</p>
+      </div>
+    </div>
+  </div>
+  <div class="honest-box" style="margin-top:0.6rem;">
+    <h4>When to use commercial products</h4>
+    <p style="font-size:9.5pt;font-style:italic;">Toilet bowl cleaner, laundry detergent in hard water, dishwasher detergent, disinfectant when sick. This isn't absolutism.</p>
+  </div>
+</div>
+<!-- CLEANING RECIPES -->
+<div class="page" id="recipes-page">
+  <div class="section-header">
+    <h2>Cleaning Recipes</h2>
+  </div>
+  <div class="recipe-card">
+    <h3>All-Purpose Spray</h3>
+    <p style="font-size:9pt;color:var(--sage);font-style:italic;">Counters, tables, sinks, most hard surfaces. Daily use.</p>
+    <p style="font-size:9pt;color:var(--muted);">1 cup water &bull; 1 cup white vinegar &bull; optional: 10 drops essential oil</p>
+    <ol style="font-size:9.5pt;padding-left:1rem;color:#3D362D;">
+      <li>Combine in a spray bottle. Shake before each use.</li>
+      <li>Spray surface. Wipe with a clean cloth.</li>
+    </ol>
+    <p style="font-size:8.5pt;color:var(--muted);margin-top:0.2rem;">Do not use on marble, granite, or natural stone.</p>
+    <div style="margin-top:0.3rem;">
+      <label style="font-size:8pt;">My notes on this recipe:</label>
+      <textarea data-key="notes-spray" style="width:100%;min-height:1.2rem;resize:vertical;border:none;outline:none;font-size:9pt;" placeholder="Any adjustments? Does it work in your water?"></textarea>
+    </div>
+  </div>
+  <div class="recipe-card">
+    <h3>Soft Scrub (sinks, tubs, stovetops)</h3>
+    <p style="font-size:9pt;color:var(--muted);">Baking soda &bull; liquid soap or plain bar (castile, Ivory, or Dove) &bull; water</p>
+    <ol style="font-size:9.5pt;padding-left:1rem;color:#3D362D;">
+      <li>Sprinkle baking soda onto the wet surface.</li>
+      <li>Add a few drops of liquid soap, or rub a damp cloth on a bar of mild soap.</li>
+      <li>Scrub with damp cloth. Rinse thoroughly.</li>
+    </ol>
+  </div>
+  <div class="recipe-card">
+    <h3>Glass &amp; Mirror Cleaner</h3>
+    <p style="font-size:9pt;color:var(--muted);">½ cup isopropyl alcohol (70% or 50%) &bull; ½ cup water</p>
+    <ol style="font-size:9.5pt;padding-left:1rem;color:#3D362D;">
+      <li>Combine in spray bottle. Shake gently.</li>
+      <li>Spray onto glass. Wipe with microfiber cloth or newspaper.</li>
+    </ol>
+    <p style="font-size:8.5pt;color:var(--muted);">Alcohol cuts grease and evaporates fast — zero streaks. No alcohol? ¼ cup vinegar + 1 cup water + 1 tsp cornstarch works too.</p>
+  </div>
+  <div class="recipe-card">
+    <h3>Floor Cleaner</h3>
+    <p style="font-size:9pt;color:var(--muted);">1 gallon hot water &bull; ¼ cup white vinegar &bull; 2–3 drops mild liquid soap (optional)</p>
+    <ol style="font-size:9.5pt;padding-left:1rem;color:#3D362D;">
+      <li>Combine in bucket. Mop as usual.</li>
+      <li>No need to rinse — vinegar residue evaporates.</li>
+    </ol>
+  </div>
+  <div class="recipe-card">
+    <h3>Oven Cleaner (non-toxic, requires elbow grease)</h3>
+    <p style="font-size:9pt;color:var(--muted);">Baking soda &bull; water &bull; white vinegar (for final wipe)</p>
+    <ol style="font-size:9.5pt;padding-left:1rem;color:#3D362D;">
+      <li>Make a paste of baking soda and water. Spread over surfaces.</li>
+      <li>Let sit overnight (at least 8 hours).</li>
+      <li>Scrub with damp cloth. Spray vinegar on stubborn spots.</li>
+    </ol>
+  </div>
+</div>
+<!-- ROUTINES -->
+<div class="page" id="routines-page">
+  <div class="section-header">
+    <h2>Cleaning Rhythms</h2>
+    <button class="clear-btn" onclick="clearSection('routine')">Clear checks</button>
+  </div>
+  <p class="tip">A rhythm is not a schedule. If you miss a day, pick up where you left off.</p>
+  <h3 style="margin-top:0.5rem;">Daily (5–15 minutes)</h3>
+  <ul class="checklist" id="daily-list"></ul>
+  <h3 style="margin-top:0.5rem;">Weekly (any day you have energy)</h3>
+  <ul class="checklist" id="weekly-list"></ul>
+  <h3 style="margin-top:0.5rem;">Monthly</h3>
+  <ul class="checklist" id="monthly-list"></ul>
+  <div class="honest-box" style="margin-top:0.6rem;">
+    <h4>If you only do one thing</h4>
+    <p style="font-size:9.5pt;font-style:italic;">A clean kitchen and a clean bathroom make a house feel functional. Skip everything else if you're overwhelmed.</p>
+  </div>
+</div>
+<!-- LAUNDRY -->
+<div class="page prose-page">
+  <h2>Laundry &amp; Simple Care</h2>
+  <h3>Laundry that lasts</h3>
+  <ul>
+    <li><strong>Cold water for most things.</strong> Warm for towels and bedding.</li>
+    <li><strong>Less detergent than the bottle says.</strong> Start with half.</li>
+    <li><strong>Air dry when you can.</strong> The dryer is the hardest thing you do to your clothes.</li>
+    <li><strong>Don't overwash.</strong> Jeans, sweaters, outer layers — hang to air out between wears.</li>
+  </ul>
+  <hr>
+  <h3>Stain removal that works</h3>
+  <table class="routine-table">
+    <thead><tr><th>Stain</th><th>What to use</th><th>Method</th></tr></thead>
+    <tbody>
+      <tr><td>Blood</td><td>Cold water + hydrogen peroxide</td><td>Rinse in cold water immediately. Dab peroxide. Never hot water.</td></tr>
+      <tr><td>Red wine</td><td>Salt, then cold water</td><td>Cover with salt to absorb. Rinse with cold water. Launder.</td></tr>
+      <tr><td>Grease / oil</td><td>Dish soap or baking soda</td><td>Rub a drop of dish soap into stain. Or cover with baking soda.</td></tr>
+      <tr><td>Coffee / tea</td><td>Cold water, vinegar if needed</td><td>Rinse immediately. Dab vinegar on stubborn spots.</td></tr>
+      <tr><td>Tomato / berry</td><td>Cold water, then sunlight</td><td>Rinse, rub with detergent, lay in direct sun. UV breaks down pigments.</td></tr>
+      <tr><td>Sweat / deodorant</td><td>White vinegar soak</td><td>Soak 30 min before washing. Prevents yellowing.</td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- CLOSING -->
+<div class="page prose-page">
+  <h2>A note on homekeeping</h2>
+  <p class="lede">A clean house is not a moral achievement. A messy house is not a personal failure. These are just systems for making a space that supports your life.</p>
+  <p>If you try one thing, make the all-purpose spray. Thirty seconds to mix, costs almost nothing, replaces three bottles under your sink.</p>
+  <hr>
+  <div class="notes-grid">
+    <div class="note-block"><h4>Cleaning rhythm that works for me</h4><textarea data-key="notes-rhythm"></textarea></div>
+    <div class="note-block"><h4>Products I stopped buying</h4><textarea data-key="notes-stopped"></textarea></div>
+    <div class="note-block"><h4>Things I still buy (and why)</h4><textarea data-key="notes-stillbuy"></textarea></div>
+    <div class="note-block"><h4>Seasonal cleaning notes</h4><textarea data-key="notes-seasonal"></textarea></div>
+  </div>
+  <p style="font-size:9pt;color:var(--muted);margin-top:1rem;text-align:center;">
+    Kitchen & Kettle &bull; Works because it works.<br>
+    All data saved to your browser.
+  </p>
+</div>
+<script>
+// ── Save / Load ──────────────────────────
+const STORAGE_KEY = 'keeping-kitchen-homekeeping';
+function save() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.type === 'checkbox') data[el.dataset.key] = el.checked;
+    else data[el.dataset.key] = el.value;
+  });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  const s = document.getElementById('saveStatus');
+  s.classList.add('visible');
+  clearTimeout(s._t); s._t = setTimeout(() => s.classList.remove('visible'), 1500);
+}
+function load() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.dataset.key in data) {
+      if (el.type === 'checkbox') el.checked = data[el.dataset.key];
+      else el.value = data[el.dataset.key];
+    }
+  });
+}
+function clearAll() {
+  if (!confirm('Clear all data?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.type === 'checkbox') el.checked = false;
+    else el.value = '';
+  });
+}
+function clearSection(prefix) {
+  if (!confirm('Clear this section?')) return;
+  const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  document.querySelectorAll(`[data-key^="${prefix}"]`).forEach(el => {
+    if (el.type === 'checkbox') { el.checked = false; data[el.dataset.key] = false; }
+    else { el.value = ''; data[el.dataset.key] = ''; }
+  });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+document.addEventListener('input', save);
+document.addEventListener('change', save);
+// ── Build Checklists ─────────────────────
+const dailyTasks = [
+  'Make the bed (or just straighten covers — close enough)',
+  'Wipe kitchen counters after dinner',
+  'Wash dishes or load dishwasher',
+  'Quick sweep of kitchen floor (the crumb zone)',
+  'Put away 5 things that aren\'t where they belong'
+];
+const weeklyTasks = [
+  'Clean bathroom: mirror, counter, sink, toilet, shower spray',
+  'Change towels and kitchen cloths',
+  'Vacuum or sweep all floors',
+  'Mop kitchen and bathroom floors',
+  'Take out trash and recycling',
+  'Wipe down kitchen appliances (outside)',
+  'One load of laundry, start to finish'
+];
+const monthlyTasks = [
+  'Clean inside microwave',
+  'Wipe cabinet fronts and handles',
+  'Clean washing machine (empty run with vinegar)',
+  'Dust baseboards, light fixtures, ceiling corners',
+  'Check and toss expired fridge items',
+  'Wash one unusual item: shower curtain, bath mat, pillow covers'
+];
+function buildChecklist(listId, tasks, prefix) {
+  const list = document.getElementById(listId);
+  tasks.forEach((task, i) => {
+    const li = document.createElement('li');
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.dataset.key = `${prefix}-${i}`;
+    const span = document.createElement('span');
+    span.textContent = task;
+    li.appendChild(cb);
+    li.appendChild(span);
+    list.appendChild(li);
+  });
+}
+buildChecklist('daily-list', dailyTasks, 'routine-daily');
+buildChecklist('weekly-list', weeklyTasks, 'routine-weekly');
+buildChecklist('monthly-list', monthlyTasks, 'routine-monthly');
+load();
+</script>
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitchen & Kettle — Seasonal Preservation Calendar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F5F0E8;
+    --text: #2C2416;
+    --clay: #C4A882;
+    --sage: #7D8B6F;
+    --red: #B94A3E;
+    --blue: #6B7B8D;
+    --cream: #FAF7F0;
+    --ink: #3D362D;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Crimson Pro', Georgia, serif;
+    color: var(--text);
+    background: #e8e4dc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+  /* Toolbar */
+  .toolbar {
+    max-width: 8.5in; width: 100%; margin: 0 auto 0.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: #fff; padding: 0.5rem 0.7rem; border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(44,36,22,0.08);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .toolbar .brand { font-family: 'Crimson Pro', serif; font-size: 14pt; font-weight: 600; color: var(--text); }
+  .toolbar .brand em { font-style: italic; color: var(--clay); }
+  .toolbar .actions { display: flex; gap: 0.5rem; align-items: center; }
+  .toolbar .save-status {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; color: #5a8a6a;
+    margin-right: 0.5rem; opacity: 0; transition: opacity 0.3s;
+  }
+  .toolbar .save-status.visible { opacity: 1; }
+  .btn {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; font-weight: 600;
+    padding: 0.4em 0.8em; border-radius: 3px; cursor: pointer; border: none;
+    transition: background 0.15s; text-decoration: none;
+  }
+  .btn-ghost { background: none; color: var(--ink); border: 1px solid #e0dbd2; }
+  .btn-ghost:hover { border-color: var(--text); color: var(--text); }
+  .btn-print { background: var(--text); color: var(--paper); }
+  .btn-print:hover { background: #3D362D; }
+  /* ---- Page definition ---- */
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    background: #fff;
+    padding: 0.75in 0.7in;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    page-break-after: always;
+    position: relative;
+  }
+  .page:last-of-type { page-break-after: auto; }
+  /* ---- Print media ---- */
+  @media print {
+    body { background: none; padding: 0; margin: 0; }
+    .page { margin: 0; box-shadow: none; background: #fff; }
+    .toolbar { display: none; }
+    thead, th { background: none !important; }
+    .bg-clay { background: none !important; }
+    .bg-sage { background: none !important; }
+    .bg-cream { background: none !important; }
+  }
+  /* ---- Typography ---- */
+  h1 { font: 600 28pt 'Crimson Pro', serif; color: var(--text); letter-spacing: -0.01em; }
+  h2 { font: 500 18pt 'Crimson Pro', serif; color: var(--text); }
+  h3 { font: 600 12pt 'Work Sans', sans-serif; color: var(--ink); text-transform: uppercase; letter-spacing: 0.06em; }
+  h4 { font: 600 10pt 'Work Sans', sans-serif; color: var(--ink); }
+  p, li { font: 400 11pt/1.65 'Crimson Pro', serif; color: var(--text); }
+  .label { font: 500 8pt 'Work Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
+  .small { font: 400 9pt/1.5 'Crimson Pro', serif; color: var(--ink); }
+  /* ---- Utility ---- */
+  .bg-clay { background: var(--clay); }
+  .bg-sage { background: var(--sage); }
+  .bg-cream { background: var(--cream); }
+  .bg-paper { background: var(--paper); }
+  .text-sage { color: var(--sage); }
+  .text-clay { color: var(--clay); }
+  .text-red { color: var(--red); }
+  .text-ink { color: var(--ink); }
+  /* ---- Cover page ---- */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: var(--paper);
+    padding: 1.5in 1in;
+  }
+  .cover .brand { font: 600 14pt 'Work Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.12em; color: var(--clay); margin-bottom: 1.5rem; }
+  .cover h1 { font-size: 36pt; margin-bottom: 0.5rem; max-width: 80%; }
+  .cover .tagline { font: italic 400 14pt 'Crimson Pro', serif; color: var(--ink); margin-bottom: 3rem; }
+  .cover .desc { font: 400 12pt/1.7 'Crimson Pro', serif; color: var(--ink); max-width: 70%; }
+  .cover .rule { width: 60px; height: 2px; background: var(--clay); margin: 2rem auto; }
+  /* ---- How-to-use page ---- */
+  .howto { background: #fff; }
+  .howto .steps { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 2rem; margin: 1.5rem 0 2rem; }
+  .howto .step { border-left: 3px solid var(--sage); padding-left: 1rem; }
+  .howto .step h3 { margin-bottom: 0.4rem; }
+  /* ---- Month spreads ---- */
+  .month-spread { background: #fff; }
+  .month-spread h2 { text-align: center; color: var(--clay); margin-bottom: 1.5rem; border-bottom: 2px solid var(--sage); padding-bottom: 0.5rem; }
+  .month-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .month-col { padding: 0 0.5rem; }
+  .month-col h3 { color: var(--sage); border-bottom: 1px solid var(--clay); padding-bottom: 0.3rem; margin-bottom: 0.8rem; }
+  .produce-list { list-style: none; margin: 0.5rem 0 1rem; }
+  .produce-list li { font-size: 10pt; line-height: 1.6; padding: 0.15rem 0; }
+  .produce-list li::before { content: "— "; color: var(--clay); }
+  .action-box { background: var(--cream); border-left: 4px solid var(--red); padding: 0.7rem 0.9rem; margin: 0.8rem 0; }
+  .action-box h4 { color: var(--red); margin-bottom: 0.3rem; }
+  .action-box p, .action-box li { font-size: 10pt; }
+  .method-tag { display: inline-block; font: 500 7.5pt 'Work Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.15rem 0.5rem; border-radius: 3px; margin: 0.15rem; }
+  .tag-ferment { background: #e8f0e4; color: var(--sage); }
+  .tag-can { background: #f0e8e0; color: #9b6b3d; }
+  .tag-dehydrate { background: #f0ece0; color: #8b7b3d; }
+  .tag-freeze { background: #e4eaf0; color: var(--blue); }
+  .tag-infuse { background: #f0e4ea; color: #8b3d6b; }
+  .tag-cellar { background: #e8e8e4; color: var(--ink); }
+  .honest-box {
+    background: #fdfaf5;
+    border: 1px solid var(--clay);
+    padding: 0.6rem 0.8rem;
+    margin: 1rem 0 0.5rem;
+    border-radius: 2px;
+  }
+  .honest-box h4 { color: var(--clay); margin-bottom: 0.2rem; }
+  .honest-box p { font-size: 9.5pt; font-style: italic; color: var(--ink); }
+  /* ---- Reference page ---- */
+  .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem 2rem; margin: 1.2rem 0; }
+  .ref-card { padding: 0.8rem; border: 1px solid #e0dbd2; border-radius: 2px; }
+  .ref-card h4 { color: var(--sage); margin-bottom: 0.3rem; }
+  /* ---- Closing page ---- */
+  .closing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--paper);
+    padding: 1.5in 1in;
+  }
+  .closing h2 { margin-bottom: 1rem; }
+  .closing p { max-width: 75%; margin-bottom: 1rem; }
+  .notes-block {
+    border: 1px dashed var(--clay);
+    min-height: 3in;
+    margin-top: 2rem;
+    padding: 0.5rem;
+  }
+  /* ---- Footer ---- */
+  .page-footer {
+    position: absolute;
+    bottom: 0.4in;
+    left: 0.7in;
+    right: 0.7in;
+    display: flex;
+    justify-content: space-between;
+    font: 400 7.5pt 'Work Sans', sans-serif;
+    color: #b0a99e;
+  }
+</style>
+</head>
+<body class="seasonal-calendar">
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+<!-- ========== COVER ========== -->
+<div class="page cover">
+  <div class="brand">Kitchen & Kettle</div>
+  <h1>Seasonal Preservation<br>Calendar</h1>
+  <div class="rule"></div>
+  <p class="tagline">Works because it works.</p>
+  <p class="desc">A month-by-month guide to what's in season, what to preserve, and how — for a pantry that feeds you all year.</p>
+  <div class="page-footer">
+    <span>Kitchen & Kettle</span>
+    <span>1</span>
+  </div>
+</div>
+<!-- ========== HOW TO USE ========== -->
+<div class="page howto">
+  <h2>How to use this calendar</h2>
+  <p style="margin-bottom:1.5rem;">This isn't a to-do list designed to make you feel behind. It's a reference — use the parts that fit your season of life and ignore the rest. A single batch of fermented carrots counts. Two jars of jam count. The goal is a pantry that helps you, not a preservation resume.</p>
+  <div class="steps">
+    <div class="step">
+      <h3>1. Scan your month</h3>
+      <p class="small">Check what's in season and what's at its peak. If you're at a farmers market or have a garden glut, focus there first.</p>
+    </div>
+    <div class="step">
+      <h3>2. Pick 1–2 projects</h3>
+      <p class="small">Don't try to do everything. Pick what you'll actually use — jam you'll eat, stock you'll cook with, herbs you'll reach for.</p>
+    </div>
+    <div class="step">
+      <h3>3. Check the method</h3>
+      <p class="small">Each item notes its best preservation method. The reference section (page 8) explains each method if you're new.</p>
+    </div>
+    <div class="step">
+      <h3>4. Read the honest notes</h3>
+      <p class="small">Some things aren't worth preserving. Some are only worth it if you have a glut. We tell you which is which.</p>
+    </div>
+    <div class="step">
+      <h3>5. Write in it</h3>
+      <p class="small">This is meant to be marked up. Note what you made, how it turned out, what you'd change next year. The closing page has space.</p>
+    </div>
+    <div class="step">
+      <h3>6. Repeat next year</h3>
+      <p class="small">The calendar is evergreen — same seasons, same rhythms. Each year you'll know a little more, and the notes from last year become your own reference.</p>
+    </div>
+  </div>
+  <div style="border-top:1px solid var(--clay); padding-top:1rem; margin-top:1rem;">
+    <h3 style="color:var(--clay);">A note on regions</h3>
+    <p class="small">This calendar is written for temperate Northern Hemisphere seasons — roughly zones 5–8. If you're in Florida, Texas, Southern California, or the Southern Hemisphere, your seasons will shift. Use this as a rhythm, not a schedule. Local farmers market vendors will tell you more than any calendar can.</p>
+  </div>
+  <div class="page-footer">
+    <span>Kitchen & Kettle — Seasonal Preservation Calendar</span>
+    <span>2</span>
+  </div>
+</div>
+<!-- ========== JANUARY / FEBRUARY ========== -->
+<div class="page month-spread">
+  <h2>January &amp; February — The Quiet Months</h2>
+  <div class="month-grid">
+    <div class="month-col">
+      <h3>January</h3>
+      <h4 style="margin-top:0.5rem;">In season</h4>
+      <ul class="produce-list">
+        <li>Citrus (oranges, grapefruit, lemons, tangerines)</li>
+        <li>Root vegetables (beets, carrots, parsnips, turnips)</li>
+        <li>Winter squash (still holding from fall)</li>
+        <li>Cabbage, kale, brussels sprouts</li>
+        <li>Leeks</li>
+      </ul>
+      <div class="action-box">
+        <h4>Do now</h4>
+        <p>Make marmalade while citrus is cheap and abundant. Start a batch of preserved lemons — they take a month and reward you all year. Ferment sauerkraut or kimchi from winter cabbage.</p>
+      </div>
+      <div class="honest-box">
+        <h4>How to make marmalade</h4>
+        <p><strong>Ratio:</strong> 1 lb citrus + 2 lb sugar + 4 cups water. Slice fruit thinly (peel and all), soak overnight in water. Next day, simmer 1–2 hours until peel is tender. Add sugar, boil hard until a dab wrinkles on a cold plate (about 220°F if you have a thermometer). Jar and refrigerate for quick use, or water-bath can for the cupboard. Any citrus works — oranges are classic. Makes about 4–5 half-pint jars.</p>
+      </div>
+      <div class="method-tags" style="margin-top:0.4rem;">
+        <span class="method-tag tag-can">Marmalade</span>
+        <span class="method-tag tag-ferment">Preserved lemons</span>
+        <span class="method-tag tag-ferment">Sauerkraut</span>
+      </div>
+      <div class="honest-box">
+        <h4>Honest note</h4>
+        <p>Marmalade is work. It's worth doing once to understand it, but if you hate the process, good marmalade is cheap to buy. Preserved lemons, on the other hand, are expensive and dead simple — do those first.</p>
+      </div>
+      <div class="honest-box">
+        <h4>How to make preserved lemons</h4>
+        <p>Quarter 4–5 lemons almost all the way through — keep them attached at the base. Pack kosher salt into the cuts (about 1 tablespoon per lemon). Pack tightly into a clean jar, pressing down hard. Top with fresh lemon juice to cover. Seal and leave at room temperature for 3–4 weeks, shaking gently every few days. Then refrigerate — they keep for 6+ months. Chop the rind into salads, pasta, roasted vegetables, or grain bowls for bright salty depth. That's it — just lemons, salt, juice, and time.</p>
+      </div>
+    </div>
+    <div class="month-col">
+      <h3>February</h3>
+      <h4 style="margin-top:0.5rem;">In season</h4>
+      <ul class="produce-list">
+        <li>Citrus continues (blood oranges peak)</li>
+        <li>Root vegetables continue</li>
+        <li>Forced rhubarb (in some regions)</li>
+        <li>Stored apples and pears</li>
+        <li>Winter greens</li>
+      </ul>
+      <div class="action-box">
+        <h4>Do now</h4>
+        <p>Infuse vinegars with citrus peels and herbs. Dehydrate citrus slices for garnishes and tea blends. Inventory your pantry — eat what's oldest before spring abundance arrives. Order seeds if you garden.</p>
+      </div>
+      <div class="method-tags" style="margin-top:0.4rem;">
+        <span class="method-tag tag-infuse">Citrus vinegar</span>
+        <span class="method-tag tag-dehydrate">Dried citrus</span>
+      </div>
+      <div class="honest-box">
+        <h4>Honest note</h4>
+        <p>Dried citrus slices look beautiful but their actual kitchen utility is limited — they're mostly for tea and decoration. Make a small batch. Don't fill your dehydrator.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Kitchen & Kettle — Seasonal Preservation Calendar</span>
+    <span>3</span>
+  </div>
+</div>
+<!-- ========== MARCH / APRIL ========== -->
+<div class="page month-spread">
+  <h2>March &amp; April — The Turn</h2>
+  <div class="month-grid">
+    <div class="month-col">
+      <h3>March</h3>
+      <h4 style="margin-top:0.5rem;">In season</h4>
+      <ul class="produce-list">
+        <li>Spring onions, green garlic, scallions</li>
+        <li>Asparagus (late March in warmer zones)</li>
+        <li>Spinach, arugula, tender greens</li>
+        <li>Rhubarb</li>
+        <li>Last of the stored roots and apples</li>
+      </ul>
+      <div class="action-box">
+        <h4>Do now</h4>
+        <p>Pickle spring onions and scallions — they're gone in weeks and pickled onions are gold. Make rhubarb compote and freeze it. Infuse vinegar with the first herbs. Sauté mushrooms and freeze them in butter — an instant flavor base for winter cooking.</p>
+      </div>
+      <div class="method-tags" style="margin-top:0.4rem;">
+        <span class="method-tag tag-can">Pickled onions</span>
+        <span class="method-tag tag-freeze">Rhubarb compote</span>
+        <span class="method-tag tag-freeze">Mushrooms in butter</span>
+      </div>
+    </div>
+    <div class="month-col">
+      <h3>April</h3>
+      <h4 style="margin-top:0.5rem;">In season</h4>
+      <ul class="produce-list">
+        <li>Asparagus (peak)</li>
+        <li>Peas, green beans</li>
+        <li>Radishes</li>
+        <li>Tender herbs (parsley, chives, chervil, dill)</li>
+        <li>Spinach (peak season)</li>
+      </ul>
+      <div class="action-box">
+        <h4>Do now</h4>
+        <p>Blanch and freeze peas and green beans while they're sweet. Pickle asparagus spears — they hold their texture better than most vegetables. Dry herbs by hanging small bundles. Blanch and freeze spinach in portioned pucks for soups and pasta.</p>
+      </div>
+      <div class="method-tags" style="margin-top:0.4rem;">
+        <span class="method-tag tag-freeze">Peas &amp; green beans</span>
+        <span class="method-tag tag-can">Pickled asparagus</span>
+        <span class="method-tag tag-dehydrate">Dried herbs</span>
+      </div>
+      <div class="honest-box">
+        <h4>Honest note</h4>
+        <p>Frozen peas are one of the few vegetables where commercial frozen is genuinely as good as home-preserved. Only do this if you have garden peas you can't eat fresh. Otherwise, buy frozen peas and save your energy for things that matter more.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Kitchen & Kettle — Seasonal Preservation Calendar</span>
+    <span>4</span>
+  </div>
+</div>
+<!-- ========== MAY / JUNE ========== -->
+<div class="page month-spread">
+  <h2>May &amp; June — Abundance Begins</h2>
+  <div class="month-grid">
+    <div class="month-col">
+      <h3>May</h3>
+      <h4 style="margin-top:0.5rem;">In season</h4>
+      <ul class="produce-list">
+        <li>Strawberries (peak)</li>
+        <li>Asparagus (end of season)</li>
+        <li>Artichokes</li>
+        <li>Spring greens, lettuces</li>
+        <li>Radishes, turnips</li>
+        <li>Herbs in full force</li>
+      </ul>
+      <div class="action-box">
+        <h4>Do now</h4>
+        <p>Make strawberry jam — this is the one everyone actually eats. Freeze whole strawberries on trays (then bag) for smoothies and baking. Make herb salts and herb butters and freeze them. Start a batch of herbal vinegar.</p>
+      </div>
+      <div class="honest-box">
+        <h4>How to make herb salt</h4>
+        <p>Blend 1 cup coarse sea salt with a big handful of fresh herbs (rosemary, sage, thyme, or any combo). Pulse in a food processor until the salt is green and fragrant — about 10–15 pulses. Spread on a baking sheet and let dry overnight, or dry in a 200°F oven for 15–20 minutes. Store in a jar. Use on roasted vegetables, meat, eggs, or anything that benefits from herb flavor without the fuss of fresh herbs. Keeps indefinitely.</p>
+      </div>
+      <div class="method-tags" style="margin-top:0.4rem;">
+        <span class="method-tag tag-can">Strawberry jam</span>
+        <span class="method-tag tag-freeze">Frozen strawberries</span>
+        <span class="method-tag tag-infuse">Herb salt</span>
+      </div>
+    </div>
+    <div class="month-col">
+      <h3>June</h3>
+      <h4 style="margin-top:0.5rem;">In season</h4>
+      <ul class="produce-list">
+        <li>Cherries</li>
+        <li>Blueberries, raspberries, blackberries begin</li>
+        <li>Zucchini and summer squash</li>
+        <li>Cucumbers</li>
+        <li>Green beans</li>
+        <li>Garlic scapes</li>
+        <li>First new potatoes</li>
+      </ul>
+      <div class="action-box">
+        <h4>Do now</h4>
+        <p>Pickle cucumbers — quick refrigerator pickles if you're intimidated by canning, water-bath if you're ready. Pit and freeze cherries for winter baking. Ferment garlic scapes — they're milder than garlic cloves and incredible. Make berry shrub (drinking vinegar).</p>
+      </div>
+      <div class="honest-box">
+        <h4>How to make berry shrub</h4>
+        <p>A shrub is a sweet-tart drinking vinegar — mix a splash with sparkling water or use in cocktails. Mash 1 cup berries with 1 cup sugar, cover, and leave in the fridge 1–2 days. Strain out the solids, stir in 1 cup apple cider vinegar. Bottle and refrigerate. Keeps 6+ months. Try strawberry-basil, blueberry-thyme, or raspberry-mint.</p>
+      </div>
+      <div class="method-tags" style="margin-top:0.4rem;">
+        <span class="method-tag tag-can">Dill pickles</span>
+        <span class="method-tag tag-ferment">Garlic scapes</span>
+        <span class="method-tag tag-freeze">Frozen cherries</span>
+        <span class="method-tag tag-infuse">Berry shrub</span>
+      </div>
+      <div class="honest-box">
+        <h4>Honest note</h4>
+        <p>Canning pickles is a gateway project. If the idea of canning intimidates you, start with refrigerator pickles — they take 15 minutes, live in the fridge for months, and teach you the fundamentals. Water-bath canning can wait.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Kitchen & Kettle — Seasonal Preservation Calendar</span>
+    <span>5</span>
+  </div>
+</div>
+<!-- ========== JULY / AUGUST ========== -->
+<div class="page month-spread">
+  <h2>July &amp; August — Peak Season</h2>
+  <div class="month-grid">
+    <div class="month-col">
+      <h3>July</h3>
+      <h4 style="margin-top:0.5rem;">In season</h4>
+      <ul class="produce-list">
+        <li>Tomatoes (all types)</li>
+        <li>Corn</li>
+        <li>Peaches, nectarines, plums</li>
+        <li>All berries (peak)</li>
+        <li>Eggplant, peppers (sweet and hot)</li>
+        <li>Green beans (glut)</li>
+        <li>Cucumbers (glut)</li>
+      </ul>
+      <div class="action-box">
+        <h4>Do now</h4>
+        <p>This is the month. Can whole tomatoes, make salsa, roast and freeze tomato sauce. Freeze corn (blanch first). Make peach jam and plum chutney. Dry hot peppers for year-round use. Dehydrate tomatoes for "sun-dried" intensity. Ferment hot sauce.</p>
+      </div>
+      <div class="method-tags" style="margin-top:0.4rem;">
+        <span class="method-tag tag-can">Tomatoes &amp; salsa</span>
+        <span class="method-tag tag-freeze">Corn &amp; sauce</span>
+        <span class="method-tag tag-ferment">Hot sauce</span>
+        <span class="method-tag tag-dehydrate">Dried peppers</span>
+      </div>
+    </div>
+    <div class="month-col">
+      <h3>August</h3>
+      <h4 style="margin-top:0.5rem;">In season</h4>
+      <ul class="produce-list">
+        <li>Tomatoes continue (peak and beginning to split)</li>
+        <li>Melons</li>
+        <li>Figs (short window)</li>
+        <li>Sweet corn continues</li>
+        <li>All peppers (sweet bells, poblanos, jalapeños, habaneros)</li>
+        <li>Eggplant</li>
+        <li>Early apples begin</li>
+      </ul>
+      <div class="action-box">
+        <h4>Do now</h4>
+        <p>Make and can tomato passata (plain purée) — the most versatile tomato product you'll use all year. Dry figs or preserve them in honey. Roast and freeze peppers for winter cooking. Make apple butter from early apples.</p>
+      </div>
+      <div class="method-tags" style="margin-top:0.4rem;">
+        <span class="method-tag tag-can">Passata &amp; apple butter</span>
+        <span class="method-tag tag-dehydrate">Dried figs</span>
+        <span class="method-tag tag-freeze">Roasted peppers</span>
+        <span class="method-tag tag-cellar">Honey-preserved figs</span>
+      </div>
+      <div class="honest-box">
+        <h4>Honest note</h4>
+        <p>August is overwhelming. You cannot preserve everything. Prioritize tomatoes — they're the one thing where home-preserved is genuinely and universally better than store-bought. A jar of your own August tomatoes in February will make you happier than any other thing in this calendar.</p>
+      </div>

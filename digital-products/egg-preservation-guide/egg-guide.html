@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitchen & Kettle — Egg Preservation Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F5F0E8;
+    --text: #2C2416;
+    --clay: #C4A882;
+    --sage: #7D8B6F;
+    --red: #B94A3E;
+    --blue: #6B7B8D;
+    --cream: #FAF7F0;
+    --ink: #3D362D;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Crimson Pro', Georgia, serif;
+    color: var(--text);
+    background: #e8e4dc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+  /* Toolbar */
+  .toolbar {
+    max-width: 8.5in; width: 100%; margin: 0 auto 0.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: #fff; padding: 0.5rem 0.7rem; border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(44,36,22,0.08);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .toolbar .brand { font-family: 'Crimson Pro', serif; font-size: 14pt; font-weight: 600; color: var(--text); }
+  .toolbar .brand em { font-style: italic; color: var(--clay); }
+  .toolbar .actions { display: flex; gap: 0.5rem; align-items: center; }
+  .toolbar .save-status {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; color: #5a8a6a;
+    margin-right: 0.5rem; opacity: 0; transition: opacity 0.3s;
+  }
+  .toolbar .save-status.visible { opacity: 1; }
+  .btn {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; font-weight: 600;
+    padding: 0.4em 0.8em; border-radius: 3px; cursor: pointer; border: none;
+    transition: background 0.15s; text-decoration: none;
+  }
+  .btn-ghost { background: none; color: var(--ink); border: 1px solid #e0dbd2; }
+  .btn-ghost:hover { border-color: var(--text); color: var(--text); }
+  .btn-print { background: var(--text); color: var(--paper); }
+  .btn-print:hover { background: #3D362D; }
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    background: #fff;
+    padding: 0.75in 0.7in;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    page-break-after: always;
+    position: relative;
+  }
+  .page:last-of-type { page-break-after: auto; }
+  @media print {
+    body { background: none; padding: 0; margin: 0; }
+    .page { margin: 0; box-shadow: none; background: #fff; }
+    .toolbar { display: none; }
+    thead, th { background: none !important; }
+    .bg-clay, .bg-sage, .bg-cream, .bg-paper { background: none !important; }
+  }
+  h1 { font: 600 28pt 'Crimson Pro', serif; color: var(--text); letter-spacing: -0.01em; }
+  h2 { font: 500 18pt 'Crimson Pro', serif; color: var(--text); }
+  h3 { font: 600 12pt 'Work Sans', sans-serif; color: var(--ink); text-transform: uppercase; letter-spacing: 0.06em; }
+  h4 { font: 600 10pt 'Work Sans', sans-serif; color: var(--ink); }
+  p, li { font: 400 11pt/1.65 'Crimson Pro', serif; color: var(--text); }
+  .small { font: 400 9.5pt/1.6 'Crimson Pro', serif; color: var(--ink); }
+  .label { font: 500 8pt 'Work Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: var(--paper);
+    padding: 1.5in 1in;
+  }
+  .cover .brand { font: 600 14pt 'Work Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.12em; color: var(--clay); margin-bottom: 1.5rem; }
+  .cover h1 { font-size: 32pt; margin-bottom: 0.5rem; max-width: 80%; }
+  .cover .tagline { font: italic 400 14pt 'Crimson Pro', serif; color: var(--ink); margin-bottom: 3rem; }
+  .cover .desc { font: 400 12pt/1.7 'Crimson Pro', serif; color: var(--ink); max-width: 65%; }
+  .cover .rule { width: 60px; height: 2px; background: var(--clay); margin: 2rem auto; }
+  .page-footer {
+    position: absolute;
+    bottom: 0.4in;
+    left: 0.7in;
+    right: 0.7in;
+    display: flex;
+    justify-content: space-between;
+    font: 400 7.5pt 'Work Sans', sans-serif;
+    color: #b0a99e;
+  }
+  .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem 2rem; margin: 1rem 0; }
+  .method-card { border: 1px solid #e0dbd2; border-radius: 2px; padding: 0.8rem; }
+  .method-card h4 { color: var(--sage); margin-bottom: 0.3rem; }
+  .steps { margin: 0.8rem 0; }
+  .steps li { font-size: 10pt; margin-bottom: 0.3rem; }
+  .ratio-box {
+    background: var(--cream);
+    border-left: 4px solid var(--clay);
+    padding: 0.7rem 0.9rem;
+    margin: 0.8rem 0;
+  }
+  .ratio-box h4 { color: var(--clay); margin-bottom: 0.3rem; }
+  .caution-box {
+    background: #fef9f5;
+    border-left: 4px solid var(--red);
+    padding: 0.7rem 0.9rem;
+    margin: 0.8rem 0;
+  }
+  .caution-box h4 { color: var(--red); margin-bottom: 0.3rem; }
+  .honest-box {
+    background: #fdfaf5;
+    border: 1px solid var(--clay);
+    padding: 0.6rem 0.8rem;
+    margin: 1rem 0 0.5rem;
+    border-radius: 2px;
+  }
+  .honest-box h4 { color: var(--clay); margin-bottom: 0.2rem; }
+  .honest-box p { font-size: 9.5pt; font-style: italic; color: var(--ink); }
+  .system-table { width: 100%; margin: 1rem 0; border-collapse: collapse; font-size: 10pt; }
+  .system-table th { font: 600 9pt 'Work Sans', sans-serif; color: var(--ink); text-align: left; padding: 0.4rem 0.5rem; border-bottom: 2px solid var(--clay); text-transform: uppercase; letter-spacing: 0.04em; }
+  .system-table td { padding: 0.45rem 0.5rem; border-bottom: 1px solid #e8e4dc; font-size: 10pt; line-height: 1.5; }
+  .system-table tr:nth-child(even) td { background: #fdfcf9; }
+  .notes-block {
+    border: 1px dashed var(--clay);
+    min-height: 3in;
+    margin-top: 2rem;
+    padding: 0.5rem;
+  }
+  .variation-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; margin: 0.6rem 0 1rem; }
+  .var-card { border: 1px solid #e0dbd2; padding: 0.5rem 0.6rem; border-radius: 2px; }
+</style>
+</head>
+<body class="egg-guide">
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+<!-- ========== COVER ========== -->
+<div class="page cover">
+  <div class="brand">Kitchen & Kettle</div>
+  <h1>Egg Preservation<br>Guide</h1>
+  <div class="rule"></div>
+  <p class="tagline">Three methods. Zero waste. Eggs when you need them.</p>
+  <p class="desc">What to do when you have more eggs than you can eat — freezing for baking, water glassing for long-term storage, and pickling for ready-to-eat protein. No special equipment required.</p>
+  <div class="page-footer">
+    <span>Kitchen & Kettle</span>
+    <span>1</span>
+  </div>
+</div>
+<!-- ========== WHICH METHOD WHEN ========== -->
+<div class="page">
+  <h2>Which method when?</h2>
+  <p style="margin-bottom:1.2rem;">You don't have to learn all three. Pick based on what you need.</p>
+  <table class="system-table">
+    <thead><tr><th>Method</th><th>Best for</th><th>Shelf life</th><th>Equipment</th><th>Effort</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Freezing</strong></td><td>Baking, scrambled eggs, quiche</td><td>6–12 months</td><td>Ice cube tray or muffin tin, freezer bags</td><td>Low</td></tr>
+      <tr><td><strong>Water glassing</strong></td><td>Long-term backup, no electricity needed</td><td>8–12 months at room temp</td><td>Food-grade bucket or jar, pickling lime</td><td>Very low</td></tr>
+      <tr><td><strong>Pickling</strong></td><td>Ready-to-eat snacks, salads, charcuterie</td><td>3–4 months refrigerated</td><td>Quart jar, saucepan</td><td>Medium</td></tr>
+    </tbody>
+  </table>
+  <div class="method-grid" style="margin-top:1.5rem;">
+    <div class="method-card">
+      <h4>The simple system</h4>
+      <p class="small">When you collect eggs each day:</p>
+      <ol class="steps">
+        <li><strong>Perfect, clean, fresh eggs</strong> → water glass</li>
+        <li><strong>Extra eggs beyond what you'll eat</strong> → freeze</li>
+        <li><strong>Older eggs, or you want grab-and-eat</strong> → pickle</li>
+      </ol>
+      <p class="small" style="margin-top:0.5rem;">No stress. No waste. You don't have to do all three — even one method changes how your kitchen works.</p>
+    </div>
+    <div class="method-card">
+      <h4>One rule to remember</h4>
+      <p class="small" style="font-size:11pt; text-align:center; padding: 0.8rem 0;">
+        <strong>If the egg stays whole</strong><br>
+        <span style="color:var(--red);">→ DO NOT WASH</span><br><br>
+        <strong>If you're cracking it</strong><br>
+        <span style="color:var(--sage);">→ WASH FIRST</span>
+      </p>
+      <p class="small">Eggs have a natural protective coating (the bloom) that keeps bacteria out. Washing removes it. For water glassing and fresh storage, leave them unwashed. For freezing and pickling, wash just before cracking or boiling.</p>
+    </div>
+  </div>
+  <div class="caution-box" style="margin-top:1rem;">
+    <h4>Mistakes to avoid</h4>
+    <p class="small">Don't wash eggs before water glassing. Don't freeze eggs in the shell (they'll crack). Don't use dirty or cracked eggs for any preservation method. Don't store pickled eggs at room temperature — they must stay refrigerated.</p>
+  </div>
+  <div class="page-footer">
+    <span>Kitchen & Kettle — Egg Preservation Guide</span>
+    <span>2</span>
+  </div>
+</div>
+<!-- ========== METHOD 1: FREEZING ========== -->
+<div class="page">
+  <h2>Method 1: Freezing Eggs</h2>
+  <p class="small" style="margin-bottom:1.2rem;">This is your baking supply. Frozen eggs work exactly like fresh in cakes, muffins, quiche, and most cooked dishes. They're less reliable for things that depend on egg structure — meringues, soufflés, angel food cake — but for everyday baking, they're indistinguishable.</p>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+    <div>
+      <h3>What you need</h3>
+      <ul class="steps" style="list-style:none; padding:0;">
+        <li>Fresh eggs</li>
+        <li>Bowl + whisk or fork</li>
+        <li>Ice cube tray or muffin tin</li>
+        <li>Freezer bags</li>
+        <li>Tiny pinch of salt (savory use) <em>or</em> sugar (sweet use)</li>
+      </ul>
+      <h3 style="margin-top:1rem;">Steps</h3>
+      <ol class="steps">
+        <li>Wash eggs (you're cracking them, so bloom doesn't matter).</li>
+        <li>Crack eggs into a bowl.</li>
+        <li>Gently whisk just until yolks and whites are combined — don't whip air into them.</li>
+        <li>Add a tiny pinch of salt per egg (for savory cooking) or sugar (for baking). This prevents the yolks from turning grainy in the freezer.</li>
+        <li>Pour into ice cube trays — about 1 egg per cube slot. For muffin tins, 1–2 eggs per cup.</li>
+        <li>Freeze until solid (4–6 hours).</li>
+        <li>Pop cubes out and transfer to a labeled freezer bag.</li>
+      </ol>
+    </div>
+    <div>
+      <h3>How to use</h3>
+      <ul class="steps" style="list-style:none; padding:0;">
+        <li>Thaw overnight in the refrigerator.</li>
+        <li>Use exactly like fresh eggs in baking.</li>
+        <li>1 cube ≈ 1 egg (label your bag).</li>
+      </ul>
+      <div class="ratio-box" style="margin-top:1rem;">
+        <h4>Quick reference</h4>
+        <table style="width:100%; font-size:10pt; border-collapse:collapse;">
+          <tr style="border-bottom:1px solid #e0dbd2;"><td style="padding:0.25rem 0;">Whole eggs (whisked)</td><td style="text-align:right;">1 egg = 1 cube</td></tr>
+          <tr style="border-bottom:1px solid #e0dbd2;"><td style="padding:0.25rem 0;">Whites only</td><td style="text-align:right;">Freeze as-is, no whisking needed</td></tr>
+          <tr><td style="padding:0.25rem 0;">Yolks only</td><td style="text-align:right;">Add ⅛ tsp salt or ½ tsp sugar per yolk before freezing</td></tr>
+        </table>
+      </div>
+      <div class="honest-box" style="margin-top:1rem;">
+        <h4>Honest note</h4>
+        <p>Frozen eggs won't make a perfect fried egg. The texture changes slightly — they're best in anything where eggs are mixed in: baking, scrambles, quiche, French toast. If you want a runny yolk on toast, use fresh eggs.</p>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:1.5rem; border-top:1px solid #e0dbd2; padding-top:1rem;">
+    <h3>Labeling matters</h3>
+    <p class="small">Write on every bag: the date, how many eggs, and whether you added salt or sugar. Frozen egg cubes all look the same. Six months from now, you won't remember.</p>
+  </div>
+  <div class="page-footer">
+    <span>Kitchen & Kettle — Egg Preservation Guide</span>
+    <span>3</span>
+  </div>
+</div>
+<!-- ========== METHOD 2: WATER GLASSING ========== -->
+<div class="page">
+  <h2>Method 2: Water Glassing</h2>
+  <p class="small" style="margin-bottom:1rem;">This is your homestead insurance. No electricity, no canning, no sealing — just eggs, water, and pickling lime (calcium hydroxide). The eggs stay raw and room-temperature-stable for 8–12 months. When you crack them, they cook like fresh eggs. This is the method people used before refrigeration, and it still works.</p>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+    <div>
+      <h3>What you need</h3>
+      <ul class="steps" style="list-style:none; padding:0;">
+        <li><strong>Fresh, unwashed eggs</strong> — same day is ideal, must have intact bloom</li>
+        <li>Food-grade bucket or large glass jar</li>
+        <li>Pickling lime (calcium hydroxide) — hardware store or grocery canning section</li>
+        <li>Water (room temperature, distilled preferred but not required)</li>
+      </ul>
+      <div class="ratio-box">
+        <h4>The ratio</h4>
+        <p class="small"><strong>1 quart (4 cups) water : 1 ounce (2 tablespoons) pickling lime</strong></p>
+        <p class="small" style="margin-top:0.3rem;">You don't need to be exact — close enough works. Scale up for larger containers: a gallon of water gets about 4 ounces of lime.</p>
+      </div>
+    </div>
+    <div>
+      <h3>Steps</h3>
+      <ol class="steps">
+        <li>Mix pickling lime into room-temperature water. Stir until dissolved (the water will look milky — that's normal).</li>
+        <li>Gently place unwashed eggs into your container. Pointy side down if possible — the air cell is at the round end and they store better this way.</li>
+        <li>Pour lime solution over the eggs until they're fully covered by at least 1–2 inches of liquid.</li>
+        <li>Cover loosely — a lid resting on top (not sealed) or a cloth secured with a rubber band. The container needs to breathe slightly.</li>
+        <li>Store in a cool, dark place — basement, pantry, cool closet. Aim for 50–60°F if possible, but room temperature works.</li>
+        <li>Check occasionally. If water evaporates and eggs are exposed, top up with fresh lime solution.</li>
+      </ol>
+    </div>
+  </div>
+  <div style="margin-top:1.2rem;">
+    <h3>How to use</h3>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top:0.5rem;">
+      <div>
+        <ol class="steps">
+          <li>Remove eggs as needed — use clean hands or a spoon.</li>
+          <li>Rinse the egg well under cool water before cracking.</li>
+          <li>Use exactly like fresh eggs — fry, scramble, bake, poach.</li>
+        </ol>
+      </div>
+      <div class="caution-box">
+        <h4>Reality check</h4>
+        <p class="small">The whites will be slightly thinner than fresh eggs after long storage. This matters for fancy meringues but not for everyday cooking. Yolks may also be a bit more fragile — break them into a separate bowl first if you need intact yolks.</p>
+      </div>
+    </div>
+  </div>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>Water glassing is the lowest-effort method in this guide, but it requires the freshest eggs. If you're buying supermarket eggs, skip this — the bloom is already washed off. This method is for backyard hens, farmers market eggs you know are unwashed, or any source where you can confirm the eggs still have their natural coating. And yes, the lime water looks unappetizing. The eggs inside are fine.</p>
+  </div>
+  <div class="page-footer">
+    <span>Kitchen & Kettle — Egg Preservation Guide</span>
+    <span>4</span>
+  </div>
+</div>
+<!-- ========== METHOD 3: PICKLED EGGS ========== -->
+<div class="page">
+  <h2>Method 3: Pickled Eggs</h2>
+  <p class="small" style="margin-bottom:1rem;">This is your grab-and-eat protein. Pickled eggs are a pub tradition for a reason — they're satisfying, portable, and get better with time. They live in the fridge, not the cupboard, and they're ready whenever you are.</p>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+    <div>
+      <h3>What you need</h3>
+      <ul class="steps" style="list-style:none; padding:0;">
+        <li>Hard-boiled eggs (older eggs peel easier)</li>
+        <li>White vinegar or cider vinegar</li>
+        <li>Water</li>
+        <li>Salt</li>
+        <li>Quart jar with lid</li>
+        <li>Optional: garlic cloves, peppercorns, fresh dill, bay leaf, sliced chili, beet juice</li>
+      </ul>
+      <div class="ratio-box">
+        <h4>Basic brine</h4>
+        <table style="width:100%; font-size:10pt; border-collapse:collapse;">
+          <tr style="border-bottom:1px solid #e0dbd2;"><td style="padding:0.25rem 0;">Vinegar</td><td style="text-align:right;">1 cup</td></tr>
+          <tr style="border-bottom:1px solid #e0dbd2;"><td style="padding:0.25rem 0;">Water</td><td style="text-align:right;">1 cup</td></tr>
+          <tr><td style="padding:0.25rem 0;">Salt</td><td style="text-align:right;">1 tablespoon</td></tr>
+        </table>
+        <p class="small" style="margin-top:0.3rem;">Makes enough brine for about 6–8 eggs in a quart jar.</p>
+      </div>
+    </div>
+    <div>
+      <h3>Steps</h3>
+      <ol class="steps">
+        <li>Hard boil and peel your eggs. (Older eggs peel more cleanly — if your eggs are very fresh, add a splash of vinegar to the boiling water.)</li>
+        <li>Pack peeled eggs into a clean quart jar. Don't cram them — leave a little space so brine can surround each egg.</li>
+        <li>Add your aromatics: garlic, peppercorns, dill, chili — whatever sounds good.</li>
+        <li>Bring brine ingredients to a boil. Stir until salt dissolves.</li>
+        <li>Pour hot brine over eggs until they're fully covered.</li>
+        <li>Let cool on the counter, then seal and refrigerate.</li>
+        <li><strong>Wait.</strong> Minimum 1 week before eating. Better at 2–3 weeks when the flavor has penetrated all the way through.</li>
+      </ol>
+    </div>
+  </div>
+  <h3 style="margin-top:1.2rem;">Three variations</h3>
+  <div class="variation-grid">
+    <div class="var-card">
+      <h4>Garlic + dill</h4>
+      <p class="small">The classic. 2 garlic cloves + a few sprigs of fresh dill + 1 tsp black peppercorns. Use cider vinegar for warmth.</p>
+    </div>
+    <div class="var-card">
+      <h4>Beet + sweet</h4>
+      <p class="small">Add ¼ cup beet juice (from canned beets) to the brine + 1 tbsp sugar. Turns the eggs bright pink and slightly sweet. Stunning on a plate.</p>
+    </div>
+    <div class="var-card">
+      <h4>Spicy</h4>
+      <p class="small">Add 2 sliced jalapeños or 1 tsp red chili flakes + 1 bay leaf + 1 tsp mustard seeds. Use white vinegar. Gets hotter over time.</p>
+    </div>
+  </div>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top:0.8rem;">
+    <div class="caution-box">
+      <h4>Important</h4>
+      <ul class="steps" style="list-style:none; padding:0;">
+        <li>Always refrigerate pickled eggs — they are not shelf-stable.</li>
+        <li>Keep eggs fully submerged in brine. Exposed eggs risk spoilage.</li>
+        <li>Don't reuse brine for a second batch — start fresh.</li>
+        <li>Shelf life: 3–4 months in the fridge.</li>
+      </ul>
+    </div>
+    <div class="ratio-box">
+      <h4>Serving ideas</h4>
+      <ul class="steps" style="list-style:none; padding:0;">
+        <li>Halved on a salad with sturdy greens</li>
+        <li>On a cheese board with sharp cheddar and mustard</li>
+        <li>Sliced on buttered dark bread with salt</li>
+        <li>Straight from the jar at midnight (it happens)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Kitchen & Kettle — Egg Preservation Guide</span>
+    <span>5</span>
+  </div>
+</div>
+<!-- ========== CLOSING ========== -->
+<div class="page" style="background:var(--paper);">
+  <div style="display:flex; flex-direction:column; justify-content:center; height:100%; max-width:75%; margin:0 auto;">
+    <h2>A note on scale</h2>
+    <p style="margin-bottom:1rem;">You don't need a flock of hens to use this guide. Even a dozen extra eggs from a neighbor or a good farmers market find is worth preserving. One jar of pickled eggs. One freezer bag of egg cubes. One small bucket of water-glassed eggs.</p>
+    <p style="margin-bottom:1rem;">The point isn't volume. The point is that your kitchen can handle abundance when it shows up — whether that's three eggs or three dozen.</p>
+    <p style="margin-bottom:2rem;"><em>Works because it works.</em></p>
+    <div class="rule" style="margin: 1rem auto 2rem;"></div>
+    <h4 style="text-align:center; color:var(--clay);">NOTES</h4>
+    <p class="small" style="text-align:center; margin-bottom:1rem;">What you made, what worked, what you'd change next time.</p>
+    <div class="notes-block">
+      <textarea data-key="notes" placeholder="What you made, what worked, what you'd change next time..." style="width:100%; min-height:2.5in; border:none; outline:none; background:transparent; font-family:'Crimson Pro',Georgia,serif; font-size:12pt; line-height:1.5; resize:vertical; padding:0.5rem;"></textarea>
+    </div>
+    <p class="small" style="text-align:center; color:#b0a99e; margin-top:3rem;">Kitchen & Kettle</p>
+    <p class="small" style="text-align:center; color:#b0a99e;">A quieter way to run a kitchen.</p>
+  </div>
+  <div class="page-footer">
+    <span>Kitchen & Kettle — Egg Preservation Guide</span>
+    <span>6</span>
+  </div>
+</div>
+<script>
+const STORAGE_KEY = 'keeping-kitchen-eggs';
+function save() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => { data[el.dataset.key] = el.value; });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  const s = document.getElementById('saveStatus');
+  s.classList.add('visible');
+  clearTimeout(s._t); s._t = setTimeout(() => s.classList.remove('visible'), 1500);
+}
+function load() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.dataset.key in data) el.value = data[el.dataset.key];
+  });
+}
+function clearAll() {
+  if (!confirm('Clear all notes?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('[data-key]').forEach(el => el.value = '');
+}
+document.addEventListener('input', save);
+load();
+</script>
+</body>
+</html>

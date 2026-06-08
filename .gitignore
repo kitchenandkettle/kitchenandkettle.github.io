@@ -1,0 +1,17 @@
+# Stock photos in repo root (downloaded for listing images)
+/*.jpg
+/*.jpeg
+
+# Build intermediates
+digital-products/previews/
+
+# Duplicate scripts (canonical versions in scripts/)
+digital-products/check_all_heights.js
+digital-products/convert_pdfs.js
+
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
