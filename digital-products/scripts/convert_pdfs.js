@@ -151,6 +151,12 @@ const FILES = [
         .body-care .note-block { padding: 0.25rem !important; min-height: 2.5rem !important; }
         .body-care .note-block h4 { font-size: 7.5pt !important; margin-bottom: 0.15rem !important; }
         .body-care .note-block textarea { font-size: 8pt !important; min-height: 1.5rem !important; }
+
+        /* --- Chicken Guide: notes page (+0.6in) --- */
+        .chicken-guide .notes-grid { gap: 0.25rem !important; margin-top: 0.25rem !important; }
+        .chicken-guide .note-block { padding: 0.2rem !important; min-height: 2.3rem !important; }
+        .chicken-guide .note-block h4 { font-size: 12pt !important; margin-bottom: 0.1rem !important; }
+        .chicken-guide .note-block textarea { font-size: 12pt !important; min-height: 1.6rem !important; }
       `
     });
 
