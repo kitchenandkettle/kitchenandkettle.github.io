@@ -17,7 +17,7 @@ Simple setup. Happy birds. Real eggs.
 
 The chicken-keeping world wants to sell you gadgets. You don't need them. This guide is built around what actually works — a small flock of cold-hardy birds, a simple coop, and a daily routine that takes five minutes.
 
-**What's inside (9 pages):**
+**What's inside (11 pages):**
 - What you actually need — the short list (and what you don't)
 - Choosing your birds — breed guide with climate matching and what to look for in a starter flock
 - Coop setup — ventilation, predator protection, and the deep litter method explained
