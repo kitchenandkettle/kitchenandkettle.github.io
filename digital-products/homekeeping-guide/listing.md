@@ -8,7 +8,7 @@ Type: Digital download
 Natural Homekeeping Guide | DIY Cleaning Recipes and Simple Routines | Non-Toxic Home Care | Printable & Interactive PDF
 
 ## Photos (upload in this order)
-1. primary-homekeeping-image.png
+1. primary-homekeeping-image.jpg
 2. homekeeping-image.png
 3. homekeeping-image-2.png
 
