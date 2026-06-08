@@ -128,6 +128,8 @@ const INJECT_CSS = `
   .chicken-guide .note-block { padding: 0.2rem !important; min-height: 2.3rem !important; }
   .chicken-guide .note-block h4 { font-size: 12pt !important; margin-bottom: 0.1rem !important; }
   .chicken-guide .note-block textarea { font-size: 12pt !important; min-height: 1.6rem !important; }
+  .chicken-guide textarea::placeholder { color: transparent !important; }
+  .chicken-guide textarea { border: 1px dashed #D9D0C1 !important; }
 `;
 // ----------------------------------------------------------------
 
