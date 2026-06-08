@@ -159,6 +159,9 @@ const FILES = [
         .chicken-guide .note-block textarea { font-size: 12pt !important; min-height: 1.6rem !important; }
         .chicken-guide textarea::placeholder { color: transparent !important; }
         .chicken-guide textarea { border: 1px dashed #D9D0C1 !important; }
+        .chicken-guide .prose-page hr { margin: 0.3rem 0 !important; }
+        .chicken-guide .prose-page h3 { margin-top: 0.2rem !important; margin-bottom: 0.15rem !important; }
+        .chicken-guide .page { padding-top: 0.55in !important; padding-bottom: 0.55in !important; }
       `
     });
 
