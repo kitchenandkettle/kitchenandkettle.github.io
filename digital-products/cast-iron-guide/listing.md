@@ -17,7 +17,7 @@ Season it right. Clean it simply. Keep it forever.
 
 Cast iron has a reputation for being fussy. It isn't. Your grandmother's pan survived decades of daily use without YouTube tutorials. This guide strips away the myths and gives you the three things cast iron actually needs: season it, clean it, cook with it.
 
-**What's inside (8 pages):**
+**What's inside (11 pages):**
 - Why cast iron works (seasoning explained without the myths)
 - Step-by-step oven seasoning — for new pans, old pans, and restorations
 - Daily cleaning and care, including the do's and don'ts in one chart
