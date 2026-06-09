@@ -506,19 +506,19 @@
   <div class="notes-grid">
     <div class="note-block">
       <h4>Pan Details</h4>
-      <textarea rows="3" placeholder="Brand, size, where you got it..."></textarea>
+      <textarea data-key="pan-details" rows="3" placeholder="Brand, size, where you got it..."></textarea>
     </div>
     <div class="note-block">
       <h4>Seasoning Rounds</h4>
-      <textarea rows="3" placeholder="Date, oil used, oven temp, number of coats..."></textarea>
+      <textarea data-key="seasoning-rounds" rows="3" placeholder="Date, oil used, oven temp, number of coats..."></textarea>
     </div>
     <div class="note-block">
       <h4>What Worked</h4>
-      <textarea rows="3" placeholder="Favorite recipes, techniques that clicked..."></textarea>
+      <textarea data-key="what-worked" rows="3" placeholder="Favorite recipes, techniques that clicked..."></textarea>
     </div>
     <div class="note-block">
       <h4>What Didn't</h4>
-      <textarea rows="3" placeholder="Sticking problems, restoration notes..."></textarea>
+      <textarea data-key="what-didnt" rows="3" placeholder="Sticking problems, restoration notes..."></textarea>
     </div>
   </div>
 </div>
@@ -533,5 +533,31 @@
     <p class="small" style="text-align:center; color:#b0a99e;">A quieter way to run a kitchen.</p>
   </div>
 </div>
+<script>
+const STORAGE_KEY = 'keeping-kitchen-cast-iron-guide';
+function save() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => { data[el.dataset.key] = el.value; });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  const s = document.getElementById('saveStatus');
+  s.classList.add('visible');
+  clearTimeout(s._t); s._t = setTimeout(() => s.classList.remove('visible'), 1500);
+}
+function load() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.dataset.key in data) el.value = data[el.dataset.key];
+  });
+}
+function clearAll() {
+  if (!confirm('Clear all notes?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('[data-key]').forEach(el => el.value = '');
+}
+document.addEventListener('input', save);
+load();
+</script>
 </body>
 </html>

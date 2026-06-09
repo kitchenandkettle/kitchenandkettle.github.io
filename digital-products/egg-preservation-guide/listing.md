@@ -8,7 +8,7 @@ Type: Digital download
 Egg Preservation Guide | Freezing, Water Glassing & Pickling | Printable Homestead PDF | Three Methods for Fresh Eggs
 
 ## Photos (upload in this order)
-1. primary-egg-image.png
+1. primary-egg-image.jpg
 2. egg-image.png
 
 ## Description (copy-paste)

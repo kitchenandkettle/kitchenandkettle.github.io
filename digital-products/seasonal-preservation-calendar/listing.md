@@ -8,7 +8,7 @@ Type: Digital download
 Seasonal Preservation Calendar | Printable Canning & Fermenting Guide | Month-by-Month Food Preservation Planner | Homestead Kitchen PDF
 
 ## Photos (upload in this order)
-1. primary-calendar-image.png
+1. primary-calendar-image.jpg
 2. calendar-image.png
 3. calendar-image-2.png
 
@@ -17,13 +17,13 @@ A month-by-month guide to what's in season and how to preserve it — without th
 
 This isn't a to-do list designed to make you feel behind. It's a reference. Use the parts that fit your season of life and ignore the rest. A single batch of fermented carrots counts. Two jars of jam count.
 
-**What's inside (11 pages):**
-- What's in season every month of the year
+**What's inside (9 pages):**
+- What's in season every month — January through December
 - Which preservation method works best for each crop
-- Gateway techniques for beginners — refrigerator pickles and quick jam (no canning required)
-- 8 preservation methods explained: canning, fermentation, dehydrating, freezing, infusing, cellaring, honey preserving, and more
-- Honest notes throughout on what's actually worth the effort
-- Quick-reference preservation method guide
+- Canning, freezing, fermenting, dehydrating, infusing, and root cellaring covered throughout
+- Honest notes on what's actually worth the effort
+- Step-by-step recipes for marmalade, preserved lemons, berry shrub, and more
+- Gateway techniques for beginners — refrigerator pickles, quick jam
 - Notes page to track what you made
 
 **This is not:** a wellness brand, a lifestyle aspiration, or another thing to feel inadequate about. It's a practical tool for a kitchen that works.

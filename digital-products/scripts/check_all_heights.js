@@ -11,7 +11,7 @@ const FILES = [
   'recipe-cards/recipe-cards.html',
   'homekeeping-guide/homekeeping-guide.html',
   'preservation-logbook/preservation-logbook.html',
-  'kitchen-systems-bundle/kitchen-systems-bundle.html',
+  'kitchen-planner-bundle/kitchen-planner-bundle.html',
   'chicken-keeping-guide/chicken-keeping-guide.html',
   'cast-iron-guide/cast-iron-guide.html',
   'body-care-guide/body-care-guide.html',
@@ -25,6 +25,7 @@ const INJECT_CSS = `
         .toolbar { display: none !important; }
         .interactive-only { display: none !important; }
         textarea::placeholder { color: transparent !important; }
+        input::placeholder { color: transparent !important; }
         textarea { border: 1px dashed #D9D0C1 !important; }
         .page {
           margin-bottom: 0 !important;
@@ -37,7 +38,7 @@ const INJECT_CSS = `
         .ref-card { padding: 0.35rem !important; }
         .ref-card p { font-size: 8.5pt !important; line-height: 1.35 !important; }
         .ref-grid { gap: 0.4rem 1.2rem !important; margin: 0.5rem 0 !important; }
-        .closing { padding: 1.2in 1in 0.6in 1in !important; }
+        .closing { padding: 1.2in 1in 0.6in 1in !important; align-items: center !important; }
         .closing .notes-block { margin-top: 1rem !important; }
         .closing p { margin-bottom: 0.5rem !important; }
         .month-spread p { font-size: 8pt !important; line-height: 1.35 !important; margin-bottom: 0.2rem !important; }

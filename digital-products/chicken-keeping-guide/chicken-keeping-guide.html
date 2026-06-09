@@ -486,19 +486,19 @@
   <div class="notes-grid">
     <div class="note-block">
       <h4>Breeds</h4>
-      <textarea rows="3" placeholder="List your breeds here..."></textarea>
+      <textarea data-key="breeds" rows="3" placeholder="List your breeds here..."></textarea>
     </div>
     <div class="note-block">
       <h4>Flock Size</h4>
-      <textarea rows="3" placeholder="How many birds? Ages?"></textarea>
+      <textarea data-key="flock-size" rows="3" placeholder="How many birds? Ages?"></textarea>
     </div>
     <div class="note-block">
       <h4>Egg Production</h4>
-      <textarea rows="3" placeholder="Daily count, seasonal changes..."></textarea>
+      <textarea data-key="egg-production" rows="3" placeholder="Daily count, seasonal changes..."></textarea>
     </div>
     <div class="note-block">
       <h4>Coop Setup Notes</h4>
-      <textarea rows="3" placeholder="Dimensions, materials, what worked..."></textarea>
+      <textarea data-key="coop-setup" rows="3" placeholder="Dimensions, materials, what worked..."></textarea>
     </div>
   </div>
   <hr style="margin:2rem 0 !important;">
@@ -506,19 +506,19 @@
   <div class="notes-grid">
     <div class="note-block">
       <h4>Spring</h4>
-      <textarea rows="4" placeholder="Deep clean date, new chicks, broody hens..."></textarea>
+      <textarea data-key="spring" rows="4" placeholder="Deep clean date, new chicks, broody hens..."></textarea>
     </div>
     <div class="note-block">
       <h4>Summer</h4>
-      <textarea rows="4" placeholder="Heat management, water schedule, shade..."></textarea>
+      <textarea data-key="summer" rows="4" placeholder="Heat management, water schedule, shade..."></textarea>
     </div>
     <div class="note-block">
       <h4>Fall</h4>
-      <textarea rows="4" placeholder="Bedding stock, draft checks, feed order..."></textarea>
+      <textarea data-key="fall" rows="4" placeholder="Bedding stock, draft checks, feed order..."></textarea>
     </div>
     <div class="note-block">
       <h4>Winter</h4>
-      <textarea rows="4" placeholder="Water strategy, ventilation, egg counts..."></textarea>
+      <textarea data-key="winter" rows="4" placeholder="Water strategy, ventilation, egg counts..."></textarea>
     </div>
   </div>
   <hr style="margin:2rem 0 !important;">
@@ -533,11 +533,37 @@
     <p style="margin-bottom:2rem;"><em>Works because it works.</em></p>
     <div style="border:1px solid var(--line); padding:0.5rem; margin-bottom:2rem;">
       <h4 style="font-family:'Work Sans',sans-serif;font-size:10pt;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:0.3rem;">Free Notes</h4>
-      <textarea rows="4" style="width:100%;min-height:1.5in;border:none;outline:none;background:transparent;font-family:'Crimson Pro',Georgia,serif;font-size:12pt;line-height:1.8;resize:vertical;" placeholder="Anything else — health notes, feed changes, lessons learned..."></textarea>
+      <textarea data-key="free-notes" rows="4" style="width:100%;min-height:1.5in;border:none;outline:none;background:transparent;font-family:'Crimson Pro',Georgia,serif;font-size:12pt;line-height:1.8;resize:vertical;" placeholder="Anything else — health notes, feed changes, lessons learned..."></textarea>
     </div>
     <p class="small" style="text-align:center; color:#b0a99e;">Kitchen &amp; Kettle</p>
     <p class="small" style="text-align:center; color:#b0a99e;">A quieter way to run a kitchen.</p>
   </div>
 </div>
+<script>
+const STORAGE_KEY = 'keeping-kitchen-chicken-guide';
+function save() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => { data[el.dataset.key] = el.value; });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  const s = document.getElementById('saveStatus');
+  s.classList.add('visible');
+  clearTimeout(s._t); s._t = setTimeout(() => s.classList.remove('visible'), 1500);
+}
+function load() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.dataset.key in data) el.value = data[el.dataset.key];
+  });
+}
+function clearAll() {
+  if (!confirm('Clear all notes?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('[data-key]').forEach(el => el.value = '');
+}
+document.addEventListener('input', save);
+load();
+</script>
 </body>
 </html>
