@@ -54,6 +54,8 @@ const FILES = [
           box-shadow: none !important;
           padding-top: 0.6in !important;
           padding-bottom: 0.6in !important;
+          break-after: page !important;
+          page-break-after: always !important;
         }
 
         /* --- Calendar: reference page (+0.6in) & closing page (+0.1in) --- */
@@ -97,6 +99,7 @@ const FILES = [
         .homekeeping-guide .prose-page ul { margin: 0.15rem 0 0.2rem 1rem !important; }
         .homekeeping-guide .prose-page ul li { margin-bottom: 0.05rem !important; line-height: 1.35 !important; }
         .homekeeping-guide .prose-page ol { margin: 0.15rem 0 0.2rem 1rem !important; }
+        .homekeeping-guide .routine-table { break-inside: avoid !important; page-break-inside: avoid !important; }
         .homekeeping-guide .prose-page ol li { margin-bottom: 0.05rem !important; line-height: 1.35 !important; }
 
         /* --- Chicken Guide: breed page (+0.6in) --- */
