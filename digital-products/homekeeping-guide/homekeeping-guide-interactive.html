@@ -45,13 +45,13 @@
     padding: 0.75in 0.7in; box-shadow: 0 2px 12px rgba(44,36,22,0.1);
   }
   h1 { font-size: 28pt; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
-  h2 { font-size: 16pt; font-weight: 600; margin-bottom: 0.4rem; }
+  h2 { font-size: 16pt; font-weight: 600; margin-bottom: 0.25rem; }
   h3 {
     font-family: 'Work Sans', sans-serif; font-size: 10pt; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.3rem;
   }
-  p { margin-bottom: 0.5rem; color: #3D362D; }
-  .lede { font-size: 13pt; line-height: 1.5; margin-bottom: 1rem; }
+  p { margin-bottom: 0.35rem; color: #3D362D; }
+  .lede { font-size: 13pt; line-height: 1.4; margin-bottom: 0.5rem; }
   .tip {
     font-size: 10pt; font-style: italic; color: var(--sage);
     margin: 0.4rem 0; padding-left: 0.5rem; border-left: 2px solid var(--clay);
@@ -81,19 +81,19 @@
   .prose-page h2 { margin-top: 0; }
   .prose-page ol, .prose-page ul { margin: 0.4rem 0 0.6rem 1.2rem; font-size: 12pt; }
   .prose-page li { margin-bottom: 0.35rem; line-height: 1.5; }
-  .prose-page hr { border: none; border-top: 1px solid var(--line); margin: 0.7rem 0; }
+  .prose-page hr { border: none; border-top: 1px solid var(--line); margin: 0.5rem 0; }
   /* Recipe cards */
   .recipe-card {
-    border: 1px solid var(--line); padding: 0.5rem; margin-bottom: 0.5rem;
+    border: 1px solid var(--line); padding: 0.25rem; margin-bottom: 0.25rem;
   }
   .recipe-card h3 {
     font-family: 'Crimson Pro', serif; font-size: 13pt; font-weight: 600;
-    text-transform: none; letter-spacing: 0; color: var(--ink); margin-bottom: 0.2rem;
+    text-transform: none; letter-spacing: 0; color: var(--ink); margin-bottom: 0.1rem;
   }
   /* Ingredient cards */
-  .ingredient-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .ingredient-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem; }
   .ingredient-card {
-    border: 1px solid var(--line); padding: 0.4rem;
+    border: 1px solid var(--line); padding: 0.3rem;
   }
   .ingredient-card h4 {
     font-family: 'Crimson Pro', serif; font-size: 12pt; font-weight: 600;
@@ -101,7 +101,7 @@
   }
   .ingredient-card p { font-size: 12pt; margin-bottom: 0.2rem; }
   .honest-box {
-    border: 1px solid var(--clay); padding: 0.5rem; margin: 0.5rem 0;
+    border: 1px solid var(--clay); padding: 0.35rem; margin: 0.4rem 0;
     background: var(--light);
   }
   .honest-box h4 {
@@ -224,6 +224,12 @@
       <p>A stronger, odorless acid. Excellent descaler.</p>
       <p style="font-size:10pt;color:var(--sage);font-style:italic;">Dishwasher, washing machine, kettle, bathroom fixtures.</p>
     </div>
+  </div>
+</div>
+<!-- INGREDIENT PANTRY (continued) -->
+<div class="page prose-page">
+  <h2>The seven-ingredient cleaning pantry <span style="font-size:9pt;color:var(--muted);font-weight:400;">(continued)</span></h2>
+  <div class="ingredient-grid">
     <div class="ingredient-card">
       <h4>Salt (coarse)</h4>
       <p>Abrasive and absorbent. Good for stubborn residue.</p>
@@ -252,8 +258,8 @@
   <div class="recipe-card">
     <h3>All-Purpose Spray</h3>
     <p style="font-size:10pt;color:var(--sage);font-style:italic;">Counters, tables, sinks, most hard surfaces. Daily use.</p>
-    <p style="font-size:12pt;color:var(--muted);">1 cup water &bull; 1 cup white vinegar &bull; optional: 10 drops essential oil</p>
-    <ol style="font-size:12pt;padding-left:1rem;color:#3D362D;">
+    <p style="font-size:12pt;color:var(--muted);margin-bottom:0.1rem;">1 cup water &bull; 1 cup white vinegar &bull; optional: 10 drops essential oil</p>
+    <ol style="font-size:12pt;padding-left:0.8rem;color:#3D362D;">
       <li>Combine in a spray bottle. Shake before each use.</li>
       <li>Spray surface. Wipe with a clean cloth.</li>
     </ol>
@@ -265,8 +271,8 @@
   </div>
   <div class="recipe-card">
     <h3>Soft Scrub (sinks, tubs, stovetops)</h3>
-    <p style="font-size:12pt;color:var(--muted);">Baking soda &bull; liquid soap or plain bar (castile, Ivory, or Dove) &bull; water</p>
-    <ol style="font-size:12pt;padding-left:1rem;color:#3D362D;">
+    <p style="font-size:12pt;color:var(--muted);margin-bottom:0.1rem;">Baking soda &bull; liquid soap or plain bar (castile, Ivory, or Dove) &bull; water</p>
+    <ol style="font-size:12pt;padding-left:0.8rem;color:#3D362D;">
       <li>Sprinkle baking soda onto the wet surface.</li>
       <li>Add a few drops of liquid soap, or rub a damp cloth on a bar of mild soap.</li>
       <li>Scrub with damp cloth. Rinse thoroughly.</li>
@@ -274,8 +280,8 @@
   </div>
   <div class="recipe-card">
     <h3>Glass &amp; Mirror Cleaner</h3>
-    <p style="font-size:12pt;color:var(--muted);">½ cup isopropyl alcohol (70% or 50%) &bull; ½ cup water</p>
-    <ol style="font-size:12pt;padding-left:1rem;color:#3D362D;">
+    <p style="font-size:12pt;color:var(--muted);margin-bottom:0.1rem;">½ cup isopropyl alcohol (70% or 50%) &bull; ½ cup water</p>
+    <ol style="font-size:12pt;padding-left:0.8rem;color:#3D362D;">
       <li>Combine in spray bottle. Shake gently.</li>
       <li>Spray onto glass. Wipe with microfiber cloth or newspaper.</li>
     </ol>
@@ -283,16 +289,16 @@
   </div>
   <div class="recipe-card">
     <h3>Floor Cleaner</h3>
-    <p style="font-size:12pt;color:var(--muted);">1 gallon hot water &bull; ¼ cup white vinegar &bull; 2–3 drops mild liquid soap (optional)</p>
-    <ol style="font-size:12pt;padding-left:1rem;color:#3D362D;">
+    <p style="font-size:12pt;color:var(--muted);margin-bottom:0.1rem;">1 gallon hot water &bull; ¼ cup white vinegar &bull; 2–3 drops mild liquid soap (optional)</p>
+    <ol style="font-size:12pt;padding-left:0.8rem;color:#3D362D;">
       <li>Combine in bucket. Mop as usual.</li>
       <li>No need to rinse — vinegar residue evaporates.</li>
     </ol>
   </div>
   <div class="recipe-card">
     <h3>Oven Cleaner (non-toxic, requires elbow grease)</h3>
-    <p style="font-size:12pt;color:var(--muted);">Baking soda &bull; water &bull; white vinegar (for final wipe)</p>
-    <ol style="font-size:12pt;padding-left:1rem;color:#3D362D;">
+    <p style="font-size:12pt;color:var(--muted);margin-bottom:0.1rem;">Baking soda &bull; water &bull; white vinegar (for final wipe)</p>
+    <ol style="font-size:12pt;padding-left:0.8rem;color:#3D362D;">
       <li>Make a paste of baking soda and water. Spread over surfaces.</li>
       <li>Let sit overnight (at least 8 hours).</li>
       <li>Scrub with damp cloth. Spray vinegar on stubborn spots.</li>
