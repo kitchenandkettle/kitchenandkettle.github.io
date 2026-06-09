@@ -9,7 +9,7 @@ const FILES = [
   'seasonal-preservation-calendar/calendar.html',
   'egg-preservation-guide/egg-guide.html',
   'recipe-cards/recipe-cards.html',
-  'homekeeping-guide/homekeeping-guide.html',
+  'homekeeping-guide/homekeeping-guide-interactive.html',
   'preservation-logbook/preservation-logbook.html',
   'kitchen-planner-bundle/kitchen-planner-bundle.html',
   'chicken-keeping-guide/chicken-keeping-guide.html',
