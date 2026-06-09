@@ -8,7 +8,7 @@ Type: Digital download
 Food Preservation Logbook | Canning Log, Fermentation Tracker and Dehydrating Notes | Printable & Interactive PDF | Seasonal Produce Guide
 
 ## Photos (upload in this order)
-1. primary-logbook-image.png
+1. primary-logbook-image.jpg
 2. logbook-image.png
 3. logbook-image-2.png
 
