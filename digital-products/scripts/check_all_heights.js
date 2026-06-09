@@ -124,36 +124,34 @@ const INJECT_CSS = `
 
         /* --- Body Care Guide: label table page (+2.1in) --- */
         .body-care .page { padding-top: 0.5in !important; padding-bottom: 0.5in !important; }
-        .body-care .prose-page p { font-size: 8.5pt !important; margin-bottom: 0.15rem !important; line-height: 1.35 !important; }
-        .body-care .prose-page .lede { font-size: 10pt !important; margin-bottom: 0.4rem !important; }
-        .body-care .prose-page h2 { font-size: 13pt !important; margin-bottom: 0.2rem !important; }
-        .body-care .prose-page h3 { font-size: 8pt !important; margin-bottom: 0.1rem !important; margin-top: 0.2rem !important; }
+        .body-care .prose-page p { line-height: 1.35 !important; margin-bottom: 0.15rem !important; }
+        .body-care .prose-page .lede { margin-bottom: 0.4rem !important; }
+        .body-care .prose-page h2 { margin-bottom: 0.2rem !important; }
+        .body-care .prose-page h3 { margin-bottom: 0.1rem !important; margin-top: 0.2rem !important; }
         .body-care .prose-page hr { margin: 0.3rem 0 !important; }
-        .body-care .prose-page .tip { font-size: 7.5pt !important; margin: 0.15rem 0 !important; padding-left: 0.35rem !important; }
-        .body-care .prose-page ol, .body-care .prose-page ul { font-size: 8.5pt !important; margin: 0.2rem 0 0.3rem 1rem !important; }
+        .body-care .prose-page .tip { margin: 0.15rem 0 !important; padding-left: 0.35rem !important; }
+        .body-care .prose-page ol, .body-care .prose-page ul { margin: 0.2rem 0 0.3rem 1rem !important; }
         .body-care .prose-page li { margin-bottom: 0.12rem !important; line-height: 1.35 !important; }
-        .body-care .label-table td, .body-care .label-table th { font-size: 7.5pt !important; padding: 0.12rem 0.2rem !important; }
-        .body-care .label-table td:first-child { font-size: 7.5pt !important; }
-        .body-care .label-table th { font-size: 7pt !important; }
+        .body-care .label-table td, .body-care .label-table th { padding: 0.08rem 0.15rem !important; line-height: 1.25 !important; }
+        .body-care .label-table th { font-size: 9pt !important; }
+        .body-care .prose-page p { line-height: 1.25 !important; margin-bottom: 0.1rem !important; }
         .body-care .honest-box { padding: 0.3rem !important; }
-        .body-care .honest-box h4 { font-size: 7.5pt !important; margin-bottom: 0.1rem !important; }
-        .body-care .honest-box p { font-size: 8pt !important; }
+        .body-care .honest-box h4 { margin-bottom: 0.1rem !important; }
+        .body-care .honest-box p { line-height: 1.35 !important; }
         .body-care .ingredient-card { padding: 0.25rem !important; }
-        .body-care .ingredient-card h4 { font-size: 10pt !important; }
-        .body-care .ingredient-card p { font-size: 8pt !important; line-height: 1.3 !important; }
-        .body-care .ingredient-card .role { font-size: 7.5pt !important; }
+        .body-care .ingredient-card p { line-height: 1.3 !important; }
+        .body-care .ingredient-card .role { font-size: 10pt !important; }
         .body-care .ingredient-grid { gap: 0.3rem !important; }
         .body-care .do-dont { gap: 0.5rem !important; margin: 0.3rem 0 !important; }
         .body-care .do, .body-care .dont { padding: 0.3rem !important; }
-        .body-care .do h4, .body-care .dont h4 { font-size: 7.5pt !important; margin-bottom: 0.15rem !important; }
-        .body-care .do li, .body-care .dont li { font-size: 8pt !important; line-height: 1.35 !important; }
+        .body-care .do h4, .body-care .dont h4 { margin-bottom: 0.15rem !important; }
+        .body-care .do li, .body-care .dont li { line-height: 1.35 !important; }
         .body-care .ref-card { padding: 0.25rem !important; margin-bottom: 0.2rem !important; }
-        .body-care .ref-card h3 { font-size: 10pt !important; margin-bottom: 0.15rem !important; }
-        .body-care .ref-card li { font-size: 8.5pt !important; line-height: 1.3 !important; }
+        .body-care .ref-card li { line-height: 1.3 !important; }
         .body-care .notes-grid { gap: 0.3rem !important; margin-top: 0.35rem !important; }
         .body-care .note-block { padding: 0.25rem !important; min-height: 2.5rem !important; }
-        .body-care .note-block h4 { font-size: 7.5pt !important; margin-bottom: 0.15rem !important; }
-        .body-care .note-block textarea { font-size: 8pt !important; min-height: 1.5rem !important; }
+        .body-care .note-block h4 { margin-bottom: 0.15rem !important; }
+        .body-care .note-block textarea { min-height: 1.5rem !important; }
 
         /* --- Chicken Guide: notes page (+0.6in) --- */
         .chicken-guide .notes-grid { gap: 0.25rem !important; margin-top: 0.25rem !important; }
