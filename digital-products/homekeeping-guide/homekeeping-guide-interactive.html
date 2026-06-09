@@ -13,7 +13,7 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: 'Crimson Pro', Georgia, serif; font-size: 11pt;
+    font-family: 'Crimson Pro', Georgia, serif; font-size: 12pt;
     line-height: 1.6; color: var(--ink); background: #e8e4dc;
     padding: 1rem;
   }
@@ -47,13 +47,13 @@
   h1 { font-size: 28pt; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
   h2 { font-size: 16pt; font-weight: 600; margin-bottom: 0.4rem; }
   h3 {
-    font-family: 'Work Sans', sans-serif; font-size: 9pt; font-weight: 600;
+    font-family: 'Work Sans', sans-serif; font-size: 10pt; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.3rem;
   }
   p { margin-bottom: 0.5rem; color: #3D362D; }
   .lede { font-size: 13pt; line-height: 1.5; margin-bottom: 1rem; }
   .tip {
-    font-size: 9pt; font-style: italic; color: var(--sage);
+    font-size: 10pt; font-style: italic; color: var(--sage);
     margin: 0.4rem 0; padding-left: 0.5rem; border-left: 2px solid var(--clay);
   }
   .section-header {
@@ -62,7 +62,7 @@
     display: flex; justify-content: space-between; align-items: baseline;
   }
   input, textarea {
-    font-family: 'Crimson Pro', Georgia, serif; font-size: 10pt; color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif; font-size: 12pt; color: var(--ink);
     background: transparent; border: none; border-bottom: 1px solid transparent;
     padding: 0.1rem 0; outline: none; width: 100%;
     transition: border-color 0.15s;
@@ -79,7 +79,7 @@
   .cover h1 { font-size: 28pt; max-width: 10ch; }
   /* Prose */
   .prose-page h2 { margin-top: 0; }
-  .prose-page ol, .prose-page ul { margin: 0.4rem 0 0.6rem 1.2rem; font-size: 10.5pt; }
+  .prose-page ol, .prose-page ul { margin: 0.4rem 0 0.6rem 1.2rem; font-size: 12pt; }
   .prose-page li { margin-bottom: 0.35rem; line-height: 1.5; }
   .prose-page hr { border: none; border-top: 1px solid var(--line); margin: 0.7rem 0; }
   /* Recipe cards */
@@ -96,23 +96,23 @@
     border: 1px solid var(--line); padding: 0.4rem;
   }
   .ingredient-card h4 {
-    font-family: 'Crimson Pro', serif; font-size: 11pt; font-weight: 600;
+    font-family: 'Crimson Pro', serif; font-size: 12pt; font-weight: 600;
     margin-bottom: 0.2rem; padding-bottom: 0.15rem; border-bottom: 1px dotted var(--line);
   }
-  .ingredient-card p { font-size: 9pt; margin-bottom: 0.2rem; }
+  .ingredient-card p { font-size: 12pt; margin-bottom: 0.2rem; }
   .honest-box {
     border: 1px solid var(--clay); padding: 0.5rem; margin: 0.5rem 0;
     background: var(--light);
   }
   .honest-box h4 {
-    font-family: 'Work Sans', sans-serif; font-size: 8pt; font-weight: 600;
+    font-family: 'Work Sans', sans-serif; font-size: 10pt; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.06em; color: var(--clay); margin-bottom: 0.2rem;
   }
   /* Checklist */
   .checklist { list-style: none; }
   .checklist li {
     display: grid; grid-template-columns: 1.2rem 1fr;
-    gap: 0.3rem; padding: 0.15rem 0; font-size: 9.5pt; align-items: start;
+    gap: 0.3rem; padding: 0.15rem 0; font-size: 12pt; align-items: start;
   }
   .checklist input[type="checkbox"] {
     width: 0.8rem; height: 0.8rem; margin-top: 0.2rem;
@@ -123,15 +123,15 @@
     width: 100%; border-collapse: collapse; border: 1px solid var(--line); margin: 0.5rem 0;
   }
   .routine-table th {
-    font-family: 'Work Sans', sans-serif; font-size: 7.5pt; font-weight: 600;
+    font-family: 'Work Sans', sans-serif; font-size: 9pt; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
     padding: 0.25rem 0.35rem; border: 1px solid var(--line); background: var(--light); text-align: left;
   }
   .routine-table td {
-    padding: 0.25rem 0.35rem; border: 1px solid var(--line); font-size: 9pt; vertical-align: top;
+    padding: 0.25rem 0.35rem; border: 1px solid var(--line); font-size: 12pt; vertical-align: top;
   }
   .routine-table td:first-child {
-    font-family: 'Work Sans', sans-serif; font-size: 8pt; font-weight: 600;
+    font-family: 'Work Sans', sans-serif; font-size: 9pt; font-weight: 600;
     color: var(--muted); text-align: center; width: 1in;
   }
   /* Notes */
@@ -140,16 +140,16 @@
     border: 1px solid var(--line); padding: 0.4rem; min-height: 3rem;
   }
   .note-block h4 {
-    font-family: 'Work Sans', sans-serif; font-size: 7.5pt; font-weight: 600;
+    font-family: 'Work Sans', sans-serif; font-size: 10pt; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
     margin-bottom: 0.3rem; padding-bottom: 0.1rem; border-bottom: 1px dotted var(--line);
   }
   .note-block textarea {
-    width: 100%; min-height: 2rem; resize: vertical; font-size: 9pt;
+    width: 100%; min-height: 2rem; resize: vertical; font-size: 12pt;
     border: none; outline: none; background: transparent;
   }
   .clear-btn {
-    font-family: 'Work Sans', sans-serif; font-size: 7pt; color: var(--muted);
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; color: var(--muted);
     background: none; border: none; cursor: pointer; text-decoration: underline;
   }
   .clear-btn:hover { color: var(--ink); }
@@ -195,53 +195,53 @@
     <div class="ingredient-card">
       <h4>White vinegar</h4>
       <p>A mild acid. Dissolves mineral deposits, cuts grease, deodorizes.</p>
-      <p style="font-size:8.5pt;color:var(--sage);font-style:italic;">Glass, counters, bathroom, laundry rinse, coffee maker.</p>
+      <p style="font-size:10pt;color:var(--sage);font-style:italic;">Glass, counters, bathroom, laundry rinse, coffee maker.</p>
       <div class="honest-box" style="margin-top:0.3rem;">
         <h4>Honest note</h4>
-        <p style="font-size:9pt;font-style:italic;">Does not disinfect. Use for cleaning (removing dirt), not sanitizing. If someone is sick, use something stronger.</p>
+        <p style="font-size:12pt;font-style:italic;">Does not disinfect. Use for cleaning (removing dirt), not sanitizing. If someone is sick, use something stronger.</p>
       </div>
     </div>
     <div class="ingredient-card">
       <h4>Baking soda</h4>
       <p>A mild abrasive and deodorizer. Scrubs without scratching.</p>
-      <p style="font-size:8.5pt;color:var(--sage);font-style:italic;">Sinks, tubs, stovetops, oven, deodorizing, laundry booster.</p>
+      <p style="font-size:10pt;color:var(--sage);font-style:italic;">Sinks, tubs, stovetops, oven, deodorizing, laundry booster.</p>
       <div class="honest-box" style="margin-top:0.3rem;">
         <h4>Honest note</h4>
-        <p style="font-size:9pt;font-style:italic;">The baking soda + vinegar fizz is not what cleans — it's just the two neutralizing each other. Scrub with baking soda, rinse, then wipe with vinegar. Don't mix them at the same time.</p>
+        <p style="font-size:12pt;font-style:italic;">The baking soda + vinegar fizz is not what cleans — it's just the two neutralizing each other. Scrub with baking soda, rinse, then wipe with vinegar. Don't mix them at the same time.</p>
       </div>
     </div>
     <div class="ingredient-card">
       <h4>Castile soap (liquid) or plain bar soap</h4>
       <p>A true soap from plant oils or gentle fats. Cuts through dirt and grease. Liquid castile is convenient; a plain bar like Ivory or Dove Sensitive works just as well — grate and dissolve in warm water, or rub a damp cloth on the bar.</p>
-      <p style="font-size:8.5pt;color:var(--sage);font-style:italic;">All-purpose spray, dish soap, hand soap, floors, laundry (soft water).</p>
+      <p style="font-size:10pt;color:var(--sage);font-style:italic;">All-purpose spray, dish soap, hand soap, floors, laundry (soft water).</p>
       <div class="honest-box" style="margin-top:0.3rem;">
         <h4>Honest note</h4>
-        <p style="font-size:9pt;font-style:italic;">Castile can irritate some people's skin. If it bothers you, switch to a plain unscented bar (Ivory, Dove Sensitive). Cleans just as well and many find it gentler. Don't mix any soap with vinegar — they cancel out.</p>
+        <p style="font-size:12pt;font-style:italic;">Castile can irritate some people's skin. If it bothers you, switch to a plain unscented bar (Ivory, Dove Sensitive). Cleans just as well and many find it gentler. Don't mix any soap with vinegar — they cancel out.</p>
       </div>
     </div>
     <div class="ingredient-card">
       <h4>Citric acid</h4>
       <p>A stronger, odorless acid. Excellent descaler.</p>
-      <p style="font-size:8.5pt;color:var(--sage);font-style:italic;">Dishwasher, washing machine, kettle, bathroom fixtures.</p>
+      <p style="font-size:10pt;color:var(--sage);font-style:italic;">Dishwasher, washing machine, kettle, bathroom fixtures.</p>
     </div>
     <div class="ingredient-card">
       <h4>Salt (coarse)</h4>
       <p>Abrasive and absorbent. Good for stubborn residue.</p>
-      <p style="font-size:8.5pt;color:var(--sage);font-style:italic;">Cast iron, cutting boards, oven spills, wine stains.</p>
+      <p style="font-size:10pt;color:var(--sage);font-style:italic;">Cast iron, cutting boards, oven spills, wine stains.</p>
     </div>
     <div class="ingredient-card">
       <h4>Hydrogen peroxide (3%)</h4>
       <p>Oxidizing cleaner and mild disinfectant.</p>
-      <p style="font-size:8.5pt;color:var(--sage);font-style:italic;">Stain removal, cutting board sanitizing, grout, laundry.</p>
+      <p style="font-size:10pt;color:var(--sage);font-style:italic;">Stain removal, cutting board sanitizing, grout, laundry.</p>
       <div class="honest-box" style="margin-top:0.3rem;">
         <h4>Honest note</h4>
-        <p style="font-size:9pt;font-style:italic;">Keep in dark bottle. Don't mix with vinegar (creates irritant).</p>
+        <p style="font-size:12pt;font-style:italic;">Keep in dark bottle. Don't mix with vinegar (creates irritant).</p>
       </div>
     </div>
   </div>
   <div class="honest-box" style="margin-top:0.6rem;">
     <h4>When to use commercial products</h4>
-    <p style="font-size:9.5pt;font-style:italic;">Toilet bowl cleaner, laundry detergent in hard water, dishwasher detergent, disinfectant when sick. This isn't absolutism.</p>
+    <p style="font-size:12pt;font-style:italic;">Toilet bowl cleaner, laundry detergent in hard water, dishwasher detergent, disinfectant when sick. This isn't absolutism.</p>
   </div>
 </div>
 <!-- CLEANING RECIPES -->
@@ -251,22 +251,22 @@
   </div>
   <div class="recipe-card">
     <h3>All-Purpose Spray</h3>
-    <p style="font-size:9pt;color:var(--sage);font-style:italic;">Counters, tables, sinks, most hard surfaces. Daily use.</p>
-    <p style="font-size:9pt;color:var(--muted);">1 cup water &bull; 1 cup white vinegar &bull; optional: 10 drops essential oil</p>
-    <ol style="font-size:9.5pt;padding-left:1rem;color:#3D362D;">
+    <p style="font-size:10pt;color:var(--sage);font-style:italic;">Counters, tables, sinks, most hard surfaces. Daily use.</p>
+    <p style="font-size:12pt;color:var(--muted);">1 cup water &bull; 1 cup white vinegar &bull; optional: 10 drops essential oil</p>
+    <ol style="font-size:12pt;padding-left:1rem;color:#3D362D;">
       <li>Combine in a spray bottle. Shake before each use.</li>
       <li>Spray surface. Wipe with a clean cloth.</li>
     </ol>
-    <p style="font-size:8.5pt;color:var(--muted);margin-top:0.2rem;">Do not use on marble, granite, or natural stone.</p>
+    <p style="font-size:10pt;color:var(--muted);margin-top:0.2rem;">Do not use on marble, granite, or natural stone.</p>
     <div style="margin-top:0.3rem;">
-      <label style="font-size:8pt;">My notes on this recipe:</label>
-      <textarea data-key="notes-spray" style="width:100%;min-height:1.2rem;resize:vertical;border:none;outline:none;font-size:9pt;" placeholder="Any adjustments? Does it work in your water?"></textarea>
+      <label style="font-size:9pt;">My notes on this recipe:</label>
+      <textarea data-key="notes-spray" style="width:100%;min-height:1.2rem;resize:vertical;border:none;outline:none;font-size:12pt;" placeholder="Any adjustments? Does it work in your water?"></textarea>
     </div>
   </div>
   <div class="recipe-card">
     <h3>Soft Scrub (sinks, tubs, stovetops)</h3>
-    <p style="font-size:9pt;color:var(--muted);">Baking soda &bull; liquid soap or plain bar (castile, Ivory, or Dove) &bull; water</p>
-    <ol style="font-size:9.5pt;padding-left:1rem;color:#3D362D;">
+    <p style="font-size:12pt;color:var(--muted);">Baking soda &bull; liquid soap or plain bar (castile, Ivory, or Dove) &bull; water</p>
+    <ol style="font-size:12pt;padding-left:1rem;color:#3D362D;">
       <li>Sprinkle baking soda onto the wet surface.</li>
       <li>Add a few drops of liquid soap, or rub a damp cloth on a bar of mild soap.</li>
       <li>Scrub with damp cloth. Rinse thoroughly.</li>
@@ -274,25 +274,25 @@
   </div>
   <div class="recipe-card">
     <h3>Glass &amp; Mirror Cleaner</h3>
-    <p style="font-size:9pt;color:var(--muted);">½ cup isopropyl alcohol (70% or 50%) &bull; ½ cup water</p>
-    <ol style="font-size:9.5pt;padding-left:1rem;color:#3D362D;">
+    <p style="font-size:12pt;color:var(--muted);">½ cup isopropyl alcohol (70% or 50%) &bull; ½ cup water</p>
+    <ol style="font-size:12pt;padding-left:1rem;color:#3D362D;">
       <li>Combine in spray bottle. Shake gently.</li>
       <li>Spray onto glass. Wipe with microfiber cloth or newspaper.</li>
     </ol>
-    <p style="font-size:8.5pt;color:var(--muted);">Alcohol cuts grease and evaporates fast — zero streaks. No alcohol? ¼ cup vinegar + 1 cup water + 1 tsp cornstarch works too.</p>
+    <p style="font-size:10pt;color:var(--muted);">Alcohol cuts grease and evaporates fast — zero streaks. No alcohol? ¼ cup vinegar + 1 cup water + 1 tsp cornstarch works too.</p>
   </div>
   <div class="recipe-card">
     <h3>Floor Cleaner</h3>
-    <p style="font-size:9pt;color:var(--muted);">1 gallon hot water &bull; ¼ cup white vinegar &bull; 2–3 drops mild liquid soap (optional)</p>
-    <ol style="font-size:9.5pt;padding-left:1rem;color:#3D362D;">
+    <p style="font-size:12pt;color:var(--muted);">1 gallon hot water &bull; ¼ cup white vinegar &bull; 2–3 drops mild liquid soap (optional)</p>
+    <ol style="font-size:12pt;padding-left:1rem;color:#3D362D;">
       <li>Combine in bucket. Mop as usual.</li>
       <li>No need to rinse — vinegar residue evaporates.</li>
     </ol>
   </div>
   <div class="recipe-card">
     <h3>Oven Cleaner (non-toxic, requires elbow grease)</h3>
-    <p style="font-size:9pt;color:var(--muted);">Baking soda &bull; water &bull; white vinegar (for final wipe)</p>
-    <ol style="font-size:9.5pt;padding-left:1rem;color:#3D362D;">
+    <p style="font-size:12pt;color:var(--muted);">Baking soda &bull; water &bull; white vinegar (for final wipe)</p>
+    <ol style="font-size:12pt;padding-left:1rem;color:#3D362D;">
       <li>Make a paste of baking soda and water. Spread over surfaces.</li>
       <li>Let sit overnight (at least 8 hours).</li>
       <li>Scrub with damp cloth. Spray vinegar on stubborn spots.</li>
@@ -314,7 +314,7 @@
   <ul class="checklist" id="monthly-list"></ul>
   <div class="honest-box" style="margin-top:0.6rem;">
     <h4>If you only do one thing</h4>
-    <p style="font-size:9.5pt;font-style:italic;">A clean kitchen and a clean bathroom make a house feel functional. Skip everything else if you're overwhelmed.</p>
+    <p style="font-size:12pt;font-style:italic;">A clean kitchen and a clean bathroom make a house feel functional. Skip everything else if you're overwhelmed.</p>
   </div>
 </div>
 <!-- LAUNDRY -->
@@ -353,7 +353,7 @@
     <div class="note-block"><h4>Things I still buy (and why)</h4><textarea data-key="notes-stillbuy"></textarea></div>
     <div class="note-block"><h4>Seasonal cleaning notes</h4><textarea data-key="notes-seasonal"></textarea></div>
   </div>
-  <p style="font-size:9pt;color:var(--muted);margin-top:1rem;text-align:center;">
+  <p style="font-size:12pt;color:var(--muted);margin-top:1rem;text-align:center;">
     Kitchen &amp; Kettle &bull; Works because it works.
   </p>
 </div>

@@ -74,25 +74,30 @@ const FILES = [
         .month-spread hr { margin: 0.3rem 0 !important; }
 
         /* --- Homekeeping Guide: increased compression --- */
-        .ingredient-card { padding: 0.25rem !important; }
-        .ingredient-card p { font-size: 8pt !important; line-height: 1.3 !important; }
-        .ingredient-card .use-for { font-size: 7.5pt !important; }
-        .ingredient-grid { gap: 0.25rem !important; }
-        .prose-page .lede { font-size: 10pt !important; margin-bottom: 0.3rem !important; }
-        .prose-page hr { margin: 0.25rem 0 !important; }
-        .recipe-card { margin-bottom: 0.2rem !important; padding: 0.2rem 0 !important; }
-        .recipe-card h3 { font-size: 7.5pt !important; margin-bottom: 0.08rem !important; }
-        .recipe-card .uses { font-size: 7.5pt !important; margin-bottom: 0.08rem !important; }
-        .recipe-card .ingredients { font-size: 8pt !important; margin-bottom: 0.12rem !important; }
-        .recipe-card .steps { font-size: 8pt !important; line-height: 1.25 !important; margin: 0.12rem 0 !important; }
-        .recipe-card .steps li { margin-bottom: 0.08rem !important; }
-        .homekeeping-guide .page { padding-top: 0.45in !important; padding-bottom: 0.45in !important; }
-        .homekeeping-guide .prose-page p { font-size: 7.5pt !important; line-height: 1.25 !important; margin-bottom: 0.15rem !important; }
-        .homekeeping-guide .prose-page h2 { font-size: 12pt !important; margin-bottom: 0.15rem !important; margin-top: 0.15rem !important; }
-        .homekeeping-guide .prose-page h3 { font-size: 7.5pt !important; margin-bottom: 0.08rem !important; margin-top: 0.15rem !important; }
-        .homekeeping-guide .ingredient-card p { margin-bottom: 0.1rem !important; }
+        .homekeeping-guide .ingredient-card { padding: 0.2rem !important; }
+        .homekeeping-guide .ingredient-card p { line-height: 1.2 !important; margin-bottom: 0.05rem !important; }
+        .homekeeping-guide .ingredient-card h4 { margin-bottom: 0.1rem !important; padding-bottom: 0.08rem !important; }
+        .homekeeping-guide .ingredient-card .use-for { font-size: 10pt !important; }
+        .homekeeping-guide .ingredient-grid { gap: 0.2rem !important; }
+        .homekeeping-guide .honest-box { padding: 0.2rem !important; margin: 0.2rem 0 !important; }
+        .homekeeping-guide .honest-box h4 { margin-bottom: 0.08rem !important; }
+        .homekeeping-guide .honest-box p { margin-bottom: 0.05rem !important; line-height: 1.2 !important; }
+        .homekeeping-guide .prose-page .lede { margin-bottom: 0.3rem !important; }
+        .homekeeping-guide .prose-page hr { margin: 0.25rem 0 !important; }
+        .homekeeping-guide .recipe-card { margin-bottom: 0.2rem !important; padding: 0.2rem 0 !important; }
+        .homekeeping-guide .recipe-card h3 { margin-bottom: 0.08rem !important; }
+        .homekeeping-guide .recipe-card .uses { margin-bottom: 0.08rem !important; }
+        .homekeeping-guide .recipe-card .ingredients { margin-bottom: 0.12rem !important; }
+        .homekeeping-guide .recipe-card .steps { line-height: 1.25 !important; margin: 0.12rem 0 !important; }
+        .homekeeping-guide .recipe-card .steps li { margin-bottom: 0.08rem !important; }
+        .homekeeping-guide .page { padding-top: 0.4in !important; padding-bottom: 0.4in !important; }
+        .homekeeping-guide .prose-page p { line-height: 1.3 !important; margin-bottom: 0.12rem !important; }
+        .homekeeping-guide .prose-page h2 { margin-bottom: 0.15rem !important; margin-top: 0.15rem !important; }
+        .homekeeping-guide .prose-page h3 { margin-bottom: 0.1rem !important; margin-top: 0.15rem !important; }
         .homekeeping-guide .prose-page ul { margin: 0.15rem 0 0.2rem 1rem !important; }
-        .homekeeping-guide .prose-page ul li { margin-bottom: 0.05rem !important; line-height: 1.25 !important; }
+        .homekeeping-guide .prose-page ul li { margin-bottom: 0.05rem !important; line-height: 1.35 !important; }
+        .homekeeping-guide .prose-page ol { margin: 0.15rem 0 0.2rem 1rem !important; }
+        .homekeeping-guide .prose-page ol li { margin-bottom: 0.05rem !important; line-height: 1.35 !important; }
 
         /* --- Chicken Guide: breed page (+0.6in) --- */
         .breed-card { padding: 0.3rem !important; }
