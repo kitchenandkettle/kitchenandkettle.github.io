@@ -91,6 +91,9 @@
   .prose-page ol, .prose-page ul { margin: 0.4rem 0 0.6rem 1.2rem; font-size:12pt; }
   .prose-page li { margin-bottom: 0.35rem; line-height: 1.5; color: #3D362D; }
   .prose-page hr { border: none; border-top: 1px solid var(--line); margin: 0.7rem 0; }
+  /* Step cards (recipes) */
+  .step-card p { font-size: 12pt; }
+  .steps li { font-size: 12pt; }
   /* Ingredient cards */
   .ingredient-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;
@@ -399,13 +402,13 @@
   <p style="margin-bottom:0.05rem !important;">I hit a wall trying to make every product we use. And when I really looked at it, I realized making my own soap still meant buying a big plastic jug of lye shipped to my house — while a simple bar in cardboard was already sitting at the grocery store I was driving to anyway.</p>
   <div class="do" style="background:var(--light);border:1px solid var(--clay);margin-bottom:0.1rem;padding:0.1rem !important;">
     <ul style="line-height:1.2 !important;margin:0.02rem 0 0.05rem 1rem !important;">
-      <li style="margin-bottom:0.02rem !important;line-height:1.15 !important;"><strong>Soap.</strong> Dove Unscented, Ivory, or a good local bar. The R&amp;D is done. The packaging is cardboard. No more ordering plastic bottles of ingredients.</li>
+      <li style="margin-bottom:0.02rem !important;line-height:1.15 !important;"><strong>Soap.</strong> Dove Unscented, Ivory, or a good local bar. The most compatible formula for your skin has already been figured out. The packaging is cardboard. No more ordering plastic bottles of ingredients.</li>
       <li style="margin-bottom:0.02rem !important;line-height:1.15 !important;"><strong>Sunscreen.</strong> This is the one product where consistency and proven protection genuinely matter. Leave SPF formulation to the labs — it's regulated for a reason.</li>
       <li style="margin-bottom:0.02rem !important;line-height:1.15 !important;"><strong>Lotion.</strong> Mainly to give yourself a break. A basic unscented lotion from Cetaphil or CeraVe works. You don't need to emulsify your own.</li>
       <li style="margin-bottom:0.02rem !important;line-height:1.15 !important;"><strong>SPF chapstick.</strong> Your lips burn too. Grab one at the drugstore.</li>
       <li style="margin-bottom:0.02rem !important;line-height:1.15 !important;"><strong>Deodorant.</strong> If the DIY paste isn't for you — or you're just tired and out of ingredients — Schmidt's is the closest thing to homemade I've found. The lavender sage one is what I reach for. It's the only commercial deodorant that's actually worked for me.</li>
-      <li style="margin-bottom:0.02rem !important;line-height:1.15 !important;"><strong>Toothpaste &amp; mouthwash.</strong> Your enamel is not the place to experiment. Fluoride is one of the most studied substances in public health. The "remineralizing" toothpaste recipes circulating online — usually baking soda and coconut oil — can't replace what a basic tube of Crest does. This is where greenwashing gets genuinely harmful.</li>
-      <li style="margin-bottom:0.02rem !important;line-height:1.15 !important;"><strong>Shampoo &amp; conditioner.</strong> Free &amp; clear is the move here. CeraVe and Vanicream both make a liquid shampoo — the only bottled product I still buy. For conditioner, I skip it entirely — a single drop of jojoba oil rubbed between my palms and worked into the ends after showering does the job. There are a few free &amp; clear shampoo bars on the market, but at the time of writing the reviews are mixed. If someone nails the bar, I'll switch.</li>
+      <li style="margin-bottom:0.02rem !important;line-height:1.15 !important;"><strong>Toothpaste &amp; mouthwash.</strong> Your enamel is not the place to experiment. Fluoride in drinking water is a fair debate. Fluoride in toothpaste is a different thing entirely — it's topical, you spit it out, and decades of research show it strengthens enamel and prevents cavities. The "remineralizing" toothpaste recipes circulating online — usually baking soda and coconut oil — can't replace what a basic tube of Pepsodent does. This is where greenwashing gets genuinely harmful.</li>
+      <li style="margin-bottom:0.02rem !important;line-height:1.15 !important;"><strong>Shampoo &amp; conditioner.</strong> Free &amp; clear is the move here. CeraVe and Vanicream both make a liquid shampoo. For conditioner, I skip it entirely — a single drop of jojoba oil rubbed between my palms and worked into the ends after showering does the job. There are a few free &amp; clear shampoo bars on the market, but at the time of writing the reviews are mixed. If someone nails the bar, I'll switch.</li>
     </ul>
   </div>
 </div>
@@ -424,10 +427,12 @@
   <p>The truth is, we all want a simpler life. We want to get back to basics and stop being fed junk — metaphorically and literally. I absolutely encourage you to make the things you feel passionate about. But remember there are others who care too — the businesses who already make the fragrance-free, dye-free, simple-ingredient products. You don't have to do it all.</p>
   <p>What I hope this guide gives you is mental relief. Permission to buy the toothpaste. A short list of products that won't irritate your skin. And more time for the things that actually matter — whole meals, your garden, your animals, your rest.</p>
   <p style="font-style:italic;color:var(--sage);">A simple whole food guide (that actually tastes amazing) is coming soon.</p>
+  <p>Here's the balance that actually worked for me: keep your skincare pantry stocked with free &amp; clear baseline products — the unscented soap, the drugstore moisturizer, the Pepsodent. Then put your real effort into making the things that function like medicine for your body. Salves. Infused oils. Bath soaks. These are the recipes that earn their keep.</p>
 </div>
 
 <!-- TALLOW BALM -->
 <div class="page prose-page">
+  <p style="font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--clay);margin-bottom:0.5rem;">Recipes</p>
   <div class="section-header">
     <h2>Tallow Balm</h2>
   </div>
@@ -531,15 +536,16 @@
   </div>
   <p>Magnesium through the skin, herbs for what your body needs. This is medicine you soak in — and it takes five minutes to put together.</p>
   <div class="step-card">
-    <p><strong>What you need:</strong> 2 cups Epsom salts, &frac12; cup baking soda, &frac14; cup Dead Sea salts (optional), a handful of dried herbs (lavender, chamomile, calendula — pick what your body needs), a tablespoon of jojoba oil. A jar with a tight lid.</p>
+    <p><strong>What you need:</strong> 2 cups Epsom salts, &frac14; cup Dead Sea salts (optional), a handful of dried herbs (lavender, chamomile, calendula — pick what your body needs), a tablespoon of jojoba oil. A jar with a tight lid.</p>
     <p><strong>Make it:</strong></p>
     <div class="steps">
-      <li>Mix the salts, baking soda, and dried herbs together in a bowl.</li>
+      <li>Mix the salts and dried herbs together in a bowl.</li>
       <li>Add the jojoba oil last, stirring until evenly distributed.</li>
       <li>Scoop into a jar. Label with the herbs and date.</li>
       <li>Add &frac14; to &frac12; cup to a warm bath. Soak.</li>
     </div>
     <p class="tip">Skip the oil if you prefer, but it keeps the salts from drying out your skin. Dead Sea salts add minerals but plain Epsom works beautifully on its own. Pair with an infused oil applied after the bath for deep moisture.</p>
+    <p class="tip"><strong>Add-ins:</strong> &frac14; cup colloidal oatmeal makes this incredibly soothing for eczema, poison ivy, or any angry skin — just grind plain oats to a fine powder in a blender. Or try &frac14; cup powdered milk for a gentle lactic-acid soften. Both mix right in with the salts.</p>
   </div>
 </div>
 
@@ -571,29 +577,36 @@
   <div class="ref-card">
     <h3>The simple routine</h3>
     <ul>
-      <li><strong>Morning:</strong> Rinse face with water. Antioxidant serum (if using). Moisturizer + SPF 30.</li>
-      <li><strong>Shower:</strong> One bar of soap. Done.</li>
+      <li><strong>Morning:</strong> Wash with a simple bar like Ivory. Antioxidant serum (if using). Moisturizer + SPF 30.</li>
+      <li><strong>Shower:</strong> One bar of soap. Wash hair with free &amp; clear shampoo like CeraVe.</li>
       <li><strong>After shower:</strong> Moisturize while skin is damp. Drop of jojoba oil on hair ends.</li>
       <li><strong>Night:</strong> Wash face with water or mild cleanser. Retinol serum (2–3× a week). Moisturize.</li>
-      <li><strong>Hands:</strong> Wash with whatever bar is at the sink. Moisturize in winter.</li>
+      <li><strong>Hands:</strong> Wash with whatever bar is at the sink. Moisturize with free &amp; clear cream.</li>
     </ul>
   </div>
-  <div class="notes-grid" style="margin-top: 0.6rem;">
-    <div class="note-block">
+</div>
+
+<!-- NOTES -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>My Notes</h2>
+  </div>
+  <div class="notes-grid" style="margin-top: 0.3rem; gap: 0.3rem;">
+    <div class="note-block" style="min-height: 4.5in;">
       <h4>Soaps I've tried and liked</h4>
-      <textarea data-key="notes-liked" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea>
+      <textarea data-key="notes-liked" style="width:100%;min-height:4in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea>
     </div>
-    <div class="note-block">
+    <div class="note-block" style="min-height: 4.5in;">
       <h4>Soaps that didn't work for me</h4>
-      <textarea data-key="notes-disliked" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea>
+      <textarea data-key="notes-disliked" style="width:100%;min-height:4in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea>
     </div>
-    <div class="note-block">
+    <div class="note-block" style="min-height: 4.5in;">
       <h4>My daily moisturizer</h4>
-      <textarea data-key="notes-moisturizer" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea>
+      <textarea data-key="notes-moisturizer" style="width:100%;min-height:4in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea>
     </div>
-    <div class="note-block">
+    <div class="note-block" style="min-height: 4.5in;">
       <h4>Skin notes by season</h4>
-      <textarea data-key="notes-seasonal" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea>
+      <textarea data-key="notes-seasonal" style="width:100%;min-height:4in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea>
     </div>
   </div>
 </div>

@@ -146,7 +146,7 @@ const FILES = [
 
         /* --- Body Care Guide: label table page (+2.1in) --- */
         .body-care .page { padding-top: 0.25in !important; padding-bottom: 0.25in !important; }
-        .body-care .prose-page p { line-height: 1.35 !important; margin-bottom: 0.28rem !important; }
+        .body-care .prose-page p { line-height: 1.35 !important; margin-bottom: 0.45rem !important; }
         .body-care .prose-page .lede { margin-bottom: 0.2rem !important; }
         .body-care .prose-page h2 { margin-bottom: 0.15rem !important; }
         .body-care .prose-page h3 { margin-bottom: 0.1rem !important; margin-top: 0.15rem !important; }
@@ -154,6 +154,8 @@ const FILES = [
         .body-care .prose-page .tip { margin: 0.08rem 0 !important; padding-left: 0.35rem !important; }
         .body-care .prose-page ol, .body-care .prose-page ul { margin: 0.15rem 0 0.25rem 1rem !important; }
         .body-care .prose-page li { margin-bottom: 0.1rem !important; line-height: 1.3 !important; }
+        .body-care .step-card p { font-size: 12pt !important; }
+        .body-care .steps li { font-size: 12pt !important; }
         .body-care .label-table td, .body-care .label-table th { padding: 0.06rem 0.12rem !important; line-height: 1.2 !important; }
         .body-care .label-table th { font-size: 12pt !important; }
         .body-care .honest-box { padding: 0.2rem !important; }
