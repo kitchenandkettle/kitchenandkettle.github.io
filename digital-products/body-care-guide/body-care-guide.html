@@ -180,6 +180,7 @@
     text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
     margin-bottom: 0.3rem; padding-bottom: 0.1rem; border-bottom: 1px dotted var(--line);
   }
+  input::placeholder, textarea::placeholder { color: var(--clay); opacity: 1; }
   @media print {
     body { background: none; padding: 0; margin: 0; }
     .page { margin: 0; box-shadow: none; background: #fff; }
@@ -187,6 +188,7 @@
     .label-table th { background: none; }
     .cover { background: #fff !important; }
     .honest-box, .do, .dont { background: none; }
+    input::placeholder, textarea::placeholder { color: transparent !important; }
   }
 </style>
 </head>
@@ -592,21 +594,21 @@
     <h2>My Notes</h2>
   </div>
   <div class="notes-grid" style="margin-top: 0.3rem; gap: 0.3rem;">
-    <div class="note-block" style="min-height: 4.5in;">
+    <div class="note-block" style="min-height: 4.3in;">
       <h4>Soaps I've tried and liked</h4>
-      <textarea data-key="notes-liked" style="width:100%;min-height:4in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea>
+      <textarea data-key="notes-liked" placeholder="Brands, types, what your skin liked…" style="width:100%;min-height:3.7in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:1px dashed var(--line);outline:none;background:var(--light);padding:0.3rem"></textarea>
     </div>
-    <div class="note-block" style="min-height: 4.5in;">
+    <div class="note-block" style="min-height: 4.3in;">
       <h4>Soaps that didn't work for me</h4>
-      <textarea data-key="notes-disliked" style="width:100%;min-height:4in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea>
+      <textarea data-key="notes-disliked" placeholder="What happened — rash, dryness, breakout…" style="width:100%;min-height:3.7in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:1px dashed var(--line);outline:none;background:var(--light);padding:0.3rem"></textarea>
     </div>
-    <div class="note-block" style="min-height: 4.5in;">
+    <div class="note-block" style="min-height: 4.3in;">
       <h4>My daily moisturizer</h4>
-      <textarea data-key="notes-moisturizer" style="width:100%;min-height:4in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea>
+      <textarea data-key="notes-moisturizer" placeholder="Face, body, hands — what do you reach for…" style="width:100%;min-height:3.7in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:1px dashed var(--line);outline:none;background:var(--light);padding:0.3rem"></textarea>
     </div>
-    <div class="note-block" style="min-height: 4.5in;">
+    <div class="note-block" style="min-height: 4.3in;">
       <h4>Skin notes by season</h4>
-      <textarea data-key="notes-seasonal" style="width:100%;min-height:4in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea>
+      <textarea data-key="notes-seasonal" placeholder="Winter dryness, summer oil, what changes…" style="width:100%;min-height:3.7in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:1px dashed var(--line);outline:none;background:var(--light);padding:0.3rem"></textarea>
     </div>
   </div>
 </div>
