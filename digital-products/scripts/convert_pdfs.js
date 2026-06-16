@@ -172,9 +172,6 @@ const FILES = [
         .body-care .ref-card { padding: 0.25rem !important; margin-bottom: 0.2rem !important; }
         .body-care .ref-card li { line-height: 1.3 !important; }
         .body-care .notes-grid { gap: 0.3rem !important; margin-top: 0.35rem !important; }
-        .body-care .note-block { padding: 0.25rem !important; min-height: 2.5rem !important; }
-        .body-care .note-block h4 { margin-bottom: 0.15rem !important; }
-        .body-care .note-block textarea { min-height: 1.5rem !important; }
 
         /* --- Chicken Guide: notes page (+0.6in) --- */
         .chicken-guide .notes-grid { gap: 0.25rem !important; margin-top: 0.25rem !important; }
