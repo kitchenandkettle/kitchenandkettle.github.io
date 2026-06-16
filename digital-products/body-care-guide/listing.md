@@ -17,16 +17,17 @@ Clean ingredients. Clear choices. Fewer products.
 
 The body care industry wants you to believe you need a different product for every part of your body. You don't. This guide helps you read soap labels, choose products that work for your skin, and build a simple routine — without the fear-mongering or the 10-step regimen.
 
-**What's inside (7 pages):**
-- **Why simpler is better** — Bar soap vs. liquid soap, what "clean" actually means, and why fewer ingredients usually = happier skin
-- **How to read a soap label** — Common ingredients decoded. What they are, what they do, and which ones to skip
-- **A short guide to bar soaps** — Drugstore staples, castile soap, and what to ask before buying handmade. Honest notes on what works for different skin
-- **Soap by skin type** — Quick reference table: what to look for if your skin is normal, dry, sensitive, or oily
-- **Beyond soap** — What most people actually need beyond a good bar of soap, and when simple isn't enough
-- **Quick reference** — Label red flags, good starting points for every preference, and the simple daily routine
-- **Notes pages** — Track what soaps worked, what didn't, and your seasonal skin notes
+**What's inside (18 pages):**
+- **Bar soap vs liquid** — The real differences, and why bar soap sidesteps the preservative question
+- **How to read a soap label** — Common ingredients decoded. What they are, what they do, which ones to skip
+- **Soap types at a glance** — Milled true soap, standard bar, syndet, and castile compared side by side
+- **What your skin actually needs** — Moisturizer, sunscreen (with a clear explanation of broad spectrum), plus the two serums with real research behind them
+- **Body Care Reality Filter** — What's worth making yourself and what's better to buy. Honest, not preachy
+- **Recipes** — Tallow balm, infused oils, salves, deodorant, bath salts
+- **Quick reference** — Label red flags, good starting points, the simple daily routine
+- **Notes pages** — Track what soaps worked, what didn't, your moisturizer, and seasonal skin notes
 
-**Honest throughout:** No soap cures eczema. "Natural" doesn't mean gentle. If you have a skin condition, see a doctor — not a product label.
+**Honest throughout.** Your skin is an organ. It doesn't need a ten-step routine. A good soap, a moisturizer you actually use, and sunscreen — that's all most people need.
 
 ▶ This is a digital download. No physical product will be shipped.
 ▶ To open: double-click the HTML file to open in your browser. If that doesn't work, drag and drop the file into any open browser window (Chrome, Safari, Firefox, Edge). No special software needed.
@@ -35,7 +36,7 @@ The body care industry wants you to believe you need a different product for eve
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
 
 ## Tags (copy-paste, comma-separated)
-body care guide, clean soap guide, natural skincare, soap label guide, simple body care, bar soap guide, skincare routine, sensitive skin, natural soap, clean beauty, printable PDF, healthy skin, digital download
+body care guide, soap label guide, natural skincare, printable skincare, tallow balm recipe, infused oils, simple routine, skincare for beginners
 
 ## Price
 $6.00
