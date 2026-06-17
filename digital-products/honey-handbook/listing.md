@@ -17,10 +17,11 @@ What it is. How to use it. Why it lasts forever.
 
 Honey is one of the only foods that arrives in your kitchen exactly as nature made it. Nothing added, nothing removed — just millions of flower visits concentrated into something golden. This handbook covers everything from how bees make it to how to cook with it, with honest notes throughout.
 
-**What's inside (8 pages):**
+**What's inside (11 pages):**
 - **What honey actually is** — How bees make it, step by step. Why it never spoils (3,000-year-old Egyptian honey was still good)
 - **Types of honey** — Clover, wildflower, orange blossom, buckwheat, tupelo, manuka, acacia, and local/raw. What each one tastes like and when to use it. Honest note: "raw" vs. "regular" — neither is better, it's preference
 - **Traditional uses through history** — Sore throat and cough (the oldest remedy in the book), wound and skin care in ancient cultures, honey as a preservative, mead and fermentation. All framed as traditional practices, not medical claims
+- **Beyond honey: other hive products** — Beeswax, propolis, royal jelly, bee pollen, and bee bread. What they are, where to find them, and what's worth knowing about each one
 - **In the kitchen** — Recipes: Hot Honey, Honey Mustard Dressing, Honey Butter. How to substitute honey for sugar in baking (ratios, temperature adjustments, and the baking soda trick)
 - **Storage and crystallization** — How to store it for maximum shelf life. Why crystallization is normal and how to handle it. When crystallized honey is actually better
 - **Quick reference** — Cooking swaps, varietal guide, storage rules, safety notes
