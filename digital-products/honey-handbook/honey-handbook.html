@@ -58,6 +58,7 @@
   .notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-top:0.5rem}
   .note-block{border:1px solid var(--line);padding:0.4rem;min-height:3rem}
   .note-block h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:0.3rem;padding-bottom:0.1rem;border-bottom:1px dotted var(--line)}
+  input::placeholder,textarea::placeholder{color:var(--clay);opacity:1}
   @media print{body{background:none;padding:0;margin:0}.page{margin:0;box-shadow:none;background:#fff}.toolbar{display:none}.cover{background:#fff!important}.honest-box{background:none}}
 </style>
 </head>
@@ -230,10 +231,10 @@
     </ul>
   </div>
   <div class="notes-grid" style="margin-top:0.6rem;">
-    <div class="note-block"><h4>Honeys I've tried and liked</h4><textarea data-key="notes-honeys-i've-tried-an" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea></div>
-    <div class="note-block"><h4>Recipes to try</h4><textarea data-key="notes-recipes-to-try" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea></div>
-    <div class="note-block"><h4>Where I buy honey</h4><textarea data-key="notes-where-i-buy-honey" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea></div>
-    <div class="note-block"><h4>Seasonal honey notes</h4><textarea data-key="notes-seasonal-honey-notes" style="width:100%;min-height:2rem;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:none;outline:none;background:transparent;padding:0.3rem"></textarea></div>
+    <div class="note-block" style="min-height:3.5in;"><h4>Honeys I've tried and liked</h4><textarea data-key="notes-honeys-i've-tried-an" placeholder="Varietals, sources, what you reach for…" style="width:100%;min-height:2.9in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:1px dashed var(--line);outline:none;background:var(--light);padding:0.3rem"></textarea></div>
+    <div class="note-block" style="min-height:3.5in;"><h4>Recipes to try</h4><textarea data-key="notes-recipes-to-try" placeholder="Baking, dressings, glazes, fermentation…" style="width:100%;min-height:2.9in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:1px dashed var(--line);outline:none;background:var(--light);padding:0.3rem"></textarea></div>
+    <div class="note-block" style="min-height:3.5in;"><h4>Where I buy honey</h4><textarea data-key="notes-where-i-buy-honey" placeholder="Farmers market, local apiary, grocery staples…" style="width:100%;min-height:2.9in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:1px dashed var(--line);outline:none;background:var(--light);padding:0.3rem"></textarea></div>
+    <div class="note-block" style="min-height:3.5in;"><h4>Seasonal honey notes</h4><textarea data-key="notes-seasonal-honey-notes" placeholder="Spring wildflower, summer clover, fall goldenrod…" style="width:100%;min-height:2.9in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:1px dashed var(--line);outline:none;background:var(--light);padding:0.3rem"></textarea></div>
   </div>
 </div>
 <div class="page prose-page">
