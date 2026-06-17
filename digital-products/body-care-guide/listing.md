@@ -36,7 +36,7 @@ The body care industry wants you to believe you need a different product for eve
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
 
 ## Tags (copy-paste, comma-separated)
-body care guide, soap label guide, natural skincare, printable skincare, tallow balm recipe, infused oils, simple routine, skincare for beginners
+body care guide, soap label guide, natural skincare, printable skincare, tallow balm recipe, infused oils, simple routine, beginner skincare
 
 ## Price
 $6.00
