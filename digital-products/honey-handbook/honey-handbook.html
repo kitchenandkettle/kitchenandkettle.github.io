@@ -56,6 +56,12 @@
   .ref-card ul{margin:0;padding-left:1.2rem;font-size:12pt}
   .ref-card li{margin-bottom:0.15rem;line-height:1.4}
   .notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-top:0.5rem}
+  .pollen-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.35rem;margin-top:0.5rem}
+  .pollen-swatch{display:flex;align-items:center;gap:0.4rem;padding:0.3rem 0.4rem;border:1px solid var(--line)}
+  .pollen-dot{width:1.3rem;height:1.3rem;border-radius:50%;flex-shrink:0;box-shadow:inset 0 1px 2px rgba(44,36,22,0.15)}
+  .pollen-swatch .label{font-size:11pt;line-height:1.25}
+  .pollen-swatch .label strong{font-size:12pt}
+  .pollen-swatch .label span{display:block;font-size:9.5pt;color:var(--muted);font-style:italic}
   .note-block{border:1px solid var(--line);padding:0.4rem;min-height:3rem}
   .note-block h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:0.3rem;padding-bottom:0.1rem;border-bottom:1px dotted var(--line)}
   input::placeholder,textarea::placeholder{color:var(--clay);opacity:1}
@@ -151,6 +157,25 @@
     <h4>Honest note</h4>
     <p>Hive products beyond honey are less regulated and less studied. Traditional uses are real — people have used propolis on wounds and beeswax in salves for thousands of years — but treat these as foods and traditional remedies, not pharmaceuticals.</p>
   </div>
+</div>
+<div class="page prose-page">
+  <div class="section-header"><h2>Pollen Colors by Source</h2></div>
+  <p class="tip" style="margin-bottom:0.4rem;">A field guide to what your bees are bringing home. A healthy hive collects pollen in many colors — variety means good nutrition for the brood.</p>
+  <div class="pollen-grid">
+    <div class="pollen-swatch"><div class="pollen-dot" style="background:#E8D840;"></div><div class="label"><strong>Lemon Yellow</strong><span>Mustard, canola, willow, white mustard</span></div></div>
+    <div class="pollen-swatch"><div class="pollen-dot" style="background:#F0C838;"></div><div class="label"><strong>Golden</strong><span>Sunflower, goldenrod, dandelion, pumpkin</span></div></div>
+    <div class="pollen-swatch"><div class="pollen-dot" style="background:#F5A030;"></div><div class="label"><strong>Orange</strong><span>Calendula, crocus, asparagus, blueberry</span></div></div>
+    <div class="pollen-swatch"><div class="pollen-dot" style="background:#E8DCC8;"></div><div class="label"><strong>Cream / Pale</strong><span>Tulip-tree, apple, cucumber, melon</span></div></div>
+    <div class="pollen-swatch"><div class="pollen-dot" style="background:#E8E4D8;"></div><div class="label"><strong>White</strong><span>Heather, sweet autumn clematis, basil, jewelweed</span></div></div>
+    <div class="pollen-swatch"><div class="pollen-dot" style="background:#B0B898;"></div><div class="label"><strong>Pale Green</strong><span>American hazel, buckwheat (light green phase)</span></div></div>
+    <div class="pollen-swatch"><div class="pollen-dot" style="background:#D08060;"></div><div class="label"><strong>Red / Firebrick</strong><span>Horse chestnut, pear, blackthorn, henbit, gorse</span></div></div>
+    <div class="pollen-swatch"><div class="pollen-dot" style="background:#C89860;"></div><div class="label"><strong>Brown / Auburn</strong><span>White clover, crimson clover, sweet clover, alfalfa</span></div></div>
+    <div class="pollen-swatch"><div class="pollen-dot" style="background:#4060A8;"></div><div class="label"><strong>Navy Blue</strong><span>Phacelia, fireweed, Siberian squill (steel blue)</span></div></div>
+    <div class="pollen-swatch"><div class="pollen-dot" style="background:#7090B8;"></div><div class="label"><strong>Blue-gray</strong><span>Borage, Oriental poppy</span></div></div>
+    <div class="pollen-swatch"><div class="pollen-dot" style="background:#B0A898;"></div><div class="label"><strong>Light Gray</strong><span>Blackberry, raspberry, American elm, plum</span></div></div>
+    <div class="pollen-swatch"><div class="pollen-dot" style="background:#685040;"></div><div class="label"><strong>Dark / Black</strong><span>Opium poppy, some ivy (dull phase)</span></div></div>
+  </div>
+  <p style="font-size:9.5pt;color:var(--muted);margin-top:0.5rem;font-style:italic;text-align:center;">Sources: Wikipedia "List of pollen sources" cross-referenced with USDA and extension data.</p>
 </div>
 <div class="page">
   <div class="section-header"><h2>In the Kitchen</h2></div>
