@@ -20,7 +20,7 @@ Honey is one of the only foods that arrives in your kitchen exactly as nature ma
 **What's inside (13 pages):**
 - **What honey actually is** — How bees make it, step by step. Why it never spoils (3,000-year-old Egyptian honey was still good)
 - **Types of honey** — Clover, wildflower, orange blossom, buckwheat, tupelo, manuka, acacia, and local/raw. What each one tastes like and when to use it. Honest note: why raw is worth it
-- **Traditional uses through history** — Sore throat and cough (the oldest remedy in the book), wound and skin care in ancient cultures, honey as a preservative, mead and fermentation. All framed as traditional practices, not medical claims
+- **Traditional uses through history** — Sore throat and cough (the oldest remedy in the book), honey as a preservative, mead and fermentation, and a tour through the oldest medical texts: Egypt to TCM. All framed as traditional practices, not medical claims
 - **Beyond honey: other hive products** — Beeswax, propolis, royal jelly, bee pollen, and bee bread. What they are, where to find them, and what's worth knowing about each one
 - **Pollen colors by source** — A visual field guide to 12 pollen colors with the plants that produce them. Lemon yellow to dark black — what your bees are bringing home
 - **In the kitchen** — 6 recipes: Hot Honey, Honey Mustard Dressing, Honey Butter, Honey Garlic Glaze, Honey Lemon Ginger Tea, and Honey Roasted Nuts. Plus how to substitute honey for sugar in baking
