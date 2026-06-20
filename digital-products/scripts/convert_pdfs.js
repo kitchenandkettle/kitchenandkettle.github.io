@@ -140,9 +140,8 @@ const FILES = [
         .cast-iron-guide .trouble-table td, .cast-iron-guide .trouble-table th { font-size: 8pt !important; padding: 0.15rem 0.25rem !important; }
         .cast-iron-guide .trouble-table td:first-child { font-size: 7.5pt !important; }
         .cast-iron-guide .notes-grid { gap: 0.35rem !important; margin-top: 0.35rem !important; }
-        .cast-iron-guide .note-block { padding: 0.3rem !important; min-height: 2.5rem !important; }
-        .cast-iron-guide .note-block h4 { font-size: 8pt !important; margin-bottom: 0.15rem !important; }
-        .cast-iron-guide .note-block textarea { font-size: 8pt !important; min-height: 1.5rem !important; }
+        .cast-iron-guide .note-block { padding: 0.25rem !important; }
+        .cast-iron-guide .note-block h4 { font-size: 8pt !important; margin-bottom: 0.1rem !important; }
 
         /* --- Body Care Guide: label table page (+2.1in) --- */
         .body-care .page { padding-top: 0.25in !important; padding-bottom: 0.25in !important; }

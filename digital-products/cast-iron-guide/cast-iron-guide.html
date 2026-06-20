@@ -168,11 +168,13 @@
     margin-bottom: 0.3rem; padding-bottom: 0.1rem; border-bottom: 1px dotted var(--line);
   }
   .note-block textarea {
-    width: 100%; min-height: 2rem; resize: vertical; font-size:12pt;
+    width: 100%; min-height: 2.5in; resize: vertical; font-size:12pt;
     font-family: 'Crimson Pro', Georgia, serif; line-height: 1.5;
-    border: none; outline: none; background: transparent;
+    border: 1px dashed var(--line); outline: none; background: var(--light);
+    padding: 0.2rem;
   }
-  .note-block textarea:focus { background: rgba(196,168,130,0.05); }
+  .note-block textarea:focus { background: var(--paper); }
+  input::placeholder, textarea::placeholder { color: var(--clay); opacity: 1; }
   .do-dont {
     display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 0.6rem 0;
   }
@@ -447,24 +449,7 @@
     <p>A well-seasoned pan that's been used for years can handle acidic foods better than a new one. If your grandmother made tomato sauce in her cast iron, it's because that pan had decades of seasoning built up. Build yours up first. You'll get there.</p>
   </div>
 </div>
-<!-- TROUBLESHOOTING -->
-<div class="page prose-page">
-  <div class="section-header">
-    <h2>Troubleshooting</h2>
-  </div>
-  <p class="lede">Most cast iron problems have simple fixes. If your pan isn't performing, one of these is usually the answer.</p>
-  <table class="trouble-table">
-    <thead><tr><th>Problem</th><th>Likely Cause</th><th>Fix</th></tr></thead>
-    <tbody>
-      <tr><td>Food sticks</td><td>Pan not hot enough before adding food, or seasoning too thin</td><td>Preheat longer on medium-low. Cook a batch of bacon or cornbread to build seasoning.</td></tr>
-      <tr><td>Rust spots</td><td>Pan left wet, or stored in a damp place</td><td>Scrub rust off with steel wool, dry thoroughly, re-season in the oven.</td></tr>
-      <tr><td>Flaking black bits</td><td>Too much oil during seasoning — thick layers flake</td><td>Scrub off loose flakes, re-season with very thin coats of oil.</td></tr>
-      <tr><td>Sticky surface</td><td>Unpolymerized oil — pan wasn't heated long enough during seasoning</td><td>Put it back in the oven at 450°F for an hour. That'll finish the polymerization.</td></tr>
-      <tr><td>Metallic taste</td><td>Acidic food cooked too long in bare iron, or new pan not fully seasoned</td><td>Avoid long acidic cooks until seasoning is well-built. Use enameled or stainless for tomato sauces.</td></tr>
-      <tr><td>Uneven seasoning</td><td>Oil pooled during seasoning, or pan wasn't wiped dry enough</td><td>After applying oil, wipe it off like you made a mistake. The microscopic layer that remains is all you need.</td></tr>
-    </tbody>
-  </table>
-</div>
+
 <!-- QUICK REFERENCE -->
 <div class="page prose-page">
   <div class="section-header">
@@ -506,19 +491,19 @@
   <div class="notes-grid">
     <div class="note-block">
       <h4>Pan Details</h4>
-      <textarea data-key="pan-details" rows="3" placeholder="Brand, size, where you got it..."></textarea>
+      <textarea data-key="pan-details" placeholder="Brand, size, where you got it..."></textarea>
     </div>
     <div class="note-block">
       <h4>Seasoning Rounds</h4>
-      <textarea data-key="seasoning-rounds" rows="3" placeholder="Date, oil used, oven temp, number of coats..."></textarea>
+      <textarea data-key="seasoning-rounds" placeholder="Date, oil used, oven temp, number of coats..."></textarea>
     </div>
     <div class="note-block">
       <h4>What Worked</h4>
-      <textarea data-key="what-worked" rows="3" placeholder="Favorite recipes, techniques that clicked..."></textarea>
+      <textarea data-key="what-worked" placeholder="Favorite recipes, techniques that clicked..."></textarea>
     </div>
     <div class="note-block">
       <h4>What Didn't</h4>
-      <textarea data-key="what-didnt" rows="3" placeholder="Sticking problems, restoration notes..."></textarea>
+      <textarea data-key="what-didnt" placeholder="Sticking problems, restoration notes..."></textarea>
     </div>
   </div>
 </div>
