@@ -109,11 +109,11 @@ const FILES = [
         .breed-grid { gap: 0.35rem !important; margin: 0.35rem 0 !important; }
 
         /* --- Chicken Guide: coop setup page (step-card compression) --- */
-        .step-card { padding: 0.3rem !important; margin-bottom: 0.3rem !important; }
-        .step-card .note { font-size: 8.5pt !important; margin-bottom: 0.15rem !important; }
-        .step-card .materials { font-size: 8.5pt !important; margin-bottom: 0.15rem !important; }
-        .step-card .steps { font-size: 8.8pt !important; }
-        .step-card .steps li { margin-bottom: 0.08rem !important; line-height: 1.35 !important; }
+        .chicken-guide .step-card { padding: 0.3rem !important; margin-bottom: 0.3rem !important; }
+        .chicken-guide .step-card .note { font-size: 8.5pt !important; margin-bottom: 0.15rem !important; }
+        .chicken-guide .step-card .materials { font-size: 8.5pt !important; margin-bottom: 0.15rem !important; }
+        .chicken-guide .step-card .steps { font-size: 8.8pt !important; }
+        .chicken-guide .step-card .steps li { margin-bottom: 0.08rem !important; line-height: 1.35 !important; }
 
         /* --- Chicken Guide: tighten prose spacing --- */
         .chicken-guide .prose-page p { font-size: 7.5pt !important; margin-bottom: 0.15rem !important; line-height: 1.3 !important; }
