@@ -8,23 +8,24 @@ Type: Digital download
 Survival Garden Basics | Easy No-Fuss Crops You Can Grow | No Greenhouse No Seed Starting | Printable PDF
 
 ## Photos (upload in this order)
-1. primary-garden-image.jpg
-2. garden-image.png
-3. garden-image-2.png
+1. primary-survival-garden-image.jpg
+2. survival-garden-image.png
+3. survival-garden-image-2.png
 
 ## Description (copy-paste)
 Throw it in the ground. It grows.
 
 A survival garden isn't about growing everything. It's about growing the right things — crops that feed you reliably, store well, and don't demand much. No seed starting. No greenhouse. No grow lights. Just good food from good dirt.
 
-**What's inside (7 pages):**
+**What's inside (13 pages):**
 - What you actually need — a patch of ground, sunlight, water, seeds. Honest note on what a survival garden really is
-- The easiest, most nourishing crops — four workhorses that feed you reliably, store well, and grow with minimal attention. Simple direct-sow instructions for each
-- More crops worth the space — forgiving, direct-sown vegetables that earn their garden real estate
-- How to plant — ground prep, timing, and the one thing that makes everything easier
+- The easiest, most nourishing crops — beans, potatoes, winter squash, zucchini. Simple direct-sow instructions for each
+- More crops worth the space, part 1 & 2 — kale, chard, garlic, carrots, beets, corn, radishes, turnips
+- How to plant — the only rules that matter: ground prep, timing, watering, mulching
 - Harvesting and storage — how to harvest, cure, and store each crop for maximum shelf life
-- Quick reference — the easiest five, cool vs. warm season planting guide, what you don't need
-- Notes pages — track what you planted, what grew well, frost dates, and harvest logs
+- Plant once, harvest for years — asparagus, strawberries, perennial herbs, rhubarb
+- Quick reference — easiest five, cool vs. warm season, what you don't need, perennials at a glance
+- Garden notes — track what you planted, what grew well, frost dates, and harvest logs
 
 **The philosophy:** If it needs a greenhouse, a heating mat, and daily attention, it's not in this guide. These are the plants that have kept people fed for centuries without any special equipment.
 
