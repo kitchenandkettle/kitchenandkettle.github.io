@@ -16,6 +16,7 @@ const FILES = [
   'body-care-guide/body-care-guide.html',
   'survival-garden-basics/survival-garden-basics.html',
   'honey-handbook/honey-handbook.html',
+  'beeswax-wraps/beeswax-wraps.html',
 ];
 // -------------------------------------------------
 
