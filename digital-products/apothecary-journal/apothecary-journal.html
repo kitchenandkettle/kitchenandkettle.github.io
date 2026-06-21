@@ -42,22 +42,20 @@
   .prose-page ol,.prose-page ul{margin:0.4rem 0 0.6rem 1.2rem;font-size:12pt}
   .prose-page li{margin-bottom:0.35rem;line-height:1.5;color:#3D362D}
   .prose-page hr{border:none;border-top:1px solid var(--line);margin:0.7rem 0}
-  .record-table{width:100%;border-collapse:collapse;margin:0.3rem 0}
-  .record-table th{font-family:'Work Sans',sans-serif;font-size:10pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);text-align:left;padding:0.25rem 0.3rem;border-bottom:1px solid var(--line)}
-  .record-table td{padding:0.15rem 0.3rem;border-bottom:1px dotted var(--line)}
-  .record-table input{width:100%;border:1px dashed var(--line);outline:none;font-family:'Crimson Pro',Georgia,serif;font-size:12pt;padding:0.2rem 0.3rem;background:var(--light)}
-  .record-table textarea{width:100%;border:1px dashed var(--line);outline:none;font-family:'Crimson Pro',Georgia,serif;font-size:12pt;padding:0.2rem 0.3rem;background:var(--light);resize:vertical;min-height:2.5rem}
-  .recipe-block{border:1px solid var(--line);padding:0.5rem;margin-bottom:0.6rem}
+  .recipe-block{border:1px solid var(--line);padding:0.5rem;margin-bottom:0.5rem}
   .recipe-block h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);margin-bottom:0.3rem;padding-bottom:0.1rem;border-bottom:1px dotted var(--line)}
-  .recipe-block .field-row{display:flex;gap:0.5rem;margin-bottom:0.3rem}
-  .recipe-block .field-row label{font-family:'Work Sans',sans-serif;font-size:9pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);min-width:5rem;padding-top:0.3rem}
+  .recipe-block .field-row{display:flex;gap:0.5rem;margin-bottom:0.25rem}
+  .recipe-block .field-row label{font-family:'Work Sans',sans-serif;font-size:9pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);min-width:5.5rem;padding-top:0.3rem}
   .recipe-block .field-row input{flex:1;border:1px dashed var(--line);outline:none;font-family:'Crimson Pro',Georgia,serif;font-size:12pt;padding:0.2rem 0.3rem;background:var(--light)}
   .recipe-block textarea.method{width:100%;border:1px dashed var(--line);outline:none;font-family:'Crimson Pro',Georgia,serif;font-size:12pt;padding:0.3rem;background:var(--light);resize:vertical;min-height:2rem;margin-top:0.2rem}
+  .honest-box{border:1px solid var(--clay);padding:0.5rem;margin:0.5rem 0;background:var(--light)}
+  .honest-box h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--clay);margin-bottom:0.2rem}
+  .honest-box p{font-size:12pt;margin-bottom:0;font-style:italic;line-height:1.5}
   .notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-top:0.4rem}
   .note-block{border:1px solid var(--line);padding:0.4rem;min-height:3rem}
   .note-block h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);margin-bottom:0.3rem;padding-bottom:0.1rem;border-bottom:1px dotted var(--line)}
   input::placeholder,textarea::placeholder{color:var(--clay);opacity:1}
-  @media print{body{background:none;padding:0;margin:0}.page{margin:0;box-shadow:none;background:#fff}.toolbar{display:none}.cover{background:#fff!important}}
+  @media print{body{background:none;padding:0;margin:0}.page{margin:0;box-shadow:none;background:#fff}.toolbar{display:none}.cover{background:#fff!important}.honest-box{background:none}}
 </style>
 </head>
 <body class="apothecary-journal">
@@ -74,145 +72,123 @@
   <h1>Apothecary<br>Journal</h1>
   <p class="tagline">Not medical advice — just a record book.</p>
   <p class="description">
-    Track your herbs from harvest to remedy. Keep what worked. Learn from what didn't.
+    Learn how to make tea, salves, tinctures, and infused oils from the plants around you. Then write down what worked.
   </p>
   <p class="footer-note">For the kitchen, not the clinic.</p>
 </div>
 <div class="page prose-page">
   <div class="section-header"><h2>How to Use This Journal</h2></div>
-  <p class="lede">This is not a guide to herbal medicine. It's a blank record book — a place to track what you grow, harvest, dry, and make in your own kitchen. No dosage charts, no treatment recommendations. Just pages for your notes.</p>
-  <p>Fill in what matters to you. Skip what doesn't. The journal doesn't judge. If you're new to herbs, start with the harvest log and tea blends pages — those are the hardest to remember and the most rewarding to look back on.</p>
+  <p class="lede">This journal teaches you the basic methods — how to make a tea, a salve, a tincture, an infused oil. Then it gives you space to record your own experiments. No dosage charts, no medical claims. Just the techniques and a place to keep notes.</p>
+  <p>Pick a plant. Any plant. Maybe it's chamomile from your garden, yarrow from the field behind your house, or calendula you bought dried. The methods in this journal work the same way no matter what plant you're working with. Learn the method once, then apply it to whatever you're growing, foraging, or buying.</p>
   <hr>
-  <h2>What's Inside</h2>
-  <ul>
-    <li><strong>Herb inventory</strong> — what you have on hand, when you got it, where it came from</li>
-    <li><strong>Harvest logs</strong> — what you picked, when, where, and how much</li>
-    <li><strong>Drying records</strong> — start to finish, method and yield</li>
-    <li><strong>Salve recipes</strong> — ingredients, method, date made, notes on the batch</li>
-    <li><strong>Tea blends</strong> — what went in, proportions, how it tasted</li>
-    <li><strong>Tincture records</strong> — herb, menstruum, ratios, start and decant dates</li>
-    <li><strong>Notes</strong> — blank space for whatever doesn't fit a category</li>
-  </ul>
-  <p class="tip">Type directly into this journal — your entries save to your device automatically. No account needed. Clearing your browser data clears your entries.</p>
-</div>
-<!-- HERB INVENTORY -->
-<div class="page prose-page">
-  <div class="section-header"><h2>Herb Inventory</h2></div>
-  <p class="tip">What's in your cupboard right now. Update when you use something or bring something new home.</p>
-  <table class="record-table">
-    <thead><tr><th style="width:18%">Herb</th><th style="width:12%">Form</th><th style="width:12%">Qty</th><th style="width:18%">Source</th><th style="width:16%">Acquired</th><th style="width:24%">Notes</th></tr></thead>
-    <tbody>
-      <tr><td><input data-key="inv-1-herb" placeholder="Chamomile…"></td><td><input data-key="inv-1-form" placeholder="Dried, whole…"></td><td><input data-key="inv-1-qty" placeholder="4 oz…"></td><td><input data-key="inv-1-source" placeholder="Mountain Rose…"></td><td><input data-key="inv-1-date" placeholder="Jun 2026…"></td><td><input data-key="inv-1-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="inv-2-herb" placeholder=""></td><td><input data-key="inv-2-form" placeholder=""></td><td><input data-key="inv-2-qty" placeholder=""></td><td><input data-key="inv-2-source" placeholder=""></td><td><input data-key="inv-2-date" placeholder=""></td><td><input data-key="inv-2-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="inv-3-herb" placeholder=""></td><td><input data-key="inv-3-form" placeholder=""></td><td><input data-key="inv-3-qty" placeholder=""></td><td><input data-key="inv-3-source" placeholder=""></td><td><input data-key="inv-3-date" placeholder=""></td><td><input data-key="inv-3-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="inv-4-herb" placeholder=""></td><td><input data-key="inv-4-form" placeholder=""></td><td><input data-key="inv-4-qty" placeholder=""></td><td><input data-key="inv-4-source" placeholder=""></td><td><input data-key="inv-4-date" placeholder=""></td><td><input data-key="inv-4-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="inv-5-herb" placeholder=""></td><td><input data-key="inv-5-form" placeholder=""></td><td><input data-key="inv-5-qty" placeholder=""></td><td><input data-key="inv-5-source" placeholder=""></td><td><input data-key="inv-5-date" placeholder=""></td><td><input data-key="inv-5-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="inv-6-herb" placeholder=""></td><td><input data-key="inv-6-form" placeholder=""></td><td><input data-key="inv-6-qty" placeholder=""></td><td><input data-key="inv-6-source" placeholder=""></td><td><input data-key="inv-6-date" placeholder=""></td><td><input data-key="inv-6-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="inv-7-herb" placeholder=""></td><td><input data-key="inv-7-form" placeholder=""></td><td><input data-key="inv-7-qty" placeholder=""></td><td><input data-key="inv-7-source" placeholder=""></td><td><input data-key="inv-7-date" placeholder=""></td><td><input data-key="inv-7-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="inv-8-herb" placeholder=""></td><td><input data-key="inv-8-form" placeholder=""></td><td><input data-key="inv-8-qty" placeholder=""></td><td><input data-key="inv-8-source" placeholder=""></td><td><input data-key="inv-8-date" placeholder=""></td><td><input data-key="inv-8-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="inv-9-herb" placeholder=""></td><td><input data-key="inv-9-form" placeholder=""></td><td><input data-key="inv-9-qty" placeholder=""></td><td><input data-key="inv-9-source" placeholder=""></td><td><input data-key="inv-9-date" placeholder=""></td><td><input data-key="inv-9-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="inv-10-herb" placeholder=""></td><td><input data-key="inv-10-form" placeholder=""></td><td><input data-key="inv-10-qty" placeholder=""></td><td><input data-key="inv-10-source" placeholder=""></td><td><input data-key="inv-10-date" placeholder=""></td><td><input data-key="inv-10-notes" placeholder=""></td></tr>
-    </tbody>
-  </table>
-</div>
-<!-- HARVEST LOGS -->
-<div class="page prose-page">
-  <div class="section-header"><h2>Harvest Logs</h2></div>
-  <p class="tip">What you picked, when, and where. Build a year-over-year record of your best spots and timing.</p>
-  <table class="record-table">
-    <thead><tr><th style="width:16%">Date</th><th style="width:18%">Herb</th><th style="width:18%">Location</th><th style="width:14%">Part</th><th style="width:12%">Qty</th><th style="width:22%">Notes</th></tr></thead>
-    <tbody>
-      <tr><td><input data-key="harv-1-date" placeholder="Jun 15…"></td><td><input data-key="harv-1-herb" placeholder="Yarrow…"></td><td><input data-key="harv-1-loc" placeholder="Back fence…"></td><td><input data-key="harv-1-part" placeholder="Flowers…"></td><td><input data-key="harv-1-qty" placeholder="2 handfuls…"></td><td><input data-key="harv-1-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="harv-2-date" placeholder=""></td><td><input data-key="harv-2-herb" placeholder=""></td><td><input data-key="harv-2-loc" placeholder=""></td><td><input data-key="harv-2-part" placeholder=""></td><td><input data-key="harv-2-qty" placeholder=""></td><td><input data-key="harv-2-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="harv-3-date" placeholder=""></td><td><input data-key="harv-3-herb" placeholder=""></td><td><input data-key="harv-3-loc" placeholder=""></td><td><input data-key="harv-3-part" placeholder=""></td><td><input data-key="harv-3-qty" placeholder=""></td><td><input data-key="harv-3-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="harv-4-date" placeholder=""></td><td><input data-key="harv-4-herb" placeholder=""></td><td><input data-key="harv-4-loc" placeholder=""></td><td><input data-key="harv-4-part" placeholder=""></td><td><input data-key="harv-4-qty" placeholder=""></td><td><input data-key="harv-4-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="harv-5-date" placeholder=""></td><td><input data-key="harv-5-herb" placeholder=""></td><td><input data-key="harv-5-loc" placeholder=""></td><td><input data-key="harv-5-part" placeholder=""></td><td><input data-key="harv-5-qty" placeholder=""></td><td><input data-key="harv-5-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="harv-6-date" placeholder=""></td><td><input data-key="harv-6-herb" placeholder=""></td><td><input data-key="harv-6-loc" placeholder=""></td><td><input data-key="harv-6-part" placeholder=""></td><td><input data-key="harv-6-qty" placeholder=""></td><td><input data-key="harv-6-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="harv-7-date" placeholder=""></td><td><input data-key="harv-7-herb" placeholder=""></td><td><input data-key="harv-7-loc" placeholder=""></td><td><input data-key="harv-7-part" placeholder=""></td><td><input data-key="harv-7-qty" placeholder=""></td><td><input data-key="harv-7-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="harv-8-date" placeholder=""></td><td><input data-key="harv-8-herb" placeholder=""></td><td><input data-key="harv-8-loc" placeholder=""></td><td><input data-key="harv-8-part" placeholder=""></td><td><input data-key="harv-8-qty" placeholder=""></td><td><input data-key="harv-8-notes" placeholder=""></td></tr>
-    </tbody>
-  </table>
-</div>
-<!-- DRYING RECORDS -->
-<div class="page prose-page">
-  <div class="section-header"><h2>Drying Records</h2></div>
-  <p class="tip">Track each batch from fresh to finished. You'll know what dried well and what didn't.</p>
-  <table class="record-table">
-    <thead><tr><th style="width:18%">Herb</th><th style="width:16%">Started</th><th style="width:16%">Method</th><th style="width:16%">Finished</th><th style="width:12%">Yield</th><th style="width:22%">Notes</th></tr></thead>
-    <tbody>
-      <tr><td><input data-key="dry-1-herb" placeholder="Lemon balm…"></td><td><input data-key="dry-1-start" placeholder="Jun 16…"></td><td><input data-key="dry-1-method" placeholder="Hang dry…"></td><td><input data-key="dry-1-end" placeholder="Jun 23…"></td><td><input data-key="dry-1-yield" placeholder="2 oz…"></td><td><input data-key="dry-1-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="dry-2-herb" placeholder=""></td><td><input data-key="dry-2-start" placeholder=""></td><td><input data-key="dry-2-method" placeholder=""></td><td><input data-key="dry-2-end" placeholder=""></td><td><input data-key="dry-2-yield" placeholder=""></td><td><input data-key="dry-2-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="dry-3-herb" placeholder=""></td><td><input data-key="dry-3-start" placeholder=""></td><td><input data-key="dry-3-method" placeholder=""></td><td><input data-key="dry-3-end" placeholder=""></td><td><input data-key="dry-3-yield" placeholder=""></td><td><input data-key="dry-3-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="dry-4-herb" placeholder=""></td><td><input data-key="dry-4-start" placeholder=""></td><td><input data-key="dry-4-method" placeholder=""></td><td><input data-key="dry-4-end" placeholder=""></td><td><input data-key="dry-4-yield" placeholder=""></td><td><input data-key="dry-4-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="dry-5-herb" placeholder=""></td><td><input data-key="dry-5-start" placeholder=""></td><td><input data-key="dry-5-method" placeholder=""></td><td><input data-key="dry-5-end" placeholder=""></td><td><input data-key="dry-5-yield" placeholder=""></td><td><input data-key="dry-5-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="dry-6-herb" placeholder=""></td><td><input data-key="dry-6-start" placeholder=""></td><td><input data-key="dry-6-method" placeholder=""></td><td><input data-key="dry-6-end" placeholder=""></td><td><input data-key="dry-6-yield" placeholder=""></td><td><input data-key="dry-6-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="dry-7-herb" placeholder=""></td><td><input data-key="dry-7-start" placeholder=""></td><td><input data-key="dry-7-method" placeholder=""></td><td><input data-key="dry-7-end" placeholder=""></td><td><input data-key="dry-7-yield" placeholder=""></td><td><input data-key="dry-7-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="dry-8-herb" placeholder=""></td><td><input data-key="dry-8-start" placeholder=""></td><td><input data-key="dry-8-method" placeholder=""></td><td><input data-key="dry-8-end" placeholder=""></td><td><input data-key="dry-8-yield" placeholder=""></td><td><input data-key="dry-8-notes" placeholder=""></td></tr>
-    </tbody>
-  </table>
-</div>
-<!-- SALVE RECIPES -->
-<div class="page prose-page">
-  <div class="section-header"><h2>Salve Recipes</h2></div>
-  <p class="tip">Record what you made and what you'd change next time. One page, two batches.</p>
+  <h2>Your Plant</h2>
+  <p class="tip">Start here. Fill this in now or come back to it — it's your anchor for everything else in the journal.</p>
   <div class="recipe-block">
-    <h4>Salve #1</h4>
-    <div class="field-row"><label>Name</label><input data-key="salve-1-name" placeholder="Calendula salve…"></div>
-    <div class="field-row"><label>Date</label><input data-key="salve-1-date" placeholder=""></div>
-    <div class="field-row"><label>Batch</label><input data-key="salve-1-batch" placeholder="4 oz tin…"></div>
-    <div class="field-row"><label>Ingredients</label><input data-key="salve-1-ingredients" placeholder="Calendula-infused oil, beeswax…"></div>
-    <textarea class="method" data-key="salve-1-method" placeholder="Method — how you made it, what you infused, how long, what you'd change next time…" style="min-height:2.5rem"></textarea>
+    <div class="field-row"><label>Plant name</label><input data-key="plant-name" placeholder="Chamomile, yarrow, calendula…"></div>
+    <div class="field-row"><label>Where from</label><input data-key="plant-source" placeholder="Your garden, foraged, bought dried…"></div>
+    <div class="field-row"><label>Part used</label><input data-key="plant-part" placeholder="Flowers, leaves, root…"></div>
+    <textarea class="method" data-key="plant-notes" placeholder="What you know about this plant — traditional uses, what drew you to it, anything you've read or heard…" style="min-height:4rem"></textarea>
   </div>
-  <div class="recipe-block">
-    <h4>Salve #2</h4>
-    <div class="field-row"><label>Name</label><input data-key="salve-2-name" placeholder=""></div>
-    <div class="field-row"><label>Date</label><input data-key="salve-2-date" placeholder=""></div>
-    <div class="field-row"><label>Batch</label><input data-key="salve-2-batch" placeholder=""></div>
-    <div class="field-row"><label>Ingredients</label><input data-key="salve-2-ingredients" placeholder=""></div>
-    <textarea class="method" data-key="salve-2-method" placeholder="Method…" style="min-height:2.5rem"></textarea>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>This journal teaches kitchen methods — how to extract, infuse, and preserve. It does not tell you what to take for a headache. Plants are powerful. Respect that. If you're pregnant, nursing, on medication, or uncertain about a plant, ask someone who studied this longer than a blog post.</p>
   </div>
 </div>
-<!-- TEA BLENDS -->
 <div class="page prose-page">
-  <div class="section-header"><h2>Tea Blends</h2></div>
-  <p class="tip">What went in, how it tasted, and whether you'd make it again.</p>
+  <div class="section-header"><h2>Making Tea</h2></div>
+  <p>The simplest way to work with herbs. Hot water pulls out water-soluble compounds — volatile oils, bitter principles, mucilage. Most herbs give up what's useful in 10–15 minutes of steeping.</p>
+  <p><strong>Hot infusion (leaves and flowers):</strong> Pour just-boiled water over 1–2 teaspoons of dried herb per cup. Cover — the volatile oils escape with the steam. Steep 10–15 minutes. Strain. Drink warm. For fresh herbs, use about triple the amount — they're mostly water weight.</p>
+  <p><strong>Cold infusion (mucilaginous herbs like marshmallow root):</strong> Cover the herb with cold water, leave on the counter 4–8 hours or overnight. Strain. This pulls out the soothing, slippery compounds that heat can destroy.</p>
+  <p class="tip">Taste your tea before adding honey. Some herbs are surprisingly sweet on their own. Some are bitter on purpose — that bitterness is medicine.</p>
+  <hr>
+  <h3>Tea Journal</h3>
   <div class="recipe-block">
     <h4>Blend #1</h4>
     <div class="field-row"><label>Name</label><input data-key="tea-1-name" placeholder="Evening calm…"></div>
     <div class="field-row"><label>Date</label><input data-key="tea-1-date" placeholder=""></div>
-    <div class="field-row"><label>Ingredients</label><input data-key="tea-1-ingredients" placeholder="1 part chamomile, 1 part lemon balm, ½ part lavender…"></div>
-    <textarea class="method" data-key="tea-1-notes" placeholder="Tasting notes — how it turned out, what you'd adjust…" style="min-height:2.5rem"></textarea>
+    <div class="field-row"><label>Ingredients</label><input data-key="tea-1-ingredients" placeholder="1 tsp chamomile, 1 tsp lemon balm…"></div>
+    <textarea class="method" data-key="tea-1-notes" placeholder="How it tasted, what you'd change next time…" style="min-height:2rem"></textarea>
   </div>
   <div class="recipe-block">
     <h4>Blend #2</h4>
     <div class="field-row"><label>Name</label><input data-key="tea-2-name" placeholder=""></div>
     <div class="field-row"><label>Date</label><input data-key="tea-2-date" placeholder=""></div>
     <div class="field-row"><label>Ingredients</label><input data-key="tea-2-ingredients" placeholder=""></div>
-    <textarea class="method" data-key="tea-2-notes" placeholder="Tasting notes…" style="min-height:2.5rem"></textarea>
+    <textarea class="method" data-key="tea-2-notes" placeholder="How it tasted, what you'd change…" style="min-height:2rem"></textarea>
   </div>
 </div>
-<!-- TINCTURE RECORDS -->
 <div class="page prose-page">
-  <div class="section-header"><h2>Tincture Records</h2></div>
-  <p class="tip">Herb, menstruum, ratio, and dates. The details you'll want six months from now.</p>
-  <table class="record-table">
-    <thead><tr><th style="width:18%">Herb</th><th style="width:16%">Menstruum</th><th style="width:12%">Ratio</th><th style="width:16%">Started</th><th style="width:16%">Decanted</th><th style="width:22%">Notes</th></tr></thead>
-    <tbody>
-      <tr><td><input data-key="tinc-1-herb" placeholder="Echinacea…"></td><td><input data-key="tinc-1-mens" placeholder="80 proof vodka…"></td><td><input data-key="tinc-1-ratio" placeholder="1:5…"></td><td><input data-key="tinc-1-start" placeholder="Jun 20…"></td><td><input data-key="tinc-1-end" placeholder=""></td><td><input data-key="tinc-1-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="tinc-2-herb" placeholder=""></td><td><input data-key="tinc-2-mens" placeholder=""></td><td><input data-key="tinc-2-ratio" placeholder=""></td><td><input data-key="tinc-2-start" placeholder=""></td><td><input data-key="tinc-2-end" placeholder=""></td><td><input data-key="tinc-2-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="tinc-3-herb" placeholder=""></td><td><input data-key="tinc-3-mens" placeholder=""></td><td><input data-key="tinc-3-ratio" placeholder=""></td><td><input data-key="tinc-3-start" placeholder=""></td><td><input data-key="tinc-3-end" placeholder=""></td><td><input data-key="tinc-3-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="tinc-4-herb" placeholder=""></td><td><input data-key="tinc-4-mens" placeholder=""></td><td><input data-key="tinc-4-ratio" placeholder=""></td><td><input data-key="tinc-4-start" placeholder=""></td><td><input data-key="tinc-4-end" placeholder=""></td><td><input data-key="tinc-4-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="tinc-5-herb" placeholder=""></td><td><input data-key="tinc-5-mens" placeholder=""></td><td><input data-key="tinc-5-ratio" placeholder=""></td><td><input data-key="tinc-5-start" placeholder=""></td><td><input data-key="tinc-5-end" placeholder=""></td><td><input data-key="tinc-5-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="tinc-6-herb" placeholder=""></td><td><input data-key="tinc-6-mens" placeholder=""></td><td><input data-key="tinc-6-ratio" placeholder=""></td><td><input data-key="tinc-6-start" placeholder=""></td><td><input data-key="tinc-6-end" placeholder=""></td><td><input data-key="tinc-6-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="tinc-7-herb" placeholder=""></td><td><input data-key="tinc-7-mens" placeholder=""></td><td><input data-key="tinc-7-ratio" placeholder=""></td><td><input data-key="tinc-7-start" placeholder=""></td><td><input data-key="tinc-7-end" placeholder=""></td><td><input data-key="tinc-7-notes" placeholder=""></td></tr>
-      <tr><td><input data-key="tinc-8-herb" placeholder=""></td><td><input data-key="tinc-8-mens" placeholder=""></td><td><input data-key="tinc-8-ratio" placeholder=""></td><td><input data-key="tinc-8-start" placeholder=""></td><td><input data-key="tinc-8-end" placeholder=""></td><td><input data-key="tinc-8-notes" placeholder=""></td></tr>
-    </tbody>
-  </table>
+  <div class="section-header"><h2>Making Salves</h2></div>
+  <p>A salve is an infused oil thickened with beeswax. It stays solid at room temperature and melts on contact with skin. Salves carry the oil-soluble properties of herbs — the stuff that doesn't come out in water.</p>
+  <p><strong>Step 1: Make an infused oil.</strong> Cover dried herb with a carrier oil — olive oil is the standard, but jojoba, sweet almond, or sunflower all work. Use dried herbs; fresh herbs carry water that can make the oil go rancid. Let it sit in a warm spot for 2–4 weeks, shaking the jar when you remember. Or use the quick method: place the jar in a pot of warm water (not boiling) for 2–4 hours. Strain through cheesecloth.</p>
+  <p><strong>Step 2: Add beeswax.</strong> For every cup of infused oil, use about 2 tablespoons of beeswax pastilles (or grated beeswax). Melt together in a double boiler or a glass jar set in a pot of water. Stir. To test the consistency, drip a few drops onto a cold plate — it'll set in seconds. Too soft? Add more wax. Too hard? Add more oil.</p>
+  <p><strong>Step 3: Pour and set.</strong> Pour into tins or small glass jars while still warm. Let cool undisturbed. Label immediately — you will forget what's in it. Salves keep about a year in a cool, dark place.</p>
+  <p class="tip">Calendula, plantain, comfrey, and yarrow are classic salve herbs. Start with one herb before you start blending. That way you know what each one does for your skin.</p>
+  <div class="recipe-block" style="margin-top:0.6rem;">
+    <h4>Salve #1</h4>
+    <div class="field-row"><label>Name</label><input data-key="salve-1-name" placeholder="Calendula salve…"></div>
+    <div class="field-row"><label>Date</label><input data-key="salve-1-date" placeholder=""></div>
+    <div class="field-row"><label>Oil & herb</label><input data-key="salve-1-base" placeholder="Olive oil infused with calendula…"></div>
+    <textarea class="method" data-key="salve-1-notes" placeholder="How it turned out, what you'd change…" style="min-height:1.5rem"></textarea>
+  </div>
 </div>
-<!-- NOTES -->
+<div class="page prose-page">
+  <div class="section-header"><h2>Making Tinctures</h2></div>
+  <p>A tincture is an herb extracted in alcohol. Alcohol pulls out a wider range of compounds than water — resins, alkaloids, and essential oils that tea leaves behind. A well-made tincture keeps for years.</p>
+  <p><strong>The folk method (no math required):</strong> Fill a jar about halfway with dried herb (or loosely packed fresh herb — don't cram it). Cover completely with alcohol — 80-proof vodka is the standard because it's half water and half ethanol, which together extract both water-soluble and alcohol-soluble compounds. Brandy works too and tastes better. Leave at least an inch of alcohol above the herb. Seal tightly.</p>
+  <p><strong>Wait.</strong> Put the jar somewhere you'll see it — a kitchen shelf, not a dark cupboard you'll forget about. Shake it when you think of it. Wait 4–6 weeks minimum. Longer is fine; tinctures are patient.</p>
+  <p><strong>Strain and bottle.</strong> Pour through cheesecloth or a fine mesh strainer. Squeeze the herb to get the last of the liquid out — that's the strongest part. Pour into a dark glass dropper bottle if you have one; a clean jar works too. Label with the herb, date, and alcohol used.</p>
+  <p class="tip">Start your first tincture with something familiar — chamomile, lemon balm, or ginger. Something you already know you like.</p>
+  <div class="recipe-block" style="margin-top:0.4rem;">
+    <h4>Tincture #1</h4>
+    <div class="field-row"><label>Herb</label><input data-key="tinc-1-herb" placeholder="Chamomile…"></div>
+    <div class="field-row"><label>Alcohol</label><input data-key="tinc-1-alcohol" placeholder="80-proof vodka…"></div>
+    <div class="field-row"><label>Started</label><input data-key="tinc-1-start" placeholder=""></div>
+    <div class="field-row"><label>Decanted</label><input data-key="tinc-1-end" placeholder=""></div>
+    <textarea class="method" data-key="tinc-1-notes" placeholder="Notes on the process, how it turned out…" style="min-height:1.5rem"></textarea>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="section-header"><h2>Making Infused Oils</h2></div>
+  <p>An infused oil is the foundation of salves, massage oils, and balms. It's also useful on its own — as a bath oil, a moisturizer, or a base for a few drops of essential oil.</p>
+  <p><strong>Cold infusion (best for delicate flowers):</strong> Fill a clean jar halfway with dried herb. Cover with oil — olive, jojoba, sunflower, or sweet almond. Seal. Place in a sunny windowsill for 2–4 weeks. The sun warms the oil gently and helps the extraction. Shake when you remember. Strain. The oil takes on the color and scent of the herb.</p>
+  <p><strong>Warm infusion (faster, better for roots and barks):</strong> Place the herb and oil in a glass jar. Set the jar in a pot of water on the lowest heat — you want it warm, not simmering. A slow cooker on \"warm\" works beautifully. Leave 2–4 hours. Strain. Don't let the water boil — high heat can destroy the compounds you're trying to extract.</p>
+  <p class="tip">Dried herbs only. Fresh herbs contain water, and water in oil creates an environment where bacteria can grow. Your infused oil should be clear when you strain it. If it's cloudy, it probably had moisture in it — use it quickly or toss it.</p>
+  <div class="recipe-block" style="margin-top:0.4rem;">
+    <h4>Infused Oil #1</h4>
+    <div class="field-row"><label>Herb</label><input data-key="oil-1-herb" placeholder="Calendula…"></div>
+    <div class="field-row"><label>Oil</label><input data-key="oil-1-oil" placeholder="Olive oil…"></div>
+    <div class="field-row"><label>Method</label><input data-key="oil-1-method" placeholder="Cold infusion, 3 weeks…"></div>
+    <textarea class="method" data-key="oil-1-notes" placeholder="Color, scent, how you used it…" style="min-height:1.5rem"></textarea>
+  </div>
+  <div class="recipe-block">
+    <h4>Infused Oil #2</h4>
+    <div class="field-row"><label>Herb</label><input data-key="oil-2-herb" placeholder=""></div>
+    <div class="field-row"><label>Oil</label><input data-key="oil-2-oil" placeholder=""></div>
+    <div class="field-row"><label>Method</label><input data-key="oil-2-method" placeholder=""></div>
+    <textarea class="method" data-key="oil-2-notes" placeholder="Color, scent, how you used it…" style="min-height:1.5rem"></textarea>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="section-header"><h2>Drying & Storing Herbs</h2></div>
+  <p class="lede">The gap between harvest and jar is where most herbs are ruined. Heat, light, moisture, and time are the enemies. Get the drying right and your herbs keep for a year.</p>
+  <p><strong>When to harvest:</strong> Leaves are strongest just before the plant flowers. Flowers are best picked the day they open, in the morning after the dew dries. Roots are dug in fall or early spring when the plant's energy is stored underground. If you're not sure, harvest on a dry, sunny morning — that's rarely wrong.</p>
+  <p><strong>How to dry:</strong> Tie small bundles and hang them upside down in a warm, airy place — not in direct sun. An attic, a porch, a well-ventilated room. If you're in a humid climate, use a dehydrator on the lowest setting or spread the herbs on a screen with a fan blowing across them. Herbs are dry when they crumble easily between your fingers — stems should snap, not bend.</p>
+  <p><strong>How to store:</strong> Glass jars in a dark cupboard. Not plastic bags — plastic breathes. Not above the stove — heat and steam degrade herbs fast. Label with the herb and the date you dried it. Whole herbs keep their potency longer than crushed ones; crush them just before using.</p>
+  <p class="tip">If you open a jar and it smells like nothing, the volatile oils have evaporated. The herb isn't spoiled — it's just weak. Use more of it or compost it and start fresh.</p>
+  <hr>
+  <h3>Drying Log</h3>
+  <div class="recipe-block">
+    <div class="field-row"><label>Herb</label><input data-key="dry-1-herb" placeholder="Lemon balm…"></div>
+    <div class="field-row"><label>Harvested</label><input data-key="dry-1-start" placeholder=""></div>
+    <div class="field-row"><label>Method</label><input data-key="dry-1-method" placeholder="Hang dry in attic…"></div>
+    <div class="field-row"><label>Yield</label><input data-key="dry-1-yield" placeholder="2 oz dried…"></div>
+    <textarea class="method" data-key="dry-1-notes" placeholder="How it dried, how it smells, storage notes…" style="min-height:1.5rem"></textarea>
+  </div>
+</div>
 <div class="page prose-page">
   <div class="section-header"><h2>Notes</h2></div>
-  <p class="tip">For whatever doesn't fit a category. Observations, ideas, questions to research later.</p>
+  <p class="tip">For whatever doesn't fit a category. Plants you want to try, books to read, questions to research.</p>
   <div class="notes-grid" style="margin-top:0.4rem;">
     <div class="note-block" style="min-height:3.8in;"><h4>Notes</h4><textarea data-key="notes-1" placeholder="…" style="width:100%;min-height:3.2in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:1px dashed var(--line);outline:none;background:var(--light);padding:0.3rem"></textarea></div>
     <div class="note-block" style="min-height:3.8in;"><h4>Notes</h4><textarea data-key="notes-2" placeholder="…" style="width:100%;min-height:3.2in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:1px dashed var(--line);outline:none;background:var(--light);padding:0.3rem"></textarea></div>
@@ -220,11 +196,10 @@
     <div class="note-block" style="min-height:3.8in;"><h4>Notes</h4><textarea data-key="notes-4" placeholder="…" style="width:100%;min-height:3.2in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:1px dashed var(--line);outline:none;background:var(--light);padding:0.3rem"></textarea></div>
   </div>
 </div>
-<!-- CLOSING -->
 <div class="page" style="background:var(--paper);">
   <div style="display:flex; flex-direction:column; justify-content:center; height:100%; max-width:75%; margin:0 auto; text-align:center;">
-    <h2>Keep good records</h2>
-    <p style="margin-bottom:1rem;">The best herbalist you know is the one who wrote things down. This journal doesn't tell you what to put in a tincture — it just makes sure you remember what you did when the tincture turns out great and you want to make it again.</p>
+    <h2>Learn the method, then teach yourself</h2>
+    <p style="margin-bottom:1rem;">You don't need a degree to make a cup of tea. You don't need a license to infuse oil. The plants don't ask for credentials — they just grow. Pay attention, keep notes, and trust your senses. The best apothecary is the one who wrote things down.</p>
     <p style="margin-bottom:1rem;">Not medical advice. Just a record book.</p>
     <p style="margin-bottom:2rem;"><em>Works because it works.</em></p>
     <p class="small" style="color:#b0a99e; margin-top:3rem;">Kitchen &amp; Kettle</p>
