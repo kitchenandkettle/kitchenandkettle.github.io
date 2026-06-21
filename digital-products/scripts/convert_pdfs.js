@@ -17,6 +17,7 @@ const FILES = [
   'survival-garden-basics/survival-garden-basics.html',
   'honey-handbook/honey-handbook.html',
   'beeswax-wraps/beeswax-wraps.html',
+  'apothecary-journal/apothecary-journal.html',
 ];
 // -------------------------------------------------
 

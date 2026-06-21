@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apothecary Journal — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#8B8376;--line:#D9D0C1;--light:#FAF7F0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Crimson Pro',Georgia,serif;font-size:12pt;line-height:1.6;color:var(--ink);background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:1rem}
+  .toolbar{max-width:8.5in;width:100%;margin:0 auto 0.5rem;display:flex;justify-content:space-between;align-items:center;background:#fff;padding:0.5rem 0.7rem;border-radius:6px;box-shadow:0 1px 4px rgba(44,36,22,0.08);position:sticky;top:0;z-index:100}
+  .toolbar .brand{font-family:'Crimson Pro',serif;font-size:14pt;font-weight:600;color:var(--ink)}
+  .toolbar .brand em{font-style:italic;color:var(--clay)}
+  .toolbar .actions{display:flex;gap:0.5rem;align-items:center}
+  .toolbar .save-status{font-family:'Work Sans',sans-serif;font-size:8pt;color:#5a8a6a;margin-right:0.5rem;opacity:0;transition:opacity 0.3s}
+  .toolbar .save-status.visible{opacity:1}
+  .btn{font-family:'Work Sans',sans-serif;font-size:8pt;font-weight:600;padding:0.4em 0.8em;border-radius:3px;cursor:pointer;border:none;transition:background 0.15s;text-decoration:none}
+  .btn-ghost{background:none;color:var(--muted);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+  .btn-print{background:var(--ink);color:var(--paper)}
+  .btn-print:hover{background:#3D362D}
+  .page{width:8.5in;min-height:11in;background:#fff;margin-bottom:0.25in;padding:0.75in 0.7in;box-shadow:0 2px 12px rgba(44,36,22,0.12);page-break-after:always;position:relative}
+  .page:last-of-type{page-break-after:auto}
+  h1{font-size:28pt;font-weight:600;line-height:1.15;letter-spacing:-0.01em}
+  h2{font-size:16pt;font-weight:600;margin-bottom:0.4rem}
+  h3{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:0.3rem}
+  p{font-size:12pt;margin-bottom:0.5rem;color:#3D362D;line-height:1.55}
+  .lede{font-size:14pt;line-height:1.5;margin-bottom:1rem}
+  .tip{font-size:12pt;font-style:italic;color:var(--sage);margin:0.4rem 0;padding-left:0.5rem;border-left:2px solid var(--clay)}
+  .section-header{border-bottom:1px solid var(--line);padding-bottom:0.3rem;margin-bottom:0.6rem;display:flex;justify-content:space-between;align-items:baseline}
+  .cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2in 0.7in;background:var(--light)}
+  .cover .brand{font-size:14pt;color:var(--muted);margin-bottom:1.5rem}
+  .cover .brand em{font-style:italic;color:var(--clay)}
+  .cover h1{font-size:30pt;margin-bottom:0.5rem}
+  .cover .tagline{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:2rem}
+  .cover .description{font-size:14pt;max-width:28ch;line-height:1.5}
+  .cover .footer-note{font-size:12pt;color:var(--muted);font-family:'Work Sans',sans-serif;margin-top:1.5rem}
+  .prose-page h2{margin-top:0}
+  .prose-page ol,.prose-page ul{margin:0.4rem 0 0.6rem 1.2rem;font-size:12pt}
+  .prose-page li{margin-bottom:0.35rem;line-height:1.5;color:#3D362D}
+  .prose-page hr{border:none;border-top:1px solid var(--line);margin:0.7rem 0}
+  .record-table{width:100%;border-collapse:collapse;margin:0.3rem 0}
+  .record-table th{font-family:'Work Sans',sans-serif;font-size:10pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);text-align:left;padding:0.25rem 0.3rem;border-bottom:1px solid var(--line)}
+  .record-table td{padding:0.15rem 0.3rem;border-bottom:1px dotted var(--line)}
+  .record-table input{width:100%;border:1px dashed var(--line);outline:none;font-family:'Crimson Pro',Georgia,serif;font-size:12pt;padding:0.2rem 0.3rem;background:var(--light)}
+  .record-table textarea{width:100%;border:1px dashed var(--line);outline:none;font-family:'Crimson Pro',Georgia,serif;font-size:12pt;padding:0.2rem 0.3rem;background:var(--light);resize:vertical;min-height:2.5rem}
+  .recipe-block{border:1px solid var(--line);padding:0.5rem;margin-bottom:0.6rem}
+  .recipe-block h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);margin-bottom:0.3rem;padding-bottom:0.1rem;border-bottom:1px dotted var(--line)}
+  .recipe-block .field-row{display:flex;gap:0.5rem;margin-bottom:0.3rem}
+  .recipe-block .field-row label{font-family:'Work Sans',sans-serif;font-size:9pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);min-width:5rem;padding-top:0.3rem}
+  .recipe-block .field-row input{flex:1;border:1px dashed var(--line);outline:none;font-family:'Crimson Pro',Georgia,serif;font-size:12pt;padding:0.2rem 0.3rem;background:var(--light)}
+  .recipe-block textarea.method{width:100%;border:1px dashed var(--line);outline:none;font-family:'Crimson Pro',Georgia,serif;font-size:12pt;padding:0.3rem;background:var(--light);resize:vertical;min-height:2rem;margin-top:0.2rem}
+  .notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-top:0.4rem}
+  .note-block{border:1px solid var(--line);padding:0.4rem;min-height:3rem}
+  .note-block h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);margin-bottom:0.3rem;padding-bottom:0.1rem;border-bottom:1px dotted var(--line)}
+  input::placeholder,textarea::placeholder{color:var(--clay);opacity:1}
+  @media print{body{background:none;padding:0;margin:0}.page{margin:0;box-shadow:none;background:#fff}.toolbar{display:none}.cover{background:#fff!important}}
+</style>
+</head>
+<body class="apothecary-journal">
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+<div class="page cover">
+  <p class="brand">Kitchen <em>&amp; Kettle</em></p>
+  <h1>Apothecary<br>Journal</h1>
+  <p class="tagline">Not medical advice — just a record book.</p>
+  <p class="description">
+    Track your herbs from harvest to remedy. Keep what worked. Learn from what didn't.
+  </p>
+  <p class="footer-note">For the kitchen, not the clinic.</p>
+</div>
+<div class="page prose-page">
+  <div class="section-header"><h2>How to Use This Journal</h2></div>
+  <p class="lede">This is not a guide to herbal medicine. It's a blank record book — a place to track what you grow, harvest, dry, and make in your own kitchen. No dosage charts, no treatment recommendations. Just pages for your notes.</p>
+  <p>Fill in what matters to you. Skip what doesn't. The journal doesn't judge. If you're new to herbs, start with the harvest log and tea blends pages — those are the hardest to remember and the most rewarding to look back on.</p>
+  <hr>
+  <h2>What's Inside</h2>
+  <ul>
+    <li><strong>Herb inventory</strong> — what you have on hand, when you got it, where it came from</li>
+    <li><strong>Harvest logs</strong> — what you picked, when, where, and how much</li>
+    <li><strong>Drying records</strong> — start to finish, method and yield</li>
+    <li><strong>Salve recipes</strong> — ingredients, method, date made, notes on the batch</li>
+    <li><strong>Tea blends</strong> — what went in, proportions, how it tasted</li>
+    <li><strong>Tincture records</strong> — herb, menstruum, ratios, start and decant dates</li>
+    <li><strong>Notes</strong> — blank space for whatever doesn't fit a category</li>
+  </ul>
+  <p class="tip">Type directly into this journal — your entries save to your device automatically. No account needed. Clearing your browser data clears your entries.</p>
+</div>
+<!-- HERB INVENTORY -->
+<div class="page prose-page">
+  <div class="section-header"><h2>Herb Inventory</h2></div>
+  <p class="tip">What's in your cupboard right now. Update when you use something or bring something new home.</p>
+  <table class="record-table">
+    <thead><tr><th style="width:18%">Herb</th><th style="width:12%">Form</th><th style="width:12%">Qty</th><th style="width:18%">Source</th><th style="width:16%">Acquired</th><th style="width:24%">Notes</th></tr></thead>
+    <tbody>
+      <tr><td><input data-key="inv-1-herb" placeholder="Chamomile…"></td><td><input data-key="inv-1-form" placeholder="Dried, whole…"></td><td><input data-key="inv-1-qty" placeholder="4 oz…"></td><td><input data-key="inv-1-source" placeholder="Mountain Rose…"></td><td><input data-key="inv-1-date" placeholder="Jun 2026…"></td><td><input data-key="inv-1-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-2-herb" placeholder=""></td><td><input data-key="inv-2-form" placeholder=""></td><td><input data-key="inv-2-qty" placeholder=""></td><td><input data-key="inv-2-source" placeholder=""></td><td><input data-key="inv-2-date" placeholder=""></td><td><input data-key="inv-2-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-3-herb" placeholder=""></td><td><input data-key="inv-3-form" placeholder=""></td><td><input data-key="inv-3-qty" placeholder=""></td><td><input data-key="inv-3-source" placeholder=""></td><td><input data-key="inv-3-date" placeholder=""></td><td><input data-key="inv-3-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-4-herb" placeholder=""></td><td><input data-key="inv-4-form" placeholder=""></td><td><input data-key="inv-4-qty" placeholder=""></td><td><input data-key="inv-4-source" placeholder=""></td><td><input data-key="inv-4-date" placeholder=""></td><td><input data-key="inv-4-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-5-herb" placeholder=""></td><td><input data-key="inv-5-form" placeholder=""></td><td><input data-key="inv-5-qty" placeholder=""></td><td><input data-key="inv-5-source" placeholder=""></td><td><input data-key="inv-5-date" placeholder=""></td><td><input data-key="inv-5-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-6-herb" placeholder=""></td><td><input data-key="inv-6-form" placeholder=""></td><td><input data-key="inv-6-qty" placeholder=""></td><td><input data-key="inv-6-source" placeholder=""></td><td><input data-key="inv-6-date" placeholder=""></td><td><input data-key="inv-6-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-7-herb" placeholder=""></td><td><input data-key="inv-7-form" placeholder=""></td><td><input data-key="inv-7-qty" placeholder=""></td><td><input data-key="inv-7-source" placeholder=""></td><td><input data-key="inv-7-date" placeholder=""></td><td><input data-key="inv-7-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-8-herb" placeholder=""></td><td><input data-key="inv-8-form" placeholder=""></td><td><input data-key="inv-8-qty" placeholder=""></td><td><input data-key="inv-8-source" placeholder=""></td><td><input data-key="inv-8-date" placeholder=""></td><td><input data-key="inv-8-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-9-herb" placeholder=""></td><td><input data-key="inv-9-form" placeholder=""></td><td><input data-key="inv-9-qty" placeholder=""></td><td><input data-key="inv-9-source" placeholder=""></td><td><input data-key="inv-9-date" placeholder=""></td><td><input data-key="inv-9-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-10-herb" placeholder=""></td><td><input data-key="inv-10-form" placeholder=""></td><td><input data-key="inv-10-qty" placeholder=""></td><td><input data-key="inv-10-source" placeholder=""></td><td><input data-key="inv-10-date" placeholder=""></td><td><input data-key="inv-10-notes" placeholder=""></td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- HARVEST LOGS -->
+<div class="page prose-page">
+  <div class="section-header"><h2>Harvest Logs</h2></div>
+  <p class="tip">What you picked, when, and where. Build a year-over-year record of your best spots and timing.</p>
+  <table class="record-table">
+    <thead><tr><th style="width:16%">Date</th><th style="width:18%">Herb</th><th style="width:18%">Location</th><th style="width:14%">Part</th><th style="width:12%">Qty</th><th style="width:22%">Notes</th></tr></thead>
+    <tbody>
+      <tr><td><input data-key="harv-1-date" placeholder="Jun 15…"></td><td><input data-key="harv-1-herb" placeholder="Yarrow…"></td><td><input data-key="harv-1-loc" placeholder="Back fence…"></td><td><input data-key="harv-1-part" placeholder="Flowers…"></td><td><input data-key="harv-1-qty" placeholder="2 handfuls…"></td><td><input data-key="harv-1-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="harv-2-date" placeholder=""></td><td><input data-key="harv-2-herb" placeholder=""></td><td><input data-key="harv-2-loc" placeholder=""></td><td><input data-key="harv-2-part" placeholder=""></td><td><input data-key="harv-2-qty" placeholder=""></td><td><input data-key="harv-2-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="harv-3-date" placeholder=""></td><td><input data-key="harv-3-herb" placeholder=""></td><td><input data-key="harv-3-loc" placeholder=""></td><td><input data-key="harv-3-part" placeholder=""></td><td><input data-key="harv-3-qty" placeholder=""></td><td><input data-key="harv-3-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="harv-4-date" placeholder=""></td><td><input data-key="harv-4-herb" placeholder=""></td><td><input data-key="harv-4-loc" placeholder=""></td><td><input data-key="harv-4-part" placeholder=""></td><td><input data-key="harv-4-qty" placeholder=""></td><td><input data-key="harv-4-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="harv-5-date" placeholder=""></td><td><input data-key="harv-5-herb" placeholder=""></td><td><input data-key="harv-5-loc" placeholder=""></td><td><input data-key="harv-5-part" placeholder=""></td><td><input data-key="harv-5-qty" placeholder=""></td><td><input data-key="harv-5-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="harv-6-date" placeholder=""></td><td><input data-key="harv-6-herb" placeholder=""></td><td><input data-key="harv-6-loc" placeholder=""></td><td><input data-key="harv-6-part" placeholder=""></td><td><input data-key="harv-6-qty" placeholder=""></td><td><input data-key="harv-6-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="harv-7-date" placeholder=""></td><td><input data-key="harv-7-herb" placeholder=""></td><td><input data-key="harv-7-loc" placeholder=""></td><td><input data-key="harv-7-part" placeholder=""></td><td><input data-key="harv-7-qty" placeholder=""></td><td><input data-key="harv-7-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="harv-8-date" placeholder=""></td><td><input data-key="harv-8-herb" placeholder=""></td><td><input data-key="harv-8-loc" placeholder=""></td><td><input data-key="harv-8-part" placeholder=""></td><td><input data-key="harv-8-qty" placeholder=""></td><td><input data-key="harv-8-notes" placeholder=""></td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- DRYING RECORDS -->
+<div class="page prose-page">
+  <div class="section-header"><h2>Drying Records</h2></div>
+  <p class="tip">Track each batch from fresh to finished. You'll know what dried well and what didn't.</p>
+  <table class="record-table">
+    <thead><tr><th style="width:18%">Herb</th><th style="width:16%">Started</th><th style="width:16%">Method</th><th style="width:16%">Finished</th><th style="width:12%">Yield</th><th style="width:22%">Notes</th></tr></thead>
+    <tbody>
+      <tr><td><input data-key="dry-1-herb" placeholder="Lemon balm…"></td><td><input data-key="dry-1-start" placeholder="Jun 16…"></td><td><input data-key="dry-1-method" placeholder="Hang dry…"></td><td><input data-key="dry-1-end" placeholder="Jun 23…"></td><td><input data-key="dry-1-yield" placeholder="2 oz…"></td><td><input data-key="dry-1-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="dry-2-herb" placeholder=""></td><td><input data-key="dry-2-start" placeholder=""></td><td><input data-key="dry-2-method" placeholder=""></td><td><input data-key="dry-2-end" placeholder=""></td><td><input data-key="dry-2-yield" placeholder=""></td><td><input data-key="dry-2-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="dry-3-herb" placeholder=""></td><td><input data-key="dry-3-start" placeholder=""></td><td><input data-key="dry-3-method" placeholder=""></td><td><input data-key="dry-3-end" placeholder=""></td><td><input data-key="dry-3-yield" placeholder=""></td><td><input data-key="dry-3-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="dry-4-herb" placeholder=""></td><td><input data-key="dry-4-start" placeholder=""></td><td><input data-key="dry-4-method" placeholder=""></td><td><input data-key="dry-4-end" placeholder=""></td><td><input data-key="dry-4-yield" placeholder=""></td><td><input data-key="dry-4-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="dry-5-herb" placeholder=""></td><td><input data-key="dry-5-start" placeholder=""></td><td><input data-key="dry-5-method" placeholder=""></td><td><input data-key="dry-5-end" placeholder=""></td><td><input data-key="dry-5-yield" placeholder=""></td><td><input data-key="dry-5-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="dry-6-herb" placeholder=""></td><td><input data-key="dry-6-start" placeholder=""></td><td><input data-key="dry-6-method" placeholder=""></td><td><input data-key="dry-6-end" placeholder=""></td><td><input data-key="dry-6-yield" placeholder=""></td><td><input data-key="dry-6-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="dry-7-herb" placeholder=""></td><td><input data-key="dry-7-start" placeholder=""></td><td><input data-key="dry-7-method" placeholder=""></td><td><input data-key="dry-7-end" placeholder=""></td><td><input data-key="dry-7-yield" placeholder=""></td><td><input data-key="dry-7-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="dry-8-herb" placeholder=""></td><td><input data-key="dry-8-start" placeholder=""></td><td><input data-key="dry-8-method" placeholder=""></td><td><input data-key="dry-8-end" placeholder=""></td><td><input data-key="dry-8-yield" placeholder=""></td><td><input data-key="dry-8-notes" placeholder=""></td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- SALVE RECIPES -->
+<div class="page prose-page">
+  <div class="section-header"><h2>Salve Recipes</h2></div>
+  <p class="tip">Record what you made and what you'd change next time. One page, two batches.</p>
+  <div class="recipe-block">
+    <h4>Salve #1</h4>
+    <div class="field-row"><label>Name</label><input data-key="salve-1-name" placeholder="Calendula salve…"></div>
+    <div class="field-row"><label>Date</label><input data-key="salve-1-date" placeholder=""></div>
+    <div class="field-row"><label>Batch</label><input data-key="salve-1-batch" placeholder="4 oz tin…"></div>
+    <div class="field-row"><label>Ingredients</label><input data-key="salve-1-ingredients" placeholder="Calendula-infused oil, beeswax…"></div>
+    <textarea class="method" data-key="salve-1-method" placeholder="Method — how you made it, what you infused, how long, what you'd change next time…" style="min-height:2.5rem"></textarea>
+  </div>
+  <div class="recipe-block">
+    <h4>Salve #2</h4>
+    <div class="field-row"><label>Name</label><input data-key="salve-2-name" placeholder=""></div>
+    <div class="field-row"><label>Date</label><input data-key="salve-2-date" placeholder=""></div>
+    <div class="field-row"><label>Batch</label><input data-key="salve-2-batch" placeholder=""></div>
+    <div class="field-row"><label>Ingredients</label><input data-key="salve-2-ingredients" placeholder=""></div>
+    <textarea class="method" data-key="salve-2-method" placeholder="Method…" style="min-height:2.5rem"></textarea>
+  </div>
+</div>
+<!-- TEA BLENDS -->
+<div class="page prose-page">
+  <div class="section-header"><h2>Tea Blends</h2></div>
+  <p class="tip">What went in, how it tasted, and whether you'd make it again.</p>
+  <div class="recipe-block">
+    <h4>Blend #1</h4>
+    <div class="field-row"><label>Name</label><input data-key="tea-1-name" placeholder="Evening calm…"></div>
+    <div class="field-row"><label>Date</label><input data-key="tea-1-date" placeholder=""></div>
+    <div class="field-row"><label>Ingredients</label><input data-key="tea-1-ingredients" placeholder="1 part chamomile, 1 part lemon balm, ½ part lavender…"></div>
+    <textarea class="method" data-key="tea-1-notes" placeholder="Tasting notes — how it turned out, what you'd adjust…" style="min-height:2.5rem"></textarea>
+  </div>
+  <div class="recipe-block">
+    <h4>Blend #2</h4>
+    <div class="field-row"><label>Name</label><input data-key="tea-2-name" placeholder=""></div>
+    <div class="field-row"><label>Date</label><input data-key="tea-2-date" placeholder=""></div>
+    <div class="field-row"><label>Ingredients</label><input data-key="tea-2-ingredients" placeholder=""></div>
+    <textarea class="method" data-key="tea-2-notes" placeholder="Tasting notes…" style="min-height:2.5rem"></textarea>
+  </div>
+</div>
+<!-- TINCTURE RECORDS -->
+<div class="page prose-page">
+  <div class="section-header"><h2>Tincture Records</h2></div>
+  <p class="tip">Herb, menstruum, ratio, and dates. The details you'll want six months from now.</p>
+  <table class="record-table">
+    <thead><tr><th style="width:18%">Herb</th><th style="width:16%">Menstruum</th><th style="width:12%">Ratio</th><th style="width:16%">Started</th><th style="width:16%">Decanted</th><th style="width:22%">Notes</th></tr></thead>
+    <tbody>
+      <tr><td><input data-key="tinc-1-herb" placeholder="Echinacea…"></td><td><input data-key="tinc-1-mens" placeholder="80 proof vodka…"></td><td><input data-key="tinc-1-ratio" placeholder="1:5…"></td><td><input data-key="tinc-1-start" placeholder="Jun 20…"></td><td><input data-key="tinc-1-end" placeholder=""></td><td><input data-key="tinc-1-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="tinc-2-herb" placeholder=""></td><td><input data-key="tinc-2-mens" placeholder=""></td><td><input data-key="tinc-2-ratio" placeholder=""></td><td><input data-key="tinc-2-start" placeholder=""></td><td><input data-key="tinc-2-end" placeholder=""></td><td><input data-key="tinc-2-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="tinc-3-herb" placeholder=""></td><td><input data-key="tinc-3-mens" placeholder=""></td><td><input data-key="tinc-3-ratio" placeholder=""></td><td><input data-key="tinc-3-start" placeholder=""></td><td><input data-key="tinc-3-end" placeholder=""></td><td><input data-key="tinc-3-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="tinc-4-herb" placeholder=""></td><td><input data-key="tinc-4-mens" placeholder=""></td><td><input data-key="tinc-4-ratio" placeholder=""></td><td><input data-key="tinc-4-start" placeholder=""></td><td><input data-key="tinc-4-end" placeholder=""></td><td><input data-key="tinc-4-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="tinc-5-herb" placeholder=""></td><td><input data-key="tinc-5-mens" placeholder=""></td><td><input data-key="tinc-5-ratio" placeholder=""></td><td><input data-key="tinc-5-start" placeholder=""></td><td><input data-key="tinc-5-end" placeholder=""></td><td><input data-key="tinc-5-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="tinc-6-herb" placeholder=""></td><td><input data-key="tinc-6-mens" placeholder=""></td><td><input data-key="tinc-6-ratio" placeholder=""></td><td><input data-key="tinc-6-start" placeholder=""></td><td><input data-key="tinc-6-end" placeholder=""></td><td><input data-key="tinc-6-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="tinc-7-herb" placeholder=""></td><td><input data-key="tinc-7-mens" placeholder=""></td><td><input data-key="tinc-7-ratio" placeholder=""></td><td><input data-key="tinc-7-start" placeholder=""></td><td><input data-key="tinc-7-end" placeholder=""></td><td><input data-key="tinc-7-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="tinc-8-herb" placeholder=""></td><td><input data-key="tinc-8-mens" placeholder=""></td><td><input data-key="tinc-8-ratio" placeholder=""></td><td><input data-key="tinc-8-start" placeholder=""></td><td><input data-key="tinc-8-end" placeholder=""></td><td><input data-key="tinc-8-notes" placeholder=""></td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- NOTES -->
+<div class="page prose-page">
+  <div class="section-header"><h2>Notes</h2></div>
+  <p class="tip">For whatever doesn't fit a category. Observations, ideas, questions to research later.</p>
+  <div class="notes-grid" style="margin-top:0.4rem;">
+    <div class="note-block" style="min-height:3.8in;"><h4>Notes</h4><textarea data-key="notes-1" placeholder="…" style="width:100%;min-height:3.2in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:1px dashed var(--line);outline:none;background:var(--light);padding:0.3rem"></textarea></div>
+    <div class="note-block" style="min-height:3.8in;"><h4>Notes</h4><textarea data-key="notes-2" placeholder="…" style="width:100%;min-height:3.2in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:1px dashed var(--line);outline:none;background:var(--light);padding:0.3rem"></textarea></div>
+    <div class="note-block" style="min-height:3.8in;"><h4>Notes</h4><textarea data-key="notes-3" placeholder="…" style="width:100%;min-height:3.2in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:1px dashed var(--line);outline:none;background:var(--light);padding:0.3rem"></textarea></div>
+    <div class="note-block" style="min-height:3.8in;"><h4>Notes</h4><textarea data-key="notes-4" placeholder="…" style="width:100%;min-height:3.2in;resize:vertical;font-size:12pt;font-family:'Crimson Pro',Georgia,serif;line-height:1.5;border:1px dashed var(--line);outline:none;background:var(--light);padding:0.3rem"></textarea></div>
+  </div>
+</div>
+<!-- CLOSING -->
+<div class="page" style="background:var(--paper);">
+  <div style="display:flex; flex-direction:column; justify-content:center; height:100%; max-width:75%; margin:0 auto; text-align:center;">
+    <h2>Keep good records</h2>
+    <p style="margin-bottom:1rem;">The best herbalist you know is the one who wrote things down. This journal doesn't tell you what to put in a tincture — it just makes sure you remember what you did when the tincture turns out great and you want to make it again.</p>
+    <p style="margin-bottom:1rem;">Not medical advice. Just a record book.</p>
+    <p style="margin-bottom:2rem;"><em>Works because it works.</em></p>
+    <p class="small" style="color:#b0a99e; margin-top:3rem;">Kitchen &amp; Kettle</p>
+    <p class="small" style="color:#b0a99e;">A quieter way to run a kitchen.</p>
+  </div>
+</div>
+<script>
+const STORAGE_KEY = 'keeping-kitchen-apothecary-journal';
+function save() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => { data[el.dataset.key] = el.value; });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  const s = document.getElementById('saveStatus');
+  s.classList.add('visible');
+  clearTimeout(s._t); s._t = setTimeout(() => s.classList.remove('visible'), 1500);
+}
+function load() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.dataset.key in data) el.value = data[el.dataset.key];
+  });
+}
+function clearAll() {
+  if (!confirm('Clear all notes?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('[data-key]').forEach(el => el.value = '');
+}
+document.addEventListener('input', save);
+load();
+</script>
+</body>
+</html>
