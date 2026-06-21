@@ -54,6 +54,10 @@
   .notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-top:0.4rem}
   .note-block{border:1px solid var(--line);padding:0.4rem;min-height:3rem}
   .note-block h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);margin-bottom:0.3rem;padding-bottom:0.1rem;border-bottom:1px dotted var(--line)}
+  .record-table{width:100%;border-collapse:collapse;margin:0.3rem 0}
+  .record-table th{font-family:'Work Sans',sans-serif;font-size:10pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);text-align:left;padding:0.2rem 0.3rem;border-bottom:1px solid var(--line)}
+  .record-table td{padding:0.1rem 0.3rem;border-bottom:1px dotted var(--line)}
+  .record-table input{width:100%;border:1px dashed var(--line);outline:none;font-family:'Crimson Pro',Georgia,serif;font-size:12pt;padding:0.15rem 0.25rem;background:var(--light)}
   input::placeholder,textarea::placeholder{color:var(--clay);opacity:1}
   @media print{body{background:none;padding:0;margin:0}.page{margin:0;box-shadow:none;background:#fff}.toolbar{display:none}.cover{background:#fff!important}.honest-box{background:none}}
 </style>
@@ -93,6 +97,44 @@
     <h4>Honest note</h4>
     <p>This journal teaches kitchen methods — how to extract, infuse, and preserve. It does not tell you what to take for a headache. Plants are powerful. Respect that. If you're pregnant, nursing, on medication, or uncertain about a plant, ask someone who studied this longer than a blog post.</p>
   </div>
+</div>
+<!-- HERB INVENTORY -->
+<div class="page prose-page">
+  <div class="section-header"><h2>Herb Inventory</h2></div>
+  <p class="tip">What's in your cupboard. Update when you use something or bring something new home.</p>
+  <table class="record-table">
+    <thead><tr><th style="width:20%">Herb</th><th style="width:12%">Form</th><th style="width:10%">Qty</th><th style="width:18%">Source</th><th style="width:14%">Acquired</th><th style="width:26%">Notes</th></tr></thead>
+    <tbody>
+      <tr><td><input data-key="inv-1-herb" placeholder="Chamomile…"></td><td><input data-key="inv-1-form" placeholder="Dried, whole…"></td><td><input data-key="inv-1-qty" placeholder="4 oz…"></td><td><input data-key="inv-1-source" placeholder="Mountain Rose…"></td><td><input data-key="inv-1-date" placeholder="Jun 2026…"></td><td><input data-key="inv-1-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-2-herb" placeholder=""></td><td><input data-key="inv-2-form" placeholder=""></td><td><input data-key="inv-2-qty" placeholder=""></td><td><input data-key="inv-2-source" placeholder=""></td><td><input data-key="inv-2-date" placeholder=""></td><td><input data-key="inv-2-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-3-herb" placeholder=""></td><td><input data-key="inv-3-form" placeholder=""></td><td><input data-key="inv-3-qty" placeholder=""></td><td><input data-key="inv-3-source" placeholder=""></td><td><input data-key="inv-3-date" placeholder=""></td><td><input data-key="inv-3-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-4-herb" placeholder=""></td><td><input data-key="inv-4-form" placeholder=""></td><td><input data-key="inv-4-qty" placeholder=""></td><td><input data-key="inv-4-source" placeholder=""></td><td><input data-key="inv-4-date" placeholder=""></td><td><input data-key="inv-4-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-5-herb" placeholder=""></td><td><input data-key="inv-5-form" placeholder=""></td><td><input data-key="inv-5-qty" placeholder=""></td><td><input data-key="inv-5-source" placeholder=""></td><td><input data-key="inv-5-date" placeholder=""></td><td><input data-key="inv-5-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-6-herb" placeholder=""></td><td><input data-key="inv-6-form" placeholder=""></td><td><input data-key="inv-6-qty" placeholder=""></td><td><input data-key="inv-6-source" placeholder=""></td><td><input data-key="inv-6-date" placeholder=""></td><td><input data-key="inv-6-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-7-herb" placeholder=""></td><td><input data-key="inv-7-form" placeholder=""></td><td><input data-key="inv-7-qty" placeholder=""></td><td><input data-key="inv-7-source" placeholder=""></td><td><input data-key="inv-7-date" placeholder=""></td><td><input data-key="inv-7-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-8-herb" placeholder=""></td><td><input data-key="inv-8-form" placeholder=""></td><td><input data-key="inv-8-qty" placeholder=""></td><td><input data-key="inv-8-source" placeholder=""></td><td><input data-key="inv-8-date" placeholder=""></td><td><input data-key="inv-8-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-9-herb" placeholder=""></td><td><input data-key="inv-9-form" placeholder=""></td><td><input data-key="inv-9-qty" placeholder=""></td><td><input data-key="inv-9-source" placeholder=""></td><td><input data-key="inv-9-date" placeholder=""></td><td><input data-key="inv-9-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="inv-10-herb" placeholder=""></td><td><input data-key="inv-10-form" placeholder=""></td><td><input data-key="inv-10-qty" placeholder=""></td><td><input data-key="inv-10-source" placeholder=""></td><td><input data-key="inv-10-date" placeholder=""></td><td><input data-key="inv-10-notes" placeholder=""></td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- HARVEST LOGS -->
+<div class="page prose-page">
+  <div class="section-header"><h2>Harvest Logs</h2></div>
+  <p class="tip">What you picked, when, and where. Build a year-over-year record.</p>
+  <table class="record-table">
+    <thead><tr><th style="width:14%">Date</th><th style="width:18%">Herb</th><th style="width:18%">Location</th><th style="width:14%">Part</th><th style="width:10%">Qty</th><th style="width:26%">Notes</th></tr></thead>
+    <tbody>
+      <tr><td><input data-key="harv-1-date" placeholder="Jun 15…"></td><td><input data-key="harv-1-herb" placeholder="Yarrow…"></td><td><input data-key="harv-1-loc" placeholder="Back fence…"></td><td><input data-key="harv-1-part" placeholder="Flowers…"></td><td><input data-key="harv-1-qty" placeholder="2 handfuls…"></td><td><input data-key="harv-1-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="harv-2-date" placeholder=""></td><td><input data-key="harv-2-herb" placeholder=""></td><td><input data-key="harv-2-loc" placeholder=""></td><td><input data-key="harv-2-part" placeholder=""></td><td><input data-key="harv-2-qty" placeholder=""></td><td><input data-key="harv-2-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="harv-3-date" placeholder=""></td><td><input data-key="harv-3-herb" placeholder=""></td><td><input data-key="harv-3-loc" placeholder=""></td><td><input data-key="harv-3-part" placeholder=""></td><td><input data-key="harv-3-qty" placeholder=""></td><td><input data-key="harv-3-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="harv-4-date" placeholder=""></td><td><input data-key="harv-4-herb" placeholder=""></td><td><input data-key="harv-4-loc" placeholder=""></td><td><input data-key="harv-4-part" placeholder=""></td><td><input data-key="harv-4-qty" placeholder=""></td><td><input data-key="harv-4-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="harv-5-date" placeholder=""></td><td><input data-key="harv-5-herb" placeholder=""></td><td><input data-key="harv-5-loc" placeholder=""></td><td><input data-key="harv-5-part" placeholder=""></td><td><input data-key="harv-5-qty" placeholder=""></td><td><input data-key="harv-5-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="harv-6-date" placeholder=""></td><td><input data-key="harv-6-herb" placeholder=""></td><td><input data-key="harv-6-loc" placeholder=""></td><td><input data-key="harv-6-part" placeholder=""></td><td><input data-key="harv-6-qty" placeholder=""></td><td><input data-key="harv-6-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="harv-7-date" placeholder=""></td><td><input data-key="harv-7-herb" placeholder=""></td><td><input data-key="harv-7-loc" placeholder=""></td><td><input data-key="harv-7-part" placeholder=""></td><td><input data-key="harv-7-qty" placeholder=""></td><td><input data-key="harv-7-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="harv-8-date" placeholder=""></td><td><input data-key="harv-8-herb" placeholder=""></td><td><input data-key="harv-8-loc" placeholder=""></td><td><input data-key="harv-8-part" placeholder=""></td><td><input data-key="harv-8-qty" placeholder=""></td><td><input data-key="harv-8-notes" placeholder=""></td></tr>
+    </tbody>
+  </table>
 </div>
 <div class="page prose-page">
   <div class="section-header"><h2>Making Tea</h2></div>
@@ -185,6 +227,24 @@
     <div class="field-row"><label>Yield</label><input data-key="dry-1-yield" placeholder="2 oz dried…"></div>
     <textarea class="method" data-key="dry-1-notes" placeholder="How it dried, how it smells, storage notes…" style="min-height:1.5rem"></textarea>
   </div>
+</div>
+<!-- DRYING RECORDS -->
+<div class="page prose-page">
+  <div class="section-header"><h2>Drying Records</h2></div>
+  <p class="tip">Track each batch. You'll know what dried well and what didn't.</p>
+  <table class="record-table">
+    <thead><tr><th style="width:18%">Herb</th><th style="width:14%">Started</th><th style="width:16%">Method</th><th style="width:14%">Finished</th><th style="width:10%">Yield</th><th style="width:28%">Notes</th></tr></thead>
+    <tbody>
+      <tr><td><input data-key="dryr-1-herb" placeholder="Lemon balm…"></td><td><input data-key="dryr-1-start" placeholder="Jun 16…"></td><td><input data-key="dryr-1-method" placeholder="Hang dry…"></td><td><input data-key="dryr-1-end" placeholder="Jun 23…"></td><td><input data-key="dryr-1-yield" placeholder="2 oz…"></td><td><input data-key="dryr-1-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="dryr-2-herb" placeholder=""></td><td><input data-key="dryr-2-start" placeholder=""></td><td><input data-key="dryr-2-method" placeholder=""></td><td><input data-key="dryr-2-end" placeholder=""></td><td><input data-key="dryr-2-yield" placeholder=""></td><td><input data-key="dryr-2-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="dryr-3-herb" placeholder=""></td><td><input data-key="dryr-3-start" placeholder=""></td><td><input data-key="dryr-3-method" placeholder=""></td><td><input data-key="dryr-3-end" placeholder=""></td><td><input data-key="dryr-3-yield" placeholder=""></td><td><input data-key="dryr-3-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="dryr-4-herb" placeholder=""></td><td><input data-key="dryr-4-start" placeholder=""></td><td><input data-key="dryr-4-method" placeholder=""></td><td><input data-key="dryr-4-end" placeholder=""></td><td><input data-key="dryr-4-yield" placeholder=""></td><td><input data-key="dryr-4-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="dryr-5-herb" placeholder=""></td><td><input data-key="dryr-5-start" placeholder=""></td><td><input data-key="dryr-5-method" placeholder=""></td><td><input data-key="dryr-5-end" placeholder=""></td><td><input data-key="dryr-5-yield" placeholder=""></td><td><input data-key="dryr-5-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="dryr-6-herb" placeholder=""></td><td><input data-key="dryr-6-start" placeholder=""></td><td><input data-key="dryr-6-method" placeholder=""></td><td><input data-key="dryr-6-end" placeholder=""></td><td><input data-key="dryr-6-yield" placeholder=""></td><td><input data-key="dryr-6-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="dryr-7-herb" placeholder=""></td><td><input data-key="dryr-7-start" placeholder=""></td><td><input data-key="dryr-7-method" placeholder=""></td><td><input data-key="dryr-7-end" placeholder=""></td><td><input data-key="dryr-7-yield" placeholder=""></td><td><input data-key="dryr-7-notes" placeholder=""></td></tr>
+      <tr><td><input data-key="dryr-8-herb" placeholder=""></td><td><input data-key="dryr-8-start" placeholder=""></td><td><input data-key="dryr-8-method" placeholder=""></td><td><input data-key="dryr-8-end" placeholder=""></td><td><input data-key="dryr-8-yield" placeholder=""></td><td><input data-key="dryr-8-notes" placeholder=""></td></tr>
+    </tbody>
+  </table>
 </div>
 <div class="page prose-page">
   <div class="section-header"><h2>Notes</h2></div>
