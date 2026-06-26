@@ -126,21 +126,18 @@ def generate_list_pin(product_name, bullets, outpath):
     sw = textbbox(draw, sub_text, sub_font)
     draw.text(((W - sw) // 2, ty + 30), sub_text, fill=hex_to_rgb(SAGE), font=sub_font)
 
-    # Bullet points
-    bullet_font = ImageFont.truetype(FONT_SERIF, 40)
+    # Bullet points — wrap long lines
+    bullet_font = ImageFont.truetype(FONT_SERIF, 38)
     bullet_y = ty + 120
+    bullet_max_w = 730  # leaves room for dash + left margin
     
     for bullet in bullets:
-        # Check width and shrink if needed
-        b_font = bullet_font
-        bw = textbbox(draw, bullet, b_font)
-        if bw > 780:
-            b_font = ImageFont.truetype(FONT_SERIF, 36)
-        
-        # Simple dash bullet
-        draw.text((140, bullet_y), "—", fill=hex_to_rgb(CLAY), font=b_font)
-        draw.text((190, bullet_y), bullet, fill=hex_to_rgb(INK), font=b_font)
-        bullet_y += 85
+        b_lines = wrap_text(draw, bullet, bullet_font, bullet_max_w)
+        # Dash on first line only
+        draw.text((140, bullet_y), "—", fill=hex_to_rgb(CLAY), font=bullet_font)
+        for j, bline in enumerate(b_lines):
+            draw.text((190, bullet_y + j * 50), bline, fill=hex_to_rgb(INK), font=bullet_font)
+        bullet_y += len(b_lines) * 50 + 30  # gap between bullets
 
     # Bottom: printable guide callout
     callout_font = ImageFont.truetype(FONT_SANS_BOLD, 24)
