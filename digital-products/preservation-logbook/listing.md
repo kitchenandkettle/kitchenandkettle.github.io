@@ -41,6 +41,12 @@ Every preserver learns the hard way: you open a jar of tomatoes in February and 
 ## Tags (copy-paste, comma-separated)
 canning log, food preservation, fermentation tracker, canning journal, preserving log, homestead planner, kitchen journal, harvest record, pantry log, preserving notebook, canning printable, dehydrating log, digital download
 
+## Pinterest (copy-paste)
+### Title
+Food Preservation Logbook | Canning, Fermenting & Dehydrating Tracker
+### Description
+The logbook that makes sure you actually eat what you preserve. Track canning batches, fermentation progress, dehydrating notes, and a year-end review. Seasonal produce guide included. Interactive HTML or printable PDF from Kitchen & Kettle.
+
 ## Price
 $6.00
 

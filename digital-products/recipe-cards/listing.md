@@ -39,6 +39,12 @@ Five themes in one set, all with the same warm notebook-paper feel: ruled lines,
 ## Tags (copy-paste, comma-separated)
 printable recipe cards, recipe card template, kitchen printable, vintage recipe cards, recipe organizer, cook's journal, blank recipe sheets, handwritten recipe cards, recipe card PDF, kitchen organization, cooking printable, recipe keeper, digital download
 
+## Pinterest (copy-paste)
+### Title
+Printable Recipe Cards | 5 Kitchen Themes | Vintage Notebook Style
+### Description
+Recipe cards that feel like they belong in a working kitchen. Five themes — Classic, Kitchen Garden, Baker's, Hearth, and Farmhouse — all with warm notebook-paper feel. Two cards per page, print as many as you need. PDF from Kitchen & Kettle.
+
 ## Price
 $4.00
 

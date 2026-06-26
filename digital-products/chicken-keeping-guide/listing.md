@@ -37,6 +37,12 @@ The chicken-keeping world wants to sell you gadgets. You don't need them. This g
 ## Tags (copy-paste, comma-separated)
 chicken keeping, backyard chickens, chicken coop guide, beginner chickens, chicken care, raising chickens, chicken breeds, coop setup, homestead guide, orpington guide, printable PDF, flock care, digital download
 
+## Pinterest (copy-paste)
+### Title
+Easy Chicken Keeping Guide | Backyard Flock Care for Beginners
+### Description
+Simple setup, happy birds, real eggs. Breed guide, coop setup with predator protection, the five-minute daily routine, and winter care for cold-hardy birds. No gadgets required. Printable PDF from Kitchen & Kettle.
+
 ## Price
 $6.00
 

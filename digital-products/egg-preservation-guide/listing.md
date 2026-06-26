@@ -35,6 +35,12 @@ What to do when you have more eggs than you can eat — or when you want a backu
 ## Tags (copy-paste, comma-separated)
 egg preservation, water glassing eggs, freezing eggs, pickled eggs recipe, homestead guide, chicken egg storage, farm fresh eggs, preserving eggs, egg storage guide, backyard chickens, homestead printable, food preservation, digital download
 
+## Pinterest (copy-paste)
+### Title
+Egg Preservation Guide | Freezing, Water Glassing & Pickling Methods
+### Description
+Three methods for keeping eggs when you have more than you can eat. Freezing for baking, water glassing for room-temperature backup, and pickling for grab-and-eat protein. Clear brine ratios, no guesswork. Printable PDF from Kitchen & Kettle.
+
 ## Price
 $5.00
 

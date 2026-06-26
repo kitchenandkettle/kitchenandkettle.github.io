@@ -41,6 +41,12 @@ Learn how to make tea, salves, tinctures, and infused oils from the plants aroun
 ## Tags (copy-paste, comma-separated)
 herbal journal, apothecary journal, herbalism guide, tea making, salve making, tincture making, herbal record book, plant journal, herb drying guide, infused oil guide, printable planner, fillable PDF, digital download
 
+## Pinterest (copy-paste)
+### Title
+Apothecary Journal | Learn Herbal Tea, Salves, Tinctures & Oils
+### Description
+Learn how to make tea, salves, tinctures, and infused oils from the plants around you — then record what worked. Step-by-step methods with space for your own experiments. No dosage charts, no medical claims. Fillable printable PDF from Kitchen & Kettle.
+
 ## Price
 $8.00
 

@@ -38,6 +38,12 @@ A survival garden isn't about growing everything. It's about growing the right t
 ## Tags (copy-paste, comma-separated)
 survival garden, easy gardening, no fuss garden, beginner garden guide, grow your own food, vegetable gardening, direct sow crops, no greenhouse, homestead garden, garden planning, food garden basics, printable PDF, digital download
 
+## Pinterest (copy-paste)
+### Title
+Survival Garden Basics | Easy No-Fuss Crops You Can Grow
+### Description
+Throw it in the ground. It grows. The crops that feed you reliably without a greenhouse, seed starting, or daily attention. Beans, potatoes, winter squash, and more — with simple direct-sow instructions and storage guidance. Printable PDF from Kitchen & Kettle.
+
 ## Price
 $6.00
 

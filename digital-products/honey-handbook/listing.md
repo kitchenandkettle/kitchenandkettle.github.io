@@ -39,6 +39,12 @@ Honey is one of the only foods that arrives in your kitchen exactly as nature ma
 ## Tags (copy-paste, comma-separated)
 honey handbook, honey guide, cooking with honey, honey recipes, types of honey, honey storage, natural sweetener, kitchen handbook, bee guide, traditional uses, honey varietals, printable PDF, digital download
 
+## Pinterest (copy-paste)
+### Title
+The Honey Handbook | Cooking Guide, Recipes & Traditional Uses
+### Description
+What honey actually is, how bees make it, and why it never spoils. Covers varietals from clover to manuka, 6 kitchen recipes including Hot Honey and Honey Butter, storage tips, and traditional uses through history. Printable PDF from Kitchen & Kettle.
+
 ## Price
 $6.00
 

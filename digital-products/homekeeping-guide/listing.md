@@ -38,6 +38,12 @@ A clean house doesn't need a cabinet full of products. This guide shows you what
 ## Tags (copy-paste, comma-separated)
 simple cleaning guide, diy cleaning recipes, cleaning routine printable, homekeeping, non toxic cleaning, homestead cleaning, cleaning checklist, household guide, natural home care, stain removal guide, seasonal cleaning, digital download
 
+## Pinterest (copy-paste)
+### Title
+Simple Homekeeping Guide | DIY Cleaning Recipes & Real Routines
+### Description
+A clean house doesn't need a cabinet full of products. Seven-ingredient cleaning pantry, five DIY recipes, daily and weekly rhythms, and stain removal that works. Includes the twice-a-year reset and laundry tips. Interactive HTML or printable PDF from Kitchen & Kettle.
+
 ## Price
 $6.00
 

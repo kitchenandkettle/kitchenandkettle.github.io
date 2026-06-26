@@ -36,6 +36,12 @@ Cast iron has a reputation for being fussy. It isn't. Your grandmother's pan sur
 ## Tags (copy-paste, comma-separated)
 cast iron care, cast iron cleaning, cast iron seasoning, skillet guide, kitchen printable, cast iron cooking, kitchen handbook, cast iron skillet, iron skillet care, vintage cast iron, homestead kitchen, digital download, cast iron pan
 
+## Pinterest (copy-paste)
+### Title
+Cast Iron Care Guide | Season, Clean & Restore Your Skillet
+### Description
+Everything cast iron actually needs — season it, clean it simply, cook with it. Step-by-step oven seasoning, daily care, thrift store restoration, and a troubleshooting table for common problems. Printable PDF from Kitchen & Kettle.
+
 ## Price
 $6.00
 

@@ -38,6 +38,12 @@ The body care industry wants you to believe you need a different product for eve
 ## Tags (copy-paste, comma-separated)
 body care guide, soap label guide, natural skincare, printable skincare, tallow balm recipe, infused oils, simple routine, beginner skincare
 
+## Pinterest (copy-paste)
+### Title
+Simple Body Care Guide | Clean Soap & Natural Skincare Routine
+### Description
+A practical guide to reading soap labels, choosing products that work for your skin, and building a simple routine — without the 10-step regimen. Honest throughout. Includes tallow balm, infused oils, and salve recipes. Printable PDF from Kitchen & Kettle.
+
 ## Price
 $6.00
 

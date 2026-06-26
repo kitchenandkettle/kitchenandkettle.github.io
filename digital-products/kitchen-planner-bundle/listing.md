@@ -38,6 +38,12 @@ This isn't a rigid routine. It's a set of tools that work together. Use the ones
 ▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale.
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
 
+## Pinterest (copy-paste)
+### Title
+Kitchen Planner Bundle | Meal Planner, Grocery List & Inventory
+### Description
+Five practical templates for running a kitchen that holds up under real life. Weekly meal planner, grocery list organized by store section, pantry and freezer inventory, and prep checklist. Interactive HTML or printable PDF from Kitchen & Kettle.
+
 ## Price
 $6.00
 

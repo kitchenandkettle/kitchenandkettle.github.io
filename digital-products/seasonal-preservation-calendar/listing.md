@@ -37,6 +37,12 @@ This isn't a to-do list designed to make you feel behind. It's a reference. Use 
 ## Tags (copy-paste, comma-separated)
 preserving calendar, canning guide, food preservation, seasonal produce, fermentation guide, homestead printable, kitchen printable, pantry planner, canning planner, harvest planner, preserving food, seasonal eating, digital download
 
+## Pinterest (copy-paste)
+### Title
+Seasonal Preservation Calendar | Month-by-Month Canning & Fermenting Guide
+### Description
+What's in season every month and the best way to preserve it. Canning, freezing, fermenting, dehydrating, and root cellaring — with honest notes on what's worth the effort. Includes recipes for marmalade and preserved lemons. PDF from Kitchen & Kettle.
+
 ## Price
 $8.00
 
