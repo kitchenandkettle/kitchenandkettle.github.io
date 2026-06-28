@@ -9,7 +9,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import os
 
 W, H = 1000, 1500
-PAPER = (245, 240, 232, 225)  # RGBA with alpha for overlay
+PAPER = (245, 240, 232, 166)  # RGBA — 65% opacity
 INK = "#2C2416"
 INK_RGB = (44, 36, 22)
 CLAY = "#A0855E"

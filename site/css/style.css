@@ -138,11 +138,19 @@ li {
   font-size: 1.15rem;
   font-weight: 500;
   color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 .nav-brand em {
   font-style: italic;
   color: var(--clay-deep);
+}
+
+.nav-brand img {
+  position: relative;
+  top: 1px;
 }
 
 .nav-links {
@@ -181,7 +189,7 @@ li {
 
 /* --- Home Page --- */
 .hero {
-  padding: var(--spacing-xl) 0 var(--spacing-lg);
+  padding: var(--spacing-sm) 0 var(--spacing-lg);
   text-align: center;
 }
 
@@ -196,6 +204,13 @@ li {
   max-width: 540px;
   margin: 0 auto;
   line-height: 1.6;
+}
+
+.hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
 }
 
 .this-is-grid {
@@ -425,8 +440,8 @@ li {
 
 .footer-tagline {
   font-family: var(--font-serif);
-  font-size: 0.85rem;
-  color: var(--border);
+  font-size: 1rem;
+  color: var(--ink);
   font-style: italic;
 }
 
