@@ -337,7 +337,7 @@ li {
 
 .brand-mark {
   display: block;
-  width: 80px;
+  width: 50px;
   height: auto;
   margin: var(--spacing-xl) auto var(--spacing-md);
   opacity: 0.85;
