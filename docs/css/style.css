@@ -176,6 +176,11 @@ li {
   color: var(--clay-deep);
 }
 
+.nav-active {
+  color: var(--clay) !important;
+  font-weight: 600;
+}
+
 /* --- Layout --- */
 .content {
   max-width: var(--max-width);
