@@ -16,12 +16,14 @@ Three methods. Zero waste. Eggs when you need them.
 
 What to do when you have more eggs than you can eat — or when you want a backup supply that doesn't depend on electricity. This guide covers three preservation methods, from quick freezing to traditional water glassing, with clear ratios and no guesswork.
 
-**What's inside (6 pages):**
+**What's inside (8 pages):**
 - Which method to use when (simple daily system)
 - Freezing eggs for baking — 6 to 12 month supply
 - Water glassing — the no-electricity backup method, room-temperature stable for 8–12 months
 - Pickling — grab-and-eat protein, ready in your fridge
 - Three flavor variations for pickled eggs
+- "Emptying the Nest Box" — 8 recipes for using up a glut of eggs (frittata, quiche, pasta, lemon curd, angel food cake, breakfast burritos, pickled egg salad, bread pudding)
+- Which preserved eggs work best for each recipe
 - Clear brine ratios, step-by-step instructions
 - Common mistakes to avoid
 - Notes page to track your batches
