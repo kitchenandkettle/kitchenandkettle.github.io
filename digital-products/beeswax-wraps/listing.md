@@ -39,10 +39,10 @@ beeswax wrap diy, reusable food wrap, plastic free kitchen, zero waste kitchen, 
 ### Title
 DIY Beeswax Wraps | Reusable Food Wrap in 20 Minutes
 ### Description
-Three ingredients, an oven, and 20 minutes. Natural reusable food wrap made from cotton, beeswax, pine resin, and jojoba oil. Washable, compostable, and replaces plastic wrap for up to a year. Free printable guide from Kitchen & Kettle.
+Three ingredients, an oven, and 20 minutes. Natural reusable food wrap made from cotton, beeswax, pine resin, and jojoba oil. Washable, compostable, and replaces plastic wrap for up to a year. Printable guide from Kitchen & Kettle.
 
 ## Price
-Free
+$1.00
 
 ## Digital files to upload
 - beeswax-wraps.pdf (recommended for buyers)
