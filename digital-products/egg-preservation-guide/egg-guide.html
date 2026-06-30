@@ -8,140 +8,57 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --paper: #F5F0E8;
-    --text: #2C2416;
-    --clay: #C4A882;
-    --sage: #7D8B6F;
-    --red: #B94A3E;
-    --blue: #6B7B8D;
-    --cream: #FAF7F0;
-    --ink: #3D362D;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Crimson Pro', Georgia, serif;
-    color: var(--text);
-    background: #e8e4dc;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-  }
-  /* Toolbar */
-  .toolbar {
-    max-width: 8.5in; width: 100%; margin: 0 auto 0.5rem;
-    display: flex; justify-content: space-between; align-items: center;
-    background: #fff; padding: 0.5rem 0.7rem; border-radius: 6px;
-    box-shadow: 0 1px 4px rgba(44,36,22,0.08);
-    position: sticky; top: 0; z-index: 100;
-  }
-  .toolbar .brand { font-family: 'Crimson Pro', serif; font-size: 14pt; font-weight: 600; color: var(--text); }
-  .toolbar .brand em { font-style: italic; color: var(--clay); }
-  .toolbar .actions { display: flex; gap: 0.5rem; align-items: center; }
-  .toolbar .save-status {
-    font-family: 'Work Sans', sans-serif; font-size: 8pt; color: #5a8a6a;
-    margin-right: 0.5rem; opacity: 0; transition: opacity 0.3s;
-  }
-  .toolbar .save-status.visible { opacity: 1; }
-  .btn {
-    font-family: 'Work Sans', sans-serif; font-size: 8pt; font-weight: 600;
-    padding: 0.4em 0.8em; border-radius: 3px; cursor: pointer; border: none;
-    transition: background 0.15s; text-decoration: none;
-  }
-  .btn-ghost { background: none; color: var(--ink); border: 1px solid #e0dbd2; }
-  .btn-ghost:hover { border-color: var(--text); color: var(--text); }
-  .btn-print { background: var(--text); color: var(--paper); }
-  .btn-print:hover { background: #3D362D; }
-  .page {
-    width: 8.5in;
-    min-height: 11in;
-    background: #fff;
-    padding: 0.75in 0.7in;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-    page-break-after: always;
-    position: relative;
-  }
-  .page:last-of-type { page-break-after: auto; }
-  @media print {
-    body { background: none; padding: 0; margin: 0; }
-    .page { margin: 0; box-shadow: none; background: #fff; }
-    .toolbar { display: none; }
-    thead, th { background: none !important; }
-    .bg-clay, .bg-sage, .bg-cream, .bg-paper { background: none !important; }
-  }
-  h1 { font: 600 28pt 'Crimson Pro', serif; color: var(--text); letter-spacing: -0.01em; }
-  h2 { font: 500 18pt 'Crimson Pro', serif; color: var(--text); }
-  h3 { font: 600 12pt 'Work Sans', sans-serif; color: var(--ink); text-transform: uppercase; letter-spacing: 0.06em; }
-  h4 { font: 600 10pt 'Work Sans', sans-serif; color: var(--ink); }
-  p, li { font: 400 11pt/1.65 'Crimson Pro', serif; color: var(--text); }
-  .small { font: 400 9.5pt/1.6 'Crimson Pro', serif; color: var(--ink); }
-  .label { font: 500 8pt 'Work Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
-  .cover {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background: var(--paper);
-    padding: 1.5in 1in;
-  }
-  .cover .brand { font: 600 14pt 'Work Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.12em; color: var(--clay); margin-bottom: 1.5rem; }
-  .cover h1 { font-size: 32pt; margin-bottom: 0.5rem; max-width: 80%; }
-  .cover .tagline { font: italic 400 14pt 'Crimson Pro', serif; color: var(--ink); margin-bottom: 3rem; }
-  .cover .desc { font: 400 12pt/1.7 'Crimson Pro', serif; color: var(--ink); max-width: 65%; }
-  .cover .rule { width: 60px; height: 2px; background: var(--clay); margin: 2rem auto; }
-  .page-footer {
-    position: absolute;
-    bottom: 0.4in;
-    left: 0.7in;
-    right: 0.7in;
-    display: flex;
-    justify-content: space-between;
-    font: 400 7.5pt 'Work Sans', sans-serif;
-    color: #b0a99e;
-  }
-  .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem 2rem; margin: 1rem 0; }
-  .method-card { border: 1px solid #e0dbd2; border-radius: 2px; padding: 0.8rem; }
-  .method-card h4 { color: var(--sage); margin-bottom: 0.3rem; }
-  .steps { margin: 0.8rem 0; }
-  .steps li { font-size: 10pt; margin-bottom: 0.3rem; }
-  .ratio-box {
-    background: var(--cream);
-    border-left: 4px solid var(--clay);
-    padding: 0.7rem 0.9rem;
-    margin: 0.8rem 0;
-  }
-  .ratio-box h4 { color: var(--clay); margin-bottom: 0.3rem; }
-  .caution-box {
-    background: #fef9f5;
-    border-left: 4px solid var(--red);
-    padding: 0.7rem 0.9rem;
-    margin: 0.8rem 0;
-  }
-  .caution-box h4 { color: var(--red); margin-bottom: 0.3rem; }
-  .honest-box {
-    background: #fdfaf5;
-    border: 1px solid var(--clay);
-    padding: 0.6rem 0.8rem;
-    margin: 1rem 0 0.5rem;
-    border-radius: 2px;
-  }
-  .honest-box h4 { color: var(--clay); margin-bottom: 0.2rem; }
-  .honest-box p { font-size: 9.5pt; font-style: italic; color: var(--ink); }
-  .system-table { width: 100%; margin: 1rem 0; border-collapse: collapse; font-size: 10pt; }
-  .system-table th { font: 600 9pt 'Work Sans', sans-serif; color: var(--ink); text-align: left; padding: 0.4rem 0.5rem; border-bottom: 2px solid var(--clay); text-transform: uppercase; letter-spacing: 0.04em; }
-  .system-table td { padding: 0.45rem 0.5rem; border-bottom: 1px solid #e8e4dc; font-size: 10pt; line-height: 1.5; }
-  .system-table tr:nth-child(even) td { background: #fdfcf9; }
-  .notes-block {
-    border: 1px dashed var(--clay);
-    min-height: 3in;
-    margin-top: 2rem;
-    padding: 0.5rem;
-  }
-  .variation-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; margin: 0.6rem 0 1rem; }
-  .var-card { border: 1px solid #e0dbd2; padding: 0.5rem 0.6rem; border-radius: 2px; }
+  :root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#8B8376;--line:#D9D0C1;--light:#FAF7F0;--red:#B94A3E}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Crimson Pro',Georgia,serif;font-size:12pt;line-height:1.6;color:var(--ink);background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:1rem}
+  .toolbar{max-width:8.5in;width:100%;margin:0 auto 0.5rem;display:flex;justify-content:space-between;align-items:center;background:#fff;padding:0.5rem 0.7rem;border-radius:6px;box-shadow:0 1px 4px rgba(44,36,22,0.08);position:sticky;top:0;z-index:100}
+  .toolbar .brand{font-family:'Crimson Pro',serif;font-size:14pt;font-weight:600;color:var(--ink)}
+  .toolbar .brand em{font-style:italic;color:var(--clay)}
+  .toolbar .actions{display:flex;gap:0.5rem;align-items:center}
+  .toolbar .save-status{font-family:'Work Sans',sans-serif;font-size:8pt;color:#5a8a6a;margin-right:0.5rem;opacity:0;transition:opacity 0.3s}
+  .toolbar .save-status.visible{opacity:1}
+  .btn{font-family:'Work Sans',sans-serif;font-size:8pt;font-weight:600;padding:0.4em 0.8em;border-radius:3px;cursor:pointer;border:none;transition:background 0.15s;text-decoration:none}
+  .btn-ghost{background:none;color:var(--muted);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+  .btn-print{background:var(--ink);color:var(--paper)}
+  .btn-print:hover{background:#3D362D}
+  .page{width:8.5in;min-height:11in;background:#fff;margin-bottom:0.25in;padding:0.75in 0.7in;box-shadow:0 2px 12px rgba(44,36,22,0.12);page-break-after:always;position:relative}
+  .page:last-of-type{page-break-after:auto}
+  h1{font-size:28pt;font-weight:600;line-height:1.15;letter-spacing:-0.01em}
+  h2{font-size:16pt;font-weight:600;margin-bottom:0.4rem}
+  h3{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:0.3rem}
+  h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;color:var(--ink)}
+  p{font-size:12pt;margin-bottom:0.5rem;color:var(--ink);line-height:1.55}
+  li{font-size:12pt;line-height:1.55;color:var(--ink)}
+  .cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2in 0.7in;background:var(--light)}
+  .cover .brand{font-size:14pt;color:var(--muted);margin-bottom:1.5rem}
+  .cover .brand em{font-style:italic;color:var(--clay)}
+  .cover h1{font-size:30pt;margin-bottom:0.5rem;max-width:14ch}
+  .cover .tagline{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:2rem}
+  .cover .description{font-size:14pt;max-width:28ch;line-height:1.5}
+  .cover .rule{width:60px;height:2px;background:var(--clay);margin:2rem auto}
+  .page-footer{position:absolute;bottom:0.4in;left:0.7in;right:0.7in;display:flex;justify-content:space-between;font:400 7.5pt 'Work Sans',sans-serif;color:var(--muted)}
+  .method-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem;margin:0.8rem 0}
+  .method-card{border:1px solid var(--line);padding:0.5rem}
+  .method-card h4{color:var(--sage);margin-bottom:0.2rem}
+  .steps{margin:0.5rem 0;padding-left:1.2rem}
+  .steps li{margin-bottom:0.15rem}
+  .ratio-box{background:var(--light);border-left:4px solid var(--clay);padding:0.5rem 0.7rem;margin:0.6rem 0}
+  .ratio-box h4{color:var(--clay);margin-bottom:0.2rem}
+  .caution-box{background:var(--light);border-left:4px solid var(--red);padding:0.5rem 0.7rem;margin:0.6rem 0}
+  .caution-box h4{color:var(--red);margin-bottom:0.2rem}
+  .honest-box{border:1px solid var(--clay);padding:0.5rem;margin:0.5rem 0;background:var(--light)}
+  .honest-box h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--clay);margin-bottom:0.2rem}
+  .honest-box p{font-size:12pt;margin-bottom:0;font-style:italic;line-height:1.5}
+  .system-table{width:100%;margin:0.8rem 0;border-collapse:collapse;font-size:12pt}
+  .system-table th{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;color:var(--ink);text-align:left;padding:0.3rem 0.4rem;border-bottom:2px solid var(--clay);text-transform:uppercase;letter-spacing:0.04em}
+  .system-table td{padding:0.35rem 0.4rem;border-bottom:1px solid var(--line);font-size:12pt;line-height:1.45}
+  .system-table tr:nth-child(even) td{background:#fdfcf9}
+  .notes-block{border:1px dashed var(--clay);min-height:3in;margin-top:2rem;padding:0.5rem}
+  .variation-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem;margin:0.5rem 0 0.8rem}
+  .var-card{border:1px solid var(--line);padding:0.4rem 0.5rem}
+  textarea::placeholder{color:var(--clay);opacity:1}
+  @media print{body{background:none;padding:0;margin:0}.page{margin:0;box-shadow:none;background:#fff}.toolbar{display:none}.cover{background:#fff!important}.honest-box{background:none}}
 </style>
 </head>
 <body class="egg-guide">
@@ -155,11 +72,11 @@
 </div>
 <!-- ========== COVER ========== -->
 <div class="page cover">
-  <div class="brand">Kitchen & Kettle</div>
+  <p class="brand">Kitchen <em>&amp; Kettle</em></p>
   <h1>Egg Preservation<br>Guide</h1>
   <div class="rule"></div>
   <p class="tagline">Three methods. Zero waste. Eggs when you need them.</p>
-  <p class="desc">What to do when you have more eggs than you can eat — freezing for baking, water glassing for long-term storage, and pickling for ready-to-eat protein. No special equipment required.</p>
+  <p class="description">What to do when you have more eggs than you can eat — freezing for baking, water glassing for long-term storage, and pickling for ready-to-eat protein. No special equipment required.</p>
   <div class="page-footer">
     <span>Kitchen & Kettle</span>
     <span>1</span>
@@ -443,37 +360,24 @@
   </div>
 </div>
 <!-- ========== EMPTYING THE NEST BOX 1 ========== -->
+<!-- ========== EMPTYING THE NEST BOX 1 ========== -->
 <div class="page">
   <h2>Emptying the Nest Box</h2>
   <p class="small" style="margin-bottom:1.2rem;">When you're drowning in eggs — and your freezer bags and water-glassing bucket are already full — these are the recipes that use them up fast. Each one eats a lot of eggs, freezes well, or pairs naturally with preserved eggs.</p>
   <div class="method-grid">
-    <div class="method-card">
+<div class="method-card">
       <h4>Frittata or Spanish Tortilla</h4>
       <p class="small">Uses 6–8 eggs · Freezes in slices · Any meal of the day</p>
       <p class="small"><strong>You need:</strong> 6–8 eggs · 2 tbsp butter or oil · 2 cups chopped vegetables or cooked meat · ½ tsp salt · pinch of pepper</p>
       <p class="small">Heat butter in an oven-safe skillet over medium heat. Sauté vegetables or meat until soft, about 5 minutes. Beat eggs with salt and pepper, pour over the fillings, and cook without stirring until the edges set — about 5 minutes. Transfer to a 375°F oven for 10–15 minutes until the center is just firm. Spanish tortilla: thinly slice 2 medium potatoes, cook in ¼ cup oil until tender, pour beaten eggs over, cook low and slow, flip onto a plate. Both eat well cold and reheat perfectly.</p>
       <p class="small"><strong>Preserved eggs?</strong> Frozen eggs work beautifully here — thaw overnight and use as-is. Water-glassed eggs fry up indistinguishable from fresh.</p>
     </div>
-    <div class="method-card">
+<div class="method-card">
       <h4>Quiche</h4>
       <p class="small">Uses 4–6 eggs · Freezes whole or in slices · Feeds a crowd</p>
       <p class="small"><strong>You need:</strong> 4–6 eggs · 2–3 cups cream or milk (½ cup per egg) · 1½ cups fillings (greens, bacon, cheese) · 1 unbaked pie crust · ½ tsp salt · pinch of nutmeg (optional)</p>
       <p class="small">Scatter fillings in the crust. Whisk eggs, cream, salt, and nutmeg together, pour over the fillings. Bake at 375°F for 35–45 minutes until the center barely jiggles. Cool 10 minutes before slicing. Freeze baked quiche wrapped in foil — reheat from frozen at 350°F for 20–25 minutes.</p>
       <p class="small"><strong>Preserved eggs?</strong> Frozen eggs are ideal — the texture difference disappears in custard.</p>
-    </div>
-    <div class="method-card">
-      <h4>Homemade Pasta</h4>
-      <p class="small">Uses 4+ eggs per batch · Dries or freezes · No special equipment</p>
-      <p class="small"><strong>You need (for 4 eggs):</strong> 4 eggs · 3 cups all-purpose flour · 1 tsp salt</p>
-      <p class="small">Mound flour on a clean counter, make a well in the center. Crack eggs into the well, add salt. Beat eggs with a fork, slowly pulling in flour from the walls. Once a shaggy dough forms, knead 8–10 minutes until smooth and elastic. Wrap in plastic and rest 30 minutes. Roll thin with a rolling pin (or pasta machine), cut into noodles, and dry on a rack or freeze in nests. Cooks in 2–3 minutes in boiling salted water.</p>
-      <p class="small"><strong>Preserved eggs?</strong> Fresh or water-glassed eggs work best — the structure matters here. Frozen eggs are fine but add a few drops less liquid.</p>
-    </div>
-    <div class="method-card">
-      <h4>Lemon Curd</h4>
-      <p class="small">Uses 6+ yolks · Keeps 3–4 weeks in the fridge · Also freezes</p>
-      <p class="small"><strong>You need:</strong> 6 egg yolks · 1 cup sugar · ½ cup lemon juice (2–3 lemons) · ½ cup butter (1 stick), cut into pieces</p>
-      <p class="small">Whisk yolks, sugar, and lemon juice together in a heatproof bowl set over a pot of simmering water (don't let the bowl touch the water). Stir constantly with a spatula until the mixture thickens and coats the back of a spoon — about 8–10 minutes. Remove from heat, stir in butter piece by piece until smooth. Strain into a jar, cool, and refrigerate. Spoon it on toast, scones, yogurt, or eat it straight from the jar.</p>
-      <p class="small"><strong>Preserved eggs?</strong> Use fresh yolks if possible — frozen yolks can sometimes stay slightly grainy even after thawing. But in a pinch, they'll work.</p>
     </div>
   </div>
   <p class="small" style="margin-top:0.5rem; color:var(--ink);"><strong>Curd uses yolks. Save the whites for angel food cake. Zero waste. Two desserts from one glut.</strong></p>
@@ -482,32 +386,67 @@
     <span>7</span>
   </div>
 </div>
+<!-- ========== EMPTYING THE NEST BOX 1 (cont.) ========== -->
+<div class="page">
+  <h2>Emptying the Nest Box <span style="font-size:12pt;color:var(--muted);font-weight:400;">(continued)</span></h2>
+  <div class="method-grid">
+<div class="method-card">
+      <h4>Homemade Pasta</h4>
+      <p class="small">Uses 4+ eggs per batch · Dries or freezes · No special equipment</p>
+      <p class="small"><strong>You need (for 4 eggs):</strong> 4 eggs · 3 cups all-purpose flour · 1 tsp salt</p>
+      <p class="small">Mound flour on a clean counter, make a well in the center. Crack eggs into the well, add salt. Beat eggs with a fork, slowly pulling in flour from the walls. Once a shaggy dough forms, knead 8–10 minutes until smooth and elastic. Wrap in plastic and rest 30 minutes. Roll thin with a rolling pin (or pasta machine), cut into noodles, and dry on a rack or freeze in nests. Cooks in 2–3 minutes in boiling salted water.</p>
+      <p class="small"><strong>Preserved eggs?</strong> Fresh or water-glassed eggs work best — the structure matters here. Frozen eggs are fine but add a few drops less liquid.</p>
+    </div>
+<div class="method-card">
+      <h4>Lemon Curd</h4>
+      <p class="small">Uses 6+ yolks · Keeps 3–4 weeks in the fridge · Also freezes</p>
+      <p class="small"><strong>You need:</strong> 6 egg yolks · 1 cup sugar · ½ cup lemon juice (2–3 lemons) · ½ cup butter (1 stick), cut into pieces</p>
+      <p class="small">Whisk yolks, sugar, and lemon juice together in a heatproof bowl set over a pot of simmering water (don't let the bowl touch the water). Stir constantly with a spatula until the mixture thickens and coats the back of a spoon — about 8–10 minutes. Remove from heat, stir in butter piece by piece until smooth. Strain into a jar, cool, and refrigerate. Spoon it on toast, scones, yogurt, or eat it straight from the jar.</p>
+      <p class="small"><strong>Preserved eggs?</strong> Use fresh yolks if possible — frozen yolks can sometimes stay slightly grainy even after thawing. But in a pinch, they'll work.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Kitchen & Kettle — Egg Preservation Guide</span>
+    <span>8</span>
+  </div>
+</div>
+<!-- ========== EMPTYING THE NEST BOX 2 ========== -->
 <!-- ========== EMPTYING THE NEST BOX 2 ========== -->
 <div class="page">
   <h2>Emptying the Nest Box <span style="font-size:14pt;color:var(--ink);font-weight:400;">(cont.)</span></h2>
   <div class="method-grid">
-    <div class="method-card">
+<div class="method-card">
       <h4>Angel Food Cake</h4>
       <p class="small">Uses 12 egg whites · The companion to lemon curd · Freezes beautifully</p>
       <p class="small"><strong>You need:</strong> 12 egg whites (room temperature) · 1½ cups sugar · 1 cup cake flour or all-purpose flour · 1½ tsp cream of tartar · 1½ tsp vanilla extract · ¼ tsp salt</p>
       <p class="small">Sift flour and ¾ cup of the sugar together. Beat egg whites with cream of tartar and salt until foamy, then gradually add the remaining ¾ cup sugar. Beat to stiff, glossy peaks. Fold in vanilla, then gently fold in the flour-sugar mixture in thirds — don't overmix. Spoon into an ungreased tube pan, smooth the top. Bake at 350°F for 35–40 minutes until golden and springy. Invert the pan immediately (it has little feet for this) and cool completely upside down. Light, cloudlike, and every bit of it uses up the whites from your curd session.</p>
       <p class="small"><strong>Preserved eggs?</strong> Frozen whites work perfectly here — they whip up the same as fresh. Separate them before freezing (no whisking needed, unlike whole eggs).</p>
     </div>
-    <div class="method-card">
+<div class="method-card">
       <h4>Breakfast Burritos</h4>
       <p class="small">Uses 1 egg per burrito · Freeze individually · Grab-and-go breakfast</p>
       <p class="small"><strong>Per burrito:</strong> 1 egg · ¼ cup cooked beans · 2 tbsp shredded cheese · ¼ cup cooked potatoes · 1 flour tortilla · salsa to taste</p>
       <p class="small">Scramble eggs, warm beans and potatoes. Fill each tortilla with eggs, beans, cheese, and potatoes. Add salsa, roll tightly, wrap in foil. Freeze in a single layer. To reheat: microwave 1 minute, flip, 1 more minute. Make a dozen on a Sunday and you've got breakfast for two weeks.</p>
       <p class="small"><strong>Preserved eggs?</strong> Frozen eggs were made for this. Thaw a bag of egg cubes, scramble, and nobody will know they weren't cracked five minutes ago.</p>
     </div>
-    <div class="method-card">
+  </div>
+  <div class="page-footer">
+    <span>Kitchen & Kettle — Egg Preservation Guide</span>
+    <span>9</span>
+  </div>
+</div>
+<!-- ========== EMPTYING THE NEST BOX 2 (cont.) ========== -->
+<div class="page">
+  <h2>Emptying the Nest Box <span style="font-size:12pt;color:var(--muted);font-weight:400;">(continued)</span></h2>
+  <div class="method-grid">
+<div class="method-card">
       <h4>Pickled Egg Salad</h4>
       <p class="small">Uses 3–4 pickled eggs · No cooking · 5 minutes</p>
       <p class="small"><strong>You need:</strong> 3–4 pickled eggs · 2–3 tbsp mayonnaise · ½ tsp mustard · salt and pepper to taste</p>
       <p class="small">Chop the eggs, mix with mayo and mustard. Add salt and pepper. The brine already seasoned the eggs — you'll need less mayo than ordinary egg salad. Spoon onto bread or scoop with crackers. Bright, tangy, and completely different.</p>
       <p class="small"><strong>Tip:</strong> Beet-pickled eggs make a shocking pink egg salad. Great conversation starter at a potluck.</p>
     </div>
-    <div class="method-card">
+<div class="method-card">
       <h4>Bread Pudding (Savory or Sweet)</h4>
       <p class="small">Uses 4–6 eggs · Uses up stale bread too · Freezes in portions</p>
       <p class="small"><strong>You need:</strong> 4–6 eggs · 2 cups milk · 4 cups cubed stale bread · ½ tsp salt</p>
@@ -522,7 +461,7 @@
   </div>
   <div class="page-footer">
     <span>Kitchen & Kettle — Egg Preservation Guide</span>
-    <span>8</span>
+    <span>10</span>
   </div>
 </div>
 <!-- ========== CLOSING ========== -->
@@ -543,7 +482,7 @@
   </div>
   <div class="page-footer">
     <span>Kitchen & Kettle — Egg Preservation Guide</span>
-    <span>9</span>
+    <span>11</span>
   </div>
 </div>
 <script>const STORAGE_KEY = 'keeping-kitchen-eggs';

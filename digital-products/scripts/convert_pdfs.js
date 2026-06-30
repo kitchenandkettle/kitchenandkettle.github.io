@@ -174,6 +174,27 @@ const FILES = [
         .body-care .ref-card li { line-height: 1.3 !important; }
         .body-care .notes-grid { gap: 0.3rem !important; margin-top: 0.35rem !important; }
 
+        /* --- Egg Guide: 12pt font bump compression --- */
+        .egg-guide .page { padding-top: 0.35in !important; padding-bottom: 0.35in !important; }
+        .egg-guide .method-card { padding: 0.35rem !important; }
+        .egg-guide .method-card p { line-height: 1.3 !important; margin-bottom: 0.15rem !important; }
+        .egg-guide .method-grid { gap: 0.35rem 1rem !important; margin: 0.4rem 0 !important; }
+        .egg-guide .steps { margin: 0.3rem 0 !important; padding-left: 1rem !important; }
+        .egg-guide .steps li { margin-bottom: 0.08rem !important; line-height: 1.3 !important; }
+        .egg-guide .ratio-box { padding: 0.35rem 0.5rem !important; margin: 0.4rem 0 !important; }
+        .egg-guide .caution-box { padding: 0.35rem 0.5rem !important; margin: 0.4rem 0 !important; }
+        .egg-guide .honest-box { padding: 0.35rem !important; margin: 0.4rem 0 !important; }
+        .egg-guide .honest-box p { line-height: 1.3 !important; }
+        .egg-guide .system-table { margin: 0.5rem 0 !important; }
+        .egg-guide .system-table td { padding: 0.2rem 0.35rem !important; line-height: 1.3 !important; }
+        .egg-guide .system-table th { padding: 0.2rem 0.35rem !important; }
+        .egg-guide .variation-grid { gap: 0.35rem !important; margin: 0.3rem 0 0.5rem !important; }
+        .egg-guide .var-card { padding: 0.3rem 0.4rem !important; }
+        .egg-guide h2 { margin-bottom: 0.25rem !important; }
+        .egg-guide p { margin-bottom: 0.35rem !important; line-height: 1.4 !important; }
+        .egg-guide h3 { margin-bottom: 0.2rem !important; margin-top: 0.4rem !important; }
+        .egg-guide .notes-block { margin-top: 1rem !important; min-height: 2in !important; }
+
         /* --- Chicken Guide: notes page (+0.6in) --- */
         .chicken-guide .notes-grid { gap: 0.25rem !important; margin-top: 0.25rem !important; }
         .chicken-guide .note-block { padding: 0.2rem !important; min-height: 2.3rem !important; }
