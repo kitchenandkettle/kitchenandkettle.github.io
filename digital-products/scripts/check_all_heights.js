@@ -19,6 +19,7 @@ const FILES = [
   'honey-handbook/honey-handbook.html',
   'beeswax-wraps/beeswax-wraps.html',
   'apothecary-journal/apothecary-journal.html',
+  'egg-handling-card/egg-handling-card.html',
 ];
 
 // --- Must match EXACTLY the injected CSS in convert_pdfs.js ---
