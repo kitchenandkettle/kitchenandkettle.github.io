@@ -17,11 +17,11 @@ Clean ingredients. Clear choices. Fewer products.
 
 The body care industry wants you to believe you need a different product for every part of your body. You don't. This guide helps you read soap labels, choose products that work for your skin, and build a simple routine — without the fear-mongering or the 10-step regimen.
 
-**What's inside (18 pages):**
+**What's inside (28 pages):**
 - **Bar soap vs liquid** — The real differences, and why bar soap sidesteps the preservative question
 - **How to read a soap label** — Common ingredients decoded. What they are, what they do, which ones to skip
-- **Soap types at a glance** — Milled true soap, standard bar, syndet, and castile compared side by side
-- **What your skin actually needs** — Moisturizer, sunscreen (with a clear explanation of broad spectrum), plus the two serums with real research behind them
+- **Soap types at a glance** — Milled true soap, standard bar, syndet, castile, and handmade compared side by side
+- **What your skin actually needs** — The real difference between occlusives and moisturizers (and why it matters), sunscreen with a clear explanation of broad spectrum, plus the two serums with real research behind them — and how to sandwich them if your skin reacts
 - **Body Care Reality Filter** — What's worth making yourself and what's better to buy. Honest, not preachy
 - **Recipes** — Tallow balm, infused oils, salves, deodorant, bath salts
 - **Quick reference** — Label red flags, good starting points, the simple daily routine
