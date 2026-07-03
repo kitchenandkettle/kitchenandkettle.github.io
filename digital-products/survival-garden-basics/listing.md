@@ -17,14 +17,15 @@ Throw it in the ground. It grows.
 
 A survival garden isn't about growing everything. It's about growing the right things — crops that feed you reliably, store well, and don't demand much. No seed starting. No greenhouse. No grow lights. Just good food from good dirt.
 
-**What's inside (13 pages):**
+**What's inside (20 pages):**
 - What you actually need — a patch of ground, sunlight, water, seeds. Honest note on what a survival garden really is
 - The easiest, most nourishing crops — beans, potatoes, winter squash, zucchini. Simple direct-sow instructions for each
-- More crops worth the space, part 1 & 2 — kale, chard, garlic, carrots, beets, corn, radishes, turnips
+- More crops worth the space — kale, chard, garlic, carrots, beets, corn, radishes, turnips, cantaloupe, watermelon
 - How to plant — the only rules that matter: ground prep, timing, watering, mulching
-- Harvesting and storage — how to harvest, cure, and store each crop for maximum shelf life
+- Harvesting and storage — when and how to harvest, cure, and store every single crop
 - Plant once, harvest for years — asparagus, strawberries, perennial herbs, rhubarb
-- Quick reference — easiest five, cool vs. warm season, what you don't need, perennials at a glance
+- Growing Out Your Orchard — figs, blueberries, dwarf sour cherry, raspberries and blackberries. Self-pollinating fruit trees and bushes for the long game
+- Quick reference — easiest five, cool vs. warm season, what you don't need, perennials and orchard at a glance
 - Garden notes — track what you planted, what grew well, frost dates, and harvest logs
 
 **The philosophy:** If it needs a greenhouse, a heating mat, and daily attention, it's not in this guide. These are the plants that have kept people fed for centuries without any special equipment.
@@ -42,7 +43,7 @@ survival garden, easy gardening, no fuss garden, beginner garden guide, grow you
 ### Title
 Survival Garden Basics | Easy No-Fuss Crops You Can Grow
 ### Description
-Throw it in the ground. It grows. The crops that feed you reliably without a greenhouse, seed starting, or daily attention. Beans, potatoes, winter squash, and more — with simple direct-sow instructions and storage guidance. Printable PDF from Kitchen & Kettle.
+Throw it in the ground. It grows. The crops that feed you reliably without a greenhouse, seed starting, or daily attention — from beans and potatoes to melons and fruit trees. Simple direct-sow instructions, full harvesting and storage guidance, and a complete orchard section for the long game. Printable PDF from Kitchen & Kettle.
 
 ## Price
 $6.00
