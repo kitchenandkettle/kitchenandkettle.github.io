@@ -11,15 +11,18 @@
   :root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#8B8376;--line:#D9D0C1}
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Crimson Pro',Georgia,serif;background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:1rem}
-  .page{width:8.5in;min-height:11in;background:#fff;padding:0.4in 0.35in;box-shadow:0 2px 12px rgba(44,36,22,0.12);position:relative}
-  .card-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:0.2in;height:100%}
-  .card{border:1.5px dashed #C4A882;padding:0.22in 0.18in;display:flex;flex-direction:column;justify-content:center;background:var(--paper);position:relative;page-break-inside:avoid}
-  .card-title{font-size:11pt;font-weight:600;text-align:center;margin-bottom:0.12in;padding-bottom:0.08in;border-bottom:1px solid var(--clay)}
-  .card-content{font-size:8.5pt;line-height:1.35;color:#3D362D}
-  .card-content p{margin-bottom:0.06in}
-  .card-content strong{color:var(--ink)}
-  .card-footer{font-size:7.5pt;text-align:center;color:var(--clay);margin-top:0.1in;padding-top:0.08in;border-top:1px dotted var(--line)}
-  .brand-strip{text-align:center;font-size:7pt;color:var(--muted);margin-top:0.15in;font-family:'Work Sans',sans-serif;letter-spacing:0.05em;text-transform:uppercase}
+  .page{width:8.5in;min-height:11in;background:#fff;padding:0.35in;box-shadow:0 2px 12px rgba(44,36,22,0.12);position:relative}
+  .card-grid{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr);gap:0.18in;height:100%}
+  .card{border:1.5px dashed #C4A882;padding:0.15in 0.2in;display:flex;flex-direction:column;justify-content:center;background:var(--paper);page-break-inside:avoid}
+  .card-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.08in;padding-bottom:0.06in;border-bottom:1px solid var(--clay)}
+  .card-header h3{font-size:11pt;font-weight:600;margin:0}
+  .card-header .tag{font-family:'Work Sans',sans-serif;font-size:7pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--sage)}
+  .card-body{font-size:8pt;line-height:1.3;color:#3D362D;flex:1}
+  .card-body p{margin-bottom:0.05in}
+  .card-body strong{color:var(--ink)}
+  .card-footer{font-size:6.5pt;text-align:right;color:var(--clay);margin-top:0.06in;padding-top:0.05in;border-top:1px dotted var(--line);font-family:'Work Sans',sans-serif;letter-spacing:0.04em;text-transform:uppercase}
+  .brand-strip{text-align:center;font-size:7pt;color:var(--muted);margin-top:0.12in;font-family:'Work Sans',sans-serif;letter-spacing:0.05em;text-transform:uppercase}
+  .brand-strip em{font-style:italic;color:var(--clay)}
   @media print{body{background:none;padding:0;margin:0}.page{margin:0;box-shadow:none}}
 </style>
 </head>
@@ -29,74 +32,92 @@
 
     <!-- Card 1 -->
     <div class="card">
-      <div class="card-title">Farm Fresh Eggs</div>
-      <div class="card-content">
-        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs with the bloom intact stay fresh on the counter for 2–3 weeks.</p>
-        <p><strong>If dirty, wash right.</strong> Use warm water (warmer than the egg — never cold). Rub gently, no soap. Dry immediately. Refrigerate washed eggs.</p>
-        <p><strong>Store pointy-end-down.</strong> Unwashed → counter. Washed → fridge. Once refrigerated, don't move back.</p>
-        <p><strong>Float test:</strong> Fill a bowl with cool water. Sinks flat = fresh. Stands up = still good, use soon. Floats = crack into a separate bowl and check.</p>
+      <div class="card-header">
+        <h3>Farm Fresh Eggs</h3>
+        <span class="tag">Handling</span>
+      </div>
+      <div class="card-body">
+        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs stay fresh on the counter for 2–3 weeks.</p>
+        <p><strong>If dirty, wash right.</strong> Use warm water — warmer than the egg, never cold. Rub gently, no soap. Dry immediately and refrigerate.</p>
+        <p><strong>Store pointy-end-down.</strong> Unwashed on the counter. Washed in the fridge. Once refrigerated, don't move back to the counter.</p>
+        <p><strong>Float test:</strong> Sinks flat = fresh. Stands up = use soon. Floats = crack separately &amp; check.</p>
       </div>
       <div class="card-footer">Kitchen &amp; Kettle</div>
     </div>
 
     <!-- Cards 2-6: identical -->
     <div class="card">
-      <div class="card-title">Farm Fresh Eggs</div>
-      <div class="card-content">
-        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs with the bloom intact stay fresh on the counter for 2–3 weeks.</p>
-        <p><strong>If dirty, wash right.</strong> Use warm water (warmer than the egg — never cold). Rub gently, no soap. Dry immediately. Refrigerate washed eggs.</p>
-        <p><strong>Store pointy-end-down.</strong> Unwashed → counter. Washed → fridge. Once refrigerated, don't move back.</p>
-        <p><strong>Float test:</strong> Fill a bowl with cool water. Sinks flat = fresh. Stands up = still good, use soon. Floats = crack into a separate bowl and check.</p>
+      <div class="card-header">
+        <h3>Farm Fresh Eggs</h3>
+        <span class="tag">Handling</span>
+      </div>
+      <div class="card-body">
+        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs stay fresh on the counter for 2–3 weeks.</p>
+        <p><strong>If dirty, wash right.</strong> Use warm water — warmer than the egg, never cold. Rub gently, no soap. Dry immediately and refrigerate.</p>
+        <p><strong>Store pointy-end-down.</strong> Unwashed on the counter. Washed in the fridge. Once refrigerated, don't move back to the counter.</p>
+        <p><strong>Float test:</strong> Sinks flat = fresh. Stands up = use soon. Floats = crack separately &amp; check.</p>
       </div>
       <div class="card-footer">Kitchen &amp; Kettle</div>
     </div>
 
     <div class="card">
-      <div class="card-title">Farm Fresh Eggs</div>
-      <div class="card-content">
-        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs with the bloom intact stay fresh on the counter for 2–3 weeks.</p>
-        <p><strong>If dirty, wash right.</strong> Use warm water (warmer than the egg — never cold). Rub gently, no soap. Dry immediately. Refrigerate washed eggs.</p>
-        <p><strong>Store pointy-end-down.</strong> Unwashed → counter. Washed → fridge. Once refrigerated, don't move back.</p>
-        <p><strong>Float test:</strong> Fill a bowl with cool water. Sinks flat = fresh. Stands up = still good, use soon. Floats = crack into a separate bowl and check.</p>
+      <div class="card-header">
+        <h3>Farm Fresh Eggs</h3>
+        <span class="tag">Handling</span>
+      </div>
+      <div class="card-body">
+        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs stay fresh on the counter for 2–3 weeks.</p>
+        <p><strong>If dirty, wash right.</strong> Use warm water — warmer than the egg, never cold. Rub gently, no soap. Dry immediately and refrigerate.</p>
+        <p><strong>Store pointy-end-down.</strong> Unwashed on the counter. Washed in the fridge. Once refrigerated, don't move back to the counter.</p>
+        <p><strong>Float test:</strong> Sinks flat = fresh. Stands up = use soon. Floats = crack separately &amp; check.</p>
       </div>
       <div class="card-footer">Kitchen &amp; Kettle</div>
     </div>
 
     <div class="card">
-      <div class="card-title">Farm Fresh Eggs</div>
-      <div class="card-content">
-        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs with the bloom intact stay fresh on the counter for 2–3 weeks.</p>
-        <p><strong>If dirty, wash right.</strong> Use warm water (warmer than the egg — never cold). Rub gently, no soap. Dry immediately. Refrigerate washed eggs.</p>
-        <p><strong>Store pointy-end-down.</strong> Unwashed → counter. Washed → fridge. Once refrigerated, don't move back.</p>
-        <p><strong>Float test:</strong> Fill a bowl with cool water. Sinks flat = fresh. Stands up = still good, use soon. Floats = crack into a separate bowl and check.</p>
+      <div class="card-header">
+        <h3>Farm Fresh Eggs</h3>
+        <span class="tag">Handling</span>
+      </div>
+      <div class="card-body">
+        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs stay fresh on the counter for 2–3 weeks.</p>
+        <p><strong>If dirty, wash right.</strong> Use warm water — warmer than the egg, never cold. Rub gently, no soap. Dry immediately and refrigerate.</p>
+        <p><strong>Store pointy-end-down.</strong> Unwashed on the counter. Washed in the fridge. Once refrigerated, don't move back to the counter.</p>
+        <p><strong>Float test:</strong> Sinks flat = fresh. Stands up = use soon. Floats = crack separately &amp; check.</p>
       </div>
       <div class="card-footer">Kitchen &amp; Kettle</div>
     </div>
 
     <div class="card">
-      <div class="card-title">Farm Fresh Eggs</div>
-      <div class="card-content">
-        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs with the bloom intact stay fresh on the counter for 2–3 weeks.</p>
-        <p><strong>If dirty, wash right.</strong> Use warm water (warmer than the egg — never cold). Rub gently, no soap. Dry immediately. Refrigerate washed eggs.</p>
-        <p><strong>Store pointy-end-down.</strong> Unwashed → counter. Washed → fridge. Once refrigerated, don't move back.</p>
-        <p><strong>Float test:</strong> Fill a bowl with cool water. Sinks flat = fresh. Stands up = still good, use soon. Floats = crack into a separate bowl and check.</p>
+      <div class="card-header">
+        <h3>Farm Fresh Eggs</h3>
+        <span class="tag">Handling</span>
+      </div>
+      <div class="card-body">
+        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs stay fresh on the counter for 2–3 weeks.</p>
+        <p><strong>If dirty, wash right.</strong> Use warm water — warmer than the egg, never cold. Rub gently, no soap. Dry immediately and refrigerate.</p>
+        <p><strong>Store pointy-end-down.</strong> Unwashed on the counter. Washed in the fridge. Once refrigerated, don't move back to the counter.</p>
+        <p><strong>Float test:</strong> Sinks flat = fresh. Stands up = use soon. Floats = crack separately &amp; check.</p>
       </div>
       <div class="card-footer">Kitchen &amp; Kettle</div>
     </div>
 
     <div class="card">
-      <div class="card-title">Farm Fresh Eggs</div>
-      <div class="card-content">
-        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs with the bloom intact stay fresh on the counter for 2–3 weeks.</p>
-        <p><strong>If dirty, wash right.</strong> Use warm water (warmer than the egg — never cold). Rub gently, no soap. Dry immediately. Refrigerate washed eggs.</p>
-        <p><strong>Store pointy-end-down.</strong> Unwashed → counter. Washed → fridge. Once refrigerated, don't move back.</p>
-        <p><strong>Float test:</strong> Fill a bowl with cool water. Sinks flat = fresh. Stands up = still good, use soon. Floats = crack into a separate bowl and check.</p>
+      <div class="card-header">
+        <h3>Farm Fresh Eggs</h3>
+        <span class="tag">Handling</span>
+      </div>
+      <div class="card-body">
+        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs stay fresh on the counter for 2–3 weeks.</p>
+        <p><strong>If dirty, wash right.</strong> Use warm water — warmer than the egg, never cold. Rub gently, no soap. Dry immediately and refrigerate.</p>
+        <p><strong>Store pointy-end-down.</strong> Unwashed on the counter. Washed in the fridge. Once refrigerated, don't move back to the counter.</p>
+        <p><strong>Float test:</strong> Sinks flat = fresh. Stands up = use soon. Floats = crack separately &amp; check.</p>
       </div>
       <div class="card-footer">Kitchen &amp; Kettle</div>
     </div>
 
   </div>
-  <div class="brand-strip">Kitchen &amp; Kettle &bull; Works because it works. &bull; Cut along dashed lines.</div>
+  <div class="brand-strip">Kitchen <em>&amp; Kettle</em> &bull; Works because it works. &bull; Cut along dashed lines.</div>
 </div>
 </body>
 </html>
