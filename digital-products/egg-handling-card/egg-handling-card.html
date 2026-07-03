@@ -3,90 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Farm Fresh Egg Handling — Kitchen & Kettle</title>
+<title>Farm Fresh Egg Handling Cards — Kitchen & Kettle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#8B8376;--line:#D9D0C1;--light:#FAF7F0}
+  :root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#8B8376;--line:#D9D0C1}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Crimson Pro',Georgia,serif;font-size:12pt;line-height:1.42;color:var(--ink);background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:1rem}
-  .page{width:8.5in;min-height:11in;background:#fff;padding:0.5in 0.7in;box-shadow:0 2px 12px rgba(44,36,22,0.12);position:relative}
-  .brand{font-family:'Crimson Pro',serif;font-size:14pt;color:var(--muted);text-align:center;margin-bottom:0.15rem}
-  .brand em{font-style:italic;color:var(--clay)}
-  h1{font-size:26pt;font-weight:600;line-height:1.15;text-align:center;margin-bottom:0.1rem}
-  .tagline{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);text-align:center;margin-bottom:0.9rem}
-  h2{font-size:13pt;font-weight:600;margin-bottom:0.2rem;padding-bottom:0.1rem;border-bottom:1px solid var(--line);margin-top:0.35rem}
-  p{font-size:12pt;margin-bottom:0.3rem;color:#3D362D}
-  ul{margin:0.15rem 0 0.3rem 1.2rem;font-size:12pt}
-  li{margin-bottom:0.1rem;color:#3D362D}
-  .do-dont{display:grid;grid-template-columns:1fr 1fr;gap:0.35rem;margin:0.25rem 0}
-  .do,.dont{padding:0.25rem;border-radius:2px}
-  .do h4{color:var(--sage);font-family:'Work Sans',sans-serif;font-size:10pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.1rem}
-  .dont h4{color:#B94A3E;font-family:'Work Sans',sans-serif;font-size:10pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.1rem}
-  .do ul,.dont ul{margin:0;padding-left:1rem}
-  .do li,.dont li{margin-bottom:0.04rem;line-height:1.3}
-  .tip{font-size:12pt;font-style:italic;color:var(--sage);margin:0.3rem 0;padding-left:0.4rem;border-left:2px solid var(--clay)}
-  .footer-note{text-align:center;margin-top:0.5rem;padding-top:0.3rem;border-top:1px solid var(--line)}
-  .footer-note p{font-size:12pt;color:var(--muted)}
+  body{font-family:'Crimson Pro',Georgia,serif;background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:1rem}
+  .page{width:8.5in;min-height:11in;background:#fff;padding:0.4in 0.35in;box-shadow:0 2px 12px rgba(44,36,22,0.12);position:relative}
+  .card-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:0.2in;height:100%}
+  .card{border:1.5px dashed #C4A882;padding:0.22in 0.18in;display:flex;flex-direction:column;justify-content:center;background:var(--paper);position:relative;page-break-inside:avoid}
+  .card-title{font-size:11pt;font-weight:600;text-align:center;margin-bottom:0.12in;padding-bottom:0.08in;border-bottom:1px solid var(--clay)}
+  .card-content{font-size:8.5pt;line-height:1.35;color:#3D362D}
+  .card-content p{margin-bottom:0.06in}
+  .card-content strong{color:var(--ink)}
+  .card-footer{font-size:7.5pt;text-align:center;color:var(--clay);margin-top:0.1in;padding-top:0.08in;border-top:1px dotted var(--line)}
+  .brand-strip{text-align:center;font-size:7pt;color:var(--muted);margin-top:0.15in;font-family:'Work Sans',sans-serif;letter-spacing:0.05em;text-transform:uppercase}
   @media print{body{background:none;padding:0;margin:0}.page{margin:0;box-shadow:none}}
 </style>
 </head>
 <body>
 <div class="page">
-  <p class="brand">Kitchen <em>&amp; Kettle</em></p>
-  <h1>Farm Fresh Egg Handling</h1>
-  <p class="tagline">From the nest box to the kitchen.</p>
+  <div class="card-grid">
 
-  <h2>To Wash or Not to Wash</h2>
-  <p>Freshly laid eggs have a natural protective coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out and moisture in. An unwashed egg with its bloom intact stays fresh on the counter for weeks. Once you wash it, the bloom is gone and the egg needs refrigeration.</p>
-  <p class="tip">If your eggs are clean — no visible dirt or droppings — don't wash them. You're removing a free preservation system. Brush off loose debris with a dry cloth and store.</p>
-  <p>If an egg is dirty, wash it under <strong>warm running water</strong> (warmer than the egg — never cold). Cold water makes the contents contract, pulling bacteria through the shell. Rub gently with your fingers, no soap. Dry immediately. Refrigerate washed eggs right away.</p>
-
-  <div class="do-dont">
-    <div class="do">
-      <h4>Do</h4>
-      <ul>
-        <li>Warm water — warmer than the egg</li>
-        <li>Rinse under running water</li>
-        <li>Dry immediately</li>
-        <li>Refrigerate after washing</li>
-      </ul>
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-title">Farm Fresh Eggs</div>
+      <div class="card-content">
+        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs with the bloom intact stay fresh on the counter for 2–3 weeks.</p>
+        <p><strong>If dirty, wash right.</strong> Use warm water (warmer than the egg — never cold). Rub gently, no soap. Dry immediately. Refrigerate washed eggs.</p>
+        <p><strong>Store pointy-end-down.</strong> Unwashed → counter. Washed → fridge. Once refrigerated, don't move back.</p>
+        <p><strong>Float test:</strong> Fill a bowl with cool water. Sinks flat = fresh. Stands up = still good, use soon. Floats = crack into a separate bowl and check.</p>
+      </div>
+      <div class="card-footer">Kitchen &amp; Kettle</div>
     </div>
-    <div class="dont">
-      <h4>Don't</h4>
-      <ul>
-        <li>Cold water — pulls bacteria in</li>
-        <li>Soak eggs in standing water</li>
-        <li>Use soap or detergent</li>
-        <li>Wash clean eggs</li>
-      </ul>
+
+    <!-- Cards 2-6: identical -->
+    <div class="card">
+      <div class="card-title">Farm Fresh Eggs</div>
+      <div class="card-content">
+        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs with the bloom intact stay fresh on the counter for 2–3 weeks.</p>
+        <p><strong>If dirty, wash right.</strong> Use warm water (warmer than the egg — never cold). Rub gently, no soap. Dry immediately. Refrigerate washed eggs.</p>
+        <p><strong>Store pointy-end-down.</strong> Unwashed → counter. Washed → fridge. Once refrigerated, don't move back.</p>
+        <p><strong>Float test:</strong> Fill a bowl with cool water. Sinks flat = fresh. Stands up = still good, use soon. Floats = crack into a separate bowl and check.</p>
+      </div>
+      <div class="card-footer">Kitchen &amp; Kettle</div>
     </div>
+
+    <div class="card">
+      <div class="card-title">Farm Fresh Eggs</div>
+      <div class="card-content">
+        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs with the bloom intact stay fresh on the counter for 2–3 weeks.</p>
+        <p><strong>If dirty, wash right.</strong> Use warm water (warmer than the egg — never cold). Rub gently, no soap. Dry immediately. Refrigerate washed eggs.</p>
+        <p><strong>Store pointy-end-down.</strong> Unwashed → counter. Washed → fridge. Once refrigerated, don't move back.</p>
+        <p><strong>Float test:</strong> Fill a bowl with cool water. Sinks flat = fresh. Stands up = still good, use soon. Floats = crack into a separate bowl and check.</p>
+      </div>
+      <div class="card-footer">Kitchen &amp; Kettle</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Farm Fresh Eggs</div>
+      <div class="card-content">
+        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs with the bloom intact stay fresh on the counter for 2–3 weeks.</p>
+        <p><strong>If dirty, wash right.</strong> Use warm water (warmer than the egg — never cold). Rub gently, no soap. Dry immediately. Refrigerate washed eggs.</p>
+        <p><strong>Store pointy-end-down.</strong> Unwashed → counter. Washed → fridge. Once refrigerated, don't move back.</p>
+        <p><strong>Float test:</strong> Fill a bowl with cool water. Sinks flat = fresh. Stands up = still good, use soon. Floats = crack into a separate bowl and check.</p>
+      </div>
+      <div class="card-footer">Kitchen &amp; Kettle</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Farm Fresh Eggs</div>
+      <div class="card-content">
+        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs with the bloom intact stay fresh on the counter for 2–3 weeks.</p>
+        <p><strong>If dirty, wash right.</strong> Use warm water (warmer than the egg — never cold). Rub gently, no soap. Dry immediately. Refrigerate washed eggs.</p>
+        <p><strong>Store pointy-end-down.</strong> Unwashed → counter. Washed → fridge. Once refrigerated, don't move back.</p>
+        <p><strong>Float test:</strong> Fill a bowl with cool water. Sinks flat = fresh. Stands up = still good, use soon. Floats = crack into a separate bowl and check.</p>
+      </div>
+      <div class="card-footer">Kitchen &amp; Kettle</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Farm Fresh Eggs</div>
+      <div class="card-content">
+        <p><strong>Don't wash clean eggs.</strong> Freshly laid eggs have a natural coating called the <strong>bloom</strong> — an invisible seal that keeps bacteria out. Unwashed eggs with the bloom intact stay fresh on the counter for 2–3 weeks.</p>
+        <p><strong>If dirty, wash right.</strong> Use warm water (warmer than the egg — never cold). Rub gently, no soap. Dry immediately. Refrigerate washed eggs.</p>
+        <p><strong>Store pointy-end-down.</strong> Unwashed → counter. Washed → fridge. Once refrigerated, don't move back.</p>
+        <p><strong>Float test:</strong> Fill a bowl with cool water. Sinks flat = fresh. Stands up = still good, use soon. Floats = crack into a separate bowl and check.</p>
+      </div>
+      <div class="card-footer">Kitchen &amp; Kettle</div>
+    </div>
+
   </div>
-
-  <h2>How to Store</h2>
-  <p><strong>Unwashed eggs:</strong> Store pointy-end-down on the counter. Use within 2–3 weeks. Keep out of direct sunlight. Once refrigerated, don't move back to the counter — condensation invites bacteria.</p>
-  <p><strong>Washed eggs:</strong> Store pointy-end-down in the fridge, in the carton. The air cell is at the blunt end — storing pointy-end-down keeps the yolk centered and slows aging. Don't store in the door.</p>
-
-  <h2>Is It Still Good? — The Float Test</h2>
-  <p>Fill a bowl with cool water. Place the egg in gently.</p>
-  <ul>
-    <li><strong>Sinks and lies flat</strong> — very fresh. Good for anything.</li>
-    <li><strong>Sinks but stands upright</strong> — still fine, just older. Use soon. Best for baking or hard-boiling.</li>
-    <li><strong>Floats</strong> — past its prime. Crack into a separate bowl. If it smells fine, use it. If it smells off at all, compost.</li>
-  </ul>
-  <p class="tip">The float test tells you age, not safety. A floating egg isn't automatically bad — it's just old. Trust your nose. A bad egg is unmistakable.</p>
-
-  <h2>Quick Tips</h2>
-  <ul>
-    <li><strong>Date your eggs.</strong> Pencil the collection date on the shell. Newest in back, oldest in front.</li>
-    <li><strong>Crack into a separate bowl.</strong> One bad egg ruins the batch. Crack each egg into a small dish first.</li>
-    <li><strong>Collect often.</strong> Twice a day in hot weather. Clean nest boxes mean clean eggs — less washing, more blooms intact.</li>
-  </ul>
-
-  <div class="footer-note">
-    <p>Kitchen &amp; Kettle &bull; Works because it works.</p>
-  </div>
+  <div class="brand-strip">Kitchen &amp; Kettle &bull; Works because it works. &bull; Cut along dashed lines.</div>
 </div>
 </body>
 </html>
