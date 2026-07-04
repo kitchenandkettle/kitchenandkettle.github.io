@@ -36,8 +36,21 @@
   .card-footer img{height:0.22in;width:auto;opacity:0.7}
   .brand-strip{text-align:center;font-size:7pt;color:var(--muted);margin-top:0.12in;font-family:'Work Sans',sans-serif;letter-spacing:0.05em;text-transform:uppercase}
   .brand-strip em{font-style:italic;color:var(--clay)}
-  @media print{body{background:none;padding:0;margin:0}.page{margin:0;box-shadow:none}}
+  @media print{body{background:none;padding:0;margin:0}.page{margin:0;box-shadow:none;page-break-after:always}.page:last-child{page-break-after:auto}}
   .interactive-only{display:none}
+  /* Black & white page overrides */
+  .page.bw{background:#fff}
+  .page.bw .card{background:#fff;border-color:#888}
+  .page.bw .card-header{border-bottom-color:#888}
+  .page.bw .card-header h3{color:#000}
+  .page.bw .card-header .tag{color:#555}
+  .page.bw .card-body{color:#222;border-color:#bbb}
+  .page.bw .card-body strong{color:#000}
+  .page.bw .card-body:focus{background:#fff;border-color:#666}
+  .page.bw .card-footer{border-top-color:#bbb}
+  .page.bw .card-footer img{filter:grayscale(100%);opacity:0.5}
+  .page.bw .brand-strip{color:#555}
+  .page.bw .brand-strip em{color:#555}
 </style>
 </head>
 <body>
@@ -135,6 +148,99 @@
   </div>
   <div class="brand-strip">Kitchen <em>&amp; Kettle</em> &bull; Works because it works. &bull; Cut along dashed lines. &bull; <span class="interactive-only">Click text to edit.</span></div>
 </div>
+
+<!-- Page 2: Black & White -->
+<div class="page bw">
+  <div class="card-grid">
+
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-header">
+        <h3>Farm Fresh Eggs</h3>
+        <span class="tag">Handling</span>
+      </div>
+      <div class="card-body" contenteditable="true" data-key="bw-card-1">
+        <p><strong>Wash before eating.</strong> Rinse eggs under warm water — warmer than the egg, never cold. No soap. Rub gently with your fingers. Dry with a clean cloth if returning to the carton.</p>
+        <p><strong>Storage:</strong> Washed eggs last 2 months in the refrigerator. Unwashed eggs last 3 months refrigerated, or 2 weeks on the counter. Store pointy-end-down — it keeps the yolk centered and slows aging.</p>
+        <p><strong>Float test:</strong> Sinks flat → fresh. Stands up → use soon. Floats → crack separately &amp; check.</p>
+      </div>
+      <div class="card-footer"><img src="hen.svg" alt=""></div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="card-header">
+        <h3>Farm Fresh Eggs</h3>
+        <span class="tag">Handling</span>
+      </div>
+      <div class="card-body" contenteditable="true" data-key="bw-card-2">
+        <p><strong>Wash before eating.</strong> Rinse eggs under warm water — warmer than the egg, never cold. No soap. Rub gently with your fingers. Dry with a clean cloth if returning to the carton.</p>
+        <p><strong>Storage:</strong> Washed eggs last 2 months in the refrigerator. Unwashed eggs last 3 months refrigerated, or 2 weeks on the counter. Store pointy-end-down — it keeps the yolk centered and slows aging.</p>
+        <p><strong>Float test:</strong> Sinks flat → fresh. Stands up → use soon. Floats → crack separately &amp; check.</p>
+      </div>
+      <div class="card-footer"><img src="hen.svg" alt=""></div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <div class="card-header">
+        <h3>Farm Fresh Eggs</h3>
+        <span class="tag">Handling</span>
+      </div>
+      <div class="card-body" contenteditable="true" data-key="bw-card-3">
+        <p><strong>Wash before eating.</strong> Rinse eggs under warm water — warmer than the egg, never cold. No soap. Rub gently with your fingers. Dry with a clean cloth if returning to the carton.</p>
+        <p><strong>Storage:</strong> Washed eggs last 2 months in the refrigerator. Unwashed eggs last 3 months refrigerated, or 2 weeks on the counter. Store pointy-end-down — it keeps the yolk centered and slows aging.</p>
+        <p><strong>Float test:</strong> Sinks flat → fresh. Stands up → use soon. Floats → crack separately &amp; check.</p>
+      </div>
+      <div class="card-footer"><img src="hen.svg" alt=""></div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card">
+      <div class="card-header">
+        <h3>Farm Fresh Eggs</h3>
+        <span class="tag">Handling</span>
+      </div>
+      <div class="card-body" contenteditable="true" data-key="bw-card-4">
+        <p><strong>Wash before eating.</strong> Rinse eggs under warm water — warmer than the egg, never cold. No soap. Rub gently with your fingers. Dry with a clean cloth if returning to the carton.</p>
+        <p><strong>Storage:</strong> Washed eggs last 2 months in the refrigerator. Unwashed eggs last 3 months refrigerated, or 2 weeks on the counter. Store pointy-end-down — it keeps the yolk centered and slows aging.</p>
+        <p><strong>Float test:</strong> Sinks flat → fresh. Stands up → use soon. Floats → crack separately &amp; check.</p>
+      </div>
+      <div class="card-footer"><img src="hen.svg" alt=""></div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card">
+      <div class="card-header">
+        <h3>Farm Fresh Eggs</h3>
+        <span class="tag">Handling</span>
+      </div>
+      <div class="card-body" contenteditable="true" data-key="bw-card-5">
+        <p><strong>Wash before eating.</strong> Rinse eggs under warm water — warmer than the egg, never cold. No soap. Rub gently with your fingers. Dry with a clean cloth if returning to the carton.</p>
+        <p><strong>Storage:</strong> Washed eggs last 2 months in the refrigerator. Unwashed eggs last 3 months refrigerated, or 2 weeks on the counter. Store pointy-end-down — it keeps the yolk centered and slows aging.</p>
+        <p><strong>Float test:</strong> Sinks flat → fresh. Stands up → use soon. Floats → crack separately &amp; check.</p>
+      </div>
+      <div class="card-footer"><img src="hen.svg" alt=""></div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card">
+      <div class="card-header">
+        <h3>Farm Fresh Eggs</h3>
+        <span class="tag">Handling</span>
+      </div>
+      <div class="card-body" contenteditable="true" data-key="bw-card-6">
+        <p><strong>Wash before eating.</strong> Rinse eggs under warm water — warmer than the egg, never cold. No soap. Rub gently with your fingers. Dry with a clean cloth if returning to the carton.</p>
+        <p><strong>Storage:</strong> Washed eggs last 2 months in the refrigerator. Unwashed eggs last 3 months refrigerated, or 2 weeks on the counter. Store pointy-end-down — it keeps the yolk centered and slows aging.</p>
+        <p><strong>Float test:</strong> Sinks flat → fresh. Stands up → use soon. Floats → crack separately &amp; check.</p>
+      </div>
+      <div class="card-footer"><img src="hen.svg" alt=""></div>
+    </div>
+
+  </div>
+  <div class="brand-strip">Kitchen <em>&amp; Kettle</em> &bull; Works because it works. &bull; Cut along dashed lines.</div>
+</div>
+
 <script>
 const STORAGE_KEY = 'kettle-egg-handling-cards';
 function save() {
