@@ -189,6 +189,7 @@
     <span class="save-status" id="saveStatus">Saved</span>
     <button class="btn btn-ghost" onclick="clearAll()">Clear</button>
     <button class="btn btn-ghost" onclick="addRecipe()">+ New Recipe</button>
+    <button class="btn btn-ghost" onclick="downloadCopy()">Save a copy</button>
     <button class="btn btn-print" onclick="window.print()">Print</button>
   </div>
 </div>
@@ -307,6 +308,21 @@ function clearAll(){
   localStorage.removeItem(STORAGE_KEY);
   document.getElementById('pages').innerHTML = '';
   addRecipe();
+}
+
+function downloadCopy(){
+  const pages = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  const dataScript = '<script>localStorage.setItem(\"' + STORAGE_KEY + '\", ' + JSON.stringify(JSON.stringify(pages)) + ');</script>';
+  let html = document.documentElement.outerHTML;
+  // Inject saved data before </body> so load() finds it on open
+  html = html.replace('</body>', dataScript + '\n</body>');
+  const blob = new Blob([html], {type: 'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'my-recipes.html';
+  a.click();
+  URL.revokeObjectURL(url);
 }
 
 document.addEventListener('input', save);
