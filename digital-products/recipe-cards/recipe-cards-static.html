@@ -79,16 +79,11 @@
   }
   .ingredients-list{
     list-style:none;padding:0;
-    font-size:11pt;line-height:2.45;
+    font-size:11pt;line-height:1.6;
+    display:flex;flex-direction:column;gap:0.28in;
+    padding-top:0.05in;
   }
-  .ingredients-list li{
-    display:flex;align-items:baseline;gap:0.15in;
-  }
-  .ingredients-list li .bullet{
-    color:var(--clay);font-size:8pt;
-  }
-  .ingredients-list li .write-line{
-    flex:1;
+  .ingredients-list .write-line{
     border-bottom:1px dashed var(--line);
   }
   .instructions-lines{
@@ -137,21 +132,21 @@
   <div class="two-col">
     <div class="col-ingredients">
       <div class="section-label">Ingredients</div>
-      <ul class="ingredients-list">
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-      </ul>
+      <div class="ingredients-list">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
     </div>
     <div class="col-instructions">
       <div class="section-label">Instructions</div>
@@ -198,21 +193,21 @@
   <div class="two-col">
     <div class="col-ingredients">
       <div class="section-label">Ingredients</div>
-      <ul class="ingredients-list">
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-        <li><span class="bullet">&#9679;</span><div class="write-line"></div></li>
-      </ul>
+      <div class="ingredients-list">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
     </div>
     <div class="col-instructions">
       <div class="section-label">Instructions</div>
