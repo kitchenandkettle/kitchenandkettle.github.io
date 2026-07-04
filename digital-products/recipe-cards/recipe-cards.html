@@ -321,18 +321,28 @@ function clearAll(){
 
 document.addEventListener('input', save);
 
-// Backspace on empty ingredient line removes it
+// Backspace on empty ingredient line removes it; Enter adds a new one
 document.addEventListener('keydown', function(e){
-  if(e.key !== 'Backspace') return;
   const inp = e.target;
   if(!inp.closest('.ingredients-list')) return;
-  if(inp.value !== '') return;
   const li = inp.closest('li');
   if(!li) return;
   const list = li.parentElement;
-  if(list.children.length <= 1) return; // keep at least one
-  li.remove();
-  save();
+
+  if(e.key === 'Backspace' && inp.value === ''){
+    if(list.children.length <= 1) return;
+    li.remove();
+    save();
+  }
+  if(e.key === 'Enter'){
+    if(list.children.length >= 25) return;
+    e.preventDefault();
+    const clone = li.cloneNode(true);
+    clone.querySelector('input').value = '';
+    li.after(clone);
+    clone.querySelector('input').focus();
+    save();
+  }
 });
 
 load();
