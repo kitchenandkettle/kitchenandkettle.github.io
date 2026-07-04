@@ -251,6 +251,8 @@
 </template>
 
 <script>
+// Capture pristine source before any DOM changes
+const SOURCE_HTML = document.documentElement.outerHTML;
 const STORAGE_KEY = 'kettle-recipe-cards';
 
 function save(){
@@ -328,17 +330,16 @@ function clearAll(){
 
 function downloadCopy(){
   const pages = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-  fetch(window.location.href).then(r => r.text()).then(html => {
-    const injection = '\n<script>window.__SAVED_DATA__ = ' + JSON.stringify(pages) + ';<\/script>\n</body>';
-    html = html.replace('</body>', injection);
-    const blob = new Blob([html], {type: 'text/html'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'my-recipes.html';
-    a.click();
-    URL.revokeObjectURL(url);
-  });
+  let html = SOURCE_HTML;
+  const injection = '\n<script>window.__SAVED_DATA__ = ' + JSON.stringify(pages) + ';<\/script>\n</body>';
+  html = html.replace('</body>', injection);
+  const blob = new Blob([html], {type: 'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'my-recipes.html';
+  a.click();
+  URL.revokeObjectURL(url);
 }
 
 document.addEventListener('input', save);
