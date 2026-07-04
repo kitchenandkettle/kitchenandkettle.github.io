@@ -31,6 +31,8 @@ Most printable recipe cards on Etsy require a Canva account. These don't. Open t
 
 **This is not:** a Canva template that requires you to create an account before you can use it.
 
+**This IS:** an editable file — just not through Canva. Open it in your browser, type your recipes, and they save to your device. No account, no cloud, no extra website.
+
 ▶ This is a digital download. No physical product will be shipped.
 ▶ To open: double-click the HTML file to open in your browser. If that doesn't work, drag and drop the file into any open browser window (Chrome, Safari, Firefox, Edge). No special software needed.
 ▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale.
