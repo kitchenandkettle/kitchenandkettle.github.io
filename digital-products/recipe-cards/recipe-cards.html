@@ -146,6 +146,12 @@
   }
   .ingredients-list li input:focus{border-bottom-color:var(--line)}
   .ingredients-list li input::placeholder{color:var(--muted);font-style:italic}
+  .ingredients-list li .remove{
+    color:var(--line);font-size:10pt;cursor:pointer;
+    flex-shrink:0;padding:0 2px;line-height:1;
+    display:none;
+  }
+  .ingredients-list li:hover .remove{display:inline}
 
   .instructions-area{
     width:100%;min-height:4.5in;
@@ -233,14 +239,14 @@
     <div class="col-ingredients">
       <div class="section-label">Ingredients</div>
       <ul class="ingredients-list" data-key="ingredients">
-        <li><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"></li>
-        <li><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"></li>
-        <li><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"></li>
-        <li><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"></li>
-        <li><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"></li>
-        <li><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"></li>
-        <li><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"></li>
-        <li><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"></li>
+        <li><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"><span class="remove" onclick="this.parentElement.remove();save()"><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"></li>times;</span></li>
+        <li><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"><span class="remove" onclick="this.parentElement.remove();save()"><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"></li>times;</span></li>
+        <li><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"><span class="remove" onclick="this.parentElement.remove();save()"><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"></li>times;</span></li>
+        <li><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"><span class="remove" onclick="this.parentElement.remove();save()"><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"></li>times;</span></li>
+        <li><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"><span class="remove" onclick="this.parentElement.remove();save()"><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"></li>times;</span></li>
+        <li><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"><span class="remove" onclick="this.parentElement.remove();save()"><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"></li>times;</span></li>
+        <li><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"><span class="remove" onclick="this.parentElement.remove();save()"><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"></li>times;</span></li>
+        <li><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"><span class="remove" onclick="this.parentElement.remove();save()"><span class="bullet">&#9679;</span><input type="text" placeholder="Ingredient"></li>times;</span></li>
       </ul>
     </div>
     <div class="col-instructions">
