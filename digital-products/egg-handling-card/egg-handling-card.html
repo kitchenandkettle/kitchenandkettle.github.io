@@ -23,14 +23,13 @@
   .btn-print{background:var(--ink);color:var(--paper)}
   .btn-print:hover{background:#3D362D}
   .page{width:8.5in;min-height:11in;background:#fff;padding:0.35in;box-shadow:0 2px 12px rgba(44,36,22,0.12);position:relative}
-  .card-grid{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,minmax(0,1fr));gap:0.18in;height:100%}
-  .card{border:1.5px dashed #C4A882;padding:0.15in 0.2in;display:flex;flex-direction:column;background:var(--paper);page-break-inside:avoid;overflow:hidden;contain:strict}
+  .card-grid{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr);gap:0.18in;height:100%}
+  .card{border:1.5px dashed #C4A882;padding:0.15in 0.2in;display:flex;flex-direction:column;background:var(--paper);page-break-inside:avoid;min-height:0;overflow:hidden}
   .card-header{flex-shrink:0;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.08in;padding-bottom:0.06in;border-bottom:1px solid var(--clay)}
   .card-header h3{font-size:11pt;font-weight:600;margin:0}
   .card-header .tag{font-family:'Work Sans',sans-serif;font-size:7pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--sage)}
-  .card-body{font-size:8pt;line-height:1.3;color:#3D362D;flex:1;min-height:0;overflow:hidden;overflow-wrap:break-word;word-break:break-word}
-  .card-body:hover{background:var(--light)}
-  .card-body:focus{outline:1px dashed var(--clay);background:var(--light)}
+  .card-body{font-size:8pt;line-height:1.3;color:#3D362D;overflow:hidden;overflow-wrap:break-word;word-break:break-word;height:2.55in;flex:none;border:1px dashed var(--line);border-radius:2px;padding:0.06in;background:var(--light)}
+  .card-body:focus{outline:none;border-color:var(--clay);background:#fff}
   .card-body p{margin-bottom:0.05in}
   .card-body strong{color:var(--ink)}
   .card-footer{flex-shrink:0;display:flex;justify-content:center;align-items:center;margin-top:0.06in;padding-top:0.05in;border-top:1px dotted var(--line)}
@@ -39,21 +38,6 @@
   .brand-strip em{font-style:italic;color:var(--clay)}
   @media print{body{background:none;padding:0;margin:0}.page{margin:0;box-shadow:none}}
   .interactive-only{display:none}
-  /* Black & white page */
-  .bw-page{background:#fff}
-  .bw-page .card{background:#fff;border-color:#999}
-  .bw-page .card-header{border-color:#999}
-  .bw-page .card-header h3{color:#000}
-  .bw-page .card-header .tag{color:#666}
-  .bw-page .card-body{color:#000}
-  .bw-page .card-body:hover{background:#f5f5f5}
-  .bw-page .card-body:focus{outline-color:#999;background:#f5f5f5}
-  .bw-page .card-body strong{color:#000}
-  .bw-page .card-body p{color:#000}
-  .bw-page .card-footer{border-color:#ccc}
-  .bw-page .card-footer img{filter:grayscale(1);opacity:0.5}
-  .bw-page .brand-strip{color:#666}
-  .bw-page .brand-strip em{color:#666}
 </style>
 </head>
 <body>
@@ -151,93 +135,6 @@
   </div>
   <div class="brand-strip">Kitchen <em>&amp; Kettle</em> &bull; Works because it works. &bull; Cut along dashed lines. &bull; <span class="interactive-only">Click text to edit.</span></div>
 </div>
-
-<!-- BLACK & WHITE PAGE -->
-<div class="page bw-page">
-  <div class="card-grid">
-
-    <div class="card">
-      <div class="card-header">
-        <h3>Farm Fresh Eggs</h3>
-        <span class="tag">Handling</span>
-      </div>
-      <div class="card-body">
-        <p><strong>Wash before eating.</strong> Rinse eggs under warm water — warmer than the egg, never cold. No soap. Rub gently with your fingers. Dry with a clean cloth if returning to the carton.</p>
-        <p><strong>Storage:</strong> Washed eggs last 2 months in the refrigerator. Unwashed eggs last 3 months refrigerated, or 2 weeks on the counter. Store pointy-end-down — it keeps the yolk centered and slows aging.</p>
-        <p><strong>Float test:</strong> Sinks flat → fresh. Stands up → use soon. Floats → crack separately &amp; check.</p>
-      </div>
-      <div class="card-footer"><img src="hen.svg" alt=""></div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3>Farm Fresh Eggs</h3>
-        <span class="tag">Handling</span>
-      </div>
-      <div class="card-body">
-        <p><strong>Wash before eating.</strong> Rinse eggs under warm water — warmer than the egg, never cold. No soap. Rub gently with your fingers. Dry with a clean cloth if returning to the carton.</p>
-        <p><strong>Storage:</strong> Washed eggs last 2 months in the refrigerator. Unwashed eggs last 3 months refrigerated, or 2 weeks on the counter. Store pointy-end-down — it keeps the yolk centered and slows aging.</p>
-        <p><strong>Float test:</strong> Sinks flat → fresh. Stands up → use soon. Floats → crack separately &amp; check.</p>
-      </div>
-      <div class="card-footer"><img src="hen.svg" alt=""></div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3>Farm Fresh Eggs</h3>
-        <span class="tag">Handling</span>
-      </div>
-      <div class="card-body">
-        <p><strong>Wash before eating.</strong> Rinse eggs under warm water — warmer than the egg, never cold. No soap. Rub gently with your fingers. Dry with a clean cloth if returning to the carton.</p>
-        <p><strong>Storage:</strong> Washed eggs last 2 months in the refrigerator. Unwashed eggs last 3 months refrigerated, or 2 weeks on the counter. Store pointy-end-down — it keeps the yolk centered and slows aging.</p>
-        <p><strong>Float test:</strong> Sinks flat → fresh. Stands up → use soon. Floats → crack separately &amp; check.</p>
-      </div>
-      <div class="card-footer"><img src="hen.svg" alt=""></div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3>Farm Fresh Eggs</h3>
-        <span class="tag">Handling</span>
-      </div>
-      <div class="card-body">
-        <p><strong>Wash before eating.</strong> Rinse eggs under warm water — warmer than the egg, never cold. No soap. Rub gently with your fingers. Dry with a clean cloth if returning to the carton.</p>
-        <p><strong>Storage:</strong> Washed eggs last 2 months in the refrigerator. Unwashed eggs last 3 months refrigerated, or 2 weeks on the counter. Store pointy-end-down — it keeps the yolk centered and slows aging.</p>
-        <p><strong>Float test:</strong> Sinks flat → fresh. Stands up → use soon. Floats → crack separately &amp; check.</p>
-      </div>
-      <div class="card-footer"><img src="hen.svg" alt=""></div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3>Farm Fresh Eggs</h3>
-        <span class="tag">Handling</span>
-      </div>
-      <div class="card-body">
-        <p><strong>Wash before eating.</strong> Rinse eggs under warm water — warmer than the egg, never cold. No soap. Rub gently with your fingers. Dry with a clean cloth if returning to the carton.</p>
-        <p><strong>Storage:</strong> Washed eggs last 2 months in the refrigerator. Unwashed eggs last 3 months refrigerated, or 2 weeks on the counter. Store pointy-end-down — it keeps the yolk centered and slows aging.</p>
-        <p><strong>Float test:</strong> Sinks flat → fresh. Stands up → use soon. Floats → crack separately &amp; check.</p>
-      </div>
-      <div class="card-footer"><img src="hen.svg" alt=""></div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3>Farm Fresh Eggs</h3>
-        <span class="tag">Handling</span>
-      </div>
-      <div class="card-body">
-        <p><strong>Wash before eating.</strong> Rinse eggs under warm water — warmer than the egg, never cold. No soap. Rub gently with your fingers. Dry with a clean cloth if returning to the carton.</p>
-        <p><strong>Storage:</strong> Washed eggs last 2 months in the refrigerator. Unwashed eggs last 3 months refrigerated, or 2 weeks on the counter. Store pointy-end-down — it keeps the yolk centered and slows aging.</p>
-        <p><strong>Float test:</strong> Sinks flat → fresh. Stands up → use soon. Floats → crack separately &amp; check.</p>
-      </div>
-      <div class="card-footer"><img src="hen.svg" alt=""></div>
-    </div>
-
-  </div>
-  <div class="brand-strip">Kitchen <em>&amp; Kettle</em> &bull; Works because it works. &bull; Cut along dashed lines.</div>
-</div>
-
 <script>
 const STORAGE_KEY = 'kettle-egg-handling-cards';
 function save() {
