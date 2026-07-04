@@ -152,7 +152,7 @@
     border:none;background:transparent;
     font-family:'Crimson Pro',serif;font-size:11pt;
     color:var(--ink);line-height:1.6;
-    resize:none;outline:none;
+    resize:none;outline:none;overflow:hidden;
     padding:0.05in 0;
   }
   .instructions-area:focus{}
@@ -166,7 +166,7 @@
     border:none;background:transparent;
     font-family:'Crimson Pro',serif;font-size:10pt;
     color:var(--muted);line-height:1.5;
-    resize:none;outline:none;
+    resize:none;outline:none;overflow:hidden;
   }
   .notes-area::placeholder{color:var(--line);font-style:italic}
 
@@ -245,13 +245,13 @@
     </div>
     <div class="col-instructions">
       <div class="section-label">Instructions</div>
-      <textarea class="instructions-area" placeholder="Write your instructions here&hellip;" data-key="instructions"></textarea>
+      <textarea class="instructions-area" placeholder="Write your instructions here&hellip;" data-key="instructions" maxlength="900"></textarea>
     </div>
   </div>
 
   <div class="notes-section">
     <div class="section-label">Notes</div>
-    <textarea class="notes-area" placeholder="Substitutions, tips, where this recipe came from&hellip;" data-key="notes"></textarea>
+    <textarea class="notes-area" placeholder="Substitutions, tips, where this recipe came from&hellip;" data-key="notes" maxlength="200"></textarea>
   </div>
 
   <div class="kettle-logo"><img src="kettle-logo.svg" alt="" style="height:0.8in;"></div>
