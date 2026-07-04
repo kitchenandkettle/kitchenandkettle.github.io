@@ -328,12 +328,14 @@ function clearAll(){
 
 function downloadCopy(){
   const pages = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-  // Fetch the clean source file with cache bust so we get the original, not a cached modified version
   fetch(window.location.href.split('?')[0] + '?v=' + Date.now())
     .then(r => r.text())
     .then(html => {
-      const injection = '\n<script>window.__SAVED_DATA__ = ' + JSON.stringify(pages) + ';<\/script>\n</body>';
-      html = html.replace('</body>', injection);
+      // Inject data at top of main script so load() sees it before it runs
+      html = html.replace(
+        '<script>\nconst STORAGE_KEY',
+        '<script>\nwindow.__SAVED_DATA__ = ' + JSON.stringify(pages) + ';\nconst STORAGE_KEY'
+      );
       const blob = new Blob([html], {type: 'text/html'});
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
