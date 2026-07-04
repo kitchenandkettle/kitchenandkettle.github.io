@@ -33,7 +33,7 @@ def make_card(filename, title, subtitle, bullets, page_note):
     bullet_h = bullet_font.getbbox("Test")[3] - bullet_font.getbbox("Test")[1]
     note_h = note_font.getbbox(page_note)[3] - note_font.getbbox(page_note)[1]
 
-    gap_title_sub = 12
+    gap_title_sub = 40
     gap_sub_bullets = 40
     gap_between_bullets = 18
     gap_before_note = 50
@@ -46,30 +46,28 @@ def make_card(filename, title, subtitle, bullets, page_note):
     start_y = (2000 - total_h) // 2
     y = start_y
 
-    # --- Title (centered) ---
-    tw = title_font.getbbox(title)[2] - title_font.getbbox(title)[0]
-    draw.text((1000 - tw // 2, y), title, font=title_font, fill=INK)
+    # --- Everything left-aligned at block_x ---
+    block_x = 530
+
+    # Title
+    draw.text((block_x, y), title, font=title_font, fill=INK)
     y += title_h + gap_title_sub
 
-    # --- Subtitle (centered, sage) ---
-    sw = subtitle_font.getbbox(subtitle)[2] - subtitle_font.getbbox(subtitle)[0]
-    draw.text((1000 - sw // 2, y), subtitle, font=subtitle_font, fill=SAGE)
+    # Subtitle (sage)
+    draw.text((block_x, y), subtitle, font=subtitle_font, fill=SAGE)
     y += subtitle_h + gap_sub_bullets
 
-    # --- Bullets (left-aligned within a centered block) ---
-    # The block is left-aligned at a fixed X for all bullets
-    block_x = 530  # left edge of bullet text block (matches cast iron card)
+    # Bullets
     for line in bullets:
         if line == '':
-            y += bullet_h  # blank line spacer
+            y += bullet_h
         else:
             draw.text((block_x, y), line, font=bullet_font, fill=INK)
             y += bullet_h + gap_between_bullets
     y += gap_before_note
 
-    # --- Page note (centered, sage) ---
-    nw = note_font.getbbox(page_note)[2] - note_font.getbbox(page_note)[0]
-    draw.text((1000 - nw // 2, y), page_note, font=note_font, fill=SAGE)
+    # Page note (sage)
+    draw.text((block_x, y), page_note, font=note_font, fill=SAGE)
 
     # --- Brand label (bottom-left) ---
     brand = "Kitchen & Kettle"
