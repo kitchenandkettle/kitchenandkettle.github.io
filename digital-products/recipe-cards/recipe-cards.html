@@ -273,8 +273,22 @@ function save(){
 }
 
 function load(){
-  // Check for embedded data from a saved copy first
-  if(window.__SAVED_DATA__){
+  // localStorage takes priority — it's the user's actual working copy
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if(raw){
+    const pages = JSON.parse(raw);
+    if(pages.length){
+      pages.forEach((data,i) => {
+        addRecipe();
+        const page = document.querySelectorAll('#pages .page')[i];
+        if(!page) return;
+        fillPage(page, data);
+      });
+      return;
+    }
+  }
+  // First open: seed from baked-in data if available
+  if(window.__SAVED_DATA__ && window.__SAVED_DATA__.length){
     const pages = window.__SAVED_DATA__;
     pages.forEach((data,i) => {
       addRecipe();
@@ -282,19 +296,10 @@ function load(){
       if(!page) return;
       fillPage(page, data);
     });
-    if(!pages.length) addRecipe();
+    save(); // persist the seed to localStorage
     return;
   }
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if(!raw) return addRecipe();
-  const pages = JSON.parse(raw);
-  if(!pages.length) return addRecipe();
-  pages.forEach((data,i) => {
-    addRecipe();
-    const page = document.querySelectorAll('#pages .page')[i];
-    if(!page) return;
-    fillPage(page, data);
-  });
+  addRecipe();
 }
 
 function fillPage(page, data){
