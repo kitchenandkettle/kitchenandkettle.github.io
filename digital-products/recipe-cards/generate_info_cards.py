@@ -58,7 +58,7 @@ def make_card(filename, title, subtitle, bullets, page_note):
 
     # --- Bullets (left-aligned within a centered block) ---
     # The block is left-aligned at a fixed X for all bullets
-    block_x = 460  # left edge of bullet text block
+    block_x = 530  # left edge of bullet text block (matches cast iron card)
     for line in bullets:
         if line == '':
             y += bullet_h  # blank line spacer
