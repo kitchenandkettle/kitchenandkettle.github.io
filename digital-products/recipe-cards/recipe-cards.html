@@ -189,6 +189,7 @@
     <span class="save-status" id="saveStatus">Saved</span>
     <button class="btn btn-ghost" onclick="clearAll()">Clear</button>
     <button class="btn btn-ghost" onclick="addRecipe()">+ New Recipe</button>
+    <button class="btn btn-ghost" onclick="downloadCopy()">Save a copy</button>
     <button class="btn btn-print" onclick="window.print()">Print</button>
   </div>
 </div>
@@ -272,6 +273,18 @@ function save(){
 }
 
 function load(){
+  // Check for embedded data from a saved copy first
+  if(window.__SAVED_DATA__){
+    const pages = window.__SAVED_DATA__;
+    pages.forEach((data,i) => {
+      addRecipe();
+      const page = document.querySelectorAll('#pages .page')[i];
+      if(!page) return;
+      fillPage(page, data);
+    });
+    if(!pages.length) addRecipe();
+    return;
+  }
   const raw = localStorage.getItem(STORAGE_KEY);
   if(!raw) return addRecipe();
   const pages = JSON.parse(raw);
@@ -280,19 +293,23 @@ function load(){
     addRecipe();
     const page = document.querySelectorAll('#pages .page')[i];
     if(!page) return;
-    page.querySelectorAll('[data-key]').forEach(el => {
-      const key = el.dataset.key;
-      if(!(key in data)) return;
-      if(el.tagName === 'UL'){
-        const vals = data[key];
-        const inputs = el.querySelectorAll('input');
-        vals.forEach((v,j) => { if(inputs[j]) inputs[j].value = v; });
-      } else if(el.tagName === 'TEXTAREA'){
-        el.value = data[key];
-      } else if(el.tagName === 'INPUT'){
-        el.value = data[key];
-      }
-    });
+    fillPage(page, data);
+  });
+}
+
+function fillPage(page, data){
+  page.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.dataset.key;
+    if(!(key in data)) return;
+    if(el.tagName === 'UL'){
+      const vals = data[key];
+      const inputs = el.querySelectorAll('input');
+      vals.forEach((v,j) => { if(inputs[j]) inputs[j].value = v; });
+    } else if(el.tagName === 'TEXTAREA'){
+      el.value = data[key];
+    } else if(el.tagName === 'INPUT'){
+      el.value = data[key];
+    }
   });
 }
 
@@ -307,6 +324,21 @@ function clearAll(){
   localStorage.removeItem(STORAGE_KEY);
   document.getElementById('pages').innerHTML = '';
   addRecipe();
+}
+
+function downloadCopy(){
+  const pages = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  fetch(window.location.href).then(r => r.text()).then(html => {
+    const injection = '\n<script>window.__SAVED_DATA__ = ' + JSON.stringify(pages) + ';<\/script>\n</body>';
+    html = html.replace('</body>', injection);
+    const blob = new Blob([html], {type: 'text/html'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'my-recipes.html';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
 }
 
 document.addEventListener('input', save);
