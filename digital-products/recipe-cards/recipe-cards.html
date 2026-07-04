@@ -114,7 +114,7 @@
     display:flex;gap:0.3in;flex:1;min-height:0;
     align-items:flex-start;
   }
-  .col-ingredients{width:2.8in;flex-shrink:0}
+  .col-ingredients{width:2.8in;flex-shrink:0;overflow:hidden}
   .col-instructions{flex:1;min-width:0}
 
   .section-label{
@@ -335,7 +335,7 @@ document.addEventListener('keydown', function(e){
     save();
   }
   if(e.key === 'Enter'){
-    if(list.children.length >= 25) return;
+    if(list.children.length >= 13) return;
     e.preventDefault();
     const clone = li.cloneNode(true);
     clone.querySelector('input').value = '';
