@@ -335,7 +335,7 @@ document.addEventListener('keydown', function(e){
     save();
   }
   if(e.key === 'Enter'){
-    if(list.children.length >= 13) return;
+    if(list.children.length >= 10) return;
     e.preventDefault();
     const clone = li.cloneNode(true);
     clone.querySelector('input').value = '';
