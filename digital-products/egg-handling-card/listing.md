@@ -17,12 +17,14 @@ From the nest box to the egg carton.
 
 Six printable cards per sheet — cut along the dashed lines and tuck one into every carton of eggs you sell or share. Each card covers the essentials: the bloom, washing do's and don'ts, storage, and the float test. Designed to be small enough to fit inside a standard egg carton.
 
+***Editable HTML version NO CANVA ACCOUNT NEEDED***
+
 **What's on each card:**
 - The bloom — what it is, and why clean eggs shouldn't be washed
 - Washing — when it's necessary and the right way to do it (warm water, no soap)
 - Storage — unwashed on the counter, washed in the fridge, pointy-end-down
 - The float test — a quick freshness check anyone can do
-- Kitchen &amp; Kettle branding — subtle, not salesy
+- Kitchen & Kettle branding — subtle, not salesy
 
 **Print and cut.** One sheet gives you six identical cards. Use them for your farm stand, CSA boxes, or just to share good information with friends and family who get your eggs.
 
@@ -42,7 +44,7 @@ Farm Fresh Egg Handling Card | Printable Reference Guide
 Six printable cards per sheet — tuck one into every carton. Covers the bloom, washing, storage, and the float test. Cut along the dashed lines. Printable PDF from Kitchen & Kettle.
 
 ## Price
-$2.00
+$4.00
 
 ## Digital files to upload
 - egg-handling-card.pdf (recommended for buyers)
