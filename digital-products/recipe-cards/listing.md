@@ -21,7 +21,8 @@ Most printable recipe cards on Etsy require a Canva account. These don't. Open t
 - An interactive HTML file — type your recipes directly in your browser. Your entries save automatically to your device. No cloud, no account, fully private.
 - A printable PDF — two blank recipe pages with dashed write-in lines for every field.
 - One recipe per page: recipe name, prep/cook/total time, 13 ingredient slots, full instructions section, and notes.
-- Letter-size (8.5×11") — standard printer paper. Designed as binder inserts with room for hole-punching.
+- Letter-size (8.5x11") — standard printer paper. Designed as binder inserts with room for hole-punching.
+- Save a Copy button — downloads a standalone copy of your filled-in recipe cards as its own HTML file. Email it to yourself, back it up, or pick up where you left off anytime.
 
 **What sets this apart:**
 - No Canva account needed. No signup. No third-party website.
@@ -35,6 +36,7 @@ Most printable recipe cards on Etsy require a Canva account. These don't. Open t
 ▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale.
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
 ▶ Your entries save to your device automatically. Clearing your browser data will clear saved entries.
+▶ To save a permanent copy: click Save a Copy in the toolbar. This downloads a standalone HTML file with your recipes baked in. Keep this file in the same folder on your computer — your edits will persist every time you open it, just like a regular document. You can also email it to yourself as a backup.
 
 ## Tags (copy-paste, comma-separated)
 recipe card, binder insert, printable recipe, editable recipe, no canva needed, kitchen printable, recipe organizer, digital recipe card, write in recipe, meal planner, recipe template, home cooking
