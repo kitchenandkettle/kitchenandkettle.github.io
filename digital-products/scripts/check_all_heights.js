@@ -155,12 +155,7 @@ const INJECT_CSS = `
         .chicken-guide .prose-page h3 { margin-top: 0.2rem !important; margin-bottom: 0.15rem !important; }
         .chicken-guide .page { padding-top: 0.55in !important; padding-bottom: 0.55in !important; }
 
-        /* --- Moon Journal: image fills top half only, notes on white below (PDF only) --- */
-        .moon-journal .moon-page {
-          background-size: 100% 55% !important;
-          background-repeat: no-repeat !important;
-          background-position: top center !important;
-        }
+        /* --- Moon Journal: ruled notes at bottom (PDF only) --- */
         .moon-journal .pdf-notes {
           display: block !important;
           height: 3.5in;
