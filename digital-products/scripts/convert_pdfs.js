@@ -19,6 +19,7 @@ const FILES = [
   'beeswax-wraps/beeswax-wraps.html',
   'apothecary-journal/apothecary-journal.html',
   'egg-handling-card/egg-handling-card.html',
+  'Moon-Journal/moon-journal.html',
 ];
 // -------------------------------------------------
 
