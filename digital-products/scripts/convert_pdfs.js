@@ -50,7 +50,6 @@ const FILES = [
         body { padding: 0 !important; margin: 0 !important; }
         .toolbar { display: none !important; }
         .interactive-only { display: none !important; }
-        .pdf-only { display: block !important; }
         textarea::placeholder { color: transparent !important; }
         input::placeholder { color: transparent !important; }
         textarea { border: 1px dashed #D9D0C1 !important; }
@@ -177,12 +176,6 @@ const FILES = [
         .chicken-guide .prose-page hr { margin: 0.3rem 0 !important; }
         .chicken-guide .prose-page h3 { margin-top: 0.2rem !important; margin-bottom: 0.15rem !important; }
         .chicken-guide .page { padding-top: 0.55in !important; padding-bottom: 0.55in !important; }
-
-        /* --- Moon Journal: ensure images fill page --- */
-        .moon-journal .moon-page {
-          background-size: cover !important;
-          background-position: center !important;
-        }
       `
     });
 
