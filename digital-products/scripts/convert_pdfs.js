@@ -177,8 +177,19 @@ const FILES = [
         .chicken-guide .prose-page h3 { margin-top: 0.2rem !important; margin-bottom: 0.15rem !important; }
         .chicken-guide .page { padding-top: 0.55in !important; padding-bottom: 0.55in !important; }
 
-        /* --- Moon Journal: hide textareas on moon pages (PDF only) --- */
-        .moon-journal .moon-prompt textarea { visibility: hidden !important; }
+        /* --- Moon Journal: push notes section to bottom with ruled lines (PDF only) --- */
+        .moon-journal .moon-prompt {
+          margin-top: auto !important;
+          background: #fff !important;
+          padding: 0.3in 0 0.2in 0 !important;
+        }
+        .moon-journal .moon-prompt textarea { display: none !important; }
+        .moon-journal .moon-prompt::after {
+          content: '';
+          display: block;
+          height: 3.5in;
+          background: repeating-linear-gradient(#fff, #fff 23px, #D9D0C1 23px, #D9D0C1 24px);
+        }
       `
     });
 
