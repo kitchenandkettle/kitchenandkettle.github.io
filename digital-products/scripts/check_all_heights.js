@@ -158,6 +158,7 @@ const INJECT_CSS = `
 
         /* --- Moon Journal: hide textareas on moon pages (PDF only) --- */
         .moon-journal .moon-prompt textarea { visibility: hidden !important; }
+        .moon-journal .moon-prompt { margin-top: auto !important; }
       `;
 // ----------------------------------------------------------------
 
