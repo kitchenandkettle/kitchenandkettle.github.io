@@ -21,7 +21,9 @@ Beyond the twelve full moons, each moon gets its own set of cycle pages — New 
 
 ▶ This is a digital download. No physical product will be shipped.
 ▶ To open: double-click the HTML file to open in your browser. If that doesn't work, drag and drop the file into any open browser window (Chrome, Safari, Firefox, Edge). No special software needed.
-▶ Type directly into the interactive version — your entries save locally. Clearing browser data clears your entries.
+▶ Type directly into the interactive version — your entries save automatically to your device. No account needed.
+▶ Use the "Save a Copy" button to download a self-contained file with all your entries. Keep this somewhere safe — it's your backup. Since you'll use this journal across a full year, saving copies as you go means you'll never lose your notes if you clear your browser data.
+▶ Clearing browser data clears your entries. Save a Copy first.
 ▶ For a clean printout, uncheck "Headers and footers" in your browser's print dialog before printing or saving as PDF.
 ▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale. Cardstock recommended.
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
