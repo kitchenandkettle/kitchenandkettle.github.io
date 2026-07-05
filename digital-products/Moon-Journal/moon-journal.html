@@ -81,6 +81,7 @@
   <div class="actions">
     <span class="save-status" id="saveStatus">Saved</span>
     <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-ghost" onclick="downloadCopy()">Save a Copy</button>
     <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
   </div>
 </div>
@@ -732,16 +733,44 @@ function save() {
 }
 function load() {
   const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) return;
-  const data = JSON.parse(raw);
-  document.querySelectorAll('[data-key]').forEach(el => {
-    if (el.dataset.key in data) el.value = data[el.dataset.key];
-  });
+  if(raw){
+    const data = JSON.parse(raw);
+    document.querySelectorAll('[data-key]').forEach(el => {
+      if(el.dataset.key in data) el.value = data[el.dataset.key];
+    });
+    return;
+  }
+  if(window.__SAVED_DATA__){
+    document.querySelectorAll('[data-key]').forEach(el => {
+      if(el.dataset.key in window.__SAVED_DATA__) el.value = window.__SAVED_DATA__[el.dataset.key];
+    });
+    save();
+  }
 }
 function clearAll() {
   if (!confirm('Clear all notes?')) return;
   localStorage.removeItem(STORAGE_KEY);
   document.querySelectorAll('[data-key]').forEach(el => el.value = '');
+}
+function downloadCopy(){
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => { data[el.dataset.key] = el.value; });
+  fetch(window.location.href.split('?')[0] + '?v=' + Date.now())
+    .then(r => r.text())
+    .then(html => {
+      html = html.replace(
+        '<script>\nconst STORAGE_KEY',
+        '<script>\nwindow.__SAVED_DATA__ = ' + JSON.stringify(data) + ';\nconst STORAGE_KEY'
+      );
+      const blob = new Blob([html], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'moon-journal-copy.html';
+      a.click();
+      URL.revokeObjectURL(url);
+    })
+    .catch(() => alert('Could not save a copy. Make sure the page is served from a web server.'));
 }
 document.addEventListener('input', save);
 load();
