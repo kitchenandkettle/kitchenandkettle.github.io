@@ -19,7 +19,7 @@ const FILES = [
   'beeswax-wraps/beeswax-wraps.html',
   'apothecary-journal/apothecary-journal.html',
   'egg-handling-card/egg-handling-card.html',
-  'Moon-Journal/moon-journal-static.html',
+  'Moon-Journal/moon-journal.html',
 ];
 // -------------------------------------------------
 
@@ -178,8 +178,11 @@ const FILES = [
         .chicken-guide .prose-page h3 { margin-top: 0.2rem !important; margin-bottom: 0.15rem !important; }
         .chicken-guide .page { padding-top: 0.55in !important; padding-bottom: 0.55in !important; }
 
-        /* --- Moon Journal: show placeholder text on moon pages --- */
-        .moon-journal .moon-prompt textarea::placeholder { color: #C4A882 !important; opacity: 1 !important; }
+        /* --- Moon Journal: ensure images fill page --- */
+        .moon-journal .moon-page {
+          background-size: cover !important;
+          background-position: center !important;
+        }
       `
     });
 
