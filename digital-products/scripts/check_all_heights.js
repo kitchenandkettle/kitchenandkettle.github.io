@@ -156,7 +156,7 @@ const INJECT_CSS = `
         .chicken-guide .page { padding-top: 0.55in !important; padding-bottom: 0.55in !important; }
 
         /* --- Moon Journal: hide textareas on moon pages (PDF only) --- */
-        .moon-journal .moon-prompt textarea { display: none !important; }
+        .moon-journal .moon-prompt textarea { visibility: hidden !important; }
       `;
 // ----------------------------------------------------------------
 
