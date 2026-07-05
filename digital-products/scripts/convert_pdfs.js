@@ -50,6 +50,7 @@ const FILES = [
         body { padding: 0 !important; margin: 0 !important; }
         .toolbar { display: none !important; }
         .interactive-only { display: none !important; }
+        .pdf-only { display: block !important; }
         textarea::placeholder { color: transparent !important; }
         input::placeholder { color: transparent !important; }
         textarea { border: 1px dashed #D9D0C1 !important; }
