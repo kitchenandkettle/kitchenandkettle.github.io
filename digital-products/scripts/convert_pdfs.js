@@ -177,13 +177,19 @@ const FILES = [
         .chicken-guide .prose-page h3 { margin-top: 0.2rem !important; margin-bottom: 0.15rem !important; }
         .chicken-guide .page { padding-top: 0.55in !important; padding-bottom: 0.55in !important; }
 
-        /* --- Moon Journal: hide textareas on moon pages, add ruled lines for handwritten notes --- */
+        /* --- Moon Journal: moon pages — image top, ruled lines below for handwriting (PDF only) --- */
+        .moon-journal .moon-page {
+          background-size: 100% auto !important;
+          background-position: top center !important;
+          background-repeat: no-repeat !important;
+          background-color: #fff !important;
+        }
         .moon-journal .moon-prompt textarea { display: none !important; }
         .moon-journal .moon-prompt::after {
           content: '';
           display: block;
-          min-height: 1.8in;
-          background: repeating-linear-gradient(transparent, transparent 23px, #D9D0C1 23px, #D9D0C1 24px);
+          min-height: 3in;
+          background: repeating-linear-gradient(#fff, #fff 23px, #2C2416 23px, #2C2416 24px);
         }
       `
     });
