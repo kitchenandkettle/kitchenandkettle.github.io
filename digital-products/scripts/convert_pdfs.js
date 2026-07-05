@@ -43,27 +43,6 @@ const FILES = [
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(500);
 
-    // Moon Journal: restructure moon pages for PDF — image as <img>, notes below
-    await page.evaluate(() => {
-      if (!document.body.classList.contains('moon-journal')) return;
-      document.querySelectorAll('.moon-page').forEach(page => {
-        const style = page.getAttribute('style') || '';
-        const match = style.match(/url\(['"]?([^'")\s]+)['"]?\)/);
-        if (!match) return;
-        const imgUrl = match[1];
-        // Remove background
-        page.style.background = '';
-        page.style.backgroundSize = '';
-        page.style.backgroundPosition = '';
-        page.style.backgroundRepeat = '';
-        // Insert image at top
-        const img = document.createElement('img');
-        img.src = imgUrl;
-        img.style.cssText = 'width:100%;display:block;';
-        page.insertBefore(img, page.firstChild);
-      });
-    });
-
     // Base fixes: strip body padding, page margins, box shadows.
     // Targeted overrides for pages that overflow 11in in specific products.
     await page.addStyleTag({
@@ -198,14 +177,8 @@ const FILES = [
         .chicken-guide .prose-page h3 { margin-top: 0.2rem !important; margin-bottom: 0.15rem !important; }
         .chicken-guide .page { padding-top: 0.55in !important; padding-bottom: 0.55in !important; }
 
-        /* --- Moon Journal: ruled notes at bottom (PDF only) --- */
-        .moon-journal .pdf-notes {
-          display: block !important;
-          height: 3.5in;
-          background: repeating-linear-gradient(#fff, #fff 23px, #D9D0C1 23px, #D9D0C1 24px);
-        }
-        .moon-journal .moon-prompt textarea { display: none !important; }
-        .moon-journal .moon-prompt { margin-top: auto !important; padding-top: 0.3in !important; }
+        /* --- Moon Journal: hide textareas on moon pages (PDF only) --- */
+        .moon-journal .moon-prompt textarea { visibility: hidden !important; }
       `
     });
 
