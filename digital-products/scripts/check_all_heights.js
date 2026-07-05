@@ -20,7 +20,7 @@ const FILES = [
   'beeswax-wraps/beeswax-wraps.html',
   'apothecary-journal/apothecary-journal.html',
   'egg-handling-card/egg-handling-card.html',
-  'Moon-Journal/moon-journal.html',
+  'Moon-Journal/moon-journal-static.html',
 ];
 
 // --- Must match EXACTLY the injected CSS in convert_pdfs.js ---
@@ -155,16 +155,6 @@ const INJECT_CSS = `
         .chicken-guide .prose-page hr { margin: 0.3rem 0 !important; }
         .chicken-guide .prose-page h3 { margin-top: 0.2rem !important; margin-bottom: 0.15rem !important; }
         .chicken-guide .page { padding-top: 0.55in !important; padding-bottom: 0.55in !important; }
-
-        /* --- Moon Journal: make textareas visible on moon pages --- */
-        .moon-journal .moon-prompt textarea {
-          border: 1px dashed #C4A882 !important;
-          background: rgba(245,240,232,0.6) !important;
-        }
-        .moon-journal .moon-prompt textarea::placeholder {
-          color: #8B8376 !important;
-          opacity: 1 !important;
-        }
       `;
 // ----------------------------------------------------------------
 
