@@ -177,23 +177,19 @@ const FILES = [
         .chicken-guide .prose-page h3 { margin-top: 0.2rem !important; margin-bottom: 0.15rem !important; }
         .chicken-guide .page { padding-top: 0.55in !important; padding-bottom: 0.55in !important; }
 
-        /* --- Moon Journal: image at natural height, notes below on white (PDF only) --- */
+        /* --- Moon Journal: image at natural height, ruled notes on white below (PDF only) --- */
         .moon-journal .moon-page {
           background-size: 100% auto !important;
           background-repeat: no-repeat !important;
           background-position: top center !important;
         }
-        .moon-journal .moon-prompt {
-          margin-top: auto !important;
-          padding-top: 0.3in !important;
-        }
-        .moon-journal .moon-prompt textarea { display: none !important; }
-        .moon-journal .moon-prompt::after {
-          content: '';
-          display: block;
+        .moon-journal .pdf-notes {
+          display: block !important;
           height: 3.5in;
           background: repeating-linear-gradient(#fff, #fff 23px, #D9D0C1 23px, #D9D0C1 24px);
         }
+        .moon-journal .moon-prompt textarea { display: none !important; }
+        .moon-journal .moon-prompt { margin-top: auto !important; padding-top: 0.3in !important; }
       `
     });
 
