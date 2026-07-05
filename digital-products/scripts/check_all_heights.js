@@ -8,7 +8,7 @@ const BASE = '/home/chels/test/digital-products';
 const FILES = [
   'seasonal-preservation-calendar/calendar.html',
   'egg-preservation-guide/egg-guide.html',
-  'recipe-cards/recipe-cards.html',
+  'recipe-cards/recipe-cards-static.html',
   'homekeeping-guide/homekeeping-guide-interactive.html',
   'preservation-logbook/preservation-logbook.html',
   'kitchen-planner-bundle/kitchen-planner-bundle.html',
