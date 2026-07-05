@@ -177,9 +177,9 @@ const FILES = [
         .chicken-guide .prose-page h3 { margin-top: 0.2rem !important; margin-bottom: 0.15rem !important; }
         .chicken-guide .page { padding-top: 0.55in !important; padding-bottom: 0.55in !important; }
 
-        /* --- Moon Journal: image at natural height, ruled notes on white below (PDF only) --- */
+        /* --- Moon Journal: image fills top half only, notes on white below (PDF only) --- */
         .moon-journal .moon-page {
-          background-size: 100% auto !important;
+          background-size: 100% 55% !important;
           background-repeat: no-repeat !important;
           background-position: top center !important;
         }
