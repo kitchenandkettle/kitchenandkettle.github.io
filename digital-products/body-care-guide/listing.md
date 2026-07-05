@@ -34,6 +34,7 @@ The body care industry wants you to believe you need a different product for eve
 ▶ For a clean printout, uncheck "Headers and footers" in your browser's print dialog before printing or saving as PDF.
 ▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale. Cardstock recommended.
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
+▶ Works with GoodNotes, Notability, and any PDF app.
 
 ## Tags (copy-paste, comma-separated)
 body care guide, soap label guide, natural skincare, printable skincare, tallow balm recipe, infused oils, simple routine, beginner skincare

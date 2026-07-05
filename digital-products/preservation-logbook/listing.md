@@ -37,6 +37,7 @@ Every preserver learns the hard way: you open a jar of tomatoes in February and 
 ▶ Type directly into the interactive version — your entries save locally. Clearing browser data clears your entries.
 ▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale.
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
+▶ Works with GoodNotes, Notability, and any PDF app.
 
 ## Tags (copy-paste, comma-separated)
 canning log, food preservation, fermentation tracker, canning journal, preserving log, homestead planner, kitchen journal, harvest record, pantry log, preserving notebook, canning printable, dehydrating log, digital download

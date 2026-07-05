@@ -34,6 +34,7 @@ What to do when you have more eggs than you can eat — or when you want a backu
 ▶ For a clean printout, uncheck "Headers and footers" in your browser's print dialog before printing or saving as PDF.
 ▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale. Cardstock recommended.
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
+▶ Works with GoodNotes, Notability, and any PDF app.
 
 ## Tags (copy-paste, comma-separated)
 egg preservation, water glassing eggs, freezing eggs, pickled eggs recipe, homestead guide, chicken egg storage, farm fresh eggs, preserving eggs, egg storage guide, backyard chickens, homestead printable, food preservation, digital download

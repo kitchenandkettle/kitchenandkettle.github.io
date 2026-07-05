@@ -37,6 +37,7 @@ Most printable recipe cards on Etsy require a Canva account. These don't. Open t
 ▶ To open: double-click the HTML file to open in your browser. If that doesn't work, drag and drop the file into any open browser window (Chrome, Safari, Firefox, Edge). No special software needed.
 ▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale.
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
+▶ Works with GoodNotes, Notability, and any PDF app.
 ▶ Your entries save to your device automatically. Clearing your browser data will clear saved entries.
 ▶ To save a permanent copy: click Save a Copy in the toolbar. This downloads a standalone HTML file with your recipes baked in. Keep this file in the same folder on your computer — your edits will persist every time you open it, just like a regular document. You can also email it to yourself as a backup.
 

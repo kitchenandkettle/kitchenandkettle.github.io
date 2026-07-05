@@ -33,6 +33,7 @@ The chicken-keeping world wants to sell you gadgets. You don't need them. This g
 ▶ For a clean printout, uncheck "Headers and footers" in your browser's print dialog before printing or saving as PDF.
 ▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale. Cardstock recommended.
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
+▶ Works with GoodNotes, Notability, and any PDF app.
 
 ## Tags (copy-paste, comma-separated)
 chicken keeping, backyard chickens, chicken coop guide, beginner chickens, chicken care, raising chickens, chicken breeds, coop setup, homestead guide, orpington guide, printable PDF, flock care, digital download

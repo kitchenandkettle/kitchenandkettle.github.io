@@ -213,10 +213,8 @@
   .btn-print { background: var(--ink); color: var(--paper); }
   .btn-print:hover { background: #3D362D; }
   @media print {
-    body { background: none; padding: 0; margin: 0; }
-    .page { margin: 0; box-shadow: none; background: #fff; }
-    .routine-table th { background: none; }
-    .cover { background: #fff !important; }
+    body { background: none; padding: 0; margin: 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .page { margin: 0; box-shadow: none; }
     .toolbar { display: none; }
   }
 </style>

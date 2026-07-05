@@ -37,6 +37,7 @@ Learn how to make tea, salves, tinctures, and infused oils from the plants aroun
 ▶ For a clean printout, uncheck "Headers and footers" in your browser's print dialog before printing or saving as PDF.
 ▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale. Cardstock recommended.
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
+▶ Works with GoodNotes, Notability, and any PDF app.
 
 ## Tags (copy-paste, comma-separated)
 herbal journal, apothecary journal, herbalism guide, tea making, salve making, tincture making, herbal record book, plant journal, herb drying guide, infused oil guide, printable planner, fillable PDF, digital download

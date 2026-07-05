@@ -182,12 +182,9 @@
   }
   input::placeholder, textarea::placeholder { color: var(--clay); opacity: 1; }
   @media print {
-    body { background: none; padding: 0; margin: 0; }
-    .page { margin: 0; box-shadow: none; background: #fff; }
+    body { background: none; padding: 0; margin: 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .page { margin: 0; box-shadow: none; }
     .toolbar { display: none; }
-    .label-table th { background: none; }
-    .cover { background: #fff !important; }
-    .honest-box, .do, .dont { background: none; }
     input::placeholder, textarea::placeholder { color: transparent !important; }
   }
 </style>

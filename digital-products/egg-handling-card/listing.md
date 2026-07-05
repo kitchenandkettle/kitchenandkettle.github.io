@@ -33,6 +33,7 @@ Six printable cards per sheet — cut along the dashed lines and tuck one into e
 ▶ For a clean printout, uncheck "Headers and footers" in your browser's print dialog before printing or saving as PDF.
 ▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale. Cardstock recommended.
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
+▶ Works with GoodNotes, Notability, and any PDF app.
 
 ## Tags (copy-paste, comma-separated)
 egg carton cards, farm fresh eggs, egg handling, chicken keeper, egg washing guide, farm stand printable, homestead printable, egg storage, float test card, digital download

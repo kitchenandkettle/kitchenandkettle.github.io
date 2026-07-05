@@ -32,6 +32,7 @@ Cast iron has a reputation for being fussy. It isn't. Your grandmother's pan sur
 ▶ For a clean printout, uncheck "Headers and footers" in your browser's print dialog before printing or saving as PDF.
 ▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale. Cardstock recommended.
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
+▶ Works with GoodNotes, Notability, and any PDF app.
 
 ## Tags (copy-paste, comma-separated)
 cast iron care, cast iron cleaning, cast iron seasoning, skillet guide, kitchen printable, cast iron cooking, kitchen handbook, cast iron skillet, iron skillet care, vintage cast iron, homestead kitchen, digital download, cast iron pan
