@@ -155,18 +155,17 @@ const INJECT_CSS = `
         .chicken-guide .prose-page h3 { margin-top: 0.2rem !important; margin-bottom: 0.15rem !important; }
         .chicken-guide .page { padding-top: 0.55in !important; padding-bottom: 0.55in !important; }
 
-        /* --- Moon Journal: moon pages — image top, ruled lines below for handwriting (PDF only) --- */
-        .moon-journal .moon-page {
-          background-size: 100% auto !important;
-          background-position: top center !important;
-          background-repeat: no-repeat !important;
-          background-color: #fff !important;
+        /* --- Moon Journal: push ruled lines to bottom of page, below the image (PDF only) --- */
+        .moon-journal .moon-prompt {
+          margin-top: auto !important;
+          background: #fff !important;
+          padding-top: 0.4in !important;
         }
         .moon-journal .moon-prompt textarea { display: none !important; }
         .moon-journal .moon-prompt::after {
           content: '';
           display: block;
-          min-height: 3in;
+          min-height: 2.5in;
           background: repeating-linear-gradient(#fff, #fff 23px, #2C2416 23px, #2C2416 24px);
         }
       `;
