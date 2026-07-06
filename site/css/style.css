@@ -527,8 +527,8 @@ li {
 /* --- Print --- */
 @media print {
   body {
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
+    background: white;
+    color: black;
     font-size: 12pt;
     line-height: 1.5;
   }
@@ -545,6 +545,7 @@ li {
   }
 
   a {
+    color: black;
     text-decoration: underline;
   }
 }
