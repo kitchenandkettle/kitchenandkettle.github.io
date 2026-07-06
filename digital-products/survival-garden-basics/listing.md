@@ -35,6 +35,7 @@ A survival garden isn't about growing everything. It's about growing the right t
 ▶ For a clean printout, uncheck "Headers and footers" in your browser's print dialog before printing or saving as PDF.
 ▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale. Cardstock recommended.
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
+▶ Works with GoodNotes, Notability, and any PDF app.
 
 ## Tags (copy-paste, comma-separated)
 survival garden, easy gardening, no fuss garden, beginner garden guide, grow your own food, vegetable gardening, direct sow crops, no greenhouse, homestead garden, garden planning, food garden basics, printable PDF, digital download

@@ -154,15 +154,12 @@
   }
   .clear-btn:hover { color: var(--ink); }
   @media print {
-    body { background: none; padding: 0; }
+    body { background: none; padding: 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
     .toolbar { display: none; }
     .page { box-shadow: none; margin: 0; padding: 0.5in 0.6in; max-width: 100%; }
     .clear-btn { display: none; }
     input[type="checkbox"] { -webkit-appearance: checkbox !important; }
     input, textarea { border-bottom-color: transparent !important; }
-    .routine-table th { background: none; }
-    .cover { background: #fff !important; }
-    .honest-box { background: none; }
   }
 </style>
 </head>

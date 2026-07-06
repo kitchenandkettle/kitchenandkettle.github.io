@@ -31,6 +31,7 @@ Beeswax wraps are pieces of cotton infused with beeswax, pine resin, and jojoba 
 ▶ For a clean printout, uncheck "Headers and footers" in your browser's print dialog before printing or saving as PDF.
 ▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale. Cardstock recommended.
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
+▶ Works with GoodNotes, Notability, and any PDF app.
 
 ## Tags (copy-paste, comma-separated)
 beeswax wrap diy, reusable food wrap, plastic free kitchen, zero waste kitchen, natural food wrap, diy beeswax wrap, eco friendly wrap, kitchen diy, sustainable living, compostable wrap, free digital download

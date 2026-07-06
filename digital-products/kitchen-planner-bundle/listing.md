@@ -37,6 +37,7 @@ This isn't a rigid routine. It's a set of tools that work together. Use the ones
 ▶ Type directly into the interactive version — your entries save locally. Clearing browser data clears your entries.
 ▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale.
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
+▶ Works with GoodNotes, Notability, and any PDF app.
 
 ## Pinterest (copy-paste)
 ### Title

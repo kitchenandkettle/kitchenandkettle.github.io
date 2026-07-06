@@ -1,53 +1,58 @@
-# Etsy Listing — Recipe Cards
+# Etsy Listing — Recipe Cards (Binder Inserts)
 
 ## Category
 Guides & How Tos
 Type: Digital download
 
 ## Title (copy-paste)
-Printable Recipe Cards | 5 Kitchen Themes | Vintage Notebook Style | Cook's Recipe Sheets | Digital Download PDF
+Recipe Card Binder Inserts | Editable in Browser No Canva Required | Printable PDF | Kitchen & Kettle
 
 ## Photos (upload in this order)
-No listing images yet — need to generate:
-1. primary-recipe-image.png — Main cover (split panel)
-2. recipe-image.png — All 5 themes
-3. recipe-image-2.png — Close-up detail
+1. primary-recipe-cards-image.png
+2. recipe-cards-image.png
+3. recipe-cards-image-2.png
 
 ## Description (copy-paste)
-Recipe cards that feel like they belong in a working kitchen — not a lifestyle shoot.
+A recipe card that doesn't ask you to sign up for anything.
 
-Five themes in one set, all with the same warm notebook-paper feel: ruled lines, a red margin, and a little kettle stamp in the corner. Write in your own recipes or type them up. These are the cards you'll actually reach for — no busy patterns, no tiny text boxes, no wasted space.
+Most printable recipe cards on Etsy require a Canva account. These don't. Open the file in your browser, type in your recipe, and print. Or print them blank and write by hand. Either way, no accounts, no subscriptions, no extra steps.
 
-**What's inside (7 pages, 5 themes):**
-- Classic — ruled notebook paper with red margin
-- Kitchen Garden — subtle botanical accents
-- Baker's — warm, flour-dusted feel
-- Hearth — fireside tones
-- Farmhouse — simple, sturdy, no fuss
-- Two recipe cards per page, horizontal format
-- Print as many as you need — unlimited personal use
+**What you get:**
+- An interactive HTML file — type your recipes directly in your browser. Your entries save automatically to your device. No cloud, no account, fully private.
+- A printable PDF — two blank recipe pages with dashed write-in lines for every field.
+- One recipe per page: recipe name, prep/cook/total time, 13 ingredient slots, full instructions section, and notes.
+- Letter-size (8.5x11") — standard printer paper. Designed as binder inserts with room for hole-punching.
+- Save a Copy button — downloads a standalone copy of your filled-in recipe cards as its own HTML file. Email it to yourself, back it up, or pick up where you left off anytime.
 
-**This is not:** a graphic-design showcase. It's recipe cards that sit on your counter, handle a splash of oil, and still look good. Works because it works.
+**What sets this apart:**
+- No Canva account needed. No signup. No third-party website.
+- Edits save locally to your device — private, instant, free.
+- Print blank copies anytime or save filled pages as PDFs with one click.
+
+**This is not:** a Canva template that requires you to create an account before you can use it.
+
+**This IS:** an editable file — just not through Canva. Open it in your browser, type your recipes, and they save to your device. No account, no cloud, no extra website.
 
 ▶ This is a digital download. No physical product will be shipped.
 ▶ To open: double-click the HTML file to open in your browser. If that doesn't work, drag and drop the file into any open browser window (Chrome, Safari, Firefox, Edge). No special software needed.
-▶ For a clean printout, uncheck "Headers and footers" in your browser's print dialog before printing or saving as PDF.
-▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale. Cardstock recommended.
+▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale.
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
-▶ Cut along the guide line between cards.
+▶ Works with GoodNotes, Notability, and any PDF app.
+▶ Your entries save to your device automatically. Clearing your browser data will clear saved entries.
+▶ To save a permanent copy: click Save a Copy in the toolbar. This downloads a standalone HTML file with your recipes baked in. Keep this file in the same folder on your computer — your edits will persist every time you open it, just like a regular document. You can also email it to yourself as a backup.
 
 ## Tags (copy-paste, comma-separated)
-printable recipe cards, recipe card template, kitchen printable, vintage recipe cards, recipe organizer, cook's journal, blank recipe sheets, handwritten recipe cards, recipe card PDF, kitchen organization, cooking printable, recipe keeper, digital download
+recipe card, binder insert, printable recipe, editable recipe, no canva needed, kitchen printable, recipe organizer, digital recipe card, write in recipe, meal planner, recipe template, home cooking
 
 ## Pinterest (copy-paste)
 ### Title
-Printable Recipe Cards | 5 Kitchen Themes | Vintage Notebook Style
+Recipe Card Binder Inserts | No Canva Required | Printable PDF
 ### Description
-Recipe cards that feel like they belong in a working kitchen. Five themes — Classic, Kitchen Garden, Baker's, Hearth, and Farmhouse — all with warm notebook-paper feel. Two cards per page, print as many as you need. PDF from Kitchen & Kettle.
+A recipe card that doesn't ask you to sign up for anything. Type your recipes in your browser or print blank and write by hand. 13 ingredient slots, instructions, notes, and time fields. No Canva account needed. Printable PDF from Kitchen & Kettle.
 
 ## Price
-$4.00
+$3.00
 
 ## Digital files to upload
-- recipe-cards.pdf (recommended for buyers)
-- recipe-cards.html (bonus — for browser viewing)
+- recipe-cards.pdf (printable — write by hand)
+- recipe-cards.html (interactive — type and save)

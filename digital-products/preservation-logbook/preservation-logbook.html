@@ -144,10 +144,8 @@
     margin-bottom: 0.3rem; padding-bottom: 0.1rem; border-bottom: 1px dotted var(--line);
   }
   @media print {
-    body { background: none; padding: 0; margin: 0; }
-    .page { margin: 0; box-shadow: none; background: #fff; }
-    .log-table th { background: none; }
-    .cover { background: #fff !important; }
+    body { background: none; padding: 0; margin: 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .page { margin: 0; box-shadow: none; }
   }
 </style>
 </head>

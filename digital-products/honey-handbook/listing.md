@@ -35,6 +35,7 @@ Honey is one of the only foods that arrives in your kitchen exactly as nature ma
 ▶ For a clean printout, uncheck "Headers and footers" in your browser's print dialog before printing or saving as PDF.
 ▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale. Cardstock recommended.
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
+▶ Works with GoodNotes, Notability, and any PDF app.
 
 ## Tags (copy-paste, comma-separated)
 honey handbook, honey guide, cooking with honey, honey recipes, types of honey, honey storage, natural sweetener, kitchen handbook, bee guide, traditional uses, honey varietals, printable PDF, digital download

@@ -67,13 +67,9 @@
   .page:last-of-type { page-break-after: auto; }
   /* ---- Print media ---- */
   @media print {
-    body { background: none; padding: 0; margin: 0; }
-    .page { margin: 0; box-shadow: none; background: #fff; }
+    body { background: none; padding: 0; margin: 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .page { margin: 0; box-shadow: none; }
     .toolbar { display: none; }
-    thead, th { background: none !important; }
-    .bg-clay { background: none !important; }
-    .bg-sage { background: none !important; }
-    .bg-cream { background: none !important; }
   }
   /* ---- Typography ---- */
   h1 { font: 600 28pt 'Crimson Pro', serif; color: var(--text); letter-spacing: -0.01em; }

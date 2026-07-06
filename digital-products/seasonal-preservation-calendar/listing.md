@@ -33,6 +33,7 @@ This isn't a to-do list designed to make you feel behind. It's a reference. Use 
 ▶ For a clean printout, uncheck "Headers and footers" in your browser's print dialog before printing or saving as PDF.
 ▶ To print: File → Print. Use letter-size paper (8.5×11"), 100% scale. Cardstock recommended.
 ▶ To save as PDF: File → Print → Save as PDF (built into every browser).
+▶ Works with GoodNotes, Notability, and any PDF app.
 
 ## Tags (copy-paste, comma-separated)
 preserving calendar, canning guide, food preservation, seasonal produce, fermentation guide, homestead printable, kitchen printable, pantry planner, canning planner, harvest planner, preserving food, seasonal eating, digital download

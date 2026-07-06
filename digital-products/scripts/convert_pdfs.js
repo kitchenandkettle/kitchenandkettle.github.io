@@ -7,7 +7,7 @@ const BASE = '/home/chels/test/digital-products';
 const FILES = [
   'seasonal-preservation-calendar/calendar.html',
   'egg-preservation-guide/egg-guide.html',
-  'recipe-cards/recipe-cards.html',
+  'recipe-cards/recipe-cards-static.html',
   'homekeeping-guide/homekeeping-guide-interactive.html',
   'preservation-logbook/preservation-logbook.html',
   'kitchen-planner-bundle/kitchen-planner-bundle.html',
@@ -19,6 +19,7 @@ const FILES = [
   'beeswax-wraps/beeswax-wraps.html',
   'apothecary-journal/apothecary-journal.html',
   'egg-handling-card/egg-handling-card.html',
+  'Moon-Journal/moon-journal-static.html',
 ];
 // -------------------------------------------------
 

@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moon Journal — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#8B8376;--line:#D9D0C1;--light:#FAF7F0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Crimson Pro',Georgia,serif;font-size:12pt;line-height:1.6;color:var(--ink);background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:1rem}
+  .toolbar{max-width:8.5in;width:100%;margin:0 auto 0.5rem;display:flex;justify-content:space-between;align-items:center;background:#fff;padding:0.5rem 0.7rem;border-radius:6px;box-shadow:0 1px 4px rgba(44,36,22,0.08);position:sticky;top:0;z-index:100}
+  .toolbar .brand{font-family:'Crimson Pro',serif;font-size:14pt;font-weight:600;color:var(--ink)}
+  .toolbar .brand em{font-style:italic;color:var(--clay)}
+  .toolbar .actions{display:flex;gap:0.5rem;align-items:center}
+  .toolbar .save-status{font-family:'Work Sans',sans-serif;font-size:8pt;color:#5a8a6a;margin-right:0.5rem;opacity:0;transition:opacity 0.3s}
+  .toolbar .save-status.visible{opacity:1}
+  .btn{font-family:'Work Sans',sans-serif;font-size:8pt;font-weight:600;padding:0.4em 0.8em;border-radius:3px;cursor:pointer;border:none;transition:background 0.15s;text-decoration:none}
+  .btn-ghost{background:none;color:var(--muted);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+  .btn-print{background:var(--ink);color:var(--paper)}
+  .btn-print:hover{background:#3D362D}
+  .page{width:8.5in;min-height:11in;background:#fff;margin-bottom:0.25in;padding:0.75in 0.7in;box-shadow:0 2px 12px rgba(44,36,22,0.12);page-break-after:always;position:relative}
+  .page:last-of-type{page-break-after:auto}
+  h1{font-size:28pt;font-weight:600;line-height:1.15;letter-spacing:-0.01em}
+  h2{font-size:16pt;font-weight:600;margin-bottom:0.4rem}
+  h3{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:0.3rem}
+  p{font-size:12pt;margin-bottom:0.5rem;color:#3D362D;line-height:1.55}
+  .lede{font-size:14pt;line-height:1.5;margin-bottom:1rem}
+  .tip{font-size:12pt;font-style:italic;color:var(--sage);margin:0.4rem 0;padding-left:0.5rem;border-left:2px solid var(--clay)}
+  .section-header{border-bottom:1px solid var(--line);padding-bottom:0.3rem;margin-bottom:0.6rem;display:flex;justify-content:space-between;align-items:baseline}
+  .cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2in 0.7in;background:var(--light)}
+  .cover .brand{font-size:14pt;color:var(--muted);margin-bottom:1.5rem}
+  .cover .brand em{font-style:italic;color:var(--clay)}
+  .cover h1{font-size:30pt;margin-bottom:0.5rem}
+  .cover .tagline{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:2rem}
+  .cover .description{font-size:14pt;max-width:28ch;line-height:1.5}
+  .cover .footer-note{font-size:12pt;color:var(--muted);font-family:'Work Sans',sans-serif;margin-top:1.5rem}
+  .prose-page h2{margin-top:0}
+  .prose-page ol,.prose-page ul{margin:0.4rem 0 0.6rem 1.2rem;font-size:12pt}
+  .prose-page li{margin-bottom:0.35rem;line-height:1.5;color:#3D362D}
+  .prose-page hr{border:none;border-top:1px solid var(--line);margin:0.7rem 0}
+  .honest-box{border:1px solid var(--clay);padding:0.5rem;margin:0.5rem 0;background:var(--light)}
+  .honest-box h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--clay);margin-bottom:0.2rem}
+  .honest-box p{font-size:12pt;margin-bottom:0;font-style:italic;line-height:1.5}
+  .moon-page{display:flex;flex-direction:column;min-height:100%}
+  .moon-header{text-align:center;margin-bottom:0.5rem}
+  .moon-name{font-size:24pt;font-weight:600;line-height:1.2;margin-bottom:0.1rem}
+  .moon-month{font-family:'Work Sans',sans-serif;font-size:11pt;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em}
+  .moon-body{display:flex;gap:0.5rem;flex:1}
+  .moon-text{flex:1}
+  .moon-image{width:2.8in;flex-shrink:0}
+  .moon-image img{width:100%;height:auto;display:block;border-radius:2px}
+  .moon-prompt textarea{width:100%;min-height:1.8in;resize:vertical;font-family:'Crimson Pro',Georgia,serif;font-size:12pt;padding:0.3rem;border:1px dashed var(--line);outline:none;background:var(--light);line-height:1.5}
+  .cycle-header{text-align:center;margin-bottom:0.5rem}
+  .phase-name{font-size:20pt;font-weight:600}
+  .phase-label{font-family:'Work Sans',sans-serif;font-size:10pt;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em}
+  .cycle-context{font-size:11pt;color:var(--sage);font-style:italic;text-align:center;margin-bottom:0.5rem}
+  .cycle-prompt{margin-bottom:0.4rem}
+  .cycle-prompt label{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;display:block;margin-bottom:0.15rem;color:var(--ink)}
+  .cycle-prompt textarea{width:100%;min-height:1.5in;resize:vertical;font-family:'Crimson Pro',Georgia,serif;font-size:12pt;padding:0.3rem;border:1px dashed var(--line);outline:none;background:var(--light);line-height:1.5}
+  .seasonal-page h2{margin-bottom:0.3rem}
+  .season-label{font-family:'Work Sans',sans-serif;font-size:10pt;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem}
+  .season-moons{margin:0.5rem 0}
+  .moon-row{display:flex;gap:0.3rem;margin-bottom:0.15rem;font-size:12pt}
+  .moon-row .mn{font-weight:600;min-width:6.5rem}
+  .season-notes textarea{width:100%;min-height:2.5in;resize:vertical;font-family:'Crimson Pro',Georgia,serif;font-size:12pt;padding:0.3rem;border:1px dashed var(--line);outline:none;background:var(--light);line-height:1.5}
+  .notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-top:0.4rem}
+  .note-block{border:1px solid var(--line);padding:0.4rem;min-height:3rem}
+  .note-block h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);margin-bottom:0.3rem;padding-bottom:0.1rem;border-bottom:1px dotted var(--line)}
+  .note-block textarea{width:100%;min-height:3.5in;resize:vertical;font-family:'Crimson Pro',Georgia,serif;font-size:12pt;padding:0.3rem;border:1px dashed var(--line);outline:none;background:var(--light);line-height:1.5}
+  textarea::placeholder{color:var(--clay);opacity:1}
+  @media print{body{background:none;padding:0;margin:0;print-color-adjust:exact;-webkit-print-color-adjust:exact}.page{margin:0;box-shadow:none}.toolbar{display:none}}
+</style>
+</head>
+<body class="moon-journal">
+
+<!-- COVER -->
+<div class="page cover">
+  <p class="brand">Kitchen &amp; <em>Kettle</em></p>
+  <h1>Moon<br>Journal</h1>
+  <p class="tagline">A year of listening to your rhythm.</p>
+  <p class="description">Track the full moons, follow the waxing and waning, and notice what changes in you as the year turns.</p>
+</div>
+
+<!-- THE OLD NAMES -->
+<div class="page prose-page">
+  <img src="images/img-2.jpg" alt="Moon over the mountains" style="width:100%;display:block;margin:0 0 0.4rem 0;max-height:2.2in;object-fit:cover;">
+  <div class="section-header"><h2>The Old Names</h2></div>
+  <p class="lede">Before calendars, people named moons after what was happening on the ground. The Worm Moon meant thawing soil and returning robins. The Strawberry Moon meant it was time to pick. The Harvest Moon meant work late into the night by its light.</p>
+  <p>These names come from the Algonquin people of the northeastern United States, passed along by farmers and settlers who adopted them because they made sense. Each name tells you what the world is doing that month.</p>
+  <hr>
+  <h2>How to Use This Journal</h2>
+  <p>Each full moon gets one page with the story behind its name and a prompt for reflection. Then four cycle pages — 🌑 New Moon, 🌒 Waxing, 🌕 Full, 🌘 Waning — give you space to track your own rhythm through that lunar cycle. At the end of each season, a seasonal recap page helps you step back and see the bigger pattern.</p>
+  <p><strong>🌑 New Moon</strong> — Start. Set intentions. Plant seeds.</p>
+  <p><strong>🌒 Waxing Moon</strong> — Build. Take action. Move forward.</p>
+  <p><strong>🌕 Full Moon</strong> — Reflect. Notice what came together. Celebrate.</p>
+  <p><strong>🌘 Waning Moon</strong> — Release. Let go. Clear space.</p>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>This journal gives you a framework for checking in with yourself as the year turns. Use it however makes sense to you — agriculturally, spiritually, as a monthly reflection practice, or just because you like the moon names. There's no wrong way.</p>
+  </div>
+</div>
+
+<!-- ===== WINTER ===== -->
+<!-- WOLF MOON -->
+<div class="page prose-page moon-page">
+  <img src="images/wolf.jpg" style="width:100%;max-height:5in;object-fit:cover;display:block;">
+
+  <div class="moon-header"><div class="moon-name" >🐺 Wolf Moon</div><div class="moon-month" >January</div></div>
+  <div class="moon-body">
+    <div class="moon-text">
+      <p >The deep cold of midwinter. Wolves howled outside villages — hungry, close, louder in the frozen air. The Wolf Moon is the moon of endurance. Everything is still. Everything is waiting.</p>
+      <p >What are you waiting on right now? What's dormant that you trust will wake up in its own time?</p>
+    </div>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🐺 🌑 New Moon</div><div class="phase-label">Begin</div></div>
+  <p class="cycle-context">Wolf Moon cycle</p>
+  <p class="tip">The moon is dark. This is the start. Plant seeds. Small intentions count.</p>
+  <div class="cycle-prompt"><label>What you're starting</label><textarea data-key="cycle-new-wolf-start" placeholder="A project, a habit, a question, a conversation…"></textarea></div>
+  <div class="cycle-prompt"><label>What you need</label><textarea data-key="cycle-new-wolf-need" placeholder="Time, energy, help, patience, a clear morning…"></textarea></div>
+  <div class="cycle-prompt"><label>How you'll know it's working</label><textarea data-key="cycle-new-wolf-sign" placeholder="You'll feel different. Something will change."></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🐺 🌒 Waxing Moon</div><div class="phase-label">Build</div></div>
+  <p class="cycle-context">Wolf Moon cycle</p>
+  <p class="tip">The moon grows toward full. Energy builds. Take action on what you started.</p>
+  <div class="cycle-prompt"><label>What you're building</label><textarea data-key="cycle-wax-wolf-build" placeholder="The thing you started at the new moon. What's the next step?"></textarea></div>
+  <div class="cycle-prompt"><label>What's helping</label><textarea data-key="cycle-wax-wolf-help" placeholder="People, conditions, momentum, a deadline…"></textarea></div>
+  <div class="cycle-prompt"><label>What resistance you're facing</label><textarea data-key="cycle-wax-wolf-resist" placeholder="Time, fear, distraction, your own expectations…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🐺 🌕 Full Moon</div><div class="phase-label">Reflect</div></div>
+  <p class="cycle-context">Wolf Moon cycle</p>
+  <p class="tip">The moon is fully lit. Pause and look around. Notice what came together. No action required.</p>
+  <div class="cycle-prompt"><label>What came to fruition</label><textarea data-key="cycle-full-wolf-fruition" placeholder="A completed project, a changed mind, a harvest, a realization…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're noticing</label><textarea data-key="cycle-full-wolf-notice" placeholder="A pattern, a feeling, something that kept showing up…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're celebrating</label><textarea data-key="cycle-full-wolf-celebrate" placeholder="Finished something. Started something. Got through a hard week…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🐺 🌘 Waning Moon</div><div class="phase-label">Release</div></div>
+  <p class="cycle-context">Wolf Moon cycle</p>
+  <p class="tip">The moon shrinks toward dark. Let things go. Clear space for the next cycle.</p>
+  <div class="cycle-prompt"><label>What you're letting go of</label><textarea data-key="cycle-wane-wolf-release" placeholder="A project that isn't working, a grudge, clutter, guilt…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're finishing</label><textarea data-key="cycle-wane-wolf-finish" placeholder="A task, a conversation, a commitment, a season of something…"></textarea></div>
+  <div class="cycle-prompt"><label>What you learned to carry forward</label><textarea data-key="cycle-wane-wolf-learn" placeholder="Something about yourself, about what works, about what doesn't…"></textarea></div>
+</div>
+
+<!-- SNOW MOON -->
+<div class="page prose-page moon-page">
+  <img src="images/snowmoon.jpg" style="width:100%;max-height:5in;object-fit:cover;display:block;">
+
+  <div class="moon-header"><div class="moon-name">❄️ Snow Moon</div><div class="moon-month">February</div></div>
+  <div class="moon-body">
+    <div class="moon-text">
+      <p>The heaviest snow usually falls under this moon. Some tribes called it the Hunger Moon — the hardest month for hunting, stores running low, everyone watching the sky and waiting for the thaw that hasn't come yet.</p>
+      <p>What's running low? What do you need more of — not just things, but patience, energy, hope?</p>
+    </div>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">❄️ 🌑 New Moon</div><div class="phase-label">Begin</div></div>
+  <p class="cycle-context">Snow Moon cycle</p>
+  <p class="tip">The moon is dark. This is the start. Plant seeds.</p>
+  <div class="cycle-prompt"><label>What you're starting</label><textarea data-key="cycle-new-snow-start" placeholder="A project, a habit, a question…"></textarea></div>
+  <div class="cycle-prompt"><label>What you need</label><textarea data-key="cycle-new-snow-need" placeholder="Time, energy, help, patience…"></textarea></div>
+  <div class="cycle-prompt"><label>How you'll know it's working</label><textarea data-key="cycle-new-snow-sign" placeholder="You'll feel different. Something will change."></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">❄️ 🌒 Waxing Moon</div><div class="phase-label">Build</div></div>
+  <p class="cycle-context">Snow Moon cycle</p>
+  <p class="tip">The moon grows toward full. Energy builds.</p>
+  <div class="cycle-prompt"><label>What you're building</label><textarea data-key="cycle-wax-snow-build" placeholder="The thing you started at the new moon. Next step?"></textarea></div>
+  <div class="cycle-prompt"><label>What's helping</label><textarea data-key="cycle-wax-snow-help" placeholder="People, conditions, momentum…"></textarea></div>
+  <div class="cycle-prompt"><label>What resistance you're facing</label><textarea data-key="cycle-wax-snow-resist" placeholder="Time, fear, distraction…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">❄️ 🌕 Full Moon</div><div class="phase-label">Reflect</div></div>
+  <p class="cycle-context">Snow Moon cycle</p>
+  <p class="tip">The moon is fully lit. Pause and look around.</p>
+  <div class="cycle-prompt"><label>What came to fruition</label><textarea data-key="cycle-full-snow-fruition" placeholder="A completed project, a changed mind, a realization…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're noticing</label><textarea data-key="cycle-full-snow-notice" placeholder="A pattern, a feeling, something that kept showing up…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're celebrating</label><textarea data-key="cycle-full-snow-celebrate" placeholder="Finished something. Started something. Got through a hard week…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">❄️ 🌘 Waning Moon</div><div class="phase-label">Release</div></div>
+  <p class="cycle-context">Snow Moon cycle</p>
+  <p class="tip">The moon shrinks toward dark. Let things go.</p>
+  <div class="cycle-prompt"><label>What you're letting go of</label><textarea data-key="cycle-wane-snow-release" placeholder="A project that isn't working, a grudge, clutter…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're finishing</label><textarea data-key="cycle-wane-snow-finish" placeholder="A task, a conversation, a commitment…"></textarea></div>
+  <div class="cycle-prompt"><label>What you learned to carry forward</label><textarea data-key="cycle-wane-snow-learn" placeholder="Something about yourself, about what works…"></textarea></div>
+</div>
+
+<!-- COLD MOON -->
+<div class="page prose-page moon-page">
+  <img src="images/coldmoon.jpg" style="width:100%;max-height:5in;object-fit:cover;display:block;">
+
+  <div class="moon-header"><div class="moon-name" >🌨️ Cold Moon</div><div class="moon-month" >December</div></div>
+  <div class="moon-body">
+    <div class="moon-text">
+      <p >The longest nights. The cold settles in for real. Everything is dormant, quiet, reduced to its essentials. The Cold Moon is about rest — not the rest you choose, but the rest the world forces on you when the ground freezes and the light is gone by four.</p>
+      <p >What are you ready to rest from? What can wait until the light comes back?</p>
+    </div>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🌨️ 🌑 New Moon</div><div class="phase-label">Begin</div></div>
+  <p class="cycle-context">Cold Moon cycle</p>
+  <p class="tip">The moon is dark. This is the start.</p>
+  <div class="cycle-prompt"><label>What you're starting</label><textarea data-key="cycle-new-cold-start" placeholder="A project, a habit, a question…"></textarea></div>
+  <div class="cycle-prompt"><label>What you need</label><textarea data-key="cycle-new-cold-need" placeholder="Time, energy, help, patience…"></textarea></div>
+  <div class="cycle-prompt"><label>How you'll know it's working</label><textarea data-key="cycle-new-cold-sign" placeholder="You'll feel different. Something will change."></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🌨️ 🌒 Waxing Moon</div><div class="phase-label">Build</div></div>
+  <p class="cycle-context">Cold Moon cycle</p>
+  <p class="tip">The moon grows toward full. Energy builds.</p>
+  <div class="cycle-prompt"><label>What you're building</label><textarea data-key="cycle-wax-cold-build" placeholder="The thing you started at the new moon. Next step?"></textarea></div>
+  <div class="cycle-prompt"><label>What's helping</label><textarea data-key="cycle-wax-cold-help" placeholder="People, conditions, momentum…"></textarea></div>
+  <div class="cycle-prompt"><label>What resistance you're facing</label><textarea data-key="cycle-wax-cold-resist" placeholder="Time, fear, distraction…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🌨️ 🌕 Full Moon</div><div class="phase-label">Reflect</div></div>
+  <p class="cycle-context">Cold Moon cycle</p>
+  <p class="tip">The moon is fully lit. Pause and look around.</p>
+  <div class="cycle-prompt"><label>What came to fruition</label><textarea data-key="cycle-full-cold-fruition" placeholder="A completed project, a changed mind, a realization…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're noticing</label><textarea data-key="cycle-full-cold-notice" placeholder="A pattern, a feeling, something that kept showing up…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're celebrating</label><textarea data-key="cycle-full-cold-celebrate" placeholder="Finished something. Started something. Got through a hard week…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🌨️ 🌘 Waning Moon</div><div class="phase-label">Release</div></div>
+  <p class="cycle-context">Cold Moon cycle</p>
+  <p class="tip">The moon shrinks toward dark. Let things go.</p>
+  <div class="cycle-prompt"><label>What you're letting go of</label><textarea data-key="cycle-wane-cold-release" placeholder="A project that isn't working, a grudge, clutter…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're finishing</label><textarea data-key="cycle-wane-cold-finish" placeholder="A task, a conversation, a commitment…"></textarea></div>
+  <div class="cycle-prompt"><label>What you learned to carry forward</label><textarea data-key="cycle-wane-cold-learn" placeholder="Something about yourself, about what works…"></textarea></div>
+</div>
+
+<!-- WINTER MOONS RECAP -->
+<div class="page prose-page seasonal-page">
+  <div class="section-header"><h2>Winter Moons</h2></div>
+  <div class="season-label">Wolf &middot; Snow &middot; Cold</div>
+  <p>Winter moons rise early and stay long. The world is quiet. This is the season of rest — not laziness, but the real, deep kind where nothing is urgent and the ground is doing its own work underground. The garden is asleep. The kitchen runs on root vegetables and preserved things from fall. Candles get lit earlier.</p>
+  <div class="season-moons">
+    <div class="moon-row"><span class="mn">🐺 Wolf Moon</span> January — endurance, waiting, trusting what's dormant</div>
+    <div class="moon-row"><span class="mn">❄️ Snow Moon</span> February — hunger, scarcity, watching for the thaw</div>
+    <div class="moon-row"><span class="mn">🌨️ Cold Moon</span> December — rest, darkness, the long night</div>
+  </div>
+  <div class="season-notes"><textarea data-key="season-winter" placeholder="What you did this winter. What the garden was doing. What the kitchen smelled like. What the winter moons made you notice…"></textarea></div>
+</div>
+
+<!-- ===== SPRING ===== -->
+<!-- WORM MOON -->
+<div class="page prose-page moon-page">
+  <img src="images/worm.jpg" style="width:100%;max-height:5in;object-fit:cover;display:block;">
+
+  <div class="moon-header"><div class="moon-name">🪱 Worm Moon</div><div class="moon-month">March</div></div>
+  <div class="moon-body">
+    <div class="moon-text">
+      <p>The ground softens. Earthworms appear in the thawed soil, and the robins come back. This is the moon of first signs — not spring yet, but the promise of it. Sap runs in the maples. The light changes.</p>
+      <p>What's the first small sign that something is changing for you? What's softening?</p>
+    </div>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🪱 🌑 New Moon</div><div class="phase-label">Begin</div></div>
+  <p class="cycle-context">Worm Moon cycle</p>
+  <p class="tip">The moon is dark. This is the start.</p>
+  <div class="cycle-prompt"><label>What you're starting</label><textarea data-key="cycle-new-worm-start" placeholder="A project, a habit, a question…"></textarea></div>
+  <div class="cycle-prompt"><label>What you need</label><textarea data-key="cycle-new-worm-need" placeholder="Time, energy, help, patience…"></textarea></div>
+  <div class="cycle-prompt"><label>How you'll know it's working</label><textarea data-key="cycle-new-worm-sign" placeholder="You'll feel different. Something will change."></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🪱 🌒 Waxing Moon</div><div class="phase-label">Build</div></div>
+  <p class="cycle-context">Worm Moon cycle</p>
+  <p class="tip">The moon grows toward full. Energy builds.</p>
+  <div class="cycle-prompt"><label>What you're building</label><textarea data-key="cycle-wax-worm-build" placeholder="The thing you started at the new moon. Next step?"></textarea></div>
+  <div class="cycle-prompt"><label>What's helping</label><textarea data-key="cycle-wax-worm-help" placeholder="People, conditions, momentum…"></textarea></div>
+  <div class="cycle-prompt"><label>What resistance you're facing</label><textarea data-key="cycle-wax-worm-resist" placeholder="Time, fear, distraction…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🪱 🌕 Full Moon</div><div class="phase-label">Reflect</div></div>
+  <p class="cycle-context">Worm Moon cycle</p>
+  <p class="tip">The moon is fully lit. Pause and look around.</p>
+  <div class="cycle-prompt"><label>What came to fruition</label><textarea data-key="cycle-full-worm-fruition" placeholder="A completed project, a changed mind, a realization…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're noticing</label><textarea data-key="cycle-full-worm-notice" placeholder="A pattern, a feeling, something that kept showing up…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're celebrating</label><textarea data-key="cycle-full-worm-celebrate" placeholder="Finished something. Started something. Got through a hard week…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🪱 🌘 Waning Moon</div><div class="phase-label">Release</div></div>
+  <p class="cycle-context">Worm Moon cycle</p>
+  <p class="tip">The moon shrinks toward dark. Let things go.</p>
+  <div class="cycle-prompt"><label>What you're letting go of</label><textarea data-key="cycle-wane-worm-release" placeholder="A project that isn't working, a grudge, clutter…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're finishing</label><textarea data-key="cycle-wane-worm-finish" placeholder="A task, a conversation, a commitment…"></textarea></div>
+  <div class="cycle-prompt"><label>What you learned to carry forward</label><textarea data-key="cycle-wane-worm-learn" placeholder="Something about yourself, about what works…"></textarea></div>
+</div>
+
+<!-- PINK MOON -->
+<div class="page prose-page moon-page">
+  <img src="images/pink.jpg" style="width:100%;max-height:5in;object-fit:cover;display:block;">
+
+  <div class="moon-header"><div class="moon-name">🌸 Pink Moon</div><div class="moon-month">April</div></div>
+  <div class="moon-body">
+    <div class="moon-text">
+      <p>Named for wild ground phlox — one of the first flowers of spring, a low pink carpet spreading through the woods before the trees leaf out. Not the color pink in the sky. The color pink on the ground.</p>
+      <p>What's starting to bloom, even if it's small? What's showing up that you didn't plant?</p>
+    </div>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🌸 🌑 New Moon</div><div class="phase-label">Begin</div></div>
+  <p class="cycle-context">Pink Moon cycle</p>
+  <p class="tip">The moon is dark. This is the start.</p>
+  <div class="cycle-prompt"><label>What you're starting</label><textarea data-key="cycle-new-pink-start" placeholder="A project, a habit, a question…"></textarea></div>
+  <div class="cycle-prompt"><label>What you need</label><textarea data-key="cycle-new-pink-need" placeholder="Time, energy, help, patience…"></textarea></div>
+  <div class="cycle-prompt"><label>How you'll know it's working</label><textarea data-key="cycle-new-pink-sign" placeholder="You'll feel different. Something will change."></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🌸 🌒 Waxing Moon</div><div class="phase-label">Build</div></div>
+  <p class="cycle-context">Pink Moon cycle</p>
+  <p class="tip">The moon grows toward full. Energy builds.</p>
+  <div class="cycle-prompt"><label>What you're building</label><textarea data-key="cycle-wax-pink-build" placeholder="The thing you started at the new moon. Next step?"></textarea></div>
+  <div class="cycle-prompt"><label>What's helping</label><textarea data-key="cycle-wax-pink-help" placeholder="People, conditions, momentum…"></textarea></div>
+  <div class="cycle-prompt"><label>What resistance you're facing</label><textarea data-key="cycle-wax-pink-resist" placeholder="Time, fear, distraction…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🌸 🌕 Full Moon</div><div class="phase-label">Reflect</div></div>
+  <p class="cycle-context">Pink Moon cycle</p>
+  <p class="tip">The moon is fully lit. Pause and look around.</p>
+  <div class="cycle-prompt"><label>What came to fruition</label><textarea data-key="cycle-full-pink-fruition" placeholder="A completed project, a changed mind, a realization…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're noticing</label><textarea data-key="cycle-full-pink-notice" placeholder="A pattern, a feeling, something that kept showing up…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're celebrating</label><textarea data-key="cycle-full-pink-celebrate" placeholder="Finished something. Started something. Got through a hard week…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🌸 🌘 Waning Moon</div><div class="phase-label">Release</div></div>
+  <p class="cycle-context">Pink Moon cycle</p>
+  <p class="tip">The moon shrinks toward dark. Let things go.</p>
+  <div class="cycle-prompt"><label>What you're letting go of</label><textarea data-key="cycle-wane-pink-release" placeholder="A project that isn't working, a grudge, clutter…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're finishing</label><textarea data-key="cycle-wane-pink-finish" placeholder="A task, a conversation, a commitment…"></textarea></div>
+  <div class="cycle-prompt"><label>What you learned to carry forward</label><textarea data-key="cycle-wane-pink-learn" placeholder="Something about yourself, about what works…"></textarea></div>
+</div>
+
+<!-- FLOWER MOON -->
+<div class="page prose-page moon-page">
+  <img src="images/flower.jpg" style="width:100%;max-height:5in;object-fit:cover;display:block;">
+
+  <div class="moon-header"><div class="moon-name" >🌺 Flower Moon</div><div class="moon-month" >May</div></div>
+  <div class="moon-body">
+    <div class="moon-text">
+      <p >Everything blooms at once. The world goes from brown and gray to green and loud almost overnight. This is the moon of abundance — not the harvest kind, but the bursting, messy, can't-keep-up kind.</p>
+      <p >What's growing faster than you expected? What needs your attention before it gets away from you?</p>
+    </div>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🌺 🌑 New Moon</div><div class="phase-label">Begin</div></div>
+  <p class="cycle-context">Flower Moon cycle</p>
+  <p class="tip">The moon is dark. This is the start.</p>
+  <div class="cycle-prompt"><label>What you're starting</label><textarea data-key="cycle-new-flower-start" placeholder="A project, a habit, a question…"></textarea></div>
+  <div class="cycle-prompt"><label>What you need</label><textarea data-key="cycle-new-flower-need" placeholder="Time, energy, help, patience…"></textarea></div>
+  <div class="cycle-prompt"><label>How you'll know it's working</label><textarea data-key="cycle-new-flower-sign" placeholder="You'll feel different. Something will change."></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🌺 🌒 Waxing Moon</div><div class="phase-label">Build</div></div>
+  <p class="cycle-context">Flower Moon cycle</p>
+  <p class="tip">The moon grows toward full. Energy builds.</p>
+  <div class="cycle-prompt"><label>What you're building</label><textarea data-key="cycle-wax-flower-build" placeholder="The thing you started at the new moon. Next step?"></textarea></div>
+  <div class="cycle-prompt"><label>What's helping</label><textarea data-key="cycle-wax-flower-help" placeholder="People, conditions, momentum…"></textarea></div>
+  <div class="cycle-prompt"><label>What resistance you're facing</label><textarea data-key="cycle-wax-flower-resist" placeholder="Time, fear, distraction…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🌺 🌕 Full Moon</div><div class="phase-label">Reflect</div></div>
+  <p class="cycle-context">Flower Moon cycle</p>
+  <p class="tip">The moon is fully lit. Pause and look around.</p>
+  <div class="cycle-prompt"><label>What came to fruition</label><textarea data-key="cycle-full-flower-fruition" placeholder="A completed project, a changed mind, a realization…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're noticing</label><textarea data-key="cycle-full-flower-notice" placeholder="A pattern, a feeling, something that kept showing up…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're celebrating</label><textarea data-key="cycle-full-flower-celebrate" placeholder="Finished something. Started something. Got through a hard week…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🌺 🌘 Waning Moon</div><div class="phase-label">Release</div></div>
+  <p class="cycle-context">Flower Moon cycle</p>
+  <p class="tip">The moon shrinks toward dark. Let things go.</p>
+  <div class="cycle-prompt"><label>What you're letting go of</label><textarea data-key="cycle-wane-flower-release" placeholder="A project that isn't working, a grudge, clutter…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're finishing</label><textarea data-key="cycle-wane-flower-finish" placeholder="A task, a conversation, a commitment…"></textarea></div>
+  <div class="cycle-prompt"><label>What you learned to carry forward</label><textarea data-key="cycle-wane-flower-learn" placeholder="Something about yourself, about what works…"></textarea></div>
+</div>
+
+<!-- SPRING MOONS RECAP -->
+<div class="page prose-page seasonal-page">
+  <div class="section-header"><h2>Spring Moons</h2></div>
+  <div class="season-label">Worm &middot; Pink &middot; Flower</div>
+  <p>Spring moons feel urgent. Everything happens fast — the thaw, the bloom, the burst of green. The garden wakes up and immediately demands attention. The kitchen shifts from storage to fresh things. These moons are about starting, noticing, keeping up.</p>
+  <div class="season-moons">
+    <div class="moon-row"><span class="mn">🪱 Worm Moon</span> March — thaw, first signs, the ground softening</div>
+    <div class="moon-row"><span class="mn">🌸 Pink Moon</span> April — first flowers, what's showing up unasked</div>
+    <div class="moon-row"><span class="mn">🌺 Flower Moon</span> May — everything at once, the rush of growth</div>
+  </div>
+  <div class="season-notes"><textarea data-key="season-spring" placeholder="What you started. What the garden grew. What surprised you. What the spring moons made you notice…"></textarea></div>
+</div>
+
+<!-- ===== SUMMER ===== -->
+<!-- STRAWBERRY MOON -->
+<div class="page prose-page moon-page">
+  <img src="images/strawberry.jpg" style="width:100%;max-height:5in;object-fit:cover;display:block;">
+
+  <div class="moon-header"><div class="moon-name" >🍓 Strawberry Moon</div><div class="moon-month" >June</div></div>
+  <div class="moon-body">
+    <div class="moon-text">
+      <p >Strawberries ripen. This moon marks the first real harvest of the year — the first thing you can eat straight off the plant, warm from the sun, no cooking required. A short window. If you don't pick them, they're gone.</p>
+      <p >What's ready to harvest in your life right now? What will pass if you don't catch it?</p>
+    </div>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🍓 🌑 New Moon</div><div class="phase-label">Begin</div></div>
+  <p class="cycle-context">Strawberry Moon cycle</p>
+  <p class="tip">The moon is dark. This is the start.</p>
+  <div class="cycle-prompt"><label>What you're starting</label><textarea data-key="cycle-new-strawberry-start" placeholder="A project, a habit, a question…"></textarea></div>
+  <div class="cycle-prompt"><label>What you need</label><textarea data-key="cycle-new-strawberry-need" placeholder="Time, energy, help, patience…"></textarea></div>
+  <div class="cycle-prompt"><label>How you'll know it's working</label><textarea data-key="cycle-new-strawberry-sign" placeholder="You'll feel different. Something will change."></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🍓 🌒 Waxing Moon</div><div class="phase-label">Build</div></div>
+  <p class="cycle-context">Strawberry Moon cycle</p>
+  <p class="tip">The moon grows toward full. Energy builds.</p>
+  <div class="cycle-prompt"><label>What you're building</label><textarea data-key="cycle-wax-strawberry-build" placeholder="The thing you started at the new moon. Next step?"></textarea></div>
+  <div class="cycle-prompt"><label>What's helping</label><textarea data-key="cycle-wax-strawberry-help" placeholder="People, conditions, momentum…"></textarea></div>
+  <div class="cycle-prompt"><label>What resistance you're facing</label><textarea data-key="cycle-wax-strawberry-resist" placeholder="Time, fear, distraction…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🍓 🌕 Full Moon</div><div class="phase-label">Reflect</div></div>
+  <p class="cycle-context">Strawberry Moon cycle</p>
+  <p class="tip">The moon is fully lit. Pause and look around.</p>
+  <div class="cycle-prompt"><label>What came to fruition</label><textarea data-key="cycle-full-strawberry-fruition" placeholder="A completed project, a changed mind, a realization…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're noticing</label><textarea data-key="cycle-full-strawberry-notice" placeholder="A pattern, a feeling, something that kept showing up…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're celebrating</label><textarea data-key="cycle-full-strawberry-celebrate" placeholder="Finished something. Started something. Got through a hard week…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🍓 🌘 Waning Moon</div><div class="phase-label">Release</div></div>
+  <p class="cycle-context">Strawberry Moon cycle</p>
+  <p class="tip">The moon shrinks toward dark. Let things go.</p>
+  <div class="cycle-prompt"><label>What you're letting go of</label><textarea data-key="cycle-wane-strawberry-release" placeholder="A project that isn't working, a grudge, clutter…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're finishing</label><textarea data-key="cycle-wane-strawberry-finish" placeholder="A task, a conversation, a commitment…"></textarea></div>
+  <div class="cycle-prompt"><label>What you learned to carry forward</label><textarea data-key="cycle-wane-strawberry-learn" placeholder="Something about yourself, about what works…"></textarea></div>
+</div>
+
+<!-- BUCK MOON -->
+<div class="page prose-page moon-page">
+  <img src="images/buck.jpg" style="width:100%;max-height:5in;object-fit:cover;display:block;">
+
+  <div class="moon-header"><div class="moon-name" >🦌 Buck Moon</div><div class="moon-month" >July</div></div>
+  <div class="moon-body">
+    <div class="moon-text">
+      <p >Bucks grow new antlers, still covered in velvet. The summer is at full tilt — heat, growth, long days that feel like they'll never end. Thunderstorms roll through in the afternoons. Everything is at its peak and slightly too much.</p>
+      <p >What's at full strength right now? What's too much? What are you growing that you haven't shown anyone yet?</p>
+    </div>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🦌 🌑 New Moon</div><div class="phase-label">Begin</div></div>
+  <p class="cycle-context">Buck Moon cycle</p>
+  <p class="tip">The moon is dark. This is the start.</p>
+  <div class="cycle-prompt"><label>What you're starting</label><textarea data-key="cycle-new-buck-start" placeholder="A project, a habit, a question…"></textarea></div>
+  <div class="cycle-prompt"><label>What you need</label><textarea data-key="cycle-new-buck-need" placeholder="Time, energy, help, patience…"></textarea></div>
+  <div class="cycle-prompt"><label>How you'll know it's working</label><textarea data-key="cycle-new-buck-sign" placeholder="You'll feel different. Something will change."></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🦌 🌒 Waxing Moon</div><div class="phase-label">Build</div></div>
+  <p class="cycle-context">Buck Moon cycle</p>
+  <p class="tip">The moon grows toward full. Energy builds.</p>
+  <div class="cycle-prompt"><label>What you're building</label><textarea data-key="cycle-wax-buck-build" placeholder="The thing you started at the new moon. Next step?"></textarea></div>
+  <div class="cycle-prompt"><label>What's helping</label><textarea data-key="cycle-wax-buck-help" placeholder="People, conditions, momentum…"></textarea></div>
+  <div class="cycle-prompt"><label>What resistance you're facing</label><textarea data-key="cycle-wax-buck-resist" placeholder="Time, fear, distraction…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🦌 🌕 Full Moon</div><div class="phase-label">Reflect</div></div>
+  <p class="cycle-context">Buck Moon cycle</p>
+  <p class="tip">The moon is fully lit. Pause and look around.</p>
+  <div class="cycle-prompt"><label>What came to fruition</label><textarea data-key="cycle-full-buck-fruition" placeholder="A completed project, a changed mind, a realization…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're noticing</label><textarea data-key="cycle-full-buck-notice" placeholder="A pattern, a feeling, something that kept showing up…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're celebrating</label><textarea data-key="cycle-full-buck-celebrate" placeholder="Finished something. Started something. Got through a hard week…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🦌 🌘 Waning Moon</div><div class="phase-label">Release</div></div>
+  <p class="cycle-context">Buck Moon cycle</p>
+  <p class="tip">The moon shrinks toward dark. Let things go.</p>
+  <div class="cycle-prompt"><label>What you're letting go of</label><textarea data-key="cycle-wane-buck-release" placeholder="A project that isn't working, a grudge, clutter…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're finishing</label><textarea data-key="cycle-wane-buck-finish" placeholder="A task, a conversation, a commitment…"></textarea></div>
+  <div class="cycle-prompt"><label>What you learned to carry forward</label><textarea data-key="cycle-wane-buck-learn" placeholder="Something about yourself, about what works…"></textarea></div>
+</div>
+
+<!-- STURGEON MOON -->
+<div class="page prose-page moon-page">
+  <img src="images/sturgeon.jpg" style="width:100%;max-height:5in;object-fit:cover;display:block;">
+
+  <div class="moon-header"><div class="moon-name" >🐟 Sturgeon Moon</div><div class="moon-month" >August</div></div>
+  <div class="moon-body">
+    <div class="moon-text">
+      <p >The Great Lakes were full of sturgeon under this moon — huge, ancient fish, easy to catch. The gardens are overflowing. The preserving begins in earnest. This moon is about the work of gathering in.</p>
+      <p >What are you gathering? What needs to be put by before the season turns?</p>
+    </div>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🐟 🌑 New Moon</div><div class="phase-label">Begin</div></div>
+  <p class="cycle-context">Sturgeon Moon cycle</p>
+  <p class="tip">The moon is dark. This is the start.</p>
+  <div class="cycle-prompt"><label>What you're starting</label><textarea data-key="cycle-new-sturgeon-start" placeholder="A project, a habit, a question…"></textarea></div>
+  <div class="cycle-prompt"><label>What you need</label><textarea data-key="cycle-new-sturgeon-need" placeholder="Time, energy, help, patience…"></textarea></div>
+  <div class="cycle-prompt"><label>How you'll know it's working</label><textarea data-key="cycle-new-sturgeon-sign" placeholder="You'll feel different. Something will change."></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🐟 🌒 Waxing Moon</div><div class="phase-label">Build</div></div>
+  <p class="cycle-context">Sturgeon Moon cycle</p>
+  <p class="tip">The moon grows toward full. Energy builds.</p>
+  <div class="cycle-prompt"><label>What you're building</label><textarea data-key="cycle-wax-sturgeon-build" placeholder="The thing you started at the new moon. Next step?"></textarea></div>
+  <div class="cycle-prompt"><label>What's helping</label><textarea data-key="cycle-wax-sturgeon-help" placeholder="People, conditions, momentum…"></textarea></div>
+  <div class="cycle-prompt"><label>What resistance you're facing</label><textarea data-key="cycle-wax-sturgeon-resist" placeholder="Time, fear, distraction…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🐟 🌕 Full Moon</div><div class="phase-label">Reflect</div></div>
+  <p class="cycle-context">Sturgeon Moon cycle</p>
+  <p class="tip">The moon is fully lit. Pause and look around.</p>
+  <div class="cycle-prompt"><label>What came to fruition</label><textarea data-key="cycle-full-sturgeon-fruition" placeholder="A completed project, a changed mind, a realization…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're noticing</label><textarea data-key="cycle-full-sturgeon-notice" placeholder="A pattern, a feeling, something that kept showing up…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're celebrating</label><textarea data-key="cycle-full-sturgeon-celebrate" placeholder="Finished something. Started something. Got through a hard week…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🐟 🌘 Waning Moon</div><div class="phase-label">Release</div></div>
+  <p class="cycle-context">Sturgeon Moon cycle</p>
+  <p class="tip">The moon shrinks toward dark. Let things go.</p>
+  <div class="cycle-prompt"><label>What you're letting go of</label><textarea data-key="cycle-wane-sturgeon-release" placeholder="A project that isn't working, a grudge, clutter…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're finishing</label><textarea data-key="cycle-wane-sturgeon-finish" placeholder="A task, a conversation, a commitment…"></textarea></div>
+  <div class="cycle-prompt"><label>What you learned to carry forward</label><textarea data-key="cycle-wane-sturgeon-learn" placeholder="Something about yourself, about what works…"></textarea></div>
+</div>
+
+<!-- SUMMER MOONS RECAP -->
+<div class="page prose-page seasonal-page">
+  <div class="section-header"><h2>Summer Moons</h2></div>
+  <div class="season-label">Strawberry &middot; Buck &middot; Sturgeon</div>
+  <p>Summer moons are warm and late-rising. The days are long enough that the moon almost feels like an afterthought — until you're outside after dark and notice it hanging there, orange and huge near the horizon. The garden is producing faster than you can pick. The kitchen is full of bowls of tomatoes and peaches.</p>
+  <div class="season-moons">
+    <div class="moon-row"><span class="mn">🍓 Strawberry Moon</span> June — first harvest, catching what's ripe</div>
+    <div class="moon-row"><span class="mn">🦌 Buck Moon</span> July — full strength, too much, new growth</div>
+    <div class="moon-row"><span class="mn">🐟 Sturgeon Moon</span> August — gathering in, preserving, the work of abundance</div>
+  </div>
+  <div class="season-notes"><textarea data-key="season-summer" placeholder="What you harvested. What was too much. What the garden gave you. What the summer moons made you notice…"></textarea></div>
+</div>
+
+<!-- ===== AUTUMN ===== -->
+<!-- CORN MOON -->
+<div class="page prose-page moon-page">
+  <img src="images/harvest.jpg" style="width:100%;max-height:5in;object-fit:cover;display:block;">
+
+  <div class="moon-header"><div class="moon-name" >🌽 Corn Moon</div><div class="moon-month" >September</div></div>
+  <div class="moon-body">
+    <div class="moon-text">
+      <p >Corn is ready. Sometimes called the Harvest Moon when it falls closest to the equinox — the moon that rises right after sunset for several nights in a row, giving farmers extra light to bring in the crops. The year's work shows its results.</p>
+      <p >What's the harvest of your year so far? What did you plant (in any sense) that's come through?</p>
+    </div>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🌽 🌑 New Moon</div><div class="phase-label">Begin</div></div>
+  <p class="cycle-context">Corn Moon cycle</p>
+  <p class="tip">The moon is dark. This is the start.</p>
+  <div class="cycle-prompt"><label>What you're starting</label><textarea data-key="cycle-new-corn-start" placeholder="A project, a habit, a question…"></textarea></div>
+  <div class="cycle-prompt"><label>What you need</label><textarea data-key="cycle-new-corn-need" placeholder="Time, energy, help, patience…"></textarea></div>
+  <div class="cycle-prompt"><label>How you'll know it's working</label><textarea data-key="cycle-new-corn-sign" placeholder="You'll feel different. Something will change."></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🌽 🌒 Waxing Moon</div><div class="phase-label">Build</div></div>
+  <p class="cycle-context">Corn Moon cycle</p>
+  <p class="tip">The moon grows toward full. Energy builds.</p>
+  <div class="cycle-prompt"><label>What you're building</label><textarea data-key="cycle-wax-corn-build" placeholder="The thing you started at the new moon. Next step?"></textarea></div>
+  <div class="cycle-prompt"><label>What's helping</label><textarea data-key="cycle-wax-corn-help" placeholder="People, conditions, momentum…"></textarea></div>
+  <div class="cycle-prompt"><label>What resistance you're facing</label><textarea data-key="cycle-wax-corn-resist" placeholder="Time, fear, distraction…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🌽 🌕 Full Moon</div><div class="phase-label">Reflect</div></div>
+  <p class="cycle-context">Corn Moon cycle</p>
+  <p class="tip">The moon is fully lit. Pause and look around.</p>
+  <div class="cycle-prompt"><label>What came to fruition</label><textarea data-key="cycle-full-corn-fruition" placeholder="A completed project, a changed mind, a realization…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're noticing</label><textarea data-key="cycle-full-corn-notice" placeholder="A pattern, a feeling, something that kept showing up…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're celebrating</label><textarea data-key="cycle-full-corn-celebrate" placeholder="Finished something. Started something. Got through a hard week…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🌽 🌘 Waning Moon</div><div class="phase-label">Release</div></div>
+  <p class="cycle-context">Corn Moon cycle</p>
+  <p class="tip">The moon shrinks toward dark. Let things go.</p>
+  <div class="cycle-prompt"><label>What you're letting go of</label><textarea data-key="cycle-wane-corn-release" placeholder="A project that isn't working, a grudge, clutter…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're finishing</label><textarea data-key="cycle-wane-corn-finish" placeholder="A task, a conversation, a commitment…"></textarea></div>
+  <div class="cycle-prompt"><label>What you learned to carry forward</label><textarea data-key="cycle-wane-corn-learn" placeholder="Something about yourself, about what works…"></textarea></div>
+</div>
+
+<!-- HUNTER'S MOON -->
+<div class="page prose-page moon-page">
+  <img src="images/hunter.jpg" style="width:100%;max-height:5in;object-fit:cover;display:block;">
+
+  <div class="moon-header"><div class="moon-name" >🏹 Hunter's Moon</div><div class="moon-month" >October</div></div>
+  <div class="moon-body">
+    <div class="moon-text">
+      <p >The fields are cleared, the animals are fattened for winter, and there's nothing left to hide behind. The Hunter's Moon rises bright after sunset, same as the Harvest Moon — extra light for the hunt. The world is stripping down.</p>
+      <p >What's been cleared away? What's visible now that wasn't before?</p>
+    </div>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🏹 🌑 New Moon</div><div class="phase-label">Begin</div></div>
+  <p class="cycle-context">Hunter's Moon cycle</p>
+  <p class="tip">The moon is dark. This is the start.</p>
+  <div class="cycle-prompt"><label>What you're starting</label><textarea data-key="cycle-new-hunter-start" placeholder="A project, a habit, a question…"></textarea></div>
+  <div class="cycle-prompt"><label>What you need</label><textarea data-key="cycle-new-hunter-need" placeholder="Time, energy, help, patience…"></textarea></div>
+  <div class="cycle-prompt"><label>How you'll know it's working</label><textarea data-key="cycle-new-hunter-sign" placeholder="You'll feel different. Something will change."></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🏹 🌒 Waxing Moon</div><div class="phase-label">Build</div></div>
+  <p class="cycle-context">Hunter's Moon cycle</p>
+  <p class="tip">The moon grows toward full. Energy builds.</p>
+  <div class="cycle-prompt"><label>What you're building</label><textarea data-key="cycle-wax-hunter-build" placeholder="The thing you started at the new moon. Next step?"></textarea></div>
+  <div class="cycle-prompt"><label>What's helping</label><textarea data-key="cycle-wax-hunter-help" placeholder="People, conditions, momentum…"></textarea></div>
+  <div class="cycle-prompt"><label>What resistance you're facing</label><textarea data-key="cycle-wax-hunter-resist" placeholder="Time, fear, distraction…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🏹 🌕 Full Moon</div><div class="phase-label">Reflect</div></div>
+  <p class="cycle-context">Hunter's Moon cycle</p>
+  <p class="tip">The moon is fully lit. Pause and look around.</p>
+  <div class="cycle-prompt"><label>What came to fruition</label><textarea data-key="cycle-full-hunter-fruition" placeholder="A completed project, a changed mind, a realization…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're noticing</label><textarea data-key="cycle-full-hunter-notice" placeholder="A pattern, a feeling, something that kept showing up…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're celebrating</label><textarea data-key="cycle-full-hunter-celebrate" placeholder="Finished something. Started something. Got through a hard week…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🏹 🌘 Waning Moon</div><div class="phase-label">Release</div></div>
+  <p class="cycle-context">Hunter's Moon cycle</p>
+  <p class="tip">The moon shrinks toward dark. Let things go.</p>
+  <div class="cycle-prompt"><label>What you're letting go of</label><textarea data-key="cycle-wane-hunter-release" placeholder="A project that isn't working, a grudge, clutter…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're finishing</label><textarea data-key="cycle-wane-hunter-finish" placeholder="A task, a conversation, a commitment…"></textarea></div>
+  <div class="cycle-prompt"><label>What you learned to carry forward</label><textarea data-key="cycle-wane-hunter-learn" placeholder="Something about yourself, about what works…"></textarea></div>
+</div>
+
+<!-- BEAVER MOON -->
+<div class="page prose-page moon-page">
+  <img src="images/beaver.jpg" style="width:100%;max-height:5in;object-fit:cover;display:block;">
+
+  <div class="moon-header"><div class="moon-name" >🦫 Beaver Moon</div><div class="moon-month" >November</div></div>
+  <div class="moon-body">
+    <div class="moon-text">
+      <p >Beavers are building their winter dams, working fast before the freeze. This was also the moon to set beaver traps before the ponds iced over — securing warm furs for the winter ahead. Preparation, not panic.</p>
+      <p >What are you building to get through the winter? What shelter are you creating — for yourself or for someone else?</p>
+    </div>
+  </div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🦫 🌑 New Moon</div><div class="phase-label">Begin</div></div>
+  <p class="cycle-context">Beaver Moon cycle</p>
+  <p class="tip">The moon is dark. This is the start.</p>
+  <div class="cycle-prompt"><label>What you're starting</label><textarea data-key="cycle-new-beaver-start" placeholder="A project, a habit, a question…"></textarea></div>
+  <div class="cycle-prompt"><label>What you need</label><textarea data-key="cycle-new-beaver-need" placeholder="Time, energy, help, patience…"></textarea></div>
+  <div class="cycle-prompt"><label>How you'll know it's working</label><textarea data-key="cycle-new-beaver-sign" placeholder="You'll feel different. Something will change."></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🦫 🌒 Waxing Moon</div><div class="phase-label">Build</div></div>
+  <p class="cycle-context">Beaver Moon cycle</p>
+  <p class="tip">The moon grows toward full. Energy builds.</p>
+  <div class="cycle-prompt"><label>What you're building</label><textarea data-key="cycle-wax-beaver-build" placeholder="The thing you started at the new moon. Next step?"></textarea></div>
+  <div class="cycle-prompt"><label>What's helping</label><textarea data-key="cycle-wax-beaver-help" placeholder="People, conditions, momentum…"></textarea></div>
+  <div class="cycle-prompt"><label>What resistance you're facing</label><textarea data-key="cycle-wax-beaver-resist" placeholder="Time, fear, distraction…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🦫 🌕 Full Moon</div><div class="phase-label">Reflect</div></div>
+  <p class="cycle-context">Beaver Moon cycle</p>
+  <p class="tip">The moon is fully lit. Pause and look around.</p>
+  <div class="cycle-prompt"><label>What came to fruition</label><textarea data-key="cycle-full-beaver-fruition" placeholder="A completed project, a changed mind, a realization…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're noticing</label><textarea data-key="cycle-full-beaver-notice" placeholder="A pattern, a feeling, something that kept showing up…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're celebrating</label><textarea data-key="cycle-full-beaver-celebrate" placeholder="Finished something. Started something. Got through a hard week…"></textarea></div>
+</div>
+<div class="page prose-page">
+  <div class="cycle-header"><div class="phase-name">🦫 🌘 Waning Moon</div><div class="phase-label">Release</div></div>
+  <p class="cycle-context">Beaver Moon cycle</p>
+  <p class="tip">The moon shrinks toward dark. Let things go.</p>
+  <div class="cycle-prompt"><label>What you're letting go of</label><textarea data-key="cycle-wane-beaver-release" placeholder="A project that isn't working, a grudge, clutter…"></textarea></div>
+  <div class="cycle-prompt"><label>What you're finishing</label><textarea data-key="cycle-wane-beaver-finish" placeholder="A task, a conversation, a commitment…"></textarea></div>
+  <div class="cycle-prompt"><label>What you learned to carry forward</label><textarea data-key="cycle-wane-beaver-learn" placeholder="Something about yourself, about what works…"></textarea></div>
+</div>
+
+<!-- AUTUMN MOONS RECAP -->
+<div class="page prose-page seasonal-page">
+  <div class="section-header"><h2>Autumn Moons</h2></div>
+  <div class="season-label">Corn &middot; Hunter's &middot; Beaver</div>
+  <p>Autumn moons are the best moons — bright, early-rising, the Harvest Moon giving you extra light for extra work. The garden is winding down. The kitchen smells like apples and squash and bread again. These moons are about gathering what you grew, clearing what's done, and getting ready.</p>
+  <div class="season-moons">
+    <div class="moon-row"><span class="mn">🌽 Corn Moon</span> September — the main harvest, what the year produced</div>
+    <div class="moon-row"><span class="mn">🏹 Hunter's Moon</span> October — stripping down, seeing clearly</div>
+    <div class="moon-row"><span class="mn">🦫 Beaver Moon</span> November — building shelter, preparing for winter</div>
+  </div>
+  <div class="season-notes"><textarea data-key="season-autumn" placeholder="What you gathered. What you cleared. What you're preparing for. What the autumn moons made you notice…"></textarea></div>
+</div>
+
+<!-- NOTES -->
+<div class="page prose-page">
+  <div class="section-header"><h2>Notes</h2></div>
+  <p class="tip">For anything that doesn't fit a specific moon or cycle. Observations, patterns, things you want to remember.</p>
+  <div class="notes-grid">
+    <div class="note-block"><h4>Notes</h4><textarea data-key="notes-1" placeholder="Something you noticed, a pattern, a thought…"></textarea></div>
+    <div class="note-block"><h4>Notes</h4><textarea data-key="notes-2" placeholder="Something you noticed, a pattern, a thought…"></textarea></div>
+    <div class="note-block"><h4>Notes</h4><textarea data-key="notes-3" placeholder="Something you noticed, a pattern, a thought…"></textarea></div>
+    <div class="note-block"><h4>Notes</h4><textarea data-key="notes-4" placeholder="Something you noticed, a pattern, a thought…"></textarea></div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="page" style="background:var(--paper);">
+  <div style="display:flex; flex-direction:column; justify-content:center; height:100%; max-width:75%; margin:0 auto; text-align:center;">
+    <h2>Go outside and look up</h2>
+    <p style="margin-bottom:1rem;">The moon will keep rising — same phases, same rhythm, same quiet pull on the tides and the soil and whatever draws you to look up at it. The journal is a way to mark time. To look back after a year and see what grew and what didn't and what you let go of without meaning to. However you use it — however the moons speak to you — that's the right way.</p>
+    <p style="margin-bottom:2rem;"><em>Works because it works.</em></p>
+    <p class="small" style="color:#b0a99e; margin-top:3rem;">Kitchen &amp; Kettle</p>
+    <p class="small" style="color:#b0a99e;">A quieter way to run a kitchen.</p>
+  </div>
+</div>
+
+
+</body>
+</html>

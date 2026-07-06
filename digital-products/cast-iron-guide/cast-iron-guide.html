@@ -193,10 +193,8 @@
   .do ul, .dont ul { margin: 0; padding-left: 1rem; font-size:12pt; }
   .do li, .dont li { margin-bottom: 0.12rem; line-height: 1.4; }
   @media print {
-    body { background: none; padding: 0; margin: 0; }
-    .page { margin: 0; box-shadow: none; background: #fff; }
-    .trouble-table th { background: none; }
-    .cover { background: #fff !important; }
+    body { background: none; padding: 0; margin: 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .page { margin: 0; box-shadow: none; }
     .toolbar { display: none; }
     .note-field { background: repeating-linear-gradient(transparent, transparent 1.35rem, #ccc 1.35rem, #ccc 1.4rem); cursor: default; }
   }

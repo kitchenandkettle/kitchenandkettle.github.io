@@ -8,7 +8,7 @@ const BASE = '/home/chels/test/digital-products';
 const FILES = [
   'seasonal-preservation-calendar/calendar.html',
   'egg-preservation-guide/egg-guide.html',
-  'recipe-cards/recipe-cards.html',
+  'recipe-cards/recipe-cards-static.html',
   'homekeeping-guide/homekeeping-guide-interactive.html',
   'preservation-logbook/preservation-logbook.html',
   'kitchen-planner-bundle/kitchen-planner-bundle.html',
@@ -20,6 +20,7 @@ const FILES = [
   'beeswax-wraps/beeswax-wraps.html',
   'apothecary-journal/apothecary-journal.html',
   'egg-handling-card/egg-handling-card.html',
+  'Moon-Journal/moon-journal-static.html',
 ];
 
 // --- Must match EXACTLY the injected CSS in convert_pdfs.js ---
@@ -27,6 +28,7 @@ const INJECT_CSS = `
         body { padding: 0 !important; margin: 0 !important; }
         .toolbar { display: none !important; }
         .interactive-only { display: none !important; }
+        .pdf-only { display: block !important; }
         textarea::placeholder { color: transparent !important; }
         input::placeholder { color: transparent !important; }
         textarea { border: 1px dashed #D9D0C1 !important; }

@@ -1,182 +1,384 @@
-     1|<!DOCTYPE html>
-     2|<html lang="en">
-     3|<head>
-     4|<meta charset="UTF-8">
-     5|<meta name="viewport" content="width=device-width, initial-scale=1.0">
-     6|<title>Kitchen & Kettle — Recipe Cards</title>
-     7|<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
-     8|<style>
-     9|  *{margin:0;padding:0;box-sizing:border-box}
-    10|  body{font-family:'Crimson Pro',Georgia,serif;color:#2C2416;background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem}
-    11|  .page{width:8.5in;min-height:11in;margin-bottom:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,.1);page-break-after:always;position:relative;display:flex;flex-direction:column;gap:.35in;padding:.4in;background:#fff}
-    12|  .page:last-of-type{page-break-after:auto}
-    13|  @media print{body{background:none;padding:0;margin:0}.page{margin:0;box-shadow:none;page-break-after:always}}
-    14|
-    15|  /* ── Card: warm vintage paper, dark frame ── */
-    16|  .card{flex:1;position:relative;overflow:hidden;display:flex;flex-direction:column;
-    17|    background:linear-gradient(175deg,#fef8ec 0%,#fdf3e0 30%,#fef6e8 60%,#fdf4e2 100%);
-    18|    border:3px solid #3a2010;border-radius:2px;}
-    19|  /* Inner frame */
-    20|  .card::before{content:'';position:absolute;top:6px;left:6px;right:6px;bottom:6px;
-    21|    border:1px solid rgba(58,32,16,.08);border-radius:1px;pointer-events:none}
-    22|
-    23|  /* ── Paper texture overlay ── */
-    24|  .card::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
-    25|    background:radial-gradient(ellipse at 30% 20%,rgba(210,170,120,.06),transparent 60%),
-    26|               radial-gradient(ellipse at 70% 50%,rgba(190,150,100,.04),transparent 50%);
-    27|    opacity:.6}
-    28|
-    29|  /* ── Kettle stamp (top-right) ── */
-    30|  .kettle{position:absolute;top:10px;right:14px;z-index:2;pointer-events:none;
-    31|    .kettle{position:absolute;top:8px;right:12px;z-index:2;pointer-events:none;width:62px;height:62px;opacity:.78;transform:rotate(-4deg)}
-    32|
-    33|  /* ── Amber decorative bands ── */
-    34|  .top-band{height:3px;margin:3px 20px 8px;position:relative;z-index:1;
-    35|    background:linear-gradient(90deg,transparent,rgba(200,150,90,.4) 25%,rgba(200,150,90,.4) 75%,transparent)}
-    36|  .bottom-band{height:4px;margin:8px 15px 3px;position:relative;z-index:1;
-    37|    background:linear-gradient(90deg,transparent,rgba(190,140,80,.45) 20%,rgba(190,140,80,.45) 80%,transparent);border-radius:1px}
-    38|
-    39|  /* ── Title ── */
-    40|  .card h3{font:600 14pt 'Crimson Pro',serif;padding:2px 20px;position:relative;z-index:1;color:#3a2010}
-    41|
-    42|  /* ── Body / columns ── */
-    43|  .card-body{display:flex;flex:1;gap:.2in;padding:0 20px 6px;position:relative;z-index:1}
-    44|  .col{display:flex;flex-direction:column}
-    45|  .col.ing{flex:1}.col.inst{flex:2}
-    46|  .label{font:600 7pt 'Work Sans',sans-serif;text-transform:uppercase;letter-spacing:.08em;
-    47|    margin-bottom:3px;position:relative;z-index:1;color:#5c3a20}
-    48|  /* Notebook lines */
-    49|  .lines{flex:1;min-height:1.6in;position:relative;z-index:1}
-    50|  .lines::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;
-    51|    background:repeating-linear-gradient(to bottom,transparent,transparent 18px,rgba(140,110,70,.13) 18px,rgba(140,110,70,.13) 19px)}
-    52|  .lines::after{content:'';position:absolute;top:0;bottom:0;left:22px;width:1px;background:rgba(180,140,100,.12)}
-    53|
-    54|  .page-footer{position:absolute;bottom:.15in;left:.4in;right:.4in;display:flex;justify-content:space-between;font:400 6pt 'Work Sans',sans-serif;color:#d0cbc0}
-    55|  .cut-guide{position:absolute;left:.4in;right:.4in;top:50%;border-top:1px dashed #ddd;pointer-events:none}
-    56|</style>
-    57|</head>
-    58|<body>
-    59|
-    60|<div class="page"><div class="cut-guide"></div>
-    61|  <div class="card">
-    62|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
-    63|    <div class="top-band"></div>
-    64|    <h3> </h3>
-    65|    <div class="card-body">
-    66|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
-    67|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
-    68|    </div>
-    69|    <div class="bottom-band"></div>
-    70|  </div>
-    71|  <div class="card">
-    72|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
-    73|    <div class="top-band"></div>
-    74|    <h3> </h3>
-    75|    <div class="card-body">
-    76|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
-    77|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
-    78|    </div>
-    79|    <div class="bottom-band"></div>
-    80|  </div>
-    81|  <div class="page-footer"><span>Kitchen & Kettle — Recipe Cards</span><span>1</span></div>
-    82|</div>
-    83|
-    84|<div class="page"><div class="cut-guide"></div>
-    85|  <div class="card">
-    86|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
-    87|    <div class="top-band"></div>
-    88|    <h3> </h3>
-    89|    <div class="card-body">
-    90|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
-    91|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
-    92|    </div>
-    93|    <div class="bottom-band"></div>
-    94|  </div>
-    95|  <div class="card">
-    96|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
-    97|    <div class="top-band"></div>
-    98|    <h3> </h3>
-    99|    <div class="card-body">
-   100|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
-   101|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
-   102|    </div>
-   103|    <div class="bottom-band"></div>
-   104|  </div>
-   105|  <div class="page-footer"><span>Kitchen & Kettle — Recipe Cards</span><span>2</span></div>
-   106|</div>
-   107|
-   108|<div class="page"><div class="cut-guide"></div>
-   109|  <div class="card">
-   110|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
-   111|    <div class="top-band"></div>
-   112|    <h3> </h3>
-   113|    <div class="card-body">
-   114|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
-   115|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
-   116|    </div>
-   117|    <div class="bottom-band"></div>
-   118|  </div>
-   119|  <div class="card">
-   120|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
-   121|    <div class="top-band"></div>
-   122|    <h3> </h3>
-   123|    <div class="card-body">
-   124|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
-   125|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
-   126|    </div>
-   127|    <div class="bottom-band"></div>
-   128|  </div>
-   129|  <div class="page-footer"><span>Kitchen & Kettle — Recipe Cards</span><span>3</span></div>
-   130|</div>
-   131|
-   132|<div class="page"><div class="cut-guide"></div>
-   133|  <div class="card">
-   134|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
-   135|    <div class="top-band"></div>
-   136|    <h3> </h3>
-   137|    <div class="card-body">
-   138|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
-   139|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
-   140|    </div>
-   141|    <div class="bottom-band"></div>
-   142|  </div>
-   143|  <div class="card">
-   144|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
-   145|    <div class="top-band"></div>
-   146|    <h3> </h3>
-   147|    <div class="card-body">
-   148|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
-   149|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
-   150|    </div>
-   151|    <div class="bottom-band"></div>
-   152|  </div>
-   153|  <div class="page-footer"><span>Kitchen & Kettle — Recipe Cards</span><span>4</span></div>
-   154|</div>
-   155|
-   156|<div class="page"><div class="cut-guide"></div>
-   157|  <div class="card">
-   158|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
-   159|    <div class="top-band"></div>
-   160|    <h3> </h3>
-   161|    <div class="card-body">
-   162|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
-   163|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
-   164|    </div>
-   165|    <div class="bottom-band"></div>
-   166|  </div>
-   167|  <div class="card">
-   168|    <svg class="kettle" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="42" cy="72" rx="22" ry="5" fill="rgba(58,32,16,.08)"/><path d="M28 30c2-12 10-18 20-18s18 6 18 18v20c0 8-8 14-18 14s-16-6-18-14z" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><path d="M34 32c1-6 5-9 10-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".4"/><path d="M28 42c-8 2-14 6-16 12c-1 2-1 4 0 6" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M64 34c8-4 14-2 14 4s-4 10-10 12c-4 2-8 6-6 12" fill="none" stroke="#4a2818" stroke-width="2.5" stroke-linecap="round"/><path d="M31 32c2-6 8-8 15-8s11 2 13 8" fill="none" stroke="#4a2818" stroke-width="2.8" stroke-linecap="round"/><circle cx="46" cy="22" r="4" fill="none" stroke="#4a2818" stroke-width="2.2"/><circle cx="46" cy="20" r="1.5" fill="#4a2818" opacity=".5"/><path d="M30 50c4-3 12-3 16 0s14-3 18 0" fill="none" stroke="#4a2818" stroke-width="1.2" opacity=".5"/><path d="M32 68c4 3 16 3 20 0" fill="none" stroke="#4a2818" stroke-width="2.2" stroke-linecap="round"/><path d="M42 16c0-3 2-5 3-8m-2 4c4-2 6-6 5-9" fill="none" stroke="#4a2818" stroke-width="1" opacity=".35" stroke-linecap="round"/></svg>
-   169|    <div class="top-band"></div>
-   170|    <h3> </h3>
-   171|    <div class="card-body">
-   172|      <div class="col ing"><div class="label">Ingredients</div><div class="lines"></div></div>
-   173|      <div class="col inst"><div class="label">Instructions</div><div class="lines"></div></div>
-   174|    </div>
-   175|    <div class="bottom-band"></div>
-   176|  </div>
-   177|  <div class="page-footer"><span>Kitchen & Kettle — Recipe Cards</span><span>5</span></div>
-   178|</div>
-   179|
-   180|</body>
-   181|</html>
-   182|
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recipe — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#8B8376;--line:#D9D0C1}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Crimson Pro',Georgia,serif;
+    background:#e8e4dc;
+    display:flex;flex-direction:column;align-items:center;padding:1rem;
+    color:var(--ink);
+  }
+  .toolbar{
+    max-width:8.5in;width:100%;margin:0 auto 0.5rem;
+    display:flex;justify-content:space-between;align-items:center;
+    background:#fff;padding:0.5rem 0.7rem;border-radius:6px;
+    box-shadow:0 1px 4px rgba(44,36,22,0.08);
+    position:sticky;top:0;z-index:100;
+  }
+  .toolbar .brand{font-family:'Crimson Pro',serif;font-size:14pt;font-weight:600;color:var(--ink)}
+  .toolbar .brand em{font-style:italic;color:var(--clay)}
+  .toolbar .actions{display:flex;gap:0.5rem;align-items:center}
+  .btn{
+    font-family:'Work Sans',sans-serif;font-size:8pt;font-weight:600;
+    padding:0.4em 0.8em;border-radius:3px;cursor:pointer;border:none;
+    transition:background 0.15s;text-decoration:none;
+  }
+  .btn-ghost{background:none;color:var(--muted);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+  .btn-print{background:var(--ink);color:var(--paper)}
+  .btn-print:hover{background:#3D362D}
+  .save-status{
+    font-family:'Work Sans',sans-serif;font-size:8pt;color:#5a8a6a;
+    margin-right:0.5rem;opacity:0;transition:opacity 0.3s;
+  }
+  .save-status.visible{opacity:1}
+
+  .page{
+    width:8.5in;min-height:11in;
+    background:var(--paper);
+    padding:0.6in 0.75in 0.6in 0.9in;
+    box-shadow:0 2px 12px rgba(44,36,22,0.12);
+    position:relative;
+  }
+  .page-header{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    padding-bottom:0.25in;margin-bottom:0.25in;
+    border-bottom:2px solid var(--clay);
+  }
+  .page-header .brand{
+    font-family:'Work Sans',sans-serif;
+    font-size:9pt;font-weight:600;
+    text-transform:uppercase;letter-spacing:0.1em;
+    color:var(--clay);
+  }
+  .page-header .brand em{font-style:italic;color:var(--sage)}
+  .page-header .meta{
+    font-family:'Work Sans',sans-serif;
+    font-size:8pt;color:var(--muted);
+    text-align:right;
+  }
+
+  .recipe-title{
+    font-family:'Crimson Pro',serif;
+    font-size:28pt;font-weight:600;
+    color:var(--ink);
+    margin-bottom:0.15in;
+    border:none;background:transparent;
+    width:100%;outline:none;
+    padding:0.05in 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .recipe-title:focus{border-bottom-color:var(--clay)}
+  .recipe-title::placeholder{color:var(--muted);font-style:italic}
+
+  .time-row{
+    display:flex;gap:0.3in;margin-bottom:0.25in;
+    font-family:'Work Sans',sans-serif;font-size:9pt;
+  }
+  .time-field{
+    display:flex;align-items:baseline;gap:0.1in;
+  }
+  .time-field label{
+    font-weight:600;text-transform:uppercase;
+    letter-spacing:0.05em;color:var(--sage);
+    white-space:nowrap;
+  }
+  .time-field input{
+    border:none;background:transparent;
+    font-family:'Crimson Pro',serif;font-size:12pt;
+    color:var(--ink);width:1.2in;outline:none;
+    border-bottom:1px dashed var(--line);
+    padding:0.02in 0;
+  }
+  .time-field input:focus{border-bottom-color:var(--clay)}
+
+  .two-col{
+    display:flex;gap:0.3in;flex:1;min-height:0;
+    align-items:flex-start;
+  }
+  .col-ingredients{width:2.8in;flex-shrink:0;overflow:hidden}
+  .col-instructions{flex:1;min-width:0}
+
+  .section-label{
+    font-family:'Work Sans',sans-serif;
+    font-size:9pt;font-weight:600;
+    text-transform:uppercase;letter-spacing:0.08em;
+    color:var(--sage);
+    margin-bottom:0.1in;padding-bottom:0.05in;
+    border-bottom:1px solid var(--line);
+  }
+  .ingredients-list{
+    list-style:none;padding:0;
+    font-size:11pt;line-height:1.6;
+    display:flex;flex-direction:column;gap:0.28in;
+    padding-top:0.14in;
+  }
+  .ingredients-list li{
+    display:flex;align-items:baseline;gap:0.15in;
+  }
+  .ingredients-list li .bullet{
+    color:var(--clay);font-size:8pt;
+    flex-shrink:0;cursor:pointer;
+  }
+  .ingredients-list li input{
+    border:none;background:transparent;
+    font-family:'Crimson Pro',serif;font-size:11pt;
+    color:var(--ink);width:100%;outline:none;
+    border-bottom:1px dashed transparent;
+  }
+  .ingredients-list li input:focus{border-bottom-color:var(--line)}
+  .ingredients-list li input::placeholder{color:var(--muted);font-style:italic}
+
+  .instructions-area{
+    width:100%;min-height:4.5in;
+    border:none;background:transparent;
+    font-family:'Crimson Pro',serif;font-size:11pt;
+    color:var(--ink);line-height:1.6;
+    resize:none;outline:none;overflow:hidden;
+    padding:0.05in 0;
+  }
+  .instructions-area:focus{}
+  .instructions-area::placeholder{color:var(--muted);font-style:italic}
+
+  .notes-section{
+    margin-top:auto;padding-top:0.45in;
+  }
+  .notes-area{
+    width:100%;min-height:0.8in;
+    border:none;background:transparent;
+    font-family:'Crimson Pro',serif;font-size:10pt;
+    color:var(--muted);line-height:1.5;
+    resize:none;outline:none;overflow:hidden;
+  }
+  .notes-area::placeholder{color:var(--line);font-style:italic}
+
+  .kettle-logo{
+    text-align:center;margin-top:0.15in;
+  }
+
+  .page-footer{
+    margin-top:auto;padding-top:0.15in;
+    text-align:center;
+    font-family:'Work Sans',sans-serif;font-size:7pt;
+    color:var(--muted);letter-spacing:0.05em;
+    text-transform:uppercase;
+  }
+  .page-footer em{font-style:italic;color:var(--clay)}
+
+  @media print{
+    body{background:none;padding:0;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .toolbar{display:none}
+    .page{margin:0;box-shadow:none}
+    input,textarea{border-bottom-color:transparent!important}
+    input::placeholder,textarea::placeholder{color:transparent!important}
+  }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear</button>
+    <button class="btn btn-ghost" onclick="addRecipe()">+ New Recipe</button>
+    <button class="btn btn-ghost" onclick="downloadCopy()">Save a copy</button>
+    <button class="btn btn-print" onclick="window.print()">Print</button>
+  </div>
+</div>
+
+<div id="pages"></div>
+
+<template id="recipePage">
+<div class="page">
+  <div class="page-header">
+    <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+    <div class="meta">Recipe Card</div>
+  </div>
+
+  <input class="recipe-title" type="text" placeholder="Recipe name" data-key="title">
+
+  <div class="time-row">
+    <div class="time-field">
+      <label>Prep</label>
+      <input type="text" placeholder="—" data-key="prep">
+    </div>
+    <div class="time-field">
+      <label>Cook</label>
+      <input type="text" placeholder="—" data-key="cook">
+    </div>
+    <div class="time-field">
+      <label>Total</label>
+      <input type="text" placeholder="—" data-key="total">
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="col-ingredients">
+      <div class="section-label">Ingredients</div>
+      <ul class="ingredients-list" data-key="ingredients">
+        <li><span class="bullet" onclick="this.parentElement.remove();save()">&#9679;</span><input type="text" placeholder="Ingredient"></li>
+        <li><span class="bullet" onclick="this.parentElement.remove();save()">&#9679;</span><input type="text" placeholder="Ingredient"></li>
+        <li><span class="bullet" onclick="this.parentElement.remove();save()">&#9679;</span><input type="text" placeholder="Ingredient"></li>
+        <li><span class="bullet" onclick="this.parentElement.remove();save()">&#9679;</span><input type="text" placeholder="Ingredient"></li>
+        <li><span class="bullet" onclick="this.parentElement.remove();save()">&#9679;</span><input type="text" placeholder="Ingredient"></li>
+        <li><span class="bullet" onclick="this.parentElement.remove();save()">&#9679;</span><input type="text" placeholder="Ingredient"></li>
+        <li><span class="bullet" onclick="this.parentElement.remove();save()">&#9679;</span><input type="text" placeholder="Ingredient"></li>
+        <li><span class="bullet" onclick="this.parentElement.remove();save()">&#9679;</span><input type="text" placeholder="Ingredient"></li>
+      </ul>
+    </div>
+    <div class="col-instructions">
+      <div class="section-label">Instructions</div>
+      <textarea class="instructions-area" placeholder="Write your instructions here&hellip;" data-key="instructions" maxlength="900"></textarea>
+    </div>
+  </div>
+
+  <div class="notes-section">
+    <div class="section-label">Notes</div>
+    <textarea class="notes-area" placeholder="Substitutions, tips, where this recipe came from&hellip;" data-key="notes" maxlength="200"></textarea>
+  </div>
+
+  <div class="kettle-logo"><img src="kettle-logo.svg" alt="" style="height:0.8in;"></div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+</template>
+
+<script>
+const STORAGE_KEY = 'kettle-recipe-cards';
+
+function save(){
+  const pages = [];
+  document.querySelectorAll('#pages .page').forEach((page,i) => {
+    const data = {};
+    page.querySelectorAll('[data-key]').forEach(el => {
+      if(el.tagName === 'UL'){
+        data[el.dataset.key] = Array.from(el.querySelectorAll('input')).map(inp => inp.value).filter(v => v);
+      } else {
+        data[el.dataset.key] = el.tagName === 'TEXTAREA' ? el.value : el.value;
+      }
+    });
+    pages.push(data);
+  });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(pages));
+  const s = document.getElementById('saveStatus');
+  s.classList.add('visible');
+  clearTimeout(s._t); s._t = setTimeout(() => s.classList.remove('visible'), 1500);
+}
+
+function load(){
+  // localStorage takes priority — it's the user's actual working copy
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if(raw){
+    const pages = JSON.parse(raw);
+    if(pages.length){
+      pages.forEach((data,i) => {
+        addRecipe();
+        const page = document.querySelectorAll('#pages .page')[i];
+        if(!page) return;
+        fillPage(page, data);
+      });
+      return;
+    }
+  }
+  // First open: seed from baked-in data if available
+  if(window.__SAVED_DATA__ && window.__SAVED_DATA__.length){
+    const pages = window.__SAVED_DATA__;
+    pages.forEach((data,i) => {
+      addRecipe();
+      const page = document.querySelectorAll('#pages .page')[i];
+      if(!page) return;
+      fillPage(page, data);
+    });
+    save(); // persist the seed to localStorage
+    return;
+  }
+  addRecipe();
+}
+
+function fillPage(page, data){
+  page.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.dataset.key;
+    if(!(key in data)) return;
+    if(el.tagName === 'UL'){
+      const vals = data[key];
+      const inputs = el.querySelectorAll('input');
+      vals.forEach((v,j) => { if(inputs[j]) inputs[j].value = v; });
+    } else if(el.tagName === 'TEXTAREA'){
+      el.value = data[key];
+    } else if(el.tagName === 'INPUT'){
+      el.value = data[key];
+    }
+  });
+}
+
+function addRecipe(){
+  const tmpl = document.getElementById('recipePage');
+  const clone = tmpl.content.cloneNode(true);
+  document.getElementById('pages').appendChild(clone);
+}
+
+function clearAll(){
+  if(!confirm('Clear all recipes and start fresh?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.getElementById('pages').innerHTML = '';
+  addRecipe();
+}
+
+function downloadCopy(){
+  const pages = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  fetch(window.location.href.split('?')[0] + '?v=' + Date.now())
+    .then(r => r.text())
+    .then(html => {
+      // Inject data at top of main script so load() sees it before it runs
+      html = html.replace(
+        '<script>\nconst STORAGE_KEY',
+        '<script>\nwindow.__SAVED_DATA__ = ' + JSON.stringify(pages) + ';\nconst STORAGE_KEY'
+      );
+      const blob = new Blob([html], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'my-recipes.html';
+      a.click();
+      URL.revokeObjectURL(url);
+    })
+    .catch(() => alert('Could not save a copy. Make sure the page is served from a web server.'));
+}
+
+document.addEventListener('input', save);
+
+// Backspace on empty ingredient line removes it; Enter adds a new one
+document.addEventListener('keydown', function(e){
+  const inp = e.target;
+  if(!inp.closest('.ingredients-list')) return;
+  const li = inp.closest('li');
+  if(!li) return;
+  const list = li.parentElement;
+
+  if(e.key === 'Backspace' && inp.value === ''){
+    if(list.children.length <= 1) return;
+    li.remove();
+    save();
+  }
+  if(e.key === 'Enter'){
+    if(list.children.length >= 10) return;
+    e.preventDefault();
+    const clone = li.cloneNode(true);
+    clone.querySelector('input').value = '';
+    li.after(clone);
+    clone.querySelector('input').focus();
+    save();
+  }
+});
+
+load();
+</script>
+</body>
+</html>
