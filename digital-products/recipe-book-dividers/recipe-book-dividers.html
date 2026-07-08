@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recipe Book Dividers — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#8B8376;--line:#D9D0C1}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Crimson Pro',Georgia,serif;font-size:12pt;line-height:1.6;
+    background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:1rem;
+    color:var(--ink);
+  }
+
+  .toolbar{
+    max-width:8.5in;width:100%;margin:0 auto 0.5rem;
+    display:flex;justify-content:space-between;align-items:center;
+    background:#fff;padding:0.5rem 0.7rem;border-radius:6px;
+    box-shadow:0 1px 4px rgba(44,36,22,0.08);
+    position:sticky;top:0;z-index:100;
+  }
+  .toolbar .brand{font-family:'Crimson Pro',serif;font-size:14pt;font-weight:600;color:var(--ink)}
+  .toolbar .brand em{font-style:italic;color:var(--clay)}
+  .toolbar .actions{display:flex;gap:0.5rem;align-items:center}
+  .save-status{font-family:'Work Sans',sans-serif;font-size:8pt;color:#5a8a6a;margin-right:0.5rem;opacity:0;transition:opacity 0.3s;}
+  .save-status.visible{opacity:1}
+  .btn{font-family:'Work Sans',sans-serif;font-size:8pt;font-weight:600;padding:0.4em 0.8em;border-radius:3px;cursor:pointer;border:none;transition:background 0.15s;text-decoration:none;}
+  .btn-ghost{background:none;color:var(--muted);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+  .btn-print{background:var(--ink);color:var(--paper)}
+  .btn-print:hover{background:#3D362D}
+
+  .page{
+    width:8.5in;min-height:11in;
+    background:var(--paper);
+    padding:0.75in 0.7in;
+    box-shadow:0 2px 12px rgba(44,36,22,0.12);
+    position:relative;margin-bottom:0.25in;
+    page-break-after:always;
+    display:flex;flex-direction:column;
+  }
+  .page:last-of-type{page-break-after:auto;margin-bottom:0}
+
+  .cover{justify-content:center;align-items:center;text-align:center;padding:2in 0.7in;}
+  .cover .brand-line{font-family:'Crimson Pro',serif;font-size:14pt;color:var(--muted);margin-bottom:1.5rem;}
+  .cover .brand-line em{font-style:italic;color:var(--clay)}
+  .cover h1{font-family:'Crimson Pro',serif;font-size:36pt;font-weight:600;color:var(--ink);margin-bottom:0.3in;letter-spacing:-0.01em;}
+  .cover .subtitle{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:1.5rem;}
+  .cover .from-line{font-family:'Crimson Pro',serif;font-size:14pt;color:var(--ink);margin-bottom:0.15in;}
+  .cover .name-input{
+    font-family:'Crimson Pro',serif;font-size:14pt;color:var(--ink);
+    border:none;border-bottom:1px solid var(--clay);outline:none;
+    background:transparent;text-align:center;width:3.5in;padding:0.1in 0;
+  }
+  .cover .name-input::placeholder{color:var(--muted);font-style:italic;opacity:1}
+
+  .divider{justify-content:center;align-items:center;text-align:center;position:relative;}
+  .divider .cat-label{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--sage);margin-bottom:0.3in;}
+  .divider h2{font-family:'Crimson Pro',serif;font-size:32pt;font-weight:600;color:var(--ink);margin-bottom:0.2in;letter-spacing:-0.01em;}
+  .divider .ornament{color:var(--clay);font-size:16pt;margin:0.2in 0;}
+
+  .page-footer{margin-top:auto;text-align:center;font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);letter-spacing:0.04em;text-transform:uppercase;}
+  .page-footer em{font-style:italic;color:var(--clay)}
+
+  .fillable-title{
+    font-family:'Crimson Pro',serif;font-size:32pt;font-weight:600;
+    color:var(--ink);border:none;background:transparent;
+    border-bottom:2px dashed var(--line);
+    text-align:center;width:4in;outline:none;
+    padding:0.1in 0;letter-spacing:-0.01em;
+  }
+  .fillable-title::placeholder{color:var(--muted);font-style:italic;opacity:1}
+  input::placeholder, textarea::placeholder{color:var(--clay);opacity:1}
+
+  @media print{
+    body{background:none;padding:0;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .toolbar{display:none}
+    .page{margin:0;box-shadow:none}
+    input::placeholder,textarea::placeholder{color:transparent!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+
+<div class="page cover">
+  <p class="brand-line">Kitchen <em>&amp; Kettle</em></p>
+  <h1>Recipe Book</h1>
+  <p class="subtitle">A collection of favorites</p>
+  <p class="from-line">From the kitchen of</p>
+  <input class="name-input" type="text" data-key="cover-name" placeholder="Your name">
+  <p style="font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);margin-top:0.3in;">Works because it works.</p>
+</div>
+
+<div class="page divider">
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+    <p class="cat-label">Recipes</p>
+    <h2>Breakfast</h2>
+    <img src="kettle-logo.svg" alt="" style="height:1in;opacity:0.5;margin-top:0.25in;">
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page divider">
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+    <p class="cat-label">Recipes</p>
+    <h2>Soups &amp; Stews</h2>
+    <img src="kettle-logo.svg" alt="" style="height:1in;opacity:0.5;margin-top:0.25in;">
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page divider">
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+    <p class="cat-label">Recipes</p>
+    <h2>Salads &amp; Sides</h2>
+    <img src="kettle-logo.svg" alt="" style="height:1in;opacity:0.5;margin-top:0.25in;">
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page divider">
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+    <p class="cat-label">Recipes</p>
+    <h2>Main Dishes</h2>
+    <img src="kettle-logo.svg" alt="" style="height:1in;opacity:0.5;margin-top:0.25in;">
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page divider">
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+    <p class="cat-label">Recipes</p>
+    <h2>Breads &amp; Baking</h2>
+    <img src="kettle-logo.svg" alt="" style="height:1in;opacity:0.5;margin-top:0.25in;">
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page divider">
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+    <p class="cat-label">Recipes</p>
+    <h2>Desserts</h2>
+    <img src="kettle-logo.svg" alt="" style="height:1in;opacity:0.5;margin-top:0.25in;">
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page divider">
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+    <p class="cat-label">Recipes</p>
+    <h2>Preserves &amp; Pickles</h2>
+    <img src="kettle-logo.svg" alt="" style="height:1in;opacity:0.5;margin-top:0.25in;">
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page divider">
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+    <p class="cat-label">Recipes</p>
+    <h2>Drinks</h2>
+    <img src="kettle-logo.svg" alt="" style="height:1in;opacity:0.5;margin-top:0.25in;">
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page divider">
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+    <p class="cat-label">Recipes</p>
+    <h2>Snacks &amp; Appetizers</h2>
+    <img src="kettle-logo.svg" alt="" style="height:1in;opacity:0.5;margin-top:0.25in;">
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page divider">
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+    <p class="cat-label">Recipes</p>
+    <h2>Holiday &amp; Special Occasions</h2>
+    <img src="kettle-logo.svg" alt="" style="height:1in;opacity:0.5;margin-top:0.25in;">
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page divider">
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+    <p class="cat-label">Recipes</p>
+    <input class="fillable-title" type="text" data-key="custom-1" placeholder="Your category" style="margin-bottom:0.2in;">
+    <img src="kettle-logo.svg" alt="" style="height:1in;opacity:0.5;margin-top:0.25in;">
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page divider">
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+    <p class="cat-label">Recipes</p>
+    <input class="fillable-title" type="text" data-key="custom-2" placeholder="Your category">
+    <img src="kettle-logo.svg" alt="" style="height:1in;opacity:0.5;margin-top:0.25in;">
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<script>
+const STORAGE_KEY = 'kettle-recipe-dividers';
+
+function save(){
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => { data[el.dataset.key] = el.value; });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  const s = document.getElementById('saveStatus');
+  s.classList.add('visible');
+  clearTimeout(s._t); s._t = setTimeout(() => s.classList.remove('visible'), 1500);
+}
+
+function load(){
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if(!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if(el.dataset.key in data) el.value = data[el.dataset.key];
+  });
+}
+
+function clearAll(){
+  if(!confirm('Clear all entered text?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('[data-key]').forEach(el => el.value = '');
+}
+
+document.addEventListener('input', save);
+load();
+</script>
+
+</body>
+</html>

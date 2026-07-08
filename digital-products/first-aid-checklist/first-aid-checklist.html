@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Aid Checklist — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#8B8376;--line:#D9D0C1;--light:#FAF7F0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Crimson Pro',Georgia,serif;font-size:12pt;line-height:1.55;
+    background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:1rem;
+    color:var(--ink);
+  }
+
+  .toolbar{
+    max-width:8.5in;width:100%;margin:0 auto 0.5rem;
+    display:flex;justify-content:space-between;align-items:center;
+    background:#fff;padding:0.5rem 0.7rem;border-radius:6px;
+    box-shadow:0 1px 4px rgba(44,36,22,0.08);
+    position:sticky;top:0;z-index:100;
+  }
+  .toolbar .brand{font-family:'Crimson Pro',serif;font-size:14pt;font-weight:600;color:var(--ink)}
+  .toolbar .brand em{font-style:italic;color:var(--clay)}
+  .toolbar .actions{display:flex;gap:0.5rem;align-items:center}
+  .save-status{font-family:'Work Sans',sans-serif;font-size:8pt;color:#5a8a6a;margin-right:0.5rem;opacity:0;transition:opacity 0.3s;}
+  .save-status.visible{opacity:1}
+  .btn{font-family:'Work Sans',sans-serif;font-size:8pt;font-weight:600;padding:0.4em 0.8em;border-radius:3px;cursor:pointer;border:none;transition:background 0.15s;text-decoration:none;}
+  .btn-ghost{background:none;color:var(--muted);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+  .btn-print{background:var(--ink);color:var(--paper)}
+  .btn-print:hover{background:#3D362D}
+
+  .page{
+    width:8.5in;min-height:11in;background:var(--paper);
+    padding:0.6in 0.7in;
+    box-shadow:0 2px 12px rgba(44,36,22,0.12);
+    position:relative;margin-bottom:0.25in;page-break-after:always;
+  }
+  .page:last-of-type{page-break-after:auto;margin-bottom:0}
+
+  h1{font-family:'Crimson Pro',serif;font-size:28pt;font-weight:600;color:var(--ink);letter-spacing:-0.01em;line-height:1.15;}
+  h2{font-family:'Crimson Pro',serif;font-size:18pt;font-weight:600;color:var(--ink);margin-bottom:0.3rem;border-bottom:1px solid var(--line);padding-bottom:0.15rem;}
+  h3{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin:0.5rem 0 0.25rem;}
+  h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;color:var(--ink);margin-bottom:0.2rem;}
+
+  .lede{font-size:14pt;line-height:1.5;color:#3D362D;margin-bottom:0.6rem;}
+  .small{font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);}
+  .brand-line{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--clay);margin-bottom:0.6rem;}
+  .brand-line em{font-style:italic;color:var(--sage)}
+  .tagline{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);}
+  input::placeholder,textarea::placeholder{color:var(--clay);opacity:1}
+
+  .checklist{list-style:none;margin:0.25rem 0;}
+  .check-item{display:grid;grid-template-columns:1.2rem 1fr;gap:0.25rem;align-items:start;padding:0.12rem 0;border-bottom:1px dotted #e8e2d6;min-height:1.5rem;cursor:pointer;}
+  .check-item .checkbox{
+    width:0.85rem;height:0.85rem;border:1.5px solid var(--line);
+    margin-top:0.2rem;flex-shrink:0;border-radius:2px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Work Sans',sans-serif;font-size:9pt;font-weight:700;
+    color:transparent;transition:all 0.15s;
+    user-select:none;
+  }
+  .check-item.checked .checkbox{background:var(--sage);border-color:var(--sage);color:var(--paper);}
+  .check-item .item-text{font-size:12pt;line-height:1.45;}
+
+  .tip-box{background:var(--light);border-left:3px solid var(--clay);padding:0.3rem 0.4rem;margin:0.35rem 0;font-size:12pt;}
+  .tip-box strong{color:var(--ink)}
+  .folk-tip{background:var(--light);border-left:3px solid var(--sage);padding:0.3rem 0.4rem;margin:0.35rem 0;font-size:12pt;}
+  .folk-tip .label{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--sage);margin-bottom:0.12rem;}
+
+  .contact-row{display:flex;gap:0.25in;margin-bottom:0.25rem;font-size:12pt;}
+  .contact-row label{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--sage);width:1.8in;flex-shrink:0;padding-top:0.1rem;}
+  .contact-row input{flex:1;border:none;border-bottom:1px dashed var(--line);min-width:2in;outline:none;background:transparent;font-family:'Crimson Pro',serif;font-size:12pt;color:var(--ink);padding:0.05rem 0;}
+  .contact-row input::placeholder{color:var(--muted);font-style:italic}
+  .contact-row input:focus{border-bottom-color:var(--clay)}
+
+  .page-footer{text-align:center;margin-top:0.4rem;font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);letter-spacing:0.04em;text-transform:uppercase;}
+  .page-footer em{font-style:italic;color:var(--clay)}
+
+  .cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2in 0.7in;}
+  .cover h1{margin-bottom:0.25in;}
+  .cover .brand-line{margin-bottom:1rem;}
+  .cover .desc{font-size:13pt;color:#3D362D;max-width:22ch;line-height:1.5;}
+
+  .scenario{margin-bottom:0.4rem;border:1px solid var(--line);padding:0.3rem;}
+  .scenario h4{margin-bottom:0.12rem;}
+  .step-list{margin:0.15rem 0 0.15rem 1rem;}
+  .step-list li{margin-bottom:0.15rem;font-size:12pt;line-height:1.4;}
+  .step-list li strong{color:var(--sage)}
+
+  @media print{
+    body{background:none;padding:0;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .toolbar{display:none}
+    .page{margin:0;box-shadow:none}
+    .check-item .checkbox{color:transparent!important}
+    input::placeholder,textarea::placeholder{color:transparent!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+
+<div class="page cover">
+  <p class="brand-line">Kitchen <em>&amp; Kettle</em></p>
+  <h1>First Aid<br>Checklist</h1>
+  <p class="desc">Practical first aid for the cuts, burns, bites, and mishaps of everyday life &mdash; plus a few remedies that actually work.</p>
+  <p class="tagline" style="margin-top:1.5rem;">Works because it works.</p>
+</div>
+
+<div class="page">
+  <h2>How to use this checklist</h2>
+  <p class="lede">This isn't a medical textbook. It's the stuff that happens in real kitchens and households — things you can handle yourself, and a clear line for when you shouldn't.</p>
+  <p>Each section covers one type of injury. Read the steps, check them off as you go, and keep this somewhere you can grab it with one hand while the other hand is under cold water.</p>
+
+  <div class="tip-box">
+    <strong>If you're not sure, get help.</strong> This checklist covers minor injuries. If something seems serious — heavy bleeding that won't stop, deep puncture wounds, head injuries, anything involving eyes or joints — skip the checklist and call a doctor or 911.
+  </div>
+
+  <h3>Stock your first aid kit</h3>
+  <ul class="checklist" data-section="kit-stock">
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Adhesive bandages (assorted sizes)</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Sterile gauze pads &amp; medical tape</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Antiseptic wipes or spray</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Mild soap (for cleaning wounds)</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Antibiotic ointment</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Tweezers (sharp point)</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Small scissors</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Hydrocortisone cream</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Calamine lotion</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Aloe vera gel or burn cream</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Ace bandage / elastic wrap</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Instant cold pack</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Pain reliever (ibuprofen or acetaminophen)</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Antihistamine (Benadryl or similar)</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Thermometer</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Non-stick sterile dressings</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Heating pad</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Small needle (sterilized, for splinters)</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Disposable gloves</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Duct tape (yes, duct tape — see splinters)</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Rubbing alcohol</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Petroleum jelly</span></li>
+  </ul>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page">
+  <h2>Emergency Contacts</h2>
+  <p class="small" style="margin-bottom:0.4rem;">Fill these in and keep this page where anyone in the house can find it.</p>
+  <div class="contact-row"><label>911 / Emergency</label><input type="text" data-key="contact-911" placeholder="911"></div>
+  <div class="contact-row"><label>Poison Control</label><input type="text" data-key="contact-poison" placeholder="1-800-222-1222"></div>
+  <div class="contact-row"><label>Family doctor</label><input type="text" data-key="contact-doctor"></div>
+  <div class="contact-row"><label>Pediatrician</label><input type="text" data-key="contact-pediatrician"></div>
+  <div class="contact-row"><label>Nearest hospital</label><input type="text" data-key="contact-hospital"></div>
+  <div class="contact-row"><label>Nearest urgent care</label><input type="text" data-key="contact-urgentcare"></div>
+  <div class="contact-row"><label>Pharmacy</label><input type="text" data-key="contact-pharmacy"></div>
+  <div class="contact-row"><label>Veterinarian</label><input type="text" data-key="contact-vet"></div>
+  <div class="contact-row"><label>Neighbor / nearby</label><input type="text" data-key="contact-neighbor"></div>
+
+  <h3 style="margin-top:0.5rem;">Household info</h3>
+  <div class="contact-row"><label>Home address</label><input type="text" data-key="info-address"></div>
+  <div class="contact-row"><label>Landline (if any)</label><input type="text" data-key="info-landline"></div>
+  <div class="contact-row"><label>Known allergies</label><input type="text" data-key="info-allergies"></div>
+  <div class="contact-row"><label>Medical conditions</label><input type="text" data-key="info-conditions"></div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page">
+  <h2>Cuts &amp; Scrapes</h2>
+  <div class="scenario">
+    <h4>For minor cuts</h4>
+    <ol class="step-list">
+      <li>Wash your hands first.</li>
+      <li>Rinse the wound under clean running water. No hydrogen peroxide — it damages tissue.</li>
+      <li>Clean around the wound with mild soap. Try not to get soap in the wound itself.</li>
+      <li>Apply antibiotic ointment.</li>
+      <li>Cover with a bandage. Change daily or when wet or dirty.</li>
+    </ol>
+  </div>
+  <div class="tip-box">
+    <strong>Pressure stops bleeding.</strong> If a cut won't stop bleeding, apply firm, steady pressure with a clean cloth for 10–15 minutes without peeking. Most bleeding stops in that window. If it soaks through, add more cloth on top — don't remove the first layer.
+  </div>
+  <div class="folk-tip">
+    <div class="label">Folk remedy that works</div>
+    <p><strong>Yarrow for cuts.</strong> Yarrow grows in fields and along roadsides — feathery leaves, flat clusters of small white flowers. Crush a few fresh leaves between your fingers and press them directly onto a bleeding cut. Yarrow is a natural styptic — it helps slow bleeding and has been used as a field dressing for centuries. Once the bleeding stops, clean the wound properly and bandage as usual. This is a stopgap for when you're outside and bleeding, not a replacement for cleaning and bandaging.</p>
+  </div>
+  <div class="scenario">
+    <h4>When to get medical help</h4>
+    <ol class="step-list">
+      <li>Bleeding doesn't stop after 15 minutes of direct pressure</li>
+      <li>The wound is deep, gaping, or you can see fat or muscle</li>
+      <li>It's a puncture wound (especially from a nail or animal bite)</li>
+      <li>It's on the face, a joint, or anywhere scarring matters</li>
+      <li>Numbness, tingling, or you can't move the area</li>
+      <li>Signs of infection: redness spreading, warmth, pus, fever</li>
+    </ol>
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page">
+  <h2>Burns</h2>
+  <div class="scenario">
+    <h4>For minor burns (red, painful, no blistering)</h4>
+    <ol class="step-list">
+      <li><strong>Cool it immediately.</strong> Run under cool (not cold) water for at least 10 minutes. This is the single most important step — it stops the burn from deepening.</li>
+      <li>Remove any jewelry or tight clothing near the burn before swelling starts.</li>
+      <li>Apply aloe vera gel or a burn cream. No butter, no oil, no ice — these trap heat or damage tissue.</li>
+      <li>Cover loosely with sterile gauze if the area might get rubbed or dirty.</li>
+      <li>Ibuprofen or acetaminophen helps with pain.</li>
+    </ol>
+  </div>
+  <div class="scenario">
+    <h4>For blistering burns</h4>
+    <ol class="step-list">
+      <li>Cool under water as above. Do not pop blisters — the skin is protecting the wound underneath.</li>
+      <li>Cover loosely with a non-stick sterile dressing.</li>
+      <li>Change dressing daily. Watch for infection.</li>
+      <li>Burns larger than 3 inches across, or on the face, hands, feet, groin, or a major joint — get medical help.</li>
+    </ol>
+  </div>
+  <div class="tip-box">
+    <strong>Kitchen tip:</strong> For a minor contact burn from a pan handle or baking sheet, cool it, then a thin layer of antibiotic ointment and a bandage is usually enough. The second you feel pain, get it under water — the faster you cool it, the less damage.
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page">
+  <h2>Splinters &amp; Slivers</h2>
+  <div class="scenario">
+    <h4>If the splinter is sticking out</h4>
+    <ol class="step-list">
+      <li>Wash the area with soap and water.</li>
+      <li>Clean tweezers with rubbing alcohol.</li>
+      <li>Grasp the splinter as close to the skin as possible and pull in the direction it entered.</li>
+      <li>Wash again and apply antibiotic ointment.</li>
+    </ol>
+  </div>
+  <div class="scenario">
+    <h4>If the splinter is under the surface</h4>
+    <ol class="step-list">
+      <li>Soak the area in warm water for a few minutes to soften the skin.</li>
+      <li>If you can see the splinter but can't grab it, use a sterilized needle to gently lift the skin over the tip.</li>
+      <li>Once the tip is exposed, grab with tweezers and pull.</li>
+    </ol>
+  </div>
+  <div class="folk-tip">
+    <div class="label">Folk remedy that works</div>
+    <p><strong>Duct tape for splinters.</strong> For superficial splinters — especially fiberglass, wood slivers, or cactus spines — press a strip of duct tape firmly over the area and pull it off in the direction opposite to how the splinter entered. The adhesive grabs the tips and pulls them out. Works best on clusters of tiny slivers where tweezers are hopeless. Follow with soap and water.</p>
+  </div>
+  <div class="tip-box">
+    <strong>When to get help:</strong> The splinter is deep, under a fingernail, or the area becomes red, warm, or pus-filled. Splinters carry bacteria — don't ignore one that's been in for more than a day.
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page">
+  <h2>Sprains &amp; Strains</h2>
+  <div class="scenario">
+    <h4>R.I.C.E. method — first 48 hours</h4>
+    <ol class="step-list">
+      <li><strong>Rest.</strong> Stop using the joint. Don't try to "walk it off."</li>
+      <li><strong>Ice.</strong> Cold pack or bag of frozen peas wrapped in a thin towel. 20 minutes on, 20 minutes off. No ice directly on skin.</li>
+      <li><strong>Compression.</strong> Wrap with an elastic bandage — snug but not tight. If the area tingles, goes numb, or turns blue, loosen immediately.</li>
+      <li><strong>Elevate.</strong> Keep the injured area raised above heart level when you can.</li>
+    </ol>
+  </div>
+  <div class="folk-tip">
+    <div class="label">Folk remedy that works</div>
+    <p><strong>Comfrey (knitbone) poultice for sprains.</strong> Comfrey — sometimes called knitbone — has been used for centuries to speed healing of sprains, strains, and bruises. Crush fresh leaves or rehydrate dried leaves with warm water to make a paste, apply it to the swollen area, and wrap loosely with a cloth. Leave on for several hours or overnight. The plant contains allantoin, which promotes cell repair. <strong>Important:</strong> Comfrey is for topical use only. Do not ingest it — the plant contains compounds that can damage the liver when taken internally. Do not apply to open wounds or broken skin.</p>
+  </div>
+  <div class="tip-box">
+    <strong>After 48 hours:</strong> Switch to warmth (heating pad, warm compress) to increase blood flow and healing. Gentle movement helps — don't immobilize longer than necessary.
+  </div>
+  <div class="scenario">
+    <h4>When to get medical help</h4>
+    <ol class="step-list">
+      <li>You can't put any weight on it at all</li>
+      <li>The joint looks deformed or out of place</li>
+      <li>You heard a pop or crack at the time of injury</li>
+      <li>Numbness or tingling below the injury</li>
+      <li>Swelling that doesn't improve after 24 hours of R.I.C.E.</li>
+    </ol>
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page">
+  <h2>Insect Bites &amp; Stings</h2>
+  <div class="scenario">
+    <h4>For most bites and stings</h4>
+    <ol class="step-list">
+      <li><strong>Remove the stinger if there is one.</strong> Scrape it out sideways with a fingernail or credit card edge — don't pinch it, which squeezes more venom in.</li>
+      <li>Wash with soap and water.</li>
+      <li>Apply ice (wrapped in cloth) for 10 minutes to reduce swelling.</li>
+      <li>Hydrocortisone cream or calamine lotion for itching.</li>
+      <li>Oral antihistamine (Benadryl) if swelling or itching is significant.</li>
+    </ol>
+  </div>
+  <div class="scenario">
+    <h4>For ticks</h4>
+    <ol class="step-list">
+      <li>Use fine-tipped tweezers. Grasp as close to the skin as possible (by the head, not the body).</li>
+      <li>Pull straight up with steady, even pressure. Don't twist or jerk.</li>
+      <li>Clean the bite with rubbing alcohol or soap and water.</li>
+      <li>Save the tick in a sealed bag if you want it identified later.</li>
+      <li>Watch for a bullseye rash, fever, or joint pain in the following weeks.</li>
+    </ol>
+  </div>
+  <div class="folk-tip">
+    <div class="label">Folk remedy that works</div>
+    <p><strong>Baking soda paste for itching.</strong> Mix a little baking soda with water to make a thick paste. Apply to mosquito bites or bee stings and let it dry. The alkalinity helps neutralize the itch. Not a substitute for antihistamines if you're having a strong reaction, but it'll calm a normal bite down.</p>
+  </div>
+  <div class="folk-tip">
+    <div class="label">Folk remedy that works</div>
+    <p><strong>Narrow leaf plantain poultice.</strong> If you're outdoors and get stung, look for narrow leaf plantain — the common weed with long, ribbed leaves, not the banana-like fruit. Chew or crush a few leaves into a moist wad, press it onto the sting, and hold it there. The leaves draw out the sting and reduce swelling faster than waiting it out. Works on bee stings, wasp stings, and mosquito bites. Spit poultice isn't elegant, but it works.</p>
+  </div>
+  <div class="tip-box">
+    <strong>Allergic reactions — get emergency help if:</strong> Difficulty breathing, swelling of the face or throat, hives spreading beyond the sting site, dizziness, or nausea. These are signs of anaphylaxis. Use an EpiPen if you have one and call 911.
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page">
+  <h2>Ears</h2>
+  <div class="scenario">
+    <h4>Water trapped in ear</h4>
+    <ol class="step-list">
+      <li>Tilt your head so the affected ear faces down.</li>
+      <li>Gently tug on the earlobe and jiggle it while tilting.</li>
+      <li>Try yawning, chewing, or the Valsalva maneuver (pinch nose, close mouth, blow gently).</li>
+    </ol>
+  </div>
+  <div class="folk-tip">
+    <div class="label">Folk remedy that works</div>
+    <p><strong>Rubbing alcohol in the ear for trapped water.</strong> A few drops of rubbing alcohol in the affected ear, let it sit for 30 seconds, then tilt to drain. The alcohol breaks the surface tension of the water and evaporates quickly, taking the water with it. Works best right after swimming or showering. Don't use this if you have ear tubes, a perforated eardrum, or an active ear infection.</p>
+  </div>
+  <div class="scenario">
+    <h4>Ear pain / possible infection</h4>
+    <ol class="step-list">
+      <li>A warm (not hot) compress held against the ear can relieve pain.</li>
+      <li>Over-the-counter pain reliever.</li>
+      <li>Do not put anything in the ear — no drops, no oil, no cotton swabs — unless a doctor tells you to.</li>
+      <li>See a doctor if: pain is severe, there's drainage or pus, hearing is affected, or fever develops.</li>
+    </ol>
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page">
+  <h2>Minor Kitchen Injuries</h2>
+  <div class="scenario">
+    <h4>Minor knife nick on fingertip</h4>
+    <ol class="step-list">
+      <li>Rinse under cool water.</li>
+      <li>Apply firm pressure with a clean paper towel for 5–10 minutes. Don't lift to check too often — it breaks the clot.</li>
+      <li>Once bleeding stops, clean gently, apply antibiotic ointment, and wrap with a bandage.</li>
+      <li>If you can't bend the finger or feel it properly, get it checked — you may have hit a tendon or nerve.</li>
+    </ol>
+  </div>
+  <div class="scenario">
+    <h4>Oil splatter burn</h4>
+    <ol class="step-list">
+      <li>Cool water immediately, same as any burn. Ten full minutes.</li>
+      <li>Oil burns tend to be small but can be deep. Treat as a second-degree burn — don't pop blisters.</li>
+      <li>Aloe or burn gel, loose gauze covering.</li>
+    </ol>
+  </div>
+  <div class="scenario">
+    <h4>Chili pepper in the eye</h4>
+    <ol class="step-list">
+      <li>Flush with cool water — lots of it. Tilt your head and let water run across the eye from inner corner to outer.</li>
+      <li>Do not rub — it spreads the capsaicin.</li>
+      <li>Milk or yogurt on a damp cloth held gently over the closed eye can help (dairy fat binds capsaicin).</li>
+      <li>Wash your hands thoroughly with soap before touching anything else.</li>
+    </ol>
+  </div>
+  <div class="folk-tip">
+    <div class="label">Prevention</div>
+    <p>When handling hot peppers, wear disposable gloves or coat your hands with a thin layer of oil first (capsaicin is oil-soluble and washes off more easily). After handling peppers, wash hands with dish soap — not hand soap — before touching your face.</p>
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page">
+  <h2>Nosebleeds</h2>
+  <div class="scenario">
+    <h4>What to do</h4>
+    <ol class="step-list">
+      <li><strong>Sit up and lean forward.</strong> Tilting your head back sends blood down your throat, which can cause nausea or choking. Lean forward so it drains out.</li>
+      <li><strong>Pinch the soft part of your nose</strong> — the fleshy sides below the bridge — with your thumb and forefinger. Hold steady pressure for 10–15 minutes without releasing to check.</li>
+      <li>Breathe through your mouth. Spit out any blood that reaches your throat.</li>
+      <li>After the bleeding stops, avoid blowing your nose or bending over for a few hours.</li>
+    </ol>
+  </div>
+  <div class="tip-box">
+    <strong>Most nosebleeds are from dry air or minor irritation</strong> — not a medical emergency. A humidifier at night helps prevent them. If you get them frequently, a dab of petroleum jelly inside each nostril at bedtime keeps the lining from drying out.
+  </div>
+  <div class="scenario">
+    <h4>When to get medical help</h4>
+    <ol class="step-list">
+      <li>Bleeding doesn't slow after 20 minutes of continuous pressure</li>
+      <li>Bleeding is heavy and you feel lightheaded or weak</li>
+      <li>It follows a head injury (possible skull fracture)</li>
+      <li>You're on blood thinners and can't get it to stop</li>
+    </ol>
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page">
+  <h2>Choking</h2>
+  <div class="scenario">
+    <h4>If the person can cough or make sounds</h4>
+    <ol class="step-list">
+      <li><strong>Encourage them to keep coughing.</strong> A strong cough is the body's way of clearing the airway. Don't slap their back — it can lodge the object deeper.</li>
+      <li>Stay with them. If coughing weakens or stops, move to the next section.</li>
+    </ol>
+  </div>
+  <div class="scenario">
+    <h4>If the person cannot breathe, cough, or speak</h4>
+    <ol class="step-list">
+      <li><strong>Call 911.</strong> Have someone call while you start. If you're alone, do abdominal thrusts for 2 minutes first, then call.</li>
+      <li><strong>Stand behind them.</strong> Wrap your arms around their waist. Make a fist with one hand, thumb side against their stomach, just above the navel and below the ribcage.</li>
+      <li>Grab your fist with your other hand and <strong>thrust sharply inward and upward.</strong> Repeat until the object comes out or they lose consciousness.</li>
+      <li>If they lose consciousness, lower them to the ground, start CPR if you know it, and continue until help arrives.</li>
+    </ol>
+  </div>
+  <div class="scenario">
+    <h4>If you're alone and choking</h4>
+    <ol class="step-list">
+      <li>Call 911 first if you can — even if you can't speak, an open line will bring help.</li>
+      <li>Make a fist and place it above your navel. Use your other hand to thrust inward and upward.</li>
+      <li>Or lean over the back of a chair or counter edge, driving it into your upper abdomen with your body weight.</li>
+    </ol>
+  </div>
+  <div class="scenario">
+    <h4>For an infant (under 1 year)</h4>
+    <ol class="step-list">
+      <li>Sit down and lay the baby face-down along your forearm, head lower than chest. Support the head and jaw.</li>
+      <li>Give <strong>5 firm back blows</strong> between the shoulder blades with the heel of your hand.</li>
+      <li>If the object doesn't come out, turn the baby face-up on your thigh, head still lower than chest. Give <strong>5 chest thrusts</strong> using two fingers on the breastbone.</li>
+      <li>Alternate 5 back blows and 5 chest thrusts. Call 911 after one minute if the object hasn't cleared.</li>
+    </ol>
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page">
+  <h2>Eye Injuries</h2>
+  <div class="scenario">
+    <h4>Debris in the eye (dust, sand, eyelash)</h4>
+    <ol class="step-list">
+      <li><strong>Do not rub.</strong> Rubbing can scratch the cornea.</li>
+      <li>Blink rapidly — your tears may flush it out.</li>
+      <li>Pull the upper eyelid over the lower eyelid and release. The lower lashes can sweep debris away.</li>
+      <li>If that doesn't work, flush with clean water or saline. Tilt your head so the affected eye is lower, and pour water from the inner corner outward.</li>
+    </ol>
+  </div>
+  <div class="scenario">
+    <h4>Chemical splash</h4>
+    <ol class="step-list">
+      <li><strong>Flush immediately.</strong> Hold the eye open under a gentle stream of cool water for at least 15 minutes. Use a sink, shower, or hose.</li>
+      <li>Remove contact lenses if you wear them — don't delay flushing to do this.</li>
+      <li>Do not rub. Do not apply anything to the eye.</li>
+      <li>Call Poison Control (1-800-222-1222) or go to the ER after flushing. Bring the chemical container if you can.</li>
+    </ol>
+  </div>
+  <div class="scenario">
+    <h4>Blow or impact to the eye</h4>
+    <ol class="step-list">
+      <li>Apply a cold compress gently — no pressure. A bag of frozen peas wrapped in a cloth works.</li>
+      <li>Do not apply pressure or rub.</li>
+      <li>Get medical help if: vision changes, you see flashes or floaters, there's blood in the eye, the eye looks sunken or protruding, or you can't move it normally.</li>
+    </ol>
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page">
+  <h2>Poisoning</h2>
+  <div class="scenario">
+    <h4>If you suspect poisoning</h4>
+    <ol class="step-list">
+      <li><strong>Call Poison Control immediately:</strong> 1-800-222-1222. They're available 24/7 and their guidance is free. Put this number in your phone.</li>
+      <li>Stay calm. Have the container or bottle with you — the label tells them exactly what was ingested.</li>
+      <li>Do <strong>not</strong> induce vomiting unless Poison Control specifically tells you to. Some substances cause more damage coming back up.</li>
+      <li>Do not give the person anything to eat or drink unless instructed.</li>
+    </ol>
+  </div>
+  <div class="tip-box">
+    <strong>Call 911 instead of Poison Control if the person:</strong> collapses, has a seizure, stops breathing, or can't be woken up. Poison Control handles the substance questions; 911 handles life-threatening emergencies.
+  </div>
+  <div class="scenario">
+    <h4>Inhaled poison (fumes, smoke, gas)</h4>
+    <ol class="step-list">
+      <li>Get the person to fresh air immediately. Open windows and doors.</li>
+      <li>Do not enter an enclosed space yourself if fumes are strong — you could become a second victim.</li>
+      <li>Call 911. Check breathing and start CPR if needed and you know how.</li>
+    </ol>
+  </div>
+  <div class="scenario">
+    <h4>Poison on the skin</h4>
+    <ol class="step-list">
+      <li>Remove contaminated clothing carefully — don't pull it over the face.</li>
+      <li>Rinse skin with water for at least 15 minutes.</li>
+      <li>Call Poison Control for further instructions.</li>
+    </ol>
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page">
+  <h2>When to Call a Doctor</h2>
+  <p class="lede">Most household injuries are minor and heal on their own. These are the signals that something needs professional attention.</p>
+
+  <h3>Go to the ER or call 911</h3>
+  <ul class="checklist" data-section="er-list">
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Heavy bleeding that won't stop with direct pressure</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Difficulty breathing</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Chest pain or pressure</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Head injury with confusion, vomiting, or loss of consciousness</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Severe allergic reaction (swelling face/throat, trouble breathing)</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Severe burn — large, deep, or on face/hands/feet/joints</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Possible broken bone — deformity, can't move it, severe pain</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Poisoning — call Poison Control first (1-800-222-1222) and follow their instructions</span></li>
+  </ul>
+
+  <h3 style="margin-top:0.4rem;">See a doctor within 24 hours</h3>
+  <ul class="checklist" data-section="doctor-list">
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Deep cut that may need stitches</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Animal bite that broke the skin</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Puncture wound (especially from a nail or dirty object)</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Signs of infection: spreading redness, warmth, swelling, pus, fever</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Burn that blisters over more than 3 inches</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Sprain that can't bear weight or has significant swelling</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Something stuck in the eye that won't flush out</span></li>
+    <li class="check-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Tick bite followed by rash, fever, or joint pain (Lyme concern)</span></li>
+  </ul>
+
+  <div class="tip-box">
+    <strong>Trust your gut.</strong> If something feels wrong and you can't pin down why, that's a valid reason to call a doctor. This list covers common patterns — it doesn't cover everything. You know your body and your family better than a checklist does.
+  </div>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<div class="page" style="display:flex;flex-direction:column;justify-content:center;text-align:center;">
+  <p class="brand-line" style="text-align:center;">Kitchen <em>&amp; Kettle</em></p>
+  <h2 style="text-align:center;border-bottom:none;">Take care of each other.</h2>
+  <p style="font-size:13pt;color:#3D362D;max-width:24ch;margin:0.4rem auto;line-height:1.5;">
+    Most injuries are small. Most recoveries are quick. The skill isn't in having no accidents — it's in staying calm and knowing what to do when they happen.
+  </p>
+  <p class="small" style="margin-top:1.2rem;">Print extras. Tuck one in the kitchen drawer. Give one to a new parent.</p>
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<script>
+const STORAGE_KEY = 'kettle-first-aid';
+
+function save(){
+  const data = {};
+
+  // Save all text inputs
+  document.querySelectorAll('[data-key]').forEach(el => {
+    data[el.dataset.key] = el.type === 'checkbox' ? el.checked : el.value;
+  });
+
+  // Save checked state for checklists — store as arrays of indices per section
+  document.querySelectorAll('.checklist[data-section]').forEach(list => {
+    const section = list.dataset.section;
+    const checked = [];
+    list.querySelectorAll('.check-item').forEach((item, i) => {
+      if(item.classList.contains('checked')) checked.push(i);
+    });
+    data['_checked_' + section] = checked;
+  });
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  const s = document.getElementById('saveStatus');
+  s.classList.add('visible');
+  clearTimeout(s._t); s._t = setTimeout(() => s.classList.remove('visible'), 1500);
+}
+
+function load(){
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if(!raw) return;
+  const data = JSON.parse(raw);
+
+  // Load text inputs
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if(el.dataset.key in data) {
+      if(el.type === 'checkbox') el.checked = data[el.dataset.key];
+      else el.value = data[el.dataset.key];
+    }
+  });
+
+  // Load checkboxes
+  document.querySelectorAll('.checklist[data-section]').forEach(list => {
+    const section = list.dataset.section;
+    const checked = data['_checked_' + section] || [];
+    list.querySelectorAll('.check-item').forEach((item, i) => {
+      if(checked.includes(i)) item.classList.add('checked');
+    });
+  });
+}
+
+function toggleCheck(item){
+  item.classList.toggle('checked');
+  save();
+}
+
+function clearAll(){
+  if(!confirm('Clear all checkmarks and entered text?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if(el.type === 'checkbox') el.checked = false;
+    else el.value = '';
+  });
+  document.querySelectorAll('.check-item.checked').forEach(el => el.classList.remove('checked'));
+}
+
+document.addEventListener('input', function(e){
+  if(e.target.hasAttribute('data-key')) save();
+});
+
+load();
+</script>
+
+</body>
+</html>
