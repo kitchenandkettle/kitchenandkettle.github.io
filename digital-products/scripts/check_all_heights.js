@@ -21,6 +21,10 @@ const FILES = [
   'apothecary-journal/apothecary-journal.html',
   'egg-handling-card/egg-handling-card.html',
   'Moon-Journal/moon-journal-static.html',
+  'substitution-cards/substitution-cards.html',
+  'recipe-book-dividers/recipe-book-dividers.html',
+  'first-aid-checklist/first-aid-checklist.html',
+  'apothecary-basics/apothecary-basics.html',
 ];
 
 // --- Must match EXACTLY the injected CSS in convert_pdfs.js ---
@@ -155,6 +159,19 @@ const INJECT_CSS = `
         .chicken-guide .prose-page hr { margin: 0.3rem 0 !important; }
         .chicken-guide .prose-page h3 { margin-top: 0.2rem !important; margin-bottom: 0.15rem !important; }
         .chicken-guide .page { padding-top: 0.55in !important; padding-bottom: 0.55in !important; }
+
+        /* --- Apothecary Basics: teas page (+0.8in) & poultices page (+1.3in) --- */
+        .apothecary-basics .method-card { padding: 0.22rem 0.35rem !important; margin-bottom: 0.18rem !important; }
+        .apothecary-basics .method-card p { margin-bottom: 0.1rem !important; line-height: 1.3 !important; }
+        .apothecary-basics .method-card .label { margin-bottom: 0.04rem !important; }
+        .apothecary-basics .prose-page p { margin-bottom: 0.25rem !important; line-height: 1.35 !important; }
+        .apothecary-basics .prose-page h3 { margin-top: 0.3rem !important; margin-bottom: 0.15rem !important; }
+        .apothecary-basics .prose-page h2 { margin-bottom: 0.2rem !important; }
+        .apothecary-basics .section-header h2 { margin-top: 0.3rem !important; }
+        .apothecary-basics .honest-box { padding: 0.2rem 0.35rem !important; margin: 0.2rem 0 !important; }
+        .apothecary-basics .tip-box { padding: 0.2rem 0.35rem !important; margin: 0.2rem 0 !important; }
+        .apothecary-basics .lede { margin-bottom: 0.35rem !important; }
+        .apothecary-basics .page { padding-top: 0.5in !important; padding-bottom: 0.5in !important; }
       `;
 // ----------------------------------------------------------------
 

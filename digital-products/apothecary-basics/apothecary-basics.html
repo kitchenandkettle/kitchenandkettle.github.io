@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apothecary Basics — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#8B8376;--line:#D9D0C1;--light:#FAF7F0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Crimson Pro',Georgia,serif;font-size:12pt;line-height:1.55;
+    background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:1rem;
+    color:var(--ink);
+  }
+
+  .toolbar{
+    max-width:8.5in;width:100%;margin:0 auto 0.5rem;
+    display:flex;justify-content:space-between;align-items:center;
+    background:#fff;padding:0.5rem 0.7rem;border-radius:6px;
+    box-shadow:0 1px 4px rgba(44,36,22,0.08);
+    position:sticky;top:0;z-index:100;
+  }
+  .toolbar .brand{font-family:'Crimson Pro',serif;font-size:14pt;font-weight:600;color:var(--ink)}
+  .toolbar .brand em{font-style:italic;color:var(--clay)}
+  .toolbar .actions{display:flex;gap:0.5rem;align-items:center}
+  .save-status{font-family:'Work Sans',sans-serif;font-size:8pt;color:#5a8a6a;margin-right:0.5rem;opacity:0;transition:opacity 0.3s;}
+  .save-status.visible{opacity:1}
+  .btn{font-family:'Work Sans',sans-serif;font-size:8pt;font-weight:600;padding:0.4em 0.8em;border-radius:3px;cursor:pointer;border:none;transition:background 0.15s;text-decoration:none;}
+  .btn-ghost{background:none;color:var(--muted);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+  .btn-print{background:var(--ink);color:var(--paper)}
+  .btn-print:hover{background:#3D362D}
+
+  .page{
+    width:8.5in;min-height:11in;background:var(--paper);
+    padding:0.6in 0.7in;
+    box-shadow:0 2px 12px rgba(44,36,22,0.12);
+    position:relative;margin-bottom:0.25in;page-break-after:always;
+  }
+  .page:last-of-type{page-break-after:auto;margin-bottom:0}
+
+  h1{font-family:'Crimson Pro',serif;font-size:28pt;font-weight:600;color:var(--ink);letter-spacing:-0.01em;line-height:1.15;}
+  h2{font-family:'Crimson Pro',serif;font-size:18pt;font-weight:600;color:var(--ink);margin-bottom:0.3rem;border-bottom:1px solid var(--line);padding-bottom:0.15rem;}
+  h3{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin:0.5rem 0 0.25rem;}
+  h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;color:var(--ink);margin-bottom:0.2rem;}
+
+  .lede{font-size:14pt;line-height:1.5;color:#3D362D;margin-bottom:0.6rem;}
+  .small{font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);}
+  .brand-line{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--clay);margin-bottom:0.6rem;}
+  .brand-line em{font-style:italic;color:var(--sage)}
+  .tagline{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);}
+
+  .prose-page p{margin-bottom:0.35rem;}
+  .prose-page hr{margin:0.25rem 0;border:none;border-top:1px solid var(--line);}
+
+  .section-header{margin-top:0.5rem;}
+
+  .honest-box{background:var(--light);border-left:3px solid var(--clay);padding:0.3rem 0.4rem;margin:0.35rem 0;font-size:12pt;}
+  .honest-box strong{color:var(--ink)}
+  .tip-box{background:var(--light);border-left:3px solid var(--sage);padding:0.3rem 0.4rem;margin:0.35rem 0;font-size:12pt;}
+  .tip-box strong{color:var(--ink)}
+
+  .method-card{border:1px solid var(--line);padding:0.35rem;margin-bottom:0.35rem;}
+  .method-card h4{margin-bottom:0.1rem;color:var(--sage);}
+  .method-card .label{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--sage);margin-bottom:0.08rem;}
+
+  .ref-table{width:100%;border-collapse:collapse;font-size:12pt;margin:0.25rem 0;}
+  .ref-table th{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--sage);text-align:left;padding:0.15rem 0.25rem;border-bottom:1px solid var(--line);}
+  .ref-table td{padding:0.12rem 0.25rem;border-bottom:1px dotted var(--line);vertical-align:top;}
+  .ref-table tr:last-child td{border-bottom:none;}
+
+  .supply-list{list-style:none;margin:0.25rem 0;columns:2;column-gap:0.3in;}
+  .supply-item{display:grid;grid-template-columns:1.2rem 1fr;gap:0.2rem;align-items:start;padding:0.1rem 0;cursor:pointer;break-inside:avoid;}
+  .supply-item .checkbox{
+    width:0.85rem;height:0.85rem;border:1.5px solid var(--line);
+    margin-top:0.2rem;flex-shrink:0;border-radius:2px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Work Sans',sans-serif;font-size:9pt;font-weight:700;
+    color:transparent;transition:all 0.15s;user-select:none;
+  }
+  .supply-item.checked .checkbox{background:var(--sage);border-color:var(--sage);color:var(--paper);}
+  .supply-item .item-text{font-size:12pt;line-height:1.4;}
+
+  .page-footer{text-align:center;margin-top:0.4rem;font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);letter-spacing:0.04em;text-transform:uppercase;}
+  .page-footer em{font-style:italic;color:var(--clay)}
+
+  .cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2in 0.7in;}
+  .cover h1{margin-bottom:0.25in;}
+  .cover .brand-line{margin-bottom:1rem;}
+  .cover .desc{font-size:13pt;color:#3D362D;max-width:24ch;line-height:1.5;}
+
+  .uses-list{margin:0.15rem 0 0.15rem 1rem;}
+  .uses-list li{margin-bottom:0.12rem;font-size:12pt;line-height:1.4;}
+
+  @media print{
+    body{background:none;padding:0;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .toolbar{display:none}
+    .page{margin:0;box-shadow:none}
+    .supply-item .checkbox{color:transparent!important}
+    input::placeholder,textarea::placeholder{color:transparent!important}
+  }
+</style>
+</head>
+<body class="apothecary-basics">
+
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+
+<!-- COVER -->
+<div class="page cover">
+  <p class="brand-line">Kitchen <em>&amp; Kettle</em></p>
+  <h1>Apothecary<br>Basics</h1>
+  <p class="desc">A beginner's guide to making your own herbal preparations — teas, tinctures, salves, and more. What each one does, when to use it, and exactly how to make it.</p>
+  <p class="tagline" style="margin-top:1.5rem;">Works because it works.</p>
+</div>
+
+<!-- PHILOSOPHY -->
+<div class="page prose-page">
+  <h2>Why make your own</h2>
+  <p class="lede">You don't need a degree in herbalism to make useful things from plants. People have been doing this for thousands of years with whatever they had — a jar, some herbs, water or alcohol or oil, and time.</p>
+  <p>Making your own preparations means you know exactly what's in them. No mystery ingredients, no preservatives you can't pronounce, no marketing markup. A jar of dried calendula and a bottle of olive oil costs a few dollars and makes enough salve to last a year.</p>
+
+  <div class="section-header"><h2>What you actually need</h2></div>
+  <p>Not much. You probably have most of this already:</p>
+  <ul class="uses-list">
+    <li>Glass jars with lids (mason jars, old jam jars — anything clean with a tight seal)</li>
+    <li>Cheesecloth or a fine mesh strainer</li>
+    <li>Carrier oils — olive oil, sweet almond oil, or jojoba</li>
+    <li>Beeswax (for salves)</li>
+    <li>Vodka or grain alcohol (for tinctures)</li>
+    <li>Raw honey and apple cider vinegar (for oxymels)</li>
+    <li>Dried herbs — start with a few, not twenty</li>
+    <li>Small jars or tins for finished products</li>
+  </ul>
+
+  <div class="honest-box">
+    <strong>Honest note:</strong> Most herbal preparations take time, not effort. A tincture sits in a dark cabinet for four to six weeks while you live your life. The actual hands-on work is five minutes. This is slow medicine, not a weekend project. Start one thing, let it go, start another next month. In six months you'll have a shelf full of things you made yourself.
+  </div>
+</div>
+
+<!-- OVERVIEW TABLE -->
+<div class="page prose-page">
+  <h2>Which method for what</h2>
+  <p>Different plant parts need different extraction methods. Here's a quick reference — you'll find full instructions for each method on the following pages.</p>
+
+  <table class="ref-table">
+    <tr><th>Method</th><th>Best for</th><th>Time</th></tr>
+    <tr><td>Tea / Infusion</td><td>Leaves, flowers, delicate aerial parts</td><td>10–20 minutes</td></tr>
+    <tr><td>Decoction</td><td>Roots, barks, berries, tough plant material</td><td>20–45 minutes</td></tr>
+    <tr><td>Tincture</td><td>Almost anything — concentrated, long-lasting</td><td>4–6 weeks</td></tr>
+    <tr><td>Oxymel</td><td>Pungent herbs, respiratory support, immune tonics</td><td>2–4 weeks</td></tr>
+    <tr><td>Infused honey</td><td>Delicate herbs, sleep support, sore throats — gentle and tasty</td><td>1–2 weeks</td></tr>
+    <tr><td>Medicinal syrup</td><td>Immune support, coughs, kid-friendly — strong decoction + honey</td><td>1–2 hours</td></tr>
+    <tr><td>Infused oil</td><td>Flowers and leaves — calendula, plantain, comfrey</td><td>2–6 weeks</td></tr>
+    <tr><td>Salve</td><td>Skin application — made from infused oil + beeswax</td><td>30 minutes (after oil is ready)</td></tr>
+    <tr><td>Poultice</td><td>Fresh injuries, splinters, stings — immediate use</td><td>Right now</td></tr>
+    <tr><td>Compress</td><td>Headaches, tired eyes, minor skin irritation</td><td>15–20 minutes</td></tr>
+    <tr><td>Steam</td><td>Congestion, facial steam, respiratory relief</td><td>5–10 minutes</td></tr>
+    <tr><td>Infused bath</td><td>Full-body — muscle aches, stress, skin, circulation</td><td>20+ minutes</td></tr>
+    <tr><td>Witch hazel</td><td>Astringent base — mix with tinctures or use alone as a toner</td><td>Ready to use</td></tr>
+  </table>
+
+  <div class="tip-box">
+    <strong>Start here:</strong> Tea and salve. Tea is instant — you can make one right now with whatever dried herb you have. Salve feels like magic the first time you pour it into a tin and watch it set. Those two alone cover most of what people actually use herbal preparations for.
+  </div>
+</div>
+
+<!-- TEAS & INFUSIONS -->
+<div class="page prose-page">
+  <div class="section-header"><h2>Teas &amp; Infusions</h2></div>
+  <p class="lede">The simplest preparation there is. Hot water pulls out water-soluble compounds from leaves and flowers — the volatile oils, flavonoids, and gentle bitter compounds that make herbs work.</p>
+
+  <div class="method-card">
+    <p class="label">When to use</p>
+    <p>When you want something gentle and immediate. Calendula tea for a sore throat. Chamomile before bed. Peppermint for an upset stomach. If the herb is a leaf or a flower, start with tea.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">How to make</p>
+    <p>One teaspoon dried herb (or two teaspoons fresh) per cup of just-boiled water. Cover and steep 10–20 minutes — <em>always covered</em>, or the volatile oils escape with the steam. Strain and drink. That's it.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">Supplies</p>
+    <p>Dried herbs, boiling water, a mug or jar with a lid, strainer</p>
+  </div>
+
+  <div class="method-card"><p class="label">Herbs to try</p><p>Chamomile for sleep and calm. Peppermint for digestion and nausea. Lemon balm for gentle calm and focus. Calendula for a sore throat. Linden for tension and restlessness. Red clover for skin health.</p></div>
+
+  
+  <p class="lede">For roots, barks, and berries — plant parts that won't give up their goodness to a quick steep. You simmer them instead.</p>
+
+  <div class="method-card">
+    <p class="label">When to use</p>
+    <p>When the herb is tough — ginger root, dandelion root, cinnamon bark, elderberries. If you can't crumble it easily between your fingers, decoct it.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">How to make</p>
+    <p>One tablespoon dried herb per cup of cold water. Bring to a boil, reduce to a gentle simmer, cover, and simmer 20–45 minutes. The longer simmer pulls minerals, bitter compounds, and polysaccharides from the tough material. Strain and drink warm.</p>
+  </div>
+
+  <div class="tip-box">
+    <strong>Quick decoction shortcut:</strong> If you're in a hurry, pour boiling water over the herbs and simmer five minutes instead of starting from cold. You'll get about eighty percent of the extraction. Good enough for a weeknight.
+  </div>
+  <div class="method-card" style="margin-top:0.35rem;"><p class="label">Herbs to try</p><p>Ginger root for circulation and warming (simmer with lemon and honey). Dandelion root for liver support and gentle detox. Elderberries for immune support — simmer with a cinnamon stick. Cinnamon bark for warming and blood sugar balance. Astragalus root for deep immune support through winter.</p></div>
+</div>
+
+<!-- TINCTURES -->
+<div class="page prose-page">
+  <h2>Tinctures</h2>
+  <p class="lede">A tincture is herbs extracted in alcohol. It's concentrated, it lasts for years, and a few drops under the tongue is all you need. This is the format most herbalists reach for first.</p>
+
+  <div class="method-card">
+    <p class="label">When to use</p>
+    <p>When you want something strong, portable, and long-lasting. Tinctures are great for daily immune support (elderberry, echinacea), digestive bitters before meals, or calming blends. They're also the best way to preserve fresh herbs — alcohol captures compounds that water and oil miss.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">How to make</p>
+    <p>Fill a clean jar about halfway with dried herbs (or two-thirds full with fresh, chopped herbs). Pour vodka or grain alcohol over them until the herbs are fully covered by about an inch of liquid. Seal tightly. Label with the herb and date. Store in a dark cabinet for 4–6 weeks, shaking the jar every few days when you remember. Strain through cheesecloth into a clean bottle.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">Supplies</p>
+    <p>Herbs (dried or fresh), 80–100 proof vodka or grain alcohol, glass jar, cheesecloth, amber dropper bottles for storage</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">Standard dose</p>
+    <p>1–2 droppers full (about 30–60 drops) under the tongue or in a small amount of water, 1–3 times daily. Start low, pay attention to how your body responds.</p>
+  </div>
+
+  <div class="honest-box">
+    <strong>Honest note:</strong> Fresh herbs make stronger tinctures but also introduce water content — use a higher-proof alcohol (at least 100 proof) for fresh herbs so the final alcohol concentration stays high enough to preserve the extract. Dried herbs are more predictable and use standard 80-proof vodka just fine. If you're new to this, start with dried.
+  </div>
+  <div class="method-card" style="margin-top:0.35rem;"><p class="label">Herbs to try</p><p>Elderberry for immune support (take daily through winter). Echinacea at the first sign of a cold. Lemon balm for anxious moments and restless sleep. Dandelion root for digestive bitters before meals. Valerian for deep sleep (warning: smells like old socks, works anyway). Milky oats for nervous system support and stress resilience.</p></div>
+</div>
+
+<!-- OXYMELS -->
+<div class="page prose-page">
+  <h2>Oxymels</h2>
+  <p class="lede">An oxymel is herbs extracted in honey and vinegar — sweet, sour, and medicinal all at once. The name comes from the Greek <em>oxymeli</em>: sharp (acid) and honey. They're gentler than tinctures, taste better, and kids will actually take them.</p>
+
+  <div class="method-card">
+    <p class="label">When to use</p>
+    <p>Respiratory herbs shine in oxymels — the honey coats and soothes, the vinegar cuts through congestion. Think garlic and thyme for a cough, elderberry and ginger for immune support, rosemary and sage for a sore throat. Also great for pungent herbs that taste terrible as tea (looking at you, raw garlic).</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">How to make</p>
+    <p>Fill a jar one-third full with dried herbs (or half full with fresh, chopped herbs). Pour raw apple cider vinegar over them until the jar is about three-quarters full. Add an equal amount of raw honey — the jar should be nearly full. Stir well with a clean spoon, seal, and store in a dark cabinet for 2–4 weeks. Shake every few days. Strain into a clean bottle. Keep refrigerated after straining — the honey means it won't preserve indefinitely at room temperature.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">Standard dose</p>
+    <p>One teaspoon to one tablespoon as needed, straight or stirred into warm water.</p>
+  </div>
+
+  <div class="tip-box">
+    <strong>Oxymel ratios are forgiving.</strong> More honey = sweeter and thicker. More vinegar = sharper and thinner. Adjust to taste. The extraction works either way — this is the least precise preparation in the apothecary.
+  </div>
+  <div class="method-card" style="margin-top:0.35rem;"><p class="label">Herbs to try</p><p>Garlic and thyme together — the classic cough-and-cold oxymel. Elderberry and ginger for winter immune support. Rosemary and sage for a sore throat gargle. Holy basil (tulsi) for stress and respiratory support. Oregano for strong antimicrobial action (use sparingly — it's intense).</p></div>
+</div>
+
+<!-- INFUSED HONEY -->
+<div class="page prose-page">
+  <h2>Infused Honey</h2>
+  <p class="lede">Herbs steeped in raw honey — nothing else. Stir it into tea, drizzle it on toast, or eat a spoonful straight. Gentler than a tincture, sweeter than an oxymel, and about as simple as it gets.</p>
+
+  <div class="method-card">
+    <p class="label">When to use</p>
+    <p>When you want something that tastes good and works gently. A spoonful of chamomile honey before bed. Ginger honey stirred into hot water when a cold is coming on. Lavender honey drizzled on yogurt. The honey extracts water-soluble compounds and volatile oils while adding its own soothing and antimicrobial properties.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">How to make</p>
+    <p><strong>Cold infusion (preferred for delicate herbs):</strong> Fill a jar about one-third full with dried herbs. Pour raw honey over them — it helps to warm the honey slightly so it pours easier, but don't heat it past about 100°F or you'll lose the raw enzymes. Stir well to coat all the herbs. Seal and let sit in a warm spot (a sunny windowsill or above the fridge) for 1–2 weeks, flipping the jar every day or two to keep the herbs coated. Strain through a fine mesh strainer — warming the honey slightly helps it flow. Store in a sealed jar at room temperature.</p>
+    <p style="margin-top:0.2rem;"><strong>Quick method:</strong> Place herbs and honey in a jar. Set the jar in a pot of warm water (not simmering — just warm enough to keep the honey liquid). Let it infuse for 2–4 hours, keeping the water warm. Strain. This gives a lighter extraction but works when you want it ready today.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">Herbs to try</p>
+    <p>Chamomile honey for sleep — a spoonful in hot water before bed. Ginger honey for colds and sore throats. Lavender honey for a calming drizzle on toast or yogurt. Thyme honey for coughs and respiratory crud. Rose petal honey because it tastes like summer and that's reason enough.</p>
+  </div>
+</div>
+
+<!-- MEDICINAL SYRUPS -->
+<div class="page prose-page">
+  <h2>Medicinal Syrups</h2>
+  <p class="lede">A syrup is a strong herbal decoction reduced and sweetened with honey or sugar — thick, shelf-stable, and easy to take by the spoonful. This is the format most commercial cough syrups and elderberry syrups use, and it's simple enough to make at home.</p>
+
+  <div class="method-card">
+    <p class="label">When to use</p>
+    <p>When you want something concentrated, sweet, and easy to give to kids (or yourself). Elderberry syrup for daily immune support through winter. Thyme and ginger syrup for a cough that won't quit. Lemon balm syrup for anxious kids at bedtime. The sugar or honey acts as a preservative and makes the medicine palatable — a spoonful of syrup is a lot easier to take than a shot of tincture.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">How to make</p>
+    <p>Make a strong decoction: two tablespoons of dried herbs (or a half-cup fresh) per cup of water. Simmer covered on low heat for 20–30 minutes — you're making a concentrated tea. Strain and measure the liquid. Return it to the pot and simmer uncovered until it reduces by half. Let it cool completely — if you add honey while the liquid is still hot, you'll destroy the raw enzymes and beneficial compounds. Once cool, stir in an equal amount of raw honey (so if you have half a cup of reduced liquid, add half a cup of honey). Stir until fully combined. Bottle and store in the refrigerator — the honey keeps it preserved for several months but it's not indefinitely shelf-stable at room temperature.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">Herbs to try</p>
+    <p>Elderberry syrup with ginger and cinnamon — the classic winter immune syrup. Thyme and honey syrup for coughs. Lemon balm and chamomile syrup for bedtime. Ginger and cayenne syrup for when you feel a cold coming on (the cayenne is optional but it gets things moving). Wild cherry bark syrup for dry, persistent coughs.</p>
+  </div>
+</div>
+
+<!-- INFUSED OILS -->
+<div class="page prose-page">
+  <h2>Infused Oils</h2>
+  <p class="lede">Herbs steeped in carrier oil — the foundation for salves, massage oils, and any preparation that goes directly on the skin.</p>
+
+  <div class="method-card">
+    <p class="label">When to use</p>
+    <p>When you want the herb's properties on your skin, not in your mouth. Calendula oil for dry hands and minor cuts. Plantain oil for bug bites and stings. Comfrey oil for bruises and sore muscles. Also the first step in making a salve — the oil carries the herb's medicine into the finished product.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">How to make</p>
+    <p><strong>Cold infusion (preferred):</strong> Fill a jar with dried herbs — they must be thoroughly dry, not fresh. Fresh herbs contain water that will make the oil go rancid. Pour oil over them until fully covered by an inch. Seal and place in a sunny window for 2–4 weeks, shaking occasionally. Strain through cheesecloth.</p>
+    <p style="margin-top:0.2rem;"><strong>Quick method:</strong> Place herbs and oil in a double boiler (a glass bowl over a pot of simmering water). Heat gently for 2–4 hours, keeping the oil warm but never hot — aim for about 100–110°F. If the oil smokes or smells cooked, the heat was too high. Strain and use immediately.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">Best carrier oils</p>
+    <p>Olive oil (most versatile, long shelf life). Sweet almond oil (lighter, good for face). Jojoba (closest to skin's natural oils, absorbs fast). Coconut oil (solid at room temp, works but harder to strain).</p>
+  </div>
+  <div class="method-card" style="margin-top:0.35rem;"><p class="label">Herbs to try</p><p>Calendula for skin healing — the one oil everyone should make. Plantain for bug bites, stings, and minor rashes. Comfrey for bruises, sore muscles, and bumps. Lavender for a calming massage oil. St. John's wort for nerve pain and sun-exposed skin (makes a deep red oil).</p></div>
+</div>
+
+<!-- SALVES -->
+<div class="page prose-page">
+  <h2>Salves</h2>
+  <p class="lede">An infused oil turned solid with beeswax — portable, shelf-stable, and exactly what you want for dry hands, kitchen burns, scraped knees, and chapped lips.</p>
+
+  <div class="method-card">
+    <p class="label">When to use</p>
+    <p>Any time you want an herbal preparation that stays where you put it. Calendula salve for dry, cracked hands. Plantain salve for bug bites. Comfrey salve for bumps and bruises. A basic salve in a small tin lives in my kitchen drawer and gets used daily.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">How to make</p>
+    <p>Start with one cup of infused oil — you made this already (previous page). Heat it gently in a double boiler. Add beeswax pastilles or grated beeswax — one to two tablespoons per cup of oil for a soft salve, three tablespoons for a firmer balm. Stir until the beeswax is completely melted. To test the consistency, drip a few drops onto a cold plate — it'll set in seconds. Too soft? Add more beeswax. Too hard? Add more oil. Pour into small tins or jars and let cool completely before putting the lids on.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">Supplies</p>
+    <p>Infused oil, beeswax, double boiler (or glass bowl over a pot), small tins or jars, a cold plate for testing</p>
+  </div>
+
+  <div class="tip-box">
+    <strong>Beeswax pastilles are worth it.</strong> Grating a block of beeswax is tedious and you'll never get the wax out of your grater. Pastilles melt faster and measure easily. A one-pound bag costs about ten dollars and will make salves for years.
+  </div>
+  <div class="method-card" style="margin-top:0.35rem;"><p class="label">Herbs to try</p><p>Calendula salve for dry, cracked hands and kitchen burns. Plantain salve for bug bites — keep a small tin in your bag all summer. Comfrey salve for bumps, bruises, and sore muscles. Lavender and chamomile salve for temples and wrists before bed. Rosemary and peppermint salve for tension headaches (rub on temples).</p></div>
+</div>
+
+<!-- POULTICES -->
+<div class="page prose-page">
+  <h2>Poultices</h2>
+  <p class="lede">A poultice is fresh or dried herbs applied directly to the skin — the oldest preparation there is. No extraction, no waiting. Just the plant, crushed or chewed or moistened, placed where it's needed.</p>
+
+  <div class="method-card">
+    <p class="label">When to use</p>
+    <p>Right now. A plantain leaf chewed and pressed onto a bee sting. Comfrey leaves crushed and wrapped around a sprained ankle. A grated potato on a minor burn (yes, really — the starch draws heat out). Poultices are for acute situations where you don't have time to make anything.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">How to make</p>
+    <p><strong>Fresh:</strong> Crush or chew the fresh leaves to release the juices, place directly on the skin, and wrap with a clean cloth or bandage to hold it in place. Leave on 20–30 minutes, or until the herbs dry out.</p>
+    <p style="margin-top:0.2rem;"><strong>Dried:</strong> Mix dried powdered herb with just enough warm water to make a paste. Spread on the skin, cover with gauze or cloth, and leave on until dry.</p>
+  </div>
+
+  <div class="section-header"><h2>Compresses</h2></div>
+  <p>A compress is a cloth soaked in a strong herbal tea or decoction and applied to the skin. Gentler than a poultice — good for sensitive areas, headaches, and tired eyes. Soak a clean cloth in warm (or cool) herbal tea, wring it slightly so it doesn't drip, and apply. Refresh every few minutes as it cools or dries. About fifteen minutes total.</p>
+
+  <div class="section-header"><h2>Steams</h2></div>
+  <p>Pour just-boiled water over herbs in a large bowl. Drape a towel over your head and the bowl, close your eyes, and breathe. Five to ten minutes for congestion, facial steam, or respiratory relief. Thyme and rosemary for a chest steam. Chamomile and lavender for a facial steam. Keep your face at least twelve inches from the water — steam, not scalding.</p>
+  <div class="method-card" style="margin-top:0.35rem;"><p class="label">Herbs to try — poultices</p><p>Fresh plantain leaf for bee stings and bug bites (chew it and press it on — really). Comfrey leaf for sprains and swelling. Yarrow for minor cuts that won't stop bleeding. Calendula petals for minor scrapes and wounds.</p></div>
+  <div class="method-card"><p class="label">Herbs to try — compresses</p><p>Chamomile tea compress for tired, puffy eyes. Rosemary tea compress for tension headaches across the forehead. Calendula tea compress for minor skin irritation. Cool black tea compress for sunburn (the tannins help).</p></div>
+  <div class="method-card"><p class="label">Herbs to try — steams</p><p>Thyme and rosemary for chest congestion. Chamomile and lavender for a calming facial steam. Peppermint for sinus pressure. Eucalyptus (a few dried leaves) for deep respiratory relief.</p></div>
+</div>
+
+<!-- INFUSED BATHS -->
+<div class="page prose-page">
+  <h2>Infused Baths</h2>
+  <p class="lede">An herbal bath is one of the oldest ways to absorb plant medicine — through your skin, the largest organ you have, while you do absolutely nothing else. It's slow, warm, and deeply effective.</p>
+
+  <div class="method-card">
+    <p class="label">When to use</p>
+    <p>For full-body things — muscle aches, stress, skin irritation, poor circulation, or just because it's been a long week. A bath lets you use larger quantities of herbs than you'd ever drink in tea, and the warm water opens pores and increases absorption.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">How to make</p>
+    <p><strong>Muslin bag method (no mess):</strong> Fill a muslin bag or a clean cotton sock with a generous handful of dried herbs — about half a cup. Tie it closed and toss it into the bath as the tub fills. The hot water pulls out the herbal compounds just like a giant tea bag. Squeeze the bag occasionally to release more. Soak for at least twenty minutes.</p>
+    <p style="margin-top:0.2rem;"><strong>Bath tea method:</strong> Make a very strong infusion — half a cup of dried herbs to a quart of just-boiled water, steep covered for thirty minutes. Strain and pour the whole thing into the bath. Same effect, but you strain beforehand instead of during.</p>
+    <p style="margin-top:0.2rem;"><strong>Epsom salt blend:</strong> Mix dried herbs with Epsom salts and a little baking soda. The salts ease sore muscles; the herbs add their medicine. Half a cup of salts, a quarter cup of dried herbs, and a tablespoon of baking soda per bath. Put it in a muslin bag so the herbs don't clog the drain.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">Herbs to try</p>
+    <p>Oatmeal (yes, plain oatmeal in a sock) for dry, itchy skin — the water turns milky and soothing. Lavender and chamomile together for stress and sleep. Rosemary and peppermint for sore muscles and waking up tired legs. Calendula and comfrey for skin healing. Epsom salts with ginger and rosemary for post-gardening aches.</p>
+  </div>
+</div>
+
+<!-- WITCH HAZEL -->
+<div class="page prose-page">
+  <h2>Witch Hazel</h2>
+  <p class="lede">Witch hazel is a mild astringent extracted from the bark and leaves of the witch hazel shrub. It tightens skin, reduces inflammation, and is gentle enough for daily use. Most people buy it — and that's fine. The drugstore version works. But it's also useful as a base for other preparations.</p>
+
+  <div class="method-card">
+    <p class="label">When to use</p>
+    <p>As a facial toner after washing. On bug bites to reduce itching. On minor cuts and scrapes as a gentle antiseptic. Mixed with a few drops of tincture for a targeted skin preparation — calendula tincture in witch hazel makes a good acne spot treatment. Lavender tincture in witch hazel is a calming facial mist.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">Buying vs. making</p>
+    <p>Making true distilled witch hazel requires a still — not practical for home use. Buy alcohol-free witch hazel (Thayers or a similar brand). Look for the kind that lists witch hazel extract as the first ingredient, not alcohol. The alcohol-based versions are too drying for most skin.</p>
+  </div>
+
+  <div class="honest-box">
+    <strong>Honest note:</strong> Witch hazel is one of those things where the store-bought version is genuinely good and genuinely cheap. This is not a failure of the DIY ethos. It's a recognition that some things aren't worth the effort when the alternative is eight dollars and lasts six months. Use your energy for the salves and tinctures.
+  </div>
+  <div class="method-card" style="margin-top:0.35rem;"><p class="label">Herbs to try</p><p>A few drops of calendula tincture in witch hazel for an acne spot treatment. Lavender tincture in witch hazel for a calming facial mist. Rose water mixed with witch hazel for a gentle daily toner. A drop of tea tree oil in witch hazel for oily skin (use sparingly — tea tree is strong).</p></div>
+</div>
+
+<!-- SUPPLIES CHECKLIST -->
+<div class="page prose-page">
+  <h2>Supplies Checklist</h2>
+  <p class="lede">Everything mentioned in this guide. Check off what you have, pick up the rest as you go. You don't need all of this to start — tea requires a mug and some herbs. The rest comes later.</p>
+
+  <h3>Equipment</h3>
+  <ul class="supply-list" data-section="equipment">
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Mason jars (pint and quart)</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Small jars or tins for finished products</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Cheesecloth</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Fine mesh strainer</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Amber dropper bottles (for tinctures)</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Double boiler or glass bowl + pot</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Labels and a marker</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Small funnel</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Clean cloths or bandages (for poultices)</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Muslin bags or cotton socks (for baths)</span></li>
+  </ul>
+
+  <h3 style="margin-top:0.5rem;">Ingredients</h3>
+  <ul class="supply-list" data-section="ingredients">
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Dried calendula flowers</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Dried chamomile</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Dried peppermint</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Dried plantain leaf</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Dried comfrey leaf</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Dried elderberries</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Dried rosemary</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Dried thyme</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Dried lavender</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Fresh garlic</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Olive oil</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Sweet almond oil</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Beeswax pastilles</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Vodka (80 proof or higher)</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Raw honey</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Raw apple cider vinegar</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Alcohol-free witch hazel</span></li>
+    <li class="supply-item" onclick="toggleCheck(this)"><div class="checkbox">&#10003;</div><span class="item-text">Epsom salts</span></li>
+  </ul>
+
+  <div class="page-footer" style="margin-top:0.5rem;">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<!-- TROUBLESHOOTING -->
+<div class="page prose-page">
+  <h2>Troubleshooting</h2>
+
+  <div class="method-card">
+    <h4>Tincture smells off or has mold</h4>
+    <p>If it smells musty, yeasty, or rotten — not just strongly of alcohol and herbs — toss it. Mold on the surface means the herbs weren't fully submerged. Pour alcohol over them until they're covered by an inch, and always keep the jar sealed. If in doubt, throw it out. A jar of herbs and vodka costs three dollars.</p>
+  </div>
+
+  <div class="method-card">
+    <h4>Infused oil smells rancid</h4>
+    <p>Fresh herbs contain water, and water in oil = spoilage. Always use thoroughly dried herbs for oil infusions. If the oil smells like crayons or old cooking oil, it turned. Start over with dried herbs. Also: strain the oil as soon as it's ready and store in a cool, dark place — leaving herbs in oil indefinitely invites spoilage.</p>
+  </div>
+
+  <div class="method-card">
+    <h4>Salve is too hard or too soft</h4>
+    <p>Remelt it. Too hard? Add more oil, stir, and pour again. Too soft? Add more beeswax. You can't ruin a salve — you can always remelt and adjust. This is the most forgiving preparation there is.</p>
+  </div>
+
+  <div class="method-card">
+    <h4>Tea tastes terrible</h4>
+    <p>Some herbs are genuinely unpleasant as tea — dandelion root is bitter, valerian smells like old socks. That's what honey, oxymels, and tinctures are for. Don't force yourself to drink something you hate. Find the format that works for that herb.</p>
+  </div>
+
+  <div class="method-card">
+    <h4>My oxymel separated</h4>
+    <p>Honey and vinegar naturally separate over time. Shake before each use. It doesn't affect the medicine — just the appearance.</p>
+  </div>
+
+  <div class="honest-box">
+    <strong>When to skip the DIY:</strong> Anything going in or near the eyes. Anything requiring sterile technique. Deep wounds, serious burns, infections that are getting worse instead of better. Herbal preparations are for minor, everyday things. They are not a replacement for medical care. Use them for the small stuff so you can save your energy and money for the big stuff.
+  </div>
+</div>
+
+<!-- NOTES -->
+<div class="page prose-page">
+  <h2>Notes</h2>
+  <p class="small">Use this page to track what you've made — herb, method, date started, date strained, and any notes on how it turned out.</p>
+
+  <div style="margin:0.3rem 0;">
+    <p style="font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;color:var(--sage);border-bottom:1px solid var(--line);padding-bottom:0.1rem;margin-bottom:0.15rem;">Preparation log</p>
+    <textarea data-key="notes-log" placeholder="Herb — Method — Started — Strained — Notes" style="width:100%;height:5.5in;border:1px dashed var(--line);background:transparent;font-family:'Crimson Pro',serif;font-size:12pt;color:var(--ink);padding:0.2rem;resize:none;outline:none;"></textarea>
+  </div>
+
+  <div class="page-footer">Kitchen <em>&amp; Kettle</em> &bull; Works because it works.</div>
+</div>
+
+<!-- CLOSING -->
+<div class="page" style="display:flex;flex-direction:column;justify-content:center;max-width:75%;margin:0 auto;text-align:center;">
+  <h2 style="border:none;">A shelf full of things you made yourself</h2>
+  <p style="margin-bottom:1rem;">That's the goal. Not an apothecary that looks like a museum — a few jars of things that work, that you know how to make, that cost pennies compared to what's on the shelf. Start with one. Calendula salve or elderberry oxymel. Make it. Use it. Make another one next month.</p>
+  <p style="margin-bottom:2rem;"><em>Works because it works.</em></p>
+  <p class="small" style="color:#b0a99e; margin-top:3rem;">Kitchen &amp; Kettle</p>
+  <p class="small" style="color:#b0a99e;">A quieter way to run a kitchen.</p>
+</div>
+
+<script>
+const STORAGE_KEY = 'kettle-apothecary-basics';
+
+function toggleCheck(el){
+  el.classList.toggle('checked');
+  save();
+}
+
+function save(){
+  const data = {checks:{},fields:{}};
+  document.querySelectorAll('.supply-item').forEach((el,i) => {
+    data.checks['supply-'+i] = el.classList.contains('checked');
+  });
+  document.querySelectorAll('[data-key]').forEach(el => {
+    data.fields[el.dataset.key] = el.value;
+  });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  const s = document.getElementById('saveStatus');
+  s.classList.add('visible');
+  clearTimeout(s._t); s._t = setTimeout(() => s.classList.remove('visible'),1500);
+}
+
+function load(){
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if(!raw) return;
+  const data = JSON.parse(raw);
+  if(data.checks){
+    document.querySelectorAll('.supply-item').forEach((el,i) => {
+      if(data.checks['supply-'+i]) el.classList.add('checked');
+    });
+  }
+  if(data.fields){
+    document.querySelectorAll('[data-key]').forEach(el => {
+      if(el.dataset.key in data.fields) el.value = data.fields[el.dataset.key];
+    });
+  }
+}
+
+function clearAll(){
+  if(!confirm('Clear all checkboxes and notes?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('.supply-item').forEach(el => el.classList.remove('checked'));
+  document.querySelectorAll('[data-key]').forEach(el => el.value = '');
+}
+
+document.addEventListener('input', save);
+load();
+</script>
+
+</body>
+</html>
