@@ -40,7 +40,7 @@ herbal preparations, apothecary guide, make your own salve, herbal tinctures, in
 ### Title
 Apothecary Basics | Beginner's Guide to Herbal Preparations | Teas Tinctures Salves and More
 ### Description
-A practical beginner's guide to making your own herbal preparations at home. Ten methods with full instructions — teas, tinctures, oxymels, infused oils, salves, poultices, compresses, steams, decoctions, and witch hazel. What each one does, when to use it, and exactly how to make it. Supplies checklist and troubleshooting included. Printable PDF from Kitchen & Kettle.
+A practical beginner's guide to making your own herbal preparations at home. Thirteen methods with full instructions — teas, tinctures, oxymels, infused honey, syrups, infused oils, salves, poultices, compresses, steams, infused baths, and witch hazel. What each one does, when to use it, and exactly how to make it. Supplies checklist and troubleshooting included. Printable PDF from Kitchen & Kettle.
 
 ## Price
 
