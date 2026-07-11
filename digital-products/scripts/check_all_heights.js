@@ -25,6 +25,7 @@ const FILES = [
   'recipe-book-dividers/recipe-book-dividers.html',
   'first-aid-checklist/first-aid-checklist.html',
   'apothecary-basics/apothecary-basics.html',
+  'root-cellaring-guide/root-cellaring-guide.html',
 ];
 
 // --- Must match EXACTLY the injected CSS in convert_pdfs.js ---
@@ -172,6 +173,28 @@ const INJECT_CSS = `
         .apothecary-basics .tip-box { padding: 0.2rem 0.35rem !important; margin: 0.2rem 0 !important; }
         .apothecary-basics .lede { margin-bottom: 0.35rem !important; }
         .apothecary-basics .page { padding-top: 0.5in !important; padding-bottom: 0.5in !important; }
+
+        /* --- Root Cellaring Guide: crop grid (+0.3in) & troubleshooting (+0.1in) --- */
+        .root-cellaring .crop-card { padding: 0.22rem !important; }
+        .root-cellaring .crop-card p { margin-bottom: 0.05rem !important; line-height: 1.3 !important; }
+        .root-cellaring .crop-card .specs { font-size: 7.5pt !important; }
+        .root-cellaring .crop-grid { gap: 0.18rem !important; margin: 0.2rem 0 !important; }
+        .root-cellaring .alt-card { padding: 0.22rem !important; }
+        .root-cellaring .alt-card p { margin-bottom: 0.05rem !important; line-height: 1.3 !important; }
+        .root-cellaring .alt-card .rating { font-size: 7.5pt !important; }
+        .root-cellaring .alt-grid { gap: 0.18rem !important; margin: 0.2rem 0 !important; }
+        .root-cellaring .ref-table td { padding: 0.1rem 0.2rem !important; line-height: 1.25 !important; }
+        .root-cellaring .ref-table th { padding: 0.1rem 0.2rem !important; }
+        .root-cellaring .method-card { padding: 0.22rem 0.3rem !important; margin-bottom: 0.18rem !important; }
+        .root-cellaring .method-card p { margin-bottom: 0.05rem !important; line-height: 1.3 !important; }
+        .root-cellaring .method-card .label { margin-bottom: 0.04rem !important; }
+        .root-cellaring .prose-page p { margin-bottom: 0.2rem !important; line-height: 1.35 !important; }
+        .root-cellaring .prose-page h3 { margin-top: 0.25rem !important; margin-bottom: 0.12rem !important; }
+        .root-cellaring .prose-page .lede { margin-bottom: 0.3rem !important; }
+        .root-cellaring .prose-page hr { margin: 0.2rem 0 !important; }
+        .root-cellaring .honest-box { padding: 0.2rem 0.3rem !important; margin: 0.2rem 0 !important; }
+        .root-cellaring .tip-box { padding: 0.2rem 0.3rem !important; margin: 0.2rem 0 !important; }
+        .root-cellaring .page { padding-top: 0.5in !important; padding-bottom: 0.5in !important; }
       `;
 // ----------------------------------------------------------------
 

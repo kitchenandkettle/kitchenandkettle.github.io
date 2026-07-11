@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Root Cellaring Basics — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#8B8376;--line:#D9D0C1;--light:#FAF7F0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Crimson Pro',Georgia,serif;font-size:12pt;line-height:1.55;
+    background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:1rem;
+    color:var(--ink);
+  }
+
+  .toolbar{
+    max-width:8.5in;width:100%;margin:0 auto 0.5rem;
+    display:flex;justify-content:space-between;align-items:center;
+    background:#fff;padding:0.5rem 0.7rem;border-radius:6px;
+    box-shadow:0 1px 4px rgba(44,36,22,0.08);
+    position:sticky;top:0;z-index:100;
+  }
+  .toolbar .brand{font-family:'Crimson Pro',serif;font-size:14pt;font-weight:600;color:var(--ink)}
+  .toolbar .brand em{font-style:italic;color:var(--clay)}
+  .toolbar .actions{display:flex;gap:0.5rem;align-items:center}
+  .save-status{font-family:'Work Sans',sans-serif;font-size:8pt;color:#5a8a6a;margin-right:0.5rem;opacity:0;transition:opacity 0.3s;}
+  .save-status.visible{opacity:1}
+  .btn{font-family:'Work Sans',sans-serif;font-size:8pt;font-weight:600;padding:0.4em 0.8em;border-radius:3px;cursor:pointer;border:none;transition:background 0.15s;text-decoration:none;}
+  .btn-ghost{background:none;color:var(--muted);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+  .btn-print{background:var(--ink);color:var(--paper)}
+  .btn-print:hover{background:#3D362D}
+
+  .page{
+    width:8.5in;min-height:11in;background:var(--paper);
+    padding:0.6in 0.7in;
+    box-shadow:0 2px 12px rgba(44,36,22,0.12);
+    position:relative;margin-bottom:0.25in;page-break-after:always;
+  }
+  .page:last-of-type{page-break-after:auto;margin-bottom:0}
+
+  h1{font-family:'Crimson Pro',serif;font-size:28pt;font-weight:600;color:var(--ink);letter-spacing:-0.01em;line-height:1.15;}
+  h2{font-family:'Crimson Pro',serif;font-size:18pt;font-weight:600;color:var(--ink);margin-bottom:0.3rem;border-bottom:1px solid var(--line);padding-bottom:0.15rem;}
+  h3{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin:0.5rem 0 0.25rem;}
+
+  .lede{font-size:14pt;line-height:1.5;color:#3D362D;margin-bottom:0.6rem;}
+  .small{font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);}
+  .brand-line{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--clay);margin-bottom:0.6rem;}
+  .tagline{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);}
+
+  .prose-page p{margin-bottom:0.35rem;line-height:1.5;}
+  .prose-page hr{margin:0.25rem 0;border:none;border-top:1px solid var(--line);}
+
+  .section-header{margin-top:0.5rem;}
+
+  .honest-box{background:var(--light);border-left:3px solid var(--clay);padding:0.3rem 0.4rem;margin:0.35rem 0;font-size:12pt;}
+  .honest-box strong{color:var(--ink)}
+  .tip-box{background:var(--light);border-left:3px solid var(--sage);padding:0.3rem 0.4rem;margin:0.35rem 0;font-size:12pt;}
+  .tip-box strong{color:var(--ink)}
+
+  .method-card{border:1px solid var(--line);padding:0.3rem 0.35rem;margin-bottom:0.3rem;}
+  .method-card p.label{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--sage);margin-bottom:0.08rem;}
+
+  .crop-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.25rem;margin:0.3rem 0;}
+  .crop-card{border:1px solid var(--line);padding:0.3rem;}
+  .crop-card h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;color:var(--ink);margin-bottom:0.15rem;}
+  .crop-card p{font-size:12pt;line-height:1.4;margin-bottom:0.1rem;}
+  .crop-card .specs{font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--sage);}
+
+  .alt-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.25rem;margin:0.3rem 0;}
+  .alt-card{border:1px solid var(--line);padding:0.3rem;}
+  .alt-card h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;color:var(--ink);margin-bottom:0.12rem;}
+  .alt-card p{font-size:12pt;line-height:1.4;margin-bottom:0.1rem;}
+  .alt-card .rating{font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--sage);}
+
+  .ref-table{width:100%;border-collapse:collapse;font-size:12pt;margin:0.25rem 0;}
+  .ref-table th{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--sage);text-align:left;padding:0.15rem 0.25rem;border-bottom:1px solid var(--line);}
+  .ref-table td{padding:0.12rem 0.25rem;border-bottom:1px dotted var(--line);vertical-align:top;}
+  .ref-table tr:last-child td{border-bottom:none;}
+
+  .supply-list{list-style:none;margin:0.25rem 0;columns:2;column-gap:0.3in;}
+  .supply-item{display:grid;grid-template-columns:1.2rem 1fr;gap:0.2rem;align-items:start;padding:0.1rem 0;cursor:pointer;break-inside:avoid;}
+  .supply-item .checkbox{
+    width:0.85rem;height:0.85rem;border:1.5px solid var(--line);
+    margin-top:0.2rem;flex-shrink:0;border-radius:2px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:700;
+    color:transparent;transition:all 0.15s;user-select:none;
+  }
+  .supply-item.checked .checkbox{background:var(--sage);border-color:var(--sage);color:var(--paper);}
+  .supply-item .item-text{font-size:12pt;line-height:1.4;}
+
+  .page-footer{text-align:center;margin-top:0.4rem;font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);letter-spacing:0.04em;text-transform:uppercase;}
+  .page-footer em{font-style:italic;color:var(--clay)}
+
+  .cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2in 0.7in;}
+  .cover h1{margin-bottom:0.25in;}
+  .cover .brand-line{margin-bottom:1rem;}
+  .cover .desc{font-size:13pt;color:#3D362D;max-width:24ch;line-height:1.5;}
+
+  .checklist-label{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink);margin-bottom:0.25rem;}
+
+  @media print{
+    body{background:none;padding:0;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .toolbar{display:none}
+    .page{margin:0;box-shadow:none}
+  }
+</style>
+</head>
+<body class="root-cellaring">
+
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+
+<!-- COVER -->
+<div class="page cover">
+  <p class="brand-line">Kitchen <em>&amp; Kettle</em></p>
+  <h1>Root Cellaring<br>Without a Root Cellar</h1>
+  <p class="desc">How to store produce through the winter using the cold spots you already have — basements, garages, buried coolers, and the back of the fridge.</p>
+  <p class="tagline" style="margin-top:1.5rem;">Works because it works.</p>
+</div>
+
+<!-- PHILOSOPHY -->
+<div class="page prose-page">
+  <h2>Why root cellaring still matters</h2>
+  <p class="lede">Root cellaring is the oldest food preservation method there is — older than canning, older than drying, older than written history. And unlike those methods, it requires almost nothing from you. No boiling, no sealing, no sugar or vinegar. Just the right temperature, the right humidity, and darkness.</p>
+  <p>People stored food in root cellars for thousands of years before refrigeration existed, and the physics haven't changed. A cool, humid, dark space keeps many vegetables alive — literally. A carrot in a root cellar is still respiring, still a living thing, just breathing very slowly. The goal isn't to kill it. It's to put it to sleep and keep it there.</p>
+  <p>Modern root cellaring doesn't require a traditional underground cellar. Everyone has cold spots in their home. The basement corner that never warms up. The garage that hovers just above freezing in January. The crisper drawer you've been using wrong. The buried cooler in the backyard you haven't tried yet. This guide covers all of them.</p>
+
+  <div class="honest-box">
+    <strong>Honest note:</strong> Root cellaring is not a set-it-and-forget-it method. You check on things weekly. You remove the one bad apple before it spoils the bushel. Some crops will last months; others, a few weeks. This isn't canning — there's no kill step, no hermetic seal. You're working with living food in a living system, and sometimes you lose a batch. That's the deal.
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="page prose-page">
+  <h2>How it actually works</h2>
+  <p class="lede">Four things matter: temperature, humidity, darkness, and airflow. Get three right and you'll get decent storage. Get all four right and you'll eat your own potatoes in March.</p>
+
+  <div class="method-card">
+    <p class="label">Temperature — 32° to 40°F (0° to 4°C)</p>
+    <p>This is the sweet spot for most root vegetables. Cold enough to slow respiration to a crawl, warm enough not to freeze. Every 10°F warmer than this roughly doubles the respiration rate — meaning your food ages twice as fast. Above 50°F, most root vegetables will start trying to grow again. Below 30°F, cell walls rupture and they turn to mush when they thaw.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">Humidity — 85% to 95%</p>
+    <p>Root vegetables are mostly water. In dry air, they lose moisture through their skins and go limp within days. High humidity keeps them firm. This is the opposite of what your fridge is designed to do — fridges pull moisture out of the air. That's why the crisper drawer exists, and why it's the closest thing most people have to a root cellar.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">Darkness</p>
+    <p>Light triggers potatoes to produce solanine — the green tint and bitter taste that makes them mildly toxic. Light also signals to root vegetables that spring has arrived and it's time to sprout. Total darkness keeps them dormant. Even a sliver of light through a basement window can green your potatoes.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">Airflow</p>
+    <p>Vegetables respire — they take in oxygen and release carbon dioxide, ethylene gas, and heat. Without airflow, ethylene builds up and accelerates ripening and spoilage. You don't need a fan. A crack in the door, a vented container, or simply not sealing things airtight is usually enough.</p>
+  </div>
+
+  <div class="tip-box">
+    <strong>You already know this.</strong> You've seen potatoes go green on the counter (light), carrots go limp in the fridge (dry air), and onions sprout in the pantry (too warm). Root cellaring is just reversing those mistakes systematically.
+  </div>
+
+  <div class="method-card">
+    <p class="label">Pest-proofing your ventilation</p>
+    <p>Any opening big enough for airflow is big enough for a mouse. A mouse can squeeze through a gap the size of a dime — about ¼ inch. The fix is hardware cloth: wire mesh with ¼-inch squares, available at any hardware store for a few dollars. Cut a patch larger than the hole or vent, and secure it on the <em>outside</em> with screws and washers or heavy-duty staples. For a trash can lid left ajar, drape a square of hardware cloth over the top and weigh it down — airflow passes through, rodents don't. Never use chicken wire for rodent-proofing; the openings are too large and mice walk right through. Check the mesh once a month — a determined rat can chew through over time, and you'll want to catch that before they reach your carrots.</p>
+  </div>
+</div>
+
+<!-- WHAT STORES WELL -->
+<div class="page prose-page">
+  <div class="section-header"><h2>What stores well — and what doesn't</h2></div>
+  <p>Not everything belongs in cold storage. Some crops thrive in root cellar conditions. Others turn to compost. Here's what to store, what to skip, and what surprises people.</p>
+
+  <h3>The reliable keepers</h3>
+  <div class="crop-grid">
+    <div class="crop-card">
+      <h4>Potatoes</h4>
+      <p>The classic. Cure for 1–2 weeks in a dark, 50–60°F spot before moving to cold storage.</p>
+      <p class="specs">38–40°F · high humidity · 4–6 months</p>
+    </div>
+    <div class="crop-card">
+      <h4>Carrots</h4>
+      <p>Store in damp sand or sawdust. They'll stay crisp for months — better than any fridge can manage.</p>
+      <p class="specs">32–35°F · very high humidity · 4–6 months</p>
+    </div>
+    <div class="crop-card">
+      <h4>Beets</h4>
+      <p>Cut tops to 1 inch, leave the taproot intact. Pack in damp sand like carrots.</p>
+      <p class="specs">32–35°F · high humidity · 3–5 months</p>
+    </div>
+    <div class="crop-card">
+      <h4>Turnips & Rutabagas</h4>
+      <p>Rutabagas are the champions — dipped in wax, they'll keep at cool room temp for weeks. Turnips need cold and damp.</p>
+      <p class="specs">32–35°F · high humidity · 3–5 months</p>
+    </div>
+    <div class="crop-card">
+      <h4>Winter Squash</h4>
+      <p>Not a root vegetable, but the storage king. Cure in warmth for 10 days first.</p>
+      <p class="specs">50–55°F · dry · 3–6 months</p>
+    </div>
+    <div class="crop-card">
+      <h4>Onions & Garlic</h4>
+      <p>Dry and ventilated — the opposite of root vegetables. Never store with potatoes; they make each other spoil.</p>
+      <p class="specs">35–40°F · dry · 4–8 months</p>
+    </div>
+    <div class="crop-card">
+      <h4>Cabbage</h4>
+      <p>Pull the whole plant, roots and all. Hang upside down or wrap loosely in newspaper.</p>
+      <p class="specs">32–35°F · high humidity · 3–4 months</p>
+    </div>
+    <div class="crop-card">
+      <h4>Apples & Pears</h4>
+      <p>Wrap individually in newspaper. One bad apple really does spoil the barrel — apples release ethylene aggressively.</p>
+      <p class="specs">32–35°F · high humidity · 2–5 months</p>
+    </div>
+  </div>
+
+  <div class="method-card"><p class="label">Don't bother storing</p><p>Leafy greens (kale, chard, lettuce) — they'll go limp within days even in perfect conditions. Eat fresh or freeze. Cucumbers and summer squash — too delicate, they rot. Tomatoes — cold ruins their texture and flavor; can or dry them instead. Celery — wilts fast; use fresh or freeze diced for cooking. Eggplant — cold damage shows as brown spots and bitterness.</p></div>
+
+  <div class="method-card"><p class="label">Surprising things that store</p><p>Parsnips get sweeter after a frost — leave them in the ground under a thick mulch and dig all winter. Celeriac and kohlrabi store like beets in damp sand. Jerusalem artichokes are nearly indestructible — dig as needed, they don't store well once dug but are perfectly happy staying in the soil. Leeks can be heeled into damp sand or soil in a bucket and kept for months in a cold spot.</p></div>
+</div>
+
+<!-- MODERN ALTERNATIVES -->
+<div class="page prose-page">
+  <div class="section-header"><h2>Six ways to root-cellar without a root cellar</h2></div>
+  <p class="lede">You don't need to dig a hole in the ground or build a stone-lined underground room. Here are six modern alternatives, ranked by how well they work.</p>
+
+  <div class="alt-grid">
+    <div class="alt-card">
+      <h4>1. Basement corner</h4>
+      <p>Pick the coldest corner — the northeast one, against a foundation wall. Stack milk crates or wooden bins. Drape burlap or a blanket over them to block light. Monitor with a cheap thermometer. If it stays 35–45°F from November to March, you have a root cellar.</p>
+      <p class="rating">Best option · needs 35–50°F range</p>
+    </div>
+    <div class="alt-card">
+      <h4>2. Garage or mudroom</h4>
+      <p>Works in cold climates only. Insulate bins with straw or foam board. The risk is freezing on the coldest nights — have a backup plan (old sleeping bag over the bins) for sub-zero stretches. In spring, the garage warms up fast and your storage window closes.</p>
+      <p class="rating">Good for deep winter · watch for freeze</p>
+    </div>
+    <div class="alt-card">
+      <h4>3. Buried cooler or trash can</h4>
+      <p>Dig a hole deep enough to set a cooler or metal trash can so the lid is a few inches below ground level. Fill with produce in damp sand. Leave the lid slightly ajar — vegetables need gas exchange, even underground. Drill a few small holes near the top if using a trash can. Cover with straw bales or a thick layer of leaves, then a tarp. The earth insulates against both heat and freeze. Access is inconvenient — you're digging through straw in January — but it works.</p>
+      <p class="rating">Excellent temperature · inconvenient access</p>
+    </div>
+    <div class="alt-card">
+      <h4>4. Crisper drawer (done right)</h4>
+      <p>Most crisper drawers are set to low humidity by default. Switch to high humidity (the closed vent setting). Line the bottom with a damp towel. Don't pack things tight — airflow still matters. This is your best option for carrots and beets if you have no cold basement, but capacity is small.</p>
+      <p class="rating">Good for small amounts · very accessible</p>
+    </div>
+    <div class="alt-card">
+      <h4>5. Cool closet or north wall</h4>
+      <p>An unheated closet on a north-facing exterior wall can stay surprisingly cool in winter. Use for winter squash, onions, and garlic — crops that want cool-dry, not cold-damp. Won't work for root vegetables unless your house is genuinely cold.</p>
+      <p class="rating">For squash and onions only · easy access</p>
+    </div>
+    <div class="alt-card">
+      <h4>6. Window well or exterior stairwell</h4>
+      <p>The space outside a basement window or under exterior stairs often stays cold and dark. Line with straw and cover with plywood. Rodent-proofing is essential — hardware cloth, not chicken wire. Check daily during hard freezes.</p>
+      <p class="rating">Surprisingly effective · rodent risk</p>
+    </div>
+  </div>
+
+  <div class="honest-box">
+    <strong>The "I have none of these" option:</strong> If you live in an apartment with no basement, no garage, no yard, and a small fridge — root cellaring at scale isn't realistic, and that's fine. Focus on what you <em>can</em> store at room temperature: winter squash, onions, garlic, sweet potatoes, and cured pumpkins. Buy root vegetables as you need them from farmers who do have storage. Not every method works for every living situation, and pretending otherwise helps no one.
+  </div>
+</div>
+
+<!-- SAND STORAGE -->
+<div class="page prose-page">
+  <h2>Sand storage — the method that changes everything</h2>
+  <p class="lede">If you take one thing from this guide, make it this. Storing root vegetables in damp sand keeps them crisp for months. It's the closest thing to leaving them in the ground, and it works in any container in any cold spot.</p>
+
+  <div class="method-card">
+    <p class="label">What you need</p>
+    <p>Clean sand — play sand from the hardware store, or builder's sand (not beach sand — too salty). A container: a plastic tote, a wooden crate lined with plastic, a five-gallon bucket, or a metal trash can. Whatever you use, don't seal it airtight — leave the lid slightly ajar or drill a few small ventilation holes near the top. Vegetables need gas exchange. Vegetables with tops trimmed to ½ inch and taproots intact. A cold, dark place.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">How to do it</p>
+    <p>Dampen the sand — not wet, just moist enough to hold its shape when squeezed. Put a layer of damp sand in the bottom of your container. Arrange vegetables in a single layer, not touching. Cover with more sand. Repeat. Finish with a thick layer of sand on top. The sand maintains humidity around each vegetable and prevents ethylene from building up between them. Each vegetable is in its own microclimate.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">What goes in sand</p>
+    <p>Carrots, beets, turnips, rutabagas, parsnips, celeriac, kohlrabi. Pretty much any firm root vegetable. Potatoes can go in sand too, though they're fine in ventilated bins. Don't sand-store onions or squash — they need dry conditions.</p>
+  </div>
+
+  <div class="tip-box">
+    <strong>One container, one crop.</strong> Different vegetables respire at different rates and release different amounts of ethylene. Mixing crops in the same sand container means apples wake up your carrots and your potatoes sprout early. Keep each crop in its own container.
+  </div>
+
+  <p>When you want something, dig down, pull out what you need, and smooth the sand back over. Check the rest while you're in there — this is your weekly inspection. Remove anything that's softening or showing spots. The sand is reusable year to year; just spread it in the sun for a day between seasons to dry it out.</p>
+</div>
+
+<!-- PREP & HARVEST -->
+<div class="page prose-page">
+  <h2>Harvesting for storage</h2>
+  <p class="lede">How you pick and handle vegetables before storage matters more than the storage conditions. Damage at harvest shows up weeks later as rot.</p>
+
+  <div class="method-card">
+    <p class="label">Timing</p>
+    <p>Harvest on a dry day after the dew has burned off. Wet vegetables carry fungal spores into storage. For root vegetables, wait until after a light frost — the cold triggers the plant to move sugars into the root for winter survival, making them sweeter. But harvest before a hard freeze (below 28°F), which will damage the parts you intend to store.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">Handling</p>
+    <p>Treat vegetables you're storing like eggs — no tossing, no dropping, no stacking roughly. A bruise you can't see today will be a soft brown spot in three weeks. Cut tops to ½–1 inch with a sharp knife. Don't snap or twist — torn tissue rots faster than clean cuts. Leave the taproot intact on carrots, beets, and parsnips.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">Curing</p>
+    <p>Potatoes, winter squash, onions, and garlic all need a curing period before storage. Potatoes: 1–2 weeks in a dark, 50–60°F spot to heal nicks and thicken skins. Squash: 10 days in warmth (70–80°F) to harden the rind — a sunny porch or a warm room works. Onions and garlic: 2–3 weeks in a warm, dry, well-ventilated spot until the necks are tight and the outer skins are papery. Skipping the cure is the number one reason stored crops fail early.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">Sorting</p>
+    <p>Only perfect vegetables go into storage. No nicks, no soft spots, no insect damage, no cracks. The imperfect ones go in the fridge and get eaten this week. One damaged vegetable in a bin of fifty will rot and take its neighbors with it. If you're not sure, don't store it.</p>
+  </div>
+
+  <div class="honest-box">
+    <strong>Some things you can't repair:</strong> A carrot that froze in the ground before you dug it — it's done, the cell walls are ruptured. A potato with a shovel slice — eat it tonight. A squash that was picked before the rind hardened completely — it won't store. Knowing what to not even try to store is half the skill.
+  </div>
+</div>
+
+<!-- MAINTENANCE & TROUBLESHOOTING -->
+<div class="page prose-page">
+  <div class="section-header"><h2>Weekly checks and troubleshooting</h2></div>
+
+  <p>The rhythm is simple: once a week, spend five minutes in your storage area. Open containers, move things gently, look and smell. Most problems announce themselves before they're catastrophic.</p>
+
+  <h3>What you're checking for</h3>
+  <table class="ref-table">
+    <tr><th>Sign</th><th>What it means</th><th>What to do</th></tr>
+    <tr><td>Shriveling or limp</td><td>Humidity too low</td><td>Add damp sand, mist the air (not the produce), or cover bins with damp burlap</td></tr>
+    <tr><td>Mold, slime, soft rot</td><td>Humidity too high, or damaged produce in the bin</td><td>Remove affected items immediately. Increase airflow — crack a lid, open a vent</td></tr>
+    <tr><td>Sprouting (potatoes, onions)</td><td>Temperature too warm, or light exposure</td><td>Move to colder spot. Block all light. Sprouted potatoes are safe to eat once you remove sprouts and green areas</td></tr>
+    <tr><td>Green patches on potatoes</td><td>Light exposure</td><td>Block the light source. Cut away green parts before eating; if fully green, discard</td></tr>
+    <tr><td>Bitter taste</td><td>Ethylene exposure — probably stored near apples or ripening fruit</td><td>Separate immediately. Apples and pears must be stored alone, far from everything else</td></tr>
+    <tr><td>Frost damage (translucent, mushy)</td><td>Temperature dropped below freezing</td><td>If still partially frozen, let thaw slowly in the fridge and use immediately. If fully thawed and mushy, discard</td></tr>
+    <tr><td>Strong off-smell</td><td>Something is rotting — find it now</td><td>Empty the bin, inspect everything, discard the source. One rotten potato smells like a dead animal</td></tr>
+    <tr><td>Condensation on lids or walls</td><td>Temperature fluctuating, or too little ventilation</td><td>Increase airflow. Condensation dripping onto produce causes rot</td></tr>
+  </table>
+
+  <div class="method-card" style="margin-top:0.35rem;">
+    <p class="label">The ethylene rule</p>
+    <p>Apples, pears, and ripe tomatoes release high amounts of ethylene gas, which speeds ripening and sprouting in everything around them. Store them alone, in their own container, as far from other produce as possible. Potatoes and apples stored together will both spoil faster.</p>
+  </div>
+
+  <div class="method-card">
+    <p class="label">The one-bad-apple rule</p>
+    <p>Check apples and pears twice as often as root vegetables. A single rotting apple releases ethylene and fungal spores that will ripple through the entire bin within days. Wrap each apple individually in newspaper — it's tedious but it buys you weeks of storage and contains any rot to a single fruit.</p>
+  </div>
+</div>
+
+<!-- QUICK REFERENCE -->
+<div class="page prose-page">
+  <h2>Quick reference</h2>
+
+  <table class="ref-table">
+    <tr><th>Crop</th><th>Temp (°F)</th><th>Humidity</th><th>Storage life</th><th>Notes</th></tr>
+    <tr><td>Potatoes</td><td>38–40</td><td>High</td><td>4–6 months</td><td>Cure 1–2 weeks first. Dark.</td></tr>
+    <tr><td>Carrots</td><td>32–35</td><td>Very high</td><td>4–6 months</td><td>Damp sand. Trim tops.</td></tr>
+    <tr><td>Beets</td><td>32–35</td><td>High</td><td>3–5 months</td><td>Damp sand. Leave taproot.</td></tr>
+    <tr><td>Turnips</td><td>32–35</td><td>High</td><td>3–5 months</td><td>Damp sand.</td></tr>
+    <tr><td>Rutabagas</td><td>32–35</td><td>High</td><td>4–6 months</td><td>Waxed ones keep longer.</td></tr>
+    <tr><td>Parsnips</td><td>32–35</td><td>Very high</td><td>2–4 months</td><td>Better left in ground under mulch.</td></tr>
+    <tr><td>Winter squash</td><td>50–55</td><td>Dry</td><td>3–6 months</td><td>Cure 10 days. Not in sand.</td></tr>
+    <tr><td>Onions</td><td>35–40</td><td>Dry</td><td>4–8 months</td><td>Cure until necks tight.</td></tr>
+    <tr><td>Garlic</td><td>35–40</td><td>Dry</td><td>5–8 months</td><td>Cure 2–3 weeks.</td></tr>
+    <tr><td>Cabbage</td><td>32–35</td><td>High</td><td>3–4 months</td><td>Hang or wrap in newspaper.</td></tr>
+    <tr><td>Apples</td><td>32–35</td><td>High</td><td>2–5 months</td><td>Wrap individually. Store alone.</td></tr>
+    <tr><td>Pears</td><td>32–35</td><td>High</td><td>2–3 months</td><td>Pick slightly underripe.</td></tr>
+    <tr><td>Sweet potatoes</td><td>55–60</td><td>Moderate</td><td>4–6 months</td><td>Cure 1 week warm + humid. Not cold.</td></tr>
+    <tr><td>Leeks</td><td>32–35</td><td>High</td><td>2–3 months</td><td>Heel into damp sand upright.</td></tr>
+  </table>
+
+  <div class="tip-box" style="margin-top:0.4rem;">
+    <strong>The "never store together" list:</strong> Potatoes + onions (make each other sprout). Apples + anything (ethylene bomb). Winter squash + root vegetables (squash wants dry, roots want damp — they can't share a space). Potatoes + apples (both spoil faster).
+  </div>
+
+  <div class="method-card" style="margin-top:0.35rem;">
+    <p class="label">Supplies checklist</p>
+    <ul class="supply-list">
+      <li class="supply-item" onclick="this.classList.toggle('checked')"><span class="checkbox">✓</span><span class="item-text">Thermometer (digital, with min/max memory)</span></li>
+      <li class="supply-item" onclick="this.classList.toggle('checked')"><span class="checkbox">✓</span><span class="item-text">Hygrometer (humidity gauge)</span></li>
+      <li class="supply-item" onclick="this.classList.toggle('checked')"><span class="checkbox">✓</span><span class="item-text">Clean sand — play sand or builder's sand</span></li>
+      <li class="supply-item" onclick="this.classList.toggle('checked')"><span class="checkbox">✓</span><span class="item-text">Storage containers — totes, buckets, crates</span></li>
+      <li class="supply-item" onclick="this.classList.toggle('checked')"><span class="checkbox">✓</span><span class="item-text">Burlap sacks or old blankets (light blocking)</span></li>
+      <li class="supply-item" onclick="this.classList.toggle('checked')"><span class="checkbox">✓</span><span class="item-text">Newspaper (for wrapping apples/pears)</span></li>
+      <li class="supply-item" onclick="this.classList.toggle('checked')"><span class="checkbox">✓</span><span class="item-text">Milk crates or slatted wooden boxes (ventilation)</span></li>
+      <li class="supply-item" onclick="this.classList.toggle('checked')"><span class="checkbox">✓</span><span class="item-text">Straw bales (insulation for garage/buried storage)</span></li>
+      <li class="supply-item" onclick="this.classList.toggle('checked')"><span class="checkbox">✓</span><span class="item-text">Hardware cloth (rodent-proofing, ¼" mesh)</span></li>
+      <li class="supply-item" onclick="this.classList.toggle('checked')"><span class="checkbox">✓</span><span class="item-text">Sharp knife (for trimming tops)</span></li>
+      <li class="supply-item" onclick="this.classList.toggle('checked')"><span class="checkbox">✓</span><span class="item-text">Sharpie + labels (everything looks the same in sand)</span></li>
+      <li class="supply-item" onclick="this.classList.toggle('checked')"><span class="checkbox">✓</span><span class="item-text">Tarp (for buried cooler/outdoor setups)</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="page" style="background:var(--paper);">
+  <div style="display:flex;flex-direction:column;justify-content:center;height:100%;max-width:75%;margin:0 auto;text-align:center;">
+    <h2>Good food, longer</h2>
+    <p style="margin-bottom:1rem;">Root cellaring is the opposite of complicated. It's patience and attention — the willingness to check on things, to move the one bad potato out of the bin, to notice when the garage is getting too warm in March and eat the last of the carrots that week. No special equipment, no certification, no electricity required. Just knowing what your food needs and finding a cold spot in your life that provides it.</p>
+    <p style="margin-bottom:2rem;"><em>Works because it works.</em></p>
+    <p class="small" style="color:#b0a99e;margin-top:3rem;">Kitchen &amp; Kettle</p>
+    <p class="small" style="color:#b0a99e;">A quieter way to run a kitchen.</p>
+  </div>
+</div>
+
+<script>
+function clearAll(){
+  document.querySelectorAll('.supply-item.checked').forEach(item => item.classList.remove('checked'));
+}
+</script>
+
+</body>
+</html>
