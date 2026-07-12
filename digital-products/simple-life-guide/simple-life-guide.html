@@ -53,6 +53,7 @@
 
   .prose-page p{margin-bottom:0.75rem;line-height:1.6;}
   .prose-page hr{margin:0.6rem 0;border:none;border-top:1px solid var(--line);}
+  .prose-page{display:flex;flex-direction:column;}
 
   .honest-box{background:var(--light);border-left:3px solid var(--clay);padding:0.4rem 0.5rem;margin:0.65rem 0;font-size:12pt;}
   .honest-box strong{color:var(--ink)}
@@ -84,6 +85,10 @@
   .closing .sign-off{font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);margin-top:0.5rem;}
 
   hr.ornament{border:none;border-top:1px solid var(--line);width:2in;margin:0 auto;}
+
+  .notes-area{margin-top:0.5rem;border-top:1px dotted var(--line);padding-top:0.3rem;flex:1;display:flex;flex-direction:column;}
+  .notes-area h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--sage);margin-bottom:0.15rem;flex-shrink:0;}
+  .notes-area textarea{flex:1;min-height:4rem;width:100%;border:1px solid var(--line);background:var(--paper);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.2rem 0.3rem;resize:none;line-height:1.5;}
 
   @media print{
     body{background:none;padding:0;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -125,6 +130,11 @@
   </div>
 
   <p>The pages that follow are swaps, principles, and things to let go of. Use what fits and ignore the rest. The point isn't to follow a system — it's to give yourself room to breathe.</p>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-philosophy" rows="2" placeholder="Jot down what you want to try..."></textarea>
+  </div>
 </div>
 
 <!-- PAGE 3: IN THE KITCHEN -->
@@ -149,6 +159,11 @@
   <div class="tip-box">
     <strong>Go deeper:</strong> Learn to preserve your groceries instead of throwing them away. The Seasonal Preservation Calendar walks you through what to put by each month. Grow perennial herbs — they come back every year and ask almost nothing of you. The Survival Garden Basics guide covers which ones earn their space.
   </div>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-kitchen" rows="2" placeholder="Jot down what you want to try..."></textarea>
+  </div>
 </div>
 
 <!-- PAGE 4: BATH & BODY -->
@@ -171,6 +186,11 @@
 
   <div class="tip-box">
     <strong>Go deeper:</strong> The Simple Body Care Guide walks through a complete routine with the fewest possible products — what to buy, what to make, and what's not worth your mixing bowl.
+  </div>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-bath" rows="2" placeholder="Jot down what you want to try..."></textarea>
   </div>
 </div>
 
@@ -196,6 +216,11 @@
 
   <div class="tip-box">
     <strong>Go deeper:</strong> The Simple Homekeeping Guide covers a complete cleaning system built around a handful of ingredients — no marketing, no fragrance, just what works.
+  </div>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-household" rows="2" placeholder="Jot down what you want to try..."></textarea>
   </div>
 </div>
 
@@ -237,6 +262,11 @@
   <div class="honest-box">
     <strong>Honest note:</strong> This isn't about never buying anything. It's about buying fewer things that each do more. The diaper bag costs more than a basic purse, but it replaces the purse, the lunch bag, the snack carrier, and the emergency kit you'd otherwise buy separately. Sometimes spending more on one thing saves more in the long run.
   </div>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-diaperbag" rows="2" placeholder="Jot down what you want to try..."></textarea>
+  </div>
 </div>
 
 <!-- PAGE 7: THE NOISE -->
@@ -260,6 +290,11 @@
   <div class="honest-box">
     <strong>Honest note:</strong> This will feel uncomfortable. You'll worry you're missing something. But you were already missing most of it — you were just feeling guilty about it. Now you're missing it on purpose, and that's different.
   </div>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-noise" rows="2" placeholder="Jot down what you want to try..."></textarea>
+  </div>
 </div>
 
 <!-- PAGE 8: THE DIY TRAP -->
@@ -282,6 +317,11 @@
 
   <div class="tip-box">
     <strong>Go deeper:</strong> The Survival Garden Basics guide focuses on what grows well, stores well, and earns its space — no novelty crops. The Recipe Cards help you master a handful of recipes instead of chasing new ones every week.
+  </div>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-diy" rows="2" placeholder="Jot down what you want to try..."></textarea>
   </div>
 </div>
 
