@@ -83,7 +83,7 @@
   .planner-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.3rem;margin:0.3rem 0;}
   .planner-card{border:1px solid var(--line);padding:0.25rem;min-height:2in;}
   .planner-card h4{font-family:'Work Sans',sans-serif;font-size:10pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--sage);margin-bottom:0.1rem;}
-  .planner-card textarea{width:100%;min-height:1.6in;max-height:2in;border:none;background:transparent;font-family:'Crimson Pro',serif;font-size:12pt;color:var(--ink);resize:none;outline:none;line-height:1.5;overflow-y:auto;}
+  .planner-card textarea{width:100%;min-height:1.6in;max-height:2in;border:none;background:var(--light);font-family:'Crimson Pro',serif;font-size:12pt;color:var(--ink);resize:none;outline:none;line-height:1.5;overflow-y:auto;}
 
   .notes-area{margin-top:0.3rem;}
   .flex-page{display:flex;flex-direction:column;}
@@ -104,6 +104,8 @@
   <div class="brand">Kitchen <em>&amp; Kettle</em></div>
   <div class="actions">
     <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="exportData()">Save a copy</button>
+    <button class="btn btn-ghost" onclick="importData()">Import copy</button>
     <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
     <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
   </div>
@@ -209,6 +211,37 @@
     <label>Neighbor contact</label>
     <input maxlength="80" type="text" data-key="ec-neighbor" placeholder="">
   </div>
+</div>
+
+<div class="page prose-page">
+  <h2>Pet Information</h2>
+  <h3>Pet 1</h3>
+  <div class="two-col">
+    <div class="info-field"><label>Name</label><input maxlength="60" type="text" data-key="pet1-name"></div>
+    <div class="info-field"><label>Species / Breed</label><input maxlength="60" type="text" data-key="pet1-breed"></div>
+  </div>
+  <div class="two-col">
+    <div class="info-field"><label>Age / Date of birth</label><input maxlength="20" type="text" data-key="pet1-age"></div>
+    <div class="info-field"><label>Microchip #</label><input maxlength="40" type="text" data-key="pet1-chip"></div>
+  </div>
+  <div class="info-field"><label>Vet clinic + phone</label><input maxlength="80" type="text" data-key="pet1-vet"></div>
+  <div class="info-field"><label>Feeding instructions</label><input maxlength="100" type="text" data-key="pet1-food"></div>
+  <div class="info-field"><label>Medications</label><input maxlength="100" type="text" data-key="pet1-meds"></div>
+  <div class="info-field"><label>Allergies / conditions</label><input maxlength="100" type="text" data-key="pet1-allergies"></div>
+  <hr style="margin:0.6rem 0;border:none;border-top:1px solid var(--line);">
+  <h3>Pet 2</h3>
+  <div class="two-col">
+    <div class="info-field"><label>Name</label><input maxlength="60" type="text" data-key="pet2-name"></div>
+    <div class="info-field"><label>Species / Breed</label><input maxlength="60" type="text" data-key="pet2-breed"></div>
+  </div>
+  <div class="two-col">
+    <div class="info-field"><label>Age / Date of birth</label><input maxlength="20" type="text" data-key="pet2-age"></div>
+    <div class="info-field"><label>Microchip #</label><input maxlength="40" type="text" data-key="pet2-chip"></div>
+  </div>
+  <div class="info-field"><label>Vet clinic + phone</label><input maxlength="80" type="text" data-key="pet2-vet"></div>
+  <div class="info-field"><label>Feeding instructions</label><input maxlength="100" type="text" data-key="pet2-food"></div>
+  <div class="info-field"><label>Medications</label><input maxlength="100" type="text" data-key="pet2-meds"></div>
+  <div class="info-field"><label>Allergies / conditions</label><input maxlength="100" type="text" data-key="pet2-allergies"></div>
 </div>
 
 <div class="page prose-page">
@@ -692,6 +725,14 @@
     <tr><td>Dryer</td><td><input maxlength="50" type="text" data-key="ap-dryer-model"></td><td><input maxlength="20" type="text" data-key="ap-dryer-last"></td><td><input maxlength="20" type="text" data-key="ap-dryer-next"></td><td><input maxlength="80" type="text" data-key="ap-dryer-notes"></td></tr>
     <tr><td>Water heater</td><td><input maxlength="50" type="text" data-key="ap-wh-model"></td><td><input maxlength="20" type="text" data-key="ap-wh-last"></td><td><input maxlength="20" type="text" data-key="ap-wh-next"></td><td><input maxlength="80" type="text" data-key="ap-wh-notes"></td></tr>
     <tr><td>HVAC / Furnace</td><td><input maxlength="50" type="text" data-key="ap-hvac-model"></td><td><input maxlength="20" type="text" data-key="ap-hvac-last"></td><td><input maxlength="20" type="text" data-key="ap-hvac-next"></td><td><input maxlength="80" type="text" data-key="ap-hvac-notes"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="ap-cust1-name"></td><td><input maxlength="50" type="text" data-key="ap-cust1-model"></td><td><input maxlength="20" type="text" data-key="ap-cust1-last"></td><td><input maxlength="20" type="text" data-key="ap-cust1-next"></td><td><input maxlength="80" type="text" data-key="ap-cust1-notes"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="ap-cust2-name"></td><td><input maxlength="50" type="text" data-key="ap-cust2-model"></td><td><input maxlength="20" type="text" data-key="ap-cust2-last"></td><td><input maxlength="20" type="text" data-key="ap-cust2-next"></td><td><input maxlength="80" type="text" data-key="ap-cust2-notes"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="ap-cust3-name"></td><td><input maxlength="50" type="text" data-key="ap-cust3-model"></td><td><input maxlength="20" type="text" data-key="ap-cust3-last"></td><td><input maxlength="20" type="text" data-key="ap-cust3-next"></td><td><input maxlength="80" type="text" data-key="ap-cust3-notes"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="ap-cust4-name"></td><td><input maxlength="50" type="text" data-key="ap-cust4-model"></td><td><input maxlength="20" type="text" data-key="ap-cust4-last"></td><td><input maxlength="20" type="text" data-key="ap-cust4-next"></td><td><input maxlength="80" type="text" data-key="ap-cust4-notes"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="ap-cust5-name"></td><td><input maxlength="50" type="text" data-key="ap-cust5-model"></td><td><input maxlength="20" type="text" data-key="ap-cust5-last"></td><td><input maxlength="20" type="text" data-key="ap-cust5-next"></td><td><input maxlength="80" type="text" data-key="ap-cust5-notes"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="ap-cust6-name"></td><td><input maxlength="50" type="text" data-key="ap-cust6-model"></td><td><input maxlength="20" type="text" data-key="ap-cust6-last"></td><td><input maxlength="20" type="text" data-key="ap-cust6-next"></td><td><input maxlength="80" type="text" data-key="ap-cust6-notes"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="ap-cust7-name"></td><td><input maxlength="50" type="text" data-key="ap-cust7-model"></td><td><input maxlength="20" type="text" data-key="ap-cust7-last"></td><td><input maxlength="20" type="text" data-key="ap-cust7-next"></td><td><input maxlength="80" type="text" data-key="ap-cust7-notes"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="ap-cust8-name"></td><td><input maxlength="50" type="text" data-key="ap-cust8-model"></td><td><input maxlength="20" type="text" data-key="ap-cust8-last"></td><td><input maxlength="20" type="text" data-key="ap-cust8-next"></td><td><input maxlength="80" type="text" data-key="ap-cust8-notes"></td></tr>
   </table>
   <hr style="margin:0.4rem 0;border:none;border-top:1px solid var(--line);">
   <div class="info-field"><label>Add appliance</label><input maxlength="60" type="text" data-key="ap-custom-name"></div>
@@ -713,6 +754,23 @@
     <tr><td><input maxlength="20" type="text" data-key="rep-6-date"></td><td><input maxlength="80" type="text" data-key="rep-6-issue"></td><td><input maxlength="40" type="text" data-key="rep-6-who"></td><td><input maxlength="15" type="text" data-key="rep-6-cost"></td></tr>
     <tr><td><input maxlength="20" type="text" data-key="rep-7-date"></td><td><input maxlength="80" type="text" data-key="rep-7-issue"></td><td><input maxlength="40" type="text" data-key="rep-7-who"></td><td><input maxlength="15" type="text" data-key="rep-7-cost"></td></tr>
     <tr><td><input maxlength="20" type="text" data-key="rep-8-date"></td><td><input maxlength="80" type="text" data-key="rep-8-issue"></td><td><input maxlength="40" type="text" data-key="rep-8-who"></td><td><input maxlength="15" type="text" data-key="rep-8-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-9-date"></td><td><input maxlength="80" type="text" data-key="rep-9-issue"></td><td><input maxlength="40" type="text" data-key="rep-9-who"></td><td><input maxlength="15" type="text" data-key="rep-9-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-10-date"></td><td><input maxlength="80" type="text" data-key="rep-10-issue"></td><td><input maxlength="40" type="text" data-key="rep-10-who"></td><td><input maxlength="15" type="text" data-key="rep-10-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-11-date"></td><td><input maxlength="80" type="text" data-key="rep-11-issue"></td><td><input maxlength="40" type="text" data-key="rep-11-who"></td><td><input maxlength="15" type="text" data-key="rep-11-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-12-date"></td><td><input maxlength="80" type="text" data-key="rep-12-issue"></td><td><input maxlength="40" type="text" data-key="rep-12-who"></td><td><input maxlength="15" type="text" data-key="rep-12-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-13-date"></td><td><input maxlength="80" type="text" data-key="rep-13-issue"></td><td><input maxlength="40" type="text" data-key="rep-13-who"></td><td><input maxlength="15" type="text" data-key="rep-13-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-14-date"></td><td><input maxlength="80" type="text" data-key="rep-14-issue"></td><td><input maxlength="40" type="text" data-key="rep-14-who"></td><td><input maxlength="15" type="text" data-key="rep-14-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-15-date"></td><td><input maxlength="80" type="text" data-key="rep-15-issue"></td><td><input maxlength="40" type="text" data-key="rep-15-who"></td><td><input maxlength="15" type="text" data-key="rep-15-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-16-date"></td><td><input maxlength="80" type="text" data-key="rep-16-issue"></td><td><input maxlength="40" type="text" data-key="rep-16-who"></td><td><input maxlength="15" type="text" data-key="rep-16-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-17-date"></td><td><input maxlength="80" type="text" data-key="rep-17-issue"></td><td><input maxlength="40" type="text" data-key="rep-17-who"></td><td><input maxlength="15" type="text" data-key="rep-17-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-18-date"></td><td><input maxlength="80" type="text" data-key="rep-18-issue"></td><td><input maxlength="40" type="text" data-key="rep-18-who"></td><td><input maxlength="15" type="text" data-key="rep-18-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-19-date"></td><td><input maxlength="80" type="text" data-key="rep-19-issue"></td><td><input maxlength="40" type="text" data-key="rep-19-who"></td><td><input maxlength="15" type="text" data-key="rep-19-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-20-date"></td><td><input maxlength="80" type="text" data-key="rep-20-issue"></td><td><input maxlength="40" type="text" data-key="rep-20-who"></td><td><input maxlength="15" type="text" data-key="rep-20-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-21-date"></td><td><input maxlength="80" type="text" data-key="rep-21-issue"></td><td><input maxlength="40" type="text" data-key="rep-21-who"></td><td><input maxlength="15" type="text" data-key="rep-21-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-22-date"></td><td><input maxlength="80" type="text" data-key="rep-22-issue"></td><td><input maxlength="40" type="text" data-key="rep-22-who"></td><td><input maxlength="15" type="text" data-key="rep-22-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-23-date"></td><td><input maxlength="80" type="text" data-key="rep-23-issue"></td><td><input maxlength="40" type="text" data-key="rep-23-who"></td><td><input maxlength="15" type="text" data-key="rep-23-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-24-date"></td><td><input maxlength="80" type="text" data-key="rep-24-issue"></td><td><input maxlength="40" type="text" data-key="rep-24-who"></td><td><input maxlength="15" type="text" data-key="rep-24-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-25-date"></td><td><input maxlength="80" type="text" data-key="rep-25-issue"></td><td><input maxlength="40" type="text" data-key="rep-25-who"></td><td><input maxlength="15" type="text" data-key="rep-25-cost"></td></tr>
   </table>
 </div>
 
@@ -726,6 +784,15 @@
     <tr><td><input maxlength="60" type="text" data-key="war-4-item"></td><td><input maxlength="20" type="text" data-key="war-4-purch"></td><td><input maxlength="20" type="text" data-key="war-4-length"></td><td><input maxlength="20" type="text" data-key="war-4-exp"></td><td><input maxlength="60" type="text" data-key="war-4-contact"></td></tr>
     <tr><td><input maxlength="60" type="text" data-key="war-5-item"></td><td><input maxlength="20" type="text" data-key="war-5-purch"></td><td><input maxlength="20" type="text" data-key="war-5-length"></td><td><input maxlength="20" type="text" data-key="war-5-exp"></td><td><input maxlength="60" type="text" data-key="war-5-contact"></td></tr>
     <tr><td><input maxlength="60" type="text" data-key="war-6-item"></td><td><input maxlength="20" type="text" data-key="war-6-purch"></td><td><input maxlength="20" type="text" data-key="war-6-length"></td><td><input maxlength="20" type="text" data-key="war-6-exp"></td><td><input maxlength="60" type="text" data-key="war-6-contact"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="war-7-item"></td><td><input maxlength="20" type="text" data-key="war-7-purch"></td><td><input maxlength="20" type="text" data-key="war-7-length"></td><td><input maxlength="20" type="text" data-key="war-7-exp"></td><td><input maxlength="60" type="text" data-key="war-7-contact"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="war-8-item"></td><td><input maxlength="20" type="text" data-key="war-8-purch"></td><td><input maxlength="20" type="text" data-key="war-8-length"></td><td><input maxlength="20" type="text" data-key="war-8-exp"></td><td><input maxlength="60" type="text" data-key="war-8-contact"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="war-9-item"></td><td><input maxlength="20" type="text" data-key="war-9-purch"></td><td><input maxlength="20" type="text" data-key="war-9-length"></td><td><input maxlength="20" type="text" data-key="war-9-exp"></td><td><input maxlength="60" type="text" data-key="war-9-contact"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="war-10-item"></td><td><input maxlength="20" type="text" data-key="war-10-purch"></td><td><input maxlength="20" type="text" data-key="war-10-length"></td><td><input maxlength="20" type="text" data-key="war-10-exp"></td><td><input maxlength="60" type="text" data-key="war-10-contact"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="war-11-item"></td><td><input maxlength="20" type="text" data-key="war-11-purch"></td><td><input maxlength="20" type="text" data-key="war-11-length"></td><td><input maxlength="20" type="text" data-key="war-11-exp"></td><td><input maxlength="60" type="text" data-key="war-11-contact"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="war-12-item"></td><td><input maxlength="20" type="text" data-key="war-12-purch"></td><td><input maxlength="20" type="text" data-key="war-12-length"></td><td><input maxlength="20" type="text" data-key="war-12-exp"></td><td><input maxlength="60" type="text" data-key="war-12-contact"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="war-13-item"></td><td><input maxlength="20" type="text" data-key="war-13-purch"></td><td><input maxlength="20" type="text" data-key="war-13-length"></td><td><input maxlength="20" type="text" data-key="war-13-exp"></td><td><input maxlength="60" type="text" data-key="war-13-contact"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="war-14-item"></td><td><input maxlength="20" type="text" data-key="war-14-purch"></td><td><input maxlength="20" type="text" data-key="war-14-length"></td><td><input maxlength="20" type="text" data-key="war-14-exp"></td><td><input maxlength="60" type="text" data-key="war-14-contact"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="war-15-item"></td><td><input maxlength="20" type="text" data-key="war-15-purch"></td><td><input maxlength="20" type="text" data-key="war-15-length"></td><td><input maxlength="20" type="text" data-key="war-15-exp"></td><td><input maxlength="60" type="text" data-key="war-15-contact"></td></tr>
   </table>
 </div>
 
@@ -741,6 +808,18 @@
     <tr><td><input maxlength="40" type="text" data-key="paint-6-room"></td><td><input maxlength="80" type="text" data-key="paint-6-color"></td><td><input maxlength="50" type="text" data-key="paint-6-code"></td><td><input maxlength="50" type="text" data-key="paint-6-finish"></td><td><input maxlength="20" type="text" data-key="paint-6-date"></td></tr>
     <tr><td><input maxlength="40" type="text" data-key="paint-7-room"></td><td><input maxlength="80" type="text" data-key="paint-7-color"></td><td><input maxlength="50" type="text" data-key="paint-7-code"></td><td><input maxlength="50" type="text" data-key="paint-7-finish"></td><td><input maxlength="20" type="text" data-key="paint-7-date"></td></tr>
     <tr><td><input maxlength="40" type="text" data-key="paint-8-room"></td><td><input maxlength="80" type="text" data-key="paint-8-color"></td><td><input maxlength="50" type="text" data-key="paint-8-code"></td><td><input maxlength="50" type="text" data-key="paint-8-finish"></td><td><input maxlength="20" type="text" data-key="paint-8-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-9-room"></td><td><input maxlength="80" type="text" data-key="paint-9-color"></td><td><input maxlength="50" type="text" data-key="paint-9-code"></td><td><input maxlength="50" type="text" data-key="paint-9-finish"></td><td><input maxlength="20" type="text" data-key="paint-9-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-10-room"></td><td><input maxlength="80" type="text" data-key="paint-10-color"></td><td><input maxlength="50" type="text" data-key="paint-10-code"></td><td><input maxlength="50" type="text" data-key="paint-10-finish"></td><td><input maxlength="20" type="text" data-key="paint-10-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-11-room"></td><td><input maxlength="80" type="text" data-key="paint-11-color"></td><td><input maxlength="50" type="text" data-key="paint-11-code"></td><td><input maxlength="50" type="text" data-key="paint-11-finish"></td><td><input maxlength="20" type="text" data-key="paint-11-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-12-room"></td><td><input maxlength="80" type="text" data-key="paint-12-color"></td><td><input maxlength="50" type="text" data-key="paint-12-code"></td><td><input maxlength="50" type="text" data-key="paint-12-finish"></td><td><input maxlength="20" type="text" data-key="paint-12-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-13-room"></td><td><input maxlength="80" type="text" data-key="paint-13-color"></td><td><input maxlength="50" type="text" data-key="paint-13-code"></td><td><input maxlength="50" type="text" data-key="paint-13-finish"></td><td><input maxlength="20" type="text" data-key="paint-13-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-14-room"></td><td><input maxlength="80" type="text" data-key="paint-14-color"></td><td><input maxlength="50" type="text" data-key="paint-14-code"></td><td><input maxlength="50" type="text" data-key="paint-14-finish"></td><td><input maxlength="20" type="text" data-key="paint-14-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-15-room"></td><td><input maxlength="80" type="text" data-key="paint-15-color"></td><td><input maxlength="50" type="text" data-key="paint-15-code"></td><td><input maxlength="50" type="text" data-key="paint-15-finish"></td><td><input maxlength="20" type="text" data-key="paint-15-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-16-room"></td><td><input maxlength="80" type="text" data-key="paint-16-color"></td><td><input maxlength="50" type="text" data-key="paint-16-code"></td><td><input maxlength="50" type="text" data-key="paint-16-finish"></td><td><input maxlength="20" type="text" data-key="paint-16-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-17-room"></td><td><input maxlength="80" type="text" data-key="paint-17-color"></td><td><input maxlength="50" type="text" data-key="paint-17-code"></td><td><input maxlength="50" type="text" data-key="paint-17-finish"></td><td><input maxlength="20" type="text" data-key="paint-17-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-18-room"></td><td><input maxlength="80" type="text" data-key="paint-18-color"></td><td><input maxlength="50" type="text" data-key="paint-18-code"></td><td><input maxlength="50" type="text" data-key="paint-18-finish"></td><td><input maxlength="20" type="text" data-key="paint-18-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-19-room"></td><td><input maxlength="80" type="text" data-key="paint-19-color"></td><td><input maxlength="50" type="text" data-key="paint-19-code"></td><td><input maxlength="50" type="text" data-key="paint-19-finish"></td><td><input maxlength="20" type="text" data-key="paint-19-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-20-room"></td><td><input maxlength="80" type="text" data-key="paint-20-color"></td><td><input maxlength="50" type="text" data-key="paint-20-code"></td><td><input maxlength="50" type="text" data-key="paint-20-finish"></td><td><input maxlength="20" type="text" data-key="paint-20-date"></td></tr>
   </table>
 </div>
 <div class="page tab-divider">
@@ -764,6 +843,19 @@
     <tr><td><input maxlength="60" type="text" data-key="bill-10-name"></td><td><input maxlength="20" type="text" data-key="bill-10-due"></td><td><input maxlength="15" type="text" data-key="bill-10-amount"></td><td><input maxlength="10" type="text" data-key="bill-10-auto"></td><td><div class="checklist-item" data-key="bill-10-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
     <tr><td><input maxlength="60" type="text" data-key="bill-11-name"></td><td><input maxlength="20" type="text" data-key="bill-11-due"></td><td><input maxlength="15" type="text" data-key="bill-11-amount"></td><td><input maxlength="10" type="text" data-key="bill-11-auto"></td><td><div class="checklist-item" data-key="bill-11-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
     <tr><td><input maxlength="60" type="text" data-key="bill-12-name"></td><td><input maxlength="20" type="text" data-key="bill-12-due"></td><td><input maxlength="15" type="text" data-key="bill-12-amount"></td><td><input maxlength="10" type="text" data-key="bill-12-auto"></td><td><div class="checklist-item" data-key="bill-12-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-13-name"></td><td><input maxlength="20" type="text" data-key="bill-13-due"></td><td><input maxlength="15" type="text" data-key="bill-13-amount"></td><td><input maxlength="10" type="text" data-key="bill-13-auto"></td><td><div class="checklist-item" data-key="bill-13-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-14-name"></td><td><input maxlength="20" type="text" data-key="bill-14-due"></td><td><input maxlength="15" type="text" data-key="bill-14-amount"></td><td><input maxlength="10" type="text" data-key="bill-14-auto"></td><td><div class="checklist-item" data-key="bill-14-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-15-name"></td><td><input maxlength="20" type="text" data-key="bill-15-due"></td><td><input maxlength="15" type="text" data-key="bill-15-amount"></td><td><input maxlength="10" type="text" data-key="bill-15-auto"></td><td><div class="checklist-item" data-key="bill-15-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-16-name"></td><td><input maxlength="20" type="text" data-key="bill-16-due"></td><td><input maxlength="15" type="text" data-key="bill-16-amount"></td><td><input maxlength="10" type="text" data-key="bill-16-auto"></td><td><div class="checklist-item" data-key="bill-16-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-17-name"></td><td><input maxlength="20" type="text" data-key="bill-17-due"></td><td><input maxlength="15" type="text" data-key="bill-17-amount"></td><td><input maxlength="10" type="text" data-key="bill-17-auto"></td><td><div class="checklist-item" data-key="bill-17-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-18-name"></td><td><input maxlength="20" type="text" data-key="bill-18-due"></td><td><input maxlength="15" type="text" data-key="bill-18-amount"></td><td><input maxlength="10" type="text" data-key="bill-18-auto"></td><td><div class="checklist-item" data-key="bill-18-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-19-name"></td><td><input maxlength="20" type="text" data-key="bill-19-due"></td><td><input maxlength="15" type="text" data-key="bill-19-amount"></td><td><input maxlength="10" type="text" data-key="bill-19-auto"></td><td><div class="checklist-item" data-key="bill-19-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-20-name"></td><td><input maxlength="20" type="text" data-key="bill-20-due"></td><td><input maxlength="15" type="text" data-key="bill-20-amount"></td><td><input maxlength="10" type="text" data-key="bill-20-auto"></td><td><div class="checklist-item" data-key="bill-20-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-21-name"></td><td><input maxlength="20" type="text" data-key="bill-21-due"></td><td><input maxlength="15" type="text" data-key="bill-21-amount"></td><td><input maxlength="10" type="text" data-key="bill-21-auto"></td><td><div class="checklist-item" data-key="bill-21-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-22-name"></td><td><input maxlength="20" type="text" data-key="bill-22-due"></td><td><input maxlength="15" type="text" data-key="bill-22-amount"></td><td><input maxlength="10" type="text" data-key="bill-22-auto"></td><td><div class="checklist-item" data-key="bill-22-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-23-name"></td><td><input maxlength="20" type="text" data-key="bill-23-due"></td><td><input maxlength="15" type="text" data-key="bill-23-amount"></td><td><input maxlength="10" type="text" data-key="bill-23-auto"></td><td><div class="checklist-item" data-key="bill-23-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-24-name"></td><td><input maxlength="20" type="text" data-key="bill-24-due"></td><td><input maxlength="15" type="text" data-key="bill-24-amount"></td><td><input maxlength="10" type="text" data-key="bill-24-auto"></td><td><div class="checklist-item" data-key="bill-24-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-25-name"></td><td><input maxlength="20" type="text" data-key="bill-25-due"></td><td><input maxlength="15" type="text" data-key="bill-25-amount"></td><td><input maxlength="10" type="text" data-key="bill-25-auto"></td><td><div class="checklist-item" data-key="bill-25-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
   </table>
 </div>
 
@@ -781,6 +873,16 @@
     <tr><td><input maxlength="60" type="text" data-key="sub-8-name"></td><td><input maxlength="15" type="text" data-key="sub-8-cost"></td><td><input maxlength="20" type="text" data-key="sub-8-cycle"></td><td><input maxlength="20" type="text" data-key="sub-8-next"></td><td><div class="checklist-item" data-key="sub-8-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
     <tr><td><input maxlength="60" type="text" data-key="sub-9-name"></td><td><input maxlength="15" type="text" data-key="sub-9-cost"></td><td><input maxlength="20" type="text" data-key="sub-9-cycle"></td><td><input maxlength="20" type="text" data-key="sub-9-next"></td><td><div class="checklist-item" data-key="sub-9-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
     <tr><td><input maxlength="60" type="text" data-key="sub-10-name"></td><td><input maxlength="15" type="text" data-key="sub-10-cost"></td><td><input maxlength="20" type="text" data-key="sub-10-cycle"></td><td><input maxlength="20" type="text" data-key="sub-10-next"></td><td><div class="checklist-item" data-key="sub-10-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-11-name"></td><td><input maxlength="15" type="text" data-key="sub-11-cost"></td><td><input maxlength="20" type="text" data-key="sub-11-cycle"></td><td><input maxlength="20" type="text" data-key="sub-11-next"></td><td><div class="checklist-item" data-key="sub-11-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-12-name"></td><td><input maxlength="15" type="text" data-key="sub-12-cost"></td><td><input maxlength="20" type="text" data-key="sub-12-cycle"></td><td><input maxlength="20" type="text" data-key="sub-12-next"></td><td><div class="checklist-item" data-key="sub-12-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-13-name"></td><td><input maxlength="15" type="text" data-key="sub-13-cost"></td><td><input maxlength="20" type="text" data-key="sub-13-cycle"></td><td><input maxlength="20" type="text" data-key="sub-13-next"></td><td><div class="checklist-item" data-key="sub-13-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-14-name"></td><td><input maxlength="15" type="text" data-key="sub-14-cost"></td><td><input maxlength="20" type="text" data-key="sub-14-cycle"></td><td><input maxlength="20" type="text" data-key="sub-14-next"></td><td><div class="checklist-item" data-key="sub-14-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-15-name"></td><td><input maxlength="15" type="text" data-key="sub-15-cost"></td><td><input maxlength="20" type="text" data-key="sub-15-cycle"></td><td><input maxlength="20" type="text" data-key="sub-15-next"></td><td><div class="checklist-item" data-key="sub-15-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-16-name"></td><td><input maxlength="15" type="text" data-key="sub-16-cost"></td><td><input maxlength="20" type="text" data-key="sub-16-cycle"></td><td><input maxlength="20" type="text" data-key="sub-16-next"></td><td><div class="checklist-item" data-key="sub-16-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-17-name"></td><td><input maxlength="15" type="text" data-key="sub-17-cost"></td><td><input maxlength="20" type="text" data-key="sub-17-cycle"></td><td><input maxlength="20" type="text" data-key="sub-17-next"></td><td><div class="checklist-item" data-key="sub-17-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-18-name"></td><td><input maxlength="15" type="text" data-key="sub-18-cost"></td><td><input maxlength="20" type="text" data-key="sub-18-cycle"></td><td><input maxlength="20" type="text" data-key="sub-18-next"></td><td><div class="checklist-item" data-key="sub-18-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-19-name"></td><td><input maxlength="15" type="text" data-key="sub-19-cost"></td><td><input maxlength="20" type="text" data-key="sub-19-cycle"></td><td><input maxlength="20" type="text" data-key="sub-19-next"></td><td><div class="checklist-item" data-key="sub-19-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-20-name"></td><td><input maxlength="15" type="text" data-key="sub-20-cost"></td><td><input maxlength="20" type="text" data-key="sub-20-cycle"></td><td><input maxlength="20" type="text" data-key="sub-20-next"></td><td><div class="checklist-item" data-key="sub-20-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
   </table>
 </div>
 
@@ -877,6 +979,11 @@
     <tr><td><input maxlength="60" type="text" data-key="pantry-18-item"></td><td><input maxlength="15" type="text" data-key="pantry-18-qty"></td><td><input maxlength="40" type="text" data-key="pantry-18-loc"></td><td><input maxlength="20" type="text" data-key="pantry-18-exp"></td></tr>
     <tr><td><input maxlength="60" type="text" data-key="pantry-19-item"></td><td><input maxlength="15" type="text" data-key="pantry-19-qty"></td><td><input maxlength="40" type="text" data-key="pantry-19-loc"></td><td><input maxlength="20" type="text" data-key="pantry-19-exp"></td></tr>
     <tr><td><input maxlength="60" type="text" data-key="pantry-20-item"></td><td><input maxlength="15" type="text" data-key="pantry-20-qty"></td><td><input maxlength="40" type="text" data-key="pantry-20-loc"></td><td><input maxlength="20" type="text" data-key="pantry-20-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-21-item"></td><td><input maxlength="15" type="text" data-key="pantry-21-qty"></td><td><input maxlength="40" type="text" data-key="pantry-21-loc"></td><td><input maxlength="20" type="text" data-key="pantry-21-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-22-item"></td><td><input maxlength="15" type="text" data-key="pantry-22-qty"></td><td><input maxlength="40" type="text" data-key="pantry-22-loc"></td><td><input maxlength="20" type="text" data-key="pantry-22-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-23-item"></td><td><input maxlength="15" type="text" data-key="pantry-23-qty"></td><td><input maxlength="40" type="text" data-key="pantry-23-loc"></td><td><input maxlength="20" type="text" data-key="pantry-23-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-24-item"></td><td><input maxlength="15" type="text" data-key="pantry-24-qty"></td><td><input maxlength="40" type="text" data-key="pantry-24-loc"></td><td><input maxlength="20" type="text" data-key="pantry-24-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-25-item"></td><td><input maxlength="15" type="text" data-key="pantry-25-qty"></td><td><input maxlength="40" type="text" data-key="pantry-25-loc"></td><td><input maxlength="20" type="text" data-key="pantry-25-exp"></td></tr>
   </table>
 </div>
 
@@ -904,6 +1011,11 @@
     <tr><td><input maxlength="60" type="text" data-key="freezer-18-item"></td><td><input maxlength="15" type="text" data-key="freezer-18-qty"></td><td><input maxlength="20" type="text" data-key="freezer-18-date"></td><td><input maxlength="80" type="text" data-key="freezer-18-use"></td></tr>
     <tr><td><input maxlength="60" type="text" data-key="freezer-19-item"></td><td><input maxlength="15" type="text" data-key="freezer-19-qty"></td><td><input maxlength="20" type="text" data-key="freezer-19-date"></td><td><input maxlength="80" type="text" data-key="freezer-19-use"></td></tr>
     <tr><td><input maxlength="60" type="text" data-key="freezer-20-item"></td><td><input maxlength="15" type="text" data-key="freezer-20-qty"></td><td><input maxlength="20" type="text" data-key="freezer-20-date"></td><td><input maxlength="80" type="text" data-key="freezer-20-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-21-item"></td><td><input maxlength="15" type="text" data-key="freezer-21-qty"></td><td><input maxlength="20" type="text" data-key="freezer-21-date"></td><td><input maxlength="80" type="text" data-key="freezer-21-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-22-item"></td><td><input maxlength="15" type="text" data-key="freezer-22-qty"></td><td><input maxlength="20" type="text" data-key="freezer-22-date"></td><td><input maxlength="80" type="text" data-key="freezer-22-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-23-item"></td><td><input maxlength="15" type="text" data-key="freezer-23-qty"></td><td><input maxlength="20" type="text" data-key="freezer-23-date"></td><td><input maxlength="80" type="text" data-key="freezer-23-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-24-item"></td><td><input maxlength="15" type="text" data-key="freezer-24-qty"></td><td><input maxlength="20" type="text" data-key="freezer-24-date"></td><td><input maxlength="80" type="text" data-key="freezer-24-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-25-item"></td><td><input maxlength="15" type="text" data-key="freezer-25-qty"></td><td><input maxlength="20" type="text" data-key="freezer-25-date"></td><td><input maxlength="80" type="text" data-key="freezer-25-use"></td></tr>
   </table>
 </div>
 
@@ -991,6 +1103,16 @@
     <tr><td><input maxlength="20" type="text" data-key="dates-13-date"></td><td><input maxlength="20" type="text" data-key="dates-13-occasion"></td><td><input maxlength="20" type="text" data-key="dates-13-person"></td><td><input maxlength="20" type="text" data-key="dates-13-notes"></td></tr>
     <tr><td><input maxlength="20" type="text" data-key="dates-14-date"></td><td><input maxlength="20" type="text" data-key="dates-14-occasion"></td><td><input maxlength="20" type="text" data-key="dates-14-person"></td><td><input maxlength="20" type="text" data-key="dates-14-notes"></td></tr>
     <tr><td><input maxlength="20" type="text" data-key="dates-15-date"></td><td><input maxlength="20" type="text" data-key="dates-15-occasion"></td><td><input maxlength="20" type="text" data-key="dates-15-person"></td><td><input maxlength="20" type="text" data-key="dates-15-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-16-date"></td><td><input maxlength="20" type="text" data-key="dates-16-occasion"></td><td><input maxlength="20" type="text" data-key="dates-16-person"></td><td><input maxlength="20" type="text" data-key="dates-16-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-17-date"></td><td><input maxlength="20" type="text" data-key="dates-17-occasion"></td><td><input maxlength="20" type="text" data-key="dates-17-person"></td><td><input maxlength="20" type="text" data-key="dates-17-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-18-date"></td><td><input maxlength="20" type="text" data-key="dates-18-occasion"></td><td><input maxlength="20" type="text" data-key="dates-18-person"></td><td><input maxlength="20" type="text" data-key="dates-18-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-19-date"></td><td><input maxlength="20" type="text" data-key="dates-19-occasion"></td><td><input maxlength="20" type="text" data-key="dates-19-person"></td><td><input maxlength="20" type="text" data-key="dates-19-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-20-date"></td><td><input maxlength="20" type="text" data-key="dates-20-occasion"></td><td><input maxlength="20" type="text" data-key="dates-20-person"></td><td><input maxlength="20" type="text" data-key="dates-20-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-21-date"></td><td><input maxlength="20" type="text" data-key="dates-21-occasion"></td><td><input maxlength="20" type="text" data-key="dates-21-person"></td><td><input maxlength="20" type="text" data-key="dates-21-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-22-date"></td><td><input maxlength="20" type="text" data-key="dates-22-occasion"></td><td><input maxlength="20" type="text" data-key="dates-22-person"></td><td><input maxlength="20" type="text" data-key="dates-22-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-23-date"></td><td><input maxlength="20" type="text" data-key="dates-23-occasion"></td><td><input maxlength="20" type="text" data-key="dates-23-person"></td><td><input maxlength="20" type="text" data-key="dates-23-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-24-date"></td><td><input maxlength="20" type="text" data-key="dates-24-occasion"></td><td><input maxlength="20" type="text" data-key="dates-24-person"></td><td><input maxlength="20" type="text" data-key="dates-24-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-25-date"></td><td><input maxlength="20" type="text" data-key="dates-25-occasion"></td><td><input maxlength="20" type="text" data-key="dates-25-person"></td><td><input maxlength="20" type="text" data-key="dates-25-notes"></td></tr>
   </table>
 </div>
 
@@ -1010,6 +1132,14 @@
     <tr><td><input maxlength="60" type="text" data-key="gift-10-person"></td><td><input maxlength="80" type="text" data-key="gift-10-occasion"></td><td><input maxlength="20" type="text" data-key="gift-10-date"></td><td><input maxlength="80" type="text" data-key="gift-10-idea"></td><td><input maxlength="15" type="text" data-key="gift-10-budget"></td><td><div class="checklist-item" data-key="gift-10-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
     <tr><td><input maxlength="60" type="text" data-key="gift-11-person"></td><td><input maxlength="80" type="text" data-key="gift-11-occasion"></td><td><input maxlength="20" type="text" data-key="gift-11-date"></td><td><input maxlength="80" type="text" data-key="gift-11-idea"></td><td><input maxlength="15" type="text" data-key="gift-11-budget"></td><td><div class="checklist-item" data-key="gift-11-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
     <tr><td><input maxlength="60" type="text" data-key="gift-12-person"></td><td><input maxlength="80" type="text" data-key="gift-12-occasion"></td><td><input maxlength="20" type="text" data-key="gift-12-date"></td><td><input maxlength="80" type="text" data-key="gift-12-idea"></td><td><input maxlength="15" type="text" data-key="gift-12-budget"></td><td><div class="checklist-item" data-key="gift-12-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-13-person"></td><td><input maxlength="80" type="text" data-key="gift-13-occasion"></td><td><input maxlength="20" type="text" data-key="gift-13-date"></td><td><input maxlength="80" type="text" data-key="gift-13-idea"></td><td><input maxlength="15" type="text" data-key="gift-13-budget"></td><td><div class="checklist-item" data-key="gift-13-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-14-person"></td><td><input maxlength="80" type="text" data-key="gift-14-occasion"></td><td><input maxlength="20" type="text" data-key="gift-14-date"></td><td><input maxlength="80" type="text" data-key="gift-14-idea"></td><td><input maxlength="15" type="text" data-key="gift-14-budget"></td><td><div class="checklist-item" data-key="gift-14-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-15-person"></td><td><input maxlength="80" type="text" data-key="gift-15-occasion"></td><td><input maxlength="20" type="text" data-key="gift-15-date"></td><td><input maxlength="80" type="text" data-key="gift-15-idea"></td><td><input maxlength="15" type="text" data-key="gift-15-budget"></td><td><div class="checklist-item" data-key="gift-15-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-16-person"></td><td><input maxlength="80" type="text" data-key="gift-16-occasion"></td><td><input maxlength="20" type="text" data-key="gift-16-date"></td><td><input maxlength="80" type="text" data-key="gift-16-idea"></td><td><input maxlength="15" type="text" data-key="gift-16-budget"></td><td><div class="checklist-item" data-key="gift-16-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-17-person"></td><td><input maxlength="80" type="text" data-key="gift-17-occasion"></td><td><input maxlength="20" type="text" data-key="gift-17-date"></td><td><input maxlength="80" type="text" data-key="gift-17-idea"></td><td><input maxlength="15" type="text" data-key="gift-17-budget"></td><td><div class="checklist-item" data-key="gift-17-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-18-person"></td><td><input maxlength="80" type="text" data-key="gift-18-occasion"></td><td><input maxlength="20" type="text" data-key="gift-18-date"></td><td><input maxlength="80" type="text" data-key="gift-18-idea"></td><td><input maxlength="15" type="text" data-key="gift-18-budget"></td><td><div class="checklist-item" data-key="gift-18-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-19-person"></td><td><input maxlength="80" type="text" data-key="gift-19-occasion"></td><td><input maxlength="20" type="text" data-key="gift-19-date"></td><td><input maxlength="80" type="text" data-key="gift-19-idea"></td><td><input maxlength="15" type="text" data-key="gift-19-budget"></td><td><div class="checklist-item" data-key="gift-19-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-20-person"></td><td><input maxlength="80" type="text" data-key="gift-20-occasion"></td><td><input maxlength="20" type="text" data-key="gift-20-date"></td><td><input maxlength="80" type="text" data-key="gift-20-idea"></td><td><input maxlength="15" type="text" data-key="gift-20-budget"></td><td><div class="checklist-item" data-key="gift-20-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
   </table>
 </div>
 
@@ -1095,6 +1225,48 @@ function clearAll() {
     document.querySelectorAll(".checklist-item.checked").forEach(el => el.classList.remove("checked"));
     document.getElementById("saveStatus").classList.remove("visible");
   }
+}
+
+function exportData() {
+  const data = localStorage.getItem(STORAGE_KEY);
+  if (!data) { alert("No data to save yet. Fill in some fields first."); return; }
+  const blob = new Blob([data], {type: "application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "household-binder-backup.json";
+  a.click();
+  URL.revokeObjectURL(url);
+  const s = document.getElementById("saveStatus");
+  s.textContent = "Copy saved";
+  s.classList.add("visible");
+  setTimeout(() => { s.textContent = "Saved"; s.classList.remove("visible"); }, 2000);
+}
+
+function importData() {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".json";
+  input.onchange = function() {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const data = JSON.parse(e.target.result);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        loadAll();
+        const s = document.getElementById("saveStatus");
+        s.textContent = "Copy loaded";
+        s.classList.add("visible");
+        setTimeout(() => { s.textContent = "Saved"; s.classList.remove("visible"); }, 2000);
+      } catch(err) {
+        alert("Couldn't read that file. Make sure it's a binder backup.");
+      }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
 }
 
 // Auto-save on input
