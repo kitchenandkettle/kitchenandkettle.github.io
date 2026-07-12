@@ -26,6 +26,7 @@ const FILES = [
   'apothecary-basics/apothecary-basics.html',
   'root-cellaring-guide/root-cellaring-guide.html',
   'simple-life-guide/simple-life-guide.html',
+  'household-binder/household-binder.html',
 ];
 // -------------------------------------------------
 

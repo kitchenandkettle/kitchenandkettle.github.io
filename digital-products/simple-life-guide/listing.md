@@ -37,7 +37,7 @@ This guide is about subtraction. Fewer products. Fewer inputs. Fewer voices. The
 ▶ Works with GoodNotes, Notability, and any PDF app.
 
 ## Tags (copy-paste, comma-separated)
-simple living, simplify your life, minimalist guide, practical minimalism, kitchen swaps, natural living, reduce clutter, simple routines, DIY alternatives, homestead simplicity, slow living, less is more, practical guide, simple home, intentional living
+simple living, simplify your life, practical minimalism, kitchen swaps, natural living, reduce clutter, simple routines, DIY alternatives, homestead simplicity, slow living, practical guide, simple home, intentional living
 
 ## Pinterest (copy-paste)
 ### Title
