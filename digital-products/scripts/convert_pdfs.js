@@ -25,6 +25,7 @@ const FILES = [
   'first-aid-checklist/first-aid-checklist.html',
   'apothecary-basics/apothecary-basics.html',
   'root-cellaring-guide/root-cellaring-guide.html',
+  'simple-life-guide/simple-life-guide.html',
 ];
 // -------------------------------------------------
 

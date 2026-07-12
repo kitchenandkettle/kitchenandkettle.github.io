@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview Kit — A Simple Life</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#8B8376;--line:#D9D0C1;--light:#FAF7F0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:1rem;gap:1rem;}
+  
+  .frame{
+    width:1000px;height:1000px;background:var(--paper);
+    position:relative;overflow:hidden;
+    box-shadow:0 2px 12px rgba(44,36,22,0.12);
+  }
+  .frame.wide{width:1000px;height:667px;}
+
+  /* FRAME 1: COVER */
+  .cover-frame{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px;}
+  .cover-frame .brand-line{font-family:'Work Sans',sans-serif;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--clay);margin-bottom:40px;}
+  .cover-frame .brand-line em{font-style:italic;}
+  .cover-frame h1{font-family:'Crimson Pro',serif;font-size:72px;font-weight:600;color:var(--ink);margin-bottom:20px;line-height:1.1;}
+  .cover-frame .tagline{font-family:'Crimson Pro',serif;font-size:22px;font-style:italic;color:#3D362D;margin-bottom:40px;}
+  .cover-frame .features{font-family:'Work Sans',sans-serif;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;line-height:2;}
+  .cover-frame .footer{position:absolute;bottom:60px;font-family:'Work Sans',sans-serif;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;}
+  .cover-frame .footer em{font-style:italic;color:var(--clay);}
+
+  /* FRAME 2: INTERIOR SPREAD */
+  .spread-frame{display:flex;gap:0;height:100%;}
+  .spread-left{flex:1;background:var(--light);padding:50px 40px;display:flex;flex-direction:column;justify-content:center;}
+  .spread-left h3{font-family:'Work Sans',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--sage);margin-bottom:30px;}
+  .spread-left h2{font-family:'Crimson Pro',serif;font-size:36px;font-weight:600;color:var(--ink);margin-bottom:15px;}
+  .spread-left .page-excerpt{font-family:'Crimson Pro',serif;font-size:16px;color:#3D362D;line-height:1.55;margin-bottom:20px;}
+  .spread-left .page-excerpt span{color:var(--line);font-style:italic;}
+  .spread-right{flex:1;background:var(--paper);padding:50px 40px;display:flex;flex-direction:column;justify-content:center;}
+  .spread-right h3{font-family:'Work Sans',sans-serif;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:20px;}
+  .spread-right ul{list-style:none;}
+  .spread-right li{font-family:'Crimson Pro',serif;font-size:15px;color:#3D362D;padding:6px 0;border-bottom:1px dotted var(--line);}
+  .spread-right li:last-child{border-bottom:none;}
+
+  /* FRAME 3: WHAT'S INSIDE */
+  .inside-frame{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px;}
+  .inside-frame .brand-line{font-family:'Work Sans',sans-serif;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--clay);margin-bottom:50px;}
+  .inside-frame .brand-line em{font-style:italic;}
+  .inside-frame h1{font-family:'Crimson Pro',serif;font-size:48px;font-weight:600;color:var(--ink);margin-bottom:50px;}
+  .inside-frame ol{text-align:left;max-width:600px;font-family:'Crimson Pro',serif;font-size:18px;color:#3D362D;line-height:2;}
+  .inside-frame ol li{padding:2px 0;}
+  .inside-frame ol li strong{color:var(--ink);}
+</style>
+</head>
+<body>
+
+<!-- FRAME 1: COVER -->
+<div class="frame cover-frame">
+  <div class="brand-line">Kitchen <em>&amp; Kettle</em></div>
+  <h1>A Simple Life</h1>
+  <p class="tagline">A guide to doing less, with more intention.</p>
+  <div class="features">
+    Practical swaps for kitchen, bath &amp; home<br>
+    The Diaper Bag Rule — one good thing beats five specialized ones<br>
+    Turning down the noise of social media<br>
+    Permission to stop making everything from scratch
+  </div>
+  <div class="footer"><em>Works</em> because it works.</div>
+</div>
+
+<!-- FRAME 2: INTERIOR SPREAD (WIDE) -->
+<div style="text-align:center;font-family:'Work Sans',sans-serif;font-size:12px;color:var(--muted);margin:0.5rem 0;">Interior spread &mdash; use for listing image #2</div>
+<div class="frame wide spread-frame">
+  <div class="spread-left">
+    <h3>Chapter: In the Kitchen</h3>
+    <h2>Fewer tools, more cooking.</h2>
+    <p class="page-excerpt">The best kitchen isn't the most equipped — it's the one where you can find everything and use everything. <span>&hellip;read more in the full guide</span></p>
+  </div>
+  <div class="spread-right">
+    <h3>Inside this guide</h3>
+    <ul>
+      <li>Kitchen swaps that actually work</li>
+      <li>Bath &amp; body — the free &amp; clear approach</li>
+      <li>Household: less under the sink</li>
+      <li>The Diaper Bag Rule</li>
+      <li>Social media &amp; the noise problem</li>
+      <li>Why DIY isn't always the answer</li>
+      <li>Cross-references to 6 related guides</li>
+      <li>9 pages, designed for reading and keeping</li>
+    </ul>
+  </div>
+</div>
+
+<!-- FRAME 3: WHAT'S INSIDE -->
+<div style="text-align:center;font-family:'Work Sans',sans-serif;font-size:12px;color:var(--muted);margin:0.5rem 0;">Feature spread &mdash; use for listing image #3</div>
+<div class="frame inside-frame">
+  <div class="brand-line">Kitchen <em>&amp; Kettle</em></div>
+  <h1>A Simple Life</h1>
+  <ol>
+    <li><strong>The Pressure to Change</strong> — why we keep adding and wonder why life feels heavier</li>
+    <li><strong>In the Kitchen</strong> — mason jars, fewer oils, one brewer, stainless steel</li>
+    <li><strong>Bath &amp; Body</strong> — bar over pump, free &amp; clear, stop the DIY experiments</li>
+    <li><strong>Around the House</strong> — shop cloths, fewer cleaners, skip the dryer sheets</li>
+    <li><strong>The Diaper Bag Rule</strong> — why one good thing beats five specialized ones</li>
+    <li><strong>The Noise</strong> — journal your top 3, unfollow the rest, one source per interest</li>
+    <li><strong>The DIY Trap</strong> — you don't have to make everything</li>
+  </ol>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Simple Life — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#8B8376;--line:#D9D0C1;--light:#FAF7F0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Crimson Pro',Georgia,serif;font-size:12pt;line-height:1.65;
+    background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:1rem;
+    color:var(--ink);
+  }
+
+  .toolbar{
+    max-width:8.5in;width:100%;margin:0 auto 0.5rem;
+    display:flex;justify-content:space-between;align-items:center;
+    background:#fff;padding:0.5rem 0.7rem;border-radius:6px;
+    box-shadow:0 1px 4px rgba(44,36,22,0.08);
+    position:sticky;top:0;z-index:100;
+  }
+  .toolbar .brand{font-family:'Crimson Pro',serif;font-size:14pt;font-weight:600;color:var(--ink)}
+  .toolbar .brand em{font-style:italic;color:var(--clay)}
+  .toolbar .actions{display:flex;gap:0.5rem;align-items:center}
+  .save-status{font-family:'Work Sans',sans-serif;font-size:12pt;color:#5a8a6a;margin-right:0.5rem;opacity:0;transition:opacity 0.3s;}
+  .save-status.visible{opacity:1}
+  .btn{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;padding:0.4em 0.8em;border-radius:3px;cursor:pointer;border:none;transition:background 0.15s;text-decoration:none;}
+  .btn-ghost{background:none;color:var(--muted);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+  .btn-print{background:var(--ink);color:var(--paper)}
+  .btn-print:hover{background:#3D362D}
+
+  .page{
+    width:8.5in;min-height:11in;background:var(--paper);
+    padding:0.6in 0.7in;
+    box-shadow:0 2px 12px rgba(44,36,22,0.12);
+    position:relative;margin-bottom:0.25in;page-break-after:always;
+  }
+  .page:last-of-type{page-break-after:auto;margin-bottom:0}
+
+  h1{font-family:'Crimson Pro',serif;font-size:28pt;font-weight:600;color:var(--ink);letter-spacing:-0.01em;line-height:1.15;}
+  h2{font-family:'Crimson Pro',serif;font-size:18pt;font-weight:600;color:var(--ink);margin-bottom:0.5rem;border-bottom:1px solid var(--line);padding-bottom:0.2rem;}
+  h3{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin:0.8rem 0 0.4rem;}
+
+  .lede{font-size:14pt;line-height:1.55;color:#3D362D;margin-bottom:0.85rem;}
+  .small{font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);}
+  .brand-line{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--clay);margin-bottom:0.6rem;}
+  .tagline{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);}
+
+  .prose-page p{margin-bottom:0.75rem;line-height:1.6;}
+  .prose-page hr{margin:0.6rem 0;border:none;border-top:1px solid var(--line);}
+
+  .honest-box{background:var(--light);border-left:3px solid var(--clay);padding:0.4rem 0.5rem;margin:0.65rem 0;font-size:12pt;}
+  .honest-box strong{color:var(--ink)}
+  .tip-box{background:var(--light);border-left:3px solid var(--sage);padding:0.4rem 0.5rem;margin:0.65rem 0;font-size:12pt;}
+
+  .swap-list{list-style:none;margin:0.4rem 0;}
+  .swap-list li{display:flex;gap:0.4rem;padding:0.25rem 0;font-size:12pt;line-height:1.5;align-items:baseline;}
+  .swap-list .arrow{color:var(--sage);font-weight:600;flex-shrink:0;}
+
+  .principle{display:grid;grid-template-columns:0.3in 1fr;gap:0.3rem;margin:0.5rem 0;align-items:start;}
+  .principle-num{font-family:'Work Sans',sans-serif;font-size:16pt;font-weight:600;color:var(--clay);text-align:right;line-height:1.2;}
+  .principle-text{font-size:12pt;line-height:1.5;}
+
+  .cross-sell-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.3rem;margin:0.4rem 0;}
+  .cross-sell-card{border:1px solid var(--line);padding:0.3rem;}
+  .cross-sell-card h3{font-size:12pt;margin:0 0 0.1rem;}
+  .cross-sell-card p{font-size:12pt;line-height:1.4;color:#3D362D;}
+
+  .page-footer{text-align:center;margin-top:0.5rem;font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);letter-spacing:0.04em;text-transform:uppercase;}
+  .page-footer em{font-style:italic;color:var(--clay)}
+
+  .cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:1.5in 0.7in;}
+  .cover h1{margin-bottom:0.25in;}
+  .cover .brand-line{margin-bottom:1rem;}
+  .cover .desc{font-size:13pt;color:#3D362D;max-width:26ch;line-height:1.5;}
+
+  .closing{display:flex;flex-direction:column;justify-content:center;text-align:center;padding:1.2in 0.7in;}
+  .closing p{font-size:13pt;line-height:1.6;color:#3D362D;margin-bottom:0.55rem;}
+  .closing .sign-off{font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);margin-top:0.5rem;}
+
+  hr.ornament{border:none;border-top:1px solid var(--line);width:2in;margin:0 auto;}
+
+  @media print{
+    body{background:none;padding:0;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .toolbar{display:none}
+    .page{margin:0;box-shadow:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+
+<!-- PAGE 1: COVER -->
+<div class="page cover">
+  <div class="brand-line">Kitchen &amp; <em>Kettle</em></div>
+  <h1>A Simple Life</h1>
+  <p class="desc">A guide to doing less, with more intention.</p>
+  <div class="page-footer" style="position:absolute;bottom:0.6in;left:0;right:0;text-align:center;">
+    <em>Works</em> because it works.
+  </div>
+</div>
+
+<!-- PAGE 2: PHILOSOPHY -->
+<div class="page prose-page">
+  <h2>The Pressure to Change</h2>
+  <p class="lede">We're constantly being told to change our lives. New habits, new products, new routines — every feed is full of health influencers, DIYers, and homesteaders telling us to do something different than what we're already doing.</p>
+  <p>Some of this is genuinely good advice, but the volume is the problem. When we're always listening to the next thing we need to change, we rush out and buy the thing, try to implement a new habit, and attempt five different skills all at once. This pace leads to failure — not because we're not trying hard enough, but because no one can implement twenty new things at the same time.</p>
+  <p>This guide is about subtraction: fewer products, fewer inputs, fewer voices. The goal isn't minimalism as an aesthetic — it's making space for what actually works.</p>
+
+  <div class="honest-box">
+    <strong>Honest note:</strong> Simplifying is harder than accumulating. Buying a new tool feels productive. Getting rid of one doesn't. That's why we keep adding and wonder why life feels heavier. This guide won't fix that overnight, but it will give you permission to stop.
+  </div>
+
+  <p>The pages that follow are swaps, principles, and things to let go of. Use what fits and ignore the rest. The point isn't to follow a system — it's to give yourself room to breathe.</p>
+</div>
+
+<!-- PAGE 3: IN THE KITCHEN -->
+<div class="page prose-page">
+  <h2>In the Kitchen</h2>
+  <p class="lede">Fewer tools, more cooking. The best kitchen isn't the most equipped — it's the one where you can find everything and use everything.</p>
+
+  <h3>Mason Jars Do Everything</h3>
+  <p>Invest in a couple cases of mason jars even if you don't plan on canning. They store dry goods, they're your water bottle, they hold leftovers — I use mine for so many things, and I haven't bought a reusable water bottle in years. One jar replaces a cupboard full of specialty containers.</p>
+
+  <h3>Replace the Disposables</h3>
+  <p>Stainless steel where you can, beeswax wraps instead of plastic wrap, foil when it makes sense, silicone mats instead of parchment. None of these are perfect replacements for every single use case, but together they'll cut your disposable spending by most of it.</p>
+
+  <h3>One Brewer, Not a Collection</h3>
+  <p>A french press makes both tea and coffee, which means you don't need a tea bag drawer, an infuser basket, a pour-over cone, and three different steeping vessels. Pick the one that does both jobs and let the rest go.</p>
+
+  <h3>You Don't Need Eight Oils</h3>
+  <p>Pick two or three you actually use. Olive oil for most things, a neutral oil for high heat, and maybe one finishing oil if you truly love it. The rest sit in the cupboard going rancid while you reach for the same bottle every time.</p>
+
+  <hr>
+
+  <div class="tip-box">
+    <strong>Go deeper:</strong> Learn to preserve your groceries instead of throwing them away. The Seasonal Preservation Calendar walks you through what to put by each month. Grow perennial herbs — they come back every year and ask almost nothing of you. The Survival Garden Basics guide covers which ones earn their space.
+  </div>
+</div>
+
+<!-- PAGE 4: BATH & BODY -->
+<div class="page prose-page">
+  <h2>Bath &amp; Body</h2>
+  <p class="lede">Soap is soap. The rest is marketing.</p>
+
+  <h3>Bar Over Pump</h3>
+  <p>Plastic hand soap pumps create waste and cost more over time, and a simple bar of soap does the same job — just rub your brush on it and scrub. No foaming dispenser, no special tray, no subscription refills showing up at your door.</p>
+
+  <h3>Free &amp; Clear</h3>
+  <p>Scents and colors in soap are decoration, not function. If your skin is reactive — and many people's is without realizing it — strip it back to nothing. The right soap cleans. That's the whole job.</p>
+
+  <h3>Simplify the Routine</h3>
+  <p>One simple bar for washing. One or two moisturizers that actually work — tallow balm and jojoba oil cover most of what skin needs — and one essential oil if you like scent. I use only lavender in my tallow; it's the most skin-safe oil, and one bottle lasts a long time.</p>
+
+  <div class="honest-box">
+    <strong>Honest note:</strong> It's a lot of pressure to make all of your own body care products. Experimenting with different soap recipes, sourcing ingredients, testing batches, dealing with failures — it's exhausting and it wastes money. Handmade soap isn't automatically more sustainable than commercial; ingredient sourcing matters, and small-batch production isn't always more efficient. Supporting brands that do the right thing takes the burden off your shoulders and helps out the good guys.
+  </div>
+
+  <div class="tip-box">
+    <strong>Go deeper:</strong> The Simple Body Care Guide walks through a complete routine with the fewest possible products — what to buy, what to make, and what's not worth your mixing bowl.
+  </div>
+</div>
+
+<!-- PAGE 5: AROUND THE HOUSE -->
+<div class="page prose-page">
+  <h2>Around the House</h2>
+  <p class="lede">Less under the sink. Fewer bottles. Same clean house.</p>
+
+  <h3>Shop Cloths Over Paper Towels</h3>
+  <p>A stack of shop cloths replaces paper towels for almost everything. They absorb more, cost pennies per use over their lifetime, and you just toss them in the wash. Keep a roll of paper towels around for truly gross jobs, but one roll will last you months instead of days.</p>
+
+  <h3>Skip the Dryer Sheets</h3>
+  <p>Dryer sheets coat your clothes in chemicals to simulate softness — you don't need them. If static is a problem in winter, wool dryer balls do the same job without the residue, and they last for years.</p>
+
+  <hr>
+
+  <h3>Fewer Cleaning Products</h3>
+  <p>You don't need a different spray bottle for every surface in your home. A simple all-purpose cleaner covers most of it, a mild abrasive handles tough spots, and something for glass if you care about streaks. That's three products where most homes have fifteen.</p>
+
+  <div class="honest-box">
+    <strong>Honest note:</strong> The cleaning aisle is designed to make you feel like each surface needs its own specialized formula. It doesn't. Most of what's in those bottles is water, fragrance, and color — the active ingredients overlap heavily.
+  </div>
+
+  <div class="tip-box">
+    <strong>Go deeper:</strong> The Simple Homekeeping Guide covers a complete cleaning system built around a handful of ingredients — no marketing, no fragrance, just what works.
+  </div>
+</div>
+
+<!-- PAGE 6: THE DIAPER BAG RULE -->
+<div class="page prose-page">
+  <h2>The Diaper Bag Rule</h2>
+  <p class="lede">One good thing that does many jobs beats five specialized things that each do one.</p>
+
+  <p>Thinking about buying a new purse? Get a diaper bag instead. They've come a long way — really cute designs, insulated lining, built to endure. More convenient compartments for all your things, and you can carry food and snacks without worrying about a spill.</p>
+
+  <p>This principle applies everywhere. Look for the one thing that does the most:</p>
+
+  <hr>
+
+  <div class="principle">
+    <div class="principle-num">1</div>
+    <div class="principle-text">The <strong>mason jar</strong> stores, transports, preserves, measures, and serves. It replaces water bottles, storage containers, vases, and shakers.</div>
+  </div>
+
+  <div class="principle">
+    <div class="principle-num">2</div>
+    <div class="principle-text">The <strong>french press</strong> makes coffee, tea, cold brew, and infused waters. It replaces a drip machine, a tea strainer, and a dedicated cold brew pitcher.</div>
+  </div>
+
+  <div class="principle">
+    <div class="principle-num">3</div>
+    <div class="principle-text">The <strong>shop cloth</strong> wipes counters, scrubs dishes, dries hands, and polishes glass. It replaces paper towels, dish sponges, microfiber cloths, and disposable wipes.</div>
+  </div>
+
+  <div class="principle">
+    <div class="principle-num">4</div>
+    <div class="principle-text">The <strong>simple bar of soap</strong> cleans hands, face, and body. It replaces hand soap, body wash, facial cleanser, and three different bottles in the shower.</div>
+  </div>
+
+  <hr>
+
+  <p>Before buying something new, ask: <em>does something I already own do this job?</em> Most of the time, the answer is yes.</p>
+
+  <div class="honest-box">
+    <strong>Honest note:</strong> This isn't about never buying anything. It's about buying fewer things that each do more. The diaper bag costs more than a basic purse, but it replaces the purse, the lunch bag, the snack carrier, and the emergency kit you'd otherwise buy separately. Sometimes spending more on one thing saves more in the long run.
+  </div>
+</div>
+
+<!-- PAGE 7: THE NOISE -->
+<div class="page prose-page">
+  <h2>The Noise</h2>
+  <p class="lede">Turn down the volume. Most of what you're being told to do, you don't need to do.</p>
+
+  <p>Cut out or reduce social media — it's exhausting being constantly told to change your life. Health influencers, DIYers, and homesteaders are always pushing us to do something different because there's huge pressure on them to constantly produce something new, different, and click-worthy. That's how the platforms reward them. But the volume we're being fed leads to failure.</p>
+
+  <p>Here's a way out:</p>
+
+  <h3>Journal Your Top Three</h3>
+  <p>Sit down and write out the three things you actually care about — not what you think you should care about, not what your feed tells you matters, but what you, in your actual life, want to invest in. Really think about it. This list becomes your filter for everything that follows.</p>
+
+  <h3>Unfollow Everyone Who Doesn't Serve Those</h3>
+  <p>This is the hard part. Unfollow anyone who doesn't provide real value toward those three priorities — the cooking account you never cook from, the homesteader whose life looks beautiful but whose advice you'll never use, the organizer whose system you bought and never opened. Let them go.</p>
+
+  <h3>Follow One Source Per Interest</h3>
+  <p>I was following about five different homesteading channels. Now I follow only the one that brings the most value, and I no longer feel the constant pressure to keep up with all five telling me what I need to do this season. One voice is enough. More than one is noise.</p>
+
+  <div class="honest-box">
+    <strong>Honest note:</strong> This will feel uncomfortable. You'll worry you're missing something. But you were already missing most of it — you were just feeling guilty about it. Now you're missing it on purpose, and that's different.
+  </div>
+</div>
+
+<!-- PAGE 8: THE DIY TRAP -->
+<div class="page prose-page">
+  <h2>The DIY Trap</h2>
+  <p class="lede">You don't have to make everything. Supporting good brands is not a failure of principles.</p>
+
+  <p>There's a lot of pressure in homesteading and DIY culture to make all of your own things — soap, bread, cleaners, clothes, furniture. It adds up fast, and the message underneath it all is subtle but clear: if you're buying it, you're not trying hard enough. That's a trap, and here's why.</p>
+
+  <h3>Experimenting is Expensive</h3>
+  <p>Trying different soap recipes, sourcing ingredients, testing batches, dealing with failures — it drains time and money. A well-made commercial bar from a brand that sources responsibly isn't a compromise. It's a smart decision that gives you your Saturday back.</p>
+
+  <h3>Handmade Isn't Automatically More Sustainable</h3>
+  <p>Ingredient sourcing matters, and small-batch production isn't always more efficient than industrial processes that minimize waste. The "handmade equals better" equation skips a lot of math.</p>
+
+  <h3>Focus on What Produces</h3>
+  <p>Put your energy into things that give back year after year: a few perennial herbs, a small garden that actually feeds you, skills that store food for winter instead of decorating your countertop for Instagram. Depth over breadth, every time.</p>
+
+  <hr>
+
+  <div class="tip-box">
+    <strong>Go deeper:</strong> The Survival Garden Basics guide focuses on what grows well, stores well, and earns its space — no novelty crops. The Recipe Cards help you master a handful of recipes instead of chasing new ones every week.
+  </div>
+</div>
+
+<!-- PAGE 9: CLOSING -->
+<div class="page closing">
+  <p>You're already doing enough.</p>
+  <p>The goal isn't to optimize every corner of your life. It's to clear enough space that the things you actually care about have room to breathe.</p>
+  <p>Subtract. Unfollow. Use the diaper bag. Let the rest go.</p>
+
+  <hr class="ornament" style="margin:0.5rem auto;">
+
+  <div class="sign-off">Kitchen <em>&amp; Kettle</em></div>
+  <p style="font-size:12pt;color:var(--muted);font-style:italic;">Works because it works.</p>
+
+  <hr class="ornament" style="margin:0.6rem auto 0.4rem;">
+
+  <h3 style="text-align:center;margin-bottom:0.25rem;">Guides Worth Your Time</h3>
+  <div class="cross-sell-grid" style="text-align:left;">
+    <div class="cross-sell-card">
+      <h3>Simple Body Care Guide</h3>
+      <p>A complete routine with the fewest possible products. What to buy, what to make, and what's not worth your mixing bowl.</p>
+    </div>
+    <div class="cross-sell-card">
+      <h3>Simple Homekeeping Guide</h3>
+      <p>A cleaning system built around a handful of ingredients — no marketing, no fragrance, no fifteen bottles under the sink.</p>
+    </div>
+    <div class="cross-sell-card">
+      <h3>Survival Garden Basics</h3>
+      <p>What grows well, stores well, and earns its space. No novelty crops, no complicated systems.</p>
+    </div>
+    <div class="cross-sell-card">
+      <h3>Recipe Cards</h3>
+      <p>A small collection of cards for the recipes you actually make — master a handful instead of chasing new ones.</p>
+    </div>
+    <div class="cross-sell-card">
+      <h3>Seasonal Preservation Calendar</h3>
+      <p>What to put by each month, so you preserve groceries instead of throwing them away.</p>
+    </div>
+    <div class="cross-sell-card">
+      <h3>First Aid Checklist</h3>
+      <p>What you actually need in your kit — no filler, no panic buys, just the supplies that matter.</p>
+    </div>
+  </div>
+
+  <div class="page-footer" style="margin-top:0.5rem;">
+    Available at <em>Kitchen &amp; Kettle</em> on Etsy
+  </div>
+</div>
+
+<script>
+// Notes: closing page write-in
+const noteAreas = document.querySelectorAll('textarea[data-key]');
+function saveNotes(){
+  const data = {};
+  noteAreas.forEach(ta => { if(ta.value.trim()) data[ta.dataset.key] = ta.value; });
+  localStorage.setItem('kettle-simple-life', JSON.stringify(data));
+  const s = document.getElementById('saveStatus');
+  s.classList.add('visible');
+  setTimeout(() => s.classList.remove('visible'), 1500);
+}
+function loadNotes(){
+  try {
+    const data = JSON.parse(localStorage.getItem('kettle-simple-life') || '{}');
+    noteAreas.forEach(ta => { if(data[ta.dataset.key]) ta.value = data[ta.dataset.key]; });
+  } catch(e) {}
+}
+noteAreas.forEach(ta => ta.addEventListener('input', saveNotes));
+function clearAll(){
+  if(confirm('Clear all saved notes?')){
+    localStorage.removeItem('kettle-simple-life');
+    noteAreas.forEach(ta => ta.value = '');
+    document.getElementById('saveStatus').classList.remove('visible');
+  }
+}
+loadNotes();
+</script>
+
+</body>
+</html>
