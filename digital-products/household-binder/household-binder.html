@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Household Binder — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#8B8376;--line:#D9D0C1;--light:#FAF7F0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Crimson Pro',Georgia,serif;font-size:12pt;line-height:1.55;
+    background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:1rem;
+    color:var(--ink);
+  }
+  .toolbar{
+    max-width:8.5in;width:100%;margin:0 auto 0.5rem;
+    display:flex;justify-content:space-between;align-items:center;
+    background:#fff;padding:0.5rem 0.7rem;border-radius:6px;
+    box-shadow:0 1px 4px rgba(44,36,22,0.08);
+    position:sticky;top:0;z-index:100;
+  }
+  .toolbar .brand{font-family:'Crimson Pro',serif;font-size:14pt;font-weight:600;color:var(--ink)}
+  .toolbar .brand em{font-style:italic;color:var(--clay)}
+  .toolbar .actions{display:flex;gap:0.5rem;align-items:center}
+  .save-status{font-family:'Work Sans',sans-serif;font-size:9pt;color:#5a8a6a;margin-right:0.5rem;opacity:0;transition:opacity 0.3s;}
+  .save-status.visible{opacity:1}
+  .btn{font-family:'Work Sans',sans-serif;font-size:9pt;font-weight:600;padding:0.35em 0.7em;border-radius:3px;cursor:pointer;border:none;transition:background 0.15s;text-decoration:none;}
+  .btn-ghost{background:none;color:var(--muted);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+  .btn-print{background:var(--ink);color:var(--paper)}
+  .btn-print:hover{background:#3D362D}
+
+  .page{
+    width:8.5in;min-height:11in;background:var(--paper);
+    padding:0.6in 0.7in;
+    box-shadow:0 2px 12px rgba(44,36,22,0.12);
+    position:relative;margin-bottom:0.25in;page-break-after:always;
+  }
+  .page:last-of-type{page-break-after:auto;margin-bottom:0}
+
+  h1{font-family:'Crimson Pro',serif;font-size:28pt;font-weight:600;color:var(--ink);letter-spacing:-0.01em;line-height:1.15;margin-bottom:0.25rem;}
+  h2{font-family:'Crimson Pro',serif;font-size:18pt;font-weight:600;color:var(--ink);margin-bottom:0.4rem;border-bottom:1px solid var(--line);padding-bottom:0.2rem;}
+  h3{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin:0.5rem 0 0.3rem;}
+  .page-footer{text-align:center;margin-top:0.5rem;font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);letter-spacing:0.04em;text-transform:uppercase;}
+  .page-footer em{font-style:italic;color:var(--clay)}
+  .brand-line{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--clay);}
+
+  /* COVER */
+  .cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:1.5in 0.7in;}
+  .cover h1{font-size:32pt;margin-bottom:0.2in;border:none;padding:0;}
+  .cover .subtitle{font-size:14pt;color:#3D362D;max-width:28ch;line-height:1.5;margin-bottom:0.6rem;}
+  .cover .features{font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;line-height:2.2;}
+
+  /* TAB DIVIDER */
+  .tab-divider{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:1.5in 0.7in;}
+  .tab-divider .tab-num{font-family:'Work Sans',sans-serif;font-size:14pt;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--clay);margin-bottom:0.5rem;}
+  .tab-divider h1{font-size:30pt;border:none;padding:0;margin-bottom:0.3rem;}
+  .tab-divider .tab-line{width:1.5in;height:2px;background:var(--clay);margin:0 auto;}
+
+  /* INFO FIELDS */
+  .info-field{margin-bottom:0.55rem;}
+  .info-field label{font-family:'Work Sans',sans-serif;font-size:9pt;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);display:block;margin-bottom:0.1rem;}
+  .info-field input{width:100%;border:none;border-bottom:2px solid var(--line);background:var(--light);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.35rem 0.3rem;color:var(--ink);outline:none;border-radius:2px 2px 0 0;}
+  .info-field input:focus{border-bottom-color:var(--clay);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:0 0.5in;}
+
+  /* CHECKLISTS */
+  .checklist-item{display:grid;grid-template-columns:1.2rem 1fr;gap:0.3rem;align-items:start;padding:0.2rem 0;cursor:pointer;}
+  .checklist-item .cb{width:0.9rem;height:0.9rem;border:1.5px solid var(--line);border-radius:2px;margin-top:0.2rem;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12pt;color:transparent;transition:all 0.15s;user-select:none;}
+  .checklist-item.checked .cb{background:var(--sage);border-color:var(--sage);color:var(--paper);}
+  .checklist-item .task{font-size:12pt;line-height:1.4;}
+
+  /* TABLES */
+  .tracker-table{width:100%;border-collapse:collapse;font-size:12pt;margin:0.3rem 0;}
+  .tracker-table th{font-family:'Work Sans',sans-serif;font-size:9pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--sage);text-align:left;padding:0.15rem 0.2rem;border-bottom:1px solid var(--line);}
+  .tracker-table td{padding:0.22rem 0.2rem;border-bottom:1px dotted var(--line);}
+  .tracker-table input{width:100%;border:none;border-bottom:1px solid var(--line);background:var(--light);font-family:'Crimson Pro',serif;font-size:12pt;color:var(--ink);outline:none;padding:0.15rem 0.3rem;border-radius:1px 1px 0 0;}
+
+  /* PLANNER */
+  .planner-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.3rem;margin:0.3rem 0;}
+  .planner-card{border:1px solid var(--line);padding:0.25rem;min-height:2in;}
+  .planner-card h4{font-family:'Work Sans',sans-serif;font-size:10pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--sage);margin-bottom:0.1rem;}
+  .planner-card textarea{width:100%;min-height:1.6in;max-height:2in;border:none;background:transparent;font-family:'Crimson Pro',serif;font-size:12pt;color:var(--ink);resize:none;outline:none;line-height:1.5;overflow-y:auto;}
+
+  .notes-area{margin-top:0.3rem;}
+  .flex-page{display:flex;flex-direction:column;}
+.flex-page .fill-area{flex:1;min-height:2.5in;}
+.notes-area textarea{width:100%;min-height:1.5in;max-height:2.5in;border:1px solid var(--line);background:var(--paper);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.35rem 0.3rem;resize:none;line-height:1.5;overflow-y:auto;}
+
+  @media print{
+    body{background:none;padding:0;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .toolbar{display:none}
+    .page{margin:0;box-shadow:none}
+    input,textarea{border-color:transparent!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+
+<!-- COVER -->
+<div class="page cover">
+  <div class="brand-line">Kitchen &amp; <em>Kettle</em></div>
+  <h1>Household Binder</h1>
+  <p class="subtitle">A central place to manage your home — no apps, no scattered notes, no passwords on sticky notes.</p>
+  <div class="features">
+    Home Information &bull; Cleaning System &bull; Maintenance<br>
+    Finances &bull; Food &amp; Kitchen &bull; Family Organization
+  </div>
+</div>
+
+<!-- HOW TO USE -->
+<div class="page prose-page">
+  <h2>How to Use This Binder</h2>
+  <p>This binder is divided into six tabbed sections, each covering a different part of running a household. You don't need to fill everything out at once — start with the section that's causing the most friction right now and build from there.</p>
+  <p><strong>Home Information</strong> — Keep contacts, account numbers, and utility details in one place so you're not digging through email when the power goes out.</p>
+  <p><strong>Cleaning System</strong> — Daily, weekly, monthly, and seasonal checklists. Check off as you go — the binder remembers what you've done.</p>
+  <p><strong>Home Maintenance</strong> — Appliance logs, repair records, warranty dates, and paint colors. The stuff you swear you'll remember and never do.</p>
+  <p><strong>Financial Organization</strong> — Bills, subscriptions, budget, and savings goals. No fancy finance software, just awareness.</p>
+  <p><strong>Food &amp; Kitchen</strong> — Pantry and freezer inventory, meal planning, and grocery lists so you stop buying what you already have.</p>
+  <p><strong>Family Organization</strong> — Important dates, gift planning, holidays, and vacations. The calendar section that lives on paper.</p>
+  <p>Everything you type stays saved in your browser. Print it, fill it by hand, or do both — whatever works.</p>
+</div>
+<div class="page tab-divider">
+  <div class="tab-num">Section 1</div>
+  <h1>Home Information</h1>
+  <div class="tab-line"></div>
+</div>
+<div class="page prose-page">
+  <h2>Household Information</h2>
+  <div class="info-field">
+    <label>Household name / family name</label>
+    <input maxlength="60" type="text" data-key="hh-name" placeholder="">
+  </div>
+  <div class="two-col">
+    <div class="info-field"><label>Address</label><input maxlength="100" type="text" data-key="hh-address"></div>
+    <div class="info-field"><label>City / State / ZIP</label><input maxlength="50" type="text" data-key="hh-city"></div>
+  </div>
+  <div class="two-col">
+    <div class="info-field"><label>Primary phone</label><input maxlength="20" type="text" data-key="hh-phone"></div>
+    <div class="info-field"><label>Email</label><input maxlength="60" type="text" data-key="hh-email"></div>
+  </div>
+  <div class="info-field">
+    <label>Nearest cross street / landmark</label>
+    <input maxlength="100" type="text" data-key="hh-cross" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Nearest hospital / urgent care</label>
+    <input maxlength="80" type="text" data-key="hh-hospital" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Evacuation meeting point</label>
+    <input maxlength="100" type="text" data-key="hh-evac" placeholder="">
+  </div>
+</div>
+
+<div class="page prose-page">
+  <h2>Emergency Contacts</h2>
+  <div class="two-col">
+    <div class="info-field"><label>Contact name</label><input maxlength="60" type="text" data-key="ec1-name"></div>
+    <div class="info-field"><label>Relationship</label><input maxlength="30" type="text" data-key="ec1-rel"></div>
+  </div>  <div class="info-field">
+    <label>Phone</label>
+    <input maxlength="20" type="text" data-key="ec1-phone" placeholder="">
+  </div>
+  <div class="two-col">
+    <div class="info-field"><label>Contact name</label><input maxlength="60" type="text" data-key="ec2-name"></div>
+    <div class="info-field"><label>Relationship</label><input maxlength="30" type="text" data-key="ec2-rel"></div>
+  </div>  <div class="info-field">
+    <label>Phone</label>
+    <input maxlength="20" type="text" data-key="ec2-phone" placeholder="">
+  </div>
+  <div class="two-col">
+    <div class="info-field"><label>Contact name</label><input maxlength="60" type="text" data-key="ec3-name"></div>
+    <div class="info-field"><label>Relationship</label><input maxlength="30" type="text" data-key="ec3-rel"></div>
+  </div>  <div class="info-field">
+    <label>Phone</label>
+    <input maxlength="20" type="text" data-key="ec3-phone" placeholder="">
+  </div>
+  <div class="two-col">
+    <div class="info-field"><label>Contact name</label><input maxlength="60" type="text" data-key="ec4-name"></div>
+    <div class="info-field"><label>Relationship</label><input maxlength="30" type="text" data-key="ec4-rel"></div>
+  </div>  <div class="info-field">
+    <label>Phone</label>
+    <input maxlength="20" type="text" data-key="ec4-phone" placeholder="">
+  </div>
+  <hr style="margin:0.5rem 0;border:none;border-top:1px solid var(--line);">
+  <h3>Other emergency numbers</h3>
+  <div class="info-field">
+    <label>Poison control</label>
+    <input maxlength="80" type="text" data-key="ec-poison" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Veterinarian</label>
+    <input maxlength="80" type="text" data-key="ec-vet" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Neighbor contact</label>
+    <input maxlength="80" type="text" data-key="ec-neighbor" placeholder="">
+  </div>
+</div>
+
+<div class="page prose-page">
+  <h2>Important Phone Numbers</h2>
+  <div class="info-field">
+    <label>Doctor / Primary care</label>
+    <input maxlength="20" type="text" data-key="ph-doctor" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Dentist</label>
+    <input maxlength="20" type="text" data-key="ph-dentist" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Pediatrician</label>
+    <input maxlength="20" type="text" data-key="ph-ped" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Insurance agent</label>
+    <input maxlength="20" type="text" data-key="ph-insurance" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Pharmacy</label>
+    <input maxlength="20" type="text" data-key="ph-pharmacy" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>School / Daycare</label>
+    <input maxlength="20" type="text" data-key="ph-school" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Plumber</label>
+    <input maxlength="20" type="text" data-key="ph-plumber" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Electrician</label>
+    <input maxlength="20" type="text" data-key="ph-electrician" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>HVAC / Heating</label>
+    <input maxlength="20" type="text" data-key="ph-hvac" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Locksmith</label>
+    <input maxlength="20" type="text" data-key="ph-locksmith" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Landlord / Property manager</label>
+    <input maxlength="20" type="text" data-key="ph-landlord" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Other</label>
+    <input maxlength="20" type="text" data-key="ph-other" placeholder="">
+  </div>
+</div>
+
+<div class="page prose-page">
+  <h2>Utility Information</h2>
+  <div class="two-col">
+    <div class="info-field"><label>Electric company</label><input maxlength="80" type="text" data-key="ut-electric"></div>
+    <div class="info-field"><label>Account #</label><input maxlength="40" type="text" data-key="ut-electric-acct"></div>
+  </div>
+  <div class="two-col">
+    <div class="info-field"><label>Gas company</label><input maxlength="80" type="text" data-key="ut-gas"></div>
+    <div class="info-field"><label>Account #</label><input maxlength="40" type="text" data-key="ut-gas-acct"></div>
+  </div>
+  <div class="two-col">
+    <div class="info-field"><label>Water / Sewer</label><input maxlength="80" type="text" data-key="ut-water"></div>
+    <div class="info-field"><label>Account #</label><input maxlength="40" type="text" data-key="ut-water-acct"></div>
+  </div>
+  <div class="two-col">
+    <div class="info-field"><label>Internet provider</label><input maxlength="80" type="text" data-key="ut-internet"></div>
+    <div class="info-field"><label>Account #</label><input maxlength="40" type="text" data-key="ut-internet-acct"></div>
+  </div>
+  <div class="two-col">
+    <div class="info-field"><label>Trash / Recycling</label><input maxlength="80" type="text" data-key="ut-trash"></div>
+    <div class="info-field"><label>Account #</label><input maxlength="40" type="text" data-key="ut-trash-acct"></div>
+  </div>
+  <div class="info-field">
+    <label>Other utility</label>
+    <input maxlength="80" type="text" data-key="ut-other" placeholder="">
+  </div>
+  <hr style="margin:0.5rem 0;border:none;border-top:1px solid var(--line);">
+  <h3>Service providers</h3>
+  <div class="info-field">
+    <label>Lawn care / Snow removal</label>
+    <input maxlength="80" type="text" data-key="sv-lawn" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Pest control</label>
+    <input maxlength="80" type="text" data-key="sv-pest" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>House cleaner</label>
+    <input maxlength="80" type="text" data-key="sv-cleaner" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Other</label>
+    <input maxlength="80" type="text" data-key="sv-other" placeholder="">
+  </div>
+</div>
+
+<div class="page prose-page">
+  <h2>Password Hints</h2>
+  <p style="font-size:12pt;color:var(--muted);margin-bottom:0.4rem;">Write hints only — never actual passwords. Enough to jog your memory, not enough for someone else to use.</p>
+  <div class="info-field">
+    <label>Wi-Fi network name</label>
+    <input maxlength="60" type="text" data-key="pw-wifi-name" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Wi-Fi password hint</label>
+    <input maxlength="80" type="text" data-key="pw-wifi" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Router admin hint</label>
+    <input maxlength="80" type="text" data-key="pw-router" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Email hint</label>
+    <input maxlength="60" type="text" data-key="pw-email" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Banking hint</label>
+    <input maxlength="80" type="text" data-key="pw-bank" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Streaming services hint</label>
+    <input maxlength="80" type="text" data-key="pw-streaming" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Shopping accounts hint</label>
+    <input maxlength="80" type="text" data-key="pw-shopping" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Social media hint</label>
+    <input maxlength="80" type="text" data-key="pw-social" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Insurance portal hint</label>
+    <input maxlength="80" type="text" data-key="pw-insurance-portal" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Other hint</label>
+    <input maxlength="80" type="text" data-key="pw-other" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Other hint</label>
+    <input maxlength="80" type="text" data-key="pw-other2" placeholder="">
+  </div>
+</div>
+<div class="page tab-divider">
+  <div class="tab-num">Section 2</div>
+  <h1>Cleaning System</h1>
+  <div class="tab-line"></div>
+</div>
+<div class="page prose-page flex-page">
+  <h2>Daily Cleaning Checklist</h2>
+  <div class="checklist-item" data-key="cl-daily-1" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Make beds</div>
+  </div>
+  <div class="checklist-item" data-key="cl-daily-2" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Wipe kitchen counters</div>
+  </div>
+  <div class="checklist-item" data-key="cl-daily-3" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Wash dishes or load dishwasher</div>
+  </div>
+  <div class="checklist-item" data-key="cl-daily-4" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Sweep kitchen floor</div>
+  </div>
+  <div class="checklist-item" data-key="cl-daily-5" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Wipe bathroom counters</div>
+  </div>
+  <div class="checklist-item" data-key="cl-daily-6" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Take out trash if full</div>
+  </div>
+  <div class="checklist-item" data-key="cl-daily-7" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Tidy living areas (10-minute reset)</div>
+  </div>
+  <div class="checklist-item" data-key="cl-daily-8" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Check mail / sort papers</div>
+  </div>
+  <div class="checklist-item" data-key="cl-daily-9" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Wipe dining table</div>
+  </div>
+  <div class="checklist-item" data-key="cl-daily-10" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Quick sweep of entryway</div>
+  </div>
+  <hr style="margin:0.5rem 0;border:none;border-top:1px solid var(--line);">
+  <textarea class="fill-area" data-key="cl-daily-custom" maxlength="500" style="width:100%;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.35rem 0.3rem;line-height:1.5;resize:none;overflow-y:auto;background:var(--light);" placeholder="Add your own items, one per line..."></textarea>
+</div>
+
+<div class="page prose-page flex-page">
+  <h2>Weekly Cleaning Schedule</h2>
+  <p style="font-size:12pt;color:var(--muted);margin-bottom:0.3rem;">Assign days or do all in one go — whatever fits your week.</p>
+  <div class="checklist-item" data-key="cl-weekly-1" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Vacuum / mop all floors</div>
+  </div>
+  <div class="checklist-item" data-key="cl-weekly-2" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean bathrooms (toilets, showers, mirrors)</div>
+  </div>
+  <div class="checklist-item" data-key="cl-weekly-3" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Change bed sheets</div>
+  </div>
+  <div class="checklist-item" data-key="cl-weekly-4" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Dust surfaces</div>
+  </div>
+  <div class="checklist-item" data-key="cl-weekly-5" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean kitchen appliances (microwave, stovetop)</div>
+  </div>
+  <div class="checklist-item" data-key="cl-weekly-6" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Take out recycling</div>
+  </div>
+  <div class="checklist-item" data-key="cl-weekly-7" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Wipe down cabinet fronts</div>
+  </div>
+  <div class="checklist-item" data-key="cl-weekly-8" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean out fridge (toss old food)</div>
+  </div>
+  <div class="checklist-item" data-key="cl-weekly-9" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Wash bath mats / kitchen towels</div>
+  </div>
+  <div class="checklist-item" data-key="cl-weekly-10" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Water plants</div>
+  </div>
+  <hr style="margin:0.5rem 0;border:none;border-top:1px solid var(--line);">
+  <textarea class="fill-area" data-key="cl-weekly-custom" maxlength="500" style="width:100%;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.35rem 0.3rem;line-height:1.5;resize:none;overflow-y:auto;background:var(--light);" placeholder="Add your own items, one per line..."></textarea>
+</div>
+
+<div class="page prose-page flex-page">
+  <h2>Monthly Cleaning Schedule</h2>
+  <div class="checklist-item" data-key="cl-monthly-1" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean inside microwave</div>
+  </div>
+  <div class="checklist-item" data-key="cl-monthly-2" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean oven</div>
+  </div>
+  <div class="checklist-item" data-key="cl-monthly-3" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Wash windows (interior)</div>
+  </div>
+  <div class="checklist-item" data-key="cl-monthly-4" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean light fixtures / ceiling fans</div>
+  </div>
+  <div class="checklist-item" data-key="cl-monthly-5" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Wipe baseboards</div>
+  </div>
+  <div class="checklist-item" data-key="cl-monthly-6" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean under furniture</div>
+  </div>
+  <div class="checklist-item" data-key="cl-monthly-7" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Wash shower curtain / liner</div>
+  </div>
+  <div class="checklist-item" data-key="cl-monthly-8" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean garbage disposal</div>
+  </div>
+  <div class="checklist-item" data-key="cl-monthly-9" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Check smoke detector batteries</div>
+  </div>
+  <div class="checklist-item" data-key="cl-monthly-10" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean coffee maker / kettle</div>
+  </div>
+  <div class="checklist-item" data-key="cl-monthly-11" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Wipe down walls (high-touch areas)</div>
+  </div>
+  <div class="checklist-item" data-key="cl-monthly-12" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean washing machine</div>
+  </div>
+  <hr style="margin:0.5rem 0;border:none;border-top:1px solid var(--line);">
+  <textarea class="fill-area" data-key="cl-monthly-custom" maxlength="500" style="width:100%;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.35rem 0.3rem;line-height:1.5;resize:none;overflow-y:auto;background:var(--light);" placeholder="Add your own items, one per line..."></textarea>
+</div>
+
+<div class="page prose-page flex-page">
+  <h2>Seasonal Deep-Cleaning Checklist</h2>
+  <p style="font-size:12pt;color:var(--muted);margin-bottom:0.3rem;">Once per season — spring, summer, fall, winter.</p>
+  <div class="checklist-item" data-key="cl-season-1" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Wash all windows inside and out</div>
+  </div>
+  <div class="checklist-item" data-key="cl-season-2" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean curtains / blinds</div>
+  </div>
+  <div class="checklist-item" data-key="cl-season-3" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Deep clean carpets / rugs</div>
+  </div>
+  <div class="checklist-item" data-key="cl-season-4" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean behind appliances (fridge, stove)</div>
+  </div>
+  <div class="checklist-item" data-key="cl-season-5" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Wash all bedding (pillows, comforters)</div>
+  </div>
+  <div class="checklist-item" data-key="cl-season-6" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean out closets — donate unused items</div>
+  </div>
+  <div class="checklist-item" data-key="cl-season-7" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean garage / basement / storage</div>
+  </div>
+  <div class="checklist-item" data-key="cl-season-8" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Wash outdoor furniture / patio</div>
+  </div>
+  <div class="checklist-item" data-key="cl-season-9" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean gutters</div>
+  </div>
+  <div class="checklist-item" data-key="cl-season-10" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Test smoke and CO detectors</div>
+  </div>
+  <div class="checklist-item" data-key="cl-season-11" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Rotate / flip mattresses</div>
+  </div>
+  <div class="checklist-item" data-key="cl-season-12" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean dryer vent and exhaust</div>
+  </div>
+  <hr style="margin:0.5rem 0;border:none;border-top:1px solid var(--line);">
+  <textarea class="fill-area" data-key="cl-season-custom" maxlength="500" style="width:100%;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.35rem 0.3rem;line-height:1.5;resize:none;overflow-y:auto;background:var(--light);" placeholder="Add your own items, one per line..."></textarea>
+</div>
+
+<div class="page prose-page">
+  <h2>Room-by-Room Cleaning Tracker</h2>
+  <p style="font-size:12pt;color:var(--muted);margin-bottom:0.3rem;">Check off each room as you complete it. Reset weekly or monthly.</p>
+  <table class="tracker-table">
+    <tr><th>Room</th><th>Last cleaned</th><th>Notes</th></tr>
+    <tr><td>Kitchen</td><td><input maxlength="20" type="text" data-key="rm-kitchen-date"></td><td><input maxlength="80" type="text" data-key="rm-kitchen-notes"></td></tr>
+    <tr><td>Living room</td><td><input maxlength="20" type="text" data-key="rm-living-date"></td><td><input maxlength="80" type="text" data-key="rm-living-notes"></td></tr>
+    <tr><td>Dining room</td><td><input maxlength="20" type="text" data-key="rm-dining-date"></td><td><input maxlength="80" type="text" data-key="rm-dining-notes"></td></tr>
+    <tr><td>Primary bedroom</td><td><input maxlength="20" type="text" data-key="rm-bed1-date"></td><td><input maxlength="80" type="text" data-key="rm-bed1-notes"></td></tr>
+    <tr><td>Bedroom 2</td><td><input maxlength="20" type="text" data-key="rm-bed2-date"></td><td><input maxlength="80" type="text" data-key="rm-bed2-notes"></td></tr>
+    <tr><td>Bedroom 3</td><td><input maxlength="20" type="text" data-key="rm-bed3-date"></td><td><input maxlength="80" type="text" data-key="rm-bed3-notes"></td></tr>
+    <tr><td>Bathroom 1</td><td><input maxlength="20" type="text" data-key="rm-bath1-date"></td><td><input maxlength="80" type="text" data-key="rm-bath1-notes"></td></tr>
+    <tr><td>Bathroom 2</td><td><input maxlength="20" type="text" data-key="rm-bath2-date"></td><td><input maxlength="80" type="text" data-key="rm-bath2-notes"></td></tr>
+    <tr><td>Laundry room</td><td><input maxlength="20" type="text" data-key="rm-laundry-date"></td><td><input maxlength="80" type="text" data-key="rm-laundry-notes"></td></tr>
+    <tr><td>Entryway / Mudroom</td><td><input maxlength="20" type="text" data-key="rm-entry-date"></td><td><input maxlength="80" type="text" data-key="rm-entry-notes"></td></tr>
+    <tr><td>Home office</td><td><input maxlength="20" type="text" data-key="rm-office-date"></td><td><input maxlength="80" type="text" data-key="rm-office-notes"></td></tr>
+    <tr><td>Garage / Basement</td><td><input maxlength="20" type="text" data-key="rm-garage-date"></td><td><input maxlength="80" type="text" data-key="rm-garage-notes"></td></tr>
+  </table>
+</div>
+<div class="page tab-divider">
+  <div class="tab-num">Section 3</div>
+  <h1>Home Maintenance</h1>
+  <div class="tab-line"></div>
+</div>
+<div class="page prose-page seasonal-page">
+  <style scoped>
+    .seasonal-page h3{margin:0.25rem 0 0.1rem !important}
+    .seasonal-page .checklist-item{padding:0.06rem 0 !important}
+  </style>
+  <h2>Seasonal Maintenance Checklist</h2>
+  <p style="font-size:12pt;color:var(--muted);margin-bottom:0.15rem;">Check off as completed each season.</p>
+  <h3>Spring</h3>
+  <div class="checklist-item" data-key="mt-spring-1" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Check roof for winter damage</div>
+  </div>
+  <div class="checklist-item" data-key="mt-spring-2" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean gutters and downspouts</div>
+  </div>
+  <div class="checklist-item" data-key="mt-spring-3" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Service AC unit</div>
+  </div>
+  <div class="checklist-item" data-key="mt-spring-4" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Check exterior paint / siding</div>
+  </div>
+  <div class="checklist-item" data-key="mt-spring-5" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Have septic tank inspected and pumped</div>
+  </div>
+  <div class="checklist-item" data-key="mt-spring-6" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean septic filter</div>
+  </div>
+  <textarea class="season-notes" data-key="mt-spring-notes" maxlength="150" style="width:100%;min-height:0.2in;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.12rem 0.25rem;line-height:1.3;resize:none;overflow-y:auto;background:var(--light);margin-bottom:0.2rem;" placeholder="Add your own spring tasks..."></textarea>
+  <h3>Summer</h3>
+  <div class="checklist-item" data-key="mt-summer-1" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Check deck / patio for repairs</div>
+  </div>
+  <div class="checklist-item" data-key="mt-summer-2" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Inspect windows and door seals</div>
+  </div>
+  <div class="checklist-item" data-key="mt-summer-3" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Trim trees / bushes away from house</div>
+  </div>
+  <div class="checklist-item" data-key="mt-summer-4" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Remove creosote from chimney</div>
+  </div>
+  <textarea class="season-notes" data-key="mt-summer-notes" maxlength="150" style="width:100%;min-height:0.2in;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.12rem 0.25rem;line-height:1.3;resize:none;overflow-y:auto;background:var(--light);margin-bottom:0.2rem;" placeholder="Add your own summer tasks..."></textarea>
+  <h3>Fall</h3>
+  <div class="checklist-item" data-key="mt-fall-1" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Service heating system</div>
+  </div>
+  <div class="checklist-item" data-key="mt-fall-2" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Check fireplace / chimney</div>
+  </div>
+  <div class="checklist-item" data-key="mt-fall-3" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Drain outdoor faucets / hoses</div>
+  </div>
+  <div class="checklist-item" data-key="mt-fall-4" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Check weatherstripping</div>
+  </div>
+  <div class="checklist-item" data-key="mt-fall-5" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Clean septic filter</div>
+  </div>
+  <div class="checklist-item" data-key="mt-fall-6" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Check boiler</div>
+  </div>
+  <textarea class="season-notes" data-key="mt-fall-notes" maxlength="150" style="width:100%;min-height:0.2in;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.12rem 0.25rem;line-height:1.3;resize:none;overflow-y:auto;background:var(--light);margin-bottom:0.2rem;" placeholder="Add your own fall tasks..."></textarea>
+  <h3>Winter</h3>
+  <div class="checklist-item" data-key="mt-winter-1" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Check for ice dams</div>
+  </div>
+  <div class="checklist-item" data-key="mt-winter-2" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Test sump pump</div>
+  </div>
+  <div class="checklist-item" data-key="mt-winter-3" onclick="this.classList.toggle('checked');saveAll()">
+    <div class="cb">&#10003;</div>
+    <div class="task">Check pipes for freezing risk</div>
+  </div>
+  <textarea class="season-notes" data-key="mt-winter-notes" maxlength="150" style="width:100%;min-height:0.2in;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.12rem 0.25rem;line-height:1.3;resize:none;overflow-y:auto;background:var(--light);margin-bottom:0.2rem;" placeholder="Add your own winter tasks..."></textarea>
+</div>
+
+<div class="page prose-page">
+  <h2>Appliance Maintenance Log</h2>
+  <table class="tracker-table">
+    <tr><th>Appliance</th><th>Model #</th><th>Last serviced</th><th>Next due</th><th>Notes</th></tr>
+    <tr><td>Refrigerator</td><td><input maxlength="50" type="text" data-key="ap-fridge-model"></td><td><input maxlength="20" type="text" data-key="ap-fridge-last"></td><td><input maxlength="20" type="text" data-key="ap-fridge-next"></td><td><input maxlength="80" type="text" data-key="ap-fridge-notes"></td></tr>
+    <tr><td>Oven / Range</td><td><input maxlength="50" type="text" data-key="ap-oven-model"></td><td><input maxlength="20" type="text" data-key="ap-oven-last"></td><td><input maxlength="20" type="text" data-key="ap-oven-next"></td><td><input maxlength="80" type="text" data-key="ap-oven-notes"></td></tr>
+    <tr><td>Dishwasher</td><td><input maxlength="50" type="text" data-key="ap-dw-model"></td><td><input maxlength="20" type="text" data-key="ap-dw-last"></td><td><input maxlength="20" type="text" data-key="ap-dw-next"></td><td><input maxlength="80" type="text" data-key="ap-dw-notes"></td></tr>
+    <tr><td>Washing machine</td><td><input maxlength="50" type="text" data-key="ap-wash-model"></td><td><input maxlength="20" type="text" data-key="ap-wash-last"></td><td><input maxlength="20" type="text" data-key="ap-wash-next"></td><td><input maxlength="80" type="text" data-key="ap-wash-notes"></td></tr>
+    <tr><td>Dryer</td><td><input maxlength="50" type="text" data-key="ap-dryer-model"></td><td><input maxlength="20" type="text" data-key="ap-dryer-last"></td><td><input maxlength="20" type="text" data-key="ap-dryer-next"></td><td><input maxlength="80" type="text" data-key="ap-dryer-notes"></td></tr>
+    <tr><td>Water heater</td><td><input maxlength="50" type="text" data-key="ap-wh-model"></td><td><input maxlength="20" type="text" data-key="ap-wh-last"></td><td><input maxlength="20" type="text" data-key="ap-wh-next"></td><td><input maxlength="80" type="text" data-key="ap-wh-notes"></td></tr>
+    <tr><td>HVAC / Furnace</td><td><input maxlength="50" type="text" data-key="ap-hvac-model"></td><td><input maxlength="20" type="text" data-key="ap-hvac-last"></td><td><input maxlength="20" type="text" data-key="ap-hvac-next"></td><td><input maxlength="80" type="text" data-key="ap-hvac-notes"></td></tr>
+  </table>
+  <hr style="margin:0.4rem 0;border:none;border-top:1px solid var(--line);">
+  <div class="info-field"><label>Add appliance</label><input maxlength="60" type="text" data-key="ap-custom-name"></div>
+  <div class="two-col">
+    <div class="info-field"><label>Model #</label><input maxlength="50" type="text" data-key="ap-custom-model"></div>
+    <div class="info-field"><label>Last serviced</label><input maxlength="20" type="text" data-key="ap-custom-last"></div>
+  </div>
+</div>
+
+<div class="page prose-page">
+  <h2>Home Repair Log</h2>
+  <table class="tracker-table">
+    <tr><th>Date</th><th>Issue</th><th>Who fixed it</th><th>Cost</th></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-1-date"></td><td><input maxlength="80" type="text" data-key="rep-1-issue"></td><td><input maxlength="40" type="text" data-key="rep-1-who"></td><td><input maxlength="15" type="text" data-key="rep-1-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-2-date"></td><td><input maxlength="80" type="text" data-key="rep-2-issue"></td><td><input maxlength="40" type="text" data-key="rep-2-who"></td><td><input maxlength="15" type="text" data-key="rep-2-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-3-date"></td><td><input maxlength="80" type="text" data-key="rep-3-issue"></td><td><input maxlength="40" type="text" data-key="rep-3-who"></td><td><input maxlength="15" type="text" data-key="rep-3-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-4-date"></td><td><input maxlength="80" type="text" data-key="rep-4-issue"></td><td><input maxlength="40" type="text" data-key="rep-4-who"></td><td><input maxlength="15" type="text" data-key="rep-4-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-5-date"></td><td><input maxlength="80" type="text" data-key="rep-5-issue"></td><td><input maxlength="40" type="text" data-key="rep-5-who"></td><td><input maxlength="15" type="text" data-key="rep-5-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-6-date"></td><td><input maxlength="80" type="text" data-key="rep-6-issue"></td><td><input maxlength="40" type="text" data-key="rep-6-who"></td><td><input maxlength="15" type="text" data-key="rep-6-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-7-date"></td><td><input maxlength="80" type="text" data-key="rep-7-issue"></td><td><input maxlength="40" type="text" data-key="rep-7-who"></td><td><input maxlength="15" type="text" data-key="rep-7-cost"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="rep-8-date"></td><td><input maxlength="80" type="text" data-key="rep-8-issue"></td><td><input maxlength="40" type="text" data-key="rep-8-who"></td><td><input maxlength="15" type="text" data-key="rep-8-cost"></td></tr>
+  </table>
+</div>
+
+<div class="page prose-page">
+  <h2>Warranty Tracker</h2>
+  <table class="tracker-table">
+    <tr><th>Item</th><th>Purchase date</th><th>Warranty length</th><th>Expires</th><th>Contact</th></tr>
+    <tr><td><input maxlength="60" type="text" data-key="war-1-item"></td><td><input maxlength="20" type="text" data-key="war-1-purch"></td><td><input maxlength="20" type="text" data-key="war-1-length"></td><td><input maxlength="20" type="text" data-key="war-1-exp"></td><td><input maxlength="60" type="text" data-key="war-1-contact"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="war-2-item"></td><td><input maxlength="20" type="text" data-key="war-2-purch"></td><td><input maxlength="20" type="text" data-key="war-2-length"></td><td><input maxlength="20" type="text" data-key="war-2-exp"></td><td><input maxlength="60" type="text" data-key="war-2-contact"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="war-3-item"></td><td><input maxlength="20" type="text" data-key="war-3-purch"></td><td><input maxlength="20" type="text" data-key="war-3-length"></td><td><input maxlength="20" type="text" data-key="war-3-exp"></td><td><input maxlength="60" type="text" data-key="war-3-contact"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="war-4-item"></td><td><input maxlength="20" type="text" data-key="war-4-purch"></td><td><input maxlength="20" type="text" data-key="war-4-length"></td><td><input maxlength="20" type="text" data-key="war-4-exp"></td><td><input maxlength="60" type="text" data-key="war-4-contact"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="war-5-item"></td><td><input maxlength="20" type="text" data-key="war-5-purch"></td><td><input maxlength="20" type="text" data-key="war-5-length"></td><td><input maxlength="20" type="text" data-key="war-5-exp"></td><td><input maxlength="60" type="text" data-key="war-5-contact"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="war-6-item"></td><td><input maxlength="20" type="text" data-key="war-6-purch"></td><td><input maxlength="20" type="text" data-key="war-6-length"></td><td><input maxlength="20" type="text" data-key="war-6-exp"></td><td><input maxlength="60" type="text" data-key="war-6-contact"></td></tr>
+  </table>
+</div>
+
+<div class="page prose-page">
+  <h2>Paint Color &amp; Finish Records</h2>
+  <table class="tracker-table">
+    <tr><th>Room</th><th>Color name</th><th>Brand / Code</th><th>Finish</th><th>Date painted</th></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-1-room"></td><td><input maxlength="80" type="text" data-key="paint-1-color"></td><td><input maxlength="50" type="text" data-key="paint-1-code"></td><td><input maxlength="50" type="text" data-key="paint-1-finish"></td><td><input maxlength="20" type="text" data-key="paint-1-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-2-room"></td><td><input maxlength="80" type="text" data-key="paint-2-color"></td><td><input maxlength="50" type="text" data-key="paint-2-code"></td><td><input maxlength="50" type="text" data-key="paint-2-finish"></td><td><input maxlength="20" type="text" data-key="paint-2-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-3-room"></td><td><input maxlength="80" type="text" data-key="paint-3-color"></td><td><input maxlength="50" type="text" data-key="paint-3-code"></td><td><input maxlength="50" type="text" data-key="paint-3-finish"></td><td><input maxlength="20" type="text" data-key="paint-3-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-4-room"></td><td><input maxlength="80" type="text" data-key="paint-4-color"></td><td><input maxlength="50" type="text" data-key="paint-4-code"></td><td><input maxlength="50" type="text" data-key="paint-4-finish"></td><td><input maxlength="20" type="text" data-key="paint-4-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-5-room"></td><td><input maxlength="80" type="text" data-key="paint-5-color"></td><td><input maxlength="50" type="text" data-key="paint-5-code"></td><td><input maxlength="50" type="text" data-key="paint-5-finish"></td><td><input maxlength="20" type="text" data-key="paint-5-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-6-room"></td><td><input maxlength="80" type="text" data-key="paint-6-color"></td><td><input maxlength="50" type="text" data-key="paint-6-code"></td><td><input maxlength="50" type="text" data-key="paint-6-finish"></td><td><input maxlength="20" type="text" data-key="paint-6-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-7-room"></td><td><input maxlength="80" type="text" data-key="paint-7-color"></td><td><input maxlength="50" type="text" data-key="paint-7-code"></td><td><input maxlength="50" type="text" data-key="paint-7-finish"></td><td><input maxlength="20" type="text" data-key="paint-7-date"></td></tr>
+    <tr><td><input maxlength="40" type="text" data-key="paint-8-room"></td><td><input maxlength="80" type="text" data-key="paint-8-color"></td><td><input maxlength="50" type="text" data-key="paint-8-code"></td><td><input maxlength="50" type="text" data-key="paint-8-finish"></td><td><input maxlength="20" type="text" data-key="paint-8-date"></td></tr>
+  </table>
+</div>
+<div class="page tab-divider">
+  <div class="tab-num">Section 4</div>
+  <h1>Financial Organization</h1>
+  <div class="tab-line"></div>
+</div>
+<div class="page prose-page">
+  <h2>Bill Tracker</h2>
+  <table class="tracker-table">
+    <tr><th>Bill</th><th>Due date</th><th>Amount</th><th>Auto-pay?</th><th>Paid</th></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-1-name"></td><td><input maxlength="20" type="text" data-key="bill-1-due"></td><td><input maxlength="15" type="text" data-key="bill-1-amount"></td><td><input maxlength="10" type="text" data-key="bill-1-auto"></td><td><div class="checklist-item" data-key="bill-1-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-2-name"></td><td><input maxlength="20" type="text" data-key="bill-2-due"></td><td><input maxlength="15" type="text" data-key="bill-2-amount"></td><td><input maxlength="10" type="text" data-key="bill-2-auto"></td><td><div class="checklist-item" data-key="bill-2-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-3-name"></td><td><input maxlength="20" type="text" data-key="bill-3-due"></td><td><input maxlength="15" type="text" data-key="bill-3-amount"></td><td><input maxlength="10" type="text" data-key="bill-3-auto"></td><td><div class="checklist-item" data-key="bill-3-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-4-name"></td><td><input maxlength="20" type="text" data-key="bill-4-due"></td><td><input maxlength="15" type="text" data-key="bill-4-amount"></td><td><input maxlength="10" type="text" data-key="bill-4-auto"></td><td><div class="checklist-item" data-key="bill-4-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-5-name"></td><td><input maxlength="20" type="text" data-key="bill-5-due"></td><td><input maxlength="15" type="text" data-key="bill-5-amount"></td><td><input maxlength="10" type="text" data-key="bill-5-auto"></td><td><div class="checklist-item" data-key="bill-5-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-6-name"></td><td><input maxlength="20" type="text" data-key="bill-6-due"></td><td><input maxlength="15" type="text" data-key="bill-6-amount"></td><td><input maxlength="10" type="text" data-key="bill-6-auto"></td><td><div class="checklist-item" data-key="bill-6-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-7-name"></td><td><input maxlength="20" type="text" data-key="bill-7-due"></td><td><input maxlength="15" type="text" data-key="bill-7-amount"></td><td><input maxlength="10" type="text" data-key="bill-7-auto"></td><td><div class="checklist-item" data-key="bill-7-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-8-name"></td><td><input maxlength="20" type="text" data-key="bill-8-due"></td><td><input maxlength="15" type="text" data-key="bill-8-amount"></td><td><input maxlength="10" type="text" data-key="bill-8-auto"></td><td><div class="checklist-item" data-key="bill-8-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-9-name"></td><td><input maxlength="20" type="text" data-key="bill-9-due"></td><td><input maxlength="15" type="text" data-key="bill-9-amount"></td><td><input maxlength="10" type="text" data-key="bill-9-auto"></td><td><div class="checklist-item" data-key="bill-9-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-10-name"></td><td><input maxlength="20" type="text" data-key="bill-10-due"></td><td><input maxlength="15" type="text" data-key="bill-10-amount"></td><td><input maxlength="10" type="text" data-key="bill-10-auto"></td><td><div class="checklist-item" data-key="bill-10-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-11-name"></td><td><input maxlength="20" type="text" data-key="bill-11-due"></td><td><input maxlength="15" type="text" data-key="bill-11-amount"></td><td><input maxlength="10" type="text" data-key="bill-11-auto"></td><td><div class="checklist-item" data-key="bill-11-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="bill-12-name"></td><td><input maxlength="20" type="text" data-key="bill-12-due"></td><td><input maxlength="15" type="text" data-key="bill-12-amount"></td><td><input maxlength="10" type="text" data-key="bill-12-auto"></td><td><div class="checklist-item" data-key="bill-12-paid" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+  </table>
+</div>
+
+<div class="page prose-page">
+  <h2>Subscription Tracker</h2>
+  <table class="tracker-table">
+    <tr><th>Service</th><th>Cost</th><th>Billing cycle</th><th>Next charge</th><th>Still using?</th></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-1-name"></td><td><input maxlength="15" type="text" data-key="sub-1-cost"></td><td><input maxlength="20" type="text" data-key="sub-1-cycle"></td><td><input maxlength="20" type="text" data-key="sub-1-next"></td><td><div class="checklist-item" data-key="sub-1-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-2-name"></td><td><input maxlength="15" type="text" data-key="sub-2-cost"></td><td><input maxlength="20" type="text" data-key="sub-2-cycle"></td><td><input maxlength="20" type="text" data-key="sub-2-next"></td><td><div class="checklist-item" data-key="sub-2-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-3-name"></td><td><input maxlength="15" type="text" data-key="sub-3-cost"></td><td><input maxlength="20" type="text" data-key="sub-3-cycle"></td><td><input maxlength="20" type="text" data-key="sub-3-next"></td><td><div class="checklist-item" data-key="sub-3-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-4-name"></td><td><input maxlength="15" type="text" data-key="sub-4-cost"></td><td><input maxlength="20" type="text" data-key="sub-4-cycle"></td><td><input maxlength="20" type="text" data-key="sub-4-next"></td><td><div class="checklist-item" data-key="sub-4-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-5-name"></td><td><input maxlength="15" type="text" data-key="sub-5-cost"></td><td><input maxlength="20" type="text" data-key="sub-5-cycle"></td><td><input maxlength="20" type="text" data-key="sub-5-next"></td><td><div class="checklist-item" data-key="sub-5-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-6-name"></td><td><input maxlength="15" type="text" data-key="sub-6-cost"></td><td><input maxlength="20" type="text" data-key="sub-6-cycle"></td><td><input maxlength="20" type="text" data-key="sub-6-next"></td><td><div class="checklist-item" data-key="sub-6-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-7-name"></td><td><input maxlength="15" type="text" data-key="sub-7-cost"></td><td><input maxlength="20" type="text" data-key="sub-7-cycle"></td><td><input maxlength="20" type="text" data-key="sub-7-next"></td><td><div class="checklist-item" data-key="sub-7-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-8-name"></td><td><input maxlength="15" type="text" data-key="sub-8-cost"></td><td><input maxlength="20" type="text" data-key="sub-8-cycle"></td><td><input maxlength="20" type="text" data-key="sub-8-next"></td><td><div class="checklist-item" data-key="sub-8-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-9-name"></td><td><input maxlength="15" type="text" data-key="sub-9-cost"></td><td><input maxlength="20" type="text" data-key="sub-9-cycle"></td><td><input maxlength="20" type="text" data-key="sub-9-next"></td><td><div class="checklist-item" data-key="sub-9-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="sub-10-name"></td><td><input maxlength="15" type="text" data-key="sub-10-cost"></td><td><input maxlength="20" type="text" data-key="sub-10-cycle"></td><td><input maxlength="20" type="text" data-key="sub-10-next"></td><td><div class="checklist-item" data-key="sub-10-using" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+  </table>
+</div>
+
+<div class="page prose-page">
+  <h2>Household Budget Worksheet</h2>
+  <p style="font-size:12pt;color:var(--muted);margin-bottom:0.3rem;">Monthly overview — not every dollar, just awareness.</p>
+  <h3>Income</h3>
+  <div class="info-field">
+    <label>Income source 1</label>
+    <input maxlength="80" type="text" data-key="bud-inc-1" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Income source 2</label>
+    <input maxlength="80" type="text" data-key="bud-inc-2" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Income source 3</label>
+    <input maxlength="80" type="text" data-key="bud-inc-3" placeholder="">
+  </div>
+  <div class="info-field">
+    <label>Income source 4</label>
+    <input maxlength="80" type="text" data-key="bud-inc-4" placeholder="">
+  </div>
+  <hr style="margin:0.4rem 0;border:none;border-top:1px solid var(--line);">
+  <h3>Expenses</h3>
+  <table class="tracker-table">
+    <tr><th>Category</th><th>Budgeted</th><th>Actual</th></tr>
+    <tr><td>Housing (rent / mortgage)</td><td><input maxlength="15" type="text" data-key="bud-housing-budget"></td><td><input maxlength="10" type="text" data-key="bud-housing-actual"></td></tr>
+    <tr><td>Utilities</td><td><input maxlength="15" type="text" data-key="bud-util-budget"></td><td><input maxlength="80" type="text" data-key="bud-util-actual"></td></tr>
+    <tr><td>Groceries</td><td><input maxlength="15" type="text" data-key="bud-grocery-budget"></td><td><input maxlength="80" type="text" data-key="bud-grocery-actual"></td></tr>
+    <tr><td>Transportation</td><td><input maxlength="15" type="text" data-key="bud-transport-budget"></td><td><input maxlength="80" type="text" data-key="bud-transport-actual"></td></tr>
+    <tr><td>Insurance</td><td><input maxlength="15" type="text" data-key="bud-insurance-budget"></td><td><input maxlength="80" type="text" data-key="bud-insurance-actual"></td></tr>
+    <tr><td>Subscriptions</td><td><input maxlength="15" type="text" data-key="bud-subs-budget"></td><td><input maxlength="80" type="text" data-key="bud-subs-actual"></td></tr>
+    <tr><td>Entertainment</td><td><input maxlength="15" type="text" data-key="bud-ent-budget"></td><td><input maxlength="80" type="text" data-key="bud-ent-actual"></td></tr>
+    <tr><td>Savings</td><td><input maxlength="15" type="text" data-key="bud-save-budget"></td><td><input maxlength="80" type="text" data-key="bud-save-actual"></td></tr>
+  </table>
+</div>
+
+<div class="page prose-page">
+  <h2>Savings Goals</h2>
+  <div class="info-field"><label>Goal 1</label><input maxlength="60" type="text" data-key="save-1-goal"></div>
+  <div class="two-col">
+    <div class="info-field"><label>Target amount</label><input maxlength="15" type="text" data-key="save-1-target"></div>
+    <div class="info-field"><label>Current</label><input maxlength="15" type="text" data-key="save-1-current"></div>
+  </div>
+  <div class="info-field"><label>Goal 2</label><input maxlength="60" type="text" data-key="save-2-goal"></div>
+  <div class="two-col">
+    <div class="info-field"><label>Target amount</label><input maxlength="15" type="text" data-key="save-2-target"></div>
+    <div class="info-field"><label>Current</label><input maxlength="15" type="text" data-key="save-2-current"></div>
+  </div>
+  <div class="info-field"><label>Goal 3</label><input maxlength="60" type="text" data-key="save-3-goal"></div>
+  <div class="two-col">
+    <div class="info-field"><label>Target amount</label><input maxlength="15" type="text" data-key="save-3-target"></div>
+    <div class="info-field"><label>Current</label><input maxlength="15" type="text" data-key="save-3-current"></div>
+  </div>
+  <div class="info-field"><label>Goal 4</label><input maxlength="60" type="text" data-key="save-4-goal"></div>
+  <div class="two-col">
+    <div class="info-field"><label>Target amount</label><input maxlength="15" type="text" data-key="save-4-target"></div>
+    <div class="info-field"><label>Current</label><input maxlength="15" type="text" data-key="save-4-current"></div>
+  </div>
+  <div class="info-field"><label>Goal 5</label><input maxlength="60" type="text" data-key="save-5-goal"></div>
+  <div class="two-col">
+    <div class="info-field"><label>Target amount</label><input maxlength="15" type="text" data-key="save-5-target"></div>
+    <div class="info-field"><label>Current</label><input maxlength="15" type="text" data-key="save-5-current"></div>
+  </div>
+
+</div>
+<div class="page tab-divider">
+  <div class="tab-num">Section 5</div>
+  <h1>Food &amp; Kitchen</h1>
+  <div class="tab-line"></div>
+</div>
+<div class="page prose-page">
+  <h2>Pantry Inventory</h2>
+  <table class="tracker-table">
+    <tr><th>Item</th><th>Quantity</th><th>Location</th><th>Expires</th></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-1-item"></td><td><input maxlength="15" type="text" data-key="pantry-1-qty"></td><td><input maxlength="40" type="text" data-key="pantry-1-loc"></td><td><input maxlength="20" type="text" data-key="pantry-1-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-2-item"></td><td><input maxlength="15" type="text" data-key="pantry-2-qty"></td><td><input maxlength="40" type="text" data-key="pantry-2-loc"></td><td><input maxlength="20" type="text" data-key="pantry-2-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-3-item"></td><td><input maxlength="15" type="text" data-key="pantry-3-qty"></td><td><input maxlength="40" type="text" data-key="pantry-3-loc"></td><td><input maxlength="20" type="text" data-key="pantry-3-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-4-item"></td><td><input maxlength="15" type="text" data-key="pantry-4-qty"></td><td><input maxlength="40" type="text" data-key="pantry-4-loc"></td><td><input maxlength="20" type="text" data-key="pantry-4-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-5-item"></td><td><input maxlength="15" type="text" data-key="pantry-5-qty"></td><td><input maxlength="40" type="text" data-key="pantry-5-loc"></td><td><input maxlength="20" type="text" data-key="pantry-5-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-6-item"></td><td><input maxlength="15" type="text" data-key="pantry-6-qty"></td><td><input maxlength="40" type="text" data-key="pantry-6-loc"></td><td><input maxlength="20" type="text" data-key="pantry-6-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-7-item"></td><td><input maxlength="15" type="text" data-key="pantry-7-qty"></td><td><input maxlength="40" type="text" data-key="pantry-7-loc"></td><td><input maxlength="20" type="text" data-key="pantry-7-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-8-item"></td><td><input maxlength="15" type="text" data-key="pantry-8-qty"></td><td><input maxlength="40" type="text" data-key="pantry-8-loc"></td><td><input maxlength="20" type="text" data-key="pantry-8-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-9-item"></td><td><input maxlength="15" type="text" data-key="pantry-9-qty"></td><td><input maxlength="40" type="text" data-key="pantry-9-loc"></td><td><input maxlength="20" type="text" data-key="pantry-9-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-10-item"></td><td><input maxlength="15" type="text" data-key="pantry-10-qty"></td><td><input maxlength="40" type="text" data-key="pantry-10-loc"></td><td><input maxlength="20" type="text" data-key="pantry-10-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-11-item"></td><td><input maxlength="15" type="text" data-key="pantry-11-qty"></td><td><input maxlength="40" type="text" data-key="pantry-11-loc"></td><td><input maxlength="20" type="text" data-key="pantry-11-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-12-item"></td><td><input maxlength="15" type="text" data-key="pantry-12-qty"></td><td><input maxlength="40" type="text" data-key="pantry-12-loc"></td><td><input maxlength="20" type="text" data-key="pantry-12-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-13-item"></td><td><input maxlength="15" type="text" data-key="pantry-13-qty"></td><td><input maxlength="40" type="text" data-key="pantry-13-loc"></td><td><input maxlength="20" type="text" data-key="pantry-13-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-14-item"></td><td><input maxlength="15" type="text" data-key="pantry-14-qty"></td><td><input maxlength="40" type="text" data-key="pantry-14-loc"></td><td><input maxlength="20" type="text" data-key="pantry-14-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-15-item"></td><td><input maxlength="15" type="text" data-key="pantry-15-qty"></td><td><input maxlength="40" type="text" data-key="pantry-15-loc"></td><td><input maxlength="20" type="text" data-key="pantry-15-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-16-item"></td><td><input maxlength="15" type="text" data-key="pantry-16-qty"></td><td><input maxlength="40" type="text" data-key="pantry-16-loc"></td><td><input maxlength="20" type="text" data-key="pantry-16-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-17-item"></td><td><input maxlength="15" type="text" data-key="pantry-17-qty"></td><td><input maxlength="40" type="text" data-key="pantry-17-loc"></td><td><input maxlength="20" type="text" data-key="pantry-17-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-18-item"></td><td><input maxlength="15" type="text" data-key="pantry-18-qty"></td><td><input maxlength="40" type="text" data-key="pantry-18-loc"></td><td><input maxlength="20" type="text" data-key="pantry-18-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-19-item"></td><td><input maxlength="15" type="text" data-key="pantry-19-qty"></td><td><input maxlength="40" type="text" data-key="pantry-19-loc"></td><td><input maxlength="20" type="text" data-key="pantry-19-exp"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="pantry-20-item"></td><td><input maxlength="15" type="text" data-key="pantry-20-qty"></td><td><input maxlength="40" type="text" data-key="pantry-20-loc"></td><td><input maxlength="20" type="text" data-key="pantry-20-exp"></td></tr>
+  </table>
+</div>
+
+<div class="page prose-page">
+  <h2>Freezer Inventory</h2>
+  <table class="tracker-table">
+    <tr><th>Item</th><th>Quantity</th><th>Date frozen</th><th>Use by</th></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-1-item"></td><td><input maxlength="15" type="text" data-key="freezer-1-qty"></td><td><input maxlength="20" type="text" data-key="freezer-1-date"></td><td><input maxlength="80" type="text" data-key="freezer-1-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-2-item"></td><td><input maxlength="15" type="text" data-key="freezer-2-qty"></td><td><input maxlength="20" type="text" data-key="freezer-2-date"></td><td><input maxlength="80" type="text" data-key="freezer-2-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-3-item"></td><td><input maxlength="15" type="text" data-key="freezer-3-qty"></td><td><input maxlength="20" type="text" data-key="freezer-3-date"></td><td><input maxlength="80" type="text" data-key="freezer-3-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-4-item"></td><td><input maxlength="15" type="text" data-key="freezer-4-qty"></td><td><input maxlength="20" type="text" data-key="freezer-4-date"></td><td><input maxlength="80" type="text" data-key="freezer-4-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-5-item"></td><td><input maxlength="15" type="text" data-key="freezer-5-qty"></td><td><input maxlength="20" type="text" data-key="freezer-5-date"></td><td><input maxlength="80" type="text" data-key="freezer-5-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-6-item"></td><td><input maxlength="15" type="text" data-key="freezer-6-qty"></td><td><input maxlength="20" type="text" data-key="freezer-6-date"></td><td><input maxlength="80" type="text" data-key="freezer-6-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-7-item"></td><td><input maxlength="15" type="text" data-key="freezer-7-qty"></td><td><input maxlength="20" type="text" data-key="freezer-7-date"></td><td><input maxlength="80" type="text" data-key="freezer-7-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-8-item"></td><td><input maxlength="15" type="text" data-key="freezer-8-qty"></td><td><input maxlength="20" type="text" data-key="freezer-8-date"></td><td><input maxlength="80" type="text" data-key="freezer-8-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-9-item"></td><td><input maxlength="15" type="text" data-key="freezer-9-qty"></td><td><input maxlength="20" type="text" data-key="freezer-9-date"></td><td><input maxlength="80" type="text" data-key="freezer-9-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-10-item"></td><td><input maxlength="15" type="text" data-key="freezer-10-qty"></td><td><input maxlength="20" type="text" data-key="freezer-10-date"></td><td><input maxlength="80" type="text" data-key="freezer-10-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-11-item"></td><td><input maxlength="15" type="text" data-key="freezer-11-qty"></td><td><input maxlength="20" type="text" data-key="freezer-11-date"></td><td><input maxlength="80" type="text" data-key="freezer-11-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-12-item"></td><td><input maxlength="15" type="text" data-key="freezer-12-qty"></td><td><input maxlength="20" type="text" data-key="freezer-12-date"></td><td><input maxlength="80" type="text" data-key="freezer-12-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-13-item"></td><td><input maxlength="15" type="text" data-key="freezer-13-qty"></td><td><input maxlength="20" type="text" data-key="freezer-13-date"></td><td><input maxlength="80" type="text" data-key="freezer-13-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-14-item"></td><td><input maxlength="15" type="text" data-key="freezer-14-qty"></td><td><input maxlength="20" type="text" data-key="freezer-14-date"></td><td><input maxlength="80" type="text" data-key="freezer-14-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-15-item"></td><td><input maxlength="15" type="text" data-key="freezer-15-qty"></td><td><input maxlength="20" type="text" data-key="freezer-15-date"></td><td><input maxlength="80" type="text" data-key="freezer-15-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-16-item"></td><td><input maxlength="15" type="text" data-key="freezer-16-qty"></td><td><input maxlength="20" type="text" data-key="freezer-16-date"></td><td><input maxlength="80" type="text" data-key="freezer-16-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-17-item"></td><td><input maxlength="15" type="text" data-key="freezer-17-qty"></td><td><input maxlength="20" type="text" data-key="freezer-17-date"></td><td><input maxlength="80" type="text" data-key="freezer-17-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-18-item"></td><td><input maxlength="15" type="text" data-key="freezer-18-qty"></td><td><input maxlength="20" type="text" data-key="freezer-18-date"></td><td><input maxlength="80" type="text" data-key="freezer-18-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-19-item"></td><td><input maxlength="15" type="text" data-key="freezer-19-qty"></td><td><input maxlength="20" type="text" data-key="freezer-19-date"></td><td><input maxlength="80" type="text" data-key="freezer-19-use"></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="freezer-20-item"></td><td><input maxlength="15" type="text" data-key="freezer-20-qty"></td><td><input maxlength="20" type="text" data-key="freezer-20-date"></td><td><input maxlength="80" type="text" data-key="freezer-20-use"></td></tr>
+  </table>
+</div>
+
+<div class="page prose-page">
+  <h2>Weekly Meal Planner</h2>
+  <div class="planner-grid">
+    <div class="planner-card">
+      <h4>Monday</h4>
+      <textarea maxlength="250" data-key="meal-monday" placeholder="Breakfast&#10;Lunch&#10;Dinner"></textarea>
+    </div>
+    <div class="planner-card">
+      <h4>Tuesday</h4>
+      <textarea maxlength="250" data-key="meal-tuesday" placeholder="Breakfast&#10;Lunch&#10;Dinner"></textarea>
+    </div>
+    <div class="planner-card">
+      <h4>Wednesday</h4>
+      <textarea maxlength="250" data-key="meal-wednesday" placeholder="Breakfast&#10;Lunch&#10;Dinner"></textarea>
+    </div>
+    <div class="planner-card">
+      <h4>Thursday</h4>
+      <textarea maxlength="250" data-key="meal-thursday" placeholder="Breakfast&#10;Lunch&#10;Dinner"></textarea>
+    </div>
+    <div class="planner-card">
+      <h4>Friday</h4>
+      <textarea maxlength="250" data-key="meal-friday" placeholder="Breakfast&#10;Lunch&#10;Dinner"></textarea>
+    </div>
+    <div class="planner-card">
+      <h4>Saturday</h4>
+      <textarea maxlength="250" data-key="meal-saturday" placeholder="Breakfast&#10;Lunch&#10;Dinner"></textarea>
+    </div>
+    <div class="planner-card">
+      <h4>Sunday</h4>
+      <textarea maxlength="250" data-key="meal-sunday" placeholder="Breakfast&#10;Lunch&#10;Dinner"></textarea>
+    </div>
+  </div>
+</div>
+
+<div class="page prose-page">
+  <h2>Grocery List</h2>
+  <p style="font-size:12pt;color:var(--muted);margin-bottom:0.3rem;">Organized by store section so you move through the store once.</p>
+  <h3>Produce</h3>
+  <textarea maxlength="300" data-key="grocery-produce" style="width:100%;min-height:1.5in;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.2rem;line-height:1.5;resize:none;overflow-y:auto;" placeholder=""></textarea>
+  <h3>Dairy &amp; Eggs</h3>
+  <textarea maxlength="200" data-key="grocery-dairy" style="width:100%;min-height:1in;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.2rem;line-height:1.5;resize:none;overflow-y:auto;" placeholder=""></textarea>
+  <h3>Meat &amp; Seafood</h3>
+  <textarea maxlength="200" data-key="grocery-meat" style="width:100%;min-height:1in;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.2rem;line-height:1.5;resize:none;overflow-y:auto;" placeholder=""></textarea>
+  <h3>Pantry &amp; Dry Goods</h3>
+  <textarea maxlength="300" data-key="grocery-pantry" style="width:100%;min-height:1.5in;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.2rem;line-height:1.5;resize:none;overflow-y:auto;" placeholder=""></textarea>
+</div>
+
+<div class="page prose-page">
+  <h2>Holiday Meal Planner</h2>
+  <div class="info-field"><label>Holiday / Occasion</label><input maxlength="60" type="text" data-key="holiday-name"></div>
+  <div class="info-field"><label>Date</label><input maxlength="20" type="text" data-key="holiday-date"></div>
+  <div class="info-field"><label>Number of guests</label><input maxlength="15" type="text" data-key="holiday-guests"></div>
+  <hr style="margin:0.4rem 0;border:none;border-top:1px solid var(--line);">
+  <h3>Menu</h3>
+  <textarea maxlength="400" data-key="holiday-menu" style="width:100%;min-height:2in;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.2rem;line-height:1.5;resize:none;overflow-y:auto;" placeholder="Appetizers&#10;Main course&#10;Sides&#10;Dessert"></textarea>
+  <h3>Shopping list</h3>
+  <textarea maxlength="300" data-key="holiday-shopping" style="width:100%;min-height:1.5in;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.2rem;line-height:1.5;resize:none;overflow-y:auto;" placeholder=""></textarea>
+  <h3>Prep schedule</h3>
+  <textarea maxlength="300" data-key="holiday-prep" style="width:100%;min-height:1.5in;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.2rem;line-height:1.5;resize:none;overflow-y:auto;" placeholder="Day before:&#10;Morning of:&#10;One hour before:"></textarea>
+</div>
+<div class="page tab-divider">
+  <div class="tab-num">Section 6</div>
+  <h1>Family Organization</h1>
+  <div class="tab-line"></div>
+</div>
+<div class="page prose-page">
+  <h2>Important Dates</h2>
+  <table class="tracker-table">
+    <tr><th>Date</th><th>Occasion</th><th>Person</th><th>Notes</th></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-1-date"></td><td><input maxlength="20" type="text" data-key="dates-1-occasion"></td><td><input maxlength="20" type="text" data-key="dates-1-person"></td><td><input maxlength="20" type="text" data-key="dates-1-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-2-date"></td><td><input maxlength="20" type="text" data-key="dates-2-occasion"></td><td><input maxlength="20" type="text" data-key="dates-2-person"></td><td><input maxlength="20" type="text" data-key="dates-2-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-3-date"></td><td><input maxlength="20" type="text" data-key="dates-3-occasion"></td><td><input maxlength="20" type="text" data-key="dates-3-person"></td><td><input maxlength="20" type="text" data-key="dates-3-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-4-date"></td><td><input maxlength="20" type="text" data-key="dates-4-occasion"></td><td><input maxlength="20" type="text" data-key="dates-4-person"></td><td><input maxlength="20" type="text" data-key="dates-4-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-5-date"></td><td><input maxlength="20" type="text" data-key="dates-5-occasion"></td><td><input maxlength="20" type="text" data-key="dates-5-person"></td><td><input maxlength="20" type="text" data-key="dates-5-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-6-date"></td><td><input maxlength="20" type="text" data-key="dates-6-occasion"></td><td><input maxlength="20" type="text" data-key="dates-6-person"></td><td><input maxlength="20" type="text" data-key="dates-6-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-7-date"></td><td><input maxlength="20" type="text" data-key="dates-7-occasion"></td><td><input maxlength="20" type="text" data-key="dates-7-person"></td><td><input maxlength="20" type="text" data-key="dates-7-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-8-date"></td><td><input maxlength="20" type="text" data-key="dates-8-occasion"></td><td><input maxlength="20" type="text" data-key="dates-8-person"></td><td><input maxlength="20" type="text" data-key="dates-8-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-9-date"></td><td><input maxlength="20" type="text" data-key="dates-9-occasion"></td><td><input maxlength="20" type="text" data-key="dates-9-person"></td><td><input maxlength="20" type="text" data-key="dates-9-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-10-date"></td><td><input maxlength="20" type="text" data-key="dates-10-occasion"></td><td><input maxlength="20" type="text" data-key="dates-10-person"></td><td><input maxlength="20" type="text" data-key="dates-10-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-11-date"></td><td><input maxlength="20" type="text" data-key="dates-11-occasion"></td><td><input maxlength="20" type="text" data-key="dates-11-person"></td><td><input maxlength="20" type="text" data-key="dates-11-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-12-date"></td><td><input maxlength="20" type="text" data-key="dates-12-occasion"></td><td><input maxlength="20" type="text" data-key="dates-12-person"></td><td><input maxlength="20" type="text" data-key="dates-12-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-13-date"></td><td><input maxlength="20" type="text" data-key="dates-13-occasion"></td><td><input maxlength="20" type="text" data-key="dates-13-person"></td><td><input maxlength="20" type="text" data-key="dates-13-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-14-date"></td><td><input maxlength="20" type="text" data-key="dates-14-occasion"></td><td><input maxlength="20" type="text" data-key="dates-14-person"></td><td><input maxlength="20" type="text" data-key="dates-14-notes"></td></tr>
+    <tr><td><input maxlength="20" type="text" data-key="dates-15-date"></td><td><input maxlength="20" type="text" data-key="dates-15-occasion"></td><td><input maxlength="20" type="text" data-key="dates-15-person"></td><td><input maxlength="20" type="text" data-key="dates-15-notes"></td></tr>
+  </table>
+</div>
+
+<div class="page prose-page">
+  <h2>Gift Planning Tracker</h2>
+  <table class="tracker-table">
+    <tr><th>Person</th><th>Occasion</th><th>Date</th><th>Gift idea</th><th>Budget</th><th>Purchased</th></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-1-person"></td><td><input maxlength="80" type="text" data-key="gift-1-occasion"></td><td><input maxlength="20" type="text" data-key="gift-1-date"></td><td><input maxlength="80" type="text" data-key="gift-1-idea"></td><td><input maxlength="15" type="text" data-key="gift-1-budget"></td><td><div class="checklist-item" data-key="gift-1-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-2-person"></td><td><input maxlength="80" type="text" data-key="gift-2-occasion"></td><td><input maxlength="20" type="text" data-key="gift-2-date"></td><td><input maxlength="80" type="text" data-key="gift-2-idea"></td><td><input maxlength="15" type="text" data-key="gift-2-budget"></td><td><div class="checklist-item" data-key="gift-2-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-3-person"></td><td><input maxlength="80" type="text" data-key="gift-3-occasion"></td><td><input maxlength="20" type="text" data-key="gift-3-date"></td><td><input maxlength="80" type="text" data-key="gift-3-idea"></td><td><input maxlength="15" type="text" data-key="gift-3-budget"></td><td><div class="checklist-item" data-key="gift-3-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-4-person"></td><td><input maxlength="80" type="text" data-key="gift-4-occasion"></td><td><input maxlength="20" type="text" data-key="gift-4-date"></td><td><input maxlength="80" type="text" data-key="gift-4-idea"></td><td><input maxlength="15" type="text" data-key="gift-4-budget"></td><td><div class="checklist-item" data-key="gift-4-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-5-person"></td><td><input maxlength="80" type="text" data-key="gift-5-occasion"></td><td><input maxlength="20" type="text" data-key="gift-5-date"></td><td><input maxlength="80" type="text" data-key="gift-5-idea"></td><td><input maxlength="15" type="text" data-key="gift-5-budget"></td><td><div class="checklist-item" data-key="gift-5-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-6-person"></td><td><input maxlength="80" type="text" data-key="gift-6-occasion"></td><td><input maxlength="20" type="text" data-key="gift-6-date"></td><td><input maxlength="80" type="text" data-key="gift-6-idea"></td><td><input maxlength="15" type="text" data-key="gift-6-budget"></td><td><div class="checklist-item" data-key="gift-6-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-7-person"></td><td><input maxlength="80" type="text" data-key="gift-7-occasion"></td><td><input maxlength="20" type="text" data-key="gift-7-date"></td><td><input maxlength="80" type="text" data-key="gift-7-idea"></td><td><input maxlength="15" type="text" data-key="gift-7-budget"></td><td><div class="checklist-item" data-key="gift-7-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-8-person"></td><td><input maxlength="80" type="text" data-key="gift-8-occasion"></td><td><input maxlength="20" type="text" data-key="gift-8-date"></td><td><input maxlength="80" type="text" data-key="gift-8-idea"></td><td><input maxlength="15" type="text" data-key="gift-8-budget"></td><td><div class="checklist-item" data-key="gift-8-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-9-person"></td><td><input maxlength="80" type="text" data-key="gift-9-occasion"></td><td><input maxlength="20" type="text" data-key="gift-9-date"></td><td><input maxlength="80" type="text" data-key="gift-9-idea"></td><td><input maxlength="15" type="text" data-key="gift-9-budget"></td><td><div class="checklist-item" data-key="gift-9-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-10-person"></td><td><input maxlength="80" type="text" data-key="gift-10-occasion"></td><td><input maxlength="20" type="text" data-key="gift-10-date"></td><td><input maxlength="80" type="text" data-key="gift-10-idea"></td><td><input maxlength="15" type="text" data-key="gift-10-budget"></td><td><div class="checklist-item" data-key="gift-10-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-11-person"></td><td><input maxlength="80" type="text" data-key="gift-11-occasion"></td><td><input maxlength="20" type="text" data-key="gift-11-date"></td><td><input maxlength="80" type="text" data-key="gift-11-idea"></td><td><input maxlength="15" type="text" data-key="gift-11-budget"></td><td><div class="checklist-item" data-key="gift-11-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+    <tr><td><input maxlength="60" type="text" data-key="gift-12-person"></td><td><input maxlength="80" type="text" data-key="gift-12-occasion"></td><td><input maxlength="20" type="text" data-key="gift-12-date"></td><td><input maxlength="80" type="text" data-key="gift-12-idea"></td><td><input maxlength="15" type="text" data-key="gift-12-budget"></td><td><div class="checklist-item" data-key="gift-12-done" onclick="this.classList.toggle('checked');saveAll()" style="padding:0"><div class="cb">&#10003;</div></div></td></tr>
+  </table>
+</div>
+
+<div class="page prose-page">
+  <h2>Holiday Planning</h2>
+  <div class="info-field"><label>Holiday</label><input maxlength="60" type="text" data-key="hp-name"></div>
+  <div class="info-field"><label>Date</label><input maxlength="20" type="text" data-key="hp-date"></div>
+  <hr style="margin:0.4rem 0;border:none;border-top:1px solid var(--line);">
+  <h3>To-do list</h3>
+  <textarea maxlength="400" data-key="hp-todo" style="width:100%;min-height:2in;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.2rem;line-height:1.5;resize:none;overflow-y:auto;" placeholder=""></textarea>
+  <h3>Decorations needed</h3>
+  <textarea maxlength="200" data-key="hp-decor" style="width:100%;min-height:1in;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.2rem;line-height:1.5;resize:none;overflow-y:auto;" placeholder=""></textarea>
+  <h3>Food &amp; menu</h3>
+  <textarea maxlength="300" data-key="hp-food" style="width:100%;min-height:1.5in;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.2rem;line-height:1.5;resize:none;overflow-y:auto;" placeholder=""></textarea>
+</div>
+
+<div class="page prose-page">
+  <h2>Vacation Planning</h2>
+  <div class="info-field"><label>Destination</label><input maxlength="60" type="text" data-key="vac-dest"></div>
+  <div class="two-col">
+    <div class="info-field"><label>Departure date</label><input maxlength="20" type="text" data-key="vac-depart"></div>
+    <div class="info-field"><label>Return date</label><input maxlength="20" type="text" data-key="vac-return"></div>
+  </div>
+  <div class="info-field"><label>Accommodation</label><input maxlength="60" type="text" data-key="vac-accom"></div>
+  <div class="info-field"><label>Confirmation #</label><input maxlength="20" type="text" data-key="vac-confirm"></div>
+  <hr style="margin:0.4rem 0;border:none;border-top:1px solid var(--line);">
+  <h3>Packing list</h3>
+  <textarea maxlength="400" data-key="vac-pack" style="width:100%;min-height:2in;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.2rem;line-height:1.5;resize:none;overflow-y:auto;" placeholder=""></textarea>
+  <h3>To-do before leaving</h3>
+  <textarea maxlength="300" data-key="vac-todo" style="width:100%;min-height:1.5in;border:1px solid var(--line);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.2rem;line-height:1.5;resize:none;overflow-y:auto;" placeholder="Hold mail&#10;Arrange pet care&#10;Set thermostat&#10;Lock all windows"></textarea>
+</div>
+
+<script>
+const STORAGE_KEY = "kettle-household-binder";
+
+function saveAll() {
+  const data = {};
+  // Save all inputs
+  document.querySelectorAll("input[data-key]").forEach(el => {
+    if (el.type === "text" && el.value.trim()) data[el.dataset.key] = el.value;
+  });
+  // Save all textareas
+  document.querySelectorAll("textarea[data-key]").forEach(el => {
+    if (el.value.trim()) data[el.dataset.key] = el.value;
+  });
+  // Save checkbox states
+  document.querySelectorAll(".checklist-item[data-key]").forEach(el => {
+    if (el.classList.contains("checked")) data[el.dataset.key] = true;
+  });
+  // Save table checkbox states (td checklists)
+  document.querySelectorAll("td .checklist-item[data-key]").forEach(el => {
+    if (el.classList.contains("checked")) data[el.dataset.key] = true;
+  });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  const s = document.getElementById("saveStatus");
+  s.classList.add("visible");
+  setTimeout(() => s.classList.remove("visible"), 1500);
+}
+
+function loadAll() {
+  try {
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+    // Restore inputs
+    document.querySelectorAll("input[data-key]").forEach(el => {
+      if (data[el.dataset.key]) el.value = data[el.dataset.key];
+    });
+    // Restore textareas
+    document.querySelectorAll("textarea[data-key]").forEach(el => {
+      if (data[el.dataset.key]) el.value = data[el.dataset.key];
+    });
+    // Restore checkboxes
+    document.querySelectorAll(".checklist-item[data-key]").forEach(el => {
+      if (data[el.dataset.key]) el.classList.add("checked");
+    });
+  } catch(e) {}
+}
+
+function clearAll() {
+  if (confirm("Clear all saved data in this binder?")) {
+    localStorage.removeItem(STORAGE_KEY);
+    document.querySelectorAll("input[data-key]").forEach(el => el.value = "");
+    document.querySelectorAll("textarea[data-key]").forEach(el => el.value = "");
+    document.querySelectorAll(".checklist-item.checked").forEach(el => el.classList.remove("checked"));
+    document.getElementById("saveStatus").classList.remove("visible");
+  }
+}
+
+// Auto-save on input
+document.querySelectorAll("input[data-key], textarea[data-key]").forEach(el => {
+  el.addEventListener("input", saveAll);
+});
+
+loadAll();
+</script>
+
+</body>
+</html>
