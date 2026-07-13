@@ -15,7 +15,7 @@ F_SERIF_BOLD = '/usr/share/fonts/liberation/LiberationSerif-Bold.ttf'
 F_SANS = '/usr/share/fonts/liberation/LiberationSans-Bold.ttf'
 F_SANS_REG = '/usr/share/fonts/liberation/LiberationSans-Regular.ttf'
 
-SRC = '/home/chels/test/digital-products/simple-life-guide/church-of-the-king-e6ZlCzBnGWI-unsplash.jpg'
+SRC = '/home/chels/test/digital-products/simple-life-guide/taras-kots-nvcKq08ZnTU-unsplash.jpg'
 OUT_DIR = '/home/chels/test/digital-products/simple-life-guide'
 
 

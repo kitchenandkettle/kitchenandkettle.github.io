@@ -435,7 +435,7 @@ PRODUCTS = [
     {
         "name": "A Simple Life Guide",
         "dir": "simple-life-guide",
-        "photo": "church-of-the-king-e6ZlCzBnGWI-unsplash.jpg",
+        "photo": "taras-kots-nvcKq08ZnTU-unsplash.jpg",
         "tip": "The Diaper Bag Rule: one good thing that does many jobs beats five specialized ones. Mason jars, bar soap, shop cloths — use what already works.",
         "bullets": [
             "Kitchen swaps: mason jars, fewer oils, one brewer, no disposables",
