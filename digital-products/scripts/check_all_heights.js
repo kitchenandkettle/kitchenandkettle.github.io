@@ -94,9 +94,9 @@ const INJECT_CSS = `
         .homekeeping-guide .prose-page ol li { margin-bottom: 0.05rem !important; line-height: 1.35 !important; }
 
         /* --- Ancestral Living Guide: prose-heavy reading guide compression --- */
-        .ancestral-living .prose-page { display: block !important; }
-        .ancestral-living .notes-area { min-height: 2.5rem !important; }
-        .ancestral-living .notes-area textarea { min-height: 2rem !important; height: 2rem !important; }
+        .ancestral-living .prose-page { display: flex !important; flex-direction: column !important; }
+        .ancestral-living .notes-area { flex-grow: 1 !important; display: flex !important; flex-direction: column !important; }
+        .ancestral-living .notes-area textarea { flex-grow: 1 !important; min-height: 4rem !important; }
         .ancestral-living .prose-page p { margin-bottom: 0.25rem !important; line-height: 1.3 !important; font-size: 12pt !important; }
         .ancestral-living .prose-page .lede { margin-bottom: 0.3rem !important; font-size: 12pt !important; }
         .ancestral-living .prose-page h2 { font-size: 16pt !important; margin-bottom: 0.15rem !important; padding-bottom: 0.1rem !important; }
