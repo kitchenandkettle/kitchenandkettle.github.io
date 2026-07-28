@@ -46,15 +46,14 @@ def save_state(state):
         json.dump(state, f, indent=2)
 
 
-def get_pin_image(product_dir):
+def get_pin_image(product_dir, variant=1):
     """Find a pin image for the product."""
     d = PRODUCTS_DIR / product_dir
     if not d.is_dir():
         return None
-    for variant in (1, 2, 3):
-        path = d / f"pin-{variant}.png"
-        if path.is_file():
-            return str(path)
+    path = d / f"pin-{variant}.png"
+    if path.is_file():
+        return str(path)
     return None
 
 
@@ -250,19 +249,20 @@ def post_pin(page, title, description, link, image_path):
     return True, "Pin likely published (no error detected)"
 
 
-def list_pins():
+def list_pins(variant=1):
     """Show all pins and their status."""
     pins = load_pins()
     state = load_state()
 
+    print(f"Pin variant: {variant}")
     print(f"{'#':3} {'Status':8} {'Product':35} {'Image'}")
     print("-" * 90)
     for i, pin in enumerate(pins):
-        key = f"{pin['dir']}-1"
+        key = f"{pin['dir']}-{variant}"
         status = "POSTED" if state.get(key) else "READY"
-        img = get_pin_image(pin["dir"]) or "MISSING"
+        img = get_pin_image(pin["dir"], variant) or "MISSING"
         print(f"{i:3} {status:8} {pin['product']:35} {img}")
-    posted = sum(1 for v in state.values() if v)
+    posted = sum(1 for k, v in state.items() if v and k.endswith(f"-{variant}"))
     print(f"\nPosted: {posted}/{len(pins)}  Remaining: {len(pins) - posted}")
 
 
@@ -271,15 +271,18 @@ def main():
         do_login()
         return
 
-    if "--list" in sys.argv:
-        list_pins()
-        return
-
-    # Parse --count N
+    # Parse --count N and --variant N (before --list so it's available)
     count = 1
+    variant = 1
     for i, arg in enumerate(sys.argv):
         if arg == "--count" and i + 1 < len(sys.argv):
             count = int(sys.argv[i + 1])
+        if arg == "--variant" and i + 1 < len(sys.argv):
+            variant = int(sys.argv[i + 1])
+
+    if "--list" in sys.argv:
+        list_pins(variant)
+        return
 
     dry_run = "--dry-run" in sys.argv
 
@@ -296,10 +299,10 @@ def main():
         for i, pin in enumerate(pins):
             if shown >= count:
                 break
-            key = f"{pin['dir']}-1"
+            key = f"{pin['dir']}-{variant}"
             if state.get(key):
                 continue
-            img = get_pin_image(pin["dir"])
+            img = get_pin_image(pin["dir"], variant)
             print(f"{i+1}. {pin['product']}")
             print(f"   Title: {pin['title'][:80]}...")
             print(f"   Image: {img or 'MISSING'}")
@@ -309,7 +312,7 @@ def main():
         print(f"Would post {shown} pin(s).")
         return
 
-    print(f"Starting browser (headless={HEADLESS})...")
+    print(f"Starting browser (headless={HEADLESS}, variant={variant})...")
 
     with sync_playwright() as p:
         browser = p.chromium.launch_persistent_context(
@@ -330,16 +333,16 @@ def main():
             if posted_count >= count:
                 break
 
-            key = f"{pin['dir']}-1"
+            key = f"{pin['dir']}-{variant}"
             if state.get(key):
                 continue
 
-            img_path = get_pin_image(pin["dir"])
+            img_path = get_pin_image(pin["dir"], variant)
             if not img_path:
-                print(f"SKIP {pin['product']}: no pin image")
+                print(f"SKIP {pin['product']}: no pin-{variant}.png")
                 continue
 
-            print(f"\nPosting: {pin['product']}")
+            print(f"\nPosting: {pin['product']} (variant {variant})")
             print(f"  Image: {img_path}")
             print(f"  Link:  {pin['link']}")
 
@@ -363,9 +366,9 @@ def main():
         browser.close()
 
     save_state(state)
-    total_posted = sum(1 for v in state.values() if v)
+    total_posted = sum(1 for k, v in state.items() if v and k.endswith(f"-{variant}"))
     print(f"\nSession: {posted_count} posted.")
-    print(f"Overall: {total_posted}/{len(pins)} posted.")
+    print(f"Overall variant {variant}: {total_posted}/{len(pins)} posted.")
 
 
 if __name__ == "__main__":
