@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ancestral Living for the Modern Person — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#8B8376;--line:#D9D0C1;--light:#FAF7F0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Crimson Pro',Georgia,serif;font-size:12pt;line-height:1.65;
+    background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:1rem;
+    color:var(--ink);
+  }
+
+  .toolbar{
+    max-width:8.5in;width:100%;margin:0 auto 0.5rem;
+    display:flex;justify-content:space-between;align-items:center;
+    background:#fff;padding:0.5rem 0.7rem;border-radius:6px;
+    box-shadow:0 1px 4px rgba(44,36,22,0.08);
+    position:sticky;top:0;z-index:100;
+  }
+  .toolbar .brand{font-family:'Crimson Pro',serif;font-size:14pt;font-weight:600;color:var(--ink)}
+  .toolbar .brand em{font-style:italic;color:var(--clay)}
+  .toolbar .actions{display:flex;gap:0.5rem;align-items:center}
+  .save-status{font-family:'Work Sans',sans-serif;font-size:9pt;color:#5a8a6a;margin-right:0.5rem;opacity:0;transition:opacity 0.3s;}
+  .save-status.visible{opacity:1}
+  .btn{font-family:'Work Sans',sans-serif;font-size:9pt;font-weight:600;padding:0.35em 0.7em;border-radius:3px;cursor:pointer;border:none;transition:background 0.15s;text-decoration:none;}
+  .btn-ghost{background:none;color:var(--muted);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+  .btn-print{background:var(--ink);color:var(--paper)}
+  .btn-print:hover{background:#3D362D}
+
+  .page{
+    width:8.5in;min-height:11in;background:var(--paper);
+    padding:0.6in 0.7in;
+    box-shadow:0 2px 12px rgba(44,36,22,0.12);
+    position:relative;margin-bottom:0.25in;page-break-after:always;
+  }
+  .page:last-of-type{page-break-after:auto;margin-bottom:0}
+
+  h1{font-family:'Crimson Pro',serif;font-size:28pt;font-weight:600;color:var(--ink);letter-spacing:-0.01em;line-height:1.15;}
+  h2{font-family:'Crimson Pro',serif;font-size:18pt;font-weight:600;color:var(--ink);margin-bottom:0.5rem;border-bottom:1px solid var(--line);padding-bottom:0.2rem;}
+  h3{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin:0.8rem 0 0.4rem;}
+
+  .lede{font-size:14pt;line-height:1.55;color:#3D362D;margin-bottom:0.85rem;}
+  .small{font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);}
+  .brand-line{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--clay);margin-bottom:0.6rem;}
+  .tagline{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);}
+
+  .prose-page p{margin-bottom:0.75rem;line-height:1.6;}
+  .prose-page hr{margin:0.6rem 0;border:none;border-top:1px solid var(--line);}
+  .prose-page{display:flex;flex-direction:column;}
+
+  .honest-box{background:var(--light);border-left:3px solid var(--clay);padding:0.4rem 0.5rem;margin:0.65rem 0;font-size:12pt;}
+  .honest-box strong{color:var(--ink)}
+  .tip-box{background:var(--light);border-left:3px solid var(--sage);padding:0.4rem 0.5rem;margin:0.65rem 0;font-size:12pt;}
+
+  .principle{display:grid;grid-template-columns:0.3in 1fr;gap:0.3rem;margin:0.5rem 0;align-items:start;}
+  .principle-num{font-family:'Work Sans',sans-serif;font-size:16pt;font-weight:600;color:var(--clay);text-align:right;line-height:1.2;}
+  .principle-text{font-size:12pt;line-height:1.5;}
+
+  .cross-sell-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.3rem;margin:0.4rem 0;}
+  .cross-sell-card{border:1px solid var(--line);padding:0.3rem;}
+  .cross-sell-card h3{font-size:12pt;margin:0 0 0.1rem;}
+  .cross-sell-card p{font-size:12pt;line-height:1.4;color:#3D362D;}
+
+  .page-footer{text-align:center;margin-top:0.5rem;font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);letter-spacing:0.04em;text-transform:uppercase;}
+  .page-footer em{font-style:italic;color:var(--clay)}
+
+  .cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:1.5in 0.7in;}
+  .cover h1{margin-bottom:0.25in;}
+  .cover .brand-line{margin-bottom:1rem;}
+  .cover .desc{font-size:13pt;color:#3D362D;max-width:30ch;line-height:1.5;}
+
+  .closing{display:flex;flex-direction:column;justify-content:center;text-align:center;padding:1.2in 0.7in;}
+  .closing p{font-size:13pt;line-height:1.6;color:#3D362D;margin-bottom:0.55rem;}
+  .closing .sign-off{font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted);margin-top:0.5rem;}
+
+  hr.ornament{border:none;border-top:1px solid var(--line);width:2in;margin:0 auto;}
+
+  .notes-area{margin-top:0.5rem;border-top:1px dotted var(--line);padding-top:0.3rem;flex:1;display:flex;flex-direction:column;}
+  .notes-area h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--sage);margin-bottom:0.15rem;flex-shrink:0;}
+  .notes-area textarea{flex:1;min-height:4rem;width:100%;border:1px solid var(--line);background:var(--paper);font-family:'Crimson Pro',serif;font-size:12pt;padding:0.2rem 0.3rem;resize:none;line-height:1.5;overflow:hidden;}
+
+  @media print{
+    body{background:none;padding:0;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .toolbar{display:none}
+    .page{margin:0;box-shadow:none}
+  }
+</style>
+</head>
+<body class="ancestral-living">
+
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+
+<!-- PAGE 1: COVER -->
+<div class="page cover">
+  <div class="brand-line">Kitchen &amp; <em>Kettle</em></div>
+  <h1>Ancestral Living for the Modern Person</h1>
+  <p class="desc">Old ways aren't about doing everything yourself. They're about knowing what's worth your effort, and what never was.</p>
+  <div class="page-footer" style="position:absolute;bottom:0.6in;left:0;right:0;text-align:center;">
+    <em>Works</em> because it works.
+  </div>
+</div>
+
+<!-- PAGE 2: PHILOSOPHY -->
+<div class="page prose-page">
+  <h2>The 12-Year Search</h2>
+  <p class="lede">I spent over a decade trying to feel a connection I couldn't name. I thought making everything from scratch would get me there: body products, cleaners, whatever the homesteading books said I was supposed to be making. It didn't work.</p>
+
+  <p>The crazy thing is, making all of your own DIY body products isn't the answer. I thought it would be. For about twelve years I desperately tried to feel that deep connection I craved, and every new recipe, every batch of soap, every jar of something-or-other left me more tired than connected.</p>
+
+  <p>Here's what I eventually learned: ancestral living isn't about manufacturing everything yourself. Our ancestors didn't do everything alone — they had a whole village. They weren't making inferior versions of things they could trade for. They put their effort where it counted and relied on each other for the rest.</p>
+
+  <p>Connecting with your ancestors shouldn't feel like you're swimming against the current. They lived with less, honed a focused skill or two, ate simply, and spent time together. If you're forcing something to make it feel like ancestral connection — if it's exhausting you, if it's making you feel guilty, if you dread doing it, you're going the wrong direction. The real thing settles you. It doesn't stress you out.</p>
+
+  <div class="honest-box">
+    <strong>Honest note:</strong> This guide isn't going to teach you how to make soap or grind your own flour. There are plenty of resources for that if you want them. What I'm offering is permission to stop trying so hard, and a handful of places where the effort is genuinely worth it.
+  </div>
+
+  <p>The pages that follow are things I've found to be real: skills that connect you, habits that ground you, and a few truths I wish someone had told me a decade ago.</p>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-philosophy" rows="2" placeholder="Jot down what you want to try..."></textarea>
+  </div>
+</div>
+
+<!-- PAGE 3: WHY WE'RE LONGING -->
+<div class="page prose-page">
+  <h2>Why We're Longing</h2>
+  <p class="lede">I don't have all the answers to this. But I've spent enough years feeling the pull to name what I think is actually happening.</p>
+
+  <h3>We're Starved for Something Real</h3>
+  <p>Most of us spend our days looking at screens, producing things that don't exist in physical form: emails, spreadsheets, posts, messages. Nothing we can hold, nothing we can point to and say "I made that." Our ancestors' hands were always in something: dough, soil, wool, wood. Tangible work settles the mind in a way that digital work never will. I think that's a big part of the pull: not nostalgia for the past, but hunger for something solid.</p>
+
+  <h3>The Noise Is Relentless</h3>
+  <p>Our ancestors woke up to quiet. They went to sleep to quiet. Between those two points, they heard birds, livestock, weather, the voices of people they actually knew. We wake up to notifications and fall asleep to screens and between those two points we hear algorithms, opinions, ads, outrage, influencers, news, more ads. A constant stream of voices that have nothing to do with our actual lives. The longing for ancestral living is partly just a longing for quiet. For a mind that isn't being pulled in forty directions by people who don't know your name.</p>
+
+  <h3>We Were Built for Small Circles</h3>
+  <p>For most of human history, you knew maybe a hundred people. Your family, your neighbors, a few traders. You knew them deeply. You depended on them and they depended on you. Now we know thousands of people shallowly. Followers, contacts, connections. And we can go weeks without a real conversation. The loneliness is real, and I think it's driving a lot of us toward something that feels more human.</p>
+
+  <hr>
+
+  <h3>So Why Is It So Hard?</h3>
+  <p>Because modern life doesn't pause while you figure this out. You still have a job, bills, obligations, kids, a schedule packed tighter than any ancestor would have tolerated. You're trying to layer ancestral practices onto a life that was designed for speed and convenience, so of course it feels like swimming against the current.</p>
+
+  <p>And nobody taught us any of it. Your grandmother might have known how to preserve food and sew a hem and stretch a chicken across four meals, but that chain broke somewhere, probably when it stopped being necessary for survival. Now we're trying to reconstruct it from YouTube videos and Instagram posts, alone in our kitchens, feeling like failures when the sourdough starter dies.</p>
+
+  <p>I don't think the answer is to reject modern life. I think it's to be honest about the tension. To admit that we're trying to do something hard inside a system that wasn't built for it, and to give ourselves grace when it doesn't look like the homesteading account we follow.</p>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-longing" rows="2" placeholder="Jot down what you want to try..."></textarea>
+  </div>
+</div>
+
+<!-- PAGE 4: IN THE KITCHEN -->
+<div class="page prose-page">
+  <h2>In the Kitchen</h2>
+  <p class="lede">Ancestral eating isn't complicated. It's a short list of real foods, cooked at home, shared with people you care about. No meal plans, no exotic ingredients, nothing that requires a special trip to three different stores.</p>
+
+  <h3>The Daily Foundation</h3>
+  <p>This is what I actually keep in my kitchen. Meat, eggs, tinned sardines or tuna. Milk, cheese, skyr, the thick Icelandic yogurt. Bone broth, butter, iodized sea salt for daily cooking, Redmond's Real Salt for fermentation, black pepper. For plants: cabbage, fresh and fermented into sauerkraut, plus carrots, celery, onions, garlic, mushrooms, and herbs I dry and use year-round. Berries, apples, pears when they're in season. Starches I keep year-round: potatoes, sweet potatoes, black beans, red lentils, farro, and sourdough. Always sourdough. For flavor: apple cider and white vinegar, honey, mustard, cocoa. Herbs like thyme, sage, rosemary, parsley, oregano.</p>
+
+  <p>That's it. From that foundation comes lentil stew, sheet pan chicken thighs with roasted vegetables, a pot roast that feeds you all week, farro with beans and cheese, baked oatmeal on a cold morning. The recipes write themselves when you stop chasing new ones and start cooking from the same honest ingredients.</p>
+
+  <h3>Two Skills Worth Learning</h3>
+  <p>Sauerkraut and sourdough. One is cabbage and salt — the easiest fermented food there is. The other takes more patience, but it's the most grounding thing you can do in a kitchen. Both have their own pages ahead with full instructions.</p>
+
+  <h3>Cook With Traditional Fats</h3>
+  <p>Cook with butter and tallow. Skip the seed oils — canola, soybean, corn oil, all of it. Our ancestors cooked with animal fats for thousands of years. Industrial seed oils didn't exist until the last century. For most of human history, the only cooking fats came from animals. Butter and tallow taste better, they handle high heat without breaking down, and they come from animals, not factories. If you do nothing else in your kitchen, swap your cooking fat.</p>
+
+  <div class="honest-box">
+    <strong>Honest note:</strong> You're not going to eat this way every day, and that's fine. Our lives are completely different from our ancestors' — sometimes you need to make a peanut butter and jelly sandwich to get through lunch, and that's not a failure. The foundation is something to reach for, not a standard to beat yourself up over. Most weeks, I hit it maybe four or five days out of seven. The other two, I'm eating whatever gets me through.
+  </div>
+</div>
+
+<!-- PAGE 5: IN THE KITCHEN (continued) -->
+<div class="page prose-page">
+  <h2>In the Kitchen <span style="font-size:12pt;color:var(--muted);font-weight:400;">(continued)</span></h2>
+
+  <h3>Buy Local When You Can</h3>
+  <p>I know it's hard to make another stop during the week. When you're already at the grocery store, it's so much easier to just grab the pack of meat there and be done. But buying your produce, meat, and dairy from local farmers is one of those things that really pays back — to your community and to your health. Local meat, raised on pasture by someone who knows the animal's name, is the most ancestral thing you can participate in. This is what our ancestors did. They didn't buy from a supply chain — they bought from a person.</p>
+
+  <hr>
+
+  <div class="tip-box">
+    <strong>Go deeper:</strong> My recipe cards help you master a handful of recipes instead of chasing new ones every week — the way our grandmothers cooked, with a small rotation of things they knew by heart. The Seasonal Preservation Calendar walks you through putting food by each month, so you're stocking a real pantry, not a decorative one.
+  </div>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-kitchen" rows="2" placeholder="Jot down what you want to try..."></textarea>
+  </div>
+</div>
+
+<!-- PAGE 6: SAUERKRAUT -->
+<div class="page prose-page">
+  <h2>How to Make Sauerkraut</h2>
+  <p class="lede">Cabbage. Salt. A jar. That's the whole supply list. This is the easiest fermented food you will ever make, and it's almost impossible to mess up.</p>
+
+  <h3>You'll Need</h3>
+  <p>One medium green cabbage (about 2 pounds). Non-iodized salt. A wide-mouth quart jar. Something to weigh the cabbage down — a smaller jar that fits inside the mouth works perfectly. A clean cloth and a rubber band to cover it.</p>
+
+  <h3>The Ratio</h3>
+  <p>Weigh your cabbage after you trim the outer leaves and core. You want 2% salt by weight. For a 2-pound cabbage — about 900 grams — that's 18 grams of salt, which is roughly one tablespoon of non-iodized salt. If you don't have a scale: use about 1½ teaspoons of salt per pound of cabbage. It doesn't need to be perfect. Close enough works.</p>
+
+  <h3>Directions</h3>
+  <p>Remove the outer leaves and set one nice one aside. Quarter the cabbage, cut out the core, and slice it thin — about the width of a pencil. Put the shredded cabbage in a large bowl, sprinkle the salt over it, and massage it with your hands for about five minutes. At first it will feel like nothing is happening. Then the cabbage will start to release its water, and by the end you'll have a bowl of limp, wet cabbage sitting in its own brine. That's what you want.</p>
+
+  <p>Pack the cabbage into your jar, pressing it down firmly as you go. Pour in any brine left in the bowl. The cabbage should be completely submerged under the liquid — this is what keeps mold out. Take that reserved outer leaf, fold it, and press it down on top of the shredded cabbage to hold everything under the brine. Set your weight on top of that. Cover the jar with the cloth and secure it with a rubber band — no lid yet, the fermentation needs to breathe.</p>
+
+  <p>Put the jar somewhere out of direct sunlight. A kitchen counter is fine. After a day or two you'll start seeing tiny bubbles — that's the fermentation working. Taste it after one week. If it's tangy enough for you, put a lid on it and move it to the fridge. If you want it stronger, let it go another week. Some people go four weeks. Your kitchen, your taste, your call.</p>
+
+  <div class="honest-box">
+    <strong>Honest note:</strong> Sometimes a little white film forms on the surface. That's kahm yeast. It's harmless. Just skim it off. Mold is fuzzy and colorful — green, blue, black. That's rare if your cabbage is submerged, but if you see it, toss the batch and start over. Cabbage is cheap.
+  </div>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-sauerkraut" rows="2" placeholder="Jot down what you want to try..."></textarea>
+  </div>
+</div>
+
+<!-- PAGE 7: SOURDOUGH -->
+<div class="page prose-page">
+  <h2>How to Sourdough</h2>
+  <p class="lede">Sourdough asks more of you than sauerkraut, but it gives more back. This is the slowest, most grounding thing you can do in a kitchen.</p>
+
+  <h3>The Starter</h3>
+  <p>A sourdough starter is just flour and water, colonized by wild yeast and bacteria from the air and the flour itself. To make one: mix equal parts flour and water by weight — say 50 grams of each — in a jar. Whole wheat or rye flour gets things moving faster than all-purpose, but any flour works. Stir it, cover loosely, and leave it on the counter.</p>
+
+  <p>Every day, discard half of it and feed it again: 50 grams flour, 50 grams water. For the first few days nothing will happen. Around day four or five you'll see bubbles and it'll smell sour and yeasty. By day seven to ten it should reliably double in size within four to six hours of feeding. That's your signal: the starter is ready.</p>
+
+  <h3>Keeping It Alive</h3>
+  <p>If you bake often, keep the starter on the counter and feed it daily. If you bake once a week, keep it in the fridge and feed it once a week — pull it out the night before you want to bake, feed it, and let it wake up. A starter in the fridge can survive a month without feeding, though it'll take a couple of feedings to get lively again. People get stressed about killing their starter. You probably won't. It's harder to kill than you think.</p>
+
+  <h3>A Basic Loaf</h3>
+  <p>Mix 500 grams of bread flour with 350 grams of water and 100 grams of active starter. Let it sit for thirty minutes — this is the autolyse, and it makes the dough easier to work with. Add 10 grams of salt, mix it in, and then over the next two to three hours, stretch and fold the dough every thirty minutes: wet your hand, grab one side of the dough, stretch it up, and fold it over the top. Do this four times around the bowl. You'll feel the dough get stronger each time.</p>
+
+  <p>After the last fold, let the dough rise until it's noticeably puffy and jiggly. This is the bulk ferment, and it could take four to eight hours depending on how warm your kitchen is. Shape it into a round, put it in a floured bowl or proofing basket, and let it proof for another one to three hours, or overnight in the fridge for better flavor. When you're ready to bake, heat your oven to 475°F with a Dutch oven inside. Score the top of the loaf with a sharp knife, carefully transfer it into the hot Dutch oven, cover it, and bake for 25 minutes. Remove the lid and bake another 20 minutes until deep brown. Let it cool completely before slicing. I know it's hard, but cutting into hot bread ruins the texture.</p>
+
+  <div class="honest-box">
+    <strong>Honest note:</strong> Your first few loaves might be flat. They might be gummy inside. They might look nothing like the ones on Instagram. You will still eat them and they will still taste good. Sourdough is a practice, not a performance. Keep going.
+  </div>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-sourdough" rows="2" placeholder="Jot down what you want to try..."></textarea>
+  </div>
+</div>
+
+<!-- PAGE 7: GARDENING -->
+<div class="page prose-page">
+  <h2>Grow Something</h2>
+  <p class="lede">You don't need raised beds, a irrigation system, or a twenty-page garden plan. Two crops, direct-seeded, is all it takes to start.</p>
+
+  <h3>Radishes</h3>
+  <p>Radishes are the fastest crop there is. Push the seeds into the soil, water them, and in three to four weeks you're pulling them out of the ground. They don't need transplanting, they don't need staking, they barely need weeding. If you've never grown anything before, start here. The speed alone will make you feel like you know what you're doing, even if you don't.</p>
+
+  <h3>Bush Beans</h3>
+  <p>Bush beans go straight into the ground after the last frost and produce all season. No trellis, no pruning, no fuss. Pick them young for tender green beans, or let some pods dry on the plant for shell beans you can store all winter. One packet of seeds costs about three dollars and will feed you for months.</p>
+
+  <hr>
+
+  <p>These two crops together — one fast, one steady — will teach you more about gardening than any book. And once you've pulled your first radish, you'll understand why growing food is worth the dirt under your fingernails.</p>
+
+  <div class="tip-box">
+    <strong>Go deeper:</strong> My survival garden guide covers what grows well, stores well, and earns its space — perennial herbs, staple crops, and plants that come back every year without asking much of you.
+  </div>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-gardening" rows="2" placeholder="Jot down what you want to try..."></textarea>
+  </div>
+</div>
+
+<!-- PAGE 9: BODY & HOUSEHOLD -->
+<div class="page prose-page">
+  <h2>Body &amp; Household</h2>
+  <p class="lede">Some people love making soap. I'm not one of them, and that used to make me feel like I was failing at ancestral living. It took me years to realize I wasn't.</p>
+
+  <p>Social media influencers push this idea that ancestral living means making every single thing yourself — your soap, your lotion, your cleaning spray, your bread, your clothes. But that's not practical for the person working forty hours a week in an office, or the mom of three who also has a sick parent. Sometimes the right answer is the simple bar of Dove that costs three dollars. Sometimes it's buying from a small company that makes beautiful tallow balm and does it better than I ever could.</p>
+
+  <p>Our ancestors didn't do everything themselves either. They supported the people around them who were good at their craft — the soap maker, the baker, the herbalist. You don't have to be a jack of all trades. You just have to put your effort into the skills you actually care about, and let good companies handle the rest.</p>
+
+  <h3>One Cleaner, Most Jobs</h3>
+  <p>I use Barkeeper's Friend for almost all of my cleaning: sink, toilet, bathtub, surfaces. It's less toxic than most commercial cleaners and it's septic safe. One canister replaces half a dozen bottles under the sink, and it actually works. Making your own DIY toilet cleaner is not the answer to connecting with your lineage. Our ancestors would have looked at you like you had three heads — they had real work to do, and they'd have taken the simpler option every time.</p>
+
+  <p>This is the practical side of ancestral living that doesn't photograph well: buy the thing that works, use the time you saved on something that actually matters to you. If you want to learn a full system of cleaning built around a handful of simple products, the Simple Homekeeping Guide walks you through it.</p>
+
+  <h3>Modern Tools, Old Values</h3>
+  <p>Using a washing machine doesn't make you less connected to your ancestors. Using it to wash clothes you'll replace in six months — that's the disconnect. The appliance isn't the problem. The disposability is. Buy fewer things, make them last, repair what breaks. That's the ancestral value, and it frees up hours of your life for the skills and people you actually want to invest in.</p>
+
+  <h3>Pick the Skills You Actually Want</h3>
+  <p>If you love making soap, make soap. If sourdough is your thing, feed that starter every morning with joy. But you don't have to do both. You don't have to do any of it. The point is to focus on the skills that genuinely interest you — the ones that pull you into the kitchen or the garden because you want to be there, not because someone on Instagram made you feel guilty for buying lotion.</p>
+
+  <p>There are good companies doing good work: small-batch soap makers, family-owned mills, people who've dedicated their lives to a craft. Supporting them isn't a failure of ancestral living. It IS ancestral living. It's the village model, updated for a world where the village is global.</p>
+
+  <div class="tip-box">
+    <strong>Go deeper:</strong> The Simple Body Care Guide walks through a complete routine with the fewest possible products: what to buy, what to make, and what's not worth your mixing bowl.
+  </div>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-body" rows="2" placeholder="Jot down what you want to try..."></textarea>
+  </div>
+</div>
+
+<!-- PAGE 10: KNOW WHERE YOU COME FROM -->
+<div class="page prose-page">
+  <h2>Know Where You Come From</h2>
+  <p class="lede">Pick one ancestor and study their life. Not their genealogy. Their world.</p>
+
+  <p>Choose one ancestor, any ancestor, and learn about their diet, their holidays, their spiritual beliefs, their language, their cultural values. You don't have to commit your life to this. You don't have to join a heritage society or learn to spin wool. But understanding an old worldview might be more valuable than you think.</p>
+
+  <h3>Learn a Few Words</h3>
+  <p>If you truly want to connect with ancestors, I recommend learning an old language. Old Norse, Gaelic, or a language of your own culture if you don't already know one. You don't have to be intense about it — even knowing a few words is empowering. The word for "bread" in the language your great-great-grandparents spoke. The phrase for "good morning."<br><em>Nemðu líf þitt</em> — "learn your life" in Old Norse. That's the kind of thing I mean: a phrase that carries a worldview, not just vocabulary. Little threads that pull you closer to people who stood where you stand now.</p>
+
+  <hr>
+
+  <p>The point isn't to reconstruct the past. It's to remember that you belong to a long line of people who figured things out with far less than you have — and that their way of seeing the world might have something yours is missing.</p>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-ancestry" rows="2" placeholder="Jot down what you want to try..."></textarea>
+  </div>
+</div>
+
+<!-- PAGE 11: JOY THAT DOESN'T MONETIZE -->
+<div class="page prose-page">
+  <h2>Joy That Doesn't Monetize</h2>
+  <p class="lede">Disconnect from the feeling that everything you do needs to make money or build a following.</p>
+
+  <p>Think about what you used to love as a child. Was it coloring with crayons? Skateboarding? Whatever that thing was, do it as an adult, and don't even think about posting it on social media. You might be thinking, I can't skateboard on the sidewalk as an adult. If that's the case, find something parallel — snowboarding, and plan a trip around it. Get excited about it.</p>
+
+  <h3>Do It for You</h3>
+  <p>Paint. Draw. Skate. Whatever your thing is, just do it without an audience. Paper, iPad, sidewalk chalk, it doesn't matter. The medium isn't the point. The point is that your joy doesn't need to make money, doesn't need to be a side hustle, and definitely doesn't need to be content. It can just be yours.</p>
+
+  <hr>
+
+  <p>The modern world has convinced us that if a hobby isn't monetized, it's wasted time. Our ancestors would have found that insane. Some things exist just because they feel good, and that's reason enough.</p>
+
+  <div class="honest-box">
+    <strong>Honest note:</strong> This is harder than it sounds. The pull to photograph, post, and perform is real. You'll catch yourself reaching for your phone. Put it in another room. Let yourself be bad at something with no witnesses.
+  </div>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-joy" rows="2" placeholder="Jot down what you want to try..."></textarea>
+  </div>
+</div>
+
+<!-- PAGE 12: BE PRESENT -->
+<div class="page prose-page">
+  <h2>Be Present</h2>
+  <p class="lede">The most ancestral thing you can do is pay attention.</p>
+
+  <h3>Sit Outside and Watch the Sunset</h3>
+  <p>Not while scrolling. Not with a podcast. Just sit. Every human who came before you watched the sky change colors at the end of the day, and not one of them was checking notifications while they did it. You don't need a ritual or a meditation practice. You just need to be there.</p>
+
+  <h3>Sit Around a Fire</h3>
+  <p>Whenever you can, sit around a fire. It is the most basic human connection activity we can do. Older than language, older than agriculture. A fire in the backyard, a candle on the dinner table, a fireplace in the winter. There's something in us that settles when we watch a flame.</p>
+
+  <h3>Reduce Your Choices</h3>
+  <p>Our ancestors didn't have many choices, and that's part of what settled their minds. You don't need to decide between forty kinds of yogurt. You don't need to curate the perfect wardrobe from two hundred online stores. Fewer choices, fewer decisions, less noise. The mind needs blank space the way a field needs fallow years.</p>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-present" rows="2" placeholder="Jot down what you want to try..."></textarea>
+  </div>
+</div>
+
+<!-- PAGE 13: LEARN REAL SKILLS -->
+<div class="page prose-page">
+  <h2>Learn Real Skills</h2>
+  <p class="lede">A little knowledge that actually helps is worth more than a pantry full of supplies you don't know how to use.</p>
+
+  <h3>First Aid and Herbalism</h3>
+  <p>Learn a bit of first aid and herbalism. The kind that actually works, not the Pinterest version. Learn to identify medicinal plants in your local area. Yarrow for bleeding. Plantain for stings. Mullein for coughs. You don't have to go crazy with medicinal teas — I don't even keep a full apothecary. But knowing what grows near you and what it can do is one of the oldest human skills there is.</p>
+
+  <h3>Start Small</h3>
+  <p>Pick three plants you can reliably identify. Learn what they're for and how to use them. That's enough. The goal isn't to replace modern medicine — it's to know what to reach for when a kid gets stung in the backyard and the drugstore is twenty minutes away.</p>
+
+  <hr>
+
+  <p>These are skills that stack. Once you know yarrow, you see it everywhere. And every time you see it, you're reminded that the world around you has resources you were never taught to recognize.</p>
+
+  <div class="tip-box">
+    <strong>Go deeper:</strong> The First Aid Checklist covers what you actually need in your kit: no filler, no panic buys, just the supplies that matter. My survival garden guide walks through perennial herbs that earn their space and come back every year.
+  </div>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-skills" rows="2" placeholder="Jot down what you want to try..."></textarea>
+  </div>
+</div>
+
+<!-- PAGE 14: WE NEED EACH OTHER -->
+<div class="page prose-page">
+  <h2>We Need Each Other</h2>
+  <p class="lede">Doing everything yourself isn't ancestral. It's lonely.</p>
+
+  <p>Support other humans around you. Whether it's your family, your community, or a company you really value. Don't feel like you need to do everything yourself — like I did, trying to make every DIY thing from scratch. It's not human. We evolved with connection to one another. We need each other.</p>
+
+  <h3>Vote With Your Dollar, But Don't Stop There</h3>
+  <p>Spend your money on the people and businesses you truly support, and don't buy from corporations you don't want to prop up. But connection isn't just about transactions. Sometimes it's just listening when someone needs it.</p>
+
+  <h3>Listen Without Responding</h3>
+  <p>Your spouse, your friends, your family — the people closest to you shouldn't feel like enemies. They should feel like your safest space in the world. When I say listen, I mean: don't respond. Ask <em>them</em> questions. Don't share your opinion until they ask for it. Most of us listen just long enough to formulate our reply, and we miss the whole person in the process. We assume we know what they mean before they've finished saying it, and we react to that assumption instead of their actual point. That's how the people closest to you start to feel like enemies — you're arguing with a version of them you invented in your head. Ask clarifying questions before you decide you've understood. Most conflict between people who love each other comes from two different meanings hiding behind the same words.</p>
+
+  <div class="honest-box">
+    <strong>Honest note:</strong> This is the hardest page in the guide. Listening without fixing, supporting without taking over. It's a skill most of us were never taught. I'm still working on it. You will be too.
+  </div>
+
+  <div class="notes-area">
+    <h4>Notes</h4>
+    <textarea data-key="notes-community" rows="2" placeholder="Jot down what you want to try..."></textarea>
+  </div>
+</div>
+
+<!-- PAGE 15: CLOSING -->
+<div class="page closing">
+  <p>Connect with spirituality, no matter what that means for you.</p>
+  <p>When you begin understanding religion, you'll see that they are all just different lamps shining the same light. Find the lamp that feels like yours. Or build your own. Either way, don't skip this part. Ancestral living without the sacred is just old-fashioned consumerism with better aesthetics.</p>
+
+  <hr class="ornament" style="margin:0.5rem auto;">
+
+  <p>The old ways aren't a checklist. They're not a set of skills to acquire or products to buy. They're a way of being in the world: present, connected, unhurried. Put your effort where it counts, let the rest go, and remember that nobody ever did this alone.</p>
+
+  <hr class="ornament" style="margin:0.4rem auto;">
+
+  <div class="sign-off">Kitchen <em>&amp; Kettle</em></div>
+  <p style="font-size:12pt;color:var(--muted);font-style:italic;">Works because it works.</p>
+
+  <hr class="ornament" style="margin:0.6rem auto 0.4rem;">
+
+  <h3 style="text-align:center;margin-bottom:0.25rem;">Guides Worth Your Time</h3>
+  <div class="cross-sell-grid" style="text-align:left;">
+    <div class="cross-sell-card">
+      <h3>Simple Body Care Guide</h3>
+      <p>A complete routine with the fewest possible products. What to buy, what to make, and what's not worth your mixing bowl.</p>
+    </div>
+    <div class="cross-sell-card">
+      <h3>Simple Homekeeping Guide</h3>
+      <p>A cleaning system built around a handful of ingredients. No marketing, no fragrance, no fifteen bottles under the sink.</p>
+    </div>
+    <div class="cross-sell-card">
+      <h3>Recipe Cards</h3>
+      <p>A small collection of cards for the recipes you actually make. Master a handful instead of chasing new ones every week.</p>
+    </div>
+    <div class="cross-sell-card">
+      <h3>Seasonal Preservation Calendar</h3>
+      <p>What to put by each month, so you preserve groceries instead of throwing them away.</p>
+    </div>
+    <div class="cross-sell-card">
+      <h3>Survival Garden Basics</h3>
+      <p>What grows well, stores well, and earns its space. No novelty crops, no complicated systems.</p>
+    </div>
+    <div class="cross-sell-card">
+      <h3>First Aid Checklist</h3>
+      <p>What you actually need in your kit: no filler, no panic buys, just the supplies that matter.</p>
+    </div>
+  </div>
+
+  <div class="page-footer" style="margin-top:0.5rem;">
+    Available at <em>Kitchen &amp; Kettle</em> on Etsy
+  </div>
+</div>
+
+<script>
+const noteAreas = document.querySelectorAll('textarea[data-key]');
+function saveNotes(){
+  const data = {};
+  noteAreas.forEach(ta => { if(ta.value.trim()) data[ta.dataset.key] = ta.value; });
+  localStorage.setItem('kettle-ancestral-living', JSON.stringify(data));
+  const s = document.getElementById('saveStatus');
+  s.classList.add('visible');
+  setTimeout(() => s.classList.remove('visible'), 1500);
+}
+function loadNotes(){
+  try {
+    const data = JSON.parse(localStorage.getItem('kettle-ancestral-living') || '{}');
+    noteAreas.forEach(ta => { if(data[ta.dataset.key]) ta.value = data[ta.dataset.key]; });
+  } catch(e) {}
+}
+noteAreas.forEach(ta => ta.addEventListener('input', saveNotes));
+function clearAll(){
+  if(confirm('Clear all saved notes?')){
+    localStorage.removeItem('kettle-ancestral-living');
+    noteAreas.forEach(ta => ta.value = '');
+    document.getElementById('saveStatus').classList.remove('visible');
+  }
+}
+loadNotes();
+</script>
+
+</body>
+</html>

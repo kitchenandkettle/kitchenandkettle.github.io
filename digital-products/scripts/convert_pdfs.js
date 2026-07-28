@@ -26,6 +26,7 @@ const FILES = [
   'apothecary-basics/apothecary-basics.html',
   'root-cellaring-guide/root-cellaring-guide.html',
   'simple-life-guide/simple-life-guide.html',
+  'ancestral-living-guide/ancestral-living-guide.html',
   'household-binder/household-binder.html',
 ];
 // -------------------------------------------------
@@ -218,6 +219,23 @@ const FILES = [
         .root-cellaring .honest-box { padding: 0.2rem 0.3rem !important; margin: 0.2rem 0 !important; }
         .root-cellaring .tip-box { padding: 0.2rem 0.3rem !important; margin: 0.2rem 0 !important; }
         .root-cellaring .page { padding-top: 0.5in !important; padding-bottom: 0.5in !important; }
+
+        /* --- Ancestral Living Guide: prose-heavy reading guide compression --- */
+        .ancestral-living .prose-page { display: block !important; }
+        .ancestral-living .notes-area { min-height: 2.5rem !important; }
+        .ancestral-living .notes-area textarea { min-height: 2rem !important; height: 2rem !important; }
+        .ancestral-living .prose-page p { margin-bottom: 0.25rem !important; line-height: 1.3 !important; font-size: 12pt !important; }
+        .ancestral-living .prose-page .lede { margin-bottom: 0.3rem !important; font-size: 12pt !important; }
+        .ancestral-living .prose-page h2 { font-size: 16pt !important; margin-bottom: 0.15rem !important; padding-bottom: 0.1rem !important; }
+        .ancestral-living .prose-page h3 { margin-top: 0.2rem !important; margin-bottom: 0.08rem !important; font-size: 12pt !important; }
+        .ancestral-living .prose-page hr { margin: 0.2rem 0 !important; }
+        .ancestral-living .honest-box { padding: 0.18rem 0.35rem !important; margin: 0.2rem 0 !important; font-size: 12pt !important; }
+        .ancestral-living .tip-box { padding: 0.18rem 0.35rem !important; margin: 0.2rem 0 !important; font-size: 12pt !important; }
+        .ancestral-living .page { padding-top: 0.35in !important; padding-bottom: 0.35in !important; }
+        .ancestral-living .closing { padding: 0.7in 0.7in !important; }
+        .ancestral-living .closing p { margin-bottom: 0.35rem !important; }
+        .ancestral-living .cover { padding: 1.2in 0.7in !important; }
+        .ancestral-living .page-footer { margin-top: 0.3rem !important; }
       `
     });
 
