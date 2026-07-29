@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Home Kitchen Menu — Kitchen &amp; Kettle</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #2C2416; --clay: #C4A882; --paper: #F5F0E8; --sage: #7D8B6F;
+  --light: #FAF7F0; --line: #e0dbd2; --muted: #8a8278;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Crimson Pro', Georgia, serif; font-size: 12pt;
+  line-height: 1.6; color: var(--ink); background: #e8e4dc;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 1rem;
+  print-color-adjust: exact; -webkit-print-color-adjust: exact;
+}
+
+.page {
+  width: 8.5in; min-height: 11in;
+  background: #fff; padding: 0.75in 0.7in;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  page-break-after: always; position: relative;
+}
+.page:last-of-type { page-break-after: auto; }
+
+h1 { font-family: 'Crimson Pro', serif; font-size: 28pt; font-weight: 600; }
+h2 { font-family: 'Crimson Pro', serif; font-size: 18pt; font-weight: 500; margin-bottom: 0.5rem; }
+h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.small { font-family: 'Work Sans', sans-serif; font-size: 12pt; }
+
+/* Toolbar */
+.toolbar {
+  max-width: 8.5in; width: 100%; margin: 0 auto 0.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  background: #fff; padding: 0.5rem 0.7rem; border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(44,36,22,0.08);
+  position: sticky; top: 0; z-index: 100;
+}
+.toolbar .brand { font-family: 'Crimson Pro', serif; font-size: 14pt; font-weight: 600; color: var(--ink); }
+.toolbar .brand em { font-style: italic; color: var(--clay); }
+.toolbar .actions { display: flex; gap: 0.5rem; align-items: center; }
+.toolbar .save-status {
+  font-family: 'Work Sans', sans-serif; font-size: 8pt; color: #5a8a6a;
+  margin-right: 0.5rem; opacity: 0; transition: opacity 0.3s;
+}
+.toolbar .save-status.visible { opacity: 1; }
+.btn {
+  font-family: 'Work Sans', sans-serif; font-size: 8pt; font-weight: 600;
+  padding: 0.4em 0.8em; border-radius: 3px; cursor: pointer; border: none;
+  transition: background 0.15s; text-decoration: none;
+}
+.btn-ghost { background: none; color: var(--muted); border: 1px solid var(--line); }
+.btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+.btn-print { background: var(--ink); color: var(--paper); }
+.btn-print:hover { background: #3D362D; }
+
+/* Cover */
+.cover { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--paper); }
+.cover .brand-mark { font-family: 'Crimson Pro', serif; font-size: 14pt; color: var(--clay); font-style: italic; margin-bottom: 2rem; }
+.cover h1 { font-size: 36pt; margin-bottom: 0.5rem; line-height: 1.15; }
+.cover .tagline { font-size: 16pt; color: var(--sage); font-style: italic; margin-bottom: 1.5rem; }
+.cover .desc { font-size: 14pt; max-width: 65%; color: var(--muted); line-height: 1.5; margin-bottom: 2.5rem; }
+.cover .accent-line { width: 80px; height: 1px; background: var(--clay); margin: 0 auto 2rem; }
+
+/* Style picker */
+.picker { display: flex; flex-direction: column; justify-content: center; background: var(--paper); }
+.picker h2 { text-align: center; margin-bottom: 0.3rem; }
+.picker .sub { text-align: center; color: var(--muted); margin-bottom: 2rem; font-size: 14pt; }
+.style-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+.style-card {
+  background: #fff; border: 2px solid var(--line); border-radius: 8px;
+  padding: 1.5rem 1.2rem; cursor: pointer; text-align: center;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.style-card:hover { border-color: var(--clay); box-shadow: 0 4px 12px rgba(196,168,130,0.15); }
+.style-card.selected { border-color: var(--sage); box-shadow: 0 0 0 3px rgba(125,139,111,0.15); }
+.style-card .icon { font-size: 32pt; margin-bottom: 0.5rem; }
+.style-card h3 { margin-bottom: 0.4rem; font-size: 13pt; }
+.style-card p { font-size: 12pt; color: var(--muted); line-height: 1.4; }
+
+/* Menu sections */
+.section-header { margin-top: 1.5rem; margin-bottom: 0.5rem; padding-bottom: 0.2rem; border-bottom: 2px solid var(--clay); }
+.section-header h2 { margin-bottom: 0; display: inline; }
+.section-header .dot-leader { color: var(--clay); float: right; font-family: 'Work Sans', sans-serif; font-size: 10pt; opacity: 0.4; }
+
+.menu-items { margin-left: 0; }
+.menu-row { display: flex; align-items: baseline; padding: 0.35rem 0; border-bottom: 1px dotted var(--line); gap: 0.5rem; }
+.menu-row:last-child { border-bottom: none; }
+.menu-row .dish {
+  flex: 1; font-family: 'Crimson Pro', serif; font-size: 14pt; font-weight: 500;
+  border: none; outline: none; background: transparent; color: var(--ink);
+  padding: 0.1rem 0;
+}
+.menu-row .dish::placeholder { color: var(--clay); opacity: 1; }
+.menu-row .note {
+  width: 35%; font-family: 'Crimson Pro', serif; font-size: 11pt; font-style: italic;
+  border: none; outline: none; background: transparent; color: var(--muted);
+  padding: 0.1rem 0;
+}
+.menu-row .note::placeholder { color: #c4b9a8; opacity: 1; }
+
+/* Closing */
+.closing { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--paper); }
+.closing .inner { max-width: 75%; }
+.closing h2 { margin-bottom: 1rem; }
+.closing p { margin-bottom: 1rem; font-size: 14pt; }
+
+/* Print */
+@media print {
+  body { background: none; padding: 0; margin: 0; }
+  .page { margin: 0; box-shadow: none; background: #fff; }
+  .toolbar { display: none; }
+  .menu-row .dish::placeholder, .menu-row .note::placeholder { color: transparent !important; }
+  .cover, .picker, .closing { background: #fff; }
+}
+
+/* Hidden pages */
+.menu-page { display: none; }
+.menu-page.active { display: block; }
+</style>
+</head>
+<body>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="exportData()">Save a copy</button>
+    <button class="btn btn-ghost" onclick="importData()">Import copy</button>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+
+<!-- COVER -->
+<div class="page cover">
+  <div class="brand-mark">Kitchen &amp; Kettle</div>
+  <h1>Home Kitchen<br>Menu</h1>
+  <div class="accent-line"></div>
+  <p class="tagline">Tonight's menu is already decided.</p>
+  <p class="desc">A fillable restaurant menu for your own kitchen. Pick your style, name your dishes, and post it where everyone can see. No more "what's for dinner" — just point at the menu.</p>
+  <p class="small" style="color:var(--muted);">Choose your style on the next page &rarr;</p>
+</div>
+
+<!-- STYLE PICKER -->
+<div class="page picker" id="pickerPage">
+  <h2>Choose Your Menu Style</h2>
+  <p class="sub">Pick one — you can switch anytime. Each saves separately.</p>
+  <div class="style-cards">
+    <div class="style-card" data-style="full" onclick="selectStyle('full')">
+      <div class="icon">🍽️</div>
+      <h3>The Full Spread</h3>
+      <p>Apps, soups, mains, sides, desserts, drinks. The whole restaurant experience — for when cooking is the main event.</p>
+    </div>
+    <div class="style-card" data-style="simple" onclick="selectStyle('simple')">
+      <div class="icon">🍳</div>
+      <h3>The Simple Board</h3>
+      <p>Just mains, sides, and quick bites. No courses, no ceremony. Built for weeknight reality.</p>
+    </div>
+    <div class="style-card" data-style="hits" onclick="selectStyle('hits')">
+      <div class="icon">⭐</div>
+      <h3>The Greatest Hits</h3>
+      <p>You name your categories. "Things Everyone Actually Eats." "The 20-Minute Rescue." Your kitchen, your rules.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ THE FULL SPREAD ============ -->
+<div class="page menu-page" data-menu="full">
+  <div class="section-header"><h2>Appetizers</h2></div>
+  <div class="menu-items">
+    <div class="menu-row"><input class="dish" data-key="full-apps-1" placeholder="Bruschetta"><input class="note" data-key="full-apps-1-note" placeholder="tomato, basil, balsamic"></div>
+    <div class="menu-row"><input class="dish" data-key="full-apps-2" placeholder="Deviled Eggs"><input class="note" data-key="full-apps-2-note" placeholder="paprika &amp; chives"></div>
+    <div class="menu-row"><input class="dish" data-key="full-apps-3" placeholder="Cheese Board"><input class="note" data-key="full-apps-3-note" placeholder="three cheeses, honey, crackers"></div>
+    <div class="menu-row"><input class="dish" data-key="full-apps-4" placeholder="Stuffed Mushrooms"><input class="note" data-key="full-apps-4-note" placeholder="sausage &amp; herb"></div>
+    <div class="menu-row"><input class="dish" data-key="full-apps-5" placeholder="Spinach Artichoke Dip"><input class="note" data-key="full-apps-5-note" placeholder="served warm with bread"></div>
+  </div>
+
+  <div class="section-header"><h2>Soups &amp; Salads</h2></div>
+  <div class="menu-items">
+    <div class="menu-row"><input class="dish" data-key="full-soup-1" placeholder="Tomato Basil Soup"><input class="note" data-key="full-soup-1-note" placeholder="with grilled cheese croutons"></div>
+    <div class="menu-row"><input class="dish" data-key="full-soup-2" placeholder="Caesar Salad"><input class="note" data-key="full-soup-2-note" placeholder="house dressing, parmesan"></div>
+    <div class="menu-row"><input class="dish" data-key="full-soup-3" placeholder="Chicken Noodle Soup"><input class="note" data-key="full-soup-3-note" placeholder="homemade broth"></div>
+    <div class="menu-row"><input class="dish" data-key="full-soup-4" placeholder="Garden Salad"><input class="note" data-key="full-soup-4-note" placeholder="whatever's fresh"></div>
+    <div class="menu-row"><input class="dish" data-key="full-soup-5" placeholder="Butternut Squash Soup"><input class="note" data-key="full-soup-5-note" placeholder="fall favorite"></div>
+  </div>
+
+  <div class="section-header"><h2>Mains</h2></div>
+  <div class="menu-items">
+    <div class="menu-row"><input class="dish" data-key="full-mains-1" placeholder="Roast Chicken"><input class="note" data-key="full-mains-1-note" placeholder="lemon &amp; herb, Sunday classic"></div>
+    <div class="menu-row"><input class="dish" data-key="full-mains-2" placeholder="Lasagna"><input class="note" data-key="full-mains-2-note" placeholder="three-cheese, feeds a crowd"></div>
+    <div class="menu-row"><input class="dish" data-key="full-mains-3" placeholder="Beef Stew"><input class="note" data-key="full-mains-3-note" placeholder="slow-cooked all afternoon"></div>
+    <div class="menu-row"><input class="dish" data-key="full-mains-4" placeholder="Grilled Salmon"><input class="note" data-key="full-mains-4-note" placeholder="lemon butter, quick &amp; bright"></div>
+    <div class="menu-row"><input class="dish" data-key="full-mains-5" placeholder="Vegetable Stir Fry"><input class="note" data-key="full-mains-5-note" placeholder="whatever's in the crisper"></div>
+  </div>
+</div>
+
+<div class="page menu-page" data-menu="full">
+  <div class="section-header"><h2>Sides</h2></div>
+  <div class="menu-items">
+    <div class="menu-row"><input class="dish" data-key="full-sides-1" placeholder="Roasted Potatoes"><input class="note" data-key="full-sides-1-note" placeholder="rosemary &amp; sea salt"></div>
+    <div class="menu-row"><input class="dish" data-key="full-sides-2" placeholder="Steamed Broccoli"><input class="note" data-key="full-sides-2-note" placeholder="lemon &amp; butter"></div>
+    <div class="menu-row"><input class="dish" data-key="full-sides-3" placeholder="Garlic Bread"><input class="note" data-key="full-sides-3-note" placeholder="crusty, warm, gone in minutes"></div>
+    <div class="menu-row"><input class="dish" data-key="full-sides-4" placeholder="Rice Pilaf"><input class="note" data-key="full-sides-4-note" placeholder="with toasted almonds"></div>
+    <div class="menu-row"><input class="dish" data-key="full-sides-5" placeholder="Glazed Carrots"><input class="note" data-key="full-sides-5-note" placeholder="brown sugar &amp; thyme"></div>
+  </div>
+
+  <div class="section-header"><h2>Desserts</h2></div>
+  <div class="menu-items">
+    <div class="menu-row"><input class="dish" data-key="full-desserts-1" placeholder="Apple Crisp"><input class="note" data-key="full-desserts-1-note" placeholder="oat topping, served warm"></div>
+    <div class="menu-row"><input class="dish" data-key="full-desserts-2" placeholder="Chocolate Cake"><input class="note" data-key="full-desserts-2-note" placeholder="the birthday standard"></div>
+    <div class="menu-row"><input class="dish" data-key="full-desserts-3" placeholder="Lemon Bars"><input class="note" data-key="full-desserts-3-note" placeholder="tart &amp; sweet, powdered sugar"></div>
+    <div class="menu-row"><input class="dish" data-key="full-desserts-4" placeholder="Ice Cream Sundaes"><input class="note" data-key="full-desserts-4-note" placeholder="build your own"></div>
+    <div class="menu-row"><input class="dish" data-key="full-desserts-5" placeholder="Berry Cobbler"><input class="note" data-key="full-desserts-5-note" placeholder="summer staple"></div>
+  </div>
+
+  <div class="section-header"><h2>Drinks</h2></div>
+  <div class="menu-items">
+    <div class="menu-row"><input class="dish" data-key="full-drinks-1" placeholder="Fresh Lemonade"><input class="note" data-key="full-drinks-1-note" placeholder="made this morning"></div>
+    <div class="menu-row"><input class="dish" data-key="full-drinks-2" placeholder="Iced Tea"><input class="note" data-key="full-drinks-2-note" placeholder="unsweetened or sweet"></div>
+    <div class="menu-row"><input class="dish" data-key="full-drinks-3" placeholder="Hot Cocoa"><input class="note" data-key="full-drinks-3-note" placeholder="topped with marshmallows"></div>
+    <div class="menu-row"><input class="dish" data-key="full-drinks-4" placeholder="Sparkling Water"><input class="note" data-key="full-drinks-4-note" placeholder="lime or lemon wedge"></div>
+    <div class="menu-row"><input class="dish" data-key="full-drinks-5" placeholder="Coffee"><input class="note" data-key="full-drinks-5-note" placeholder="always brewing"></div>
+  </div>
+</div>
+
+<!-- ============ THE SIMPLE BOARD ============ -->
+<div class="page menu-page" data-menu="simple">
+  <div class="section-header"><h2>Mains</h2></div>
+  <div class="menu-items">
+    <div class="menu-row"><input class="dish" data-key="simple-mains-1" placeholder="Taco Tuesday"><input class="note" data-key="simple-mains-1-note" placeholder="hard &amp; soft shell"></div>
+    <div class="menu-row"><input class="dish" data-key="simple-mains-2" placeholder="Spaghetti Night"><input class="note" data-key="simple-mains-2-note" placeholder="meat sauce &amp; parmesan"></div>
+    <div class="menu-row"><input class="dish" data-key="simple-mains-3" placeholder="Sheet Pan Chicken"><input class="note" data-key="simple-mains-3-note" placeholder="roasted with veggies, one pan"></div>
+    <div class="menu-row"><input class="dish" data-key="simple-mains-4" placeholder="Breakfast for Dinner"><input class="note" data-key="simple-mains-4-note" placeholder="pancakes, eggs, bacon"></div>
+    <div class="menu-row"><input class="dish" data-key="simple-mains-5" placeholder="Burger Night"><input class="note" data-key="simple-mains-5-note" placeholder="all the fixings"></div>
+    <div class="menu-row"><input class="dish" data-key="simple-mains-6" placeholder="Mac &amp; Cheese"><input class="note" data-key="simple-mains-6-note" placeholder="baked, crispy top"></div>
+    <div class="menu-row"><input class="dish" data-key="simple-mains-7" placeholder="Soup &amp; Grilled Cheese"><input class="note" data-key="simple-mains-7-note" placeholder="the ultimate comfort pair"></div>
+  </div>
+
+  <div class="section-header"><h2>Sides</h2></div>
+  <div class="menu-items">
+    <div class="menu-row"><input class="dish" data-key="simple-sides-1" placeholder="Roasted Veggies"><input class="note" data-key="simple-sides-1-note" placeholder="olive oil, salt, 400&deg;"></div>
+    <div class="menu-row"><input class="dish" data-key="simple-sides-2" placeholder="Simple Salad"><input class="note" data-key="simple-sides-2-note" placeholder="greens, vinaigrette, done"></div>
+    <div class="menu-row"><input class="dish" data-key="simple-sides-3" placeholder="Buttered Noodles"><input class="note" data-key="simple-sides-3-note" placeholder="the kid favorite"></div>
+    <div class="menu-row"><input class="dish" data-key="simple-sides-4" placeholder="Steamed Rice"><input class="note" data-key="simple-sides-4-note" placeholder="rice cooker does the work"></div>
+    <div class="menu-row"><input class="dish" data-key="simple-sides-5" placeholder="Garlic Bread"><input class="note" data-key="simple-sides-5-note" placeholder="frozen loaf, 10 minutes"></div>
+  </div>
+
+  <div class="section-header"><h2>Quick Bites</h2></div>
+  <div class="menu-items">
+    <div class="menu-row"><input class="dish" data-key="simple-quick-1" placeholder="Quesadillas"><input class="note" data-key="simple-quick-1-note" placeholder="cheese, beans, 5 minutes"></div>
+    <div class="menu-row"><input class="dish" data-key="simple-quick-2" placeholder="Egg Scramble"><input class="note" data-key="simple-quick-2-note" placeholder="whatever's in the fridge"></div>
+    <div class="menu-row"><input class="dish" data-key="simple-quick-3" placeholder="Smoothie Bowl"><input class="note" data-key="simple-quick-3-note" placeholder="fruit, yogurt, granola"></div>
+    <div class="menu-row"><input class="dish" data-key="simple-quick-4" placeholder="Leftover Remix"><input class="note" data-key="simple-quick-4-note" placeholder="yesterday's dinner, new form"></div>
+    <div class="menu-row"><input class="dish" data-key="simple-quick-5" placeholder="Tuna Melt"><input class="note" data-key="simple-quick-5-note" placeholder="open-faced, broiled quick"></div>
+  </div>
+</div>
+
+<!-- ============ THE GREATEST HITS ============ -->
+<div class="page menu-page" data-menu="hits">
+  <p class="small" style="color:var(--clay); text-align:center; margin-bottom:1rem; font-style:italic;">Rename these categories to whatever makes sense in your kitchen.</p>
+
+  <div class="section-header"><input class="dish" data-key="hits-cat-1" placeholder="Things Everyone Actually Eats" style="font-size:18pt;font-weight:500;font-family:'Crimson Pro',serif;border:none;outline:none;background:transparent;width:100%;color:var(--ink);"></div>
+  <div class="menu-items">
+    <div class="menu-row"><input class="dish" data-key="hits-1-1" placeholder="Spaghetti &amp; Meatballs"><input class="note" data-key="hits-1-1-note" placeholder="no complaints, ever"></div>
+    <div class="menu-row"><input class="dish" data-key="hits-1-2" placeholder="Taco Bar"><input class="note" data-key="hits-1-2-note" placeholder="everyone builds their own"></div>
+    <div class="menu-row"><input class="dish" data-key="hits-1-3" placeholder="Roast Chicken"><input class="note" data-key="hits-1-3-note" placeholder="Sunday dinner staple"></div>
+    <div class="menu-row"><input class="dish" data-key="hits-1-4" placeholder="Homemade Pizza"><input class="note" data-key="hits-1-4-note" placeholder="Friday night tradition"></div>
+    <div class="menu-row"><input class="dish" data-key="hits-1-5" placeholder="Breakfast for Dinner"><input class="note" data-key="hits-1-5-note" placeholder="always a win"></div>
+  </div>
+
+  <div class="section-header"><input class="dish" data-key="hits-cat-2" placeholder="The 20-Minute Rescue" style="font-size:18pt;font-weight:500;font-family:'Crimson Pro',serif;border:none;outline:none;background:transparent;width:100%;color:var(--ink);"></div>
+  <div class="menu-items">
+    <div class="menu-row"><input class="dish" data-key="hits-2-1" placeholder="Stir Fry"><input class="note" data-key="hits-2-1-note" placeholder="whatever's left + soy sauce"></div>
+    <div class="menu-row"><input class="dish" data-key="hits-2-2" placeholder="Quesadillas"><input class="note" data-key="hits-2-2-note" placeholder="cheese + tortilla = dinner"></div>
+    <div class="menu-row"><input class="dish" data-key="hits-2-3" placeholder="Egg Fried Rice"><input class="note" data-key="hits-2-3-note" placeholder="day-old rice, 10 minutes"></div>
+    <div class="menu-row"><input class="dish" data-key="hits-2-4" placeholder="Pasta Aglio e Olio"><input class="note" data-key="hits-2-4-note" placeholder="garlic, oil, chili flake"></div>
+    <div class="menu-row"><input class="dish" data-key="hits-2-5" placeholder="Loaded Baked Potatoes"><input class="note" data-key="hits-2-5-note" placeholder="microwave to start, oven to finish"></div>
+  </div>
+
+  <div class="section-header"><input class="dish" data-key="hits-cat-3" placeholder="When We Have People Over" style="font-size:18pt;font-weight:500;font-family:'Crimson Pro',serif;border:none;outline:none;background:transparent;width:100%;color:var(--ink);"></div>
+  <div class="menu-items">
+    <div class="menu-row"><input class="dish" data-key="hits-3-1" placeholder="Lasagna"><input class="note" data-key="hits-3-1-note" placeholder="make ahead, feeds eight"></div>
+    <div class="menu-row"><input class="dish" data-key="hits-3-2" placeholder="Chili Bar"><input class="note" data-key="hits-3-2-note" placeholder="toppings on the side"></div>
+    <div class="menu-row"><input class="dish" data-key="hits-3-3" placeholder="Grilled Something"><input class="note" data-key="hits-3-3-note" placeholder="burgers, dogs, or kebabs"></div>
+    <div class="menu-row"><input class="dish" data-key="hits-3-4" placeholder="Big Batch Cocktail"><input class="note" data-key="hits-3-4-note" placeholder="pitcher of margaritas"></div>
+    <div class="menu-row"><input class="dish" data-key="hits-3-5" placeholder="Board Night"><input class="note" data-key="hits-3-5-note" placeholder="cheese, meat, fruit, crackers"></div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="page closing">
+  <div class="inner">
+    <h2>A menu, not a chore list.</h2>
+    <p>The best kitchen tool is the one that makes dinner feel less like a decision and more like an invitation. Fill this out, post it up, and let the menu do the talking.</p>
+    <p style="margin-bottom:2rem;"><em>Works because it works.</em></p>
+    <p class="small" style="color:#b0a99e; margin-top:3rem;">Kitchen &amp; Kettle</p>
+    <p class="small" style="color:#b0a99e;">A quieter way to run a kitchen.</p>
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'keeping-kitchen-menu';
+const STYLE_KEY = 'keeping-kitchen-menu-style';
+let currentStyle = null;
+
+function save() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => { data[el.dataset.key] = el.value; });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  const s = document.getElementById('saveStatus');
+  s.classList.add('visible');
+  clearTimeout(s._t); s._t = setTimeout(() => s.classList.remove('visible'), 1500);
+}
+
+function load() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.dataset.key in data) el.value = data[el.dataset.key];
+  });
+}
+
+function clearAll() {
+  if (!confirm('Clear all menu data? This removes everything you\'ve typed.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('[data-key]').forEach(el => el.value = '');
+}
+
+function exportData() {
+  const data = localStorage.getItem(STORAGE_KEY);
+  if (!data) { alert('No data to save yet. Fill in some menu items first.'); return; }
+  const blob = new Blob([data], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'home-kitchen-menu-backup.json'; a.click();
+  URL.revokeObjectURL(url);
+  const s = document.getElementById('saveStatus');
+  s.textContent = 'Copy saved'; s.classList.add('visible');
+  setTimeout(() => { s.textContent = 'Saved'; s.classList.remove('visible'); }, 2000);
+}
+
+function importData() {
+  const input = document.createElement('input');
+  input.type = 'file'; input.accept = '.json';
+  input.onchange = function() {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const data = JSON.parse(e.target.result);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        load();
+        const s = document.getElementById('saveStatus');
+        s.textContent = 'Copy loaded'; s.classList.add('visible');
+        setTimeout(() => { s.textContent = 'Saved'; s.classList.remove('visible'); }, 2000);
+      } catch(err) {
+        alert('Couldn\'t read that file. Make sure it\'s a Home Kitchen Menu backup.');
+      }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
+
+function selectStyle(style) {
+  currentStyle = style;
+  localStorage.setItem(STYLE_KEY, style);
+  document.querySelectorAll('.menu-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.menu-page[data-menu="' + style + '"]').forEach(p => p.classList.add('active'));
+  document.querySelectorAll('.style-card').forEach(c => c.classList.remove('selected'));
+  document.querySelector('.style-card[data-style="' + style + '"]').classList.add('selected');
+}
+
+function restoreStyle() {
+  const saved = localStorage.getItem(STYLE_KEY);
+  if (saved) {
+    selectStyle(saved);
+  }
+}
+
+document.addEventListener('input', save);
+load();
+restoreStyle();
+</script>
+
+</body>
+</html>
