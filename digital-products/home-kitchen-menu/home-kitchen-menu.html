@@ -107,6 +107,11 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 }
 .menu-row .note::placeholder { color: #c4b9a8; opacity: 1; }
 
+/* Side-by-side columns */
+.split-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.split-col .col .section-header { margin-top: 0; }
+.split-col .col .section-header:first-child { margin-top: 0; }
+
 /* Closing */
 .closing { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--paper); }
 .closing .inner { max-width: 75%; }
@@ -235,6 +240,29 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 
 <!-- ============ THE SIMPLE BOARD ============ -->
 <div class="page menu-page" data-menu="simple">
+  <div class="split-col">
+    <div class="col">
+      <div class="section-header"><h2>Sides</h2></div>
+      <div class="menu-items">
+        <div class="menu-row"><input class="dish" data-key="simple-sides-1" placeholder="Roasted Veggies"><input class="note" data-key="simple-sides-1-note" placeholder="olive oil, salt, 400&deg;"></div>
+        <div class="menu-row"><input class="dish" data-key="simple-sides-2" placeholder="Simple Salad"><input class="note" data-key="simple-sides-2-note" placeholder="greens, vinaigrette, done"></div>
+        <div class="menu-row"><input class="dish" data-key="simple-sides-3" placeholder="Buttered Noodles"><input class="note" data-key="simple-sides-3-note" placeholder="the kid favorite"></div>
+        <div class="menu-row"><input class="dish" data-key="simple-sides-4" placeholder="Steamed Rice"><input class="note" data-key="simple-sides-4-note" placeholder="rice cooker does the work"></div>
+        <div class="menu-row"><input class="dish" data-key="simple-sides-5" placeholder="Garlic Bread"><input class="note" data-key="simple-sides-5-note" placeholder="frozen loaf, 10 minutes"></div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="section-header"><h2>Quick Bites</h2></div>
+      <div class="menu-items">
+        <div class="menu-row"><input class="dish" data-key="simple-quick-1" placeholder="Quesadillas"><input class="note" data-key="simple-quick-1-note" placeholder="cheese, beans, 5 minutes"></div>
+        <div class="menu-row"><input class="dish" data-key="simple-quick-2" placeholder="Egg Scramble"><input class="note" data-key="simple-quick-2-note" placeholder="whatever's in the fridge"></div>
+        <div class="menu-row"><input class="dish" data-key="simple-quick-3" placeholder="Smoothie Bowl"><input class="note" data-key="simple-quick-3-note" placeholder="fruit, yogurt, granola"></div>
+        <div class="menu-row"><input class="dish" data-key="simple-quick-4" placeholder="Leftover Remix"><input class="note" data-key="simple-quick-4-note" placeholder="yesterday's dinner, new form"></div>
+        <div class="menu-row"><input class="dish" data-key="simple-quick-5" placeholder="Tuna Melt"><input class="note" data-key="simple-quick-5-note" placeholder="open-faced, broiled quick"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="section-header"><h2>Mains</h2></div>
   <div class="menu-items">
     <div class="menu-row"><input class="dish" data-key="simple-mains-1" placeholder="Taco Tuesday"><input class="note" data-key="simple-mains-1-note" placeholder="hard &amp; soft shell"></div>
@@ -244,24 +272,6 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
     <div class="menu-row"><input class="dish" data-key="simple-mains-5" placeholder="Burger Night"><input class="note" data-key="simple-mains-5-note" placeholder="all the fixings"></div>
     <div class="menu-row"><input class="dish" data-key="simple-mains-6" placeholder="Mac &amp; Cheese"><input class="note" data-key="simple-mains-6-note" placeholder="baked, crispy top"></div>
     <div class="menu-row"><input class="dish" data-key="simple-mains-7" placeholder="Soup &amp; Grilled Cheese"><input class="note" data-key="simple-mains-7-note" placeholder="the ultimate comfort pair"></div>
-  </div>
-
-  <div class="section-header"><h2>Sides</h2></div>
-  <div class="menu-items">
-    <div class="menu-row"><input class="dish" data-key="simple-sides-1" placeholder="Roasted Veggies"><input class="note" data-key="simple-sides-1-note" placeholder="olive oil, salt, 400&deg;"></div>
-    <div class="menu-row"><input class="dish" data-key="simple-sides-2" placeholder="Simple Salad"><input class="note" data-key="simple-sides-2-note" placeholder="greens, vinaigrette, done"></div>
-    <div class="menu-row"><input class="dish" data-key="simple-sides-3" placeholder="Buttered Noodles"><input class="note" data-key="simple-sides-3-note" placeholder="the kid favorite"></div>
-    <div class="menu-row"><input class="dish" data-key="simple-sides-4" placeholder="Steamed Rice"><input class="note" data-key="simple-sides-4-note" placeholder="rice cooker does the work"></div>
-    <div class="menu-row"><input class="dish" data-key="simple-sides-5" placeholder="Garlic Bread"><input class="note" data-key="simple-sides-5-note" placeholder="frozen loaf, 10 minutes"></div>
-  </div>
-
-  <div class="section-header"><h2>Quick Bites</h2></div>
-  <div class="menu-items">
-    <div class="menu-row"><input class="dish" data-key="simple-quick-1" placeholder="Quesadillas"><input class="note" data-key="simple-quick-1-note" placeholder="cheese, beans, 5 minutes"></div>
-    <div class="menu-row"><input class="dish" data-key="simple-quick-2" placeholder="Egg Scramble"><input class="note" data-key="simple-quick-2-note" placeholder="whatever's in the fridge"></div>
-    <div class="menu-row"><input class="dish" data-key="simple-quick-3" placeholder="Smoothie Bowl"><input class="note" data-key="simple-quick-3-note" placeholder="fruit, yogurt, granola"></div>
-    <div class="menu-row"><input class="dish" data-key="simple-quick-4" placeholder="Leftover Remix"><input class="note" data-key="simple-quick-4-note" placeholder="yesterday's dinner, new form"></div>
-    <div class="menu-row"><input class="dish" data-key="simple-quick-5" placeholder="Tuna Melt"><input class="note" data-key="simple-quick-5-note" placeholder="open-faced, broiled quick"></div>
   </div>
 </div>
 
