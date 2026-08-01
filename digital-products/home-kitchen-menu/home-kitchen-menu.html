@@ -78,9 +78,11 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 .style-card {
   background: #fff; border: 2px solid var(--line); border-radius: 8px;
   padding: 1.5rem 1.2rem; cursor: pointer; text-align: center;
+  font: inherit; color: inherit;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .style-card:hover { border-color: var(--clay); box-shadow: 0 4px 12px rgba(196,168,130,0.15); }
+.style-card:focus-visible { outline: 3px solid var(--sage); outline-offset: 3px; }
 .style-card.selected { border-color: var(--sage); box-shadow: 0 0 0 3px rgba(125,139,111,0.15); }
 .style-card .icon { font-size: 32pt; margin-bottom: 0.5rem; }
 .style-card h3 { margin-bottom: 0.4rem; font-size: 13pt; }
@@ -130,6 +132,23 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 /* Hidden pages */
 .menu-page { display: none; }
 .menu-page.active { display: block; }
+
+@media screen and (max-width: 720px) {
+  body { padding: 0.5rem; }
+  .page { width: 100%; min-height: auto; padding: 2.5rem 1.25rem; }
+  .toolbar { position: static; flex-wrap: wrap; gap: 0.5rem; }
+  .toolbar .actions { width: 100%; flex-wrap: wrap; }
+  .toolbar .save-status { margin-left: auto; }
+  .style-cards, .split-col { grid-template-columns: 1fr; }
+  .menu-row { gap: 0.35rem; }
+  .menu-row .note { width: 42%; }
+  .cover h1 { font-size: 30pt; }
+  .cover .desc, .closing .inner { max-width: 100%; }
+}
+
+@media print {
+  body.has-style .picker { display: none; }
+}
 </style>
 </head>
 <body>
@@ -161,21 +180,21 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
   <h2>Choose Your Menu Style</h2>
   <p class="sub">Pick one — you can switch anytime. Each saves separately.</p>
   <div class="style-cards">
-    <div class="style-card" data-style="full" onclick="selectStyle('full')">
+    <button class="style-card" type="button" data-style="full" onclick="selectStyle('full')">
       <div class="icon">🍽️</div>
       <h3>The Full Spread</h3>
       <p>Apps, soups, mains, sides, desserts, drinks. The whole restaurant experience — for when cooking is the main event.</p>
-    </div>
-    <div class="style-card" data-style="simple" onclick="selectStyle('simple')">
+    </button>
+    <button class="style-card" type="button" data-style="simple" onclick="selectStyle('simple')">
       <div class="icon">🍳</div>
       <h3>The Simple Board</h3>
       <p>Just mains, sides, and quick bites. No courses, no ceremony. Built for weeknight reality.</p>
-    </div>
-    <div class="style-card" data-style="hits" onclick="selectStyle('hits')">
+    </button>
+    <button class="style-card" type="button" data-style="hits" onclick="selectStyle('hits')">
       <div class="icon">⭐</div>
       <h3>The Greatest Hits</h3>
       <p>You name your categories. "Things Everyone Actually Eats." "The 20-Minute Rescue." Your kitchen, your rules.</p>
-    </div>
+    </button>
   </div>
 </div>
 
@@ -344,7 +363,14 @@ function save() {
 function load() {
   const raw = localStorage.getItem(STORAGE_KEY);
   if (!raw) return;
-  const data = JSON.parse(raw);
+  let data;
+  try {
+    data = JSON.parse(raw);
+  } catch (err) {
+    localStorage.removeItem(STORAGE_KEY);
+    return;
+  }
+  if (!data || typeof data !== 'object' || Array.isArray(data)) return;
   document.querySelectorAll('[data-key]').forEach(el => {
     if (el.dataset.key in data) el.value = data[el.dataset.key];
   });
@@ -394,8 +420,10 @@ function importData() {
 }
 
 function selectStyle(style) {
+  if (!['full', 'simple', 'hits'].includes(style)) return;
   currentStyle = style;
   localStorage.setItem(STYLE_KEY, style);
+  document.body.classList.add('has-style');
   document.querySelectorAll('.menu-page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.menu-page[data-menu="' + style + '"]').forEach(p => p.classList.add('active'));
   document.querySelectorAll('.style-card').forEach(c => c.classList.remove('selected'));
@@ -404,7 +432,7 @@ function selectStyle(style) {
 
 function restoreStyle() {
   const saved = localStorage.getItem(STYLE_KEY);
-  if (saved) {
+  if (['full', 'simple', 'hits'].includes(saved)) {
     selectStyle(saved);
   }
 }
