@@ -105,8 +105,13 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 .section-header { display: flex; align-items: center; justify-content: center; gap: 0.7rem; margin-top: 1.55rem; margin-bottom: 0.55rem; padding-bottom: 0; border-bottom: none; }
 .section-header::before, .section-header::after { content: ''; width: 0.75in; flex: 0 0 0.75in; border-top: 1px solid rgba(160,133,94,0.72); }
 .section-header h2 { margin-bottom: 0; display: inline; color: var(--ink); text-transform: uppercase; letter-spacing: 0.12em; font-size: 14pt; }
-.section-header > .dish { flex: 0 1 auto; width: auto !important; min-width: 0; text-align: center; }
+.section-header > .dish { flex: 0 1 auto; width: auto !important; min-width: 0; text-align: center; color: var(--clay) !important; }
 .section-header .dot-leader { color: var(--clay); float: right; font-family: 'Work Sans', sans-serif; font-size: 10pt; opacity: 0.4; }
+
+.kitchen-name-wrap { margin: 0 auto 0.5rem; text-align: center; }
+.kitchen-name { display: inline-block; width: 75%; border: none; border-bottom: 1px solid rgba(160,133,94,0.55); outline: none; background: transparent; color: var(--clay); text-align: center; font-family: 'Crimson Pro', serif; font-size: 24pt; font-style: italic; font-weight: 500; letter-spacing: 0.02em; padding: 0.1rem 0.25rem 0.35rem; }
+.kitchen-name::placeholder { color: var(--clay); opacity: 0.9; }
+.kitchen-name:focus { border-bottom-color: var(--sage); }
 
 .menu-items { margin-left: 0; padding: 0.05rem 0.5in 0.2rem; background: transparent; border-left: none; border-radius: 0; }
 .menu-row { display: block; padding: 0.28rem 0; border-bottom: none; }
@@ -114,13 +119,13 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 .menu-row:focus-within { background: rgba(196,168,130,0.1); }
 .menu-row .dish {
   display: block; width: 100%; text-align: center; font-family: 'Crimson Pro', serif; font-size: 15pt; font-weight: 500;
-  border: none; outline: none; background: transparent; color: var(--ink);
+  border: none; outline: none; background: transparent; color: var(--clay);
   padding: 0.1rem 0;
 }
 .menu-row .dish::placeholder { color: var(--clay); opacity: 1; }
 .menu-row .note {
   display: block; width: 100%; text-align: center; font-family: 'Crimson Pro', serif; font-size: 11pt; font-style: italic;
-  border: none; outline: none; background: transparent; color: var(--muted);
+  border: none; outline: none; background: transparent; color: var(--clay);
   padding: 0.1rem 0;
 }
 .menu-row .note::placeholder { color: #c4b9a8; opacity: 1; }
@@ -161,6 +166,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
   .style-cards, .split-col { grid-template-columns: 1fr; }
   .menu-row { gap: 0.35rem; }
   .menu-row .note { width: 100%; }
+  .kitchen-name { width: 100%; font-size: 21pt; }
   .cover h1 { font-size: 30pt; }
   .cover .desc, .closing .inner { max-width: 100%; }
 }
@@ -219,6 +225,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 
 <!-- ============ THE FULL SPREAD ============ -->
 <div class="page menu-page" data-menu="full">
+  <div class="kitchen-name-wrap"><input class="kitchen-name" data-key="kitchen-name" placeholder="The [Family Name] Kitchen" aria-label="Name of your kitchen"></div>
   <div class="section-header"><h2>Appetizers</h2></div>
   <div class="menu-items">
     <div class="menu-row"><input class="dish" data-key="full-apps-1" placeholder="Bruschetta"><input class="note" data-key="full-apps-1-note" placeholder="tomato, basil, balsamic"></div>
@@ -248,6 +255,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 </div>
 
 <div class="page menu-page" data-menu="full">
+  <div class="kitchen-name-wrap"><input class="kitchen-name" data-key="kitchen-name" placeholder="The [Family Name] Kitchen" aria-label="Name of your kitchen"></div>
   <div class="section-header"><h2>Sides</h2></div>
   <div class="menu-items">
     <div class="menu-row"><input class="dish" data-key="full-sides-1" placeholder="Roasted Potatoes"><input class="note" data-key="full-sides-1-note" placeholder="rosemary &amp; sea salt"></div>
@@ -278,6 +286,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 
 <!-- ============ THE SIMPLE BOARD ============ -->
 <div class="page menu-page" data-menu="simple">
+  <div class="kitchen-name-wrap"><input class="kitchen-name" data-key="kitchen-name" placeholder="The [Family Name] Kitchen" aria-label="Name of your kitchen"></div>
   <div class="split-col">
     <div class="col">
       <div class="section-header"><h2>Sides</h2></div>
@@ -324,6 +333,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 
 <!-- ============ THE GREATEST HITS ============ -->
 <div class="page menu-page" data-menu="hits">
+  <div class="kitchen-name-wrap"><input class="kitchen-name" data-key="kitchen-name" placeholder="The [Family Name] Kitchen" aria-label="Name of your kitchen"></div>
   <input class="small hits-intro" data-key="hits-intro" value="Rename these categories to whatever makes sense in your kitchen." aria-label="Introductory note for greatest hits menu">
 
   <div class="section-header"><input class="dish" data-key="hits-cat-1" placeholder="Things Everyone Actually Eats" style="font-size:18pt;font-weight:500;font-family:'Crimson Pro',serif;border:none;outline:none;background:transparent;width:100%;color:var(--ink);"></div>
@@ -438,6 +448,12 @@ function importData() {
   input.click();
 }
 
+function syncKitchenNames(value) {
+  document.querySelectorAll('[data-key="kitchen-name"]').forEach(el => {
+    if (el.value !== value) el.value = value;
+  });
+}
+
 function selectStyle(style) {
   if (!['full', 'simple', 'hits'].includes(style)) return;
   currentStyle = style;
@@ -456,7 +472,10 @@ function restoreStyle() {
   }
 }
 
-document.addEventListener('input', save);
+document.addEventListener('input', event => {
+  if (event.target.dataset.key === 'kitchen-name') syncKitchenNames(event.target.value);
+  save();
+});
 load();
 restoreStyle();
 </script>
