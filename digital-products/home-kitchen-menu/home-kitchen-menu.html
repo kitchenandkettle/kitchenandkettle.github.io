@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --ink: #2C2416; --clay: #C4A882; --paper: #F5F0E8; --sage: #7D8B6F;
@@ -14,6 +14,8 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
+@page { size: Letter; margin: 0; }
 
 body {
   font-family: 'Crimson Pro', Georgia, serif; font-size: 12pt;
@@ -103,13 +105,14 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 
 /* Menu sections */
 .section-header { display: flex; align-items: center; justify-content: center; gap: 0.7rem; margin-top: 1.55rem; margin-bottom: 0.55rem; padding-bottom: 0; border-bottom: none; }
-.section-header::before, .section-header::after { content: ''; width: 0.75in; flex: 0 0 0.75in; border-top: 1px solid rgba(160,133,94,0.72); }
+.section-rule { display: block; width: 0.75in; height: 0; flex: 0 0 0.75in; margin: 0; border: 0; border-top: 1.5px solid rgba(160,133,94,0.85); }
 .section-header h2 { margin-bottom: 0; display: inline; color: var(--ink); text-transform: uppercase; letter-spacing: 0.12em; font-size: 14pt; }
-.section-header > .dish { flex: 0 1 auto; width: auto !important; min-width: 0; text-align: center; color: var(--clay) !important; }
+.section-header > .dish { flex: 0 1 auto; width: auto !important; min-width: 0; text-align: center; color: var(--ink) !important; }
+.section-header > .dish:placeholder-shown { color: var(--clay) !important; }
 .section-header .dot-leader { color: var(--clay); float: right; font-family: 'Work Sans', sans-serif; font-size: 10pt; opacity: 0.4; }
 
 .kitchen-name-wrap { margin: 0 auto 0.5rem; text-align: center; }
-.kitchen-name { display: inline-block; width: 75%; border: none; border-bottom: 1px solid rgba(160,133,94,0.55); outline: none; background: transparent; color: var(--clay); text-align: center; font-family: 'Crimson Pro', serif; font-size: 24pt; font-style: italic; font-weight: 500; letter-spacing: 0.02em; padding: 0.1rem 0.25rem 0.35rem; }
+.kitchen-name { display: inline-block; width: 75%; border: none; border-bottom: 1px solid rgba(160,133,94,0.55); outline: none; background: transparent; color: var(--clay); text-align: center; font-family: 'Cormorant Garamond', 'Crimson Pro', serif; font-size: 28pt; font-style: italic; font-weight: 600; letter-spacing: 0.04em; padding: 0.1rem 0.25rem 0.35rem; }
 .kitchen-name::placeholder { color: var(--clay); opacity: 0.9; }
 .kitchen-name:focus { border-bottom-color: var(--sage); }
 
@@ -151,6 +154,27 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
   .toolbar { display: none; }
   .menu-row .dish::placeholder, .menu-row .note::placeholder { color: transparent !important; }
   .cover, .picker, .closing { background: #fff; }
+  .menu-page { background: #fffdf8 !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .menu-page::before { border-color: #A0855E !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .section-rule { display: block !important; width: 0.75in; height: 0 !important; flex: 0 0 0.75in; border: 0 !important; border-top: 1pt solid #A0855E !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .section-header h2, .section-header > .dish {
+    position: relative; z-index: 1; background: #fffdf8 !important; padding-left: 0.25rem; padding-right: 0.25rem;
+  }
+  .menu-page[data-menu="simple"] { padding: 0.55in 0.7in !important; }
+  .menu-page[data-menu="simple"] .kitchen-name { font-size: 22pt !important; padding-bottom: 0.15rem !important; }
+  .menu-page[data-menu="simple"] .section-header { margin-top: 0.55rem !important; margin-bottom: 0.25rem !important; }
+  .menu-page[data-menu="simple"] .menu-row { padding: 0.12rem 0 !important; }
+  .menu-page[data-menu="simple"] .menu-row .dish { font-size: 13pt !important; line-height: 1.15 !important; padding: 0.02rem 0 !important; }
+  .menu-page[data-menu="simple"] .menu-row .note { font-size: 12pt !important; line-height: 1.15 !important; padding: 0.02rem 0 !important; }
+  .menu-page[data-menu="hits"] { padding: 0.45in 0.65in !important; }
+  .menu-page[data-menu="hits"] .kitchen-name { font-size: 21pt !important; padding-bottom: 0.12rem !important; }
+  .menu-page[data-menu="hits"] .hits-intro { margin-bottom: 0.25rem !important; }
+  .menu-page[data-menu="hits"] .section-header { margin-top: 0.4rem !important; margin-bottom: 0.15rem !important; }
+  .menu-page[data-menu="hits"] .section-rule { width: 0.35in; flex-basis: 0.35in; }
+  .menu-page[data-menu="hits"] .section-header > .dish { flex: 0 0 3in; width: 3in !important; }
+  .menu-page[data-menu="hits"] .menu-row { padding: 0.08rem 0 !important; }
+  .menu-page[data-menu="hits"] .menu-row .dish { font-size: 12pt !important; line-height: 1.1 !important; padding: 0.01rem 0 !important; }
+  .menu-page[data-menu="hits"] .menu-row .note { font-size: 12pt !important; line-height: 1.1 !important; padding: 0.01rem 0 !important; }
 }
 
 /* Hidden pages */
@@ -226,7 +250,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 <!-- ============ THE FULL SPREAD ============ -->
 <div class="page menu-page" data-menu="full">
   <div class="kitchen-name-wrap"><input class="kitchen-name" data-key="kitchen-name" placeholder="The [Family Name] Kitchen" aria-label="Name of your kitchen"></div>
-  <div class="section-header"><h2>Appetizers</h2></div>
+  <div class="section-header"><hr class="section-rule" aria-hidden="true"><h2>Appetizers</h2><hr class="section-rule" aria-hidden="true"></div>
   <div class="menu-items">
     <div class="menu-row"><input class="dish" data-key="full-apps-1" placeholder="Bruschetta"><input class="note" data-key="full-apps-1-note" placeholder="tomato, basil, balsamic"></div>
     <div class="menu-row"><input class="dish" data-key="full-apps-2" placeholder="Deviled Eggs"><input class="note" data-key="full-apps-2-note" placeholder="paprika &amp; chives"></div>
@@ -235,7 +259,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
     <div class="menu-row"><input class="dish" data-key="full-apps-5" placeholder="Spinach Artichoke Dip"><input class="note" data-key="full-apps-5-note" placeholder="served warm with bread"></div>
   </div>
 
-  <div class="section-header"><h2>Soups &amp; Salads</h2></div>
+  <div class="section-header"><hr class="section-rule" aria-hidden="true"><h2>Soups &amp; Salads</h2><hr class="section-rule" aria-hidden="true"></div>
   <div class="menu-items">
     <div class="menu-row"><input class="dish" data-key="full-soup-1" placeholder="Tomato Basil Soup"><input class="note" data-key="full-soup-1-note" placeholder="with grilled cheese croutons"></div>
     <div class="menu-row"><input class="dish" data-key="full-soup-2" placeholder="Caesar Salad"><input class="note" data-key="full-soup-2-note" placeholder="house dressing, parmesan"></div>
@@ -244,7 +268,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
     <div class="menu-row"><input class="dish" data-key="full-soup-5" placeholder="Butternut Squash Soup"><input class="note" data-key="full-soup-5-note" placeholder="fall favorite"></div>
   </div>
 
-  <div class="section-header"><h2>Mains</h2></div>
+  <div class="section-header"><hr class="section-rule" aria-hidden="true"><h2>Mains</h2><hr class="section-rule" aria-hidden="true"></div>
   <div class="menu-items">
     <div class="menu-row"><input class="dish" data-key="full-mains-1" placeholder="Roast Chicken"><input class="note" data-key="full-mains-1-note" placeholder="lemon &amp; herb, Sunday classic"></div>
     <div class="menu-row"><input class="dish" data-key="full-mains-2" placeholder="Lasagna"><input class="note" data-key="full-mains-2-note" placeholder="three-cheese, feeds a crowd"></div>
@@ -256,7 +280,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 
 <div class="page menu-page" data-menu="full">
   <div class="kitchen-name-wrap"><input class="kitchen-name" data-key="kitchen-name" placeholder="The [Family Name] Kitchen" aria-label="Name of your kitchen"></div>
-  <div class="section-header"><h2>Sides</h2></div>
+  <div class="section-header"><hr class="section-rule" aria-hidden="true"><h2>Sides</h2><hr class="section-rule" aria-hidden="true"></div>
   <div class="menu-items">
     <div class="menu-row"><input class="dish" data-key="full-sides-1" placeholder="Roasted Potatoes"><input class="note" data-key="full-sides-1-note" placeholder="rosemary &amp; sea salt"></div>
     <div class="menu-row"><input class="dish" data-key="full-sides-2" placeholder="Steamed Broccoli"><input class="note" data-key="full-sides-2-note" placeholder="lemon &amp; butter"></div>
@@ -265,7 +289,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
     <div class="menu-row"><input class="dish" data-key="full-sides-5" placeholder="Glazed Carrots"><input class="note" data-key="full-sides-5-note" placeholder="brown sugar &amp; thyme"></div>
   </div>
 
-  <div class="section-header"><h2>Desserts</h2></div>
+  <div class="section-header"><hr class="section-rule" aria-hidden="true"><h2>Desserts</h2><hr class="section-rule" aria-hidden="true"></div>
   <div class="menu-items">
     <div class="menu-row"><input class="dish" data-key="full-desserts-1" placeholder="Apple Crisp"><input class="note" data-key="full-desserts-1-note" placeholder="oat topping, served warm"></div>
     <div class="menu-row"><input class="dish" data-key="full-desserts-2" placeholder="Chocolate Cake"><input class="note" data-key="full-desserts-2-note" placeholder="the birthday standard"></div>
@@ -274,7 +298,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
     <div class="menu-row"><input class="dish" data-key="full-desserts-5" placeholder="Berry Cobbler"><input class="note" data-key="full-desserts-5-note" placeholder="summer staple"></div>
   </div>
 
-  <div class="section-header"><h2>Drinks</h2></div>
+  <div class="section-header"><hr class="section-rule" aria-hidden="true"><h2>Drinks</h2><hr class="section-rule" aria-hidden="true"></div>
   <div class="menu-items">
     <div class="menu-row"><input class="dish" data-key="full-drinks-1" placeholder="Fresh Lemonade"><input class="note" data-key="full-drinks-1-note" placeholder="made this morning"></div>
     <div class="menu-row"><input class="dish" data-key="full-drinks-2" placeholder="Iced Tea"><input class="note" data-key="full-drinks-2-note" placeholder="unsweetened or sweet"></div>
@@ -289,7 +313,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
   <div class="kitchen-name-wrap"><input class="kitchen-name" data-key="kitchen-name" placeholder="The [Family Name] Kitchen" aria-label="Name of your kitchen"></div>
   <div class="split-col">
     <div class="col">
-      <div class="section-header"><h2>Sides</h2></div>
+      <div class="section-header"><hr class="section-rule" aria-hidden="true"><h2>Sides</h2><hr class="section-rule" aria-hidden="true"></div>
       <div class="menu-items">
         <div class="menu-row"><input class="dish" data-key="simple-sides-1" placeholder="Roasted Veggies"><input class="note" data-key="simple-sides-1-note" placeholder="olive oil, salt, 400&deg;"></div>
         <div class="menu-row"><input class="dish" data-key="simple-sides-2" placeholder="Simple Salad"><input class="note" data-key="simple-sides-2-note" placeholder="greens, vinaigrette, done"></div>
@@ -299,7 +323,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
       </div>
     </div>
     <div class="col">
-      <div class="section-header"><h2>Quick Bites</h2></div>
+      <div class="section-header"><hr class="section-rule" aria-hidden="true"><h2>Quick Bites</h2><hr class="section-rule" aria-hidden="true"></div>
       <div class="menu-items">
         <div class="menu-row"><input class="dish" data-key="simple-quick-1" placeholder="Quesadillas"><input class="note" data-key="simple-quick-1-note" placeholder="cheese, beans, 5 minutes"></div>
         <div class="menu-row"><input class="dish" data-key="simple-quick-2" placeholder="Egg Scramble"><input class="note" data-key="simple-quick-2-note" placeholder="whatever's in the fridge"></div>
@@ -310,7 +334,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
     </div>
   </div>
 
-  <div class="section-header"><h2>Mains</h2></div>
+  <div class="section-header"><hr class="section-rule" aria-hidden="true"><h2>Mains</h2><hr class="section-rule" aria-hidden="true"></div>
   <div class="menu-items">
     <div class="menu-row"><input class="dish" data-key="simple-mains-1" placeholder="Taco Tuesday"><input class="note" data-key="simple-mains-1-note" placeholder="hard &amp; soft shell"></div>
     <div class="menu-row"><input class="dish" data-key="simple-mains-2" placeholder="Spaghetti Night"><input class="note" data-key="simple-mains-2-note" placeholder="meat sauce &amp; parmesan"></div>
@@ -321,7 +345,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
     <div class="menu-row"><input class="dish" data-key="simple-mains-7" placeholder="Soup &amp; Grilled Cheese"><input class="note" data-key="simple-mains-7-note" placeholder="the ultimate comfort pair"></div>
   </div>
 
-  <div class="section-header"><h2>Desserts</h2></div>
+  <div class="section-header"><hr class="section-rule" aria-hidden="true"><h2>Desserts</h2><hr class="section-rule" aria-hidden="true"></div>
   <div class="menu-items">
     <div class="menu-row"><input class="dish" data-key="simple-desserts-1" placeholder="Chocolate Chip Cookies"><input class="note" data-key="simple-desserts-1-note" placeholder="still warm from the oven"></div>
     <div class="menu-row"><input class="dish" data-key="simple-desserts-2" placeholder="Apple Crisp"><input class="note" data-key="simple-desserts-2-note" placeholder="oat topping, scoop of ice cream"></div>
@@ -336,7 +360,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
   <div class="kitchen-name-wrap"><input class="kitchen-name" data-key="kitchen-name" placeholder="The [Family Name] Kitchen" aria-label="Name of your kitchen"></div>
   <input class="small hits-intro" data-key="hits-intro" value="Rename these categories to whatever makes sense in your kitchen." aria-label="Introductory note for greatest hits menu">
 
-  <div class="section-header"><input class="dish" data-key="hits-cat-1" placeholder="Things Everyone Actually Eats" style="font-size:18pt;font-weight:500;font-family:'Crimson Pro',serif;border:none;outline:none;background:transparent;width:100%;color:var(--ink);"></div>
+  <div class="section-header"><hr class="section-rule" aria-hidden="true"><input class="dish" data-key="hits-cat-1" placeholder="Things Everyone Actually Eats" style="font-size:18pt;font-weight:500;font-family:'Crimson Pro',serif;border:none;outline:none;background:transparent;width:100%;color:var(--ink);"><hr class="section-rule" aria-hidden="true"></div>
   <div class="menu-items">
     <div class="menu-row"><input class="dish" data-key="hits-1-1" placeholder="Spaghetti &amp; Meatballs"><input class="note" data-key="hits-1-1-note" placeholder="no complaints, ever"></div>
     <div class="menu-row"><input class="dish" data-key="hits-1-2" placeholder="Taco Bar"><input class="note" data-key="hits-1-2-note" placeholder="everyone builds their own"></div>
@@ -345,7 +369,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
     <div class="menu-row"><input class="dish" data-key="hits-1-5" placeholder="Breakfast for Dinner"><input class="note" data-key="hits-1-5-note" placeholder="always a win"></div>
   </div>
 
-  <div class="section-header"><input class="dish" data-key="hits-cat-2" placeholder="The 20-Minute Rescue" style="font-size:18pt;font-weight:500;font-family:'Crimson Pro',serif;border:none;outline:none;background:transparent;width:100%;color:var(--ink);"></div>
+  <div class="section-header"><hr class="section-rule" aria-hidden="true"><input class="dish" data-key="hits-cat-2" placeholder="The 20-Minute Rescue" style="font-size:18pt;font-weight:500;font-family:'Crimson Pro',serif;border:none;outline:none;background:transparent;width:100%;color:var(--ink);"><hr class="section-rule" aria-hidden="true"></div>
   <div class="menu-items">
     <div class="menu-row"><input class="dish" data-key="hits-2-1" placeholder="Stir Fry"><input class="note" data-key="hits-2-1-note" placeholder="whatever's left + soy sauce"></div>
     <div class="menu-row"><input class="dish" data-key="hits-2-2" placeholder="Quesadillas"><input class="note" data-key="hits-2-2-note" placeholder="cheese + tortilla = dinner"></div>
@@ -354,7 +378,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
     <div class="menu-row"><input class="dish" data-key="hits-2-5" placeholder="Loaded Baked Potatoes"><input class="note" data-key="hits-2-5-note" placeholder="microwave to start, oven to finish"></div>
   </div>
 
-  <div class="section-header"><input class="dish" data-key="hits-cat-3" placeholder="When We Have People Over" style="font-size:18pt;font-weight:500;font-family:'Crimson Pro',serif;border:none;outline:none;background:transparent;width:100%;color:var(--ink);"></div>
+  <div class="section-header"><hr class="section-rule" aria-hidden="true"><input class="dish" data-key="hits-cat-3" placeholder="When We Have People Over" style="font-size:18pt;font-weight:500;font-family:'Crimson Pro',serif;border:none;outline:none;background:transparent;width:100%;color:var(--ink);"><hr class="section-rule" aria-hidden="true"></div>
   <div class="menu-items">
     <div class="menu-row"><input class="dish" data-key="hits-3-1" placeholder="Lasagna"><input class="note" data-key="hits-3-1-note" placeholder="make ahead, feeds eight"></div>
     <div class="menu-row"><input class="dish" data-key="hits-3-2" placeholder="Chili Bar"><input class="note" data-key="hits-3-2-note" placeholder="toppings on the side"></div>
