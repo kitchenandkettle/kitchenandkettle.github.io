@@ -30,6 +30,18 @@ body {
   page-break-after: always; position: relative;
 }
 .page:last-of-type { page-break-after: auto; }
+.menu-page {
+  background: #fffdf8;
+  text-align: center;
+  padding: 1.05in 0.95in;
+}
+.menu-page::before {
+  content: '';
+  position: absolute;
+  inset: 0.27in;
+  border: 1px solid rgba(160,133,94,0.72);
+  pointer-events: none;
+}
 
 h1 { font-family: 'Crimson Pro', serif; font-size: 28pt; font-weight: 600; }
 h2 { font-family: 'Crimson Pro', serif; font-size: 18pt; font-weight: 500; margin-bottom: 0.5rem; }
@@ -63,12 +75,12 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 .btn-print:hover { background: #3D362D; }
 
 /* Cover */
-.cover { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--paper); }
+.cover { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at 50% 35%, #fffaf1 0%, var(--paper) 62%); }
 .cover .brand-mark { font-family: 'Crimson Pro', serif; font-size: 14pt; color: var(--clay); font-style: italic; margin-bottom: 2rem; }
 .cover h1 { font-size: 36pt; margin-bottom: 0.5rem; line-height: 1.15; }
 .cover .tagline { font-size: 16pt; color: var(--sage); font-style: italic; margin-bottom: 1.5rem; }
 .cover .desc { font-size: 14pt; max-width: 65%; color: var(--muted); line-height: 1.5; margin-bottom: 2.5rem; }
-.cover .accent-line { width: 80px; height: 1px; background: var(--clay); margin: 0 auto 2rem; }
+.cover .accent-line { width: 120px; height: 2px; background: linear-gradient(to right, transparent, var(--clay), transparent); margin: 0 auto 2rem; }
 
 /* Style picker */
 .picker { display: flex; flex-direction: column; justify-content: center; background: var(--paper); }
@@ -76,41 +88,46 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 .picker .sub { text-align: center; color: var(--muted); margin-bottom: 2rem; font-size: 14pt; }
 .style-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
 .style-card {
-  background: #fff; border: 2px solid var(--line); border-radius: 8px;
+  background: rgba(255,255,255,0.82); border: 2px solid var(--line); border-radius: 12px;
   padding: 1.5rem 1.2rem; cursor: pointer; text-align: center;
   font: inherit; color: inherit;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 3px 10px rgba(44,36,22,0.05);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
-.style-card:hover { border-color: var(--clay); box-shadow: 0 4px 12px rgba(196,168,130,0.15); }
+.style-card:hover { border-color: var(--clay); box-shadow: 0 7px 18px rgba(196,168,130,0.2); transform: translateY(-2px); }
 .style-card:focus-visible { outline: 3px solid var(--sage); outline-offset: 3px; }
 .style-card.selected { border-color: var(--sage); box-shadow: 0 0 0 3px rgba(125,139,111,0.15); }
-.style-card .icon { font-size: 32pt; margin-bottom: 0.5rem; }
+.style-card .icon { display: grid; place-items: center; width: 62px; height: 62px; margin: 0 auto 0.8rem; border-radius: 50%; background: var(--paper); font-size: 28pt; }
 .style-card h3 { margin-bottom: 0.4rem; font-size: 13pt; }
 .style-card p { font-size: 12pt; color: var(--muted); line-height: 1.4; }
 
 /* Menu sections */
-.section-header { margin-top: 1.5rem; margin-bottom: 0.5rem; padding-bottom: 0.2rem; border-bottom: 2px solid var(--clay); }
-.section-header h2 { margin-bottom: 0; display: inline; }
+.section-header { display: flex; align-items: center; justify-content: center; gap: 0.7rem; margin-top: 1.55rem; margin-bottom: 0.55rem; padding-bottom: 0; border-bottom: none; }
+.section-header::before, .section-header::after { content: ''; width: 0.75in; flex: 0 0 0.75in; border-top: 1px solid rgba(160,133,94,0.72); }
+.section-header h2 { margin-bottom: 0; display: inline; color: var(--ink); text-transform: uppercase; letter-spacing: 0.12em; font-size: 14pt; }
+.section-header > .dish { flex: 0 1 auto; width: auto !important; min-width: 0; text-align: center; }
 .section-header .dot-leader { color: var(--clay); float: right; font-family: 'Work Sans', sans-serif; font-size: 10pt; opacity: 0.4; }
 
-.menu-items { margin-left: 0; }
-.menu-row { display: flex; align-items: baseline; padding: 0.35rem 0; border-bottom: 1px dotted var(--line); gap: 0.5rem; }
+.menu-items { margin-left: 0; padding: 0.05rem 0.5in 0.2rem; background: transparent; border-left: none; border-radius: 0; }
+.menu-row { display: block; padding: 0.28rem 0; border-bottom: none; }
 .menu-row:last-child { border-bottom: none; }
+.menu-row:focus-within { background: rgba(196,168,130,0.1); }
 .menu-row .dish {
-  flex: 1; font-family: 'Crimson Pro', serif; font-size: 14pt; font-weight: 500;
+  display: block; width: 100%; text-align: center; font-family: 'Crimson Pro', serif; font-size: 15pt; font-weight: 500;
   border: none; outline: none; background: transparent; color: var(--ink);
   padding: 0.1rem 0;
 }
 .menu-row .dish::placeholder { color: var(--clay); opacity: 1; }
 .menu-row .note {
-  width: 35%; font-family: 'Crimson Pro', serif; font-size: 11pt; font-style: italic;
+  display: block; width: 100%; text-align: center; font-family: 'Crimson Pro', serif; font-size: 11pt; font-style: italic;
   border: none; outline: none; background: transparent; color: var(--muted);
   padding: 0.1rem 0;
 }
 .menu-row .note::placeholder { color: #c4b9a8; opacity: 1; }
 
 /* Side-by-side columns */
-.split-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.split-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+.split-col .col { padding: 0 0.25rem 0.45rem; border: none; border-radius: 0; background: transparent; }
 .split-col .col .section-header { margin-top: 0; }
 .split-col .col .section-header:first-child { margin-top: 0; }
 
@@ -119,6 +136,8 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 .closing .inner { max-width: 75%; }
 .closing h2 { margin-bottom: 1rem; }
 .closing p { margin-bottom: 1rem; font-size: 14pt; }
+.hits-intro { display: block; width: 100%; border: none; outline: none; background: transparent; color: var(--clay); text-align: center; font-style: italic; margin-bottom: 1rem; }
+.hits-intro:focus { border-bottom: 1px solid var(--clay); }
 
 /* Print */
 @media print {
@@ -141,7 +160,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
   .toolbar .save-status { margin-left: auto; }
   .style-cards, .split-col { grid-template-columns: 1fr; }
   .menu-row { gap: 0.35rem; }
-  .menu-row .note { width: 42%; }
+  .menu-row .note { width: 100%; }
   .cover h1 { font-size: 30pt; }
   .cover .desc, .closing .inner { max-width: 100%; }
 }
@@ -305,7 +324,7 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 
 <!-- ============ THE GREATEST HITS ============ -->
 <div class="page menu-page" data-menu="hits">
-  <p class="small" style="color:var(--clay); text-align:center; margin-bottom:1rem; font-style:italic;">Rename these categories to whatever makes sense in your kitchen.</p>
+  <input class="small hits-intro" data-key="hits-intro" value="Rename these categories to whatever makes sense in your kitchen." aria-label="Introductory note for greatest hits menu">
 
   <div class="section-header"><input class="dish" data-key="hits-cat-1" placeholder="Things Everyone Actually Eats" style="font-size:18pt;font-weight:500;font-family:'Crimson Pro',serif;border:none;outline:none;background:transparent;width:100%;color:var(--ink);"></div>
   <div class="menu-items">
