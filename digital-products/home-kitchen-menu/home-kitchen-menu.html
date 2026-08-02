@@ -147,6 +147,39 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 .hits-intro { display: block; width: 100%; border: none; outline: none; background: transparent; color: var(--clay); text-align: center; font-style: italic; margin-bottom: 1rem; }
 .hits-intro:focus { border-bottom: 1px solid var(--clay); }
 
+/* Selected menu preview matches the Letter-size print layout. */
+.menu-page[data-menu="full"] { padding: 0.3in 0.55in; }
+.menu-page[data-menu="full"].active { display: flex; flex-direction: column; }
+.menu-page[data-menu="full"] .kitchen-name-wrap { width: 100%; margin-top: 0.65in; margin-bottom: 1.5rem; }
+.menu-page[data-menu="full"] .kitchen-name { font-size: 20pt; padding-bottom: 0.08rem; width: 90%; }
+.menu-page[data-menu="full"] .full-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.3in; align-items: start; width: 100%; margin-top: 0.35in; margin-bottom: auto; }
+.menu-page[data-menu="full"] .full-col { min-width: 0; }
+.menu-page[data-menu="full"] .section-header { margin-top: 1rem; margin-bottom: 0.08rem; }
+.menu-page[data-menu="full"] .menu-items { padding: 0 0.08in 0.04in; }
+.menu-page[data-menu="full"] .menu-row { padding: 0; }
+.menu-page[data-menu="full"] .menu-row .dish,
+.menu-page[data-menu="full"] .menu-row .note { font-size: 12pt; line-height: 1.05; padding: 0; }
+.menu-page[data-menu="simple"] { padding: 0.55in 0.7in; }
+.menu-page[data-menu="simple"] .kitchen-name { font-size: 22pt; padding-bottom: 0.15rem; }
+.menu-page[data-menu="simple"] .kitchen-name-wrap { margin-bottom: 1rem; }
+.menu-page[data-menu="simple"] .section-header { margin-top: 0.55rem; margin-bottom: 0.25rem; }
+.menu-page[data-menu="simple"] .section-header { margin-top: 0.75rem; }
+.menu-page[data-menu="simple"] .split-col .col .section-header:first-child { margin-top: 0.75rem; }
+.menu-page[data-menu="simple"] .menu-row { padding: 0.12rem 0; }
+.menu-page[data-menu="simple"] .menu-row .dish { font-size: 13pt; line-height: 1.15; padding: 0.02rem 0; }
+.menu-page[data-menu="simple"] .menu-row .note { font-size: 12pt; line-height: 1.15; padding: 0.02rem 0; }
+.menu-page[data-menu="hits"] { padding: 0.45in 0.65in; }
+.menu-page[data-menu="hits"] .kitchen-name { font-size: 21pt; padding-bottom: 0.12rem; }
+.menu-page[data-menu="hits"] .kitchen-name-wrap { margin-bottom: 1rem; }
+.menu-page[data-menu="hits"] .hits-intro { margin-bottom: 0.25rem; }
+.menu-page[data-menu="hits"] .section-header { margin-top: 0.4rem; margin-bottom: 0.15rem; }
+.menu-page[data-menu="hits"] .section-header { margin-top: 0.65rem; }
+.menu-page[data-menu="hits"] .section-rule { width: 0.35in; flex-basis: 0.35in; }
+.menu-page[data-menu="hits"] .section-header > .dish { flex: 0 0 3in; width: 3in !important; }
+.menu-page[data-menu="hits"] .menu-row { padding: 0.08rem 0; }
+.menu-page[data-menu="hits"] .menu-row .dish { font-size: 12pt; line-height: 1.1; padding: 0.01rem 0; }
+.menu-page[data-menu="hits"] .menu-row .note { font-size: 12pt; line-height: 1.1; padding: 0.01rem 0; }
+
 /* Print */
 @media print {
   body { background: none; padding: 0; margin: 0; }
@@ -154,22 +187,36 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
   .toolbar { display: none; }
   .menu-row .dish::placeholder, .menu-row .note::placeholder { color: transparent !important; }
   .cover, .picker, .closing { background: #fff; }
+  body.has-style .cover, body.has-style .picker, body.has-style .closing { display: none; }
+  .menu-page.active { page-break-after: auto; }
   .menu-page { background: #fffdf8 !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
   .menu-page::before { border-color: #A0855E !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
   .section-rule { display: block !important; width: 0.75in; height: 0 !important; flex: 0 0 0.75in; border: 0 !important; border-top: 1pt solid #A0855E !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
   .section-header h2, .section-header > .dish {
     position: relative; z-index: 1; background: #fffdf8 !important; padding-left: 0.25rem; padding-right: 0.25rem;
   }
+  .menu-page[data-menu="full"] { padding: 0.3in 0.55in !important; }
+  .menu-page[data-menu="full"] .kitchen-name-wrap { width: 100%; margin-top: 0.65in; margin-bottom: 1.5rem; }
+  .menu-page[data-menu="full"] .kitchen-name { font-size: 20pt !important; padding-bottom: 0.08rem !important; }
+  .menu-page[data-menu="full"] .full-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.3in; align-items: start; width: 100%; margin-top: 0.35in; margin-bottom: auto; }
+  .menu-page[data-menu="full"] .full-col { min-width: 0; }
+  .menu-page[data-menu="full"] .section-header { margin-top: 1rem !important; margin-bottom: 0.08rem !important; }
+  .menu-page[data-menu="full"] .menu-items { padding: 0 0.08in 0.04in !important; }
+  .menu-page[data-menu="full"] .menu-row { padding: 0 !important; }
+  .menu-page[data-menu="full"] .menu-row .dish,
+  .menu-page[data-menu="full"] .menu-row .note { font-size: 12pt !important; line-height: 1.05 !important; padding: 0 !important; }
   .menu-page[data-menu="simple"] { padding: 0.55in 0.7in !important; }
   .menu-page[data-menu="simple"] .kitchen-name { font-size: 22pt !important; padding-bottom: 0.15rem !important; }
-  .menu-page[data-menu="simple"] .section-header { margin-top: 0.55rem !important; margin-bottom: 0.25rem !important; }
+  .menu-page[data-menu="simple"] .kitchen-name-wrap { margin-bottom: 1rem !important; }
+  .menu-page[data-menu="simple"] .section-header { margin-top: 0.75rem !important; margin-bottom: 0.25rem !important; }
   .menu-page[data-menu="simple"] .menu-row { padding: 0.12rem 0 !important; }
   .menu-page[data-menu="simple"] .menu-row .dish { font-size: 13pt !important; line-height: 1.15 !important; padding: 0.02rem 0 !important; }
   .menu-page[data-menu="simple"] .menu-row .note { font-size: 12pt !important; line-height: 1.15 !important; padding: 0.02rem 0 !important; }
   .menu-page[data-menu="hits"] { padding: 0.45in 0.65in !important; }
   .menu-page[data-menu="hits"] .kitchen-name { font-size: 21pt !important; padding-bottom: 0.12rem !important; }
+  .menu-page[data-menu="hits"] .kitchen-name-wrap { margin-bottom: 1rem !important; }
   .menu-page[data-menu="hits"] .hits-intro { margin-bottom: 0.25rem !important; }
-  .menu-page[data-menu="hits"] .section-header { margin-top: 0.4rem !important; margin-bottom: 0.15rem !important; }
+  .menu-page[data-menu="hits"] .section-header { margin-top: 0.65rem !important; margin-bottom: 0.15rem !important; }
   .menu-page[data-menu="hits"] .section-rule { width: 0.35in; flex-basis: 0.35in; }
   .menu-page[data-menu="hits"] .section-header > .dish { flex: 0 0 3in; width: 3in !important; }
   .menu-page[data-menu="hits"] .menu-row { padding: 0.08rem 0 !important; }
@@ -250,6 +297,8 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
 <!-- ============ THE FULL SPREAD ============ -->
 <div class="page menu-page" data-menu="full">
   <div class="kitchen-name-wrap"><input class="kitchen-name" data-key="kitchen-name" placeholder="The [Family Name] Kitchen" aria-label="Name of your kitchen"></div>
+  <div class="full-grid">
+    <div class="full-col">
   <div class="section-header"><hr class="section-rule" aria-hidden="true"><h2>Appetizers</h2><hr class="section-rule" aria-hidden="true"></div>
   <div class="menu-items">
     <div class="menu-row"><input class="dish" data-key="full-apps-1" placeholder="Bruschetta"><input class="note" data-key="full-apps-1-note" placeholder="tomato, basil, balsamic"></div>
@@ -276,10 +325,9 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
     <div class="menu-row"><input class="dish" data-key="full-mains-4" placeholder="Grilled Salmon"><input class="note" data-key="full-mains-4-note" placeholder="lemon butter, quick &amp; bright"></div>
     <div class="menu-row"><input class="dish" data-key="full-mains-5" placeholder="Vegetable Stir Fry"><input class="note" data-key="full-mains-5-note" placeholder="whatever's in the crisper"></div>
   </div>
-</div>
 
-<div class="page menu-page" data-menu="full">
-  <div class="kitchen-name-wrap"><input class="kitchen-name" data-key="kitchen-name" placeholder="The [Family Name] Kitchen" aria-label="Name of your kitchen"></div>
+    </div>
+    <div class="full-col">
   <div class="section-header"><hr class="section-rule" aria-hidden="true"><h2>Sides</h2><hr class="section-rule" aria-hidden="true"></div>
   <div class="menu-items">
     <div class="menu-row"><input class="dish" data-key="full-sides-1" placeholder="Roasted Potatoes"><input class="note" data-key="full-sides-1-note" placeholder="rosemary &amp; sea salt"></div>
@@ -305,6 +353,8 @@ h3 { font-family: 'Work Sans', sans-serif; font-size: 12pt; font-weight: 600; te
     <div class="menu-row"><input class="dish" data-key="full-drinks-3" placeholder="Hot Cocoa"><input class="note" data-key="full-drinks-3-note" placeholder="topped with marshmallows"></div>
     <div class="menu-row"><input class="dish" data-key="full-drinks-4" placeholder="Sparkling Water"><input class="note" data-key="full-drinks-4-note" placeholder="lime or lemon wedge"></div>
     <div class="menu-row"><input class="dish" data-key="full-drinks-5" placeholder="Coffee"><input class="note" data-key="full-drinks-5-note" placeholder="always brewing"></div>
+  </div>
+    </div>
   </div>
 </div>
 
