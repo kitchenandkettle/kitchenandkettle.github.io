@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <title>Valknut</title>
+  <defs>
+    <mask id="m0" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><rect width="200" height="200" fill="#FFFFFF"/><path d="M135.50,110.82 L151.50,138.54 M87.00,61.46 L103.00,89.18" fill="none" stroke="#000000" stroke-width="18"/></mask>
+    <mask id="m1" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><rect width="200" height="200" fill="#FFFFFF"/><path d="M102.50,124.68 L70.50,124.68 M97.00,78.78 L113.00,106.50" fill="none" stroke="#000000" stroke-width="18"/></mask>
+    <mask id="m2" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><rect width="200" height="200" fill="#FFFFFF"/><path d="M139.50,124.68 L107.50,124.68 M68.50,155.86 L84.50,128.14" fill="none" stroke="#000000" stroke-width="18"/></mask>
+  </defs>
+  <g transform="matrix(-1 0 0 1 200 0)" fill="none" stroke="#1A1512" stroke-width="8" stroke-linejoin="miter" stroke-miterlimit="10">
+    <polygon mask="url(#m0)" points="115.00,40.68 163.50,124.68 66.50,124.68"/>
+    <polygon mask="url(#m1)" points="115.00,75.32 163.50,159.32 66.50,159.32"/>
+    <polygon mask="url(#m2)" points="85.00,58.00 133.50,142.00 36.50,142.00"/>
+  </g>
+</svg>
