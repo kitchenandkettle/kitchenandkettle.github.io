@@ -184,3 +184,18 @@ TREES_RUNE = [
   "<b>Where this comes from:</b> The Anglo-Saxon rune poem, which survives only in a copy printed in 1705. The verses here are paraphrased."],
  "Choose one tree near you. Write its rune-poem verse, then write your own verse of the same length. Give it two dated lines."),
 ]
+
+GIANTS_PAGE = [
+("lore", "Nine Realms", "The giants",
+ ["The jötnar, usually called giants, are older than the gods. They are not always enemies. Gods marry giantesses, and Óðinn’s own mother is one. In the stories they stand for the wild, cold, and untamed side of the world.",
+  "<b>Ymir</b>: the first giant. The world is made from his body.<br><b>Bestla</b>: giantess, mother of Óðinn.<br><b>Surtr</b>: the fire giant who guards Múspell and burns the world at Ragnarök.<br><b>Þjazi</b>: the eagle giant who steals Iðunn. His daughter is Skaði.<br><b>Skaði</b>: giantess of mountains and winter, who marries Njörðr for a time.<br><b>Gerðr</b>: the giant maid Freyr sends Skírnir to win.<br><b>Þrymr</b>: steals Þórr’s hammer and asks for Freyja.<br><b>Hymir</b>: the giant Þórr visits for a kettle and goes fishing with.<br><b>Suttungr</b>: guards the mead of poetry.<br><b>Útgarða-Loki</b>: king of the giants’ hall, master of illusions.<br><b>Angrboða</b>: giantess, mother of Hel, Fenrir, and Jörmungandr.<br><b>Loki</b>: born a giant, and lives among the gods.",
+  "<b>Where this comes from:</b> The Poetic Edda and Snorri’s Prose Edda. Many of their stories are in this book’s Tales chapter."],
+ "Which giant would you most want to hear more about? Write the name and why. Give it two dated lines."),
+]
+
+GLOSSARY_PAGE = [
+("lore", "Reference", "Words in this book",
+ ["<b>Æsir</b>: the main family of gods, led by Óðinn.<br><b>Vanir</b>: the older family of gods of harvest and plenty.<br><b>jötnar</b>: giants.<br><b>Nornir</b>: the women who shape fate.<br><b>dísir</b>: female guardian spirits of a family.<br><b>landvættir</b>: land spirits, the guardians of a place.<br><b>valkyrie</b>: a chooser of the slain.<br><b>einherjar</b>: warriors who feast in Valhöll.<br><b>blót</b>: an offering feast, a gift to gods or spirits.<br><b>minni</b>: a toast to the memory of the dead.<br><b>erfi</b>: a funeral feast.<br><b>galdr</b>: a charm sung or spoken aloud.<br><b>seiðr</b>: fate-magic, mostly practiced by women.<br><b>völva</b>: a seeress who carries a staff.<br><b>vitki</b>: a rune-worker, a wise one.<br><b>hamingja</b>: personal luck, built by conduct.<br><b>útiseta</b>: sitting out alone at night to seek counsel.<br><b>haugr</b>: a burial mound.<br><b>skald</b>: a court poet.<br><b>saga</b>: an Icelandic prose story.<br><b>Edda</b>: the Poetic Edda, a book of poems, and Snorri’s Prose Edda.<br><b>Ragnarök</b>: the end of the world and its renewal.",
+  "<b>Where this comes from:</b> Standard meanings of these Old Norse words, as the sources use them."],
+ ""),
+]

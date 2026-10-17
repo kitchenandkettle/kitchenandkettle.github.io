@@ -12,7 +12,7 @@ from content_b import CH3, CH3B, CH4B, CH4C
 from content_c import CH5, CH6
 from content_d import CH7, CH8, CH9, CH10
 from content_e import CH_ED
-from content_f import CH_POEMS, CH_WELCOME, GODS_GLANCE, NEW_SONGS, NEW_VITKI, NEW_COUNSEL, VOLUSPA_PAGE, FRIENDS_PAGE, TALES, NEW_PLANTS, TREES_RUNE
+from content_f import CH_POEMS, CH_WELCOME, GODS_GLANCE, NEW_SONGS, NEW_VITKI, NEW_COUNSEL, VOLUSPA_PAGE, FRIENDS_PAGE, TALES, NEW_PLANTS, TREES_RUNE, GIANTS_PAGE, GLOSSARY_PAGE
 
 
 def lore_page(num, kicker, title, paras, prompt):
@@ -208,6 +208,12 @@ def build():
     ch5[i_blot:i_blot] = moved
     idx = next(i for i, e in enumerate(ch3) if e[2] == "The Æsir–Vanir war") + 1
     ch3[idx:idx] = GODS_GLANCE
+    oath = FRIENDS_PAGE + NEW_COUNSEL + list(CH10)
+    i_res = next(i for i, e in enumerate(oath) if e[0] == "resources") + 1
+    oath[i_res:i_res] = GLOSSARY_PAGE
+    ch2 = list(CH2)
+    i_realms = next(i for i, e in enumerate(ch2) if e[2] == "The nine realms at a glance") + 1
+    ch2[i_realms:i_realms] = GIANTS_PAGE
     ch6 = list(CH6)
     i_herbs = next(i for i, e in enumerate(ch6) if e[2] == "More herbs in the leechbooks") + 1
     ch6[i_herbs:i_herbs] = NEW_PLANTS
@@ -215,7 +221,7 @@ def build():
     ch6[i_trees:i_trees] = TREES_RUNE
     sections = [
         ("Threshold", "Threshold", "Who were the Old Norse", CH1, "Who Were the Old Norse"),
-        ("Nine Realms", "Nine Realms", "The Gods and Their Kingdoms", CH2, "The Gods and Their Kingdoms"),
+        ("Nine Realms", "Nine Realms", "The Gods and Their Kingdoms", ch2, "The Gods and Their Kingdoms"),
         ("Gods & Ruling Powers", "Rǫgn: Gods & Ruling Powers", "Aesir & Vanir", ch3, "Gods & Ruling Powers"),
         ("Tales", "Tales", "Stories from the old books", TALES, "stories from the old books"),
         ("Völva & Seiðr", "Völva & Seiðr", "seeress and fate-work", CH3B, "seeress and fate-work"),
@@ -229,7 +235,7 @@ def build():
         ("Staves", "Staves", "use them honestly", [e for e in CH7 if e[1] != "Liminal Places" and e[1] != "Runes"], "use them honestly"),
         ("Galdr: Charms", "Galdr: Charms", "Words in old books", CH8[:1] + NEW_SONGS + CH8[1:], "words in old books"),
         ("Ancestors", "Ancestors", "Mound-neighbors", CH9, "mound-neighbors"),
-        ("Oath", "Oath", "Go on reading", FRIENDS_PAGE + NEW_COUNSEL + CH10, "go on reading"),
+        ("Oath", "Oath", "Go on reading", oath, "go on reading"),
     ]
     toc_names = {"Gods & Ruling Powers": "Rǫgn", "Elves & Dwarfs": "Elves &amp; Dwarfs"}
     for kicker, title, sub, ch, toc_sub in sections:
