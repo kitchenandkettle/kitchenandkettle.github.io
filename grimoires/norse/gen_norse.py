@@ -17,13 +17,15 @@ from content_f import CH_POEMS
 
 def lore_page(num, kicker, title, paras, prompt):
     ps = "\n".join(f"<p>{p}</p>" for p in paras)
+    prompt_box = (f'<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">{H.escape(prompt)}</div></div>'
+                  if prompt else "")
     return f"""<div class="page">
 <div class="inner">
 <div class="kicker">{H.escape(kicker)}</div>
 <h2>{H.escape(title)}</h2>
 <div class="rule"></div>
 {ps}
-<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">{H.escape(prompt)}</div></div>
+{prompt_box}
 <div class="folio">{num}</div>
 </div>
 </div>"""
