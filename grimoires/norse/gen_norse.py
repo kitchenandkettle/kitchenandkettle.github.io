@@ -209,8 +209,7 @@ def build():
     idx = next(i for i, e in enumerate(ch3) if e[2] == "The Æsir–Vanir war") + 1
     ch3[idx:idx] = GODS_GLANCE
     oath = FRIENDS_PAGE + NEW_COUNSEL + list(CH10)
-    i_res = next(i for i, e in enumerate(oath) if e[0] == "resources") + 1
-    oath[i_res:i_res] = GLOSSARY_PAGE
+    oath += GLOSSARY_PAGE
     ch2 = list(CH2)
     i_realms = next(i for i, e in enumerate(ch2) if e[2] == "The nine realms at a glance") + 1
     ch2[i_realms:i_realms] = GIANTS_PAGE
