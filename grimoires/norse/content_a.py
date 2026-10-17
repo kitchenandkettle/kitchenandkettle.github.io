@@ -26,7 +26,6 @@ CH1 = [
   "<b>Where this comes from:</b> The counsel and the quotation are from the Hávamál in the Poetic Edda, in Benjamin Thorpe’s 1866 translation, now public domain. The practice builds on stanza 7."],
  "Tonight, stop at one doorway before you enter, and listen. Write what you heard and saw. Give it three dated lines."),
 ("journal", "Threshold", "What did you notice at the door? Name what you heard, what you saw, and what you chose not to say.", 13),
-("journal", "Threshold", "Noticing log, day one. Go to a spot where you can watch and listen. Date it. Write three things you see and three you hear.", 14),
 ]
 
 CH2 = [

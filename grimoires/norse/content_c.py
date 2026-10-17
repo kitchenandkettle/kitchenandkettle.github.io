@@ -40,7 +40,6 @@ CH5 = [
    "Three short sentences, kept for a season, teach more about family than a long list of resolutions. Keep each toast plain enough for a child to understand. Speak it standing, with your feet on the floor. Then keep saying it through the winter. Plain thanks spoken aloud link the living and the dead in your family’s memory.",
    "<b>Where this comes from:</b> Slaughter-season foods and toasts come from later folk custom, with hints in the sagas."],
   "Rough your three toasts out on the reflection pages first, where crossings out cost nothing. Trim until a child could understand, then speak them standing at the table with feet on the floor. Toast the kin present, then thank the dísir and landvættir. Give it three dated lines."),
-("journal", "Winter Nights", "Reflection: which kin — living or dead — will you toast, and with what thanks?", 13),
 ("lore", "Yule", "Yule: midwinter peace",
   ["Yule is the old northern midwinter feast, held in the longest dark of the year, and doors were often barred early. It was a time of oaths sworn over a boar or a ring, which bound people to a promise. It brought toasts to gods and ancestors, and a peace over households, so that even enemies could eat without feud. Some Poetic Edda poems and Icelandic sagas tell of vows made at Yule being kept later in battle. Slaughter was done and stores were full.",
   "Folk custom keeps the same shape in plainer clothes. Straw, a candle, and a cleaned house mark the season. The home grows quiet as the old names are spoken. You do not need a crowd or costumes.",
@@ -53,8 +52,6 @@ CH5 = [
   "Write the vows down so they can be checked at the next Yule. The Ancestors pages give a fuller way to remember the dead. The next morning, leave a share out for the birds.",
   "<b>Where this comes from:</b> Feast and vow-drinking are thinly recorded in the sagas. The extra plate comes from later Scandinavian folk custom."],
   "Hold this supper on one evening this week. Cook one simple dish, lay the extra plate, and speak each ancestor’s name. Then speak one vow for the year before a witness. Give it three dated lines."),
-("journal", "Yule", "Reflection: what will you carry through the dark, and what stays buried here?", 13),
-("journal", "Yule", "Reflection: what will you repeat every Yule, even in a tired year?", 13),
 ("lore", "Dísablót", "Dísablót: the ladies’ feast",
   ["Dísablót is a late-winter feast that the Icelandic sagas name but never describe in detail. The name means an offering to the dísir (disir), female guardian spirits linked to kin, households, and fate. Some sources link Freyja to them, since she is also called Vanadís, lady of the Vanir. Only the name survives in the sagas. A later Swedish market, Disting, is sometimes linked to this feast, and the Idisi in the Merseburg charms were women called on to help warriors.",
   "The sources are thin, and this page says so. No prayer, altar plan, or menu survives, and the Disting fair is a late link, not proof. This book builds one honest practice, clearly modern: a late winter supper that honors the women whose work shaped your household, living and dead, by name and aloud. Naming them gives them a place at the table.",
@@ -85,7 +82,6 @@ CH5 = [
    "In the old custom, greens and thanks belonged together. Climb a hill, speak a promise, and keep both in mind. Pick one clear step to take after the walk, and write it down.",
    "<b>Where this comes from:</b> Hill fires and crowns come from later folk custom. The home version was written for this book."],
   "Plan your walk tonight so it fits inside an hour. Pick the hill, or the stairs, and write three simple rules: what counts as the climb, how you mark it, and when it ends. Walk it this week and log it honestly. Give it three dated lines."),
-("journal", "Midsummer", "Reflection: what will you repeat every Midsummer, even in a tired year?", 13),
 ]
 
 CH6 = [
@@ -125,7 +121,6 @@ CH6 = [
   "This book does not ask you to use plantain on your body or in food. The old uses are history, not instructions. Never use it in place of prescribed care, and never on deep or dirty wounds.",
   "<b>Where this comes from:</b> Plantain as læknnesgras is in AM 434 a 12mo, as described in Luthien Cangemi’s thesis. The English names and the seed use come from folk custom."],
   "Find a plantain on a path and study its ribbed leaves and spikes for ten minutes. Sketch it in five lines, and write the clinician caution twice beside your log. Do not pick or use any part of it. Give it three dated lines."),
-("journal", "Plants", "First meetings: where does your chosen ally grow, and when will you visit it across the seasons?", 12),
 ("lore", "Trees", "Ash: the world tree",
   ["In Grímnismál (Grimnir’s sayings), the ash tree Yggdrasill holds up the nine worlds. You can see why when you stand beneath a large one. Its bark is grey and ridged. Its buds are black. Its winged seeds hang in bunches. Its timber is springy and strong, so it was used for spears and tool handles. In the Poetic Edda, Yggdrasill is an ash, and its roots reach to wells where the Nornir (the Norns, who shape fate) sit. Put your palm on the bark. It feels cool and straight.",
   "This tree grows straight. Year after year it adds steady wood, the kind once used for spears and shafts.",
@@ -153,6 +148,4 @@ CH6 = [
    "Watching an oak through the seasons keeps you steady. Guess its girth (width around the trunk), and note the birds, year after year. One oak followed through all four seasons gives your year a steady point to return to.",
    "<b>Where this comes from:</b> Viking ships such as Oseberg and Gokstad were built mostly of oak. The oak stanza is in the Anglo-Saxon rune poem."],
   "Choose one oak near you and walk to it this week, taking about twenty minutes. Note where it stands and how it looks today, including its lean, its branches, and the light. Then log it across all four seasons. Give it four dated lines."),
-("journal", "Plants", "Plant ally log: name your ally from these pages, then log its leaf, flower, seed, and date at each turning.", 12),
-("journal", "Plants", "Seasonal sightings calendar: what will you look for, where, and in which month? Look, name, and leave it.", 12),
 ]

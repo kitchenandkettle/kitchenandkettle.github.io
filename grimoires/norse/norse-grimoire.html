@@ -34,6 +34,20 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 .lines.tall span { height: 0.28in; }
 .track .trow { display: flex; gap: 0.08in; align-items: baseline; min-height: 0.28in; border-bottom: 1px solid #B9AE9E; font-size: 12pt; line-height: 1.35; padding: 0.02in 0; }
 .track .box { font-size: 12pt; }
+
+.rt { width: 100%; border-collapse: collapse; margin: 0.06in 0 0.1in 0; }
+.rt td { font-size: 11pt; line-height: 1.25; padding: 0.04in 0.06in; border-bottom: 1px solid #B9AE9E; vertical-align: middle; }
+.rt td.g { font-family: 'Noto Sans Runic', serif; font-size: 19pt; width: 0.5in; text-align: center; padding: 0; }
+.rt td.n { font-weight: 700; width: 0.95in; }
+.rt td.s { width: 0.55in; font-style: italic; }
+.rt2 td { padding: 0.012in 0.06in; font-size: 10.5pt; }
+.rt2 td.g { font-size: 16pt; }
+.rrow { font-family: 'Noto Sans Runic', serif; font-size: 16pt; letter-spacing: 0.06em; line-height: 1.6; text-align: center; margin: 0.06in 0; }
+.kvgrid { text-align: center; margin: 0.05in 0; }
+.kv { display: inline-block; width: 0.62in; text-align: center; margin: 0.02in 0; font-size: 11pt; }
+.kv .g { display: block; font-family: 'Noto Sans Runic', serif; font-size: 17pt; line-height: 1.15; }
+.bind { position: relative; display: inline-block; font-family: 'Noto Sans Runic', serif; font-size: 44pt; width: 0.9em; height: 1.25em; margin: 0 0.12in; }
+.bind span { position: absolute; left: 0; top: 0; }
 .folio { position: absolute; bottom: 0.3in; left: 0; right: 0; text-align: center; font-size: 12pt; color: #5A4F43; }
 </style></head>
 <body>
@@ -66,23 +80,22 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <div class="rule"></div>
 <div class="toc">
 <p><b>1. Welcome</b>: Working with the Old Ways &middot; 4&ndash;6</p>
-<p><b>2. The Poems</b>: what the sources are &middot; 7&ndash;13</p>
-<p><b>3. Threshold</b>: Who Were the Old Norse &middot; 14&ndash;19</p>
-<p><b>4. Nine Realms</b>: The Gods and Their Kingdoms &middot; 20&ndash;27</p>
-<p><b>5. Rǫgn</b>: Gods &amp; Ruling Powers &middot; 28&ndash;48</p>
-<p><b>6. Tales</b>: stories from the old books &middot; 49&ndash;57</p>
-<p><b>7. Völva &amp; Seiðr</b>: seeress and fate-work &middot; 58&ndash;61</p>
+<p><b>2. The Poems</b>: what the sources are &middot; 7&ndash;12</p>
+<p><b>3. Threshold</b>: Who Were the Old Norse &middot; 13&ndash;17</p>
+<p><b>4. Nine Realms</b>: The Gods and Their Kingdoms &middot; 18&ndash;25</p>
+<p><b>5. Rǫgn</b>: Gods &amp; Ruling Powers &middot; 26&ndash;46</p>
+<p><b>6. Tales</b>: stories from the old books &middot; 47&ndash;55</p>
+<p><b>7. Völva &amp; Seiðr</b>: seeress and fate-work &middot; 56&ndash;61</p>
 <p><b>8. Hamingja</b>: your luck &middot; 62&ndash;65</p>
-<p><b>9. Vitki</b>: rune-reader &middot; 66&ndash;68</p>
-<p><b>10. Elves &amp; Dwarfs</b>: neighbors and smiths &middot; 69&ndash;78</p>
-<p><b>11. Norse Wheel of the Year</b>: Winter Nights to Midsummer &middot; 79&ndash;98</p>
-<p><b>12. Plants &amp; Trees</b>: herbs and ash &middot; 99&ndash;117</p>
-<p><b>13. Liminal Places</b>: wells that remember &middot; 118&ndash;125</p>
-<p><b>14. Runes</b>: stones with staves &middot; 126&ndash;128</p>
-<p><b>15. Staves</b>: use them honestly &middot; 129&ndash;133</p>
-<p><b>16. Galdr: Charms</b>: words in old books &middot; 134&ndash;137</p>
-<p><b>17. Ancestors</b>: mound-neighbors &middot; 138&ndash;143</p>
-<p><b>18. Oath</b>: go on reading &middot; 144&ndash;150</p>
+<p><b>9. Elves &amp; Dwarfs</b>: neighbors and smiths &middot; 66&ndash;75</p>
+<p><b>10. Norse Wheel of the Year</b>: Winter Nights to Midsummer &middot; 76&ndash;91</p>
+<p><b>11. Plants &amp; Trees</b>: herbs and ash &middot; 92&ndash;107</p>
+<p><b>12. Liminal Places</b>: wells that remember &middot; 108&ndash;113</p>
+<p><b>13. Runes</b>: stones with staves &middot; 114&ndash;127</p>
+<p><b>14. Staves</b>: use them honestly &middot; 128&ndash;133</p>
+<p><b>15. Galdr: Charms</b>: words in old books &middot; 134&ndash;137</p>
+<p><b>16. Ancestors</b>: mound-neighbors &middot; 138&ndash;143</p>
+<p><b>17. Oath</b>: go on reading &middot; 144&ndash;150</p>
 </div>
 <div class="folio">3</div>
 </div></div><div class="page"><div class="inner center">
@@ -163,18 +176,6 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 </div><div class="page">
 <div class="inner">
 <div class="kicker">The Poems</div>
-<h2>The Lokasenna: Loki’s quarrel</h2>
-<div class="rule"></div>
-<p>The Lokasenna is a flyting, a contest of insults, and it is the poem this book cites most when it speaks of Loki. The sea-giant Ægir (Aegir) brews ale for the gods and holds a feast. Þórr is away in the east. Loki has already killed one of Ægir’s servants and been chased out, but he walks back in and demands a seat.</p>
-<p>One by one he insults the gods, accusing them of cowardice and unfaithfulness. They answer him, and he has a cruel reply for each. At the end Þórr arrives and threatens him with his hammer, and Loki leaves. Two stanzas show the poem’s edge. First Loki reminds Óðinn of their bond: “Odin! dost thou remember when we in early days blended our blood together?” Then Þórr, on arriving: “Silence, thou impure being! My mighty hammer, Miollnir, shall stop thy prating. I will thy head from thy neck strike; then will thy life be ended.” (Stanzas 9 and 57, translated by Benjamin Thorpe, 1866.)</p>
-<p>A short prose ending in the manuscript tells what follows. The gods catch Loki, who had hidden as a salmon, and bind him with the entrails of his son. Skaði hangs a serpent over his face. His wife, Sigyn, holds a bowl to catch the venom. When she turns away to empty it, the venom drips on him, and his struggling shakes the earth.</p>
-<p><b>Where this comes from:</b> The Lokasenna and its prose ending are in the Poetic Edda. The excerpts are Benjamin Thorpe’s 1866 translation, now public domain.</p>
-<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Think of a hard thing someone once said to you that held some truth. Write the words and the truth in them. Give it two dated lines.</div></div>
-<div class="folio">11</div>
-</div>
-</div><div class="page">
-<div class="inner">
-<div class="kicker">The Poems</div>
 <h2>The Völuspá: the seeress speaks</h2>
 <div class="rule"></div>
 <p>The Völuspá opens with a seeress asking for silence. “For silence I pray all sacred children, great and small, sons of Heimdall, they will that I Valfather’s deeds recount, men’s ancient saws, those that I best remember.” (Stanza 1, translated by Benjamin Thorpe, 1866.) Valfather is Óðinn. She remembers the giants, nine worlds, and the great tree, and then the time before the world: “There was in times of old, where Ymir dwelt, nor sand nor sea, nor gelid waves; earth existed not, nor heaven above, ’twas a chaotic chasm, and grass nowhere.” (Stanza 3.)</p>
@@ -182,21 +183,25 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>The last stanzas, about a mighty judge from above, appear only in a later manuscript and are usually thought to show Christian influence. Read the poem aloud once, slowly, and notice where it begins and where it ends.</p>
 <p><b>Where this comes from:</b> The Völuspá in the Poetic Edda, in Benjamin Thorpe’s 1866 translation, now public domain.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which line of the Völuspá do you want to learn by heart? Copy it, and say why. Give it two dated lines.</div></div>
-<div class="folio">12</div>
+<div class="folio">11</div>
 </div>
 </div><div class="page">
 <div class="inner">
 <div class="kicker">The Poems</div>
-<div class="jprompt">Poem log: write each poem you read, the date, one line that stayed with you, and one question it left.</div>
+<h2>The Lokasenna: Loki’s quarrel</h2>
 <div class="rule"></div>
-<div class="lines tall"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<div class="folio">13</div>
+<p>The Lokasenna is a flyting, a contest of insults, and it is the poem this book cites most when it speaks of Loki. The sea-giant Ægir (Aegir) brews ale for the gods and holds a feast. Þórr is away in the east. Loki has already killed one of Ægir’s servants and been chased out, but he walks back in and demands a seat.</p>
+<p>One by one he insults the gods, accusing them of cowardice and unfaithfulness. They answer him, and he has a cruel reply for each. At the end Þórr arrives and threatens him with his hammer, and Loki leaves. Two stanzas show the poem’s edge. First Loki reminds Óðinn of their bond: “Odin! dost thou remember when we in early days blended our blood together?” Then Þórr, on arriving: “Silence, thou impure being! My mighty hammer, Miollnir, shall stop thy prating. I will thy head from thy neck strike; then will thy life be ended.” (Stanzas 9 and 57, translated by Benjamin Thorpe, 1866.)</p>
+<p>A short prose ending in the manuscript tells what follows. The gods catch Loki, who had hidden as a salmon, and bind him with the entrails of his son. Skaði hangs a serpent over his face. His wife, Sigyn, holds a bowl to catch the venom. When she turns away to empty it, the venom drips on him, and his struggling shakes the earth.</p>
+<p><b>Where this comes from:</b> The Lokasenna and its prose ending are in the Poetic Edda. The excerpts are Benjamin Thorpe’s 1866 translation, now public domain.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Think of a hard thing someone once said to you that held some truth. Write the words and the truth in them. Give it two dated lines.</div></div>
+<div class="folio">12</div>
 </div>
 </div><div class="page"><div class="inner center">
 <h1 style="font-size:30pt">Threshold</h1>
 <div class="rule"></div>
 <p class="subtitle">Who were the Old Norse</p>
-<div class="folio">14</div>
+<div class="folio">13</div>
 </div></div><div class="page">
 <div class="inner">
 <div class="kicker">Threshold</div>
@@ -207,7 +212,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Stones keep what people finished, and stories keep what people cared about. You need both. On each page I will tell you which kind of record I am using.</p>
 <p><b>Where this comes from:</b> Runestones and the Viking Age dates come from archaeology. The Poetic Edda and Snorri’s Prose Edda were copied down centuries later.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Tonight, spend half an hour at your table. Read one short passage, then write whether it is a stone record or a story record. Write three lines and date them today.</div></div>
-<div class="folio">15</div>
+<div class="folio">14</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -219,7 +224,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Ask who wrote each source and why, and you will know how far to trust it.</p>
 <p><b>Where this comes from:</b> How this book works. Its method is modern, but it is built on old sources.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Write one sentence for what you hope this book will give you, and one for what you hope it will leave out. Write both tonight and date them today.</div></div>
-<div class="folio">16</div>
+<div class="folio">15</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -231,7 +236,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Do this once a day for a week, and write one line each time on what you noticed. A clear head matters too: the Hávamál warns that too much drink steals the mind. Test the old advice for yourself.</p>
 <p><b>Where this comes from:</b> The counsel and the quotation are from the Hávamál in the Poetic Edda, in Benjamin Thorpe’s 1866 translation, now public domain. The practice builds on stanza 7.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Tonight, stop at one doorway before you enter, and listen. Write what you heard and saw. Give it three dated lines.</div></div>
-<div class="folio">17</div>
+<div class="folio">16</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -239,21 +244,13 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <div class="jprompt">What did you notice at the door? Name what you heard, what you saw, and what you chose not to say.</div>
 <div class="rule"></div>
 <div class="lines tall"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<div class="folio">18</div>
-</div>
-</div><div class="page">
-<div class="inner">
-<div class="kicker">Threshold</div>
-<div class="jprompt">Noticing log, day one. Go to a spot where you can watch and listen. Date it. Write three things you see and three you hear.</div>
-<div class="rule"></div>
-<div class="lines tall"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<div class="folio">19</div>
+<div class="folio">17</div>
 </div>
 </div><div class="page"><div class="inner center">
 <h1 style="font-size:30pt">Nine Realms</h1>
 <div class="rule"></div>
 <p class="subtitle">The Gods and Their Kingdoms</p>
-<div class="folio">20</div>
+<div class="folio">18</div>
 </div></div><div class="page">
 <div class="inner">
 <div class="kicker">Nine Realms</div>
@@ -264,7 +261,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>People came last. In Snorri Sturluson’s Gylfaginning, three gods found two fallen trees on a shore, Ask and Embla, ash and elm. The gods gave them breath, wit, and warmth, and the trees stood up as the first people.</p>
 <p><b>Where this comes from:</b> The creation story is from the Völuspá (Voluspa), Vafþrúðnismál (Vafthrudnismal), and Grímnismál (Grimnismal) in the Poetic Edda, and from Snorri’s Prose Edda.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Write the order of the making from memory: the gap, fire and ice, Ymir, the cow, Búri, Óðinn and his brothers, Ask and Embla. Give it two dated lines.</div></div>
-<div class="folio">21</div>
+<div class="folio">19</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -275,7 +272,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p><b>Ásgarðr (Asgard)</b>: home of the Æsir gods, high in the sky, reached by the rainbow bridge Bifröst.<br><b>Vanaheimr (Vanaheim)</b>: home of the Vanir, tied to harvest and plenty.<br><b>Álfheimr (Alfheim)</b>: home of the light elves, given to Freyr.<br><b>Miðgarðr (Midgard)</b>: the middle world, where people live.<br><b>Jötunheimr (Jotunheim)</b>: the wild land of the giants.<br><b>Svartálfaheimr (Svartalfheim)</b>: the underground home of the dwarfs and dark elves, also called Niðavellir in some sources.<br><b>Múspell (Muspell)</b>: the world of fire, ruled by the giant Surtr.<br><b>Niflheimr (Niflheim)</b>: the world of ice and fog, with the spring Hvergelmir.<br><b>Hel</b>: the world of the dead, ruled by a giantess also named Hel.</p>
 <p><b>Where this comes from:</b> The realms are named across the Poetic Edda and Snorri’s Prose Edda. Niðavellir is in the Völuspá, and Svartálfaheimr is in Snorri’s Gylfaginning. The order of this list is this book’s.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Name the nine realms from memory and say what each one is. Use this page if you need it. Give it three dated lines.</div></div>
-<div class="folio">22</div>
+<div class="folio">20</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -286,7 +283,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p><b>Ymir</b>: the first giant. The world is made from his body.<br><b>Bestla</b>: giantess, mother of Óðinn.<br><b>Surtr</b>: the fire giant who guards Múspell and burns the world at Ragnarök.<br><b>Þjazi</b>: the eagle giant who steals Iðunn. His daughter is Skaði.<br><b>Skaði</b>: giantess of mountains and winter, who marries Njörðr for a time.<br><b>Gerðr</b>: the giant maid Freyr sends Skírnir to win.<br><b>Þrymr</b>: steals Þórr’s hammer and asks for Freyja.<br><b>Hymir</b>: the giant Þórr visits for a kettle and goes fishing with.<br><b>Suttungr</b>: guards the mead of poetry.<br><b>Útgarða-Loki</b>: king of the giants’ hall, master of illusions.<br><b>Angrboða</b>: giantess, mother of Hel, Fenrir, and Jörmungandr.<br><b>Loki</b>: born a giant, and lives among the gods.</p>
 <p><b>Where this comes from:</b> The Poetic Edda and Snorri’s Prose Edda. Many of their stories are in this book’s Tales chapter.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which giant would you most want to hear more about? Write the name and why. Give it two dated lines.</div></div>
-<div class="folio">23</div>
+<div class="folio">21</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -298,7 +295,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Give your roots steady care, such as sleep, regular meals, and honest talk. Notice which roots are dry this week, and water one of them on purpose.</p>
 <p><b>Where this comes from:</b> The tree and its tenants are described in the Poetic Edda and Snorri’s Prose Edda.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Draw your life as a tree tonight, with roots, trunk, and crown. Mark three roots that feed you and two branches you tend. Name one voice that scolds you, like Ratatoskr. Date it with today’s date.</div></div>
-<div class="folio">24</div>
+<div class="folio">22</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -310,7 +307,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Your memory of someone is a form of care. It can last longer than any set of beliefs. You do not need the right belief to honor them. You need to keep their name in use. Speak it, write it, and keep one thing they loved in your home.</p>
 <p><b>Where this comes from:</b> Valhöll, Fólkvangr, and Hel are described in the Poetic Edda and Snorri’s Prose Edda, both copied down late. The mounds are known from archaeology.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Name one person who is gone and one thing they cared about. Name the place you picture them resting. Give it three plain lines with today’s date.</div></div>
-<div class="folio">25</div>
+<div class="folio">23</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -322,7 +319,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>But the poem does not stop there. Earth rises green from the sea a second time. Baldr and Höðr (Hodr) return, and Víðarr (Vidar) and Váli (Vali) live on. The golden game pieces the gods once played with are found again in the grass. When something in your life ends, look for what grows after it. Name the ending, then find one small sign of new growth. You can grieve the loss and still look for it.</p>
 <p><b>Where this comes from:</b> The doom and the greening are from the Völuspá, retold in Snorri’s Prose Edda. This book offers no rites for the end of the world.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Name one ending in your life. Name what grew after it, even something small. Give it three dated lines and read them aloud once.</div></div>
-<div class="folio">26</div>
+<div class="folio">24</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -334,13 +331,13 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Use the pattern to pay attention. Go out at dusk and notice the edges near you: a gate, a water line, a crossing. Write down what changes at each one.</p>
 <p><b>Where this comes from:</b> Mounds as doors appear in Icelandic sagas. The idea that they open at Yule comes from later Icelandic folk belief.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Walk your block for ten minutes tonight and pick three edge spots. Give each spot one line for what changes there. Read the three aloud and circle the one that feels strongest. Date them with today’s date.</div></div>
-<div class="folio">27</div>
+<div class="folio">25</div>
 </div>
 </div><div class="page"><div class="inner center">
 <h1 style="font-size:30pt">Rǫgn: Gods &amp; Ruling Powers</h1>
 <div class="rule"></div>
 <p class="subtitle">Aesir &amp; Vanir</p>
-<div class="folio">28</div>
+<div class="folio">26</div>
 </div></div><div class="page">
 <div class="inner">
 <div class="kicker">Rǫgn: Gods</div>
@@ -351,7 +348,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Think of the two families as two households that learned to share one valley. Each keeps its own job. The Æsir keep oath and order, and the Vanir keep work and plenty. A home that has only one of them is missing something.</p>
 <p><b>Where this comes from:</b> The Æsir and Vanir are in the Völuspá (Poetic Edda) and Snorri’s Prose Edda, both copied late. The idea that they were once two peoples is a scholars’ theory, not proven.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which job is missing in your home right now: oath and order, or work and plenty? Write one dated line about it and what you will do this week.</div></div>
-<div class="folio">29</div>
+<div class="folio">27</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -363,7 +360,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Njörðr and Freyr spent time in Ásgarðr as part of the treaty, but their home is Vanaheimr. The stories do not describe life after the treaty, so think of it this way: each family has its own home and its own job, and they meet at the table. The Völuspá and Snorri’s Prose Edda tell this as medieval Icelandic story, not as history of a real war.</p>
 <p><b>Where this comes from:</b> The war and the hostage exchange are told in the Völuspá and Snorri’s Prose Edda, both copied late.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Name one quarrel in your life and the person on the other side. Invite them to one shared meal this month, and write one dated line about it.</div></div>
-<div class="folio">30</div>
+<div class="folio">28</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -375,7 +372,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p><b>Others</b><br><b>Loki</b>: the trickster, and father of Hel, Fenrir, and Jörmungandr.<br><b>Skaði</b>: giantess of mountains and winter, wife of Njörðr for a time.<br><b>Sól and Máni</b>: the sun and the moon, sister and brother.</p>
 <p><b>Where this comes from:</b> The Poetic Edda and Snorri’s Prose Edda.</p>
 
-<div class="folio">31</div>
+<div class="folio">29</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -388,7 +385,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>The lesson is in the price. Óðinn wants to know things, and that hunger never comes free. Steady attention counts for more than an altar nobody visits. Give a set hour each week to learning a real craft, a poem, or a history.</p>
 <p><b>Where this comes from:</b> Óðinn’s eye, hanging, ravens, wolves, and horse are in the Poetic Edda, Snorri’s Prose Edda, and on stones. The ‘All Order’ reading is Jackson Crawford’s, and it is debated.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">What hard thing will you learn for Óðinn? Name the poem or craft or history, the hour, and twice this week. Give it two dated lines.</div></div>
-<div class="folio">32</div>
+<div class="folio">30</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -400,7 +397,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Valhöll is his hall. The einherjar, warriors chosen by the valkyries, feast and fight there each day until Ragnarök, when Óðinn falls to the wolf Fenrir. That is the other half of his story: he gathers warriors, and he knows what he is gathering them for.</p>
 <p><b>Where this comes from:</b> The names are in the Grímnismál. The mead of poetry is in Snorri’s Skáldskaparmál and the Hávamál. Valhöll and the einherjar are in the Grímnismál and Snorri’s Gylfaginning.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which of Óðinn’s names or stories do you most want to understand? Write it, and say why. Give it two dated lines.</div></div>
-<div class="folio">33</div>
+<div class="folio">31</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -412,7 +409,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Some scholars think Frigg and Freyja may be two names for one goddess. Here Frigg holds marriage and household foresight, and Freyja holds love and growth. In your home, Frigg stands for planning ahead. Look at what winter will ask of your home: lamp oil, savings, rest. Lay one thing ready this week, and cool quarrels before they catch fire.</p>
 <p><b>Where this comes from:</b> Frigg’s foresight is in the Poetic Edda, and her oath-taking for Baldr is in Snorri’s Prose Edda. Scholars debate whether she and Freyja were once one goddess.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Look ahead one season: what does your household see coming, and what will you lay ready? Name lamp oil or savings or rest and lay one thing ready this week. Give it two dated lines.</div></div>
-<div class="folio">34</div>
+<div class="folio">32</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -424,7 +421,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>She stands for plenty and for the right to choose. You may refuse a bad deal outright, and welcome a fair one that brings growth. Say no to any deal that treats you as a price, and keep your worth steady through hard weeks.</p>
 <p><b>Where this comes from:</b> Fólkvangr, the necklace, and the feather cloak are in the Poetic Edda. The cat-cart is in Snorri Sturluson’s Prose Edda. Scholars debate whether Freyja and Frigg were once one goddess.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Name a time you refused to be traded. Name what you kept and how you kept it. Give it three dated lines with the refusal plain.</div></div>
-<div class="folio">35</div>
+<div class="folio">33</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -436,7 +433,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>His gifts come with a limit. Plenty can turn into greed. Ask yourself what you grew that deserves sharing this season. Pick one loaf, one jar, or one mended thing. Show it to one witness and share it the same day.</p>
 <p><b>Where this comes from:</b> The Skírnismál is in the Poetic Edda. The Uppsala account is late and written from a Christian point of view.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">What increase deserves sharing this season? Name the loaf or jar or mended thing and the witness. Share it the same day with two dated lines.</div></div>
-<div class="folio">36</div>
+<div class="folio">34</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -448,7 +445,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>In your own life, this is the work of keeping the boundaries other people rely on. Think of his cart stopping at your gate. The gate latch gets fixed, the inbox gets sorted, and the bedtime routine stays steady. Walk one errand in bad weather. Mending a thing keeps faith with the people who depend on it.</p>
 <p><b>Where this comes from:</b> Þórr’s hammer, goats, and hallowing are in the Poetic Edda and Snorri Sturluson’s Prose Edda, and hammer amulets survive.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Who does the sheltering in your life? Name the boundary you most depend on and the mending that is yours this week. Give it gate or inbox or bedtime with a date. Give it two dated lines.</div></div>
-<div class="folio">37</div>
+<div class="folio">35</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -460,7 +457,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Þórr himself boasts of killing Þjazi in the Harbarðsljóð (Harbardsljod). Read her as a story about terms kept. The price is named and paid, and each person lives where they thrive. Plain terms settle a bargain: say what is owed, say what will settle it, and say which place each party keeps afterward.</p>
 <p><b>Where this comes from:</b> Skaði’s settlement is in Snorri’s Prose Edda, and Þórr’s boast is in the Harbarðsljóð, both late. The household use was written for this book.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">What bargain of yours needs plain terms, and which shore will each party keep? Name what is owed and what settles it. Give it three dated lines and speak it before the week ends.</div></div>
-<div class="folio">38</div>
+<div class="folio">36</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -472,7 +469,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Clear thinking does cold work here, like a knife paring rot from wood. List your tangles. Strike the ones that are only noise. Keep the one that is truly a mess to mend. Clarity is the only answer he respects. One cleanly repaired tangle is worth more than a year of excuses.</p>
 <p><b>Where this comes from:</b> Loki’s parentage and the story of Sif are in Snorri’s Prose Edda. His blood-brotherhood with Óðinn and his binding are in the Lokasenna.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Sort it out: which tangle is your mess to mend, and which is only noise? Name the one mess. Give it one dated line tonight.</div></div>
-<div class="folio">39</div>
+<div class="folio">37</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -484,7 +481,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>He gets one page and one use: the beloved who is lost. Claims that he is a dying god like others around the world, or a Christ-like figure, are modern, and this book sets them aside without scorn. We all lose something that brought us light, and Baldr can stand for that. Keep one grief on the page all month, without forcing it to teach you anything. Name the missed person in one true sentence.</p>
 <p><b>Where this comes from:</b> Baldr’s death is in the Poetic Edda and Snorri’s Prose Edda, copied late. The idea of a dying god is a modern comparison.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">What beloved loss sits with you still? Name who is missed in one true sentence. Give it a day and one dated line.</div></div>
-<div class="folio">40</div>
+<div class="folio">38</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -496,7 +493,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Choose one pledge this week. Make it short enough to keep without footnotes. Say it to one witness, state the cost, and keep it exactly. A kept promise is what makes your word trusted tomorrow.</p>
 <p><b>Where this comes from:</b> The binding of Fenrir is in Snorri’s Prose Edda, and Týr’s rune is in the rune poems and the Sigrdrífumál.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which oath of yours needs a hand behind it? Name it short enough to keep without footnotes. Speak it to one witness and give it one dated line.</div></div>
-<div class="folio">41</div>
+<div class="folio">39</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -508,7 +505,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>His lesson is the watch. Keep one bridge faithfully: a door, an inbox, or your temper. Stand ten minutes daily at the same post with your eyes up and note what moved. Trouble caught early is easier to handle while it is small. Speak warnings plainly before the cost grows.</p>
 <p><b>Where this comes from:</b> Heimdallr appears in the Hyndluljóð, Lokasenna, and Völuspá in the Poetic Edda, and in Snorri’s Prose Edda.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Name your bridge and your watch-hour. Stand ten minutes daily at the same post with phone away. Give it one dated line daily and one early warning this week.</div></div>
-<div class="folio">42</div>
+<div class="folio">40</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -526,7 +523,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p><b>Saturday · laugardagr</b><br>The Norse named it for bathing, not a god. <i>Laug</i> means “bath,” so <i style="hyphens:none">laugardagr</i> is “washing day.” English kept Rome’s Saturn.</p>
 <p><b>Where this comes from:</b> The Poetic Edda and Snorri’s Prose Edda.</p>
 
-<div class="folio">43</div>
+<div class="folio">41</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -539,7 +536,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>He is a monster, not a god, and the old sources show no one praying to him. He stands for a danger too big to beat alone. Name one problem you cannot fix this week, and one thing you will do to stay safe around it. Like thin winter ice, some things can be crossed only with care.</p>
 <p><b>Where this comes from:</b> The fishing trip is in the Hymiskviða. His birth, his throwing into the sea, and the final fight are in Snorri’s Prose Edda. This book offers no way to call him.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Name the problem you cannot master this season, and the edge you will walk carefully. Lay one store ready and mend one boundary and speak one warning. Give it three dated lines.</div></div>
-<div class="folio">44</div>
+<div class="folio">42</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -551,7 +548,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>The message is plain for any household: you are a guest on the land. Ask leave, keep your landing clean, and do not foul water or wood. Well-kept ground stays kinder than fouled ground, season after season.</p>
 <p><b>Where this comes from:</b> The ship rule is in the Landnámabók and the scorn pole is in Egils saga. The household lessons were written for this book.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Tell me plainly: what ground do you stand on, and which landlord have you never thanked? Clear one path and leave one shore clean. Give it two dated lines.</div></div>
-<div class="folio">45</div>
+<div class="folio">43</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -563,7 +560,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>The landvættir are not gods. They guard a place the way a household guards a farm. The Landnámabók says ships had to remove their carved prow heads before landing so as not to frighten them, and in Egils saga Egill turns them against a king. They are the unseen owners of the land, and the old sources treat them as neighbors to be respected.</p>
 <p><b>Where this comes from:</b> The four guardians are in Snorri’s Heimskringla, in the saga of Óláfr Tryggvason. The ship rule is in the Landnámabók.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which of the four guardians would you most want watching your coast? Say why. Give it two dated lines.</div></div>
-<div class="folio">46</div>
+<div class="folio">44</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -575,7 +572,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Fate and luck are not the same. Fate is the pattern the Norns set, and you cannot choose it. Luck, called hamingja, moves with how you act. Keep your oaths, pay what you owe on time, and give something freely each week.</p>
 <p><b>Where this comes from:</b> The Norns and their well are in the Völuspá in the Poetic Edda. Snorri’s Prose Edda adds the Norns at birth. The idea of luck is in Egils saga.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Where stands your luck today: rising, steady, or spent? Name what moved it and one restoring act. Give it two dated lines.</div></div>
-<div class="folio">47</div>
+<div class="folio">45</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -587,13 +584,13 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Her counsel is the part you can use. Before a hard day, ask one elder or steady friend for advice, and say your terms aloud so they can hear. Hard tasks go better with one clear voice beside you.</p>
 <p><b>Where this comes from:</b> The valkyrie names are in the Grímnismál in the Poetic Edda, and the counsel is in the Sigrdrífumál. This book offers no rites for calling valkyries.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Name your battle this week, and whose counsel will you seek before it? Ask one elder or steady friend and speak your terms aloud. Give it three dated lines for battle, counsel, and terms.</div></div>
-<div class="folio">48</div>
+<div class="folio">46</div>
 </div>
 </div><div class="page"><div class="inner center">
 <h1 style="font-size:30pt">Tales</h1>
 <div class="rule"></div>
 <p class="subtitle">Stories from the old books</p>
-<div class="folio">49</div>
+<div class="folio">47</div>
 </div></div><div class="page">
 <div class="inner">
 <div class="kicker">Tales</div>
@@ -604,7 +601,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Þjazi chases them in eagle form. The gods light a fire on the wall of Ásgarðr, the eagle’s feathers burn, and he falls and is killed. That killing brings his daughter Skaði to Ásgarðr, as her page tells.</p>
 <p><b>Where this comes from:</b> Skáldskaparmál in Snorri’s Prose Edda, and the skaldic poem Haustlöng.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which part of this story would you tell aloud first? Write it in one sentence. Give it two dated lines.</div></div>
-<div class="folio">50</div>
+<div class="folio">48</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -616,7 +613,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>The story shows how a bargain with giants goes wrong, and how Loki repairs a mess he made. It also explains Óðinn’s eight-legged horse.</p>
 <p><b>Where this comes from:</b> Gylfaginning in Snorri’s Prose Edda.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Think of a bargain that was too good to be true. What was the hidden cost? Give it two dated lines.</div></div>
-<div class="folio">51</div>
+<div class="folio">49</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -628,7 +625,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Þrymr orders the hammer brought in to bless the bride. As soon as Þórr has it in his hands, he strikes down Þrymr and every giant at the feast.</p>
 <p><b>Where this comes from:</b> The Þrymskviða (Thrymskvida) in the Poetic Edda.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which part of this tale makes you laugh, and why? Give it two dated lines.</div></div>
-<div class="folio">52</div>
+<div class="folio">50</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -640,7 +637,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Later Útgarða-Loki admits that it was all illusion. Þórr raises his hammer, but the giant and his hall have vanished. The tale says that even the strongest can lose to fire, thought, the sea, and time.</p>
 <p><b>Where this comes from:</b> Gylfaginning in Snorri’s Prose Edda.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which of these contests would beat you? Name it, and say why. Give it two dated lines.</div></div>
-<div class="folio">53</div>
+<div class="folio">51</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -652,7 +649,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>The poem ends with Freyr waiting. One night is long, he says, two are longer, and how will he bear three? Because he gave away his sword, Snorri says Freyr must face Ragnarök without it.</p>
 <p><b>Where this comes from:</b> The Skírnismál in the Poetic Edda. The sword at Ragnarök is in Snorri’s Prose Edda.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">What would you give up for something you wanted? Name it, and the cost. Give it two dated lines.</div></div>
-<div class="folio">54</div>
+<div class="folio">52</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -664,7 +661,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Hermóðr (Hermod) rides to Hel and asks for Baldr back. Hel says he may return if everything in the world weeps for him. All do, except one giantess, Þökk (Thokk), who says she will weep only dry tears. She is usually understood to be Loki in disguise, and Baldr stays in Hel. The gods later bind Loki for his part in it, as the Loki page tells.</p>
 <p><b>Where this comes from:</b> Gylfaginning in Snorri’s Prose Edda. The Völuspá also hints at Baldr’s death.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">What is one small thing you overlooked that mattered? Give it two dated lines.</div></div>
-<div class="folio">55</div>
+<div class="folio">53</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -676,7 +673,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>The old pattern is plain: grief is spoken aloud, in words that others can hear. Write four lines for someone you have lost, and read them aloud once.</p>
 <p><b>Where this comes from:</b> Egils saga, which includes the poem Sonatorrek.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Write four lines for someone you have lost. Read them aloud once. Give it a date.</div></div>
-<div class="folio">56</div>
+<div class="folio">54</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -688,13 +685,13 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>The poem is a picture of how the Old Norse saw their own society: bound, free, and noble, each in its own house. It survives in a later manuscript and is incomplete.</p>
 <p><b>Where this comes from:</b> The Rígsþula (Rigsthula), preserved in a later medieval manuscript.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which of the three houses is closest to yours? Say why. Give it two dated lines.</div></div>
-<div class="folio">57</div>
+<div class="folio">55</div>
 </div>
 </div><div class="page"><div class="inner center">
 <h1 style="font-size:30pt">Völva &amp; Seiðr</h1>
 <div class="rule"></div>
 <p class="subtitle">seeress and fate-work</p>
-<div class="folio">58</div>
+<div class="folio">56</div>
 </div></div><div class="page">
 <div class="inner">
 <div class="kicker">Seeress and Fate-Work</div>
@@ -702,11 +699,11 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <div class="rule"></div>
 <p>A völva (volva) is a seeress, a woman who carries a staff and sees what is hidden. The Völuspá is a völva speaking. She is called to the hall of Óðinn and paid to remember. She tells what was: the giants, the dwarfs, and the world tree. Then she tells what comes: winter, breaking, and the last battle. Picture her staff leaning by your chair.</p>
 <p>The poem also tells of Heiðr (Heidr), a woman who worked fate craft among households. She was burned three times and born again, never fully welcome and never dismissed.</p>
-<p>Read the völva as a witness, not a fortune-teller. The poem gives her words, not her method. No trance steps, drum patterns, or seating plans survive in the Poetic Edda, and this book will not invent them. Guided trance, costume, and ticketed prophecy are modern.</p>
+<p>Read the völva as a witness, not a fortune-teller. The Poetic Edda gives her words, not her method. The one detailed scene of a seeress at work is in Eiríks saga rauða, described later in this chapter, and this book will not invent steps the sources do not give. Guided trance, costume, and ticketed prophecy are modern.</p>
 <p>Meet her text honestly at the table with the book open. Read the Völuspá slowly across three sittings, ten stanzas at a time. Write down what it warns about in plain words, and date each note so you can see how your questions change.</p>
 <p><b>Where this comes from:</b> The seeress speaking is in the Völuspá in the Poetic Edda. Trance scripts and modern divination sold as völva-work are modern.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Whose long memory will you ask for this month? Read ten stanzas at a sitting across three sittings. Ask one elder, and write plain dated lines beside the Völuspá.</div></div>
-<div class="folio">59</div>
+<div class="folio">57</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -714,10 +711,34 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <h2>Seiðr: fate-work with limits</h2>
 <div class="rule"></div>
 <p>Seiðr (seidr) is a kind of magic tied to fate and spirits, and in the sources it belongs mostly to women. Two mentions in the Poetic Edda carry most of the weight, and both are unkind. In the Völuspá, the seeress says Heiðr practiced seiðr wherever she could, a fate worker moving from house to house. In the Lokasenna, Loki mocks Óðinn: he says Óðinn beat the drum like a seeress on Samsey and went about as a witch among men.</p>
-<p>So seiðr is shown as powerful, risky, and mocked in the same breath. That is all the Poetic Edda says. No ritual, step order, dress code, or drum pattern survives. Any staged seiðr with a circle, staff dance, and guided oracle is modern, and so is any lot draw or card read sold as Viking seiðr.</p>
+<p>So seiðr is shown as powerful, risky, and mocked in the same breath. That is all the Poetic Edda says. One saga, Eiríks saga rauða, describes a seeress’s dress, tools, and chants in detail, but no instructions for casting survive. Any staged seiðr with a circle, staff dance, and guided oracle is modern, and so is any lot draw or card read sold as Viking seiðr.</p>
 <p>Because no practice survives, this book gives none. The honest work is reading. Read the Völuspá stanza about Heiðr and the Lokasenna taunt about Samsey side by side, and write down what each one says and what it leaves out.</p>
 <p><b>Where this comes from:</b> Heiðr is in the Völuspá and the taunt about Samsey is in the Lokasenna, both in the Poetic Edda. Ritual scripts and divination uses are modern.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Read the two seiðr mentions side by side. Write what each says and what it leaves out. Give it two dated lines.</div></div>
+<div class="folio">58</div>
+</div>
+</div><div class="page">
+<div class="inner">
+<div class="kicker">Seeress and Fate-Work</div>
+<h2>Seiðr in the sources</h2>
+<div class="rule"></div>
+<p>The sources that describe seiðr are few. Here they are.</p>
+<p><b>Völuspá</b>: Heiðr, a seeress who practiced seiðr, is burned three times and born again.<br><b>Lokasenna</b>: Loki mocks Óðinn for beating a drum and going about as a witch among men.<br><b>Ynglinga saga, chapter 4</b>: Freyja is a priestess of the sacrifices, and she teaches seiðr to the Æsir.<br><b>Ynglinga saga, chapter 7</b>: Óðinn can change shape while his body lies as if asleep. Snorri says seiðr could bring harm, and that men who practiced it were shamed, so priestesses taught it.<br><b>Eiríks saga rauða, chapter 4</b>: a seeress named Þorbjörg comes to a Greenland farm in a famine winter. The next page describes her.</p>
+<p>What they share: women are the practitioners, a staff is carried, there is a high seat or platform, chanting is involved, and the aim is knowledge of fate. The sources describe seiðr far more than they teach it.</p>
+<p><b>Where this comes from:</b> The Völuspá and Lokasenna are in the Poetic Edda. Ynglinga saga is in Snorri’s Heimskringla. Eiríks saga rauða is an Icelandic saga.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which of the five sources would you most like to read in full? Name it and why. Give it two dated lines.</div></div>
+<div class="folio">59</div>
+</div>
+</div><div class="page">
+<div class="inner">
+<div class="kicker">Seeress and Fate-Work</div>
+<h2>A seeress at work: Eiríks saga rauða</h2>
+<div class="rule"></div>
+<p>In a famine winter in Greenland, a seeress named Þorbjörg is invited to a farm to foretell when the hunger will end. The saga describes her in detail.</p>
+<p><b>Dress</b>: a blue-black mantle set with stones to the hem, a necklace of glass beads, a black lambskin hood lined with white catskin, calfskin shoes with tin knobs, and catskin gloves white inside.<br><b>Tools</b>: a staff with a brass knob set with stones, and a belt of touchwood with a large pouch for her charms.<br><b>Seat</b>: a high seat with a cushion stuffed with hen feathers.<br><b>Food</b>: porridge of kid’s milk, and the hearts of every kind of animal on the farm.<br><b>Chants</b>: she needs women who know the chants called varðlokur. Only Guðríðr, a young Christian at the farm, knows them, and she sings them reluctantly.<br><b>Result</b>: the spirits are drawn by the song, and Þorbjörg says the famine will end and tells Guðríðr her own future.</p>
+<p>The saga was written in the 1200s, by a Christian author, about events around the year 1000. It is the most detailed account of a seeress that survives.</p>
+<p><b>Where this comes from:</b> Eiríks saga rauða, chapter 4.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which part of this scene would be hardest to recreate honestly, and why? Give it two dated lines.</div></div>
 <div class="folio">60</div>
 </div>
 </div><div class="page">
@@ -766,41 +787,10 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <div class="folio">65</div>
 </div>
 </div><div class="page"><div class="inner center">
-<h1 style="font-size:30pt">Vitki</h1>
-<div class="rule"></div>
-<p class="subtitle">rune-reader</p>
-<div class="folio">66</div>
-</div></div><div class="page">
-<div class="inner">
-<div class="kicker">Vitki</div>
-<h2>Vitki: Rune-Reader</h2>
-<div class="rule"></div>
-<p>A vitki is a person who works with runes. The old word means something close to “wise one.” The clearest picture comes from Óðinn himself in the Hávamál. He hangs nine nights in a wind-tossed tree, hungry and thirsty, until he sees the runes below and seizes them with a shout. Then he carves them into wood and reddens the cuts with color.</p>
-<p>In the Sigrdrífumál, the valkyrie Sigrdrífa, whom Völsunga saga calls Brynhildr, teaches the hero Sigurðr the same craft. She puts victory runes on the sword hilt, ale runes on the drinking horn, and birth runes on the palm. Knowing here is handwork: you cut, you color, and you speak it aloud.</p>
-<p>The medieval rune poems (Norwegian, Icelandic, and Anglo-Saxon) are the alphabet book behind the craft. They hold one short verse for each rune letter, each tied to a plain thing: wealth must move, ice bears no weight, the sun steadies. What they never show is anyone laying runes out to tell fortunes. That is modern and should be called so.</p>
-<p>Learn one rune letter a week from the rune poems. Cut or draw it on a scrap of wood, and speak its verse aloud. Runes were cut on tools, weapons, and cups to name their owner or maker, so set what you learn to one honest use: mark a tool handle with your own name in runes.</p>
-<p><b>Where this comes from:</b> The hanging is in the Hávamál, the counsel in the Sigrdrífumál, and the verses in the rune poems, with a parallel in Völsunga saga. Rune-spread divination is modern.</p>
-<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which rune will you carve first this week, and what will you mark with it? Cut or draw it on wood and speak its verse aloud. Give it three dated lines for rune, verse, and marking.</div></div>
-<div class="folio">67</div>
-</div>
-</div><div class="page">
-<div class="inner">
-<div class="kicker">Vitki</div>
-<h2>Sigrdrífa’s runes</h2>
-<div class="rule"></div>
-<p>In the Sigrdrífumál, the valkyrie Sigrdrífa gives Sigurðr a cup of mead, the minni cup, and then teaches him runes for each need. “Sig-runes thou must know, if victory thou wilt have, and on thy sword’s hilt grave them.” “Ol- (beer-) runes thou must know… On the horn must they be graven, and on the hand’s back.” “Biarg- (help-) runes thou must know, if thou wilt help, and loose the child from women. In the palm they must be graven.” “Brim- (sea-) runes thou must know, if thou wilt have secure afloat thy sailing steeds. On the prow they must be graven.” (Stanzas 6, 7, 9, and 10, translated by Benjamin Thorpe, 1866.)</p>
-<p>The list goes on: branch-runes for healers, speech-runes so no one repays you with hate, and thought-runes for wisdom. Each kind of rune is tied to a thing it is cut on: a sword, a horn, a palm, a prow. That is the old pattern. Runes belong on objects, with a purpose, and the cutting is the work.</p>
-<p>Notice what is missing. No one lays the runes out to read the future. The Sigrdrífumál is the clearest old list of rune types, and it describes carving, not casting.</p>
-<p>Study the list as it stands. Copy one of the quoted stanzas by hand, and note which object it names and what the rune is for.</p>
-<p><b>Where this comes from:</b> Sigrdrífumál stanzas 6 to 19 in the Poetic Edda, in Benjamin Thorpe’s 1866 translation, now public domain.</p>
-<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which need of yours has an object to carry it: a tool, a cup, a boat, a door? Name the need and the object. Give it two dated lines.</div></div>
-<div class="folio">68</div>
-</div>
-</div><div class="page"><div class="inner center">
 <h1 style="font-size:30pt">Elves &amp; Dwarfs</h1>
 <div class="rule"></div>
 <p class="subtitle">neighbors and smiths</p>
-<div class="folio">69</div>
+<div class="folio">66</div>
 </div></div><div class="page">
 <div class="inner">
 <div class="kicker">Elves</div>
@@ -811,7 +801,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Think of the elves as unseen neighbors who watch from the edge. You can honor them by stepping softly, keeping paths clear, and leaving one quiet place alone. Practice this in one corner of your week, not in all of it.</p>
 <p><b>Where this comes from:</b> Álfheimr is in Grímnismál, and the light and dark split is in Snorri’s Prose Edda, which is late and tidy.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Name one spot near your home that feels quietly watched over. Name how you will keep it. Give it two dated lines.</div></div>
-<div class="folio">70</div>
+<div class="folio">67</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -823,7 +813,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Freyr is linked to fair weather and good harvests on tame ground, and the elves are linked to beauty and danger at the wild edge. The poems never explain how the two meet.</p>
 <p><b>Where this comes from:</b> The tooth-gift is in Grímnismál. This book adds no elf-king rites.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Read the Grímnismál stanza that gives Álfheimr to Freyr. Write what it says and what it leaves out. Give it two dated lines.</div></div>
-<div class="folio">71</div>
+<div class="folio">68</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -835,7 +825,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>You can keep the same spirit at home. Pick one evening, close the door to noise, eat quietly, and speak one thank-you aloud. This is one skald’s account of farms, not a rule for every farm.</p>
 <p><b>Where this comes from:</b> The álfablót is in Sigvatr’s Austrfararvísur, a poem from the time. No account of the rite itself survives.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">When will you bar your door early for one quiet meal with thanks? Name the date, the meal, and the people you will thank. Give it three dated lines.</div></div>
-<div class="folio">72</div>
+<div class="folio">69</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -847,7 +837,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Your street may keep a version of this too, perhaps the corner no one builds on, or the tree no one cuts. You can do the same on your block: leave one tree, one patch of ground, or one corner alone. Leave it be, and do not take what is not yours.</p>
 <p><b>Where this comes from:</b> Elf place-names and mound-honor are in old records and folk custom.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Walk your block once this week and look for places people leave alone. Mark two spots. Give each one dated line.</div></div>
-<div class="folio">73</div>
+<div class="folio">70</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -859,7 +849,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Keep one edge this way: choose one patch of ground or one shared space. Ask before you take from it, give thanks after, and leave it quieter than you found it. That is all this practice asks.</p>
 <p><b>Where this comes from:</b> Mound offerings are in Icelandic sagas. This book offers no summoning rites.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which edge will you keep this month, using only good manners? Name place, act, and date in three lines.</div></div>
-<div class="folio">74</div>
+<div class="folio">71</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -871,7 +861,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>The dwarf list was made to be said aloud. Start with four names: Northri, Southri, Austri, and Vestri. In Snorri’s Prose Edda they hold up the four corners of the sky. Say them once each day for a week.</p>
 <p><b>Where this comes from:</b> The dwarf origins and name lists are in the Völuspá and Snorri’s Prose Edda, which is late.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which three dwarf-names will you learn first? Name them and say them aloud. Give it three dated lines.</div></div>
-<div class="folio">75</div>
+<div class="folio">72</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -883,7 +873,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Sif’s gold hair shows the pattern: a careless wrong is repaired by fine work, and the repair is paid for. Use that lesson in your own life. Fine work deserves to be honored, not just owned.</p>
 <p><b>Where this comes from:</b> The Ívaldi and Brokkr treasures are in Skáldskaparmál, a late prose work.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which fine-made thing of yours needs mending? Name it, name its maker, and log the price and date in four lines.</div></div>
-<div class="folio">76</div>
+<div class="folio">73</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -895,7 +885,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Pay the people who make things for you fairly, and thank them by name. Work freely given and fairly paid is the everyday opposite of Völundr’s chains.</p>
 <p><b>Where this comes from:</b> Völundr’s story is in the Völundarkviða in the Poetic Edda. Smith-patron rites are modern.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Whose skilled work do you rely on without thanks? Name that person, what you owe, and one way you will thank them. Give three dated lines.</div></div>
-<div class="folio">77</div>
+<div class="folio">74</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -907,13 +897,13 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>You can use the same tactic on a hard bargain: wait for daylight, and make the other side answer your questions in writing.</p>
 <p><b>Where this comes from:</b> The Alvíssmál is a poem in the Poetic Edda. Daylight turning dwarfs to stone is a later telling.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">What pressure wants you to sign now? Name it, write its three questions, and sleep before signing. Give dated lines tonight.</div></div>
-<div class="folio">78</div>
+<div class="folio">75</div>
 </div>
 </div><div class="page"><div class="inner center">
 <h1 style="font-size:30pt">Norse Wheel of the Year</h1>
 <div class="rule"></div>
 <p class="subtitle">Winter Nights to Midsummer</p>
-<div class="folio">79</div>
+<div class="folio">76</div>
 </div></div><div class="page">
 <div class="inner">
 <div class="kicker">Norse Wheel of the Year</div>
@@ -924,7 +914,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>A year like this is learned by doing. One marked date teaches more than any diagram, and one small task you finish is worth more than a shelf of plans. Start with one date. Write it down in ink, and the rest of the year will have a fixed point to measure by.</p>
 <p><b>Where this comes from:</b> The five turnings are named in Icelandic sagas, Snorri’s Heimskringla, and folk custom, but the sources are thin. The eight-spoke wheel is a modern invention.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Find which of the five turnings comes next. Mark its date in ink and read its pages once, with a warm drink in hand. Choose one small task to finish before the week ends and write it beside the date. Give it three dated lines.</div></div>
-<div class="folio">80</div>
+<div class="folio">77</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -936,7 +926,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Your household already knows how to feast. Birthday bread comes to the table on its own plate. One soup fixes everything. One pudding is always asked for. This chapter adds five old names to the dishes you already love. Say an old name over a dish you already cook, and the meal becomes a marker of the season.</p>
 <p><b>Where this comes from:</b> How this chapter works. Its method is modern, built on old sources.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Sit down for twenty minutes and list the dishes that already mean joy at your table. Copy that list onto the reflection pages when you reach them. Give it three dated lines.</div></div>
-<div class="folio">81</div>
+<div class="folio">78</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -948,7 +938,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>The whole practice fits inside half an hour. Nothing is buried, nothing is poured where it fouls water, and no coins are left in springs. Carry out every trace before you sleep. Repeat it at the next turn of the month. Passing the cup from hand to hand keeps memory alive.</p>
 <p><b>Where this comes from:</b> The toasts and blood-sprinkling are in Hákonar saga góða, and the warning about the gift is in the Hávamál. The household blot was rebuilt for this book.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">What gift will you set out this month, and who receives it by name? Set water or milk or bread or song or work and drink the toast. Give it four dated lines in the tracker.</div></div>
-<div class="folio">82</div>
+<div class="folio">79</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -956,7 +946,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <div class="jprompt">Gift log: what did you give, and to whom? The Hávamál says a gift looks for a return, so give without asking.</div>
 <div class="rule"></div>
 <div class="track"><div class="trow"><span class="box">&#9744;</span><span>Gift (water, milk, bread, song, or work) and date</span></div><div class="trow"><span class="box">&#9744;</span><span>To whom — name the figure</span></div><div class="trow"><span class="box">&#9744;</span><span>Who shared it with you</span></div><div class="trow"><span class="box">&#9744;</span><span>Leave-no-trace check (carried out?)</span></div><div class="trow"><span class="box">&#9744;</span><span>Week two gift</span></div><div class="trow"><span class="box">&#9744;</span><span>Week three gift</span></div><div class="trow"><span class="box">&#9744;</span><span>Week four gift</span></div></div>
-<div class="folio">83</div>
+<div class="folio">80</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -968,7 +958,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>The old calendar sticks share one habit worth borrowing. They keep count over time. The moon still waxes and wanes over your street. Looking at the sky twice a month builds steady attention. Short notes kept over time are more useful than arguments about the past. Step outside, look up, and write down what you see.</p>
 <p><b>Where this comes from:</b> The Rök stone dates to the 800s, and calendar sticks come later. No one knows whether the stone had any festival use.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Step outside tonight and find the moon. Note whether it waxes or wanes and write one line about the sky over your street. Keep those notes across the two months of the tracker. Give it four dated lines.</div></div>
-<div class="folio">84</div>
+<div class="folio">81</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -976,7 +966,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <div class="jprompt">Moon tracker, two months: watch the sky, don’t rebuild old rites. Note new and full moon dates.</div>
 <div class="rule"></div>
 <div class="track"><div class="trow"><span class="box">&#9744;</span><span>Month one, new moon — date + sky</span></div><div class="trow"><span class="box">&#9744;</span><span>Month one, full moon — date + sky</span></div><div class="trow"><span class="box">&#9744;</span><span>Month one — what changed around you?</span></div><div class="trow"><span class="box">&#9744;</span><span>Month two, new moon — date + sky</span></div><div class="trow"><span class="box">&#9744;</span><span>Month two, full moon — date + sky</span></div><div class="trow"><span class="box">&#9744;</span><span>Month two — what changed around you?</span></div><div class="trow"><span class="box">&#9744;</span><span>Which turning falls inside these two moons?</span></div><div class="trow"><span class="box">&#9744;</span><span>One line: what did the moon teach?</span></div></div>
-<div class="folio">85</div>
+<div class="folio">82</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -988,7 +978,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>The old feast turned toward the dead. If there is a grave or an old mound near you, visit it as the leaves turn, and say one name aloud.</p>
 <p><b>Where this comes from:</b> The Winter Nights blot is in Icelandic sagas and calendars, but thinly. The details come from later folk custom.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Visit a grave, a mound, or a place where someone is remembered. Say one name aloud. Give it three dated lines.</div></div>
-<div class="folio">86</div>
+<div class="folio">83</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1000,15 +990,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Three short sentences, kept for a season, teach more about family than a long list of resolutions. Keep each toast plain enough for a child to understand. Speak it standing, with your feet on the floor. Then keep saying it through the winter. Plain thanks spoken aloud link the living and the dead in your family’s memory.</p>
 <p><b>Where this comes from:</b> Slaughter-season foods and toasts come from later folk custom, with hints in the sagas.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Rough your three toasts out on the reflection pages first, where crossings out cost nothing. Trim until a child could understand, then speak them standing at the table with feet on the floor. Toast the kin present, then thank the dísir and landvættir. Give it three dated lines.</div></div>
-<div class="folio">87</div>
-</div>
-</div><div class="page">
-<div class="inner">
-<div class="kicker">Winter Nights</div>
-<div class="jprompt">Reflection: which kin — living or dead — will you toast, and with what thanks?</div>
-<div class="rule"></div>
-<div class="lines tall"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<div class="folio">88</div>
+<div class="folio">84</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1020,7 +1002,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Yule is the time for vows. Before you make a new one, look back at the vows you made last winter and say honestly which you kept. Then speak the names of the dead over supper, one sentence each.</p>
 <p><b>Where this comes from:</b> Yule feasting and oaths are thinly recorded in the Poetic Edda and Icelandic sagas. The details come from later folk custom.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Sit still for one evening with last year’s vows. Note which you kept and which you did not. Then speak the names of your dead over supper, one sentence each. Give it three dated lines.</div></div>
-<div class="folio">89</div>
+<div class="folio">85</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1032,23 +1014,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Write the vows down so they can be checked at the next Yule. The Ancestors pages give a fuller way to remember the dead. The next morning, leave a share out for the birds.</p>
 <p><b>Where this comes from:</b> Feast and vow-drinking are thinly recorded in the sagas. The extra plate comes from later Scandinavian folk custom.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Hold this supper on one evening this week. Cook one simple dish, lay the extra plate, and speak each ancestor’s name. Then speak one vow for the year before a witness. Give it three dated lines.</div></div>
-<div class="folio">90</div>
-</div>
-</div><div class="page">
-<div class="inner">
-<div class="kicker">Yule</div>
-<div class="jprompt">Reflection: what will you carry through the dark, and what stays buried here?</div>
-<div class="rule"></div>
-<div class="lines tall"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<div class="folio">91</div>
-</div>
-</div><div class="page">
-<div class="inner">
-<div class="kicker">Yule</div>
-<div class="jprompt">Reflection: what will you repeat every Yule, even in a tired year?</div>
-<div class="rule"></div>
-<div class="lines tall"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<div class="folio">92</div>
+<div class="folio">86</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1060,7 +1026,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Once a year is enough. Cook one dish from stored food, and name each woman in one true sentence while you eat. The fuller supper plan is on the Ancestors pages. Naming women who are often forgotten keeps their memory alive in your family.</p>
 <p><b>Where this comes from:</b> The dísir and the dísablót are named in the Icelandic sagas, but thinly. Disting is a later market. The supper was written for this book.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Hold your supper on one February evening, in under an hour. Cook one dish from stored food and speak each woman’s name with one true sentence. Log the names and sentences beside your ancestor cards. Give it three dated lines.</div></div>
-<div class="folio">93</div>
+<div class="folio">87</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1072,7 +1038,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>The old rite was a toast and a vow for the season’s work. Name one voyage you will launch this summer, such as a project, a trip, or a change, and say it aloud before a witness.</p>
 <p><b>Where this comes from:</b> Sigrblót is named in the kings’ sagas, such as Ynglinga saga, but thinly. The household version was rebuilt for this book.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Name the voyage you will launch this summer and what would make it a success. Say it aloud to one witness. Give it three dated lines.</div></div>
-<div class="folio">94</div>
+<div class="folio">88</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1084,7 +1050,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>This practice works best when you plan first. Saying a plan aloud to others makes it harder to forget. Prepare for your voyage, then keep your word, even when it is hard. Take one step you have planned, and your summer begins.</p>
 <p><b>Where this comes from:</b> Spring greens and shared eating come from later folk custom.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Write down one voyage you will launch this summer before the meal begins. Name its course, its crew, and where it should end on the reflection page. Then stand and drink to it in front of witnesses, however few. Give it three dated lines.</div></div>
-<div class="folio">95</div>
+<div class="folio">89</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1096,7 +1062,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Share one joy with one witness before the week ends. That is Midsummer kept small. A swim, a song, or a nap in full daylight will do. Choose one joy and tell someone about it. When you name the people who helped you find that joy, the light of the season stays with you longer.</p>
 <p><b>Where this comes from:</b> Midsummer greens and fires come from later folk custom. No old poem is claimed for them.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Name one joy you will mark at this height of summer, such as a swim, a song, or a nap in full daylight. Show it to one witness, and write how you will share it before the week ends. Give it three dated lines.</div></div>
-<div class="folio">96</div>
+<div class="folio">90</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1108,21 +1074,13 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>In the old custom, greens and thanks belonged together. Climb a hill, speak a promise, and keep both in mind. Pick one clear step to take after the walk, and write it down.</p>
 <p><b>Where this comes from:</b> Hill fires and crowns come from later folk custom. The home version was written for this book.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Plan your walk tonight so it fits inside an hour. Pick the hill, or the stairs, and write three simple rules: what counts as the climb, how you mark it, and when it ends. Walk it this week and log it honestly. Give it three dated lines.</div></div>
-<div class="folio">97</div>
-</div>
-</div><div class="page">
-<div class="inner">
-<div class="kicker">Midsummer</div>
-<div class="jprompt">Reflection: what will you repeat every Midsummer, even in a tired year?</div>
-<div class="rule"></div>
-<div class="lines tall"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<div class="folio">98</div>
+<div class="folio">91</div>
 </div>
 </div><div class="page"><div class="inner center">
 <h1 style="font-size:30pt">Plants &amp; Trees</h1>
 <div class="rule"></div>
 <p class="subtitle">Herbs and ash</p>
-<div class="folio">99</div>
+<div class="folio">92</div>
 </div></div><div class="page">
 <div class="inner">
 <div class="kicker">Plants</div>
@@ -1133,7 +1091,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Check any herb against your medicines with a clinician first. If you are or may be pregnant, check with a clinician before using any herb. Careful watching and a written rule help you learn without harm.</p>
 <p><b>Where this comes from:</b> Toxicity and caution come from classical and modern medical knowledge.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Write your own safety line here, dated. Name what you will never swallow and who your expert will be. Give it one firm line.</div></div>
-<div class="folio">100</div>
+<div class="folio">93</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1145,7 +1103,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>The herb lists that do survive are in Icelandic medical books from the 1200s to the 1400s. The next pages cover what they say. They were written by Christian scribes, so they are medieval, not Viking Age.</p>
 <p><b>Where this comes from:</b> Ólafs saga helga in Snorri’s Heimskringla, and the Sigrdrífumál in the Poetic Edda in Benjamin Thorpe’s 1866 translation. The medical books are described in Luthien Cangemi’s The Art of Healing in Medieval Iceland (UCL, 2024).</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Look up laukr, which means leek, onion, or garlic. Name where you could find it in your own kitchen, and what the old sources used it for. Give it two dated lines.</div></div>
-<div class="folio">101</div>
+<div class="folio">94</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1157,7 +1115,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>This book asks you only to look. Yarrow can cause skin irritation in some people. Never use it in place of prescribed medicine, and never for deep or doubtful wounds. Count ten clumps on a walk and sketch one leaf.</p>
 <p><b>Where this comes from:</b> Yarrow as greni is in AM 434 a 12mo, as described in Luthien Cangemi’s thesis. The manuscript was edited by Kristian Kålund and translated by Ben Waggoner.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">On your next walk, count every yarrow clump you pass and note where the ground is damp or trodden. Sketch one leaf in five plain lines. Count ten clumps. Do not gather anything. Give it three dated lines.</div></div>
-<div class="folio">102</div>
+<div class="folio">95</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1169,7 +1127,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>So these are medieval Icelandic remedies, not Viking Age ones, and some of the plants were grown in gardens, not found wild. They are recorded here as history. This book does not recommend any of them. If you are unwell, see a clinician.</p>
 <p><b>Where this comes from:</b> AM 434 a 12mo and Dublin, Royal Irish Academy MS 23 D 43, as described in Luthien Cangemi’s thesis. Compare the Old English Herbarium and the Lacnunga.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which of these herbs have you seen growing near you? Name it and where. Do not pick it. Give it two dated lines.</div></div>
-<div class="folio">103</div>
+<div class="folio">96</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1181,7 +1139,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>This book makes no claim beyond that. Find leek, onion, and garlic in your own kitchen and learn the three names.</p>
 <p><b>Where this comes from:</b> The Fløksand inscription and the bracteates are runic finds, with the reading laukaz as leek widely accepted. The Sigrdrífumál is in the Poetic Edda, and Ólafs saga helga is in Snorri’s Heimskringla.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Find leek, onion, and garlic in your kitchen. Write each name and what it is used for. Give it two dated lines.</div></div>
-<div class="folio">104</div>
+<div class="folio">97</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1193,7 +1151,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Do not gather seaweed or any wild food without local knowledge, and never from polluted shores. Read the dulse scene in Egils saga slowly, and notice how little it asks of the reader: a daughter, a plant, and a hard moment.</p>
 <p><b>Where this comes from:</b> Egils saga. The early written records of dulse as food are noted by the Slow Food Ark of Taste.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Read the dulse scene in Egils saga. Write what the daughter’s trick shows about dulse. Give it two dated lines.</div></div>
-<div class="folio">105</div>
+<div class="folio">98</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1204,7 +1162,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>To make ale, barley is malted: soaked until it sprouts, then dried. This book does not teach brewing. Learn what malt is, and where the toast begins.</p>
 <p><b>Where this comes from:</b> Barley as the main grain comes from the archaeology of Viking Age farms. The ale passages are in the Hávamál, the Sigrdrífumál, and Hákonar saga góða.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Look at a bag of barley or malt. Write what it looks like and one place ale appears in the old sources. Give it two dated lines.</div></div>
-<div class="folio">106</div>
+<div class="folio">99</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1216,7 +1174,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>A tree you visit each year becomes a fixed point, something steady to measure the seasons by. Dry kindling you buy can light your midwinter nights. Visit one pine, note its date and how it stands, and it becomes a steady marker for your year.</p>
 <p><b>Where this comes from:</b> Pine tar for ships and torchwood for light are known from archaeology and folk life.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Find your nearest pine this week. Record where it grows and how it stands with date, then return at midwinter dark and add one line about light. Give it three dated lines.</div></div>
-<div class="folio">107</div>
+<div class="folio">100</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1228,15 +1186,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>This book does not ask you to use plantain on your body or in food. The old uses are history, not instructions. Never use it in place of prescribed care, and never on deep or dirty wounds.</p>
 <p><b>Where this comes from:</b> Plantain as læknnesgras is in AM 434 a 12mo, as described in Luthien Cangemi’s thesis. The English names and the seed use come from folk custom.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Find a plantain on a path and study its ribbed leaves and spikes for ten minutes. Sketch it in five lines, and write the clinician caution twice beside your log. Do not pick or use any part of it. Give it three dated lines.</div></div>
-<div class="folio">108</div>
-</div>
-</div><div class="page">
-<div class="inner">
-<div class="kicker">Plants</div>
-<div class="jprompt">First meetings: where does your chosen ally grow, and when will you visit it across the seasons?</div>
-<div class="rule"></div>
-<div class="lines tall"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<div class="folio">109</div>
+<div class="folio">101</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1247,7 +1197,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>These are English verses, not Norse, but the Norwegian and Icelandic rune poems speak the same way: one plain thing, one short saying. Together they show how people thought about a tree: what it gave, what it made, and how it stood.</p>
 <p><b>Where this comes from:</b> The Anglo-Saxon rune poem, which survives only in a copy printed in 1705. The verses here are paraphrased.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Choose one tree near you. Write its rune-poem verse, then write your own verse of the same length. Give it two dated lines.</div></div>
-<div class="folio">110</div>
+<div class="folio">102</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1259,7 +1209,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Visit one ash in each of the four seasons, and it becomes a familiar friend. Watch the buds open and the birds change above the bark. Walking with one tree through the year gives you a steady place to measure your own growth.</p>
 <p><b>Where this comes from:</b> The ash as world-tree is in the Poetic Edda, and ash timber was widely used.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Visit an ash tree this week for twenty minutes, and write where it stands as your first entry. Then log it across all four seasons. Give it four dated lines.</div></div>
-<div class="folio">111</div>
+<div class="folio">103</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1270,7 +1220,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Look closely and you will see why people valued it: light, flexible wood, waterproof bark, and early leaves.</p>
 <p><b>Where this comes from:</b> Birch use is known from archaeology and folk life. The birch stanza is in the Anglo-Saxon rune poem.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Find a birch this week. Note its bark, buds, and leaves, and the date. Return in a month and note what changed. Give it two dated lines.</div></div>
-<div class="folio">112</div>
+<div class="folio">104</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1281,7 +1231,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>In Snorri Sturluson’s Prose Edda, the rowan is called the salvation of Þórr, because Þórr once saved himself from a flooded river by grabbing a rowan on the bank. You can care for a rowan in plain ways: notice it often, take only fallen wood, and never cut a branch without permission.</p>
 <p><b>Where this comes from:</b> Rowan at the threshold is folk custom. The rowan as Þórr’s salvation is in Snorri’s Prose Edda.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Find a rowan near a doorway on a walk. Note the date, the berries, and where it stands. Give it three dated lines.</div></div>
-<div class="folio">113</div>
+<div class="folio">105</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1292,7 +1242,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Take no teas, no berries, and no experiments. Look, learn the name, and touch nothing. Take nothing away from a yew except notes.</p>
 <p><b>Where this comes from:</b> Ydalir is in the Grímnismál in the Poetic Edda. The yew stanza is in the Anglo-Saxon rune poem. The poison is a plain fact.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Find a yew near you, or a photograph of one. Note the date and what you see. Do not touch it. Give it one dated line.</div></div>
-<div class="folio">114</div>
+<div class="folio">106</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1304,29 +1254,13 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Watching an oak through the seasons keeps you steady. Guess its girth (width around the trunk), and note the birds, year after year. One oak followed through all four seasons gives your year a steady point to return to.</p>
 <p><b>Where this comes from:</b> Viking ships such as Oseberg and Gokstad were built mostly of oak. The oak stanza is in the Anglo-Saxon rune poem.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Choose one oak near you and walk to it this week, taking about twenty minutes. Note where it stands and how it looks today, including its lean, its branches, and the light. Then log it across all four seasons. Give it four dated lines.</div></div>
-<div class="folio">115</div>
-</div>
-</div><div class="page">
-<div class="inner">
-<div class="kicker">Plants</div>
-<div class="jprompt">Plant ally log: name your ally from these pages, then log its leaf, flower, seed, and date at each turning.</div>
-<div class="rule"></div>
-<div class="lines tall"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<div class="folio">116</div>
-</div>
-</div><div class="page">
-<div class="inner">
-<div class="kicker">Plants</div>
-<div class="jprompt">Seasonal sightings calendar: what will you look for, where, and in which month? Look, name, and leave it.</div>
-<div class="rule"></div>
-<div class="lines tall"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<div class="folio">117</div>
+<div class="folio">107</div>
 </div>
 </div><div class="page"><div class="inner center">
 <h1 style="font-size:30pt">Liminal Places</h1>
 <div class="rule"></div>
 <p class="subtitle">Wells that remember</p>
-<div class="folio">118</div>
+<div class="folio">108</div>
 </div></div><div class="page">
 <div class="inner">
 <div class="kicker">Liminal Places</div>
@@ -1337,7 +1271,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>When you visit, go as a guest of the place. Ask leave before you lift any water, and sit a while to listen before you leave. Take nothing away from the site, and leave nothing behind that will not rot or wash clean. Keep any promise you made to the place. The visit takes under an hour.</p>
 <p><b>Where this comes from:</b> Old gifts in lakes and springs are found by archaeology. Óðinn’s pledge at the well of Mímir is in the Völuspá.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Name your nearest spring or well. Give the day you will go and what you will listen for. Write it in three dated lines.</div></div>
-<div class="folio">119</div>
+<div class="folio">109</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1349,7 +1283,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Many people now live with an unfinished move, a half-paid house, or a task that was never finished. The old idea of a crossing still helps. Every crossing has a bank behind you and a bank ahead. Say your terms aloud to one witness, as the crews did: one thing you carry over and one thing you set down. The crossing is finished when you keep the terms you set.</p>
 <p><b>Where this comes from:</b> Sea-voyage vows appear in Icelandic sagas as a story pattern.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Name the crossing you are in now. Name the bank behind you and the bank ahead. Write what you will carry over and what you will set down. Give it three dated lines.</div></div>
-<div class="folio">120</div>
+<div class="folio">110</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1361,7 +1295,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Keep your own door this way. Look to it before you go out and when you come in. Have water, a towel, warmth, and food ready for whoever arrives, and welcome them plainly. Once a month, look over your doorway: the lock, the light, and the step.</p>
 <p><b>Where this comes from:</b> Hávamál stanzas 1 to 4 and 134 in the Poetic Edda, in Benjamin Thorpe’s 1866 translation, now public domain.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Look over the doorway you use most. What would you need to welcome a stranger with water, a towel, warmth, and food? Give it four dated lines.</div></div>
-<div class="folio">121</div>
+<div class="folio">111</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1374,7 +1308,7 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <p>Some old northern and Old English texts blame certain sicknesses on outside beings, such as elves (álfar) and the mara, a night-presser who sits on sleepers. This book takes only the habit of watching the edges. It does not diagnose or treat illness. If you are unwell, see a clinician.</p>
 <p><b>Where this comes from:</b> Meetings at edges and dream warnings appear in Icelandic sagas as story patterns. The phrase “thin places” is modern.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Choose dawn or dusk. Keep it three days in a row for ten minutes at the same window or step. Write light and three sounds after each sit. Give it three dated lines.</div></div>
-<div class="folio">122</div>
+<div class="folio">112</div>
 </div>
 </div><div class="page">
 <div class="inner">
@@ -1382,93 +1316,244 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 <div class="jprompt">Well visit: go, tidy, listen. Write the date, place, what you tidied, what you heard, and what you left.</div>
 <div class="rule"></div>
 <div class="lines tall"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<div class="folio">123</div>
-</div>
-</div><div class="page">
-<div class="inner">
-<div class="kicker">Liminal Places</div>
-<div class="jprompt">Sea-road worksheet: what you are crossing, what you carry over, what you set down mid-water.</div>
-<div class="rule"></div>
-<div class="lines tall"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<div class="folio">124</div>
-</div>
-</div><div class="page">
-<div class="inner">
-<div class="kicker">Liminal Places</div>
-<div class="jprompt">Three-day sit log: dawn or dusk, for three days. Write the light, the sounds, and what changed. Date each day.</div>
-<div class="rule"></div>
-<div class="lines tall"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<div class="folio">125</div>
+<div class="folio">113</div>
 </div>
 </div><div class="page"><div class="inner center">
 <h1 style="font-size:30pt">Runes</h1>
 <div class="rule"></div>
 <p class="subtitle">Stones with staves</p>
-<div class="folio">126</div>
+<div class="folio">114</div>
 </div></div><div class="page">
 <div class="inner">
 <div class="kicker">Runes</div>
-<h2>Runes cut on stone</h2>
+<h2>What runes are</h2>
 <div class="rule"></div>
-<p>Run your finger along a stone’s cuts in low light and you feel the shape before you read it. A rune is a letter of the old runic alphabet. The Elder row, the older set in order, has twenty-four runes. They are cut on spearheads, on gold bracteates (thin gold medallions), and on standing stones, from roughly the second to the eighth century. The row begins fehu-uruz-þurisaz-ansuz-raidō-kenaz. Those six runes give the row its name, futhark, which is taken from its first six letters. The Kylver stone on Gotland carries the whole Elder row in order. Centuries later, the Younger row uses sixteen signs, in short-twig and long-branch forms. It was cut from roughly the ninth to the twelfth century on stones such as Rök and Jelling.</p>
-<p>The two rows differ in length, not in purpose. The Elder row spells things out fully. Its twenty-four runes are grouped into three families of eight. Later books call them the kin of Freyr, Hagall, and Týr. The Younger row shortens the writing to sixteen signs and leaves more to the reader. Stones give family names and memories. They say a stone was raised for a father. They never give spells or fortunes. The medieval rune poems (Norwegian, Icelandic, and Anglo-Saxon) pair each rune with a short saying. Wealth must move. Ice gives no grip. A torch shows the way. Read each saying slowly, one at a time.</p>
-<p>Your hands can learn the runes before your mind does. The first cuts were made by hands holding chisels, and hands still learn them best. Draw straight lines with a ruler, say each name aloud, and count the branches on each rune. Using your hand and your voice together helps the shapes stick. If the whole row feels like too much, start with the first six runes.</p>
-<p><b>Where this comes from:</b> The rows are cut on stones from the 2nd to the 12th century, and the rune poems give the verses. The study practice is modern.</p>
-<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Copy the Elder row one evening and the Younger row the next, using a ruler for straight lines. Sound each name and count three branches. Write which row your hand prefers and where the runes match. Give it four dated lines.</div></div>
-<div class="folio">127</div>
+<p>Runes are the letters the early Germanic peoples carved in wood, stone, bone, and metal. The oldest inscriptions date from about the second century CE. The alphabet is called the futhark, named for its first six letters: f, u, th, a, r, k. It came in three main forms. The Elder Futhark has 24 runes and was used from about the 2nd to the 8th century. The Younger Futhark has 16 and was used in Viking Age Scandinavia, from about the 9th to the 12th century. The Anglo-Saxon futhorc grew to as many as 33 and was used in England.</p>
+<p>Each rune has a name, a sound, and a meaning from the rune poems. Fehu is the sound f and also the word for cattle and wealth. On some inscriptions a single rune stands for the whole word it names, as scholars think the l-rune stands for laukaz, “leek.”</p>
+<p>The row below is cut on the Kylver stone, a grave slab from Gotland in Sweden, about the year 400. It is the oldest complete futhark we have.</p>
+<div class="rrow">ᚠᚢᚦᚨᚱᚲᚷᚹ &nbsp; ᚺᚾᛁᛃᛇᛈᛉᛊ &nbsp; ᛏᛒᛖᛗᛚᛜᛞᛟ</div>
+<p><b>Where this comes from:</b> The Kylver stone and the three futharks are known from archaeology. The rune names come from the rune poems.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Copy the 24 runes of the Kylver row by hand, once, slowly. Give it two dated lines.</div></div>
+<div class="folio">115</div>
 </div>
 </div><div class="page">
 <div class="inner">
 <div class="kicker">Runes</div>
-<h2>Seven runes for your journal</h2>
+<h2>Vitki: Rune-Reader</h2>
 <div class="rule"></div>
-<p>This book uses seven short runes. Each rune has a saying that the medieval rune poems give. Fehu is cattle and wealth, which must move to stay alive. Uruz is the strong aurochs, a wild ox, pulling through mud. Þurisaz (Thurisaz) is the thorn that guards by pricking whoever grips it. Ansuz is the mouth of Óðinn, speaking counsel. Raidō (Raidho) is the road and riding, which can be smooth or hard on the feet. Kenaz is the torch that shows the evening work. Hagalaz is the hail that breaks roofs and bows to no one. Say each name aloud.</p>
-<p>These rune names and sayings come from the medieval rune poems. The Norwegian, Icelandic, and Anglo-Saxon rune poems each speak in their own voice. The set is narrowed to seven because it suits a journal rather than a temple. The book does not claim that Viking Age people used them any other way than as letters with names.</p>
-<p>Learn them the way the rune poems were learned, by saying them. Copy each rune with its name and saying onto one line of your journal, then say all seven aloud from memory once a day for a week. When a saying fits your day, note it.</p>
-<p><b>Where this comes from:</b> The seven meanings are from the medieval rune poems (Norwegian, Icelandic, Anglo-Saxon). The narrowed set was chosen for this book.</p>
-<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Copy the seven runes with their names and sayings. Say them aloud once a day for a week. Note the day one of them fit. Give it three dated lines.</div></div>
-<div class="folio">128</div>
+<p>A vitki is a person who works with runes. The old word means something close to “wise one.” The clearest picture comes from Óðinn himself in the Hávamál. He hangs nine nights in a wind-tossed tree, hungry and thirsty, until he sees the runes below and seizes them with a shout. Then he carves them into wood and reddens the cuts with color.</p>
+<p>In the Sigrdrífumál, the valkyrie Sigrdrífa, whom Völsunga saga calls Brynhildr, teaches the hero Sigurðr the same craft. She puts victory runes on the sword hilt, ale runes on the drinking horn, and birth runes on the palm. Knowing here is handwork: you cut, you color, and you speak it aloud.</p>
+<p>The medieval rune poems (Norwegian, Icelandic, and Anglo-Saxon) are the alphabet book behind the craft. They hold one short verse for each rune letter, each tied to a plain thing: wealth must move, ice bears no weight, the sun steadies. What they never show is anyone laying runes out to tell fortunes. That is modern and should be called so.</p>
+<p>Learn one rune letter a week from the rune poems, and say its verse aloud. The pages that follow give the rows, the names, and how to carve.</p>
+<p><b>Where this comes from:</b> The hanging is in the Hávamál, the counsel in the Sigrdrífumál, and the verses in the rune poems, with a parallel in Völsunga saga. Rune-spread divination is modern.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which rune will you learn first this week? Say its name and its verse aloud. Give it three dated lines.</div></div>
+<div class="folio">116</div>
+</div>
+</div><div class="page">
+<div class="inner">
+<div class="kicker">Runes</div>
+<h2>Sigrdrífa’s runes</h2>
+<div class="rule"></div>
+<p>In the Sigrdrífumál, the valkyrie Sigrdrífa gives Sigurðr a cup of mead, the minni cup, and then teaches him runes for each need. “Sig-runes thou must know, if victory thou wilt have, and on thy sword’s hilt grave them.” “Ol- (beer-) runes thou must know… On the horn must they be graven, and on the hand’s back.” “Biarg- (help-) runes thou must know, if thou wilt help, and loose the child from women. In the palm they must be graven.” “Brim- (sea-) runes thou must know, if thou wilt have secure afloat thy sailing steeds. On the prow they must be graven.” (Stanzas 6, 7, 9, and 10, translated by Benjamin Thorpe, 1866.)</p>
+<p>The list goes on: branch-runes for healers, speech-runes so no one repays you with hate, and thought-runes for wisdom. Each kind of rune is tied to a thing it is cut on: a sword, a horn, a palm, a prow. That is the old pattern. Runes belong on objects, with a purpose, and the cutting is the work.</p>
+<p>Notice what is missing. No one lays the runes out to read the future. The Sigrdrífumál is the clearest old list of rune types, and it describes carving, not casting.</p>
+<p>Study the list as it stands. Copy one of the quoted stanzas by hand, and note which object it names and what the rune is for.</p>
+<p><b>Where this comes from:</b> Sigrdrífumál stanzas 6 to 19 in the Poetic Edda, in Benjamin Thorpe’s 1866 translation, now public domain.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which need of yours has an object to carry it: a tool, a cup, a boat, a door? Name the need and the object. Give it two dated lines.</div></div>
+<div class="folio">117</div>
+</div>
+</div><div class="page">
+<div class="inner">
+<div class="kicker">Runes</div>
+<h2>The Elder Futhark: Freyr’s eight</h2>
+<div class="rule"></div>
+<p>The 24 runes are grouped in three families of eight, called ættir (singular ætt). Later books name each family after the rune that begins it: Freyr’s ætt, Hagal’s ætt, and Týr’s ætt. The first is Freyr’s.</p>
+<table class="rt"><tr><td class="g">ᚠ</td><td class="n">fehu</td><td class="s">f</td><td>cattle, wealth</td></tr><tr><td class="g">ᚢ</td><td class="n">uruz</td><td class="s">u</td><td>the aurochs, a wild ox</td></tr><tr><td class="g">ᚦ</td><td class="n">þurisaz</td><td class="s">th</td><td>a giant, or a thorn</td></tr><tr><td class="g">ᚨ</td><td class="n">ansuz</td><td class="s">a</td><td>a god; the mouth of Óðinn</td></tr><tr><td class="g">ᚱ</td><td class="n">raidō</td><td class="s">r</td><td>riding, a journey</td></tr><tr><td class="g">ᚲ</td><td class="n">kenaz</td><td class="s">k</td><td>a torch, or a sore</td></tr><tr><td class="g">ᚷ</td><td class="n">gebō</td><td class="s">g</td><td>a gift</td></tr><tr><td class="g">ᚹ</td><td class="n">wunjō</td><td class="s">w</td><td>joy</td></tr></table>
+<p>These names are reconstructed. No Elder Futhark inscription records them, so scholars rebuild them from the Anglo-Saxon, Norwegian, and Icelandic rune poems.</p>
+<p><b>Where this comes from:</b> The runes are known from inscriptions. Their names are reconstructed from the rune poems.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Say the eight names aloud, then copy the eight runes. Give it two dated lines.</div></div>
+<div class="folio">118</div>
+</div>
+</div><div class="page">
+<div class="inner">
+<div class="kicker">Runes</div>
+<h2>The Elder Futhark: Hagal’s eight</h2>
+<div class="rule"></div>
+<p>The second family of eight is called Hagal’s ætt, after the hail rune that begins it. Two of its runes, perþō and algiz, have names no one can agree on.</p>
+<table class="rt"><tr><td class="g">ᚺ</td><td class="n">hagalaz</td><td class="s">h</td><td>hail</td></tr><tr><td class="g">ᚾ</td><td class="n">nauðiz</td><td class="s">n</td><td>need, hardship</td></tr><tr><td class="g">ᛁ</td><td class="n">īsaz</td><td class="s">i</td><td>ice</td></tr><tr><td class="g">ᛃ</td><td class="n">jēra</td><td class="s">j</td><td>the year, a good harvest</td></tr><tr><td class="g">ᛇ</td><td class="n">eihwaz</td><td class="s">ei</td><td>the yew</td></tr><tr><td class="g">ᛈ</td><td class="n">perþō</td><td class="s">p</td><td>uncertain; no agreed meaning</td></tr><tr><td class="g">ᛉ</td><td class="n">algiz</td><td class="s">z</td><td>uncertain; often read “elk” or “protection”</td></tr><tr><td class="g">ᛊ</td><td class="n">sōwilō</td><td class="s">s</td><td>the sun</td></tr></table>
+<p><b>Where this comes from:</b> The runes are known from inscriptions. Their names are reconstructed from the rune poems.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Say the eight names aloud, then copy the eight runes. Give it two dated lines.</div></div>
+<div class="folio">119</div>
+</div>
+</div><div class="page">
+<div class="inner">
+<div class="kicker">Runes</div>
+<h2>The Elder Futhark: Týr’s eight</h2>
+<div class="rule"></div>
+<p>The third family is Týr’s ætt, named for the god’s rune, tīwaz. It ends with ōþala, the rune of heritage and home.</p>
+<table class="rt"><tr><td class="g">ᛏ</td><td class="n">tīwaz</td><td class="s">t</td><td>the god Týr</td></tr><tr><td class="g">ᛒ</td><td class="n">berkanan</td><td class="s">b</td><td>the birch</td></tr><tr><td class="g">ᛖ</td><td class="n">ehwaz</td><td class="s">e</td><td>a horse</td></tr><tr><td class="g">ᛗ</td><td class="n">mannaz</td><td class="s">m</td><td>a man, a person</td></tr><tr><td class="g">ᛚ</td><td class="n">laguz</td><td class="s">l</td><td>water; the same rune is also read as laukaz, the leek</td></tr><tr><td class="g">ᛜ</td><td class="n">ingwaz</td><td class="s">ng</td><td>the god Ing, a name of Freyr</td></tr><tr><td class="g">ᛞ</td><td class="n">dagaz</td><td class="s">d</td><td>day</td></tr><tr><td class="g">ᛟ</td><td class="n">ōþala</td><td class="s">o</td><td>an inherited estate, heritage</td></tr></table>
+<p><b>Where this comes from:</b> The runes are known from inscriptions. Their names are reconstructed from the rune poems.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Say the eight names aloud, then copy the eight runes. Give it two dated lines.</div></div>
+<div class="folio">120</div>
+</div>
+</div><div class="page">
+<div class="inner">
+<div class="kicker">Runes</div>
+<h2>The Younger Futhark: sixteen runes</h2>
+<div class="rule"></div>
+<p>In the Viking Age the row shrank to 16 runes, so each rune had to serve for several sounds. The Icelandic and Norwegian rune poems give each one a short verse. This is the gist of each, in long-branch form.</p>
+<table class="rt rt2"><tr><td class="g">ᚠ</td><td class="n">fé</td><td class="s">f</td><td>wealth, which stirs up strife among kin</td></tr><tr><td class="g">ᚢ</td><td class="n">úr</td><td class="s">u, o, v</td><td>drizzle or slag</td></tr><tr><td class="g">ᚦ</td><td class="n">þurs</td><td class="s">th</td><td>a giant</td></tr><tr><td class="g">ᚬ</td><td class="n">óss</td><td class="s">o, a</td><td>a god, “aged Gautr,” Óðinn; also a river mouth</td></tr><tr><td class="g">ᚱ</td><td class="n">reið</td><td class="s">r</td><td>riding</td></tr><tr><td class="g">ᚴ</td><td class="n">kaun</td><td class="s">k, g</td><td>an ulcer, a sore</td></tr><tr><td class="g">ᚼ</td><td class="n">hagall</td><td class="s">h</td><td>hail</td></tr><tr><td class="g">ᚾ</td><td class="n">nauð</td><td class="s">n</td><td>need, hardship</td></tr><tr><td class="g">ᛁ</td><td class="n">ís</td><td class="s">i, e</td><td>ice</td></tr><tr><td class="g">ᛅ</td><td class="n">ár</td><td class="s">a, æ</td><td>a good harvest, plenty</td></tr><tr><td class="g">ᛋ</td><td class="n">sól</td><td class="s">s</td><td>the sun</td></tr><tr><td class="g">ᛏ</td><td class="n">týr</td><td class="s">t, d</td><td>the one-handed god</td></tr><tr><td class="g">ᛒ</td><td class="n">bjarkan</td><td class="s">b, p</td><td>the birch</td></tr><tr><td class="g">ᛘ</td><td class="n">maðr</td><td class="s">m</td><td>a man</td></tr><tr><td class="g">ᛚ</td><td class="n">lögr</td><td class="s">l</td><td>water</td></tr><tr><td class="g">ᛦ</td><td class="n">ýr</td><td class="s">R</td><td>the yew, a bent bow</td></tr></table>
+<p><b>Where this comes from:</b> The Younger Futhark is on Viking Age stones. The meanings are paraphrased from the Icelandic and Norwegian rune poems (Dickins, 1915).</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Choose three runes and copy each with its name and its poem line. Give it three dated lines.</div></div>
+<div class="folio">121</div>
+</div>
+</div><div class="page">
+<div class="inner">
+<div class="kicker">Runes</div>
+<h2>Runes in use: seven examples</h2>
+<div class="rule"></div>
+<p><b>Kylver stone</b>: the whole futhark, cut on a grave slab on Gotland, about 400.<br><b>Bracteates</b>: gold medallions from about 500 carry the words alu and laukaz. Nobody is sure what they meant, but they repeat.<br><b>Björketorp stone</b>: a 7th-century stone in Sweden that curses anyone who breaks it.<br><b>Rök stone</b>: the longest Viking Age inscription, with some secret runes among the ordinary ones.<br><b>Egill’s horn</b>: in Egils saga, Egill carves runes on a drinking horn and rubs them with blood. The horn bursts, and the poisoned drink spills.<br><b>Egill’s whalebone</b>: in the same saga, a girl is sick because someone carved the wrong runes on a whalebone. Egill scrapes them off, burns the shavings, carves new runes, and she recovers.<br><b>Sigrdrífumál</b>: the valkyrie Sigrdrífa lists runes for victory, for ale, for birth, for the sea, for healing, for speech, and for wisdom, each cut on a named object.</p>
+<p>Egill’s verse in the saga sums it up: a man should not carve runes unless he can read them well. Many are confounded by a dark rune.</p>
+<p><b>Where this comes from:</b> The inscriptions are known from archaeology. Egill’s runes are in Egils saga, and Sigrdrífa’s are in the Sigrdrífumál.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which of these seven would you most like to see in person? Name it and where it is. Give it two dated lines.</div></div>
+<div class="folio">122</div>
+</div>
+</div><div class="page">
+<div class="inner">
+<div class="kicker">Runes</div>
+<h2>Writing in runes</h2>
+<div class="rule"></div>
+<p>To write in runes, spell by sound, not by spelling. The Elder Futhark has no capitals and no rules for spaces. Inscriptions mark the end of a word with a dot or two, and may run left to right or right to left.</p>
+<div class="kvgrid"><span class="kv"><span class="g">ᚨ</span>a</span><span class="kv"><span class="g">ᛒ</span>b</span><span class="kv"><span class="g">ᛞ</span>d</span><span class="kv"><span class="g">ᛖ</span>e</span><span class="kv"><span class="g">ᚠ</span>f</span><span class="kv"><span class="g">ᚷ</span>g</span><span class="kv"><span class="g">ᚺ</span>h</span><span class="kv"><span class="g">ᛁ</span>i</span><span class="kv"><span class="g">ᛃ</span>j</span><span class="kv"><span class="g">ᚲ</span>k</span><span class="kv"><span class="g">ᛚ</span>l</span><span class="kv"><span class="g">ᛗ</span>m</span><span class="kv"><span class="g">ᚾ</span>n</span><span class="kv"><span class="g">ᛟ</span>o</span><span class="kv"><span class="g">ᛈ</span>p</span><span class="kv"><span class="g">ᚱ</span>r</span><span class="kv"><span class="g">ᛊ</span>s</span><span class="kv"><span class="g">ᛏ</span>t</span><span class="kv"><span class="g">ᚢ</span>u</span><span class="kv"><span class="g">ᚹ</span>w</span><span class="kv"><span class="g">ᛉ</span>z</span><span class="kv"><span class="g">ᚦ</span>th</span><span class="kv"><span class="g">ᛜ</span>ng</span><span class="kv"><span class="g">ᛇ</span>ei</span></div>
+<p>There is no c, v, or y: use ᚲ for c, ᚹ for v, and ᛃ for y. Four examples:</p>
+<div class="rrow" style="font-size:15pt">ᛖᚷᛁᛚᛚ &nbsp; ᚦᛟᚱ &nbsp; ᚨᛊᚲ &nbsp; ᛖᛗᛒᛚᚨ</div><div style="text-align:center;font-size:10.5pt;margin-top:-0.05in">egill &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; thor &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ask &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; embla</div>
+<p>Notice that the runes are all straight lines. Wood has a grain, and a cut along the grain tends to split, so rune strokes run across it. That is one reason runes avoid curves and flat horizontal lines.</p>
+<p><b>Where this comes from:</b> The rune values are standard. The grain explanation is the usual scholarly account, not a statement in any source.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Write your own name in Elder Futhark, by sound. Give it a dated line.</div></div>
+<div class="folio">123</div>
+</div>
+</div><div class="page">
+<div class="inner">
+<div class="kicker">Runes</div>
+<h2>Carving runes</h2>
+<div class="rule"></div>
+<p>The old sources say how runes were made. Sigrdrífa tells Sigurðr to carve them on the thing they are for: a sword’s hilt, a horn, the palm, a ship’s prow. In Egils saga, Egill carves runes and then reddens them with blood. The Hávamál asks the same questions in stanza 146: do you know how to carve a rune, how to read it, how to color it, and how to test it?</p>
+<p>To make a simple carved rune, you need a smooth, dry piece of wood and a sharp knife, used carefully and always cutting away from your hand. Draw the runes in pencil first. Cut each stroke across the grain, with two cuts that meet in a V. Then fill the cuts with red ink or paint. This book does not ask for blood.</p>
+<p>Egill’s rule is the one that matters most: do not carve runes you cannot read. Before you cut a rune, know its name and the sound or word it stands for.</p>
+<p><b>Where this comes from:</b> Sigrdrífumál stanzas 6 to 19, Hávamál stanza 146, and Egils saga. The wood and ink steps are practical, not from a source.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Carve one rune you know the name of on a scrap of wood. Fill the cuts with red ink. Give it three dated lines.</div></div>
+<div class="folio">124</div>
+</div>
+</div><div class="page">
+<div class="inner">
+<div class="kicker">Runes</div>
+<h2>Bindrunes and secret runes</h2>
+<div class="rule"></div>
+<p>A bindrune joins two or more runes by sharing one stave, the vertical line. Bindrunes appear on many early and Viking Age inscriptions, to save space or to make a name look like one sign.</p>
+<div style="text-align:center"><span class="bind"><span>ᚠ</span><span>ᚱ</span></span><span class="bind"><span>ᚨ</span><span>ᛏ</span></span></div><div style="text-align:center;font-size:10.5pt;margin-top:-0.05in">fr &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at</div>
+<p>The two signs above join fehu and raidō (fr) and ansuz and tīwaz (at). To make one, pick runes that share a stave, and draw the shared stave once.</p>
+<p>Secret runes are older than they sound. The Rök stone uses cipher runes. One old cipher counts the family of eight and the place in the row, so each rune becomes two numbers shown as strokes: fehu is the first rune of the first family, so it is 1 and 1.</p>
+<p><b>Where this comes from:</b> Bindrunes and cipher runes are known from Viking Age inscriptions, including the Rök stone.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Join two runes from your own name as a bindrune. Draw it, and write the two runes beside it. Give it two dated lines.</div></div>
+<div class="folio">125</div>
+</div>
+</div><div class="page">
+<div class="inner">
+<div class="kicker">Runes</div>
+<h2>Carve your name</h2>
+<div class="rule"></div>
+<p>The oldest runic sentence formula is a maker’s mark. The Golden Horn of Gallehus, made in Denmark about the year 400, carries this line:</p>
+<div class="rrow" style="font-size:15pt">ᛖᚲ ᚺᛚᛖᚹᚨᚷᚨᛊᛏᛁᛉ ᚺᛟᛚᛏᛁᛃᚨᛉ ᚺᛟᚱᚾᚨ ᛏᚨᚹᛁᛞᛟ</div>
+<p>It reads “ek Hlewagastiz Holtijaz horna tawido,” which means “I, Hlewagastiz, son of Holt, made the horn.” The golden horns were stolen and melted in 1802, but drawings of the inscription survive.</p>
+<p>Use the same pattern on something you have made. Write ek, then your name, then tawido, which means “made.” Spell by sound, and carve it as you learned on the last pages.</p>
+<p><b>Where this comes from:</b> The Gallehus inscription is known from early drawings. The formula ek … tawido recurs on other early inscriptions.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Carve ek, your name, and tawido on something you have made. Give it a dated line, and note what you made.</div></div>
+<div class="folio">126</div>
+</div>
+</div><div class="page">
+<div class="inner">
+<div class="kicker">Runes</div>
+<div class="jprompt">Rune notebook: write each rune you carve, its name, its poem line, and where you used it.</div>
+<div class="rule"></div>
+<div class="lines tall"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+<div class="folio">127</div>
 </div>
 </div><div class="page"><div class="inner center">
 <h1 style="font-size:30pt">Staves</h1>
 <div class="rule"></div>
 <p class="subtitle">use them honestly</p>
-<div class="folio">129</div>
+<div class="folio">128</div>
 </div></div><div class="page">
 <div class="inner">
 <div class="kicker">Staves</div>
-<h2>Galdrastaves are late; use them honestly</h2>
+<h2>Runes and staves are not the same</h2>
 <div class="rule"></div>
-<p>Galdrastaves are late. They are not Viking Age runes. A galdrastave is a magic sign drawn in a charm book (a book of spells and charms). The earliest bound staves in Iceland appear in AM 434 a 12mo, an Icelandic charm book of the late 1400s, drawn beside remedies. The books many people know are early modern. Galdrabók (Galdrabok) dates to the 17th century. Lbs 4375 8vo dates to the 1860s. They mix a Christian frame, with Latin, runes, and pictures together.</p>
-<p>Ægishjálmr (Aegishjalmr), Helm of Awe, has old poetry behind it: the Fáfnismál names a helm of terror. Vegvísir (Vegvisir), the way-pointer, dates to the 1860s and appears in the Huld manuscript, a 19th-century Icelandic collection. It is not a Viking Age sign. In books such as Galdrabók, the staves draw their power by calling on Christ, Mary, and angels alongside older names. Calling them Viking amulets is a modern label. Kept in their own period, they stay accurate.</p>
-<p>Study them as the manuscripts show them. Copy one stave from a reproduction of AM 434 a 12mo or Galdrabók onto paper, and write the date, the book, and the purpose the book gives beside it.</p>
-<p><b>Where this comes from:</b> The staves come from AM 434 a, Galdrabók (17th century), and the Huld manuscript (1860s), all late.</p>
-<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Copy one stave from a manuscript reproduction. Note the date, the book, and its purpose. Give it three dated lines.</div></div>
+<p>Runes are an alphabet. They were cut from about the 2nd to the 12th century, for writing and for magic, and their names and meanings are in the rune poems.</p>
+<p>Galdrastafir (galdrastafir), usually called staves, are magic signs. They come from Iceland, mostly from the 15th to the 19th centuries, and they were drawn in charm books beside Latin, runes, and Christian prayers. A stave is not a letter. It is a sign made for a purpose.</p>
+<p>That difference matters because many modern sellers call staves Viking symbols. They are not. The staves in this chapter are medieval and early modern, and the pages say when each one is from.</p>
+<p><b>Where this comes from:</b> The dating is from the Icelandic manuscripts described on the next page.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Say in one sentence how a rune differs from a stave. Give it two dated lines.</div></div>
+<div class="folio">129</div>
+</div>
+</div><div class="page">
+<div class="inner">
+<div class="kicker">Staves</div>
+<h2>The stave books: a timeline</h2>
+<div class="rule"></div>
+<p><b>About 1500, AM 434 a 12mo</b>: an Icelandic book of medicine and magic. Its staves are drawn beside remedies, and its rituals are for finding a thief, frightening an enemy, and avoiding a ruler’s anger.<br><b>1600s, Galdrabók</b>: a collection of Icelandic spells that mixes Latin, runes, and staves with Christian prayers.<br><b>1670, Galdrakver</b>: “the little magic book,” a small skin-bound book. Its drawings include the sign called the Helm of Awe.<br><b>1860s, the Huld manuscript</b>: a 19th-century collection that holds the way-pointer, Vegvísir.</p>
+<p>Dates are approximate, and scholars disagree on some of them. The oldest manuscript is already two to three centuries after the Viking Age.</p>
+<p><b>Where this comes from:</b> Luthien Cangemi’s The Art of Healing in Medieval Iceland (UCL, 2024) for AM 434 a 12mo, and standard descriptions of the other books.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which of these four books would you most like to see? Name it and why. Give it two dated lines.</div></div>
 <div class="folio">130</div>
 </div>
 </div><div class="page">
 <div class="inner">
 <div class="kicker">Staves</div>
-<div class="jprompt">Valknútr sketches: draw a valknútr from a picture-stone photograph, and note the scene around it.</div>
+<h2>Three rituals from the oldest stave book</h2>
 <div class="rule"></div>
-<div class="lines tall"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+<p><b>To see a thief.</b> Carve a sign on the bottom of a box. Grind yarrow as fine as you can in clean water, and say: “I desire, by the nature of the herb and the power of the sign, that I may see the shadow of the one who has stolen from me.” End with the Latin words In nomine domini, amen.<br><b>To frighten an enemy.</b> Pick yarrow on the feast of Bishop John. Keep the sun off it, take it with all its roots, and speak over it when the sun is in the south-east. Carry the sign in your left hand.<br><b>To avoid a ruler’s anger.</b> Go out before sunrise and speak to no one. Take yarrow and let your blood fall on it, then draw a cross on your forehead with the herb, and go before your lord.</p>
+<p>Notice the pattern: a sign, a herb, spoken words, and a Christian closing. These rituals are quoted as history. This book does not ask you to draw blood or to try them.</p>
+<p><b>Where this comes from:</b> AM 434 a 12mo, as quoted in Luthien Cangemi’s thesis, from Ben Waggoner’s translation.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which of the three rituals is the strangest to you, and why? Give it two dated lines.</div></div>
 <div class="folio">131</div>
+</div>
+</div><div class="page">
+<div class="inner">
+<div class="kicker">Staves</div>
+<h2>Two famous staves</h2>
+<div class="rule"></div>
+<p><b>Ægishjálmr</b>, the Helm of Awe, takes its name from the Fáfnismál, where the dragon Fáfnir says: “An Oegis-helm I bore among the sons of men, while I o’er the treasures lay.” (Stanza 16, translated by Benjamin Thorpe, 1866.) Sigurd answers that it is no protection when angry men fight. One 17th-century stave book describes the Helm of Awe as a sign to carve in lead and press between the brows to overcome foes. The drawing below is a simplified modern version; the manuscripts vary.</p>
+<div style="text-align:center"><svg viewBox="-100 -100 200 200" width="130" height="130" xmlns="http://www.w3.org/2000/svg" style="display:inline-block" role="img" aria-label="Helm of Awe, simplified"><g fill="none" stroke="#1A1512" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle r="6"/><line x1="10.0" y1="0.0" x2="62.0" y2="0.0"/><line x1="62.0" y1="0.0" x2="86.0" y2="0.0"/><line x1="70.0" y1="0.0" x2="86.4" y2="-16.6"/><line x1="70.0" y1="0.0" x2="86.4" y2="16.6"/><line x1="39.7" y1="-4.8" x2="39.7" y2="4.8"/><line x1="7.1" y1="7.1" x2="43.8" y2="43.8"/><line x1="43.8" y1="43.8" x2="60.8" y2="60.8"/><line x1="49.5" y1="49.5" x2="72.9" y2="49.4"/><line x1="49.5" y1="49.5" x2="49.4" y2="72.9"/><line x1="31.5" y1="24.7" x2="24.7" y2="31.5"/><line x1="0.0" y1="10.0" x2="0.0" y2="62.0"/><line x1="0.0" y1="62.0" x2="0.0" y2="86.0"/><line x1="0.0" y1="70.0" x2="16.6" y2="86.4"/><line x1="0.0" y1="70.0" x2="-16.6" y2="86.4"/><line x1="4.8" y1="39.7" x2="-4.8" y2="39.7"/><line x1="-7.1" y1="7.1" x2="-43.8" y2="43.8"/><line x1="-43.8" y1="43.8" x2="-60.8" y2="60.8"/><line x1="-49.5" y1="49.5" x2="-49.4" y2="72.9"/><line x1="-49.5" y1="49.5" x2="-72.9" y2="49.4"/><line x1="-24.7" y1="31.5" x2="-31.5" y2="24.7"/><line x1="-10.0" y1="0.0" x2="-62.0" y2="0.0"/><line x1="-62.0" y1="0.0" x2="-86.0" y2="0.0"/><line x1="-70.0" y1="0.0" x2="-86.4" y2="16.6"/><line x1="-70.0" y1="0.0" x2="-86.4" y2="-16.6"/><line x1="-39.7" y1="4.8" x2="-39.7" y2="-4.8"/><line x1="-7.1" y1="-7.1" x2="-43.8" y2="-43.8"/><line x1="-43.8" y1="-43.8" x2="-60.8" y2="-60.8"/><line x1="-49.5" y1="-49.5" x2="-72.9" y2="-49.4"/><line x1="-49.5" y1="-49.5" x2="-49.4" y2="-72.9"/><line x1="-31.5" y1="-24.7" x2="-24.7" y2="-31.5"/><line x1="-0.0" y1="-10.0" x2="-0.0" y2="-62.0"/><line x1="-0.0" y1="-62.0" x2="-0.0" y2="-86.0"/><line x1="-0.0" y1="-70.0" x2="-16.6" y2="-86.4"/><line x1="-0.0" y1="-70.0" x2="16.6" y2="-86.4"/><line x1="-4.8" y1="-39.7" x2="4.8" y2="-39.7"/><line x1="7.1" y1="-7.1" x2="43.8" y2="-43.8"/><line x1="43.8" y1="-43.8" x2="60.8" y2="-60.8"/><line x1="49.5" y1="-49.5" x2="49.4" y2="-72.9"/><line x1="49.5" y1="-49.5" x2="72.9" y2="-49.4"/><line x1="24.7" y1="-31.5" x2="31.5" y2="-24.7"/></g></svg></div>
+<p><b>Vegvísir</b>, the way-pointer, is from the 19th-century Huld manuscript. It says that a person who carries the sign will not lose their way in storms or bad weather, even on an unknown road. It is not a Viking Age sign.</p>
+<p><b>Where this comes from:</b> The Fáfnismál is in the Poetic Edda. The Helm of Awe instructions are in 17th-century Icelandic stave books, and Vegvísir is in the Huld manuscript.</p>
+<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Which of these two staves would you want on a journey? Say why. Give it two dated lines.</div></div>
+<div class="folio">132</div>
 </div>
 </div><div class="page">
 <div class="inner">
 <div class="kicker">Symbols</div>
 <h2>Valknútr (Valknut) is old; the rest is newer</h2>
 <div class="rule"></div>
-<p>The valknútr (knot of the slain) is three triangles locked together. It is cut on Viking Age picture stones beside riders and ships. Its link to Óðinn is only suggested, by the scenes it appears in, not by a written label. Some carved stones are worn but plain, and their shapes can be hard to read.</p>
-<p>The other marks belong to other places and times. The triquetra (a knot of three pointed loops) belongs to Early Christian and medieval art. Most tangled knotwork sold as a Viking badge is either medieval or modern craft. Of the signs in this chapter, only the valknútr is Viking Age. The rest is newer.</p>
-<p>Study it where it was found. Find photographs of Viking Age picture stones that show a valknútr, and sketch the knot, tracing the turn with your hand first. Beside each sketch, note the scene around it: riders, ships, or fallen warriors.</p>
+<p><div style="text-align:center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="70" height="70" style="display:block;margin:0 auto 0.2in auto;" role="img" aria-label="Valknut">
+  <defs>
+    <mask id="vkm0" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><rect width="200" height="200" fill="#FFFFFF"/><path d="M135.50,110.82 L151.50,138.54 M87.00,61.46 L103.00,89.18" fill="none" stroke="#000000" stroke-width="18"/></mask>
+    <mask id="vkm1" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><rect width="200" height="200" fill="#FFFFFF"/><path d="M102.50,124.68 L70.50,124.68 M97.00,78.78 L113.00,106.50" fill="none" stroke="#000000" stroke-width="18"/></mask>
+    <mask id="vkm2" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><rect width="200" height="200" fill="#FFFFFF"/><path d="M139.50,124.68 L107.50,124.68 M68.50,155.86 L84.50,128.14" fill="none" stroke="#000000" stroke-width="18"/></mask>
+  </defs>
+  <g transform="matrix(-1 0 0 1 200 0)" fill="none" stroke="#1A1512" stroke-width="8" stroke-linejoin="miter" stroke-miterlimit="10">
+    <polygon mask="url(#vkm0)" points="115.00,40.68 163.50,124.68 66.50,124.68"/>
+    <polygon mask="url(#vkm1)" points="115.00,75.32 163.50,159.32 66.50,159.32"/>
+    <polygon mask="url(#vkm2)" points="85.00,58.00 133.50,142.00 36.50,142.00"/>
+  </g>
+</svg></div></p>
+<p>The valknútr (knot of the slain) is three triangles locked together. It is cut on Viking Age picture stones beside riders and ships. Its link to Óðinn is only suggested, by the scenes it appears in, not by a written label.</p>
+<p>Of the signs in this chapter, only the valknútr is Viking Age. The staves are later. The triquetra, a knot of three pointed loops, belongs to Early Christian and medieval art, and most tangled knotwork sold as a Viking badge is medieval or modern craft.</p>
+<p>Study it where it was found. Find photographs of Viking Age picture stones that show a valknútr, and sketch the knot. Beside each sketch, note the scene around it: riders, ships, or fallen warriors.</p>
 <p><b>Where this comes from:</b> The valknútr is cut on Viking Age picture stones. The triquetra comes from Christian and medieval art.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">Sketch a valknútr from a photograph of a picture stone. Note the scene around it. Give it three dated lines.</div></div>
-<div class="folio">132</div>
-</div>
-</div><div class="page"><div class="inner">
 <div class="folio">133</div>
-</div></div><div class="page"><div class="inner center">
+</div>
+</div><div class="page"><div class="inner center">
 <h1 style="font-size:30pt">Galdr: Charms</h1>
 <div class="rule"></div>
 <p class="subtitle">Words in old books</p>

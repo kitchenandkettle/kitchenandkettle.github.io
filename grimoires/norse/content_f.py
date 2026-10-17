@@ -36,7 +36,6 @@ CH_POEMS = [
   "A short prose ending in the manuscript tells what follows. The gods catch Loki, who had hidden as a salmon, and bind him with the entrails of his son. Skaði hangs a serpent over his face. His wife, Sigyn, holds a bowl to catch the venom. When she turns away to empty it, the venom drips on him, and his struggling shakes the earth.",
   "<b>Where this comes from:</b> The Lokasenna and its prose ending are in the Poetic Edda. The excerpts are Benjamin Thorpe’s 1866 translation, now public domain."],
  "Think of a hard thing someone once said to you that held some truth. Write the words and the truth in them. Give it two dated lines."),
-("journal", "The Poems", "Poem log: write each poem you read, the date, one line that stayed with you, and one question it left.", 12),
 ]
 
 

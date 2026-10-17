@@ -12,11 +12,39 @@ from content_b import CH3, CH3B, CH4B, CH4C
 from content_c import CH5, CH6
 from content_d import CH7, CH8, CH9, CH10
 from content_e import CH_ED
+from content_g import RUNE_PAGES, STAVE_PAGES, SEIDR_PAGES, RUNE_NOTEBOOK
 from content_f import CH_POEMS, CH_WELCOME, GODS_GLANCE, NEW_SONGS, NEW_VITKI, NEW_COUNSEL, VOLUSPA_PAGE, FRIENDS_PAGE, TALES, NEW_PLANTS, TREES_RUNE, GIANTS_PAGE, GLOSSARY_PAGE
 
 
+def aegis_svg():
+    import math
+    parts = ['<svg viewBox="-100 -100 200 200" width="130" height="130" xmlns="http://www.w3.org/2000/svg" style="display:inline-block" role="img" aria-label="Helm of Awe, simplified"><g fill="none" stroke="#1A1512" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">']
+    parts.append('<circle r="6"/>')
+    for k in range(8):
+        a = math.radians(k * 45)
+        def pt(r, da=0.0):
+            return (r * math.cos(a + da), r * math.sin(a + da))
+        x0, y0 = pt(10)
+        x1, y1 = pt(62)
+        parts.append(f'<line x1="{x0:.1f}" y1="{y0:.1f}" x2="{x1:.1f}" y2="{y1:.1f}"/>')
+        # trident at the end: centre prong plus two angled prongs
+        xe, ye = pt(86)
+        parts.append(f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{xe:.1f}" y2="{ye:.1f}"/>')
+        for sgn in (-1, 1):
+            xb, yb = pt(70, sgn * 0.0)
+            xt, yt = pt(88, sgn * 0.19)
+            parts.append(f'<line x1="{xb:.1f}" y1="{yb:.1f}" x2="{xt:.1f}" y2="{yt:.1f}"/>')
+        # crossbar
+        xa, ya = pt(40, -0.12)
+        xb2, yb2 = pt(40, 0.12)
+        parts.append(f'<line x1="{xa:.1f}" y1="{ya:.1f}" x2="{xb2:.1f}" y2="{yb2:.1f}"/>')
+    parts.append('</g></svg>')
+    return "".join(parts)
+
+
 def lore_page(num, kicker, title, paras, prompt):
-    ps = "\n".join(f"<p>{p}</p>" for p in paras)
+    ps = "\n".join(p if p.lstrip().startswith(("<table", "<div", "<svg")) else f"<p>{p}</p>" for p in paras)
+    ps = ps.replace("{{AEGIS}}", aegis_svg()).replace("{{VALKNUT}}", '<div style="text-align:center">' + valknut_inline("vk", 70) + "</div>")
     prompt_box = (f'<div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">{H.escape(prompt)}</div></div>'
                   if prompt else "")
     return f"""<div class="page">
@@ -210,6 +238,11 @@ def build():
     ch3[idx:idx] = GODS_GLANCE
     oath = FRIENDS_PAGE + NEW_COUNSEL + list(CH10)
     oath += GLOSSARY_PAGE
+    vitki = [(e[0], "Runes") + tuple(e[2:]) for e in CH4B + NEW_VITKI]
+    rune_all = [RUNE_PAGES[0]] + vitki + list(RUNE_PAGES[1:]) + RUNE_NOTEBOOK
+    ch3b = list(CH3B)
+    i_seidr = next(i for i, e in enumerate(ch3b) if e[2].startswith("Seiðr")) + 1
+    ch3b[i_seidr:i_seidr] = SEIDR_PAGES
     ch2 = list(CH2)
     i_realms = next(i for i, e in enumerate(ch2) if e[2] == "The nine realms at a glance") + 1
     ch2[i_realms:i_realms] = GIANTS_PAGE
@@ -223,15 +256,14 @@ def build():
         ("Nine Realms", "Nine Realms", "The Gods and Their Kingdoms", ch2, "The Gods and Their Kingdoms"),
         ("Gods & Ruling Powers", "Rǫgn: Gods & Ruling Powers", "Aesir & Vanir", ch3, "Gods & Ruling Powers"),
         ("Tales", "Tales", "Stories from the old books", TALES, "stories from the old books"),
-        ("Völva & Seiðr", "Völva & Seiðr", "seeress and fate-work", CH3B, "seeress and fate-work"),
+        ("Völva & Seiðr", "Völva & Seiðr", "seeress and fate-work", ch3b, "seeress and fate-work"),
         ("Hamingja", "Hamingja", "your luck", CH4C, "your luck"),
-        ("Vitki", "Vitki", "rune-reader", CH4B + NEW_VITKI, "rune-reader"),
         ("Elves & Dwarfs", "Elves & Dwarfs", "neighbors and smiths", CH_ED, "neighbors and smiths"),
         ("Norse Wheel of the Year", "Norse Wheel of the Year", "Winter Nights to Midsummer", ch5, "Winter Nights to Midsummer"),
         ("Plants & Trees", "Plants & Trees", "Herbs and ash", ch6, "herbs and ash"),
         ("Liminal Places", "Liminal Places", "Wells that remember", [e for e in CH7 if e[1] == "Liminal Places"], "wells that remember"),
-        ("Runes", "Runes", "Stones with staves", [e for e in CH7 if e[1] == "Runes"], "stones with staves"),
-        ("Staves", "Staves", "use them honestly", [e for e in CH7 if e[1] != "Liminal Places" and e[1] != "Runes"], "use them honestly"),
+        ("Runes", "Runes", "Stones with staves", rune_all, "stones with staves"),
+        ("Staves", "Staves", "use them honestly", STAVE_PAGES, "use them honestly"),
         ("Galdr: Charms", "Galdr: Charms", "Words in old books", CH8[:1] + NEW_SONGS + CH8[1:], "words in old books"),
         ("Ancestors", "Ancestors", "Mound-neighbors", CH9, "mound-neighbors"),
         ("Oath", "Oath", "Go on reading", oath, "go on reading"),
@@ -243,9 +275,6 @@ def build():
         n += 1
         for entry in ch:
             body.append(render(entry, n))
-            n += 1
-        if kicker == "Staves":
-            body.append(blank_page(n))
             n += 1
         label = {"Gods & Ruling Powers": "Rǫgn"}.get(kicker, kicker)
         toc.append((label, toc_sub, start, n - 1))
@@ -292,6 +321,20 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 .lines.tall span { height: 0.28in; }
 .track .trow { display: flex; gap: 0.08in; align-items: baseline; min-height: 0.28in; border-bottom: 1px solid #B9AE9E; font-size: 12pt; line-height: 1.35; padding: 0.02in 0; }
 .track .box { font-size: 12pt; }
+
+.rt { width: 100%; border-collapse: collapse; margin: 0.06in 0 0.1in 0; }
+.rt td { font-size: 11pt; line-height: 1.25; padding: 0.04in 0.06in; border-bottom: 1px solid #B9AE9E; vertical-align: middle; }
+.rt td.g { font-family: 'Noto Sans Runic', serif; font-size: 19pt; width: 0.5in; text-align: center; padding: 0; }
+.rt td.n { font-weight: 700; width: 0.95in; }
+.rt td.s { width: 0.55in; font-style: italic; }
+.rt2 td { padding: 0.012in 0.06in; font-size: 10.5pt; }
+.rt2 td.g { font-size: 16pt; }
+.rrow { font-family: 'Noto Sans Runic', serif; font-size: 16pt; letter-spacing: 0.06em; line-height: 1.6; text-align: center; margin: 0.06in 0; }
+.kvgrid { text-align: center; margin: 0.05in 0; }
+.kv { display: inline-block; width: 0.62in; text-align: center; margin: 0.02in 0; font-size: 11pt; }
+.kv .g { display: block; font-family: 'Noto Sans Runic', serif; font-size: 17pt; line-height: 1.15; }
+.bind { position: relative; display: inline-block; font-family: 'Noto Sans Runic', serif; font-size: 44pt; width: 0.9em; height: 1.25em; margin: 0 0.12in; }
+.bind span { position: absolute; left: 0; top: 0; }
 .folio { position: absolute; bottom: 0.3in; left: 0; right: 0; text-align: center; font-size: 12pt; color: #5A4F43; }
 """
 
