@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Old Norse Grimoire generator — 6x9 KDP interior, 145 pages, black ink, no bleed.
+"""Old Norse Grimoire generator — 6x9 KDP interior, 150 pages, black ink, no bleed.
 Content: Vol I, Norse system mirroring Celtic. 40% reading / 60% doing.
-Voice: plain, 2nd-person. Every lore page carries a Lore Root line.
+Voice: plain, 2nd-person. Every lore page carries a Where-this-comes-from line.
 """
 import html as H
 import re
@@ -12,6 +12,7 @@ from content_b import CH3, CH3B, CH4B, CH4C
 from content_c import CH5, CH6
 from content_d import CH7, CH8, CH9, CH10
 from content_e import CH_ED
+from content_f import CH_POEMS
 
 
 def lore_page(num, kicker, title, paras, prompt):
@@ -85,21 +86,22 @@ def title_pages():
 <div class="rule"></div>
 <div class="toc">
 <p><b>1. Welcome</b>: Working with the Old Ways &middot; 4&ndash;5</p>
-<p><b>2. Threshold</b>: Who Were the Old Norse &middot; 6&ndash;11</p>
-<p><b>3. Nine Realms</b>: The Gods and Their Kingdoms &middot; 12&ndash;22</p>
-<p><b>4. Rǫgn</b>: Gods &amp; Ruling Powers &middot; 23&ndash;44</p>
-<p><b>5. Völva &amp; Seiðr</b>: seeress and fate-work &middot; 45&ndash;48</p>
-<p><b>6. Hamingja</b>: your luck &middot; 49&ndash;52</p>
-<p><b>7. Vitki</b>: rune-reader &middot; 53&ndash;54</p>
-<p><b>8. Elves &amp; Dwarfs</b>: neighbors and smiths &middot; 55&ndash;65</p>
-<p><b>9. Norse Wheel of the Year</b>: Winter Nights to Midsummer &middot; 66&ndash;87</p>
-<p><b>10. Plants &amp; Trees</b>: herbs and ash &middot; 88&ndash;106</p>
-<p><b>11. Liminal Places</b>: wells that remember &middot; 107&ndash;115</p>
-<p><b>12. Runes</b>: stones with staves &middot; 116&ndash;118</p>
-<p><b>13. Staves</b>: use them honestly &middot; 119&ndash;124</p>
-<p><b>14. Galdr: Charms</b>: words in old books &middot; 125&ndash;135</p>
-<p><b>15. Ancestors</b>: mound-neighbors &middot; 136&ndash;141</p>
-<p><b>16. Oath</b>: go on reading &middot; 142&ndash;145</p>
+<p><b>2. The Poems</b>: what the sources are &middot; 6&ndash;10</p>
+<p><b>3. Threshold</b>: Who Were the Old Norse &middot; 11&ndash;16</p>
+<p><b>4. Nine Realms</b>: The Gods and Their Kingdoms &middot; 17&ndash;27</p>
+<p><b>5. Rǫgn</b>: Gods &amp; Ruling Powers &middot; 28&ndash;49</p>
+<p><b>6. Völva &amp; Seiðr</b>: seeress and fate-work &middot; 50&ndash;53</p>
+<p><b>7. Hamingja</b>: your luck &middot; 54&ndash;57</p>
+<p><b>8. Vitki</b>: rune-reader &middot; 58&ndash;59</p>
+<p><b>9. Elves &amp; Dwarfs</b>: neighbors and smiths &middot; 60&ndash;70</p>
+<p><b>10. Norse Wheel of the Year</b>: Winter Nights to Midsummer &middot; 71&ndash;92</p>
+<p><b>11. Plants &amp; Trees</b>: herbs and ash &middot; 93&ndash;111</p>
+<p><b>12. Liminal Places</b>: wells that remember &middot; 112&ndash;120</p>
+<p><b>13. Runes</b>: stones with staves &middot; 121&ndash;123</p>
+<p><b>14. Staves</b>: use them honestly &middot; 124&ndash;129</p>
+<p><b>15. Galdr: Charms</b>: words in old books &middot; 130&ndash;140</p>
+<p><b>16. Ancestors</b>: mound-neighbors &middot; 141&ndash;146</p>
+<p><b>17. Oath</b>: go on reading &middot; 147&ndash;150</p>
 </div>
 <div class="folio">3</div>
 </div></div>"""
@@ -115,7 +117,7 @@ def title_pages():
 <div class="rule"></div>
 <p>Rest your tired bones and troubled mind. This book shares the old Norse ways, which were about keeping good company with the living, the dead, and the land. It is meant to bring you comfort and a sense of connection with your ancestors. If parts of it do not fit your life or beliefs, leave them behind and keep what helps. I have tried to present these old ways as accurately as the sources allow, and I mark each claim with where it comes from. Use the lines on each page to write, reflect, and build your own practice in whatever way works best for you.</p>
 <p>This book covers medicinal plants, but it does not replace a doctor. Never eat, drink, or apply any plant from these pages based on this book alone. If you forage, go with an experienced guide, check each plant against at least three trusted sources, and take only what you need, leaving most of it behind. For medicinal herbs, I buy from Mountain Rose Herbs: https://mountainroseherbs.com/</p>
-<p><b>How to read the labels.</b> Every lore page ends with a Lore Root line that says how each claim is known. <i>Attested</i> means it comes from old stones, medieval poems or sagas (named on each page), or law. <i>Folk</i> means custom that survived in farm and village life, often long after the Viking Age. <i>Reconstructed</i> means a practice this book builds from old patterns. <i>Modern</i> means written today for your home. The main sources are the Poetic Edda, Snorri Sturluson’s Prose Edda, the medieval rune poems, and the sagas listed in Resources.</p>
+<p><b>Where this comes from.</b> Every lore page ends with a short note that says where its ideas come from: a poem, a saga, a stone, a custom, or this book. If a source is late, or scholars disagree, the note says so. Anything described as modern or rebuilt was written for your home and is not an old practice. The main sources are the Poetic Edda, Snorri Sturluson’s Prose Edda, the medieval rune poems, and the sagas listed in Resources.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">What season is it today, outside your actual window? Name three signs.</div></div>
 <div class="folio">5</div>
 </div></div>"""
@@ -201,6 +203,11 @@ def build():
     pages = []
     pages += title_pages()  # 1-5
     n = 6
+    pages.append(divider_page(n, "The Poems", "The Poems", "What the old sources are"))  # 6
+    n += 1
+    for entry in CH_POEMS:  # 7-10
+        pages.append(render(entry, n))
+        n += 1
     sections = [
         ("Threshold", "Threshold", "Who were the Old Norse", CH1),
         ("Nine Realms", "Nine Realms", "The Gods and Their Kingdoms", CH2),
@@ -227,8 +234,8 @@ def build():
         if kicker == "Staves":
             pages.append(blank_page(n))
             n += 1
-    assert len(pages) == 145, f"got {len(pages)} pages, need 145"
-    assert n - 1 == 145, f"last folio {n - 1}, need 145"
+    assert len(pages) == 150, f"got {len(pages)} pages, need 150"
+    assert n - 1 == 150, f"last folio {n - 1}, need 150"
     return pages
 
 
