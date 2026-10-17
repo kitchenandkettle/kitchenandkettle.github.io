@@ -150,7 +150,7 @@ TALES = [
  "Write four lines for someone you have lost. Read them aloud once. Give it a date."),
 ("lore", "Tales", "Rígsþula: the three households",
  ["Heimdallr, calling himself Rig, walks along the green ways and comes to three houses. In the first, an old couple, Ai and Edda, sit by the fire. They feed him coarse bread and broth, and he stays three nights, sleeping between them. Nine months later Edda bears a son, Thræl (Thrall), with rough hands and a bent back, and from him come the thralls.",
-  "In the second house, Afi and Amma are at work: the man planing wood for a loom, the woman spinning. They feed him boiled calf and he sleeps between them. Their son is Karl (Karl), who ploughs and builds, and from him come the free farmers. In the third house, a couple sits in fine clothes with a rich table. Their son is Jarl, who learns runes and rules, and from him come the nobles.",
+  "In the second house, Afi and Amma are at work: the man planing wood for a loom, the woman spinning. They feed him boiled calf and he sleeps between them. Their son is Karl, who ploughs and builds, and from him come the free farmers. In the third house, a couple sits in fine clothes with a rich table. Their son is Jarl, who learns runes and rules, and from him come the nobles.",
   "The poem is a picture of how the Old Norse saw their own society: bound, free, and noble, each in its own house. It survives in a later manuscript and is incomplete.",
   "<b>Where this comes from:</b> The Rígsþula (Rigsthula), preserved in a later medieval manuscript."],
  "Which of the three houses is closest to yours? Say why. Give it two dated lines."),

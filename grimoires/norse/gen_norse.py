@@ -129,7 +129,7 @@ def title_pages(toc_html):
 <div class="kicker">Welcome</div>
 <h2>Working with the Old Ways</h2>
 <div class="rule"></div>
-<p>Rest your tired bones and troubled mind. This book shares the old Norse ways, which were about keeping good company with the living, the dead, and the land. It is meant to bring you comfort and a sense of connection with your ancestors. If parts of it do not fit your life or beliefs, leave them behind and keep what helps. I have tried to present these old ways as accurately as the sources allow, and I mark each claim with where it comes from. Use the lines on each page to write, reflect, and build your own practice in whatever way works best for you.</p>
+<p>Rest your tired bones and troubled mind. This book shares the old Norse ways, which were about keeping good company with the living, the dead, and the land. It is meant to bring you comfort and a sense of connection with your ancestors. If parts of it do not fit your life or beliefs, leave them behind and keep what helps. I have tried to present these old ways as accurately as the sources allow, and I mark each claim with where it comes from. Use the prompt at the end of each page, and the lined pages, to write, reflect, and build your own practice in whatever way works best for you. Where a prompt asks for dated lines, write them on a lined page or in a notebook of your own.</p>
 <p>This book mentions plants from folk custom and from medieval medical books, but it does not replace a doctor. Never eat, drink, or apply any plant from these pages based on this book alone. If you forage, go with an experienced guide, check each plant against at least three trusted sources, and take only what you need, leaving most of it behind. For medicinal herbs, I buy from Mountain Rose Herbs: https://mountainroseherbs.com/</p>
 <p><b>Where this comes from.</b> Every lore page ends with a short note that says where its ideas come from: a poem, a saga, a stone, a custom, or this book. If a source is late, or scholars disagree, the note says so. Anything described as modern or rebuilt was written for your home and is not an old practice. The main sources are the Poetic Edda, Snorri Sturluson’s Prose Edda, the medieval rune poems, and the sagas listed in Resources.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">What season is it today, outside your actual window? Name three signs.</div></div>
@@ -254,15 +254,15 @@ def build():
     sections = [
         ("Threshold", "Threshold", "Who were the Old Norse", CH1, "Who Were the Old Norse"),
         ("Nine Realms", "Nine Realms", "The Gods and Their Kingdoms", ch2, "The Gods and Their Kingdoms"),
-        ("Gods & Ruling Powers", "Rǫgn: Gods & Ruling Powers", "Aesir & Vanir", ch3, "Gods & Ruling Powers"),
+        ("Gods & Ruling Powers", "Rǫgn: Gods & Ruling Powers", "The gods and the powers", ch3, "Gods & Ruling Powers"),
         ("Tales", "Tales", "Stories from the old books", TALES, "stories from the old books"),
         ("Völva & Seiðr", "Völva & Seiðr", "seeress and fate-work", ch3b, "seeress and fate-work"),
         ("Hamingja", "Hamingja", "your luck", CH4C, "your luck"),
         ("Elves & Dwarfs", "Elves & Dwarfs", "neighbors and smiths", CH_ED, "neighbors and smiths"),
         ("Norse Wheel of the Year", "Norse Wheel of the Year", "Winter Nights to Midsummer", ch5, "Winter Nights to Midsummer"),
-        ("Plants & Trees", "Plants & Trees", "Herbs and ash", ch6, "herbs and ash"),
+        ("Plants & Trees", "Plants & Trees", "Healing plants, food, and trees", ch6, "healing plants, food, and trees"),
         ("Liminal Places", "Liminal Places", "Wells that remember", [e for e in CH7 if e[1] == "Liminal Places"], "wells that remember"),
-        ("Runes", "Runes", "Stones with staves", rune_all, "stones with staves"),
+        ("Runes", "Runes", "The letters of the old north", rune_all, "the letters of the old north"),
         ("Staves", "Staves", "use them honestly", STAVE_PAGES, "use them honestly"),
         ("Galdr: Charms", "Galdr: Charms", "Words in old books", CH8[:1] + NEW_SONGS + CH8[1:], "words in old books"),
         ("Ancestors", "Ancestors", "Mound-neighbors", CH9, "mound-neighbors"),
