@@ -57,3 +57,102 @@ GODS_GLANCE = [
   "<b>Where this comes from:</b> The Poetic Edda and Snorri’s Prose Edda."],
  ""),
 ]
+
+NEW_SONGS = [
+("lore", "Charms", "Óðinn’s songs",
+ ["At the end of the Hávamál, Óðinn lists eighteen songs he knows and says what each one does. “For the third I know, if I have great need to restrain my foes, the weapons’ edge I deaden.” “For the fourth I know, if men place bonds on my limbs, I so sing that I can walk; the fetter starts from my feet, and the manacle from my hands.” (Stanzas 150 and 151, translated by Benjamin Thorpe, 1866.)",
+  "Other songs help against strife and cares, still a fire in a house, calm the wind and sea for a boat, end hatred among people, and keep warriors safe in battle. The list is a catalogue of needs, and each song answers one.",
+  "Óðinn does not give the words. No tune and no verse of any song survives. He does say something about giving: “’Tis better not to pray than too much offer; a gift ever looks to a return.” (Stanza 147.) Know what you need before you speak, and do not give more than you can spare.",
+  "Read stanzas 148 to 165 across a week, one song a night. Choose the song whose need is nearest to yours, and write that need in one line.",
+  "<b>Where this comes from:</b> Hávamál stanzas 146 to 166 in the Poetic Edda, in Benjamin Thorpe’s 1866 translation, now public domain."],
+ "Which of Óðinn’s songs answers a need you have right now? Name the song and the need. Give it two dated lines."),
+]
+
+NEW_VITKI = [
+("lore", "Vitki", "Sigrdrífa’s runes",
+ ["In the Sigrdrífumál, the valkyrie Sigrdrífa gives Sigurðr a cup of mead, the minni cup, and then teaches him runes for each need. “Sig-runes thou must know, if victory thou wilt have, and on thy sword’s hilt grave them.” “Ol- (beer-) runes thou must know… On the horn must they be graven, and on the hand’s back.” “Biarg- (help-) runes thou must know, if thou wilt help, and loose the child from women. In the palm they must be graven.” “Brim- (sea-) runes thou must know, if thou wilt have secure afloat thy sailing steeds. On the prow they must be graven.” (Stanzas 6, 7, 9, and 10, translated by Benjamin Thorpe, 1866.)",
+  "The list goes on: branch-runes for healers, speech-runes so no one repays you with hate, and thought-runes for wisdom. Each kind of rune is tied to a thing it is cut on: a sword, a horn, a palm, a prow. That is the old pattern. Runes belong on objects, with a purpose, and the cutting is the work.",
+  "Notice what is missing. No one lays the runes out to read the future. The Sigrdrífumál is the clearest old list of rune types, and it describes carving, not casting.",
+  "Study the list as it stands. Copy one of the quoted stanzas by hand, and note which object it names and what the rune is for.",
+  "<b>Where this comes from:</b> Sigrdrífumál stanzas 6 to 19 in the Poetic Edda, in Benjamin Thorpe’s 1866 translation, now public domain."],
+ "Which need of yours has an object to carry it: a tool, a cup, a boat, a door? Name the need and the object. Give it two dated lines."),
+]
+
+NEW_COUNSEL = [
+("lore", "Oath", "Sigrdrífa’s counsel",
+ ["In the Sigrdrífumál, the valkyrie Sigrdrífa gives Sigurðr eleven pieces of counsel before he rides on. She numbers them: this I counsel first, this I counsel secondly, and so on. They are the nearest thing the Poetic Edda has to a code for living.",
+  "Among them: be blameless toward your kin, and take no hasty vengeance (the first). Swear no oath that is not true, for “cruel bonds follow broken faith: accursed is the faith-breaker” (the second). Do not argue with a fool in the assembly (the third). Do not quarrel when drunk, for “wine steals the wits of many” (the sixth). Bury the dead you find, and raise them a mound (the ninth). Do not trust a promise from the kin of a man you have wronged (the tenth). (Stanzas 22 to 35, translated by Benjamin Thorpe, 1866.)",
+  "Some of her counsel, about enemies and women, belongs to its own time. This book keeps the parts that still help: keep faith with your kin, keep your oaths, keep your head, and care for the dead.",
+  "Choose one counsel to follow this month. Write it on the vow page that follows.",
+  "<b>Where this comes from:</b> Sigrdrífumál stanzas 22 to 37 in the Poetic Edda, in Benjamin Thorpe’s 1866 translation, now public domain."],
+ "Which of Sigrdrífa’s counsels do you most need? Copy it and say why. Give it two dated lines."),
+]
+
+VOLUSPA_PAGE = [
+("lore", "The Poems", "The Völuspá: the seeress speaks",
+ ["The Völuspá opens with a seeress asking for silence. “For silence I pray all sacred children, great and small, sons of Heimdall, they will that I Valfather’s deeds recount, men’s ancient saws, those that I best remember.” (Stanza 1, translated by Benjamin Thorpe, 1866.) Valfather is Óðinn. She remembers the giants, nine worlds, and the great tree, and then the time before the world: “There was in times of old, where Ymir dwelt, nor sand nor sea, nor gelid waves; earth existed not, nor heaven above, ’twas a chaotic chasm, and grass nowhere.” (Stanza 3.)",
+  "The poem moves through the making of the world, the first people, the war of the gods, the death of Baldr, and the coming of Ragnarök. After the doom, it turns: “She sees arise, a second time, earth from ocean, beauteously green.” (Stanza 57.) “There shall again the wondrous golden tables in the grass be found.” (Stanza 59.) The seeress keeps asking, “Understand ye yet, or what?”",
+  "The last stanzas, about a mighty judge from above, appear only in a later manuscript and are usually thought to show Christian influence. Read the poem aloud once, slowly, and notice where it begins and where it ends.",
+  "<b>Where this comes from:</b> The Völuspá in the Poetic Edda, in Benjamin Thorpe’s 1866 translation, now public domain."],
+ "Which line of the Völuspá do you want to learn by heart? Copy it, and say why. Give it two dated lines."),
+]
+
+FRIENDS_PAGE = [
+("lore", "Oath", "Hávamál: friends and gifts",
+ ["The Hávamál has a great deal to say about friendship, and it is practical. “Long is and indirect the way to a bad friend’s, though by the road he dwell; but to a good friend’s the paths lie direct, though he be far away.” (Stanza 34, translated by Benjamin Thorpe, 1866.)",
+  "Friends trade gifts and visits. “With arms and vestments friends should each other gladden… Givers and requiters are longest friends, if all [else] goes well.” (Stanza 41.) “If thou hast a friend whom thou fully trustest… thou shouldst blend thy mind with his, and gifts exchange, and often go to see him.” (Stanza 44.) The poem is also honest about friends you do not trust: be pleasant, but guard your thoughts.",
+  "This is advice from a world with no safety net, where a friend meant a roof, a meal, and an ally at the assembly. Give one friend a small gift this month, and visit them. The old rule is that gifts are returned and visits are repaid.",
+  "<b>Where this comes from:</b> Hávamál stanzas 34 to 46 in the Poetic Edda, in Benjamin Thorpe’s 1866 translation, now public domain."],
+ "Which friend’s road is direct for you? Name them, and give them a small gift or a visit this month. Give it two dated lines."),
+]
+
+TALES = [
+("lore", "Tales", "Iðunn’s apples",
+ ["Iðunn (Idunn) keeps the apples that keep the gods young. One day Óðinn, Loki, and Hœnir are traveling and cook an ox that will not cook. An eagle in a tree says it will cook if it gets its share. It is the giant Þjazi (Thiazi) in eagle shape. He takes most of the meat, and Loki strikes him with a pole that sticks to the eagle and to Loki’s hands. Þjazi flies off with Loki dangling and lets him go only on an oath to deliver Iðunn and her apples.",
+  "Loki lures Iðunn out of Ásgarðr, saying he has found apples she must see, and Þjazi swoops down and carries her off. Without the apples, the gods grow gray and old. They learn that Loki was last seen with her and threaten him with death, so Loki borrows Freyja’s falcon cloak, flies to Þjazi’s hall, turns Iðunn into a nut, and flies home with her in his claws.",
+  "Þjazi chases them in eagle form. The gods light a fire on the wall of Ásgarðr, the eagle’s feathers burn, and he falls and is killed. That killing brings his daughter Skaði to Ásgarðr, as her page tells.",
+  "<b>Where this comes from:</b> Skáldskaparmál in Snorri’s Prose Edda, and the skaldic poem Haustlöng."],
+ "Which part of this story would you tell aloud first? Write it in one sentence. Give it two dated lines."),
+("lore", "Tales", "The wall and the horse",
+ ["Early in the world, a builder offers to raise a wall around Ásgarðr in a year and a half, and asks for the sun, the moon, and Freyja as his wage. The gods answer that he must finish in a single winter, with no help but his horse, Svaðilfari (Svadilfari). The builder is a giant in disguise. The horse hauls stone at a pace no one can believe, and with three days left the wall is nearly done.",
+  "The gods blame Loki for the bargain and threaten him. Loki turns himself into a mare and leads the stallion away into the woods. The wall is not finished, the giant flies into a rage, and Þórr kills him with his hammer. Months later, Loki returns with a gray foal that has eight legs. That foal is Sleipnir, the best of all horses, and Óðinn rides him.",
+  "The story shows how a bargain with giants goes wrong, and how Loki repairs a mess he made. It also explains Óðinn’s eight-legged horse.",
+  "<b>Where this comes from:</b> Gylfaginning in Snorri’s Prose Edda."],
+ "Think of a bargain that was too good to be true. What was the hidden cost? Give it two dated lines."),
+("lore", "Tales", "Þórr’s stolen hammer",
+ ["Þórr wakes and his hammer Mjölnir is gone. He tells Loki, and the two go to Freyja, who lends Loki her feather cloak. Loki flies to the land of the giants, where the giant Þrymr (Thrymr) says he has hidden the hammer eight miles under the earth. He will return it only if Freyja is brought to him as his bride.",
+  "Freyja is so angry that the hall shakes and her necklace snaps. Heimdallr suggests that Þórr dress as the bride, in a veil and the necklace, with Loki as his maid. At Þrymr’s feast, the bride eats an ox and eight salmon and drinks three barrels of mead. Loki explains that Freyja has not eaten in eight nights from longing. When Þrymr lifts the veil and sees fierce eyes, Loki says she has not slept for eight nights.",
+  "Þrymr orders the hammer brought in to bless the bride. As soon as Þórr has it in his hands, he strikes down Þrymr and every giant at the feast.",
+  "<b>Where this comes from:</b> The Þrymskviða (Thrymskvida) in the Poetic Edda."],
+ "Which part of this tale makes you laugh, and why? Give it two dated lines."),
+("lore", "Tales", "Þórr in the giants’ hall",
+ ["Þórr travels east with Loki and two human servants, Þjálfi (Thjalfi) and Röskva (Roskva). They spend a night in a huge hall that turns out to be the thumb of a giant’s glove. The giant Skrýmir (Skrymir) carries their food bag, ties it shut with a wire Þórr cannot loosen, and falls asleep. Þórr strikes him three times on the head with his hammer, and the giant only wonders if a leaf or an acorn has fallen.",
+  "At the hall of the giant king Útgarða-Loki (Utgarda-Loki), the travelers are put to contests. Loki loses an eating race to Logi, who is wildfire. Þjálfi loses a foot race to Hugi, who is thought. Þórr cannot empty a drinking horn, because its other end is the sea. He can lift only one paw of the gray cat, which is the world serpent, and he loses a wrestling match to an old woman, Elli, who is old age.",
+  "Later Útgarða-Loki admits that it was all illusion. Þórr raises his hammer, but the giant and his hall have vanished. The tale says that even the strongest can lose to fire, thought, the sea, and time.",
+  "<b>Where this comes from:</b> Gylfaginning in Snorri’s Prose Edda."],
+ "Which of these contests would beat you? Name it, and say why. Give it two dated lines."),
+("lore", "Tales", "Freyr and Gerðr",
+ ["Freyr once sat in Óðinn’s high seat, Hliðskjálf (Hlidskjalf), from which a person can see all the worlds. He saw a giant maid, Gerðr (Gerd), and was struck with such longing that he could neither eat nor speak. His servant Skírnir finally got him to say why. Freyr gave Skírnir his own sword and a horse, and sent him to win Gerðr.",
+  "Skírnir offers Gerðr eleven golden apples and the ring Draupnir, and she refuses them. He threatens her with the sword, and then with a curse of loneliness and longing. At that, Gerðr agrees to meet Freyr in nine nights in a grove.",
+  "The poem ends with Freyr waiting. One night is long, he says, two are longer, and how will he bear three? Because he gave away his sword, Snorri says Freyr must face Ragnarök without it.",
+  "<b>Where this comes from:</b> The Skírnismál in the Poetic Edda. The sword at Ragnarök is in Snorri’s Prose Edda."],
+ "What would you give up for something you wanted? Name it, and the cost. Give it two dated lines."),
+("lore", "Tales", "The death of Baldr",
+ ["Baldr dreams of his own death, and the gods take the dream seriously. His mother, Frigg, goes through the world and takes an oath from fire and water, iron and all metals, stones, earth, trees, sicknesses, beasts, birds, poison, and snakes that none will harm Baldr. The gods then make a game of it. They throw weapons at him, and nothing hurts him.",
+  "Loki, jealous, disguises himself as an old woman and visits Frigg. She tells him she asked everything except the mistletoe, which seemed too young to ask. Loki pulls up the mistletoe, returns to the game, and finds Baldr’s blind brother Höðr (Hodr) standing apart. He puts the mistletoe in Höðr’s hand and guides his throw. Baldr falls dead.",
+  "Hermóðr (Hermod) rides to Hel and asks for Baldr back. Hel says he may return if everything in the world weeps for him. All do, except one giantess, Þökk (Thokk), who says she will weep only dry tears. She is usually understood to be Loki in disguise, and Baldr stays in Hel. The gods later bind Loki for his part in it, as the Loki page tells.",
+  "<b>Where this comes from:</b> Gylfaginning in Snorri’s Prose Edda. The Völuspá also hints at Baldr’s death."],
+ "What is one small thing you overlooked that mattered? Give it two dated lines."),
+("lore", "Tales", "Egill’s grief",
+ ["Egill Skallagrímsson was a poet and a warrior, and the hero of Egils saga. When his son Böðvarr drowned at sea, Egill carried the body to a mound, buried him, and went home. He lay down in his bed-closet and refused to eat or drink, meaning to die. His daughter Þorgerðr (Thorgerd) tricked him by saying she would starve with him, and then by asking for water.",
+  "She then asked him to compose a poem for his son, and Egill did. The poem, called Sonatorrek (“the loss of sons”), tells of his grief, of his anger at Óðinn, and of how poetry, the gift Óðinn gave, helped him live.",
+  "The old pattern is plain: grief is spoken aloud, in words that others can hear. Write four lines for someone you have lost, and read them aloud once.",
+  "<b>Where this comes from:</b> Egils saga, which includes the poem Sonatorrek."],
+ "Write four lines for someone you have lost. Read them aloud once. Give it a date."),
+("lore", "Tales", "Rígsþula: the three households",
+ ["Heimdallr, calling himself Rig, walks along the green ways and comes to three houses. In the first, an old couple, Ai and Edda, sit by the fire. They feed him coarse bread and broth, and he stays three nights, sleeping between them. Nine months later Edda bears a son, Thræl (Thrall), with rough hands and a bent back, and from him come the thralls.",
+  "In the second house, Afi and Amma are at work: the man planing wood for a loom, the woman spinning. They feed him boiled calf and he sleeps between them. Their son is Karl (Karl), who ploughs and builds, and from him come the free farmers. In the third house, a couple sits in fine clothes with a rich table. Their son is Jarl, who learns runes and rules, and from him come the nobles.",
+  "The poem is a picture of how the Old Norse saw their own society: bound, free, and noble, each in its own house. It survives in a later manuscript and is incomplete.",
+  "<b>Where this comes from:</b> The Rígsþula (Rigsthula), preserved in a later medieval manuscript."],
+ "Which of the three houses is closest to yours? Say why. Give it two dated lines."),
+]

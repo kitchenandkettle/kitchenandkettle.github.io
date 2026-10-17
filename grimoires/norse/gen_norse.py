@@ -12,7 +12,7 @@ from content_b import CH3, CH3B, CH4B, CH4C
 from content_c import CH5, CH6
 from content_d import CH7, CH8, CH9, CH10
 from content_e import CH_ED
-from content_f import CH_POEMS, CH_WELCOME, GODS_GLANCE
+from content_f import CH_POEMS, CH_WELCOME, GODS_GLANCE, NEW_SONGS, NEW_VITKI, NEW_COUNSEL, VOLUSPA_PAGE, FRIENDS_PAGE, TALES
 
 
 def lore_page(num, kicker, title, paras, prompt):
@@ -102,7 +102,7 @@ def title_pages(toc_html):
 <h2>Working with the Old Ways</h2>
 <div class="rule"></div>
 <p>Rest your tired bones and troubled mind. This book shares the old Norse ways, which were about keeping good company with the living, the dead, and the land. It is meant to bring you comfort and a sense of connection with your ancestors. If parts of it do not fit your life or beliefs, leave them behind and keep what helps. I have tried to present these old ways as accurately as the sources allow, and I mark each claim with where it comes from. Use the lines on each page to write, reflect, and build your own practice in whatever way works best for you.</p>
-<p>This book covers medicinal plants, but it does not replace a doctor. Never eat, drink, or apply any plant from these pages based on this book alone. If you forage, go with an experienced guide, check each plant against at least three trusted sources, and take only what you need, leaving most of it behind. For medicinal herbs, I buy from Mountain Rose Herbs: https://mountainroseherbs.com/</p>
+<p>This book mentions plants from old folk custom, but it does not replace a doctor. Never eat, drink, or apply any plant from these pages based on this book alone. If you forage, go with an experienced guide, check each plant against at least three trusted sources, and take only what you need, leaving most of it behind. For medicinal herbs, I buy from Mountain Rose Herbs: https://mountainroseherbs.com/</p>
 <p><b>Where this comes from.</b> Every lore page ends with a short note that says where its ideas come from: a poem, a saga, a stone, a custom, or this book. If a source is late, or scholars disagree, the note says so. Anything described as modern or rebuilt was written for your home and is not an old practice. The main sources are the Poetic Edda, Snorri Sturluson’s Prose Edda, the medieval rune poems, and the sagas listed in Resources.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">What season is it today, outside your actual window? Name three signs.</div></div>
 <div class="folio">5</div>
@@ -131,6 +131,7 @@ RESOURCES = [
     ("Primary sources, in translation", [
         "The Poetic Edda — trans. Carolyne Larrington, or trans. Jackson Crawford (Hackett, 2015).",
         "Snorri Sturluson, The Prose Edda — trans. Anthony Faulkes.",
+        "Benjamin Thorpe, Edda of Sæmund the Learned (1866) — public domain, quoted on several pages.",
         "Völsunga Saga (The Saga of the Völsungs) — trans. Jesse Byock; trans. Jackson Crawford.",
         "Egils saga — in translation.",
         "The rune poems: Norwegian, Icelandic, Anglo-Saxon — in translation.",
@@ -148,7 +149,6 @@ RESOURCES = [
     ]),
     ("Scholarship and teaching", [
         "Jackson Crawford — YouTube channel: Norse mythology, language, sagas, and culture.",
-        "Luthien Cangemi — The Art of Healing in Medieval Iceland, PhD thesis, UCL, 2024.",
         "Carl-Herman Tillhagen — Swedish folk custom records.",
     ]),
 ]
@@ -197,7 +197,7 @@ def build():
     start = n
     body.append(divider_page(n, "The Poems", "The Poems", "What the old sources are"))
     n += 1
-    for entry in CH_POEMS:
+    for entry in CH_POEMS[:-1] + VOLUSPA_PAGE + CH_POEMS[-1:]:
         body.append(render(entry, n))
         n += 1
     toc.append(("The Poems", "what the sources are", start, n - 1))
@@ -208,18 +208,19 @@ def build():
         ("Threshold", "Threshold", "Who were the Old Norse", CH1, "Who Were the Old Norse"),
         ("Nine Realms", "Nine Realms", "The Gods and Their Kingdoms", CH2, "The Gods and Their Kingdoms"),
         ("Gods & Ruling Powers", "Rǫgn: Gods & Ruling Powers", "Aesir & Vanir", ch3, "Gods & Ruling Powers"),
+        ("Tales", "Tales", "Stories from the old books", TALES, "stories from the old books"),
         ("Völva & Seiðr", "Völva & Seiðr", "seeress and fate-work", CH3B, "seeress and fate-work"),
         ("Hamingja", "Hamingja", "your luck", CH4C, "your luck"),
-        ("Vitki", "Vitki", "rune-reader", CH4B, "rune-reader"),
+        ("Vitki", "Vitki", "rune-reader", CH4B + NEW_VITKI, "rune-reader"),
         ("Elves & Dwarfs", "Elves & Dwarfs", "neighbors and smiths", CH_ED, "neighbors and smiths"),
         ("Norse Wheel of the Year", "Norse Wheel of the Year", "Winter Nights to Midsummer", CH5, "Winter Nights to Midsummer"),
         ("Plants & Trees", "Plants & Trees", "Herbs and ash", CH6, "herbs and ash"),
         ("Liminal Places", "Liminal Places", "Wells that remember", [e for e in CH7 if e[1] == "Liminal Places"], "wells that remember"),
         ("Runes", "Runes", "Stones with staves", [e for e in CH7 if e[1] == "Runes"], "stones with staves"),
         ("Staves", "Staves", "use them honestly", [e for e in CH7 if e[1] != "Liminal Places" and e[1] != "Runes"], "use them honestly"),
-        ("Galdr: Charms", "Galdr: Charms", "Words in old books", CH8, "words in old books"),
+        ("Galdr: Charms", "Galdr: Charms", "Words in old books", CH8[:1] + NEW_SONGS + CH8[1:], "words in old books"),
         ("Ancestors", "Ancestors", "Mound-neighbors", CH9, "mound-neighbors"),
-        ("Oath", "Oath", "Go on reading", CH10, "go on reading"),
+        ("Oath", "Oath", "Go on reading", FRIENDS_PAGE + NEW_COUNSEL + CH10, "go on reading"),
     ]
     toc_names = {"Gods & Ruling Powers": "Rǫgn", "Elves & Dwarfs": "Elves &amp; Dwarfs"}
     for kicker, title, sub, ch, toc_sub in sections:
@@ -239,6 +240,7 @@ def build():
         rows.append(f"<p><b>{i}. {H.escape(label)}</b>: {H.escape(sub)} &middot; {a}&ndash;{b}</p>")
     pages = title_pages("\n".join(rows)) + body
     assert len(pages) == 150, f"got {len(pages)} pages, need 150"
+    
     assert n - 1 == 150, f"last folio {n - 1}, need 150"
     return pages
 
