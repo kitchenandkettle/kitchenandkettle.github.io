@@ -36,4 +36,24 @@ CH_POEMS = [
   "A short prose ending in the manuscript tells what follows. The gods catch Loki, who had hidden as a salmon, and bind him with the entrails of his son. Skaði hangs a serpent over his face. His wife, Sigyn, holds a bowl to catch the venom. When she turns away to empty it, the venom drips on him, and his struggling shakes the earth.",
   "<b>Where this comes from:</b> The Lokasenna and its prose ending are in the Poetic Edda. The excerpts are Benjamin Thorpe’s 1866 translation, now public domain."],
  "Think of a hard thing someone once said to you that held some truth. Write the words and the truth in them. Give it two dated lines."),
+("journal", "The Poems", "Poem log: write each poem you read, the date, one line that stayed with you, and one question it left.", 12),
+]
+
+
+CH_WELCOME = [
+("lore", "Welcome", "How to say the names",
+ ["Old Norse names look hard, but a few rules cover most of them. The letter Þ (þ) sounds like “th” in thin. The letter Ð (ð) sounds like “th” in this. An accent mark over a vowel means hold it a little longer. The letter ö sounds like the “u” in fur, and j sounds like English “y.” The final -r on names like Þórr, Baldr, and Freyr is just a grammar ending, and English often drops it.",
+  "<b>Óðinn</b> OH-thin<br><b>Þórr</b> THORR<br><b>Frigg</b> FRIG<br><b>Freyr</b> FRAYR<br><b>Freyja</b> FRAY-yah<br><b>Týr</b> TEER<br><b>Loki</b> LOH-kee<br><b>Baldr</b> BAHL-dur<br><b>Heimdallr</b> HAIM-dahl-ur<br><b>Skaði</b> SKAH-thee<br><b>Jörmungandr</b> YOR-mun-gahn-dur<br><b>Fenrir</b> FEN-rir<br><b>Yggdrasill</b> IG-drah-sil<br><b>Ragnarök</b> RAHG-nah-rok<br><b>Æsir</b> AY-seer<br><b>Vanir</b> VAH-neer",
+  "These are English-friendly approximations, not a perfect copy of how the Old Norse spoke. Say them aloud once. The names sound better when you hear them.",
+  "<b>Where this comes from:</b> Standard Old Norse pronunciation guides, simplified for English readers."],
+ ""),
+]
+
+GODS_GLANCE = [
+("lore", "Gods", "The gods at a glance",
+ ["<b>Æsir</b><br><b>Óðinn</b>: wisdom, poetry, war, and the dead.<br><b>Frigg</b>: foresight, marriage, and the household.<br><b>Þórr</b>: thunder, and guardian of people against giants.<br><b>Sif</b>: Þórr’s wife, with golden hair.<br><b>Týr</b>: oaths, law, and battle.<br><b>Baldr</b>: the shining, beloved son of Óðinn and Frigg.<br><b>Heimdallr</b>: the watchman of the gods.",
+  "<b>Vanir</b><br><b>Njörðr</b>: sea, wind, and wealth; father of Freyr and Freyja.<br><b>Freyr</b>: harvest, fair weather, and peace.<br><b>Freyja</b>: love, plenty, and half of the slain.",
+  "<b>Others</b><br><b>Loki</b>: the trickster, and father of Hel, Fenrir, and Jörmungandr.<br><b>Skaði</b>: giantess of mountains and winter, wife of Njörðr for a time.<br><b>Sól and Máni</b>: the sun and the moon, sister and brother.",
+  "<b>Where this comes from:</b> The Poetic Edda and Snorri’s Prose Edda."],
+ ""),
 ]

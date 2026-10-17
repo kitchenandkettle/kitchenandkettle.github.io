@@ -84,10 +84,4 @@ CH2 = [
   "Pick one promise you made this winter and check it against the spring. Ask whether it still stands, and what it asks of you now. A written promise is easier to keep than a remembered one. Put a reminder on your calendar for the first warm day of spring.",
   "<b>Where this comes from:</b> The looping style is in the Völuspá and Icelandic sagas, and winter-counting is in the sagas."],
  "Pick one promise you made this winter and write it tonight in pencil. Write what you agreed to, what spring must bring, and what autumn must close. Fold the page and keep it where you get dressed. Date it."),
-("lore", "Nine Realms", "Neither-times: dawn and dusk",
- ["Dawn and dusk, when the light is neither day nor night, show up in many old stories. In Icelandic sagas, people meet at the shore, where land meets water. Dreams carry warnings and guide both voyages and killings. Some families still keep a Yule-night watch and draw water at dawn.",
-  "Dream warnings appear often in Icelandic sagas, but they are a story device, not proof that anyone kept dream books. This book does not decode dream symbols.",
-  "The practice is a short watch at dawn or dusk. Stand at one window or step outside for five minutes, and notice the light and the sounds. Noticing the change between day and night slows you down and trains your attention.",
-  "<b>Where this comes from:</b> Dream warnings appear as a repeated device in Icelandic sagas. The dawn-and-dusk watch was written for this book."],
- "Choose dawn or dusk tomorrow. Stand at one window or step outside for five minutes, and write what you see and hear. Give it one dated line."),
 ]

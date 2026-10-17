@@ -12,7 +12,7 @@ from content_b import CH3, CH3B, CH4B, CH4C
 from content_c import CH5, CH6
 from content_d import CH7, CH8, CH9, CH10
 from content_e import CH_ED
-from content_f import CH_POEMS
+from content_f import CH_POEMS, CH_WELCOME, GODS_GLANCE
 
 
 def lore_page(num, kicker, title, paras, prompt):
@@ -67,7 +67,7 @@ def valknut_inline(prefix, size, color="#1A1512"):
     return svg.strip()
 
 
-def title_pages():
+def title_pages(toc_html):
     p1 = f"""<div class="page"><div class="inner center">
 {valknut_inline("t", 60)}
 <div class="kicker">A Grimoire of the Old Religions &middot; Vol. I</div>
@@ -82,28 +82,12 @@ def title_pages():
 <p class="subtitle">For Huginn and Muninn.<br>While they return to Óðinn each night, may they also return to us as well.</p>
 <div class="folio">2</div>
 </div></div>"""
-    p3 = """<div class="page"><div class="inner">
+    p3 = f"""<div class="page"><div class="inner">
 <div class="kicker">The Path We Will Walk Together</div>
 <h2>Contents</h2>
 <div class="rule"></div>
 <div class="toc">
-<p><b>1. Welcome</b>: Working with the Old Ways &middot; 4&ndash;5</p>
-<p><b>2. The Poems</b>: what the sources are &middot; 6&ndash;10</p>
-<p><b>3. Threshold</b>: Who Were the Old Norse &middot; 11&ndash;16</p>
-<p><b>4. Nine Realms</b>: The Gods and Their Kingdoms &middot; 17&ndash;27</p>
-<p><b>5. Rǫgn</b>: Gods &amp; Ruling Powers &middot; 28&ndash;49</p>
-<p><b>6. Völva &amp; Seiðr</b>: seeress and fate-work &middot; 50&ndash;53</p>
-<p><b>7. Hamingja</b>: your luck &middot; 54&ndash;57</p>
-<p><b>8. Vitki</b>: rune-reader &middot; 58&ndash;59</p>
-<p><b>9. Elves &amp; Dwarfs</b>: neighbors and smiths &middot; 60&ndash;70</p>
-<p><b>10. Norse Wheel of the Year</b>: Winter Nights to Midsummer &middot; 71&ndash;92</p>
-<p><b>11. Plants &amp; Trees</b>: herbs and ash &middot; 93&ndash;111</p>
-<p><b>12. Liminal Places</b>: wells that remember &middot; 112&ndash;120</p>
-<p><b>13. Runes</b>: stones with staves &middot; 121&ndash;123</p>
-<p><b>14. Staves</b>: use them honestly &middot; 124&ndash;129</p>
-<p><b>15. Galdr: Charms</b>: words in old books &middot; 130&ndash;140</p>
-<p><b>16. Ancestors</b>: mound-neighbors &middot; 141&ndash;146</p>
-<p><b>17. Oath</b>: go on reading &middot; 147&ndash;150</p>
+{toc_html}
 </div>
 <div class="folio">3</div>
 </div></div>"""
@@ -202,40 +186,58 @@ def blank_page(num):
 
 
 def build():
-    pages = []
-    pages += title_pages()  # 1-5
+    body = []
+    toc = []
     n = 6
-    pages.append(divider_page(n, "The Poems", "The Poems", "What the old sources are"))  # 6
-    n += 1
-    for entry in CH_POEMS:  # 7-10
-        pages.append(render(entry, n))
+    start = 4
+    for entry in CH_WELCOME:
+        body.append(render(entry, n))
         n += 1
+    toc.append(("Welcome", "Working with the Old Ways", start, n - 1))
+    start = n
+    body.append(divider_page(n, "The Poems", "The Poems", "What the old sources are"))
+    n += 1
+    for entry in CH_POEMS:
+        body.append(render(entry, n))
+        n += 1
+    toc.append(("The Poems", "what the sources are", start, n - 1))
+    ch3 = list(CH3)
+    idx = next(i for i, e in enumerate(ch3) if e[2] == "The Æsir–Vanir war") + 1
+    ch3[idx:idx] = GODS_GLANCE
     sections = [
-        ("Threshold", "Threshold", "Who were the Old Norse", CH1),
-        ("Nine Realms", "Nine Realms", "The Gods and Their Kingdoms", CH2),
-        ("Gods & Ruling Powers", "Rǫgn: Gods & Ruling Powers", "Aesir & Vanir", CH3),
-        ("Völva & Seiðr", "Völva & Seiðr", "seeress and fate-work", CH3B),
-        ("Hamingja", "Hamingja", "your luck", CH4C),
-        ("Vitki", "Vitki", "rune-reader", CH4B),
-        ("Elves & Dwarfs", "Elves & Dwarfs", "neighbors and smiths", CH_ED),
-        ("Norse Wheel of the Year", "Norse Wheel of the Year", "Winter Nights to Midsummer", CH5),
-        ("Plants & Trees", "Plants & Trees", "Herbs and ash", CH6),
-        ("Liminal Places", "Liminal Places", "Wells that remember", [e for e in CH7 if e[1] == "Liminal Places"]),
-        ("Runes", "Runes", "Stones with staves", [e for e in CH7 if e[1] == "Runes"]),
-        ("Staves", "Staves", "use them honestly", [e for e in CH7 if e[1] != "Liminal Places" and e[1] != "Runes"]),
-        ("Galdr: Charms", "Galdr: Charms", "Words in old books", CH8),
-        ("Ancestors", "Ancestors", "Mound-neighbors", CH9),
-        ("Oath", "Oath", "Go on reading", CH10),
+        ("Threshold", "Threshold", "Who were the Old Norse", CH1, "Who Were the Old Norse"),
+        ("Nine Realms", "Nine Realms", "The Gods and Their Kingdoms", CH2, "The Gods and Their Kingdoms"),
+        ("Gods & Ruling Powers", "Rǫgn: Gods & Ruling Powers", "Aesir & Vanir", ch3, "Gods & Ruling Powers"),
+        ("Völva & Seiðr", "Völva & Seiðr", "seeress and fate-work", CH3B, "seeress and fate-work"),
+        ("Hamingja", "Hamingja", "your luck", CH4C, "your luck"),
+        ("Vitki", "Vitki", "rune-reader", CH4B, "rune-reader"),
+        ("Elves & Dwarfs", "Elves & Dwarfs", "neighbors and smiths", CH_ED, "neighbors and smiths"),
+        ("Norse Wheel of the Year", "Norse Wheel of the Year", "Winter Nights to Midsummer", CH5, "Winter Nights to Midsummer"),
+        ("Plants & Trees", "Plants & Trees", "Herbs and ash", CH6, "herbs and ash"),
+        ("Liminal Places", "Liminal Places", "Wells that remember", [e for e in CH7 if e[1] == "Liminal Places"], "wells that remember"),
+        ("Runes", "Runes", "Stones with staves", [e for e in CH7 if e[1] == "Runes"], "stones with staves"),
+        ("Staves", "Staves", "use them honestly", [e for e in CH7 if e[1] != "Liminal Places" and e[1] != "Runes"], "use them honestly"),
+        ("Galdr: Charms", "Galdr: Charms", "Words in old books", CH8, "words in old books"),
+        ("Ancestors", "Ancestors", "Mound-neighbors", CH9, "mound-neighbors"),
+        ("Oath", "Oath", "Go on reading", CH10, "go on reading"),
     ]
-    for kicker, title, sub, ch in sections:
-        pages.append(divider_page(n, kicker, title, sub))
+    toc_names = {"Gods & Ruling Powers": "Rǫgn", "Elves & Dwarfs": "Elves &amp; Dwarfs"}
+    for kicker, title, sub, ch, toc_sub in sections:
+        start = n
+        body.append(divider_page(n, kicker, title, sub))
         n += 1
         for entry in ch:
-            pages.append(render(entry, n))
+            body.append(render(entry, n))
             n += 1
         if kicker == "Staves":
-            pages.append(blank_page(n))
+            body.append(blank_page(n))
             n += 1
+        label = {"Gods & Ruling Powers": "Rǫgn"}.get(kicker, kicker)
+        toc.append((label, toc_sub, start, n - 1))
+    rows = []
+    for i, (label, sub, a, b) in enumerate(toc, 1):
+        rows.append(f"<p><b>{i}. {H.escape(label)}</b>: {H.escape(sub)} &middot; {a}&ndash;{b}</p>")
+    pages = title_pages("\n".join(rows)) + body
     assert len(pages) == 150, f"got {len(pages)} pages, need 150"
     assert n - 1 == 150, f"last folio {n - 1}, need 150"
     return pages
