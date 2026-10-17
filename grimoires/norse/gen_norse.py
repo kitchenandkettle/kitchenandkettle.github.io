@@ -102,7 +102,7 @@ def title_pages(toc_html):
 <h2>Working with the Old Ways</h2>
 <div class="rule"></div>
 <p>Rest your tired bones and troubled mind. This book shares the old Norse ways, which were about keeping good company with the living, the dead, and the land. It is meant to bring you comfort and a sense of connection with your ancestors. If parts of it do not fit your life or beliefs, leave them behind and keep what helps. I have tried to present these old ways as accurately as the sources allow, and I mark each claim with where it comes from. Use the lines on each page to write, reflect, and build your own practice in whatever way works best for you.</p>
-<p>This book mentions plants from old folk custom, but it does not replace a doctor. Never eat, drink, or apply any plant from these pages based on this book alone. If you forage, go with an experienced guide, check each plant against at least three trusted sources, and take only what you need, leaving most of it behind. For medicinal herbs, I buy from Mountain Rose Herbs: https://mountainroseherbs.com/</p>
+<p>This book mentions plants from folk custom and from medieval medical books, but it does not replace a doctor. Never eat, drink, or apply any plant from these pages based on this book alone. If you forage, go with an experienced guide, check each plant against at least three trusted sources, and take only what you need, leaving most of it behind. For medicinal herbs, I buy from Mountain Rose Herbs: https://mountainroseherbs.com/</p>
 <p><b>Where this comes from.</b> Every lore page ends with a short note that says where its ideas come from: a poem, a saga, a stone, a custom, or this book. If a source is late, or scholars disagree, the note says so. Anything described as modern or rebuilt was written for your home and is not an old practice. The main sources are the Poetic Edda, Snorri Sturluson’s Prose Edda, the medieval rune poems, and the sagas listed in Resources.</p>
 <div class="prompt"><div class="prompt-label">Grimoire prompt</div><div class="prompt-text">What season is it today, outside your actual window? Name three signs.</div></div>
 <div class="folio">5</div>
@@ -137,18 +137,16 @@ RESOURCES = [
         "The rune poems: Norwegian, Icelandic, Anglo-Saxon — in translation.",
     ]),
     ("Witnesses, histories, law", [
-        "Tacitus, Germania.",
-        "Ibn Fadlan, account of the Rus burial on the Volga.",
+        "Tacitus, Germania; Ibn Fadlan, account of the Rus burial on the Volga.",
         "Adam of Bremen, Gesta Hammaburgensis Ecclesiae Pontificum.",
-        "Landnámabók.",
-        "Grágás (the Grey Goose Laws).",
+        "Landnámabók; Grágás (the Grey Goose Laws).",
         "Sigvatr Þórðarson, Austrfararvísur.",
-        "Ynglinga Saga.",
-        "The Merseburg Charms.",
-        "Old English leechbooks.",
+        "Ynglinga Saga; the Merseburg Charms; Old English leechbooks.",
     ]),
     ("Scholarship and teaching", [
         "Jackson Crawford — YouTube channel: Norse mythology, language, sagas, and culture.",
+        "Luthien Cangemi — The Art of Healing in Medieval Iceland, PhD thesis, UCL, 2024.",
+        "Ben Waggoner — Norse Magical and Herbal Healing: A Medical Book from Medieval Iceland (The Troth, 2011).",
         "Carl-Herman Tillhagen — Swedish folk custom records.",
     ]),
 ]
