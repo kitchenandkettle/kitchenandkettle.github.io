@@ -200,6 +200,12 @@ def build():
         n += 1
     toc.append(("The Poems", "what the sources are", start, n - 1))
     ch3 = list(CH3)
+    moved = [e for e in ch3 if e[2] == "Blot: simply" or (e[0] == "tracker" and e[2].startswith("Gift log"))]
+    ch3 = [e for e in ch3 if e not in moved]
+    moved = [(e[0], "Norse Wheel of the Year") + tuple(e[2:]) for e in moved]
+    ch5 = list(CH5)
+    i_blot = next(i for i, e in enumerate(ch5) if e[2] == "How each turning works here") + 1
+    ch5[i_blot:i_blot] = moved
     idx = next(i for i, e in enumerate(ch3) if e[2] == "The Æsir–Vanir war") + 1
     ch3[idx:idx] = GODS_GLANCE
     ch6 = list(CH6)
@@ -216,7 +222,7 @@ def build():
         ("Hamingja", "Hamingja", "your luck", CH4C, "your luck"),
         ("Vitki", "Vitki", "rune-reader", CH4B + NEW_VITKI, "rune-reader"),
         ("Elves & Dwarfs", "Elves & Dwarfs", "neighbors and smiths", CH_ED, "neighbors and smiths"),
-        ("Norse Wheel of the Year", "Norse Wheel of the Year", "Winter Nights to Midsummer", CH5, "Winter Nights to Midsummer"),
+        ("Norse Wheel of the Year", "Norse Wheel of the Year", "Winter Nights to Midsummer", ch5, "Winter Nights to Midsummer"),
         ("Plants & Trees", "Plants & Trees", "Herbs and ash", ch6, "herbs and ash"),
         ("Liminal Places", "Liminal Places", "Wells that remember", [e for e in CH7 if e[1] == "Liminal Places"], "wells that remember"),
         ("Runes", "Runes", "Stones with staves", [e for e in CH7 if e[1] == "Runes"], "stones with staves"),
