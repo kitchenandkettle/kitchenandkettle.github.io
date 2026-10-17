@@ -12,7 +12,7 @@ from content_b import CH3, CH3B, CH4B, CH4C
 from content_c import CH5, CH6
 from content_d import CH7, CH8, CH9, CH10
 from content_e import CH_ED
-from content_f import CH_POEMS, CH_WELCOME, GODS_GLANCE, NEW_SONGS, NEW_VITKI, NEW_COUNSEL, VOLUSPA_PAGE, FRIENDS_PAGE, TALES
+from content_f import CH_POEMS, CH_WELCOME, GODS_GLANCE, NEW_SONGS, NEW_VITKI, NEW_COUNSEL, VOLUSPA_PAGE, FRIENDS_PAGE, TALES, NEW_PLANTS, TREES_RUNE
 
 
 def lore_page(num, kicker, title, paras, prompt):
@@ -202,6 +202,11 @@ def build():
     ch3 = list(CH3)
     idx = next(i for i, e in enumerate(ch3) if e[2] == "The Æsir–Vanir war") + 1
     ch3[idx:idx] = GODS_GLANCE
+    ch6 = list(CH6)
+    i_herbs = next(i for i, e in enumerate(ch6) if e[2] == "More herbs in the leechbooks") + 1
+    ch6[i_herbs:i_herbs] = NEW_PLANTS
+    i_trees = next(i for i, e in enumerate(ch6) if e[2].startswith("Ash")) 
+    ch6[i_trees:i_trees] = TREES_RUNE
     sections = [
         ("Threshold", "Threshold", "Who were the Old Norse", CH1, "Who Were the Old Norse"),
         ("Nine Realms", "Nine Realms", "The Gods and Their Kingdoms", CH2, "The Gods and Their Kingdoms"),
@@ -212,7 +217,7 @@ def build():
         ("Vitki", "Vitki", "rune-reader", CH4B + NEW_VITKI, "rune-reader"),
         ("Elves & Dwarfs", "Elves & Dwarfs", "neighbors and smiths", CH_ED, "neighbors and smiths"),
         ("Norse Wheel of the Year", "Norse Wheel of the Year", "Winter Nights to Midsummer", CH5, "Winter Nights to Midsummer"),
-        ("Plants & Trees", "Plants & Trees", "Herbs and ash", CH6, "herbs and ash"),
+        ("Plants & Trees", "Plants & Trees", "Herbs and ash", ch6, "herbs and ash"),
         ("Liminal Places", "Liminal Places", "Wells that remember", [e for e in CH7 if e[1] == "Liminal Places"], "wells that remember"),
         ("Runes", "Runes", "Stones with staves", [e for e in CH7 if e[1] == "Runes"], "stones with staves"),
         ("Staves", "Staves", "use them honestly", [e for e in CH7 if e[1] != "Liminal Places" and e[1] != "Runes"], "use them honestly"),

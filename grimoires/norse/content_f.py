@@ -144,7 +144,7 @@ TALES = [
   "<b>Where this comes from:</b> Gylfaginning in Snorri’s Prose Edda. The Völuspá also hints at Baldr’s death."],
  "What is one small thing you overlooked that mattered? Give it two dated lines."),
 ("lore", "Tales", "Egill’s grief",
- ["Egill Skallagrímsson was a poet and a warrior, and the hero of Egils saga. When his son Böðvarr drowned at sea, Egill carried the body to a mound, buried him, and went home. He lay down in his bed-closet and refused to eat or drink, meaning to die. His daughter Þorgerðr (Thorgerd) tricked him by saying she would starve with him, and then by asking for water.",
+ ["Egill Skallagrímsson was a poet and a warrior, and the hero of Egils saga. When his son Böðvarr drowned at sea, Egill carried the body to a mound, buried him, and went home. He lay down in his bed-closet and refused to eat or drink, meaning to die. His daughter Þorgerðr (Thorgerd) tricked him by saying she would starve with him, and then by chewing dulse until thirst made them both drink.",
   "She then asked him to compose a poem for his son, and Egill did. The poem, called Sonatorrek (“the loss of sons”), tells of his grief, of his anger at Óðinn, and of how poetry, the gift Óðinn gave, helped him live.",
   "The old pattern is plain: grief is spoken aloud, in words that others can hear. Write four lines for someone you have lost, and read them aloud once.",
   "<b>Where this comes from:</b> Egils saga, which includes the poem Sonatorrek."],
@@ -155,4 +155,32 @@ TALES = [
   "The poem is a picture of how the Old Norse saw their own society: bound, free, and noble, each in its own house. It survives in a later manuscript and is incomplete.",
   "<b>Where this comes from:</b> The Rígsþula (Rigsthula), preserved in a later medieval manuscript."],
  "Which of the three houses is closest to yours? Say why. Give it two dated lines."),
+]
+
+NEW_PLANTS = [
+("lore", "Plants of the North", "Laukr: the leek",
+ ["Laukr is the Old Norse word for leek, and it covers onion and garlic too. It is one of the oldest plant words in northern writing. A runic inscription on a bone object from Fløksand in Norway, from about the fourth century, is often read “linen, leek, wealth,” and the word laukaz appears again on gold bracteates, often beside alu, a word thought to mean ale or protection. Nobody is sure what these short inscriptions meant, but the leek was clearly a charged word.",
+  "The leek shows up again in the sagas and poems. In the Sigrdrífumál, a cup is guarded by casting garlic into the liquor. In Ólafs saga helga, a healer’s broth of leeks, onions, and herbs is used to find out whether a wound has pierced the belly. That is what the old sources show: a plant used for protection, for charm words, and for testing wounds.",
+  "This book makes no claim beyond that. Find leek, onion, and garlic in your own kitchen and learn the three names.",
+  "<b>Where this comes from:</b> The Fløksand inscription and the bracteates are runic finds, with the reading laukaz as leek widely accepted. The Sigrdrífumál is in the Poetic Edda, and Ólafs saga helga is in Snorri’s Heimskringla."],
+ "Find leek, onion, and garlic in your kitchen. Write each name and what it is used for. Give it two dated lines."),
+("lore", "Plants of the North", "Söl: dulse",
+ ["Söl is dulse, a red seaweed that grows on rocks along the Icelandic shore. The sagas know it as food. In Egils saga, after Egill’s son has died and Egill refuses to eat, his daughter Þorgerðr (Thorgerd) gets him to chew dulse, and he remarks that dulse makes a person thirstier. The thirst makes him drink, and that is the first step back toward living.",
+  "Dulse is a food in the sources, not a medicine. It is one of the plants with the earliest written record as food in Iceland, in the early 12th century, though people probably ate it from the time of the Settlement.",
+  "Do not gather seaweed or any wild food without local knowledge, and never from polluted shores. Read the dulse scene in Egils saga slowly, and notice how little it asks of the reader: a daughter, a plant, and a hard moment.",
+  "<b>Where this comes from:</b> Egils saga. The early written records of dulse as food are noted by the Slow Food Ark of Taste."],
+ "Read the dulse scene in Egils saga. Write what the daughter’s trick shows about dulse. Give it two dated lines."),
+("lore", "Plants of the North", "Barley and ale",
+ ["Barley was the main grain of the Viking Age north. It grew in short summers and fed households as porridge, bread, and ale. Ale (öl) stands at the center of the old stories. At the blót, the full cup was drunk to the gods and the minni cup to the dead. In the Sigrdrífumál, the valkyrie brings Sigurðr a horn of mead and teaches him ale-runes. In the Hávamál, ale is also a warning: “A worse provision on the way he cannot carry than too much beer-bibbing.” (Stanza 11, translated by Benjamin Thorpe, 1866.)",
+  "To make ale, barley is malted: soaked until it sprouts, then dried. This book does not teach brewing. Learn what malt is, and where the toast begins.",
+  "<b>Where this comes from:</b> Barley as the main grain comes from the archaeology of Viking Age farms. The ale passages are in the Hávamál, the Sigrdrífumál, and Hákonar saga góða."],
+ "Look at a bag of barley or malt. Write what it looks like and one place ale appears in the old sources. Give it two dated lines."),
+]
+
+TREES_RUNE = [
+("lore", "Trees", "Trees in the rune poems",
+ ["The Anglo-Saxon rune poem gives each tree rune a short verse, and four of them are trees you will meet in this chapter. The oak (ac) is fodder for the flesh, usually read as pigs fed on acorns, and it carries ships over the sea. The ash (æsc) is very tall and dear to people, stout in its trunk, and makes a spear shaft that holds firm when many attack it. The yew (eoh) is rough on the outside, hard and fast in the earth, a guardian of flame and a joy upon an estate. The birch (beorc) bears no fruit, yet sends up twigs without seed, with a lofty crown that reaches the sky.",
+  "These are English verses, not Norse, but the Norwegian and Icelandic rune poems speak the same way: one plain thing, one short saying. Together they show how people thought about a tree: what it gave, what it made, and how it stood.",
+  "<b>Where this comes from:</b> The Anglo-Saxon rune poem, which survives only in a copy printed in 1705. The verses here are paraphrased."],
+ "Choose one tree near you. Write its rune-poem verse, then write your own verse of the same length. Give it two dated lines."),
 ]
