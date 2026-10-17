@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Old-World Recipe Binder Insert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#f5efe3;--paper-deep:#eee4d2;--ink:#30271c;--brown:#59402b;--olive:#74806b;--clay:#b18d60;--line:rgba(102,79,53,.22);--rose:rgba(157,108,101,.32)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#d9d4ca;color:var(--ink);font-family:'Crimson Pro',Georgia,serif;padding:1rem 0}
+  .toolbar{width:8.5in;margin:0 auto .55rem;background:#fff;padding:.45rem .65rem;display:flex;justify-content:space-between;align-items:center;border-radius:4px;box-shadow:0 1px 5px rgba(48,39,28,.12);font-family:'Work Sans',sans-serif}
+  .brand{font-family:'Crimson Pro',serif;font-weight:600;font-size:14pt}.brand em{color:var(--clay)}
+  .toolbar small{color:#877c6b;font-size:8pt;letter-spacing:.04em}.toolbar button{border:1px solid #d7ccbb;background:#fff;color:var(--brown);font:600 8pt 'Work Sans',sans-serif;padding:.42rem .72rem;border-radius:3px;cursor:pointer}.toolbar button:hover{background:#f4eee5}
+  .page{width:8.5in;height:11in;background:var(--paper);margin:0 auto .8rem;padding:.43in .55in;display:flex;flex-direction:column;gap:.27in;box-shadow:0 2px 14px rgba(48,39,28,.16);position:relative;overflow:hidden}
+  .page::before{content:"";position:absolute;inset:.2in;border:1px solid rgba(102,79,53,.12);pointer-events:none}
+  .cut-guide{position:absolute;left:.55in;right:.55in;top:50%;border-top:1px dashed rgba(102,79,53,.26);z-index:2}.cut-guide span{position:absolute;right:0;top:-.18rem;background:var(--paper);padding-left:.12in;color:#9b8c78;font:7pt 'Work Sans',sans-serif;text-transform:uppercase;letter-spacing:.08em}
+  .card{height:4.82in;min-height:4.82in;border:2px solid var(--brown);outline:1px solid rgba(177,141,96,.7);outline-offset:-.09in;padding:.22in .26in .2in;position:relative;background:radial-gradient(ellipse at 15% 15%,rgba(255,255,255,.38),transparent 32%),linear-gradient(100deg,var(--paper) 0%,var(--paper-deep) 48%,var(--paper) 100%);display:flex;flex-direction:column}
+  .card::after{content:"";position:absolute;inset:.1in;border:1px solid rgba(89,64,43,.3);pointer-events:none}
+  .card-head{display:flex;align-items:flex-start;justify-content:space-between;position:relative;z-index:1;padding:0 .03in .08in;border-bottom:1px solid var(--clay)}
+  .title-wrap{flex:1;padding-right:.2in}.eyebrow{font:600 7.5pt 'Work Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--olive);margin-bottom:.04in}.title-line{height:.34in;border-bottom:1px solid var(--line);max-width:4.4in}
+  .ornament{width:.65in;height:.48in;color:var(--olive);opacity:.82;transform:rotate(-4deg);margin-top:.02in}.ornament svg{width:100%;height:100%}
+  .card-body{display:flex;gap:.22in;flex:1;min-height:0;padding:.15in .03in .06in;position:relative;z-index:1}.column{position:relative}.ingredients{width:2.35in;flex-shrink:0}.instructions{flex:1}
+  .column h2{font:600 8.5pt 'Work Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--brown);padding-bottom:.06in;margin-bottom:.08in;border-bottom:1px solid var(--line)}
+  .ruled{height:3.32in;position:relative;background:repeating-linear-gradient(to bottom,transparent 0,transparent 20px,var(--line) 20px,var(--line) 21px)}.ruled::before{content:"";position:absolute;top:0;bottom:0;left:.22in;border-left:1px solid var(--rose)}.ingredients .ruled{height:3.32in}.instructions .ruled{height:3.32in}
+  .footer{height:.18in;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;margin-top:auto}.footer::before,.footer::after{content:"";height:1px;background:var(--clay);flex:1}.footer-mark{padding:0 .12in;color:var(--olive);font:600 8pt 'Work Sans',sans-serif;letter-spacing:.12em}.footer-mark::before{content:"✦  ";color:var(--clay)}.footer-mark::after{content:"  ✦";color:var(--clay)}
+  .page-label{position:absolute;bottom:.14in;left:0;right:0;text-align:center;color:#9b8c78;font:7pt 'Work Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase}
+  @media print{ @page{size:Letter;margin:0} body{background:none;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}.toolbar{display:none}.page{margin:0;box-shadow:none;page-break-after:always}.page:last-of-type{page-break-after:auto}.page-label{display:none}.cut-guide span{background:var(--paper)} }
+</style>
+<style>
+  /* Personal full-page insert: no brand or corner symbol. */
+  body{background:#d9d4ca;padding:1rem 0}
+  .toolbar{width:8.5in;margin:0 auto .55rem;background:#fff;padding:.45rem .65rem;display:flex;justify-content:flex-end;align-items:center;border-radius:4px;box-shadow:0 1px 5px rgba(48,39,28,.12);font-family:'Work Sans',sans-serif}
+  .toolbar small{color:#877c6b;font-size:8pt;letter-spacing:.04em}.toolbar button{border:1px solid #d7ccbb;background:#fff;color:var(--brown);font:600 8pt 'Work Sans',sans-serif;padding:.42rem .72rem;border-radius:3px;cursor:pointer}
+  .page{width:8.5in;height:11in;background:var(--paper);margin:0 auto .8rem;padding:.55in .7in .65in .95in;display:flex;box-shadow:0 2px 14px rgba(48,39,28,.16);position:relative;overflow:hidden}
+  .page::before{content:"";position:absolute;inset:.3in .35in .3in .55in;border:1px solid rgba(102,79,53,.2);pointer-events:none}
+  .card{height:auto;min-height:0;flex:1;border:2px solid var(--brown);outline:1px solid rgba(177,141,96,.7);outline-offset:-.1in;padding:.35in .4in .28in;position:relative;background:radial-gradient(ellipse at 15% 15%,rgba(255,255,255,.38),transparent 32%),linear-gradient(100deg,var(--paper) 0%,var(--paper-deep) 48%,var(--paper) 100%);display:flex;flex-direction:column}
+  .card::after{content:"";position:absolute;inset:.13in;border:1px solid rgba(89,64,43,.3);pointer-events:none}
+  .card-head{padding:0 .08in .18in;border-bottom:1px solid var(--clay)}
+  .title-wrap{padding:0}.eyebrow{font:600 8pt 'Work Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--olive);margin-bottom:.14in}.title-line{height:.62in;border-bottom:1px solid var(--line);max-width:none}
+  .card-body{display:flex;gap:.35in;flex:1;min-height:0;padding:.3in .08in .2in;position:relative;z-index:1}.ingredients{width:2.5in;flex-shrink:0}.instructions{flex:1}
+  .column h2{font-size:9pt;padding-bottom:.08in;margin-bottom:.12in}.ruled,.ingredients .ruled,.instructions .ruled{height:auto;flex:1;min-height:5.7in;background:repeating-linear-gradient(to bottom,transparent 0,transparent 24px,var(--line) 24px,var(--line) 25px)}.ruled::before{left:.24in}
+  .footer{height:.28in;margin-top:auto;border-top:1px solid var(--clay)}
+  .page-label,.cut-guide{display:none}
+  @media print{body{background:none;padding:0}.toolbar{display:none}.page{margin:0;box-shadow:none}.page::before{inset:.3in .35in .3in .55in}}
+</style>
+<style>
+  /* More character without a literal icon or brand mark. */
+  .page{background:radial-gradient(ellipse at 12% 18%,rgba(177,141,96,.13),transparent 28%),radial-gradient(ellipse at 88% 82%,rgba(116,128,107,.1),transparent 25%),var(--paper)}
+  .page::after{content:"";position:absolute;left:.6in;top:.64in;bottom:.64in;width:3px;background:linear-gradient(to bottom,transparent,var(--clay) 12%,var(--clay) 88%,transparent);opacity:.7;pointer-events:none}
+  .card{background:radial-gradient(ellipse at 22% 7%,rgba(255,255,255,.48),transparent 28%),radial-gradient(ellipse at 82% 95%,rgba(116,128,107,.08),transparent 30%),linear-gradient(100deg,var(--paper) 0%,var(--paper-deep) 48%,var(--paper) 100%)}
+  .card::before{content:"";position:absolute;left:.13in;top:.13in;width:.38in;height:.38in;border-left:2px solid var(--clay);border-top:2px solid var(--clay);opacity:.8;z-index:1}
+  .card-head{padding-bottom:.2in;background:linear-gradient(to right,rgba(177,141,96,.13),transparent 65%)}
+  .title-wrap::after{content:"";display:block;width:.72in;height:3px;background:var(--clay);margin-top:.13in}
+  .card-body{gap:.42in}
+  .ingredients{width:2.55in;padding-right:.35in;border-right:1px solid rgba(102,79,53,.28)}
+  .column h2{color:var(--olive);letter-spacing:.14em}
+  .footer{border-top:0;position:relative}.footer::before{content:"";display:block;width:1.1in;margin:0 auto;border-top:3px double var(--clay);opacity:.72}
+</style>
+</head>
+<body>
+<div class="toolbar"><div><small>Full-page binder insert · print at 100%</small> <button onclick="window.print()">Print / Save PDF</button></div></div>
+
+<main>
+  <section class="page">
+    <article class="card">
+      <header class="card-head"><div class="title-wrap"><div class="eyebrow">Recipe</div><div class="title-line"></div></div></header>
+      <div class="card-body"><section class="column ingredients"><h2>Ingredients</h2><div class="ruled"></div></section><section class="column instructions"><h2>Instructions</h2><div class="ruled"></div></section></div>
+      <footer class="footer"></footer>
+    </article>
+  </section>
+</main>
+</body>
+</html>

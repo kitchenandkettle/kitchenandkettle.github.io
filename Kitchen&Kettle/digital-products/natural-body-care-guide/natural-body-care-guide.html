@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Natural Body Care Guide — Kitchen & Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F5F0E8; --ink: #2C2416; --clay: #C4A882;
+    --sage: #7D8B6F; --muted: #8B8376; --line: #D9D0C1; --light: #FAF7F0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Crimson Pro', Georgia, serif; font-size:12pt;
+    line-height: 1.6; color: var(--ink); background: #e8e4dc;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 1rem;
+  }
+  .toolbar {
+    max-width: 8.5in; width: 100%; margin: 0 auto 0.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: #fff; padding: 0.5rem 0.7rem; border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(44,36,22,0.08);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .toolbar .brand { font-family: 'Crimson Pro', serif; font-size: 14pt; font-weight: 600; color: var(--ink); }
+  .toolbar .brand em { font-style: italic; color: var(--clay); }
+  .toolbar .actions { display: flex; gap: 0.5rem; align-items: center; }
+  .toolbar .save-status {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; color: #5a8a6a;
+    margin-right: 0.5rem; opacity: 0; transition: opacity 0.3s;
+  }
+  .toolbar .save-status.visible { opacity: 1; }
+  .btn {
+    font-family: 'Work Sans', sans-serif; font-size: 8pt; font-weight: 600;
+    padding: 0.4em 0.8em; border-radius: 3px; cursor: pointer; border: none;
+    transition: background 0.15s; text-decoration: none;
+  }
+  .btn-ghost { background: none; color: var(--muted); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+  .btn-print { background: var(--ink); color: var(--paper); }
+  .btn-print:hover { background: #3D362D; }
+  .page {
+    width: 8.5in; min-height: 11in; background: #fff;
+    margin-bottom: 0.25in; padding: 0.75in 0.7in;
+    box-shadow: 0 2px 12px rgba(44,36,22,0.12);
+    page-break-after: always; position: relative;
+  }
+  .page:last-of-type { page-break-after: auto; }
+  h1 { font-size: 28pt; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; }
+  h2 { font-size: 16pt; font-weight: 600; margin-bottom: 0.6rem; }
+  h3 {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.5rem; margin-top: 0.6rem;
+  }
+  p { margin-bottom: 0.7rem; color: #3D362D; }
+  .lede { font-size: 13pt; line-height: 1.5; margin-bottom: 1.2rem; }
+  .tip {
+    font-size:12pt; font-style: italic; color: var(--sage);
+    margin: 0.6rem 0; padding-left: 0.5rem; border-left: 2px solid var(--clay);
+  }
+  .section-header {
+    border-bottom: 1px solid var(--line); padding-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .cover {
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; text-align: center; padding: 2in 0.7in; background: var(--light);
+  }
+  .cover .brand { font-size: 14pt; color: var(--muted); margin-bottom: 1.5rem; }
+  .cover .brand em { font-style: italic; color: var(--clay); }
+  .cover h1 { font-size: 30pt; margin-bottom: 0.5rem; max-width: 14ch; }
+  .cover .tagline {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 2rem;
+  }
+  .cover .description { font-size: 12pt; max-width: 28ch; line-height: 1.5; }
+  .cover .footer-note {
+    font-size:12pt; color: var(--muted);
+    font-family: 'Work Sans', sans-serif;
+    margin-top: 1.5rem;
+  }
+  .prose-page h2 { margin-top: 0; }
+  .prose-page ol, .prose-page ul { margin: 0.4rem 0 0.6rem 1.2rem; font-size:12pt; }
+  .prose-page li { margin-bottom: 0.4rem; line-height: 1.55; color: #3D362D; }
+  .prose-page hr { border: none; border-top: 1px solid var(--line); margin: 1rem 0; }
+  .honest-box {
+    border: 1px solid var(--clay); padding: 0.7rem; margin: 0.5rem 0;
+    background: var(--light);
+  }
+  .honest-box h4 {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--clay);
+    margin-bottom: 0.2rem;
+  }
+  .honest-box p { font-size:12pt; margin-bottom: 0; font-style: italic; }
+  .recipe-card {
+    border: 1px solid var(--line); padding: 0.6rem; margin-bottom: 0.5rem;
+  }
+  .recipe-card h3 {
+    font-family: 'Crimson Pro', Georgia, serif; font-size: 12pt; font-weight: 600;
+    text-transform: none; letter-spacing: 0; color: var(--ink);
+    margin-bottom: 0.3rem; padding-bottom: 0.15rem; border-bottom: 1px dotted var(--line);
+    margin-top: 0;
+  }
+  .recipe-card ul { margin: 0; padding-left: 1.2rem; font-size:12pt; }
+  .recipe-card li { margin-bottom: 0.15rem; line-height: 1.4; }
+  .do-dont {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 0.6rem 0;
+  }
+  .do, .dont { padding: 0.5rem; border-radius: 2px; }
+  .do { background: #f0f6ed; border: 1px solid #c5d5bc; }
+  .dont { background: #faf3f0; border: 1px solid #e8d0c8; }
+  .do h4 { color: var(--sage); }
+  .dont h4 { color: #B94A3E; }
+  .do h4, .dont h4 {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 0.3rem;
+  }
+  .do ul, .dont ul { margin: 0; padding-left: 1rem; font-size:12pt; }
+  .label-table {
+    width: 100%; border-collapse: collapse;
+    border: 1px solid var(--line); margin: 0.5rem 0;
+  }
+  .label-table th {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    padding: 0.25rem 0.35rem; border: 1px solid var(--line); background: var(--light); text-align: left;
+  }
+  .label-table td {
+    padding: 0.25rem 0.35rem; border: 1px solid var(--line);
+    font-size:12pt; vertical-align: top;
+  }
+  .note-block {
+    border: 1px solid var(--line); padding: 0.4rem; min-height: 3rem;
+  }
+  .note-block h4 {
+    font-family: 'Work Sans', sans-serif; font-size:12pt; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    margin-bottom: 0.3rem; padding-bottom: 0.1rem; border-bottom: 1px dotted var(--line);
+  }
+  textarea { width: 100%; border: none; outline: none; font-family: 'Crimson Pro', serif; font-size: 12pt; background: transparent; resize: vertical; }
+  .note-block textarea { resize: none; overflow: hidden; }
+  input::placeholder, textarea::placeholder { color: var(--clay); opacity: 1; }
+  @media print {
+    body { background: none; padding: 0; margin: 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .page { margin: 0; box-shadow: none; }
+    .toolbar { display: none; }
+    input::placeholder, textarea::placeholder { color: transparent !important; }
+  }
+</style>
+</head>
+<body class="natural-body-care">
+<div class="toolbar">
+  <div class="brand">Kitchen <em>&amp; Kettle</em></div>
+  <div class="actions">
+    <span class="save-status" id="saveStatus">Saved</span>
+    <button class="btn btn-ghost" onclick="clearAll()">Clear all data</button>
+    <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+<!-- COVER -->
+<div class="page cover">
+  <p class="brand">Kitchen <em>&amp; Kettle</em></p>
+  <h1>Natural Body<br>Care Guide</h1>
+  <p class="tagline">Simple ingredients. Honest tradeoffs.</p>
+  <p class="description">
+    My natural routine for hair, face, and body. What works for me, what did not work for my husband, and how to tell which camp your skin is in.
+  </p>
+</div>
+<!-- PHILOSOPHY -->
+<div class="page prose-page">
+  <p class="tip" style="margin-bottom:0.6rem;">A companion to My Simple Body Care Guide. My husband follows the fragrance-free routine in that guide. I follow the natural routine in this one.</p>
+  <h2>Same house, two skins.</h2>
+  <p class="lede">Simple body care works best for my husband. Natural body care works best for me. Both of us are right, because we have different skin.</p>
+  <p>My husband spent years reacting to natural essential-oil soaps before we connected it. His skin calmed down when we went free and clear, with short ingredient lists and no fragrance. Coconut oil plus Oregon grape infusion calms his skin. Castile is harsh on my hands. That story is in the Simple guide, and it still stands.</p>
+  <p>My skin went the other way. Fewer lab products and more kitchen staples left my hair lighter, my scalp calmer, and my routine cheaper. I keep it plain, I keep the ratios weak, and I stop anything that irritates.</p>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>This guide is not a replacement for the Simple guide. If your skin reacts to fragrance, essential oils, or baking soda, use that guide instead. Natural does not mean gentle. It means you are the one watching for reactions.</p>
+  </div>
+  <hr>
+  <h3>How to use this guide</h3>
+  <p>Start with hair, because that is the most specific recipe here. Then try one body change at a time. Give each change two weeks. If your skin is happy, keep it. If it is not, go back to what worked.</p>
+  <div class="note-block">
+    <h4>Notes:</h4>
+    <textarea data-key="notes-philosophy" rows="4" placeholder="What I want to try..."></textarea>
+  </div>
+</div>
+<!-- HAIR WASH -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>My Hair Wash — Baking Soda + Vinegar</h2>
+  </div>
+  <p class="tip">This is my exact method. No exact lab measurement, just my bathroom cup and a small pinch.</p>
+  <div class="recipe-card">
+    <h3>Wash cup</h3>
+    <ul>
+      <li>About 1/2 tsp baking soda, a small pinch</li>
+      <li>Warm water to the top of a small bathroom drinking cup, roughly 3 to 4 oz. Stir until fully clear.</li>
+      <li>Cold water will not dissolve it properly. Use warm.</li>
+    </ul>
+  </div>
+  <div class="recipe-card">
+    <h3>Rinse cup</h3>
+    <ul>
+      <li>A small splash of apple cider vinegar, about 1 to 2 tsp, in a second cup</li>
+      <li>Warm water to the top, stir</li>
+      <li>1 to 2 drops pine essential oil, if your skin can tolerate it. Patch test first.</li>
+    </ul>
+  </div>
+  <h3>Steps</h3>
+  <ol>
+    <li>Wet hair fully with warm water.</li>
+    <li>Pour the wash cup slowly over scalp. Massage with fingertips 30 to 60 seconds. Do not scrub lengths.</li>
+    <li>Rinse well with warm water.</li>
+    <li>Pour the rinse cup over scalp and hair. Leave about 30 seconds.</li>
+    <li>Rinse lightly. A quick rinse leaves softness without vinegar smell.</li>
+  </ol>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>If your hair feels heavy or slicked down after, you are likely using too much baking soda or too much vinegar. I tend to go big or go home, and I had to cut both way back before this worked for me. Less is more here.</p>
+  </div>
+  <div class="note-block">
+    <h4>My notes on this recipe:</h4>
+    <textarea data-key="notes-hairwash" rows="4" placeholder="How often, what I changed..."></textarea>
+  </div>
+</div>
+<!-- HAIR HONEST -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Hair Wash <span style="font-size:12pt;color:var(--muted);font-weight:400;">(continued)</span></h2>
+  </div>
+  <h3>Frequency</h3>
+  <p>Start once a week. Most hair does not need this more than twice a week. If scalp feels tight or hair feels straw-like, space it out, use less baking soda, or go back to a gentle shampoo for a while.</p>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>Baking soda is alkaline, about pH 9. Hair and scalp prefer slightly acidic. This works for me because I keep it very dilute and I always follow with the vinegar rinse. Used strong, used often, or left on too long, it can dry and break hair. This is not for color-treated hair. Stop if you get irritation, itching, or extra shedding.</p>
+  </div>
+  <h3>Troubleshooting</h3>
+  <ul>
+    <li><strong>Waxy or coated feeling:</strong> Wash did not dissolve fully, or did not rinse enough. Use warmer water, stir longer, rinse longer.</li>
+    <li><strong>Dry ends:</strong> Keep wash on scalp only. Let rinse run through ends, do not scrub them.</li>
+    <li><strong>Vinegar smell lingers:</strong> You used too much vinegar. Drop to 1 tsp. Rinse a little longer.</li>
+    <li><strong>Essential oil itch:</strong> Skip the oil next time. Essential oils are a potential skin irritant, even in tiny amounts.</li>
+  </ul>
+  <div class="note-block">
+    <h4>Notes:</h4>
+    <textarea data-key="notes-washday" rows="4" placeholder="Wash day notes..."></textarea>
+  </div>
+</div>
+<!-- BETWEEN WASHES -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Between Washes</h2>
+  </div>
+  <p class="tip">Grease, sweat, and second-day hair live here.</p>
+  <h3>Grease</h3>
+  <p>My roots get greasy fast. If yours do too, you will be tempted to wash every single day. Try this first.</p>
+  <p>A lot of people use a boar bristle brush to pull grease from the roots down to the ends. I tried it and it never moved the grease for me. My roots just held onto it, and I started doubting the whole routine.</p>
+  <p>What worked was a silicone brush. It actually moves the grease along. Use it on dry hair between washes, or in the shower if you are just rinsing with water. It helps stimulate the scalp too.</p>
+  <h3>Sweaty days</h3>
+  <p>Yard work the day after wash day is my whole summer. Here is the thing I had to learn: sweat is mostly water and salt, not oil, so it rarely needs the full wash. Start with a warm water rinse, silicone brush on the scalp while you are in there, and always finish with the vinegar cup, since sweat smell means bacteria and vinegar handles that better than water.</p>
+  <p>If hair still looks gross the next morning, shake a little arrowroot powder at the roots, wait two minutes, and brush it out. It drinks up the leftover sweat overnight. We use it in a future recipe too, so it is worth having around.</p>
+  <p>Still dirty after that, do a half strength scalp wash: quarter teaspoon instead of half, scalp only, then the vinegar cup. Stronger than water, weaker than wash day. In peak summer, two weak washes a week beats one strong wash plus rinses that do not work. Raise frequency, lower strength.</p>
+  <div class="note-block">
+    <h4>Notes:</h4>
+    <textarea data-key="notes-hair-grease" rows="4" placeholder="Grease notes, what helped..."></textarea>
+  </div>
+</div>
+<!-- FACE DRAFT -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Face</h2>
+  </div>
+  <p class="tip">Warm water most days, honey or Ivory when needed. Sunscreen every morning, jojoba plus actives at night, tallow to seal it in.</p>
+  <h3>Morning</h3>
+  <p>Warm water and a clean washcloth is often enough. If face feels oily, a thin raw honey wash: pea-sized honey on damp skin, massage 30 seconds, rinse warm, or a really simple soap like Ivory bar soap.</p>
+  <p>The only moisturizer you need in the morning is a simple broad spectrum sunscreen. Use a tallow-based sunscreen to keep it natural, or something like CeraVe sunscreen if you want a little anti-aging benefit from niacinamide. Either way, use sunscreen every morning.</p>
+  <h3>Evening</h3>
+  <p>Remove sunscreen and grime first. Jojoba oil is close to skin's own sebum, so it sinks in light, softens without feeling greasy, and seals in dampness from washing.</p>
+  <p>For anti-aging in the evening: apply vitamin C serum to clean skin first, then a thin layer of jojoba oil, then retinol serum. Start retinol two nights a week and build up. If actives sting, buffer with jojoba first.</p>
+  <h3>Bed time</h3>
+  <p>Seal it all in with a thin layer of tallow balm. It is the best overnight occlusive that also nourishes. Tallow is close to skin's own oils, so it holds moisture in while it softens. Apply last, over serums and jojoba, and let it work overnight.</p>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>I picked jojoba and tallow because they match what skin already makes. Jojoba acts like sebum, so it softens without feeling heavy. Tallow acts like skin's own fats, so it seals moisture in overnight and feeds it at the same time. One lightens, one seals. That pair covers both jobs.</p>
+  </div>
+  <div class="note-block">
+    <h4>Notes:</h4>
+    <textarea data-key="notes-face" rows="4" placeholder="Face notes, what worked..."></textarea>
+  </div>
+</div>
+<!-- BODY DRAFT -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Body</h2>
+  </div>
+  <p class="tip">One bar for washing, damp skin for moisture, my deodorant mix when I have time and Schmidt's when I do not.</p>
+  <h3>Wash</h3>
+  <p>Use one mild bar for body and hands. Soap only where you need it: underarms, feet, and private areas. Warm water and a washcloth is enough everywhere else. More soap just dries skin out.</p>
+  <p>On natural versus store bought: every true soap runs alkaline, around pH 9 to 10, while skin sits near 5.5, so all of them fight skin a little. What matters is how much oil survives the lye. Castile converts every drop of its olive oil into soap and leaves nothing behind to soften the bar, which is why pure olive oil soap strips harder than it sounds like it should. Bar or liquid, same story, and the liquid needs heavy diluting before it touches skin. I do not even use it for dishes since I do not want it on my hands. I pour a bit into the laundry, and that is it.</p>
+  <p>A superfatted bar is the gentlest natural option. That word just means the maker held back extra oil on purpose instead of letting the lye convert it all, so free oil stays in the finished bar and cushions your skin. When you read a label, look for bars heavy on tallow, olive, or shea. Go light on coconut oil, which cleans strongly and strips skin hardest.</p>
+  <p>How to tell them apart on a label: if it says castile, or 100 percent olive oil, it is castile. A superfatted bar names extra oils beyond the soap itself, look for plain oil words like olive oil or shea butter listed after the saponified oils, or the word superfatted on the wrapper. Buying from a maker, just ask what the superfat is. A maker who knows the number is a maker you can trust.</p>
+  <p>Skip fragrance every time, essential oils included. Scent, natural or not, is the most common irritant in soap, so fragrance free is the safest shelf to shop. Ivory sits in the middle for me, a simple true soap with no scent, sold everywhere, cheap.</p>
+  <div class="note-block">
+    <h4>My notes on body:</h4>
+    <textarea data-key="notes-body" rows="4" placeholder="What I kept, what I cut..."></textarea>
+  </div>
+</div>
+<!-- MOISTURE -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Moisture</h2>
+  </div>
+  <p class="tip">Every shower ends here. Damp skin, then seal it in.</p>
+  <p>Do not towel fully dry. Pat lightly and leave skin damp, then moisturize right away. Use tallow balm to seal moisture in, jojoba oil on lighter days, or plain shea. The dampness is what you are sealing in.</p>
+  <p>Straight shea can feel heavy. To lighten it, whip it: soften 1/2 cup shea at room temp, beat with a hand mixer 3 to 5 minutes until fluffy, then beat in 2 Tbsp jojoba oil and 1 tsp arrowroot powder. The arrowroot cuts the greasy feel. Store in a jar at room temp.</p>
+  <div class="note-block">
+    <h4>Notes:</h4>
+    <textarea data-key="notes-moisture" rows="4" placeholder="Moisture notes..."></textarea>
+  </div>
+</div>
+<!-- DEODORANT -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Deodorant</h2>
+  </div>
+  <p class="tip">My mix in a jar, Schmidt's when life gets busy.</p>
+  <p>My mix:</p>
+  <ul style="display:grid;grid-template-columns:1fr 1fr;gap:0.15rem 0.8rem;list-style-position:inside;padding-left:0.2rem;">
+    <li>1 cup shea butter</li>
+    <li>1/2 cup coconut oil</li>
+    <li>1 Tbsp beeswax</li>
+    <li>3 cups arrowroot powder</li>
+    <li>1 Tbsp plus 1 tsp baking soda</li>
+    <li>15 drops each sage and lavender essential oils, if your skin can tolerate them</li>
+  </ul>
+  <p>Melt shea, coconut oil, and beeswax gently. Stir in arrowroot and baking soda, then the oils. Pour into jars. Use a pea-sized amount per underarm.</p>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>If baking soda underarms burn or darken, stop. Switch to arrowroot only, or back to a store deodorant that works. When life gets too busy and I do not have time to whip up my own, I use Schmidt's.</p>
+  </div>
+  <div class="note-block">
+    <h4>Notes:</h4>
+    <textarea data-key="notes-deodorant" rows="4" placeholder="Deodorant notes, tweaks..."></textarea>
+  </div>
+</div>
+<!-- TEETH -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Teeth</h2>
+  </div>
+  <p class="tip">Homemade paste cleans. Fluoride prevents cavities. I tried going without and bought toothpaste again.</p>
+  <h3>Homemade paste</h3>
+  <p>Usual mix is coconut oil plus baking soda, sometimes a drop of peppermint oil. It scrubs and freshens. It does not remineralize enamel the way fluoride does. Baking soda is mildly abrasive, fine for most people in small amounts, harsh if scrubbed hard every day.</p>
+  <h3>Fluoride</h3>
+  <p>Fluoride has decades of cavity-prevention evidence behind it. It hardens enamel and reverses very early decay. That is why dentists recommend it so strongly. Hydroxyapatite paste is the newer alternative with promising early research, but less long-term data than fluoride. When I was experimenting, hydroxyapatite powder was super expensive, so buying toothpaste was more cost effective.</p>
+  <p>I tried homemade paste and ended up with horrible tooth pain. Too much baking soda left my teeth severely sensitive.</p>
+  <p>What I learned digging in: baking soda is not feeding teeth anything, it is just really good at scrubbing. I looked into mixing my own with fluoride, but fluoride is hard to find sold on its own. Everything pointed to buying toothpaste as the most logical option.</p>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>Buying toothpaste won this one. That is not failure, you do not have to make every little thing. Talk to your dentist before switching, especially for kids.</p>
+  </div>
+  <div class="note-block">
+    <h4>Notes:</h4>
+    <textarea data-key="notes-teeth" rows="4" placeholder="Teeth notes, what I decided..."></textarea>
+  </div>
+</div>
+<!-- BASICS -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>The Basics</h2>
+  </div>
+  <p class="tip">Start here. Everything after this page is extra.</p>
+  <ul>
+    <li>Baking soda wash plus vinegar rinse for hair</li>
+    <li>One simple mild soap for body and hands</li>
+    <li>Pat dry, leave skin damp, do not towel fully</li>
+    <li>Jojoba oil for moisture, tallow balm to seal at night</li>
+    <li>Sunscreen every morning</li>
+    <li>Deodorant, mine or Schmidt's</li>
+  </ul>
+  <p>That is the whole routine. Salves, infused oils, bath teas, all of it can wait until you want a project.</p>
+  <div class="note-block">
+    <h4>Notes:</h4>
+    <textarea data-key="notes-basics" rows="4" placeholder="My basics list..."></textarea>
+  </div>
+</div>
+<!-- BATH -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Bath</h2>
+  </div>
+  <p class="tip">Epsom for muscles, baking soda for skin, tea for the mood. No oil, the tub gets slick.</p>
+  <p>Bath salts: 1 cup Epsom salt plus 1/2 cup baking soda per tub, soak 20 minutes. The Epsom salt is for sore muscles. The baking soda softens the water and soothes dry or itchy skin.</p>
+  <p>For a nicer soak, add a tea bag to the tub: chamomile, green tea, or a handful of dried rose petals in a muslin bag. They scent the water and leave skin feeling soft.</p>
+  <p>I do not add oil to my baths. It makes the tub extremely slippery.</p>
+  <div class="note-block">
+    <h4>Notes:</h4>
+    <textarea data-key="notes-bath" rows="4" placeholder="Bath notes, favorite teas..."></textarea>
+  </div>
+</div>
+<!-- INFUSED OILS -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Infused Oils</h2>
+  </div>
+  <p class="tip">Same method as My Simple Body Care Guide. The base for every salve in this guide.</p>
+  <p>Dried herbs in a jar, covered with oil, left on a sunny windowsill. That is the whole method. The oil pulls the plant compounds out over a few weeks. What you get is a custom oil a store cannot match because you chose the herbs.</p>
+  <p><strong>What you need:</strong> Dried herbs only, fresh herbs mold in oil. Pick calendula for healing, plantain for bites, lavender for calm, chamomile for sensitive skin. A carrier oil, I use jojoba. A clean jar, cheesecloth for straining.</p>
+  <ol>
+    <li>Fill a clean jar about one-third full with dried herb. Do not pack tight.</li>
+    <li>Pour jojoba over until herbs sit under at least an inch of oil. Cap tight.</li>
+    <li>Set on a warm windowsill 4 to 6 weeks. Shake when you remember.</li>
+    <li>Strain through cheesecloth into a dark bottle. Label herb and date. Store cool and dark.</li>
+  </ol>
+  <p>Use straight on damp skin, or save it for salves. Patch test a new herb on your inner arm first, any plant can irritate the wrong person.</p>
+  <div class="note-block">
+    <h4>Notes:</h4>
+    <textarea data-key="notes-oils" rows="4" placeholder="Oil notes, which herbs..."></textarea>
+  </div>
+</div>
+<!-- SALVES -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Salves and Balms</h2>
+  </div>
+  <p class="tip">Same method as My Simple Body Care Guide. If you have that guide, you already know this one.</p>
+  <p>A salve is an infused oil solidified with beeswax so it stays where you put it. Oil drips and spreads. Salve sits on the skin and seals moisture in while the herbs do their work. Beeswax is not just thickener. It makes a breathable barrier that keeps water in and irritants out.</p>
+  <p>Start with an infused oil: dried calendula, plantain, or lavender steeped in jojoba. That oil is the medicine. The wax just gives it shape.</p>
+  <p><strong>What you need:</strong> 1 cup infused oil, about 1 oz beeswax pastilles, small tins or jars.</p>
+  <ol>
+    <li>Pour oil into a small pot or a heatproof jar set in simmering water. Warm on low.</li>
+    <li>Stir in beeswax until fully melted. Test firmness with a cold spoon: dip, chill 1 minute, check. Add more wax for firmer, more oil for softer.</li>
+    <li>Pour into clean tins. Cool fully before lidding or condensation forms inside.</li>
+    <li>Label with herbs and date. Store cool. No water means no spoilage.</li>
+  </ol>
+  <p>Uses I reach for: calendula for dry hands and scrapes, plantain for bug bites and splinters, lavender as a calming chest rub. One batch of oil becomes several tins.</p>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>No water means no spoilage. Salves keep for years without preservatives. Label with the herbs and the date.</p>
+  </div>
+  <div class="note-block">
+    <h4>Notes:</h4>
+    <textarea data-key="notes-salves" rows="4" placeholder="Salve notes, firm or soft..."></textarea>
+  </div>
+</div>
+<!-- TALLOW BALM -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Tallow Balm</h2>
+  </div>
+  <p class="tip">Same method as My Simple Body Care Guide. This is the bedtime seal from the Face section.</p>
+  <p>Tallow is rendered beef fat. It is close to the oils your own skin makes, so it sinks in instead of sitting on top. It carries vitamins A, D, E, and K. Whipped with a little coconut oil it replaces night cream, hand balm, and lip balm in one jar.</p>
+  <p><strong>What you need:</strong> Beef fat trimmings, ask your butcher. A spoonful of coconut oil for spreadability. A clean jar.</p>
+  <ol>
+    <li>Render: cut fat small, crock pot on low or oven at 200F, 4 to 6 hours until liquid. Strain through cheesecloth.</li>
+    <li>Cool until solid but soft, like room-temp butter.</li>
+    <li>Whip 2 to 3 minutes until creamy white. Beat in coconut oil while whipping.</li>
+    <li>Jar it. A little goes a long way, face, hands, elbows, anywhere.</li>
+  </ol>
+  <p>Skip rendering: buy already-rendered tallow at the store, warm to room temp, whip with coconut oil. Or buy tallow-based sunscreen, already rendered with no scent, minerals do the SPF work.</p>
+  <div class="note-block">
+    <h4>Notes:</h4>
+    <textarea data-key="notes-tallow" rows="4" placeholder="Balm notes..."></textarea>
+  </div>
+</div>
+<!-- REALITY FILTER -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Natural Reality Filter</h2>
+  </div>
+  <p class="lede" style="margin-bottom:0.25rem;">Make what is worth making. Buy what is better from someone with the right equipment.</p>
+  <div class="do" style="margin-bottom:0.4rem;">
+    <h4>Make these</h4>
+    <ul>
+      <li><strong>Hair rinses.</strong> Pennies per wash, mixed in a minute. You control the strength.</li>
+      <li><strong>Infused oils.</strong> Calendula or plantain in jojoba. Slow, simple, quality you can trace.</li>
+      <li><strong>Salves and balms.</strong> Infused oil plus a little beeswax in a tin. Real medicine for hands and dry spots.</li>
+      <li><strong>Bath salts.</strong> Epsom plus baking soda. No lab needed.</li>
+    </ul>
+  </div>
+  <div class="dont">
+    <h4>Buy these</h4>
+    <ul>
+      <li><strong>Sunscreen.</strong> Not a DIY project. Lab-tested broad spectrum SPF 30 is worth every penny.</li>
+      <li><strong>Toothpaste.</strong> Fluoride is hard to buy on its own and homemade paste left my teeth sensitive. Buying wins on cost and cavities.</li>
+      <li><strong>Soap if your skin reacts.</strong> A milled bar like Ivory or a syndet like Dove Unscented is gentler than a harsh handmade bar. Cardboard packaging, no lye stored in your house.</li>
+    </ul>
+  </div>
+  <div class="honest-box">
+    <h4>Honest note</h4>
+    <p>Supporting good makers is not failure. If you love a small-batch soap and your skin loves it back, that is the village model working. Pick the skills you actually want, let good companies handle the rest.</p>
+  </div>
+  <div class="note-block">
+    <h4>Notes:</h4>
+    <textarea data-key="notes-filter" rows="4" placeholder="Make vs buy notes..."></textarea>
+  </div>
+</div>
+<!-- QUICK REF -->
+<div class="page prose-page">
+  <div class="section-header">
+    <h2>Quick Reference</h2>
+  </div>
+  <table class="label-table">
+    <thead>
+      <tr><th>Use</th><th>Mix</th><th>Note</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hair wash</td><td>1/2 tsp baking soda + cup warm water</td><td>Scalp only, rinse well</td></tr>
+      <tr><td>Hair rinse</td><td>1-2 tsp ACV + cup warm water + 1-2 drops pine oil if tolerated</td><td>30 sec, rinse lightly</td></tr>
+      <tr><td>Honey wash</td><td>Pea-sized raw honey, damp skin</td><td>30 sec, rinse warm</td></tr>
+      <tr><td>Body moisture</td><td>Oil or balm on damp skin</td><td>Seals water in</td></tr>
+      <tr><td>Whipped shea</td><td>1/2 cup shea + 2 Tbsp jojoba + 1 tsp arrowroot</td><td>Whip fluffy, less greasy</td></tr>
+      <tr><td>Salve</td><td>1 cup infused oil + 1 oz beeswax</td><td>Cold spoon test</td></tr>
+      <tr><td>Tallow balm</td><td>Whipped tallow + spoonful coconut oil</td><td>Bedtime seal</td></tr>
+      <tr><td>Deodorant</td><td>See Body page mix</td><td>Pea-sized per side</td></tr>
+      <tr><td>Bath</td><td>1 cup Epsom + 1/2 cup baking soda</td><td>20 min soak</td></tr>
+    </tbody>
+  </table>
+  <p class="tip">Patch test anything new. Inner forearm, 24 hours. If it itches, burns, or reddens, do not use it.</p>
+  <div class="note-block">
+    <h4>What worked / what did not</h4>
+    <textarea data-key="notes-quickref" rows="4" placeholder="Track soaps, oils, frequency..."></textarea>
+  </div>
+</div>
+<!-- CLOSING -->
+<div class="page prose-page">
+  <h2>A note on natural care</h2>
+  <p class="lede">Natural works for me because I watch how my skin responds and I keep everything weak and simple.</p>
+  <p>It is not better in some moral sense. It is just what my hair and skin like right now. My husband needs free and clear. I need a pinch of soda and a splash of vinegar. Same house, different shelf in the bathroom.</p>
+  <p>If a recipe makes you feel anxious instead of cared for, simplify it. Good body care should feel like nourishment, not like solving a puzzle.</p>
+  <hr>
+  <p class="tip">See also: My Simple Body Care Guide for label reading and fragrance-free baselines, and My Natural Homekeeping Guide for cleaning.</p>
+  <div class="note-block">
+    <h4>Notes:</h4>
+    <textarea data-key="notes-closing" rows="4" placeholder="What I am keeping..."></textarea>
+  </div>
+</div>
+<div class="page" style="background:var(--paper);">
+  <div style="display:flex; flex-direction:column; justify-content:center; min-height:9.5in; max-width:75%; margin:0 auto; text-align:center;">
+    <h2>Simple care, my way</h2>
+    <p style="margin-bottom:1rem;">A pinch, a splash, warm water. Pay attention, write down what worked, ignore the rest of the beauty aisle.</p>
+    <p style="margin-bottom:2rem;"><em>Works because it works.</em></p>
+    <img src="kettle-logo.svg" alt="Kitchen and Kettle kettle logo" style="width:1.2in;margin:0 auto;">
+    <p class="small" style="color:#b0a99e; margin-top:3rem;">Kitchen &amp; Kettle</p>
+    <p class="small" style="color:#b0a99e;">A quieter way to run a kitchen.</p>
+  </div>
+</div>
+<script>
+const STORAGE_KEY = 'keeping-kitchen-natural-body-care';
+function save() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => { data[el.dataset.key] = el.value; });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  const s = document.getElementById('saveStatus');
+  s.classList.add('visible');
+  clearTimeout(s._t); s._t = setTimeout(() => s.classList.remove('visible'), 1500);
+}
+function load() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.dataset.key in data) el.value = data[el.dataset.key];
+  });
+}
+function clearAll() {
+  if (!confirm('Clear all notes?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('[data-key]').forEach(el => el.value = '');
+}
+document.addEventListener('input', save);
+load();
+</script>
+</body>
+</html>

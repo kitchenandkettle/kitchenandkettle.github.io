@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Livestock Health Record — Kitchen &amp; Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F5F0E8;--ink:#2C2416;--clay:#C4A882;--sage:#7D8B6F;--muted:#756E63;--line:#D9D0C1;--light:#FAF7F0;--soft:#3D362D}
+@page{size:Letter;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Crimson Pro',Georgia,serif;font-size:12pt;line-height:1.48;color:var(--ink);background:#e8e4dc;display:flex;flex-direction:column;align-items:center;padding:1rem}
+.toolbar{max-width:8.5in;width:100%;margin:0 auto .5rem;display:flex;justify-content:space-between;align-items:center;background:#fff;padding:.5rem .7rem;border-radius:6px;box-shadow:0 1px 4px rgba(44,36,22,.08);position:sticky;top:0;z-index:100}
+.toolbar .brand{font-family:'Crimson Pro',serif;font-size:14pt;font-weight:600;color:var(--ink)}
+.toolbar .brand em{font-style:italic;color:var(--clay)}
+.toolbar .actions{display:flex;gap:.45rem;align-items:center}
+.toolbar .save-status{font-family:'Work Sans',sans-serif;font-size:8pt;color:#5a8a6a;margin-right:.3rem;opacity:0;transition:opacity .3s}
+.toolbar .save-status.visible{opacity:1}
+.btn{font-family:'Work Sans',sans-serif;font-size:8pt;font-weight:600;padding:.4em .75em;border-radius:3px;cursor:pointer;border:none}
+.btn-ghost{background:none;color:var(--muted);border:1px solid var(--line)}.btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+.btn-print{background:var(--ink);color:var(--paper)}
+.page{width:8.5in;min-height:11in;background:#fff;margin-bottom:.25in;padding:.7in .7in;box-shadow:0 2px 12px rgba(44,36,22,.12);page-break-after:always;position:relative}
+.page:last-of-type{page-break-after:auto}
+h1{font-size:32pt;font-weight:600;line-height:1.08;letter-spacing:-.01em}h2{font-size:19pt;font-weight:600;line-height:1.1;margin-bottom:.35rem}h3{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:.35rem}h4{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:.25rem}
+p{margin-bottom:.55rem;color:var(--soft)}.lede{font-size:15pt;line-height:1.42;margin-bottom:1rem}.small{font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted)}
+.cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2in .7in;background:var(--light)}
+.cover .brand{font-size:16pt;color:var(--muted);margin-bottom:1.5rem}.cover .brand em{font-style:italic;color:var(--clay)}
+.cover h1{max-width:14ch;margin-bottom:.6rem}.cover .tagline{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:2rem}.cover .description{font-size:14pt;max-width:27ch;line-height:1.5}.cover .footer-note{font-size:12pt;color:var(--muted);font-family:'Work Sans',sans-serif;margin-top:1.5rem}
+.section-header{border-bottom:1px solid var(--line);padding-bottom:.35rem;margin-bottom:.65rem;display:flex;justify-content:space-between;align-items:baseline}.section-header .page-num{font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted)}
+.tip{font-style:italic;color:var(--sage);margin:.5rem 0;padding-left:.6rem;border-left:2px solid var(--clay)}
+.honest-box{border:1px solid var(--clay);background:var(--light);padding:.55rem;margin:.7rem 0}.honest-box h4{color:var(--clay)}
+ol,ul{margin:.4rem 0 .7rem 1.3rem}li{margin-bottom:.35rem;color:var(--soft)}
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem .8rem;margin:.5rem 0 1rem}.field-grid.three{grid-template-columns:1fr 1fr 1fr}.field{display:flex;flex-direction:column;gap:.18rem}.field label,.table-label{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}input,textarea,select{font:12pt 'Crimson Pro',Georgia,serif;color:var(--ink);border:0;border-bottom:1px solid var(--line);background:transparent;padding:.18rem .1rem;min-width:0}textarea{width:100%;resize:vertical;line-height:1.45;border:1px solid var(--line);padding:.35rem;min-height:1.05in}input:focus,textarea:focus,select:focus{outline:2px solid rgba(196,168,130,.35);outline-offset:1px}input::placeholder,textarea::placeholder{color:var(--clay);opacity:1}
+.notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin-top:.5rem}.note-block{border:1px solid var(--line);padding:.4rem;min-height:2.6in;display:flex;flex-direction:column}.note-block h4{padding-bottom:.15rem;border-bottom:1px dotted var(--line)}.note-block textarea{flex:1;min-height:0;border:0;padding:.15rem 0}
+.record-table{width:100%;border-collapse:collapse;margin:.45rem 0}.record-table th{font-family:'Work Sans',sans-serif;font-size:12pt;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding:.3rem;border:1px solid var(--line);background:var(--light);text-align:left}.record-table td{border:1px solid var(--line);padding:.08rem .2rem;height:.48in;vertical-align:top}.record-table input{width:100%;height:.32in;border-bottom:0}.record-table textarea{border:0;min-height:.38in;height:.38in;padding:0;width:100%}
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:.35rem .8rem;margin:.4rem 0 .8rem}.check{display:flex;gap:.45rem;align-items:flex-start}.check input{margin-top:.35rem;accent-color:var(--sage);width:1rem;height:1rem}.check label{color:var(--soft)}
+.footer-line{position:absolute;bottom:.35in;left:.7in;right:.7in;border-top:1px solid var(--line);padding-top:.2rem;display:flex;justify-content:space-between;font-family:'Work Sans',sans-serif;font-size:12pt;color:var(--muted)}
+.closing{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:var(--paper);padding:2in 1in}.closing h2{font-size:24pt;margin-bottom:1rem}.closing p{max-width:32ch}.closing .signoff{margin-top:1.5rem;font-size:14pt}.closing .brandline{font-family:'Work Sans',sans-serif;font-size:12pt;color:#b0a99e;margin-top:2.5rem;margin-bottom:.15rem}
+@media print{html,body{width:8.5in;background:#fff;padding:0;margin:0;display:block;print-color-adjust:exact;-webkit-print-color-adjust:exact}.toolbar{display:none}.page{width:8.5in;height:10.9in;min-height:10.9in;margin:0;box-shadow:none;flex:none;break-inside:avoid;page-break-inside:avoid;break-after:page;page-break-after:always}.page:last-of-type{break-after:auto;page-break-after:auto}input::placeholder,textarea::placeholder{color:transparent!important}.record-table input,.record-table textarea{border-bottom:0}select{appearance:none}}
+@media(max-width:900px){body{padding:.5rem}.page{width:100%;min-height:auto}.toolbar{position:static}.toolbar .actions{flex-wrap:wrap;justify-content:flex-end}.field-grid,.field-grid.three{grid-template-columns:1fr}.record-table{font-size:11pt}.record-table th{font-size:10pt}.record-table td{height:.6in}}
+</style>
+</head>
+<body class="livestock-health-record">
+<div class="toolbar"><div class="brand">Kitchen <em>&amp; Kettle</em></div><div class="actions"><span class="save-status" id="saveStatus">Saved</span><button class="btn btn-ghost" onclick="exportData()">Save a copy</button><button class="btn btn-ghost" onclick="importData()">Import copy</button><button class="btn btn-ghost" onclick="clearAll()">Clear all data</button><button class="btn btn-print" onclick="window.print()">Print / Save PDF</button></div></div>
+
+<div class="page cover">
+  <p class="brand">Kitchen <em>&amp; Kettle</em></p>
+  <h1>Livestock<br>Health Record</h1>
+  <p class="tagline">Know what's normal. Record what changed.</p>
+  <p class="description">A practical record system for the animals in your care — profiles, baseline notes, health events, treatments, preventative care, and vet visits.</p>
+  <p class="footer-note">A recordkeeping tool, not a diagnosis guide.</p>
+</div>
+
+<div class="page prose-page">
+  <div class="section-header"><h2>How to use this record</h2><span class="page-num">02</span></div>
+  <p class="lede">The useful health record is the one you can find when you need it. Keep this with your farm paperwork, fill it out while the details are fresh, and bring the relevant pages to a vet visit.</p>
+  <h3>What's inside</h3>
+  <ol>
+    <li><strong>Farm contacts</strong> — Keep your veterinarian, emergency contacts, feed supplier, and transport information together.</li>
+    <li><strong>Animal overview</strong> — Get the whole farm or flock on one page before you start individual records.</li>
+    <li><strong>Profiles and baselines</strong> — Record what is normal for each animal. That gives you something useful to compare when behavior changes.</li>
+    <li><strong>Health events and treatments</strong> — Write down what you saw, what you did, and what happened next.</li>
+    <li><strong>Preventative care, weight, and vet visits</strong> — Keep recurring care and professional advice from disappearing into scraps of paper.</li>
+  </ol>
+  <div class="honest-box"><h4>Keep the record factual</h4><p>Write “eating less and standing apart from the group” rather than guessing at a diagnosis. Exact observations, dates, product names, doses, and instructions are more useful than confident-sounding labels.</p></div>
+  <h3>A note on safety</h3>
+  <p>This product does not tell you what disease an animal has or how to treat one. For urgent concerns, contact a veterinarian. Follow the product label and your veterinarian's instructions for medications, vaccines, withdrawal periods, and handling.</p>
+  <p class="tip">If an animal is struggling to breathe, cannot stand, is bleeding heavily, is severely bloated, or has another emergency sign, call a veterinarian rather than spending time filling out the form.</p>
+</div>
+
+<div class="page">
+  <div class="section-header"><h2>Farm contacts</h2><span class="page-num">03</span></div>
+  <p class="tip">Fill this page out before you need it. Add a second sheet if your farm uses more than one clinic or emergency service.</p>
+  <div class="field-grid"><div class="field"><label>Farm or homestead name</label><input data-key="farm_name" placeholder="Name"></div><div class="field"><label>Owner / primary contact</label><input data-key="primary_contact" placeholder="Name"></div><div class="field"><label>Farm address</label><textarea data-key="farm_address" placeholder="Street, town, state"></textarea></div><div class="field"><label>Directions for emergency services</label><textarea data-key="emergency_directions" placeholder="Gate, driveway, landmarks"></textarea></div></div>
+  <h3>People and services</h3>
+  <table class="record-table"><thead><tr><th style="width:28%">Contact</th><th style="width:30%">Name / business</th><th>Phone, email, or notes</th></tr></thead><tbody>
+    <tr><td>Regular veterinarian</td><td><input data-key="contact_vet_name"></td><td><input data-key="contact_vet_phone"></td></tr>
+    <tr><td>After-hours veterinarian</td><td><input data-key="contact_emergency_vet_name"></td><td><input data-key="contact_emergency_vet_phone"></td></tr>
+    <tr><td>Feed or hay supplier</td><td><input data-key="contact_feed_name"></td><td><input data-key="contact_feed_phone"></td></tr>
+    <tr><td>Animal transport</td><td><input data-key="contact_transport_name"></td><td><input data-key="contact_transport_phone"></td></tr>
+    <tr><td>Trusted farm helper</td><td><input data-key="contact_helper_name"></td><td><input data-key="contact_helper_phone"></td></tr>
+  </tbody></table>
+  <div class="field" style="margin-top:.8rem"><label>Other instructions</label><textarea data-key="contact_other_notes" placeholder="Clinic hours, payment notes, gate code, or anything a helper should know"></textarea></div>
+</div>
+
+<div class="page">
+  <div class="section-header"><h2>Animal overview</h2><span class="page-num">04</span></div>
+  <p class="tip">Use one row for an individual animal, a bonded pair, or a flock/group when individual records would not be practical.</p>
+  <table class="record-table"><thead><tr><th>Animal / group</th><th>Species / breed</th><th>ID, tag, or markings</th><th>Sex</th><th>Birth / arrival</th><th>Location</th></tr></thead><tbody>
+    <tr><td><input data-key="overview_1_name"></td><td><input data-key="overview_1_species"></td><td><input data-key="overview_1_id"></td><td><input data-key="overview_1_sex"></td><td><input data-key="overview_1_date"></td><td><input data-key="overview_1_location"></td></tr>
+    <tr><td><input data-key="overview_2_name"></td><td><input data-key="overview_2_species"></td><td><input data-key="overview_2_id"></td><td><input data-key="overview_2_sex"></td><td><input data-key="overview_2_date"></td><td><input data-key="overview_2_location"></td></tr>
+    <tr><td><input data-key="overview_3_name"></td><td><input data-key="overview_3_species"></td><td><input data-key="overview_3_id"></td><td><input data-key="overview_3_sex"></td><td><input data-key="overview_3_date"></td><td><input data-key="overview_3_location"></td></tr>
+    <tr><td><input data-key="overview_4_name"></td><td><input data-key="overview_4_species"></td><td><input data-key="overview_4_id"></td><td><input data-key="overview_4_sex"></td><td><input data-key="overview_4_date"></td><td><input data-key="overview_4_location"></td></tr>
+    <tr><td><input data-key="overview_5_name"></td><td><input data-key="overview_5_species"></td><td><input data-key="overview_5_id"></td><td><input data-key="overview_5_sex"></td><td><input data-key="overview_5_date"></td><td><input data-key="overview_5_location"></td></tr>
+    <tr><td><input data-key="overview_6_name"></td><td><input data-key="overview_6_species"></td><td><input data-key="overview_6_id"></td><td><input data-key="overview_6_sex"></td><td><input data-key="overview_6_date"></td><td><input data-key="overview_6_location"></td></tr>
+    <tr><td><input data-key="overview_7_name"></td><td><input data-key="overview_7_species"></td><td><input data-key="overview_7_id"></td><td><input data-key="overview_7_sex"></td><td><input data-key="overview_7_date"></td><td><input data-key="overview_7_location"></td></tr>
+    <tr><td><input data-key="overview_8_name"></td><td><input data-key="overview_8_species"></td><td><input data-key="overview_8_id"></td><td><input data-key="overview_8_sex"></td><td><input data-key="overview_8_date"></td><td><input data-key="overview_8_location"></td></tr>
+  </tbody></table>
+  <div class="field" style="margin-top:.65rem"><label>Group notes</label><textarea data-key="overview_group_notes" placeholder="Housing groups, flock details, recent arrivals, or anything that helps identify the animals"></textarea></div>
+</div>
+
+<div class="page profile-page">
+  <div class="section-header"><h2>Animal profile</h2><span class="page-num">05</span></div>
+  <p class="tip">Print or duplicate this page for each animal you want to track individually. For a flock or group, use the first field for the group name and describe how individuals are identified.</p>
+  <div class="field-grid three"><div class="field"><label>Name / group</label><input data-key="profile_name" placeholder="Name or group"></div><div class="field"><label>Species</label><input data-key="profile_species" placeholder="Species"></div><div class="field"><label>Breed</label><input data-key="profile_breed" placeholder="Breed or type"></div><div class="field"><label>Sex</label><input data-key="profile_sex" placeholder="Sex"></div><div class="field"><label>Birth / hatch date</label><input data-key="profile_birth" placeholder="Date or estimate"></div><div class="field"><label>Arrival date</label><input data-key="profile_arrival" placeholder="Date"></div><div class="field"><label>Tag / microchip / ID</label><input data-key="profile_id" placeholder="ID"></div><div class="field"><label>Color and markings</label><input data-key="profile_markings" placeholder="Description"></div><div class="field"><label>Current location</label><input data-key="profile_location" placeholder="Barn, pasture, coop"></div></div>
+  <div class="field-grid"><div class="field"><label>Source / previous owner</label><textarea data-key="profile_source" placeholder="Where the animal came from"></textarea></div><div class="field"><label>Parentage or related animals</label><textarea data-key="profile_parentage" placeholder="Dam, sire, siblings, bonded animals"></textarea></div></div>
+  <div class="notes-grid"><div class="note-block"><h4>Photo or sketch notes</h4><textarea data-key="profile_photo_notes" placeholder="Markings, distinctive features, or where a printed photo is stored"></textarea></div><div class="note-block"><h4>Important history</h4><textarea data-key="profile_history" placeholder="Previous conditions, surgeries, allergies, or known sensitivities"></textarea></div></div>
+</div>
+
+<div class="page">
+  <div class="section-header"><h2>Baseline health</h2><span class="page-num">06</span></div>
+  <p class="lede">A baseline is your description of what normal looks like for this animal or group. It gives a future observation something to be compared against.</p>
+  <div class="field-grid"><div class="field"><label>Animal / group</label><input data-key="baseline_name" placeholder="Name or group"></div><div class="field"><label>Date recorded</label><input data-key="baseline_date" placeholder="Date"></div></div>
+  <div class="check-grid"><div class="check"><input type="checkbox" data-key="baseline_appetite"><label>Appetite is typical</label></div><div class="check"><input type="checkbox" data-key="baseline_behavior"><label>Behavior and alertness are typical</label></div><div class="check"><input type="checkbox" data-key="baseline_movement"><label>Movement and gait are typical</label></div><div class="check"><input type="checkbox" data-key="baseline_breathing"><label>Breathing is typical</label></div><div class="check"><input type="checkbox" data-key="baseline_body"><label>Body condition is typical</label></div><div class="check"><input type="checkbox" data-key="baseline_output"><label>Droppings, manure, or production are typical</label></div></div>
+  <div class="notes-grid"><div class="note-block"><h4>Usual appetite and water</h4><textarea data-key="baseline_appetite_notes" placeholder="What and how much this animal normally eats and drinks"></textarea></div><div class="note-block"><h4>Usual behavior</h4><textarea data-key="baseline_behavior_notes" placeholder="Social, alert, vocal, resting, active"></textarea></div><div class="note-block"><h4>Usual appearance</h4><textarea data-key="baseline_appearance_notes" placeholder="Eyes, coat, feathers, skin, body condition"></textarea></div><div class="note-block"><h4>What would be unusual</h4><textarea data-key="baseline_unusual_notes" placeholder="Changes you would want to notice quickly"></textarea></div></div>
+</div>
+
+<div class="page">
+  <div class="section-header"><h2>Health event record</h2><span class="page-num">07</span></div>
+  <p class="tip">Use one page per concern. Record what you observed before you decide what it means.</p>
+  <div class="field-grid three"><div class="field"><label>Animal / group</label><input data-key="event_name" placeholder="Name or group"></div><div class="field"><label>Date first noticed</label><input data-key="event_date" placeholder="Date and time"></div><div class="field"><label>Date resolved / follow-up</label><input data-key="event_followup" placeholder="Date"></div></div>
+  <div class="field-grid"><div class="field"><label>What changed?</label><textarea data-key="event_change" placeholder="Specific observations: eating, movement, breathing, appearance, output, behavior"></textarea></div><div class="field"><label>Measurements</label><textarea data-key="event_measurements" placeholder="Temperature, weight, count, or other measurements"></textarea></div></div>
+  <div class="field-grid"><div class="field"><label>Who was contacted?</label><textarea data-key="event_contacts" placeholder="Vet, extension office, experienced helper"></textarea></div><div class="field"><label>Instructions received</label><textarea data-key="event_instructions" placeholder="Write exact instructions, not a summary you may misremember"></textarea></div></div>
+  <div class="notes-grid"><div class="note-block"><h4>What was done</h4><textarea data-key="event_action" placeholder="Care, isolation, monitoring, treatment, or transport"></textarea></div><div class="note-block"><h4>What happened next</h4><textarea data-key="event_outcome" placeholder="Improved, unchanged, worsened, referred, resolved"></textarea></div></div>
+</div>
+
+<div class="page">
+  <div class="section-header"><h2>Treatment log</h2><span class="page-num">08</span></div>
+  <p class="tip">Record the exact product name and follow the label or veterinarian's instructions. Include withdrawal information when it applies.</p>
+  <table class="record-table"><thead><tr><th>Date</th><th>Animal</th><th>Product / treatment</th><th>Reason</th><th>Dose / route</th><th>Next dose / end</th><th>Withdrawal ends</th></tr></thead><tbody>
+    <tr><td><input data-key="treatment_1_date"></td><td><input data-key="treatment_1_animal"></td><td><input data-key="treatment_1_product"></td><td><input data-key="treatment_1_reason"></td><td><input data-key="treatment_1_dose"></td><td><input data-key="treatment_1_end"></td><td><input data-key="treatment_1_withdrawal"></td></tr>
+    <tr><td><input data-key="treatment_2_date"></td><td><input data-key="treatment_2_animal"></td><td><input data-key="treatment_2_product"></td><td><input data-key="treatment_2_reason"></td><td><input data-key="treatment_2_dose"></td><td><input data-key="treatment_2_end"></td><td><input data-key="treatment_2_withdrawal"></td></tr>
+    <tr><td><input data-key="treatment_3_date"></td><td><input data-key="treatment_3_animal"></td><td><input data-key="treatment_3_product"></td><td><input data-key="treatment_3_reason"></td><td><input data-key="treatment_3_dose"></td><td><input data-key="treatment_3_end"></td><td><input data-key="treatment_3_withdrawal"></td></tr>
+    <tr><td><input data-key="treatment_4_date"></td><td><input data-key="treatment_4_animal"></td><td><input data-key="treatment_4_product"></td><td><input data-key="treatment_4_reason"></td><td><input data-key="treatment_4_dose"></td><td><input data-key="treatment_4_end"></td><td><input data-key="treatment_4_withdrawal"></td></tr>
+    <tr><td><input data-key="treatment_5_date"></td><td><input data-key="treatment_5_animal"></td><td><input data-key="treatment_5_product"></td><td><input data-key="treatment_5_reason"></td><td><input data-key="treatment_5_dose"></td><td><input data-key="treatment_5_end"></td><td><input data-key="treatment_5_withdrawal"></td></tr>
+    <tr><td><input data-key="treatment_6_date"></td><td><input data-key="treatment_6_animal"></td><td><input data-key="treatment_6_product"></td><td><input data-key="treatment_6_reason"></td><td><input data-key="treatment_6_dose"></td><td><input data-key="treatment_6_end"></td><td><input data-key="treatment_6_withdrawal"></td></tr>
+    <tr><td><input data-key="treatment_7_date"></td><td><input data-key="treatment_7_animal"></td><td><input data-key="treatment_7_product"></td><td><input data-key="treatment_7_reason"></td><td><input data-key="treatment_7_dose"></td><td><input data-key="treatment_7_end"></td><td><input data-key="treatment_7_withdrawal"></td></tr>
+  </tbody></table>
+  <div class="field" style="margin-top:.7rem"><label>Product storage or reorder notes</label><textarea data-key="treatment_storage_notes" placeholder="Where products are stored, what needs replacing, or what to ask the vet"></textarea></div>
+</div>
+
+<div class="page">
+  <div class="section-header"><h2>Preventative care</h2><span class="page-num">09</span></div>
+  <p class="tip">Use this for vaccinations, routine checks, hoof or nail care, dental care, parasite management, and other recurring care recommended for your animals.</p>
+  <table class="record-table"><thead><tr><th>Date</th><th>Animal / group</th><th>Care or product</th><th>Product / lot number</th><th>Next due</th><th>Given by / notes</th></tr></thead><tbody>
+    <tr><td><input data-key="preventive_1_date"></td><td><input data-key="preventive_1_animal"></td><td><input data-key="preventive_1_care"></td><td><input data-key="preventive_1_product"></td><td><input data-key="preventive_1_due"></td><td><input data-key="preventive_1_notes"></td></tr>
+    <tr><td><input data-key="preventive_2_date"></td><td><input data-key="preventive_2_animal"></td><td><input data-key="preventive_2_care"></td><td><input data-key="preventive_2_product"></td><td><input data-key="preventive_2_due"></td><td><input data-key="preventive_2_notes"></td></tr>
+    <tr><td><input data-key="preventive_3_date"></td><td><input data-key="preventive_3_animal"></td><td><input data-key="preventive_3_care"></td><td><input data-key="preventive_3_product"></td><td><input data-key="preventive_3_due"></td><td><input data-key="preventive_3_notes"></td></tr>
+    <tr><td><input data-key="preventive_4_date"></td><td><input data-key="preventive_4_animal"></td><td><input data-key="preventive_4_care"></td><td><input data-key="preventive_4_product"></td><td><input data-key="preventive_4_due"></td><td><input data-key="preventive_4_notes"></td></tr>
+    <tr><td><input data-key="preventive_5_date"></td><td><input data-key="preventive_5_animal"></td><td><input data-key="preventive_5_care"></td><td><input data-key="preventive_5_product"></td><td><input data-key="preventive_5_due"></td><td><input data-key="preventive_5_notes"></td></tr>
+    <tr><td><input data-key="preventive_6_date"></td><td><input data-key="preventive_6_animal"></td><td><input data-key="preventive_6_care"></td><td><input data-key="preventive_6_product"></td><td><input data-key="preventive_6_due"></td><td><input data-key="preventive_6_notes"></td></tr>
+    <tr><td><input data-key="preventive_7_date"></td><td><input data-key="preventive_7_animal"></td><td><input data-key="preventive_7_care"></td><td><input data-key="preventive_7_product"></td><td><input data-key="preventive_7_due"></td><td><input data-key="preventive_7_notes"></td></tr>
+  </tbody></table>
+  <h3 style="margin-top:1rem">Questions for the next vet visit</h3><textarea data-key="preventive_questions" placeholder="Things to ask while you have the veterinarian's attention"></textarea>
+</div>
+
+<div class="page">
+  <div class="section-header"><h2>Weight and condition</h2><span class="page-num">10</span></div>
+  <p class="tip">Trends are often more useful than one number. Write down why you checked, especially if the measurement changed.</p>
+  <table class="record-table"><thead><tr><th>Date</th><th>Animal</th><th>Weight</th><th>Body condition / appearance</th><th>Reason for check</th><th>Notes</th></tr></thead><tbody>
+    <tr><td><input data-key="weight_1_date"></td><td><input data-key="weight_1_animal"></td><td><input data-key="weight_1_weight"></td><td><input data-key="weight_1_condition"></td><td><input data-key="weight_1_reason"></td><td><input data-key="weight_1_notes"></td></tr>
+    <tr><td><input data-key="weight_2_date"></td><td><input data-key="weight_2_animal"></td><td><input data-key="weight_2_weight"></td><td><input data-key="weight_2_condition"></td><td><input data-key="weight_2_reason"></td><td><input data-key="weight_2_notes"></td></tr>
+    <tr><td><input data-key="weight_3_date"></td><td><input data-key="weight_3_animal"></td><td><input data-key="weight_3_weight"></td><td><input data-key="weight_3_condition"></td><td><input data-key="weight_3_reason"></td><td><input data-key="weight_3_notes"></td></tr>
+    <tr><td><input data-key="weight_4_date"></td><td><input data-key="weight_4_animal"></td><td><input data-key="weight_4_weight"></td><td><input data-key="weight_4_condition"></td><td><input data-key="weight_4_reason"></td><td><input data-key="weight_4_notes"></td></tr>
+    <tr><td><input data-key="weight_5_date"></td><td><input data-key="weight_5_animal"></td><td><input data-key="weight_5_weight"></td><td><input data-key="weight_5_condition"></td><td><input data-key="weight_5_reason"></td><td><input data-key="weight_5_notes"></td></tr>
+    <tr><td><input data-key="weight_6_date"></td><td><input data-key="weight_6_animal"></td><td><input data-key="weight_6_weight"></td><td><input data-key="weight_6_condition"></td><td><input data-key="weight_6_reason"></td><td><input data-key="weight_6_notes"></td></tr>
+    <tr><td><input data-key="weight_7_date"></td><td><input data-key="weight_7_animal"></td><td><input data-key="weight_7_weight"></td><td><input data-key="weight_7_condition"></td><td><input data-key="weight_7_reason"></td><td><input data-key="weight_7_notes"></td></tr>
+  </tbody></table>
+  <div class="notes-grid"><div class="note-block"><h4>What I am watching</h4><textarea data-key="weight_watch_notes" placeholder="A trend, animal, or question to follow"></textarea></div><div class="note-block"><h4>Questions for the vet</h4><textarea data-key="weight_vet_questions" placeholder="Ask about a change before it becomes urgent"></textarea></div></div>
+</div>
+
+<div class="page">
+  <div class="section-header"><h2>Vet visit record</h2><span class="page-num">11</span></div>
+  <p class="tip">Use one page per visit. Keep invoices, lab results, and medication instructions with this page.</p>
+  <div class="field-grid three"><div class="field"><label>Date</label><input data-key="vet_date" placeholder="Date"></div><div class="field"><label>Animal / group</label><input data-key="vet_animal" placeholder="Name or group"></div><div class="field"><label>Clinic / veterinarian</label><input data-key="vet_clinic" placeholder="Name"></div></div>
+  <div class="field-grid"><div class="field"><label>Reason for visit</label><textarea data-key="vet_reason" placeholder="What brought you in"></textarea></div><div class="field"><label>Findings</label><textarea data-key="vet_findings" placeholder="What the veterinarian observed"></textarea></div><div class="field"><label>Instructions and prescriptions</label><textarea data-key="vet_instructions" placeholder="Exact instructions, product names, doses, and timing"></textarea></div><div class="field"><label>Follow-up</label><textarea data-key="vet_followup" placeholder="Next appointment, monitoring, tests, or questions"></textarea></div></div>
+  <div class="field"><label>Documents stored with this record</label><textarea data-key="vet_documents" placeholder="Invoice, lab results, imaging, prescription, tag, or other paper"></textarea></div>
+</div>
+
+<div class="page">
+  <div class="section-header"><h2>Emergency notes</h2><span class="page-num">12</span></div>
+  <p class="lede">Write down the information a helper would need if you were unavailable. Keep this page easy to find.</p>
+  <div class="honest-box"><h4>Keep this page current</h4><p>Phone numbers change. So do gate codes, animal locations, and feeding instructions. Review this page at the beginning of each season.</p></div>
+  <div class="field-grid"><div class="field"><label>Who has permission to make decisions?</label><textarea data-key="emergency_decision_maker" placeholder="Names and phone numbers"></textarea></div><div class="field"><label>Where are the animals kept?</label><textarea data-key="emergency_animal_locations" placeholder="Pasture, barn, coop, paddock, pen"></textarea></div><div class="field"><label>Immediate feeding or medication instructions</label><textarea data-key="emergency_feeding" placeholder="Only current, specific instructions"></textarea></div><div class="field"><label>Other emergency notes</label><textarea data-key="emergency_other" placeholder="Weather plan, power outage plan, transport, or access notes"></textarea></div></div>
+  <h3>Questions to carry forward</h3><div class="notes-grid"><div class="note-block"><h4>Things to ask</h4><textarea data-key="closing_questions" placeholder="Questions for the veterinarian or experienced helper"></textarea></div><div class="note-block"><h4>Things to update</h4><textarea data-key="closing_updates" placeholder="Records, products, contacts, or routines to update"></textarea></div></div>
+</div>
+
+<div class="page closing">
+  <h2>Keep the record close.</h2>
+  <p class="signoff">You do not need to know everything at once. You need a place to write down what you saw, what you did, and what happened next.</p>
+  <p class="signoff"><em>Works because it works.</em></p>
+  <p class="brandline">Kitchen &amp; Kettle</p><p class="brandline">A quieter way to run a kitchen.</p>
+</div>
+
+<script>
+const STORAGE_KEY='keeping-kitchen-livestock-health-record';
+function flash(message){const s=document.getElementById('saveStatus');s.textContent=message;s.classList.add('visible');clearTimeout(s._t);s._t=setTimeout(()=>{s.textContent='Saved';s.classList.remove('visible')},1800)}
+function save(){const data={};document.querySelectorAll('[data-key]').forEach(el=>{data[el.dataset.key]=el.type==='checkbox'?el.checked:el.value});localStorage.setItem(STORAGE_KEY,JSON.stringify(data));flash('Saved')}
+function load(){const raw=localStorage.getItem(STORAGE_KEY);if(!raw)return;try{const data=JSON.parse(raw);document.querySelectorAll('[data-key]').forEach(el=>{if(!(el.dataset.key in data))return;if(el.type==='checkbox')el.checked=Boolean(data[el.dataset.key]);else el.value=data[el.dataset.key]})}catch(e){console.warn('Could not load saved record',e)}}
+function clearAll(){if(!confirm('Clear all record data? This cannot be undone unless you saved a copy.'))return;localStorage.removeItem(STORAGE_KEY);document.querySelectorAll('[data-key]').forEach(el=>{if(el.type==='checkbox')el.checked=false;else el.value='' });flash('Cleared')}
+function exportData(){const data=localStorage.getItem(STORAGE_KEY);if(!data){alert('No data to save yet. Fill in some fields first.');return}const blob=new Blob([data],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='livestock-health-record-backup.json';a.click();URL.revokeObjectURL(url);flash('Copy saved')}
+function importData(){const input=document.createElement('input');input.type='file';input.accept='.json';input.onchange=function(){const file=input.files[0];if(!file)return;const reader=new FileReader();reader.onload=function(e){try{JSON.parse(e.target.result);localStorage.setItem(STORAGE_KEY,e.target.result);load();flash('Copy loaded')}catch(err){alert("Couldn't read that file. Make sure it's a Livestock Health Record backup.")}};reader.readAsText(file)};input.click()}
+document.addEventListener('input',save);document.addEventListener('change',save);load();
+</script>
+</body>
+</html>
