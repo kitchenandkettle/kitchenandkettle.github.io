@@ -8,9 +8,9 @@ Every lore page's last para is its Where-this-comes-from line.
 
 CH1 = [
 ("lore", "The Old Norse", "Who Were the Old Norse",
- ["The Old Norse were the people of Scandinavia and the North Atlantic, mostly from about 750 to 1050 CE, a time called the Viking Age. They were not one kingdom. They lived on farms, islands, and fjords in what is now Norway, Denmark, Sweden, and Iceland, and the sea was their main road. They spoke Old Norse, a North Germanic language, and cut it in runes, letters carved into stone and wood.",
-  "We know them through two kinds of record. Stones and graves show what people left behind: names, burials, tools, and ships. Books tell the stories, and they were written down later, mostly in Iceland. The Poetic Edda is a collection of old poems about gods and heroes. Snorri Sturluson’s Prose Edda retells the myths in plain prose. Icelandic sagas are prose stories about families and kings.",
-  "Stones keep what people finished, and stories keep what people cared about. You need both. On each page I will tell you which kind of record I am using.",
+ ["The Old Norse were the people of Scandinavia and the North Atlantic, mostly from about 750 to 1050 CE, a time called the Viking Age. They were not one kingdom. They lived on farms, islands, and fjords in what is now Norway, Denmark, Sweden, and Iceland, and the sea was their main road. They spoke a language we call Old Norse. They wrote it with runes, their own alphabet, which they carved into stone and wood. It is called “Old” because it is the ancestor of Icelandic, Norwegian, Swedish, and Danish. It is now a dead language, meaning no one grows up speaking it, though specialists still study it and some can speak it. Icelandic has changed the least.",
+  "We learn about them from two kinds of evidence. The first is what they left behind: runestones, graves, tools, and ships. The second is books. Their stories were not written down until long after the Viking Age, mostly in Iceland. The earlier pages on The Poems introduce the main ones.",
+  "What they left behind shows how people actually lived. The stories show what they believed and cared about. Combining the two gives the most well-rounded view of the past.",
   "<b>Where this comes from:</b> Runestones and the Viking Age dates come from archaeology. The Poetic Edda and Snorri’s Prose Edda were copied down centuries later."],
  "Spend half an hour with one short passage from this book. Is it a stone record or a story record?"),
 ("lore", "The Old Norse", "The limits of the record",
