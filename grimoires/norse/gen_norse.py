@@ -252,7 +252,7 @@ def build():
     i_trees = next(i for i, e in enumerate(ch6) if e[2].startswith("Ash")) 
     ch6[i_trees:i_trees] = TREES_RUNE
     sections = [
-        ("Threshold", "Threshold", "Who were the Old Norse", CH1, "Who Were the Old Norse"),
+        ("The Old Norse", "The Old Norse", "who they were and how we know", CH1, "who they were and how we know"),
         ("Nine Realms", "Nine Realms", "The Gods and Their Kingdoms", ch2, "The Gods and Their Kingdoms"),
         ("Gods & Ruling Powers", "Rǫgn: Gods & Ruling Powers", "The gods and the powers", ch3, "Gods & Ruling Powers"),
         ("Tales", "Tales", "Stories from the old books", TALES, "stories from the old books"),

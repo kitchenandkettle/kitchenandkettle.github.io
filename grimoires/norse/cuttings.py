@@ -27,12 +27,12 @@ HELD_JOURNALS = [
  ["Days 1-5: breath checked? turning kept? plant seen? charm held?", "Days 6-10: breath checked? turning kept? plant seen? charm held?", "Days 11-15: breath checked? turning kept? plant seen? charm held?", "Days 16-20: breath checked? turning kept? plant seen? charm held?", "Days 21-25: breath checked? turning kept? plant seen? charm held?", "Days 26-30: breath checked? turning kept? plant seen? charm held?", "What held all month?", "What lapsed, and what repairs it?"]),
 
 # Threshold trims, Oct 2026
-("journal", "Threshold", "Which part is quiet — the one you may be neglecting? What does it need?", 13),
-("journal", "Threshold", "Noticing log, day two. Same spot, same three-and-three. What changed since yesterday?", 14),
+("journal", "The Old Norse", "Which part is quiet — the one you may be neglecting? What does it need?", 13),
+("journal", "The Old Norse", "Noticing log, day two. Same spot, same three-and-three. What changed since yesterday?", 14),
 
 # Journal pages cut from the ship edition (were skipped by name in gen_norse.py).
 CUT_JOURNALS = [
-  ("journal", "Threshold", "Entry vow, day three. What will you keep in this book for one full turning of the year?", 14),
+  ("journal", "The Old Norse", "Entry vow, day three. What will you keep in this book for one full turning of the year?", 14),
   ("journal", "Winter Nights", "Reflection: what will you repeat every Winter Nights, even in a tired year?", 13),
   ("journal", "Sigrblot", "Reflection: write the crew blessing you spoke, naming its names.", 13),
   ("journal", "Sigrblot", "Reflection: what will you repeat every spring, even in a tired year?", 13),

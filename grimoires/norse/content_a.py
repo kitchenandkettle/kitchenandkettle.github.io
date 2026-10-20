@@ -1,4 +1,4 @@
-"""Content A: Threshold and Worlds.
+"""Content A: The Old Norse and Worlds.
 Tuple formats:
   ("lore", kicker, title, [paras], prompt)
   ("journal", kicker, prompt, lines)
@@ -7,25 +7,25 @@ Every lore page's last para is its Where-this-comes-from line.
 """
 
 CH1 = [
-("lore", "Threshold", "Who Were the Old Norse",
+("lore", "The Old Norse", "Who Were the Old Norse",
  ["The Old Norse were the people of Scandinavia and the North Atlantic, mostly from about 750 to 1050 CE, a time called the Viking Age. They were not one kingdom. They lived on farms, islands, and fjords in what is now Norway, Denmark, Sweden, and Iceland, and the sea was their main road. They spoke Old Norse, a North Germanic language, and cut it in runes, letters carved into stone and wood.",
   "We know them through two kinds of record. Stones and graves show what people left behind: names, burials, tools, and ships. Books tell the stories, and they were written down later, mostly in Iceland. The Poetic Edda is a collection of old poems about gods and heroes. Snorri Sturluson’s Prose Edda retells the myths in plain prose. Icelandic sagas are prose stories about families and kings.",
   "Stones keep what people finished, and stories keep what people cared about. You need both. On each page I will tell you which kind of record I am using.",
   "<b>Where this comes from:</b> Runestones and the Viking Age dates come from archaeology. The Poetic Edda and Snorri’s Prose Edda were copied down centuries later."],
  "Spend half an hour with one short passage from this book. Is it a stone record or a story record?"),
-("lore", "Threshold", "The limits of the record",
+("lore", "The Old Norse", "The limits of the record",
  ["No Viking wrote a handbook of belief for us to find. Most of what we know comes from people who were not Vikings, or who lived long after. The Roman writer Tacitus described Germanic peoples around 98 CE, from outside, for a Roman audience. The Arab traveler Ibn Fadlan watched a chieftain’s funeral on the Volga River in 922 and wrote it down as a stranger. Icelandic Christians copied the old poems and sagas onto vellum, a prepared animal skin, in the 1200s. They saved the voices, but they changed the frame.",
   "That means the record has gaps, and this book says so. It is about the Old Norse only. It is not Celtic lore with Norse names, and it is not a modern mix pretending to be old. When modern people have filled a gap, I say so plainly, and I name the source of everything else. Every lore page ends with a note called “Where this comes from.”",
   "Ask who wrote each source and why, and you will know how far to trust it.",
   "<b>Where this comes from:</b> How this book works. Its method is modern, but it is built on old sources."],
  "Write one sentence on what you hope this book gives you, and one on what you hope it leaves out."),
-("lore", "Threshold", "The wary guest",
+("lore", "The Old Norse", "The wary guest",
  ["The Hávamál (Havamal), the “Sayings of the High One,” is a poem in the Poetic Edda full of advice from Óðinn. It values a clear head over a high mood. Stanza 7 describes the wise guest: “A wary guest, who to refection comes, keeps a cautious silence, with his ears listens, and with his eyes observes: so explores every prudent man.” (Translated by Benjamin Thorpe, 1866.)",
   "The practice is the wary guest’s. Before you enter a room, a meeting, or a hard conversation this week, stop at the door. Stay quiet at first, listen with your ears, and watch with your eyes. Notice what is happening before you decide what to say.",
   "Do this once a day for a week, and write one line each time on what you noticed. A clear head matters too: the Hávamál warns that too much drink steals the mind. Test the old advice for yourself.",
   "<b>Where this comes from:</b> The counsel and the quotation are from the Hávamál in the Poetic Edda, in Benjamin Thorpe’s 1866 translation, now public domain. The practice builds on stanza 7."],
  "Tonight, stop at one doorway before you enter. Listen, then write what you heard and saw."),
-("journal", "Threshold", "What did you notice at the door? Name what you heard, what you saw, and what you chose not to say.", 13),
+("journal", "The Old Norse", "What did you notice at the door? Name what you heard, what you saw, and what you chose not to say.", 13),
 ]
 
 CH2 = [
