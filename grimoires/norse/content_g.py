@@ -81,6 +81,18 @@ RUNE_PAGES = [
   "Use the same pattern on something you have made. Write ek, then your name, then tawido, which means “made.” Spell by sound, and carve it as you learned on the last pages.",
   "<b>Where this comes from:</b> The Gallehus inscription is known from early drawings. The formula ek … tawido recurs on other early inscriptions."],
  "Carve ek, your name, and tawido on something you have made."),
+("lore", "Runes", "A rune a day",
+ ["The oldest complete rune row we have is on the Kylver stone from Gotland, carved about the year 400. It lists the whole Elder Futhark in order, and it is the earliest full row we have. You can use that order as a month-long practice, one rune a day for twenty-four days.",
+  "Each day, take the next rune from the three groups of eight on the earlier pages. Say its name aloud. Read its line in the rune poems. Draw it three times in your notebook, then carve it once if you have wood and a knife. Spend one more minute looking for the thing it names: cattle, water, ice, a gift, a day. Five minutes is enough.",
+  "At the end of the twenty-four days, write your name in the runes you have learned, and say which three felt most like yours. Egill’s rule still holds. Do not use a rune you cannot name.",
+  "<b>Where this comes from:</b> The order of the Elder Futhark comes from the Kylver stone, about 400 CE. The daily practice was built for this book."],
+ "Pick the day you will start. Write the first rune, its name, and one thing you noticed about it."),
+("lore", "Runes", "Casting lots",
+ ["The Roman writer Tacitus, writing about 98 CE, describes how Germanic peoples took omens. They cut a branch from a fruit tree into small slips and cut a mark on each one. The slips were scattered on a white cloth. A priest, or in a private matter the father of the household, prayed to the gods, looked up at the sky, and lifted three slips one at a time. He read them by the marks. If the lots forbade a plan, it was dropped for that day.",
+  "Tacitus says marks, not runes, so we cannot say these were runes. What this shows is that drawing marked slips for a yes-or-no answer was an old habit. Rune casting as it is practiced now, with named meanings and layouts, is modern.",
+  "To try the old shape, gather ten or more small pieces of wood from fallen twigs, and cut a rune you know on each. Lay out a light cloth. Ask a question about something you can actually do. Pull three slips, one at a time, without looking. Read each by its name and its poem line. Then decide what you will do. The runes give you something to think with, not an order.",
+  "<b>Where this comes from:</b> Tacitus, Germania, chapter 10. The runes, the question, and the reading method are modern."],
+ "Draw three slips for a choice you face this week. Write each rune, its name, and what you decided."),
 ]
 
 STAVE_PAGES = [

@@ -15,17 +15,13 @@ CH1 = [
  "Spend half an hour with one short passage from this book. Is it a stone record or a story record?"),
 ("lore", "The Old Norse", "Limitations",
  ["No Viking wrote a handbook of belief for us to find. Most of what we know comes from people who were not Vikings, or who lived long after. The Roman writer Tacitus described Germanic peoples around 98 CE, from outside, for a Roman audience. The Arab traveler Ibn Fadlan watched a chieftain’s funeral on the Volga River in 922 and wrote it down as a stranger. Icelandic Christians later wrote down the old poems and sagas. They preserved the old stories, though their own beliefs may have shaped how they told them.",
-  "That means the record has gaps, and this book says so. It is about the Old Norse only. It is not Celtic lore with Norse names, and it is not a modern mix pretending to be old. When modern people have filled a gap, I say so plainly, and I name the source of everything else. Every lore page ends with a note called “Where this comes from.”",
-  "Ask who wrote each source and why, and you will know how far to trust it.",
-  "<b>Where this comes from:</b> How this book works. Its method is modern, but it is built on old sources."],
+  "Even so, these sources are valuable. Scholars have studied them closely for generations, and together they give a rich picture of Norse myth, belief, and daily life. This book is built on the Old Norse sources themselves."],
  "Write one sentence on what you hope this book gives you, and one on what you hope it leaves out."),
-("lore", "The Old Norse", "The wary guest",
- ["The Hávamál (Havamal), the “Sayings of the High One,” is a poem in the Poetic Edda full of advice from Óðinn. It values a clear head over a high mood. Stanza 7 describes the wise guest: “A wary guest, who to refection comes, keeps a cautious silence, with his ears listens, and with his eyes observes: so explores every prudent man.” (Translated by Benjamin Thorpe, 1866.)",
-  "The practice is the wary guest’s. Before you enter a room, a meeting, or a hard conversation this week, stop at the door. Stay quiet at first, listen with your ears, and watch with your eyes. Notice what is happening before you decide what to say.",
-  "Do this once a day for a week, and write one line each time on what you noticed. A clear head matters too: the Hávamál warns that too much drink steals the mind. Test the old advice for yourself.",
-  "<b>Where this comes from:</b> The counsel and the quotation are from the Hávamál in the Poetic Edda, in Benjamin Thorpe’s 1866 translation, now public domain. The practice builds on stanza 7."],
- "Tonight, stop at one doorway before you enter. Listen, then write what you heard and saw."),
-("journal", "The Old Norse", "What did you notice at the door? Name what you heard, what you saw, and what you chose not to say.", 13),
+("lore", "The Old Norse", "Who kept the knowledge",
+ ["The old knowledge was not held evenly. Different people kept different parts. The völva (seeress) traveled between farms, was fed and honored, and was asked about the coming season, as Eiríks saga rauða shows. The vitki (rune-master) carved and read runes, as Egill does in Egils saga. The skald (poet) kept memory in verse, and Óðinn’s mead of poetry was said to be the source of that gift. The goði (a local leader, in Iceland) kept the gatherings and the law. Households kept the daily customs, who was fed, who was named, and who was remembered.",
+  "Each of these has pages in this book. Notice that most of them were learned from someone, by being near them and watching. That is true of most family knowledge too: recipes, songs, names, repairs, and stories.",
+  "<b>Where this comes from:</b> Eiríks saga rauða for the völva, Egils saga and the Sigrdrífumál for runes, and the Prose Edda for the skald and the mead. The goði appears in the Icelandic sagas."],
+ "Who in your own family keeps what: a recipe, a song, a name, a skill? Write one person and what they keep."),
 ]
 
 CH2 = [

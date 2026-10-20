@@ -13,6 +13,12 @@ CH5 = [
   "Your household already knows how to feast. Birthday bread comes to the table on its own plate. One soup fixes everything. One pudding is always asked for. This chapter adds five old names to the dishes you already love. Say an old name over a dish you already cook, and the meal becomes a marker of the season.",
   "<b>Where this comes from:</b> How this chapter works. Its method is modern, built on old sources."],
   "List the dishes that already mean joy at your table. You will use them when you reach the table pages."),
+("lore", "Norse Wheel of the Year", "A small seasonal altar",
+ ["The old texts mention altars and shrines, but they say little about what stood in a home. In the Hyndluljóð (Hyndluljod), Óttarr builds a hörgr (horg), a heap of stones, for Freyja. The sources do not describe a household altar, so what follows is a modern habit built on the old idea of a set-aside place for gifts.",
+  "Choose a shelf, windowsill, or the end of a table. Set a small bowl or cup for the gift, a light, something from the season, and a note with the names you will say at the turning. Winter Nights could carry bread and a family name. Yule could carry greens and a written vow. Midsummer could carry flowers and a bit of fruit.",
+  "Change the season piece at each turning. After a blót, clear the gift away the same day, as the blót page says. Keep the place clean and plain. It is a table you pay attention at, nothing more.",
+  "<b>Where this comes from:</b> The hörgr is in the Hyndluljóð in the Poetic Edda. The household altar is a modern practice."],
+ "Where will your altar sit? Name the spot and the first item you will place there."),
 ("lore", "Norse Wheel of the Year", "The Rök stone and the calendar sticks",
   ["A tall grey stone stands in Östergötland, in Sweden. It is covered edge to edge with runes. It is the Rök stone, raised in the 800s. It holds the longest runic text from the Viking Age known to us. Its lines use alliteration, the repeated starting sounds of poetry, and tell of heroes, battles, a wolf, and robbery. The stone was carved with great care. Weather has worn it, but its writing can still be read.",
    "The stone is a memorial and nothing more. Scholars still disagree about many of its lines. Nothing on it lists a festival or a calendar date, so it cannot prove any of the turnings here. Later calendar sticks, carved wooden sticks that counted feasts and moons, are a separate source. Their marks differ from valley to valley. The turnings do not depend on the stone.",
@@ -82,6 +88,15 @@ CH5 = [
    "In the old custom, greens and thanks belonged together. Climb a hill, speak a promise, and keep both in mind. Pick one clear step to take after the walk, and write it down.",
    "<b>Where this comes from:</b> Hill fires and crowns come from later folk custom. The home version was written for this book."],
   "Plan a walk that fits inside an hour: the hill or stairs, how you mark the climb, and when it ends."),
+("tracker", "Norse Wheel of the Year", "Your own wheel: plan the five turnings, and note what you will keep.",
+ ["Winter Nights (mid-October): whose names will I say? What will I cook?",
+  "Yule (midwinter): what vow will I make, and who will witness it?",
+  "Dísablót (late winter): who will I thank, and how?",
+  "Sigrblót (start of summer): what pledge will I make for the warm half of the year?",
+  "Midsummer: where will I light a fire or gather greens?",
+  "Which turning feels most like yours?",
+  "What will you repeat every year?",
+  "One line: what did the wheel teach you?"]),
 ]
 
 CH6 = [

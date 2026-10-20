@@ -107,6 +107,19 @@ CH4C = [
   "<b>Where this comes from:</b> The idea of luck is in the sagas. The oath warning is in the Sigrdrífumál, and Yule vows are in the sagas. The span is yours to choose."], "Name one oath you can keep, your witness, and the span. Speak it aloud, then mark each day on the oath records that follow."),
 ("tracker", "Hamingja", "Oath record, days 1–15: did you keep your oath today?", ['Day 1 — kept?', 'Day 2 — kept?', 'Day 3 — kept?', 'Day 4 — kept?', 'Day 5 — kept?', 'Day 6 — kept?', 'Day 7 — kept?', 'Day 8 — kept?', 'Day 9 — kept?', 'Day 10 — kept?', 'Day 11 — kept?', 'Day 12 — kept?', 'Day 13 — kept?', 'Day 14 — kept?', 'Day 15 — kept?']),
 ("tracker", "Hamingja", "Oath record, days 16–30: did you keep your oath today?", ['Day 16 — kept?', 'Day 17 — kept?', 'Day 18 — kept?', 'Day 19 — kept?', 'Day 20 — kept?', 'Day 21 — kept?', 'Day 22 — kept?', 'Day 23 — kept?', 'Day 24 — kept?', 'Day 25 — kept?', 'Day 26 — kept?', 'Day 27 — kept?', 'Day 28 — kept?', 'Day 29 — kept?', 'Day 30 — kept?']),
+("lore", "Hamingja", "Fylgja and the parts of a person",
+ ["The old Norse did not think of a person as only a body. Several words name the parts. The hugr is the mind and will. The hamingja is luck, and it can pass to a relative after death. The fylgja (FIL-gya) is a following spirit tied to a person’s fate. It could appear in dreams as a woman or as an animal, and seeing someone’s fylgja was taken as a sign of what was coming.",
+  "In Víga-Glúms saga, Glúmr dreams of a giant woman striding toward his farm, and the saga reads her as a guardian spirit of his family. The sagas speak of these spirits often, but they never set the words out as one system. The tidy list above is a modern summary that scholars pieced together, so hold it loosely.",
+  "A simple practice follows from it. Notice what seems to follow you: an animal that keeps appearing, a figure in your dreams, a pattern in how things go. Write it down on the dream log pages without deciding what it means.",
+  "<b>Where this comes from:</b> Víga-Glúms saga and other Icelandic sagas. The grouping into parts of a person is a scholarly reconstruction, and the practice was built for this book."],
+ "What seems to follow you, an animal, a figure, or a pattern? Write it and when you noticed it."),
+("lore", "Hamingja", "Dreams",
+ ["In the sagas and the Eddas, dreams are real information. Baldr dreams of his own death in Snorri’s Prose Edda and the Baldrs draumar, and the gods take it seriously. In Gísla saga, the hero Gísli is visited by two dream-women, one kind and one threatening, who shape what he does. People who dreamed strongly went to a wise person to have the dream read.",
+  "The sources record the dreams and what followed, but they give no method for dream work. A modern, careful practice is to keep a log. Leave a page and a pen by your bed. On waking, before you speak or look at a screen, write the date, one image, and how it felt. Leave the meaning for later, and watch for figures or places that come back.",
+  "Read the log after a month. The old stories treat a dream as something to be understood in light of what happens next, so let the pattern teach you, not a book of dream meanings.",
+  "<b>Where this comes from:</b> Baldr’s dreams are in Snorri’s Prose Edda and the Baldrs draumar, and the dream-women are in Gísla saga. The dream log is a modern practice."],
+ "Tonight, leave a page by your bed. In the morning, write one image before you speak."),
+("journal", "Hamingja", "Dream log: date, one image, how it felt, and anything that has come back before.", 14),
 ]
 
 

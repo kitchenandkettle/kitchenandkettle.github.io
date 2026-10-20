@@ -123,6 +123,7 @@ def title_pages(toc_html):
 <h1 style="font-size:30pt">Welcome</h1>
 <div class="rule"></div>
 <p class="subtitle">Working with the Old Ways</p>
+""" + epigraph_html("Welcome") + """
 <div class="folio">4</div>
 </div></div>"""
     p5 = """<div class="page"><div class="inner">
@@ -196,11 +197,45 @@ def resources_page(num, kicker, title):
 </div>"""
 
 
+# Tales cut from the ship edition to keep the book at 150 pages (text stays in content_f.py).
+CUT_TALES = {"The wall and the horse", "Þórr’s stolen hammer", "Þórr in the giants’ hall", "Freyr and Gerðr"}
+
+# One-line epigraphs for section dividers: kicker -> (quote, source). All Thorpe, 1866.
+EPIGRAPHS = {
+    "Welcome": ("Givers, hail! A guest is come in: where shall he sit?", "Hávamál, stanza 2"),
+    "The Poems": ("…word by word I sought out words…", "Hávamál, stanza 143"),
+    "The Old Norse": ("Moderately wise should each one be, but never over-wise.", "Hávamál, stanza 54"),
+    "Nine Realms": ("There was in times of old, where Ymir dwelt, nor sand nor sea, nor gelid waves…", "Völuspá, stanza 3"),
+    "Gods & Ruling Powers": ("For silence I pray all sacred children, great and small, sons of Heimdall…", "Völuspá, stanza 1"),
+    "Tales": ("There shall again the wondrous golden tables in the grass be found.", "Völuspá, stanza 59"),
+    "Völva & Seiðr": ("Understand ye yet, or what?", "Völuspá, refrain"),
+    "Hamingja": ("…but the fair fame never dies of him who has earned it.", "Hávamál, stanza 76"),
+    "Elves & Dwarfs": ("One’s own house is best, small though it be; at home is every one his own master.", "Hávamál, stanza 36"),
+    "Norse Wheel of the Year": ("She sees arise, a second time, earth from ocean, beauteously green.", "Völuspá, stanza 57"),
+    "Plants & Trees": ("…earth is good against drink, fire for distempers, … a corn-ear for sorcery.", "Hávamál, stanza 139"),
+    "Liminal Places": ("All door-ways, before going forward, should be looked to; for difficult it is to know where foes may sit within a dwelling.", "Hávamál, stanza 1"),
+    "Runes": ("Knowest thou how to grave them? knowest thou how to expound them? … knowest thou how to prove them?", "Hávamál, stanza 146"),
+    "Staves": ("Brim- (sea-) runes thou must know, if thou wilt have secure afloat thy sailing steeds.", "Sigrdrífumál, stanzas 6 to 10"),
+    "Galdr: Charms": ("For the fourth I know, if men place bonds on my limbs, I so sing that I can walk; the fetter starts from my feet…", "Hávamál, stanzas 150 and 151"),
+    "Ancestors": ("…but I know one thing that never dies, judgement on each one dead.", "Hávamál, stanza 77"),
+    "Oath": ("That no oath thou swear, if it be not true. Cruel bonds follow broken faith…", "Sigrdrífumál, stanza 23"),
+}
+
+
+def epigraph_html(kicker):
+    if kicker not in EPIGRAPHS:
+        return ""
+    q, src = EPIGRAPHS[kicker]
+    return f'<p class="epigraph">“{H.escape(q)}”<br><span class="epigraph-src">{H.escape(src)}, translated by Benjamin Thorpe, 1866</span></p>'
+
+
 def divider_page(num, kicker, title, sub):
+    epi = epigraph_html(kicker)
     return f"""<div class="page"><div class="inner center">
 <h1 style="font-size:30pt">{H.escape(title)}</h1>
 <div class="rule"></div>
 <p class="subtitle">{H.escape(sub)}</p>
+{epi}
 <div class="folio">{num}</div>
 </div></div>"""
 
@@ -223,7 +258,7 @@ def build():
     start = n
     body.append(divider_page(n, "The Poems", "The Poems", "What the old sources are"))
     n += 1
-    for entry in CH_POEMS[:-1] + VOLUSPA_PAGE + CH_POEMS[-1:]:
+    for entry in CH_POEMS[:-1]:
         body.append(render(entry, n))
         n += 1
     toc.append(("The Poems", "what the sources are", start, n - 1))
@@ -255,9 +290,9 @@ def build():
         ("The Old Norse", "The Old Norse", "who they were and how we know", CH1, "who they were and how we know"),
         ("Nine Realms", "Nine Realms", "The Gods and Their Kingdoms", ch2, "The Gods and Their Kingdoms"),
         ("Gods & Ruling Powers", "Rǫgn: Gods & Ruling Powers", "The gods and the powers", ch3, "Gods & Ruling Powers"),
-        ("Tales", "Tales", "Stories from the old books", TALES, "stories from the old books"),
+        ("Tales", "Tales", "Stories from the old books", [e for e in TALES if e[2] not in CUT_TALES], "stories from the old books"),
         ("Völva & Seiðr", "Völva & Seiðr", "seeress and fate-work", ch3b, "seeress and fate-work"),
-        ("Hamingja", "Hamingja", "your luck", CH4C, "your luck"),
+        ("Hamingja", "Hamingja", "Luck, fylgja, and dreams", CH4C, "luck, fylgja, and dreams"),
         ("Elves & Dwarfs", "Elves & Dwarfs", "neighbors and smiths", CH_ED, "neighbors and smiths"),
         ("Norse Wheel of the Year", "Norse Wheel of the Year", "Winter Nights to Midsummer", ch5, "Winter Nights to Midsummer"),
         ("Plants & Trees", "Plants & Trees", "Healing plants, food, and trees", ch6, "healing plants, food, and trees"),
@@ -313,6 +348,8 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 .center { text-align: center; display: flex; flex-direction: column; justify-content: center; }
 .center p { text-align: center; }
 .toc p { font-size: 12pt; text-align: left; margin-bottom: 0.08in; }
+.epigraph { font-style: italic; font-size: 11pt; line-height: 1.45; margin: 0.35in 0.5in 0; text-align: center; }
+.epigraph-src { font-style: normal; font-size: 9pt; letter-spacing: 0.04em; color: #4a4036; }
 .prompt { background: #F4EFE6; border: 1px solid #8A7D6B; border-left: 4px solid #1A1512; padding: 0.07in 0.1in; margin: 0.1in 0; }
 .prompt-label { font-size: 12pt; letter-spacing: 0.14em; text-transform: uppercase; color: #5A4F43; margin-bottom: 0.06in; }
 .prompt-text { font-size: 12pt; font-style: italic; line-height: 1.35; }
