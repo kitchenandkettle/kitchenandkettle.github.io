@@ -11,6 +11,7 @@ from content_a import CH1, CH2
 from content_b import CH3, CH3B, CH4B, CH4C
 from content_c import CH5, CH6
 from content_d import CH7, CH8, CH9, CH10
+from content_h import HALLOW_PAGE, DEAD_PAGE, HAMR_PAGE, NAMING_PAGE, NID_PAGE
 from content_e import CH_ED
 from content_g import RUNE_PAGES, STAVE_PAGES, SEIDR_PAGES, RUNE_NOTEBOOK
 from content_f import CH_POEMS, CH_WELCOME, GODS_GLANCE, NEW_SONGS, NEW_VITKI, NEW_COUNSEL, VOLUSPA_PAGE, FRIENDS_PAGE, TALES, NEW_PLANTS, TREES_RUNE, GIANTS_PAGE, GLOSSARY_PAGE
@@ -198,7 +199,9 @@ def resources_page(num, kicker, title):
 
 
 # Tales cut from the ship edition to keep the book at 150 pages (text stays in content_f.py).
-CUT_TALES = {"The wall and the horse", "Þórr’s stolen hammer", "Þórr in the giants’ hall", "Freyr and Gerðr"}
+CUT_TALES = {"The wall and the horse", "Þórr’s stolen hammer", "Þórr in the giants’ hall", "Freyr and Gerðr", "Iðunn’s apples", "Rígsþula: the three households"}
+# God pages cut for the same reason (the Baldr tale, and the Loki and Óðinn pages, still cover them).
+CUT_GODS = {"Baldr: The Light", "Heimdallr: watchman", "Jörmungandr: the world serpent"}
 
 # One-line epigraphs for section dividers: kicker -> (quote, source). All Thorpe, 1866.
 EPIGRAPHS = {
@@ -262,13 +265,15 @@ def build():
         body.append(render(entry, n))
         n += 1
     toc.append(("The Poems", "what the sources are", start, n - 1))
-    ch3 = list(CH3)
+    ch3 = [e for e in CH3 if e[2] not in CUT_GODS]
     moved = [e for e in ch3 if e[2] == "Blot: simply" or (e[0] == "tracker" and e[2].startswith("Gift log"))]
     ch3 = [e for e in ch3 if e not in moved]
     moved = [(e[0], "Norse Wheel of the Year") + tuple(e[2:]) for e in moved]
     ch5 = list(CH5)
     i_blot = next(i for i, e in enumerate(ch5) if e[2] == "How each turning works here") + 1
     ch5[i_blot:i_blot] = moved
+    i_altar = next(i for i, e in enumerate(ch5) if e[2] == "A small seasonal altar") + 1
+    ch5[i_altar:i_altar] = HALLOW_PAGE
     idx = next(i for i, e in enumerate(ch3) if e[2] == "The Æsir–Vanir war") + 1
     ch3[idx:idx] = GODS_GLANCE
     oath = FRIENDS_PAGE + NEW_COUNSEL + list(CH10)
@@ -277,7 +282,7 @@ def build():
     rune_all = [RUNE_PAGES[0]] + vitki + list(RUNE_PAGES[1:]) + RUNE_NOTEBOOK
     ch3b = list(CH3B)
     i_seidr = next(i for i, e in enumerate(ch3b) if e[2].startswith("Seiðr")) + 1
-    ch3b[i_seidr:i_seidr] = SEIDR_PAGES
+    ch3b[i_seidr:i_seidr] = SEIDR_PAGES + HAMR_PAGE
     ch2 = list(CH2)
     i_realms = next(i for i, e in enumerate(ch2) if e[2] == "The nine realms at a glance") + 1
     ch2[i_realms:i_realms] = GIANTS_PAGE
@@ -292,15 +297,15 @@ def build():
         ("Gods & Ruling Powers", "Rǫgn: Gods & Ruling Powers", "The gods and the powers", ch3, "Gods & Ruling Powers"),
         ("Tales", "Tales", "Stories from the old books", [e for e in TALES if e[2] not in CUT_TALES], "stories from the old books"),
         ("Völva & Seiðr", "Völva & Seiðr", "seeress and fate-work", ch3b, "seeress and fate-work"),
-        ("Hamingja", "Hamingja", "Luck, fylgja, and dreams", CH4C, "luck, fylgja, and dreams"),
+        ("Hamingja", "Hamingja", "Luck, fylgja, and dreams", CH4C + NAMING_PAGE, "luck, fylgja, and dreams"),
         ("Elves & Dwarfs", "Elves & Dwarfs", "neighbors and smiths", CH_ED, "neighbors and smiths"),
         ("Norse Wheel of the Year", "Norse Wheel of the Year", "Winter Nights to Midsummer", ch5, "Winter Nights to Midsummer"),
         ("Plants & Trees", "Plants & Trees", "Healing plants, food, and trees", ch6, "healing plants, food, and trees"),
         ("Liminal Places", "Liminal Places", "Wells that remember", [e for e in CH7 if e[1] == "Liminal Places"], "wells that remember"),
         ("Runes", "Runes", "The letters of the old north", rune_all, "the letters of the old north"),
         ("Staves", "Staves", "use them honestly", STAVE_PAGES, "use them honestly"),
-        ("Galdr: Charms", "Galdr: Charms", "Words in old books", CH8[:1] + NEW_SONGS + CH8[1:], "words in old books"),
-        ("Ancestors", "Ancestors", "Mound-neighbors", CH9, "mound-neighbors"),
+        ("Galdr: Charms", "Galdr: Charms", "Words in old books", CH8[:1] + NEW_SONGS + NID_PAGE + CH8[1:], "words in old books"),
+        ("Ancestors", "Ancestors", "Mound-neighbors", CH9[:1] + DEAD_PAGE + CH9[1:], "mound-neighbors"),
         ("Oath", "Oath", "Go on reading", oath, "go on reading"),
     ]
     toc_names = {"Gods & Ruling Powers": "Rǫgn", "Elves & Dwarfs": "Elves &amp; Dwarfs"}
