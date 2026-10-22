@@ -1,6 +1,6 @@
 """Content H: magic and ritual pages added after the grimoire-direction pass.
 Tuple formats match content_a.py. One page each for: hallowing (Wheel of the Year),
-waking the dead (Ancestors), shape and spirit-journey (Völva & Seiðr),
+waking the dead (Ancestors), shape and spirit-journey (Vǫlva & Seiðr),
 naming with water (Hamingja), and níð (Charms).
 Modern practices are labeled as modern in each page's "Where this comes from" line.
 """
@@ -16,7 +16,7 @@ HALLOW_PAGE = [
 
 DEAD_PAGE = [
 ("lore", "Ancestors", "Waking the dead",
- ["The old poems know the dead can be woken. In the Hervararkviða, Hervör sails to an island of burial mounds. At night, with fire burning over the mounds, she stands before her father Angantýr’s mound and calls him up. She asks for the sword that lies buried with him. He warns her away, and she does not back down. At last he gives it to her.",
+ ["The old poems know the dead can be woken. In the Hervararkviða, Hervǫr sails to an island of burial mounds. At night, with fire burning over the mounds, she stands before her father Angantýr’s mound and calls him up. She asks for the sword that lies buried with him. He warns her away, and she does not back down. At last he gives it to her.",
   "In the Grógaldr, a young man named Svipdagr stands at his dead mother Gróa’s mound and asks her to wake and sing him charms for a hard road. She sings nine of them.",
   "Both scenes follow one pattern: go to the mound, call the dead by name, and ask for one clear thing. In both, the dead may warn you or refuse, and the living need nerve and a good reason.",
   "A modern way to follow the pattern does not need a graveyard or darkness. Sit with a grave, a photograph, or something that belonged to the person. Say their name aloud. Ask for one thing: advice, strength, or a story. Then be quiet and listen. Thank them, and leave something small. The dead may not answer in words.",

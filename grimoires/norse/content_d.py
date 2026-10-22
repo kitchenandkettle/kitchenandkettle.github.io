@@ -2,10 +2,10 @@
 
 CH7 = [
 ("lore", "Liminal Places", "Wells and the gifts left in them",
- ["Bog water and spring water have kept things for a very long time. Long ago, people laid swords, cauldrons, and brooches in lakes, bogs, and springs. Diggers still find them where rivers slow and springs rise. Scholars call these gifts votive deposits, objects given on purpose to a place. In the Völuspá, even Óðinn gives to water: he pledged an eye to the well of Mímir for a drink of wisdom. What mattered most was the giving itself.",
+ ["Bog water and spring water have kept things for a very long time. Long ago, people laid swords, cauldrons, and brooches in lakes, bogs, and springs. Diggers still find them where rivers slow and springs rise. Scholars call these gifts votive deposits, objects given on purpose to a place. In the Vǫluspá, even Óðinn gives to water: he pledged an eye to the well of Mímir for a drink of wisdom. What mattered most was the giving itself.",
   "A well is a place with its own history. It is not a machine that grants wishes. Old deposits are well documented: they were found, lifted from the ground, and recorded. Tossing coins into a living spring is a newer habit, and coins can pollute the water. Never drink wild water, because you cannot know what is in it.",
   "When you visit, go as a guest of the place. Ask leave before you lift any water, and sit a while to listen before you leave. Take nothing away from the site, and leave nothing behind that will not rot or wash clean. Keep any promise you made to the place. The visit takes under an hour.",
-  "<b>Where this comes from:</b> Old gifts in lakes and springs are found by archaeology. Óðinn’s pledge at the well of Mímir is in the Völuspá."],
+  "<b>Where this comes from:</b> Old gifts in lakes and springs are found by archaeology. Óðinn’s pledge at the well of Mímir is in the Vǫluspá."],
  "Name your nearest spring or well, the day you will go, and what you will listen for."),
 ("lore", "Liminal Places", "Sea roads",
  ["For the Old Norse, the sea was a road. In Icelandic sagas, it links farms that could never meet by land. Voyages often begin with vows and end with thanks, and some sagas mention gifts to the sea and wind. A shore belongs to neither farm, and open water is where hard bargains and farewells are made. Promises made on a crossing are held to account: people check whether they were kept.",
@@ -65,7 +65,7 @@ CH10 = [
 ("journal", "Oath", "Your vow page: fill it in. I will keep ___ for 30 days. I will not ___. Witnessed by ___.", 12),
 ("resources", "Resources", "Books behind this book"),
 ("lore", "Oath", "Go on reading",
- ["Four old texts go further into this subject. Read small parts in public translations before you buy anything. The Poetic Edda in Larrington’s translation opens with the seeress and the counsel of Hávamál. Snorri Sturluson’s Prose Edda in Faulkes’s version tells the stories plainly. The Völsunga Saga in Byock’s translation follows Sigurðr to the pyre. Egils saga tells of a poem that buys back Egill’s own head in York. Borrow them first, so you can judge them fairly.",
+ ["Four old texts go further into this subject. Read small parts in public translations before you buy anything. The Poetic Edda in Larrington’s translation opens with the seeress and the counsel of Hávamál. Snorri Sturluson’s Prose Edda in Faulkes’s version tells the stories plainly. The Vǫlsunga Saga in Byock’s translation follows Sigurðr to the pyre. Egils saga tells of a poem that buys back Egill’s own head in York. Borrow them first, so you can judge them fairly.",
   "Read these books first as stories, and second as lessons. They are original old texts, in translation, not summaries. They reward slow reading. For each part, ask what happened, what it means at home, and what small act answers it. Let the answer settle over a week. A chapter a week is a good pace. Keep a notebook beside you, and write your answers there.",
   "Start with one book and one starting day. The next morning, sit in the same spot and read the next section. An hour or less per sitting is plenty. Pick a time that suits you and keep it. When you finish, pass the book on, and mark the page that held you longest. Keeping to your reading plan is a small vow you can keep.",
   "<b>Where this comes from:</b> The primary texts to read next. Go meet them."],

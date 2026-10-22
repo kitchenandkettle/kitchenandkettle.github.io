@@ -14,7 +14,8 @@ from content_d import CH7, CH8, CH9, CH10
 from content_h import HALLOW_PAGE, DEAD_PAGE, HAMR_PAGE, NAMING_PAGE, NID_PAGE
 from content_e import CH_ED
 from content_g import RUNE_PAGES, STAVE_PAGES, SEIDR_PAGES, RUNE_NOTEBOOK
-from content_f import CH_POEMS, CH_WELCOME, GODS_GLANCE, NEW_SONGS, NEW_VITKI, NEW_COUNSEL, VOLUSPA_PAGE, FRIENDS_PAGE, TALES, NEW_PLANTS, TREES_RUNE, GIANTS_PAGE, GLOSSARY_PAGE
+from content_i import ANIMAL_PAGES
+from content_f import CH_POEMS, CH_WELCOME, GODS_GLANCE, NEW_SONGS, NEW_VITKI, NEW_COUNSEL, VOLUSPA_PAGE, FRIENDS_PAGE, TALES, NEW_PLANTS, TREES_RUNE, GLOSSARY_PAGE
 
 
 def aegis_svg():
@@ -162,7 +163,7 @@ RESOURCES = [
         "The Poetic Edda — trans. Carolyne Larrington, or trans. Jackson Crawford (Hackett, 2015).",
         "Snorri Sturluson, The Prose Edda — trans. Anthony Faulkes.",
         "Benjamin Thorpe, Edda of Sæmund the Learned (1866) — public domain, quoted on several pages.",
-        "Völsunga Saga (The Saga of the Völsungs) — trans. Jesse Byock; trans. Jackson Crawford.",
+        "Vǫlsunga Saga (The Saga of the Vǫlsungs) — trans. Jesse Byock; trans. Jackson Crawford.",
         "Egils saga — in translation.",
         "The rune poems: Norwegian, Icelandic, Anglo-Saxon — in translation.",
     ]),
@@ -201,20 +202,23 @@ def resources_page(num, kicker, title):
 # Tales cut from the ship edition to keep the book at 150 pages (text stays in content_f.py).
 CUT_TALES = {"The wall and the horse", "Þórr’s stolen hammer", "Þórr in the giants’ hall", "Freyr and Gerðr", "Iðunn’s apples", "Rígsþula: the three households"}
 # God pages cut for the same reason (the Baldr tale, and the Loki and Óðinn pages, still cover them).
-CUT_GODS = {"Baldr: The Light", "Heimdallr: watchman", "Jörmungandr: the world serpent"}
+CUT_REALMS = {"Doors: mounds and edges"}  # the giants page (GIANTS_PAGE in content_f.py) is also left out
+CUT_ANCESTOR_CARDS = ("Ancestor card, second",)
+CUT_GODS = {"Baldr: The Light", "Heimdallr: watchman", "Jǫrmungandr: the world serpent"}
 
 # One-line epigraphs for section dividers: kicker -> (quote, source). All Thorpe, 1866.
 EPIGRAPHS = {
     "Welcome": ("Givers, hail! A guest is come in: where shall he sit?", "Hávamál, stanza 2"),
     "The Poems": ("…word by word I sought out words…", "Hávamál, stanza 143"),
     "The Old Norse": ("Moderately wise should each one be, but never over-wise.", "Hávamál, stanza 54"),
-    "Nine Realms": ("There was in times of old, where Ymir dwelt, nor sand nor sea, nor gelid waves…", "Völuspá, stanza 3"),
-    "Gods & Ruling Powers": ("For silence I pray all sacred children, great and small, sons of Heimdall…", "Völuspá, stanza 1"),
-    "Tales": ("There shall again the wondrous golden tables in the grass be found.", "Völuspá, stanza 59"),
-    "Völva & Seiðr": ("Understand ye yet, or what?", "Völuspá, refrain"),
+    "Nine Realms": ("There was in times of old, where Ymir dwelt, nor sand nor sea, nor gelid waves…", "Vǫluspá, stanza 3"),
+    "Gods & Ruling Powers": ("For silence I pray all sacred children, great and small, sons of Heimdall…", "Vǫluspá, stanza 1"),
+    "Animals": ("Hugin and Munin fly each day over the spacious earth. I fear for Hugin, that he come not back, yet more anxious am I for Munin.", "Grímnismál, stanza 20"),
+    "Tales": ("There shall again the wondrous golden tables in the grass be found.", "Vǫluspá, stanza 59"),
+    "Vǫlva & Seiðr": ("Understand ye yet, or what?", "Vǫluspá, refrain"),
     "Hamingja": ("…but the fair fame never dies of him who has earned it.", "Hávamál, stanza 76"),
     "Elves & Dwarfs": ("One’s own house is best, small though it be; at home is every one his own master.", "Hávamál, stanza 36"),
-    "Norse Wheel of the Year": ("She sees arise, a second time, earth from ocean, beauteously green.", "Völuspá, stanza 57"),
+    "Norse Wheel of the Year": ("She sees arise, a second time, earth from ocean, beauteously green.", "Vǫluspá, stanza 57"),
     "Plants & Trees": ("…earth is good against drink, fire for distempers, … a corn-ear for sorcery.", "Hávamál, stanza 139"),
     "Liminal Places": ("All door-ways, before going forward, should be looked to; for difficult it is to know where foes may sit within a dwelling.", "Hávamál, stanza 1"),
     "Runes": ("Knowest thou how to grave them? knowest thou how to expound them? … knowest thou how to prove them?", "Hávamál, stanza 146"),
@@ -283,9 +287,7 @@ def build():
     ch3b = list(CH3B)
     i_seidr = next(i for i, e in enumerate(ch3b) if e[2].startswith("Seiðr")) + 1
     ch3b[i_seidr:i_seidr] = SEIDR_PAGES + HAMR_PAGE
-    ch2 = list(CH2)
-    i_realms = next(i for i, e in enumerate(ch2) if e[2] == "The nine realms at a glance") + 1
-    ch2[i_realms:i_realms] = GIANTS_PAGE
+    ch2 = [e for e in CH2 if e[2] not in CUT_REALMS]
     ch6 = list(CH6)
     i_herbs = next(i for i, e in enumerate(ch6) if e[2] == "More herbs in the leechbooks") + 1
     ch6[i_herbs:i_herbs] = NEW_PLANTS
@@ -295,8 +297,9 @@ def build():
         ("The Old Norse", "The Old Norse", "who they were and how we know", CH1, "who they were and how we know"),
         ("Nine Realms", "Nine Realms", "The Gods and Their Kingdoms", ch2, "The Gods and Their Kingdoms"),
         ("Gods & Ruling Powers", "Rǫgn: Gods & Ruling Powers", "The gods and the powers", ch3, "Gods & Ruling Powers"),
+        ("Animals", "Animals", "Ravens, wolves, horses, snakes, and eagles", ANIMAL_PAGES, "ravens, wolves, horses, snakes, and eagles"),
         ("Tales", "Tales", "Stories from the old books", [e for e in TALES if e[2] not in CUT_TALES], "stories from the old books"),
-        ("Völva & Seiðr", "Völva & Seiðr", "seeress and fate-work", ch3b, "seeress and fate-work"),
+        ("Vǫlva & Seiðr", "Vǫlva & Seiðr", "seeress and fate-work", ch3b, "seeress and fate-work"),
         ("Hamingja", "Hamingja", "Luck, fylgja, and dreams", CH4C + NAMING_PAGE, "luck, fylgja, and dreams"),
         ("Elves & Dwarfs", "Elves & Dwarfs", "neighbors and smiths", CH_ED, "neighbors and smiths"),
         ("Norse Wheel of the Year", "Norse Wheel of the Year", "Winter Nights to Midsummer", ch5, "Winter Nights to Midsummer"),
@@ -305,7 +308,7 @@ def build():
         ("Runes", "Runes", "The letters of the old north", rune_all, "the letters of the old north"),
         ("Staves", "Staves", "use them honestly", STAVE_PAGES, "use them honestly"),
         ("Galdr: Charms", "Galdr: Charms", "Words in old books", CH8[:1] + NEW_SONGS + NID_PAGE + CH8[1:], "words in old books"),
-        ("Ancestors", "Ancestors", "Mound-neighbors", CH9[:1] + DEAD_PAGE + CH9[1:], "mound-neighbors"),
+        ("Ancestors", "Ancestors", "Mound-neighbors", [e for e in CH9[:1] + DEAD_PAGE + CH9[1:] if not (e[0] == "journal" and e[2].startswith(CUT_ANCESTOR_CARDS))], "mound-neighbors"),
         ("Oath", "Oath", "Go on reading", oath, "go on reading"),
     ]
     toc_names = {"Gods & Ruling Powers": "Rǫgn", "Elves & Dwarfs": "Elves &amp; Dwarfs"}
