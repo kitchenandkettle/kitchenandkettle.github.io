@@ -372,6 +372,9 @@ p { font-size: 12pt; line-height: 1.35; margin: 0 0 0.1in 0; text-align: justify
 .rt td.g { font-family: 'Noto Sans Runic', serif; font-size: 19pt; width: 0.5in; text-align: center; padding: 0; }
 .rt td.n { font-weight: 700; width: 0.95in; }
 .rt td.s { width: 0.55in; font-style: italic; }
+.rt3 td { padding: 0 0.06in; font-size: 9pt; line-height: 1.1; }
+.rt3 td.g { font-size: 12pt; line-height: 1.1; }
+.rt3 tr:nth-child(8n) td { border-bottom: 2px solid #8A7E6C; }
 .rt2 td { padding: 0.012in 0.06in; font-size: 10.5pt; }
 .rt2 td.g { font-size: 16pt; }
 .rrow { font-family: 'Noto Sans Runic', serif; font-size: 16pt; letter-spacing: 0.06em; line-height: 1.6; text-align: center; margin: 0.06in 0; }
