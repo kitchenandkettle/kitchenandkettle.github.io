@@ -50,3 +50,31 @@ NID_PAGE = [
   "<b>Where this comes from:</b> Egils saga and the Björketorp stone. The laws against níð are in the Icelandic law code Grágás. The advice on writing out anger is modern."],
  "What is one thing you want to say but will not say aloud? Write it, then decide what to do with the page."),
 ]
+
+
+OATH_RING_PAGE = [
+("lore", "Oath", "The oath ring",
+ ["In Eyrbyggja saga, the chieftain Þórólfr Mostrarskegg builds a temple, and on its altar lies a ring weighing twenty ounces. It is called the stallahringr, the altar ring. The saga says it was reddened with the blood of animals sacrificed at the temple, and that the chieftain wore it on his arm to every assembly.",
+  "Anyone who brought a case to the assembly had to swear on the ring first. The oath named two or more witnesses and called on Freyr, Njǫrðr, and the almighty god. Oaths on a holy ring were not only Icelandic. The Anglo-Saxon Chronicle says the Danish army swore peace to King Alfred on a holy ring in the year 876.",
+  "Oaths held their weight when they were spoken aloud, in front of witnesses, with something sacred in the hand. Choose a plain ring or armband, set it where the vow will be made, and name two witnesses. Say the promise in one sentence that you can keep. Wear the ring until it is done. This book does not use blood.",
+  "<b>Where this comes from:</b> The oath ring is in Eyrbyggja saga, chapter 4, and the Anglo-Saxon Chronicle, year 876. The household practice is modern."],
+ "Name one promise you will make before two witnesses, and the two you will ask."),
+]
+
+HAMMER_PAGE = [
+("lore", "Norse Wheel of the Year", "Þórr’s hammer: pendants and brides",
+ ["Small hammer pendants have been found in Viking Age graves and hoards across Scandinavia. A loop at the top shows they were hung at the neck. A mold found at Trend in Denmark could cast both hammers and crosses, which suggests that the same craftsman made for both faiths.",
+  "In the Þrymskviða, Þórr is dressed as a bride to win back his stolen hammer. The giant Þrymr calls for the hammer to be brought in and laid in the bride’s lap to hallow her, and for the pair to be joined in the name of Vár, the goddess of vows. So the hammer blessed weddings as well as cups. The Glavendrup stone in Denmark asks Þórr to hallow its memorial.",
+  "To hallow a gift for a wedding or a new home, lay a small hammer over it, or draw the sign with your hand, and say the vow aloud. The hammer is Þórr’s sign of protection and blessing.",
+  "<b>Where this comes from:</b> The pendants, the Trend mold, and the Glavendrup stone are known from archaeology. The wedding hallowing is in the Þrymskviða, stanza 30, in the Poetic Edda. The gift practice is modern."],
+ "What would you hallow with a hammer: a wedding, a new home, a vow? Name it and say the words."),
+]
+
+LOOM_PAGE = [
+("lore", "Seeress and Fate-Work", "Darraðarljóð: the battle loom",
+ ["In Njáls saga, on the morning of the battle of Clontarf in Ireland, a man in Caithness looks through the window of a stone hut and sees twelve women at a loom. Men’s heads are the weights. Entrails are the warp and weft. A sword is the beater, and arrows are the shed-rods. The women sing as they weave. This is the Darraðarljóð, the song of the spear.",
+  "When the song ends they tear the cloth apart. Each keeps the piece she holds, and they ride away, six to the south and six to the north. The women are valkyries, and the cloth is the battle. Weaving here is fate-work, close to the Norns carving the lengths of lives. Threads cross, are drawn tight, and cannot be pulled out again.",
+  "Textile work was women’s work in the Viking Age, and it was fate-work too. Take three threads and name each for something you have decided. Braid them. Keep the cord where you will see it until the thing is done.",
+  "<b>Where this comes from:</b> The Darraðarljóð is in Njáls saga, chapter 157. The braided cord is modern."],
+ "Name one thread in your life that is already chosen, then braid it."),
+]

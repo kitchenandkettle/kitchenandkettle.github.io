@@ -11,7 +11,7 @@ from content_a import CH1, CH2
 from content_b import CH3, CH3B, CH4B, CH4C
 from content_c import CH5, CH6
 from content_d import CH7, CH8, CH9, CH10
-from content_h import HALLOW_PAGE, DEAD_PAGE, HAMR_PAGE, NAMING_PAGE, NID_PAGE
+from content_h import OATH_RING_PAGE, HAMMER_PAGE, LOOM_PAGE, HALLOW_PAGE, DEAD_PAGE, HAMR_PAGE, NAMING_PAGE, NID_PAGE
 from content_e import CH_ED
 from content_g import RUNE_PAGES, STAVE_PAGES, SEIDR_PAGES, RUNE_NOTEBOOK
 from content_i import ANIMAL_PAGES
@@ -277,16 +277,16 @@ def build():
     i_blot = next(i for i, e in enumerate(ch5) if e[2] == "How each turning works here") + 1
     ch5[i_blot:i_blot] = moved
     i_altar = next(i for i, e in enumerate(ch5) if e[2] == "A small seasonal altar") + 1
-    ch5[i_altar:i_altar] = HALLOW_PAGE
+    ch5[i_altar:i_altar] = HALLOW_PAGE + HAMMER_PAGE
     idx = next(i for i, e in enumerate(ch3) if e[2] == "The Æsir–Vanir war") + 1
     ch3[idx:idx] = GODS_GLANCE
-    oath = FRIENDS_PAGE + NEW_COUNSEL + list(CH10)
+    oath = FRIENDS_PAGE + OATH_RING_PAGE + NEW_COUNSEL + list(CH10)
     oath += GLOSSARY_PAGE
     vitki = [(e[0], "Runes") + tuple(e[2:]) for e in CH4B + NEW_VITKI]
     rune_all = [RUNE_PAGES[0]] + vitki + list(RUNE_PAGES[1:]) + RUNE_NOTEBOOK
     ch3b = list(CH3B)
     i_seidr = next(i for i, e in enumerate(ch3b) if e[2].startswith("Seiðr")) + 1
-    ch3b[i_seidr:i_seidr] = SEIDR_PAGES + HAMR_PAGE
+    ch3b[i_seidr:i_seidr] = SEIDR_PAGES + HAMR_PAGE + LOOM_PAGE
     ch2 = [e for e in CH2 if e[2] not in CUT_REALMS]
     ch6 = list(CH6)
     i_herbs = next(i for i, e in enumerate(ch6) if e[2] == "More herbs in the leechbooks") + 1
